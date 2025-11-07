@@ -11,6 +11,8 @@ import "../DeBug/Range.fcg" as Range
 import "../DeBug/Damage.fcg" as Damage
 import "../DeBug/cdlevelup.fcg" as cdlevelup
 import "../DeBug/ChoiceSkill.fcg" as ChoiceSkill
+import "../SuperFcc/TransferList.fcc" as TransferList
+import "List.fcc" as List
 
 [platform_client]
 graph SkillUI {
@@ -18,6 +20,9 @@ graph SkillUI {
     createdEntity entity<Effect>
     //物理碰撞层级为0
     ScreenLayer int = 0
+    //——————————————————————————————————————————————————————————————————————————————//
+    //怪物列表
+    ActiveMonsters List<entity<LevelObject>> = List<entity<LevelObject>>{}
     //——————————————————————————————————————————————————————————————————————————————//
     //特效旋转动画
     tween entity<Tween>
@@ -30,6 +35,10 @@ graph SkillUI {
     //CD填充动画
     FillAmountTween entity<Tween>
     //——————————————————————————————————————————————————————————————————————————————//
+    event InitMonster(ActiveMonstersList List<entity<LevelObject>>) {
+        ActiveMonsters = ActiveMonstersList
+    }
+
     //超级炫酷的暴力色彩艺术
     func  BoomColor(createdEntity entity<Effect>,value int){
         var color = #FF98D4FF
@@ -218,9 +227,11 @@ graph SkillUI {
     async func Skill_2_Released(CurrentSkill int){
         // 获取技能数据
         var SkillData Map<string,int> = GetLocalPlayer()<PlayerJionGame>.GetSkillData(CurrentSkill)
-        var Size int = SkillData["Range"]
+        var ColorComp Map<string,int> = GetLocalPlayer()<PlayerJionGame>.Skill2_CountState
+        var Count int = SkillData["Count"]
         var CurrentDamage int = SkillData["Damage"]
         var CurrentcdTime int = SkillData["CD"]
+        var ColorValue int = ColorComp["y"]
         
         // 设置技能CD时间
         var SkillUI entity<CustomUI> = GetLocalPlayer()<PlayerJionGame>.SkillUI
@@ -246,7 +257,7 @@ graph SkillUI {
             start HandleSkillCD(CurrentcdTime)
             
             // 异步启动雷击特效，不阻塞CD
-            start PlayThunderEffects(ReleasedEffectPosition, Size, CurrentDamage)
+            start PlayThunderEffects(Count,ColorValue, CurrentDamage)
         }
     }
 
@@ -258,39 +269,47 @@ graph SkillUI {
     }
 
     // 播放雷击特效的独立函数
-    async func PlayThunderEffects(basePosition Vector3, size int, damage int) {
-        // 释放5道雷，每道延迟0.2秒
-        for i = 0, 5, 1 {
-            start CreateThunder(i, basePosition, size, damage)
-            WaitForMillisecond(200) // 每道雷间隔200ms
+    async func PlayThunderEffects(Count int, ColorValue int, damage int) {
+        // 释放Count道雷，每道延迟0.2秒
+        for i = 0, Count, 1 {
+            var randomMonster = GetRandomMonster()
+            if randomMonster != nil {
+                start CreateThunder(i, randomMonster, ColorValue, damage)
+                WaitForMillisecond(200)
+            } else {
+                LogInfo("没有找到可攻击的怪物，跳过第 " + (i + 1) + " 道雷")
+            }
         }
+    }
+
+    // 从怪物列表中随机选择一个怪物
+    func GetRandomMonster() entity<LevelObject> {
+        if List.Length(ActiveMonsters) == 0 {
+            return nil
+        }
+        
+        var randomIndex = RandomInt(0, List.Length(ActiveMonsters) - 1)
+        return ActiveMonsters[randomIndex]
     }
 
     // 创建单道雷的函数
-    async func CreateThunder(index int, basePosition Vector3, size int, damage int) {
-        // 计算每道雷的位置（可以在基础位置周围随机分布）
-        var randomOffsetX = RandomFloat(-2.0, 2.0)
-        var randomOffsetZ = RandomFloat(-2.0, 2.0)
-        var thunderPosition = Vector3{
-            basePosition.X + randomOffsetX,
-            basePosition.Y,
-            basePosition.Z + randomOffsetZ,
-        }
+    async func CreateThunder(index int, targetMonster entity<LevelObject>, ColorValue int ,damage int) {
+        // 获取怪物的位置
+        var thunderPosition = targetMonster<Transform>.Position
         // 创建雷击特效
         CreateEffectClient(out var thunderEffect, VFXType.Thunder, LoopType.Once, true)
         thunderEffect<Transform>.Position = thunderPosition
-        thunderEffect<Transform>.Scale = Vector3{0.6*size, size*2, 0.6*size}
-        // 设置特效颜色（可以根据索引调整颜色）
-        BoomColor(thunderEffect, size)
-        // 这里可以添加雷击的伤害逻辑
-        ApplyThunderDamage(thunderPosition, size, damage)
-        LogInfo("第 " + (index + 1) + " 道雷在位置 " + thunderPosition + " 释放")
+        thunderEffect<Transform>.Scale = Vector3{0.8,2,0.8}
+        // 设置特效颜色
+        BoomColor(thunderEffect, ColorValue)
+        // 对目标怪物造成伤害
+        ApplyThunderDamage(targetMonster, damage)
+        LogInfo("第 " + (index + 1) + " 道雷攻击怪物在位置 " + thunderPosition + " 释放")
     }
 
     // 应用雷击伤害的函数
-    func ApplyThunderDamage(position Vector3, range int, damage int) {
-        // 这里实现伤害逻辑，对范围内的敌人造成伤害
-        LogInfo("惊雷！这通天修为天塌地陷紫金锤！")
+    func ApplyThunderDamage(targetMonster entity<LevelObject>, damage int) {
+        LogInfo("惊雷！这通天修为天塌地陷紫金锤！对怪物造成 " + damage + " 点伤害")
     }
     //——————————————————————————————————————————————————————————————————————————————//
     //  技能3释放

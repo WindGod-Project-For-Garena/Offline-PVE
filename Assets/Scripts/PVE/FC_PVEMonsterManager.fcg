@@ -7,6 +7,7 @@ import "Strings.fcc" as strings
 import "CSVData.fcc" as CSVData
 import "Math.fcc" as math
 import "../Static/FC_Utilities.fcg" as Utilities
+import "../SuperFcc/TransferList.fcc" as TransferList
 
 static graph FC_PVEMonsterManager {
     // 配置参数
@@ -418,6 +419,8 @@ static graph FC_PVEMonsterManager {
         // 注册怪物
         if monster != nil {
             list.Append(ActiveMonsters, monster)
+            BroadcastCustomEvent(InitMonster, PlatformType.Client, {ActiveMonsters})
+            // DispatchEventToEntity(InitMonster, globalEntity, PlatformType.Client,ActiveMonsters)
         }
         if monsterInfo["IsElite"] as bool {
             list.Append(EliteTracker, monster)
