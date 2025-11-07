@@ -18,5 +18,8 @@ graph Damage {
         if CurrentSkill == 2 {
             GetLocalPlayer()<PlayerJionGame>.UpdateDamage_2()
         }
+        if CurrentSkill == 3 {
+            GetLocalPlayer()<PlayerJionGame>.UpdateDamage_3()
+        }
     }
 }

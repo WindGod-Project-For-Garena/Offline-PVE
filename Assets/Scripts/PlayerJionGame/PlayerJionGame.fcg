@@ -18,7 +18,7 @@ graph PlayerJionGame {
     CurrentSkill_1_DATA_LIST Map<string,int> = Map<string,int>{"Range":1,"Damage":0,"CD":5000}
     CurrentSkill_1_DeBug_LIST Map<string,int> = Map<string,int>{"Range":0,"Damage":0,"CD":0}
     Skill1_RangeState Map<string,int> = Map<string,int>{"x":1,"y":0}
-    Skill1_DamageState Map<string,int> = Map<string,int>{"x":0,"y":0}
+    Skill1_DamageState Map<string,int> = Map<string,int>{"x":5,"y":0}
     Skill1_CDState Map<string,int> = Map<string,int>{"x":5000,"y":0}
     
     // 技能2数据
@@ -27,6 +27,13 @@ graph PlayerJionGame {
     Skill2_RangeState Map<string,int> = Map<string,int>{"x":1,"y":0}
     Skill2_DamageState Map<string,int> = Map<string,int>{"x":5,"y":0}
     Skill2_CDState Map<string,int> = Map<string,int>{"x":5000,"y":0}
+
+    // 技能3数据
+    CurrentSkill_3_DATA_LIST Map<string,int> = Map<string,int>{"Range":1,"Damage":0,"CD":5000}
+    CurrentSkill_3_DeBug_LIST Map<string,int> = Map<string,int>{"Range":0,"Damage":0,"CD":0}
+    Skill3_RangeState Map<string,int> = Map<string,int>{"x":1,"y":0}
+    Skill3_DamageState Map<string,int> = Map<string,int>{"x":5,"y":0}
+    Skill3_CDState Map<string,int> = Map<string,int>{"x":5000,"y":0}
     
     // 常量
     MaxRange int = 6
@@ -53,6 +60,11 @@ graph PlayerJionGame {
             Skill_2Panel<UIWidget>.Active = false
             var JoyStickButton_2 = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_2/JoyStickFillAmount")
             JoyStickButton_2<UIWidget>.Active = false
+
+            var Skill_3Panel = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_3")
+            Skill_3Panel<UIWidget>.Active = false
+            var JoyStickButton_3 = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_3/JoyStickFillAmount")
+            JoyStickButton_3<UIWidget>.Active = false
         }
     }
     
@@ -62,6 +74,9 @@ graph PlayerJionGame {
         } 
         if CurrentSkill == 2 {
             return CurrentSkill_2_DATA_LIST
+        } 
+        if CurrentSkill == 3 {
+            return CurrentSkill_3_DATA_LIST
         } 
     }
     
@@ -113,6 +128,27 @@ graph PlayerJionGame {
         var DeBugUI_Range = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/Range/文本_level")
         DeBugUI_Range<UIWidgetLabel>.Content = y + "级"
     }
+
+    func UpdateRange_3() {
+        var x = Skill3_RangeState["x"]
+        var y = Skill3_RangeState["y"]
+        
+        x = x + 1
+        y = y + 1
+        if x > MaxRange { 
+            x = 1
+            y = 0
+        }
+        
+        Skill3_RangeState["x"] = x
+        Skill3_RangeState["y"] = y
+        CurrentSkill_3_DATA_LIST["Range"] = x
+        CurrentSkill_3_DeBug_LIST["Range"] = y
+        
+        // 更新UI
+        var DeBugUI_Range = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/Range/文本_level")
+        DeBugUI_Range<UIWidgetLabel>.Content = y + "级"
+    }
     //———————————————————————————————————————————————————————————————————//
     // 伤害更新函数
     func UpdateDamage_1() {
@@ -156,6 +192,27 @@ graph PlayerJionGame {
         var DeBugUI_Damage = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/Damage/文本_level")
         DeBugUI_Damage<UIWidgetLabel>.Content = y + "级"
     }
+
+    func UpdateDamage_3() {
+        var x = Skill3_DamageState["x"]
+        var y = Skill3_DamageState["y"]
+        
+        x = x + 5
+        y = y + 1
+        if x > MaxDamage {
+            x = 5
+            y = 0
+        }
+        
+        Skill3_DamageState["x"] = x
+        Skill3_DamageState["y"] = y
+        CurrentSkill_3_DATA_LIST["Damage"] = x
+        CurrentSkill_3_DeBug_LIST["Damage"] = y
+        
+        // 更新UI
+        var DeBugUI_Damage = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/Damage/文本_level")
+        DeBugUI_Damage<UIWidgetLabel>.Content = y + "级"
+    }
     //———————————————————————————————————————————————————————————————————//
     // CD更新函数
     func UpdateCD_1() {
@@ -194,6 +251,27 @@ graph PlayerJionGame {
         Skill2_CDState["y"] = y
         CurrentSkill_2_DATA_LIST["CD"] = x
         CurrentSkill_2_DeBug_LIST["CD"] = y
+        
+        // 更新UI
+        var DeBugUI_CD = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/cdlevelup/文本_level")
+        DeBugUI_CD<UIWidgetLabel>.Content = y + "级"
+    }
+
+    func UpdateCD_3() {
+        var x = Skill3_CDState["x"]
+        var y = Skill3_CDState["y"]
+        
+        x = x - 500
+        y = y + 1
+        if x < MinCD {
+            x = 5000
+            y = 0
+        }
+        
+        Skill3_CDState["x"] = x
+        Skill3_CDState["y"] = y
+        CurrentSkill_3_DATA_LIST["CD"] = x
+        CurrentSkill_3_DeBug_LIST["CD"] = y
         
         // 更新UI
         var DeBugUI_CD = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/cdlevelup/文本_level")

@@ -6457,7 +6457,10 @@
         "selfValue": false,
         "valueTag": "activeValue"
       },
-      "unlockedValue": null,
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
       "editorLockValue": false,
       "editorVisibleValue": true,
       "position": {
@@ -6526,14 +6529,14 @@
         "effectTexture": "",
         "effectTextureRef": null,
         "effectTypeRef": {
-          "fileId": "EffectType_WS_VFX_THUNDER",
-          "filePath": "lib://ffEffects/T_39_HJ_WS_SOUND21",
+          "fileId": "EffectType_UGC_T_34_LY_WS_VFX2",
+          "filePath": "lib://ffEffects/T_34_LY_WS_VFX2",
           "_tag": {
             "type": "GFileRefer"
           },
           "fileType": "effecttype"
         },
-        "effectType": "WS_VFX_THUNDER",
+        "effectType": "UGC_T_34_LY_WS_VFX2",
         "isLoop": 0
       }
     }

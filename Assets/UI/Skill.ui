@@ -51,7 +51,7 @@
               },
               "anchoredPosition": {
                 "x": 0,
-                "y": 0.00000762939453125
+                "y": 0
               },
               "sizeDelta": {
                 "x": 90,
@@ -274,7 +274,7 @@
               },
               "anchoredPosition": {
                 "x": 0,
-                "y": 0.00000762939453125
+                "y": 0
               },
               "sizeDelta": {
                 "x": 90,
@@ -606,6 +606,424 @@
                   "source": {
                     "fileId": "110b07f3314b6edb7e155db03a397ada",
                     "filePath": "lib://fftextures/WorkshopIconLibrary/T_34_M_WS_ICON_CORPSE.png",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "texture"
+                  },
+                  "color": "#8C8D8F",
+                  "reverse": {
+                    "x": false,
+                    "y": false
+                  },
+                  "fillType": 3,
+                  "slicedBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "tiledBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "centerInvisible": false,
+                  "fillDir": 4,
+                  "fillAmount": 1,
+                  "invertFill": false,
+                  "flip": 0,
+                  "gradient": 1,
+                  "gradientTop": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  },
+                  "gradientBottom": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  }
+                }
+              },
+              "ecaScripts": [],
+              "ecaProps": {
+                "HudImageWidget": {},
+                "HudWidget": {},
+                "Entity": {}
+              },
+              "componentList": [],
+              "entityTagData": {
+                "tagPointers": []
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": false
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "propsData": {
+            "activeSelf": true,
+            "transform": {
+              "rotate": 0,
+              "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "pivot": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "anchoredPosition": {
+                "x": 0,
+                "y": 0
+              },
+              "sizeDelta": {
+                "x": 90,
+                "y": 90
+              }
+            },
+            "alpha": 100,
+            "priority": 1,
+            "button": {
+              "spriteName": {
+                "fileId": "0d9384a09ed32f303fa939296254458e",
+                "filePath": "lib://fftextures/WorkshopIconLibrary/FF_ingame_hud_UGC_Dyeing_SkilliconBg.png",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "texture"
+              },
+              "normal": "#626262",
+              "highlight": "#e2a222",
+              "pressed": "#626262",
+              "disabled": "#494949",
+              "onClicks": [],
+              "enableBorderImage": true,
+              "clickHandlers": [],
+              "disableCollider": false,
+              "fillType": 3,
+              "slicedBorder": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              },
+              "tiledBorder": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              },
+              "centerInvisible": false,
+              "fillDir": 4,
+              "fillAmount": 1,
+              "invertFill": false,
+              "reverse": {
+                "x": false,
+                "y": false
+              },
+              "flip": 0,
+              "gradient": 1,
+              "gradientTop": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 1
+              },
+              "gradientBottom": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 1
+              }
+            }
+          },
+          "ecaScripts": [],
+          "ecaProps": {
+            "HudButtonWidget": {},
+            "HudWidget": {},
+            "Entity": {}
+          },
+          "componentList": [],
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": false
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "propsData": {
+        "activeSelf": true,
+        "transform": {
+          "rotate": 0,
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchoredPosition": {
+            "x": 350,
+            "y": -100
+          },
+          "sizeDelta": {
+            "x": 90,
+            "y": 90
+          }
+        },
+        "alpha": 100,
+        "priority": 0,
+        "panel": {
+          "enableBackground": true,
+          "maskName": null,
+          "bgName": {
+            "fileId": "b063b0439839b3d97a8fd2aa6a57ef8b",
+            "filePath": "lib://fftextures/WorkshopIconLibrary/T_34_M_WS_ICON_SQUARE.png",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "texture"
+          },
+          "bgColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 0
+          },
+          "clippingType": 0,
+          "softness": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      },
+      "ecaScripts": [],
+      "ecaProps": {
+        "HudEmptyPanel": {},
+        "HudPanel": {},
+        "HudWidget": {},
+        "Entity": {}
+      },
+      "componentList": [],
+      "entityTagData": {
+        "tagPointers": []
+      },
+      "version": "UIPanelEntityV3",
+      "editorLockValue": false,
+      "editorVisibleValue": false
+    },
+    {
+      "_entityName": "Skill_3",
+      "_tag": {
+        "type": "UIPanelEntityV3",
+        "resourceId": ""
+      },
+      "_entityId": "ufSzLchi",
+      "children": [
+        {
+          "_entityName": "SkillJoyStik",
+          "_tag": {
+            "type": "UIJoystickEntity",
+            "resourceId": ""
+          },
+          "_entityId": "oifWrB0p",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "propsData": {
+            "activeSelf": true,
+            "transform": {
+              "rotate": 0,
+              "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "pivot": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "anchoredPosition": {
+                "x": 0,
+                "y": 0
+              },
+              "sizeDelta": {
+                "x": 90,
+                "y": 90
+              }
+            },
+            "alpha": 100,
+            "priority": 0,
+            "joystick": {
+              "offset": {
+                "x": 0,
+                "y": 0
+              },
+              "backGroundImage": {
+                "fileId": "2f08e225280b037ecd837b3268d6ce42",
+                "filePath": "lib://fftextures/WorkshopIconLibrary/FF_UI_Character_ingameHud_dust01.png",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "texture"
+              },
+              "backGroundRadius": 42,
+              "joystickCapImage": {
+                "fileId": "4ca1d2b3c898be4295468b280eeb3588",
+                "filePath": "lib://fftextures/WorkshopIconLibrary/UI_icon_buff_01.png",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "texture"
+              },
+              "joystickCapRadius": 25,
+              "joystickCapDragRadius": 50,
+              "arrowImage": {
+                "fileId": "444635694300265773242d3bdafab4e5",
+                "filePath": "lib://fftextures/WorkshopIconLibrary/UI_move_bt01.png",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "texture"
+              },
+              "arrowSize": {
+                "x": 50,
+                "y": 20
+              },
+              "arrowOffset": 45,
+              "activatedAlpha": 40,
+              "inactivatedAlpha": 100,
+              "disableCollider": false
+            }
+          },
+          "ecaScripts": [
+            {
+              "fileId": "c3rd1g6fpk8-mhkbtsbu-vswiaen4pbr",
+              "filePath": "Assets\\Scripts\\SkillUI\\SkillUI.fcg",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "ugcscript"
+            }
+          ],
+          "ecaProps": {
+            "HudJoystick": {},
+            "HudWidget": {},
+            "Entity": {},
+            "CustomComponent59601760": {
+              "PROP_22515481": "",
+              "PROP_31785558": 100,
+              "PROP_74830943": 100,
+              "PROP_93441408": 4,
+              "PROP_27635539": 10,
+              "PROP_77801521": null,
+              "PROP_92961702": null,
+              "PROP_94587706": null
+            }
+          },
+          "componentList": [],
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": false
+        },
+        {
+          "_entityName": "JoyStickFillAmount",
+          "_tag": {
+            "type": "UIButtonEntity",
+            "resourceId": ""
+          },
+          "_entityId": "RbbkFma5",
+          "children": [
+            {
+              "_entityName": "Image",
+              "_tag": {
+                "type": "UIImageEntity",
+                "resourceId": ""
+              },
+              "_entityId": "meG4embQ",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "propsData": {
+                "activeSelf": true,
+                "transform": {
+                  "rotate": 0,
+                  "anchorMin": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchorMax": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "pivot": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchoredPosition": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "sizeDelta": {
+                    "x": 50,
+                    "y": 50
+                  }
+                },
+                "alpha": 100,
+                "priority": 0,
+                "image": {
+                  "source": {
+                    "fileId": "4ca1d2b3c898be4295468b280eeb3588",
+                    "filePath": "lib://fftextures/WorkshopIconLibrary/UI_icon_buff_01.png",
                     "_tag": {
                       "type": "GFileRefer"
                     },

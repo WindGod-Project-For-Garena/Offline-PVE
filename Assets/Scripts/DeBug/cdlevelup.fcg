@@ -18,5 +18,8 @@ graph cdlevelup {
         if CurrentSkill == 2 {
             GetLocalPlayer()<PlayerJionGame>.UpdateCD_2()
         }
+        if CurrentSkill == 3 {
+            GetLocalPlayer()<PlayerJionGame>.UpdateCD_3()
+        }
     }
 }

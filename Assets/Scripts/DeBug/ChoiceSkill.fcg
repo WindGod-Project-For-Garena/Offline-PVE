@@ -12,7 +12,7 @@ import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
 graph ChoiceSkill {
     x int = 0
     y int = 0
-    MaxSkillAmount int = 3
+    MaxSkillAmount int = 4
     
     //————————————————————————————————————————————————//
     func ChoiceSkill(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
@@ -78,6 +78,22 @@ graph ChoiceSkill {
             var rangeLevel = GetLocalPlayer()<PlayerJionGame>.CurrentSkill_2_DeBug_LIST["Range"]
             var damageLevel = GetLocalPlayer()<PlayerJionGame>.CurrentSkill_2_DeBug_LIST["Damage"]
             var cdLevel = GetLocalPlayer()<PlayerJionGame>.CurrentSkill_2_DeBug_LIST["CD"]
+            
+            // 更新UI显示
+            var DeBugUI_Range = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/Range/文本_level")
+            DeBugUI_Range<UIWidgetLabel>.Content = rangeLevel + "级"
+            
+            var DeBugUI_Damage = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/Damage/文本_level")
+            DeBugUI_Damage<UIWidgetLabel>.Content = damageLevel + "级"
+            
+            var DeBugUI_CD = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/cdlevelup/文本_level")
+            DeBugUI_CD<UIWidgetLabel>.Content = cdLevel + "级"
+        }
+        if skillIndex == 3 {
+            // 获取技能3的等级数据
+            var rangeLevel = GetLocalPlayer()<PlayerJionGame>.CurrentSkill_3_DeBug_LIST["Range"]
+            var damageLevel = GetLocalPlayer()<PlayerJionGame>.CurrentSkill_3_DeBug_LIST["Damage"]
+            var cdLevel = GetLocalPlayer()<PlayerJionGame>.CurrentSkill_3_DeBug_LIST["CD"]
             
             // 更新UI显示
             var DeBugUI_Range = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/Range/文本_level")

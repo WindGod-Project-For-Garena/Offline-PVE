@@ -18,5 +18,8 @@ graph Range {
         if CurrentSkill == 2 {
             GetLocalPlayer()<PlayerJionGame>.UpdateRange_2()
         }
+        if CurrentSkill == 3 {
+            GetLocalPlayer()<PlayerJionGame>.UpdateRange_3()
+        }
     }
 }

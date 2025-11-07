@@ -76,12 +76,14 @@ graph SkillUI {
         ReleasedEffectPosition = hitPosition
         // ----------------------------- //
         var CurrentSkill = GetLocalPlayer()<PlayerJionGame>.CurrentSkill
-        //  技能1
         if  CurrentSkill == 1 {     
             Skill_1(CurrentSkill,hitPosition,hitEntity)
         }
         if   CurrentSkill == 2 {
             Skill_2(CurrentSkill,hitPosition,hitEntity)
+        }
+        if   CurrentSkill == 3 {
+            Skill_3(CurrentSkill,hitPosition,hitEntity)
         }
     }
 
@@ -128,6 +130,28 @@ graph SkillUI {
         // 特效旋转
         StartRotTween(createdEntity)
     }
+
+    //  技能3
+    func Skill_3(CurrentSkill int,hitPosition Vector3,hitEntity entity){
+       // 只在第一次满足条件时创建特效
+        if counter <= 1 {
+            counter = counter + 1
+            if(counter == 1) {
+                CreateEffectClient(out var NewcreatedEntity, VFXType.LightBeamPreDiscarded , LoopType.Once, true)
+                createdEntity = NewcreatedEntity
+                // 特效缩放
+                var EffectRange Map<string,int> = GetLocalPlayer()<PlayerJionGame>.GetSkillData(CurrentSkill)
+                var Size int = EffectRange["Range"]
+                createdEntity<Transform>.Scale = Vector3{Size, 0.1, Size}
+                // 特效颜色
+                BoomColor(createdEntity,Size)
+            }
+        }
+        // 特效位置
+        createdEntity<Transform>.Position = hitPosition
+        // 特效旋转
+        StartRotTween(createdEntity)
+    }
     //——————————————————————————————————————————————————————————————————————————————//
     event OnJoyStickReleased(player entity<Player>){                //当遥感技能释放时
         counter = 0
@@ -136,15 +160,17 @@ graph SkillUI {
         //-----------------------------//
         var CurrentSkill = GetLocalPlayer()<PlayerJionGame>.CurrentSkill
         //-----------------------------//
-        //  技能1
         if  CurrentSkill == 1 {     
             start Skill_1_Released(CurrentSkill)
         }
         if   CurrentSkill == 2 {
             start Skill_2_Released(CurrentSkill)
         }
+        if   CurrentSkill == 3 {
+            start Skill_3_Released(CurrentSkill)
+        }
     }
-    //——————————————————————————————————————————————————————————————————————————————//
+
     //  技能1释放
     async func Skill_1_Released(CurrentSkill int){
         //释放特效
@@ -187,7 +213,7 @@ graph SkillUI {
             JoyStickButton<UIWidget>.Active = false
         }
     }
-
+    //——————————————————————————————————————————————————————————————————————————————//
     // 技能2释放
     async func Skill_2_Released(CurrentSkill int){
         // 获取技能数据
@@ -265,6 +291,49 @@ graph SkillUI {
     func ApplyThunderDamage(position Vector3, range int, damage int) {
         // 这里实现伤害逻辑，对范围内的敌人造成伤害
         LogInfo("惊雷！这通天修为天塌地陷紫金锤！")
+    }
+    //——————————————————————————————————————————————————————————————————————————————//
+    //  技能3释放
+    async func Skill_3_Released(CurrentSkill int){
+        //释放特效
+        CreateEffectClient(out var NewcreatedEntity, VFXType.FlashbangSparks , LoopType.Once, true)
+        createdEntity = NewcreatedEntity
+        // 特效位置
+        createdEntity<Transform>.Position = ReleasedEffectPosition
+        // 特效缩放
+        var EffectRange Map<string,int> = GetLocalPlayer()<PlayerJionGame>.GetSkillData(CurrentSkill)
+        var Size int = EffectRange["Range"]
+        createdEntity<Transform>.Scale = Vector3{Size, Size, Size}
+        // 特效颜色
+        BoomColor(createdEntity,Size)
+        // 设置伤害
+        var Damage Map<string,int> = GetLocalPlayer()<PlayerJionGame>.GetSkillData(CurrentSkill)
+        var CurrentDamage int = Damage["Damage"]
+        //-----------------------------//
+        // 设置技能CD时间
+        var cdTime Map<string,int> = GetLocalPlayer()<PlayerJionGame>.GetSkillData(CurrentSkill)
+        var CurrentcdTime int = Damage["CD"]
+        var SkillUI entity<CustomUI> = GetLocalPlayer()<PlayerJionGame>.SkillUI
+        JoyStickButton = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_1/JoyStickFillAmount")
+        JoyStickButton<UIWidget>.Active = true
+        JoyStickButton<UIWidgetButton>.FillAmount = 0
+        if FillAmountTween == nil{
+            //CD填充动画
+            CreateTween(
+                JoyStickButton,
+                UIWidgetButton.FillAmount,
+                0,
+                1,
+                TweenStyle.Once,
+                CreateCurve({0, 0, 1, 1}),
+                CurrentcdTime, 
+                out var FillAmountTweenEntity,
+                true)
+            FillAmountTween = FillAmountTweenEntity
+            WaitForMillisecond(CurrentcdTime)
+            Destroy(FillAmountTween)
+            JoyStickButton<UIWidget>.Active = false
+        }
     }
     //——————————————————————————————————————————————————————————————————————————————//
 }
