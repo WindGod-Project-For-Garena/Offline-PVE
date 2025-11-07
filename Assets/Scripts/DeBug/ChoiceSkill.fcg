@@ -10,6 +10,8 @@ import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
 
 [platform_client]
 graph ChoiceSkill {
+    tween entity<Tween>
+    createdEntity entity<Effect>
     x int = 0
     y int = 0
     MaxSkillAmount int = 4
@@ -36,7 +38,6 @@ graph ChoiceSkill {
         
         // 隐藏所有技能面板
         for i = 1, MaxSkillAmount,1{
-            LogInfo(i)
             var skillPanel = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_" + i)
             var joyStickAmount = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_" + i + "/JoyStickFillAmount")
             skillPanel<UIWidget>.Active = false
@@ -72,6 +73,9 @@ graph ChoiceSkill {
             
             var DeBugUI_CD = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/cdlevelup/文本_level")
             DeBugUI_CD<UIWidgetLabel>.Content = cdLevel + "级"
+
+            Destroy(createdEntity)
+            Destroy(tween)
         }
         if skillIndex == 2 {
             // 获取技能2的等级数据
@@ -104,6 +108,63 @@ graph ChoiceSkill {
             
             var DeBugUI_CD = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/cdlevelup/文本_level")
             DeBugUI_CD<UIWidgetLabel>.Content = cdLevel + "级"
+            
+            Skill_3()
         }
+    }
+//————————————————————————————————————————————————————————————————————————————————————————————————————————//
+    //超级炫酷的暴力色彩艺术
+    func  BoomColor(createdEntity entity<Effect>,value int){
+        var color = #FF98D4FF
+        if value == 1 {
+            color = #FF98D4FF 
+        } else if value == 2 {
+            color = #98FFFFFF 
+        } else if value == 3 {
+            color = #98FF98FF
+        } else if value == 4 {
+            color = #98CDFFFF 
+        } else if value == 5 {
+            color = #FF9898FF 
+        } else if value == 6 {
+            color = #FFF098FF 
+        }
+        createdEntity<Effect>.Color = color
+    }
+
+    func StartRotTween(createdEntity entity<Effect>){               //旋转特效
+        if tween == nil{
+            //创建特效动画
+            var rotstart = Vector3{0, 0, 0}
+            var rotend = Vector3{0, 360, 0}     
+            CreateTween(
+                createdEntity,
+                Transform.Rotation,
+                rotstart,
+                rotend,
+                TweenStyle.Loop,
+                CreateCurve({0, 0, 1, 1}),
+                500,  // 旋转动画时间
+                out var RotTweenEntity,
+                true)
+            tween = RotTweenEntity
+        }
+    }
+
+    //  技能3(被动技能)
+    func Skill_3(){
+       // 只在第一次满足条件时创建特效
+        CreateEffectClient(out var NewcreatedEntity, VFXType.LightBeamPreDiscarded , LoopType.Once, true)
+        createdEntity = NewcreatedEntity
+        SetParentClient(GetLocalPlayer(),createdEntity ,false)
+        // 特效缩放
+        var CurrentSkill = GetLocalPlayer()<PlayerJionGame>.CurrentSkill
+        var EffectRange Map<string,int> = GetLocalPlayer()<PlayerJionGame>.GetSkillData(CurrentSkill)
+        var Size int = EffectRange["Range"]
+        createdEntity<Transform>.Scale = Vector3{2, 0.1, 2}
+        // 特效颜色
+        BoomColor(createdEntity,Size)
+        // 特效旋转
+        StartRotTween(createdEntity)
     }
 }
