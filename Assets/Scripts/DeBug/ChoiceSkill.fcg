@@ -75,7 +75,7 @@ graph ChoiceSkill {
         }
         if skillIndex == 2 {
             // 获取技能2的等级数据
-            var rangeLevel = GetLocalPlayer()<PlayerJionGame>.CurrentSkill_2_DeBug_LIST["Range"]
+            var rangeLevel = GetLocalPlayer()<PlayerJionGame>.CurrentSkill_2_DeBug_LIST["Count"]
             var damageLevel = GetLocalPlayer()<PlayerJionGame>.CurrentSkill_2_DeBug_LIST["Damage"]
             var cdLevel = GetLocalPlayer()<PlayerJionGame>.CurrentSkill_2_DeBug_LIST["CD"]
             
