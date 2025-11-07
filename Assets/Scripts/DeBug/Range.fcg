@@ -1,0 +1,22 @@
+import "StdLibrary.fcc" as StdLib
+import "EditorGenLib.fcc" as EditorLib
+import "Player.fcc" as Player
+import "Hud.fcc" as Hud
+import "Math.fcc" as Math
+import "Camera.fcc" as Camera
+import "Playable.fcc" as Playable
+import "Animation.fcc" as Animation
+import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
+
+[platform_client]
+graph Range {
+    func ChangeRange(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        var CurrentSkill = GetLocalPlayer()<PlayerJionGame>.CurrentSkill
+        if CurrentSkill == 1 {
+            GetLocalPlayer()<PlayerJionGame>.UpdateRange_1()
+        }
+        if CurrentSkill == 2 {
+            GetLocalPlayer()<PlayerJionGame>.UpdateRange_2()
+        }
+    }
+}

@@ -1,0 +1,32 @@
+import "StdLibrary.fcc" as StdLib
+import "EditorGenLib.fcc" as EditorLib
+import "BehaviourTree.fcc" as BehaviourTree
+import "Animation.fcc" as Animation
+
+graph FC_Act_Fall {
+    //Executed when entity is created
+    HitBeginTime int = 0
+	HitAniTime int = 0
+
+
+	//funcID: PlayAction
+	func PlayAction(NodeName entity<BevTreeAttachable>) BTreeNodeState {
+		if (globalEntity<Global>.GameTimeCount >= (HitBeginTime + HitAniTime)) {
+			//重置摔倒状态
+			NodeName<Mob>.StatusDic["InFall"] = false
+			NodeName<Mob>.StatusDic["HeadShot"] = false
+			return BevTreeNodeStatus.Finish
+		} else {
+			return BevTreeNodeStatus.Running
+		}
+	}
+
+	//eventID: 6//hi@v1yjq6ux#spCvoEX2
+	event OnNodeEnter(NodeName string, Owner entity<BevTreeAttachable>) {
+		HitBeginTime = globalEntity<Global>.GameTimeCount
+		PlayAnimation(Owner as entity<AnimationControllerAttachable>,"Hit", 1, LoopType.Once)
+		GetNodeVariable(thisEntity as entity<BevTreeCustomNode>, "Duration", out var duration)
+		HitAniTime = duration as int
+	}
+
+}

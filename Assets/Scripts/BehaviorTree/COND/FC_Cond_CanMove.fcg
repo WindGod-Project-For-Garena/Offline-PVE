@@ -1,0 +1,30 @@
+import "StdLibrary.fcc" as StdLib
+import "EditorGenLib.fcc" as EditorLib
+import "BehaviourTree.fcc" as BehaviourTree
+import "Playable.fcc" as Playable
+import "Strings.fcc" as Strings
+import "Math.fcc" as Math
+
+graph Script_1_ {
+    //Executed when entity is created
+   
+    func PlayCondition(owner entity<BevTreeAttachable>) bool{
+        
+        var target entity<Player> = owner<Mob>.CurrTarget
+       
+        if (target == nil){
+            return false
+        }
+        var tempPlayer = target as entity<Player>
+        var curPos = owner<Transform>.Position
+        var targetPos = tempPlayer<Player>.Position
+        var sub1 = curPos - targetPos
+        sub1.Y = 0
+        var dist float = Magnitude(sub1)
+
+        GetNodeVariable(thisEntity<BevTreeCustomNode>,"KeepDist",out var keepdist)
+        
+        //LogInfo("KeepDist: " + (dist as float > keepdist as float + 0.1))
+        return dist > (keepdist as float + 0.1)
+    }
+}

@@ -1,0 +1,17 @@
+import "StdLibrary.fcc" as StdLib
+import "EditorGenLib.fcc" as EditorLib
+import "BehaviourTree.fcc" as BehaviourTree
+import "Animation.fcc" as Animation
+
+graph FC_Act_Idle {
+    //Executed when entity is created
+    event OnAwake() {
+
+    }
+    event OnNodeEnter(nodeName string, owner entity<BevTreeAttachable>) {
+        PlayAnimation(owner<AnimationControllerAttachable>,"Idle",1,LoopType.Loop)
+    }
+    func PlayAction(owner entity<BevTreeAttachable>) BevTreeNodeStatus{
+        return BevTreeNodeStatus.Running
+    }
+}

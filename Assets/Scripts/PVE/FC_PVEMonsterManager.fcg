@@ -1,0 +1,543 @@
+import "StdLibrary.fcc" as std
+import "EditorGenLib.fcc" as gen
+import "Player.fcc" as player
+import "List.fcc" as list
+import "Map.fcc" as map
+import "Strings.fcc" as strings
+import "CSVData.fcc" as CSVData
+import "Math.fcc" as math
+import "../Static/FC_Utilities.fcg" as Utilities
+
+static graph FC_PVEMonsterManager {
+    // 配置参数
+    MaxMonstersOnField int = 20
+    SpawnInterval int = 5000  // 毫秒
+    EliteSpawnCD int = 10000  // Elite怪物生成CD(毫秒)
+    
+    // 当前状态
+    CurrentLevel int = 1
+    CurrentWave int = 1
+    IsWaveActive bool = false
+    
+    // 怪物追踪
+    ActiveMonsters List<entity<LevelObject>> = List<entity<LevelObject>>{}
+    ActivenNormalMonsters List<entity<LevelObject>> = List<entity<LevelObject>>{}
+    MonsterDeathCount Map<int, int> = Map<int, int>{}  // 按类型统计死亡数量
+    TotalKills int = 0
+    
+    // CSV缓存（仅缓存当前Level行、按需缓存怪物行）
+    LevelRowInfos Map<int, Map<string, object>> = Map<int, Map<string, object>>{} //LevelID -> LevelInfo
+
+    //WaveID -> MonsterInfo(MonsterID, MaxNum, Possibility, Name_key, BaseHP, BaseDamage, MoveSpeed, IsElite, IsBoss, PrefabID)
+    WaveMonsterInfos List<Map<string, object>> = List<Map<string, object>>{} 
+    
+    // 当前波次信息 - 使用基础类型
+    CurrentHPModifier float = 1.0
+    CurrentDamageModifier float = 1.0
+    
+    // BOSS和精英怪物追踪
+    EliteTracker List<entity<LevelObject>> = List<entity<LevelObject>>{}
+    BossSpawnedCount Map<int, int> = Map<int, int>{}  // MonsterID -> 已生成数量
+    EliteCurrentCount Map<int, int> = Map<int, int>{}  // MonsterID -> 当前存在数量
+    
+    // 普通怪物生成CD
+    NormalSpawnCD int = 5000  // 毫秒
+    NormalSpawnBatchSize int = 3  // 每次生成的普通怪物数量
+    NormalLastSpawnTime int = 0  // 普通怪物最后生成时间（全局CD）
+    
+    // 获取最后生成的怪物（用于Elite追踪）
+    LastSpawnedMonster entity<LevelObject> = nil
+  
+    event OnAwake() {
+        LogInfo("PVE怪物管理器初始化")
+        InitializeManager()
+    }
+    
+    func InitializeManager() {
+        // 初始化统计数据
+        TotalKills = 0
+        list.Clear(ActiveMonsters)
+        list.Clear(ActivenNormalMonsters)
+        map.Clear(MonsterDeathCount)
+        map.Clear(LevelRowInfos)
+        list.Clear(WaveMonsterInfos)
+        
+        LogInfo("怪物管理器初始化完成")
+    }
+    
+    
+    // 仅加载当前Level的LevelConfig行
+    // 返回LevelID -> LevelInfo
+    func LoadCurrentLevelRows(level int) {
+        map.Clear(LevelRowInfos)
+        for i,rowValue in ReadCSVColumn(EResCSV.LevelConfig,1) {
+            if rowValue == level {
+                var rowInfo List<object> = ReadCSVRow(EResCSV.LevelConfig,i+1)
+                LogInfo(rowInfo)
+                var levelInfo Map<string, object> = Map<string, object>{}
+                levelInfo["WaveNumber"] = rowInfo[1]
+                
+                var IDList List<int> = Utilities.SplitStringToInt(rowInfo[2])
+                levelInfo["MonsterIDs"] = IDList
+                
+                var maxNumList List<int> = Utilities.SplitStringToInt(rowInfo[3])
+                levelInfo["MaxNums"] = maxNumList
+                
+                var possibilityList List<float> = Utilities.SplitStringToFloat(rowInfo[4])
+                levelInfo["Possibilities"] = possibilityList
+
+                levelInfo["DamageModifier"] = rowInfo[5]
+                levelInfo["HPModifier"] = rowInfo[6]
+
+                LevelRowInfos[levelInfo["WaveNumber"] as int] = levelInfo
+            }
+        }
+        LogInfo("LevelRowInfos: " + LevelRowInfos)
+    }
+    
+    
+    // 开始新的关卡, 关卡开启并不代表波次开始, 波次开始需要手动调用StartWave
+    func StartLevel(level int) {
+        CurrentLevel = level
+        CurrentWave = 1
+        LogInfo("开始关卡: " + level)
+
+        // 仅读取该Level的LevelConfig
+        LoadCurrentLevelRows(level)
+        LogInfo("Level配置加载完成 (LevelID=" + level + ")")
+        
+        // 清理所有怪物
+        ClearAllMonsters()
+    }
+    
+    // 开始新的波次
+    func StartWave(level int, wave int) {
+        CurrentLevel = level
+        CurrentWave = wave
+        
+        LogInfo("开始关卡 " + level + " 波次 " + wave)
+        
+        var waveRowInfo Map<string, object> = LevelRowInfos[wave]
+        
+        
+        LogInfo(waveRowInfo)
+        LogInfo("Waveinfo:")
+        var monsterIdList List<int> = waveRowInfo["MonsterIDs"] as List<int>
+
+        // 解析CSV字段
+        for i = 0, list.Length(monsterIdList), 1 {
+            var monsterInfo Map<string, object> = Map<string, object>{}
+            monsterInfo["MonsterID"] = monsterIdList[i]
+            monsterInfo["MaxNum"] = waveRowInfo["MaxNums"] as List<int>[i]
+            monsterInfo["Possibility"] = waveRowInfo["Possibilities"] as List<float>[i]
+
+            var monsterRow = CSVData.ReadCSVRow(EResCSV.MonsterInfo, monsterInfo["MonsterID"] as int+2)
+            monsterInfo["Name_key"] = monsterRow[1]
+            monsterInfo["BaseHP"] = monsterRow[2]
+            monsterInfo["BaseDamage"] = monsterRow[3]
+            monsterInfo["MoveSpeed"] = monsterRow[4]
+            monsterInfo["IsElite"] = monsterRow[5]
+            monsterInfo["IsBoss"] = monsterRow[6]
+            monsterInfo["PrefabID"] = monsterRow[7]
+
+            list.Append(WaveMonsterInfos, monsterInfo)         
+        } 
+
+        CurrentDamageModifier = waveRowInfo["DamageModifier"] as float
+        CurrentHPModifier = waveRowInfo["HPModifier"] as float
+        
+       
+        // 构建优先队列（Boss -> Elite -> Normal）
+        var bossQueue List<Map<string, object>> = List<Map<string, object>>{}
+        var eliteQueue List<Map<string, object>> = List<Map<string, object>>{}
+        var normalQueue List<Map<string, object>> = List<Map<string, object>>{}
+        
+        for i = 0, list.Length(WaveMonsterInfos), 1 {
+            var monsterInfo = WaveMonsterInfos[i]
+            var isElite = monsterInfo["IsElite"] as bool
+            var isBoss = monsterInfo["IsBoss"] as bool
+            if isBoss {
+                list.Append(bossQueue, monsterInfo)
+            } else if isElite {
+                list.Append(eliteQueue, monsterInfo)
+            } else {
+                list.Append(normalQueue, monsterInfo)
+            }
+            
+        }
+        
+        IsWaveActive = true
+        
+        // 开始生成怪物
+        start SpawnWaveMonsters(bossQueue, eliteQueue, normalQueue)
+    }
+    
+  
+    
+    // 主要生成逻辑：在波次倒计时结束前不断生成
+    async func SpawnWaveMonsters(bossQueue List<Map<string, object>>, eliteQueue List<Map<string, object>>, normalQueue List<Map<string, object>>) {
+        // 重置生成计数
+        map.Clear(BossSpawnedCount)
+        map.Clear(EliteCurrentCount)
+        NormalLastSpawnTime = 0
+        //map.Clear(EliteLastSpawnTime)
+        
+        // 启动三个独立的生成循环（Boss -> Elite -> Normal）
+        start SpawnBossLoop(bossQueue)
+        start SpawnEliteLoop(eliteQueue)
+        start SpawnNormalLoop(normalQueue)
+        
+        LogInfo("波次怪物生成循环已启动")
+    }
+    
+    // Boss生成循环：直接生成到MaxNum数量，同时满足MaxMonstersOnField限制
+    async func SpawnBossLoop(bossQueue List<Map<string, object>>) {
+        while IsWaveActive {
+            // 检查是否所有Boss都已生成完成
+            var allBossSpawned = true
+
+            // 遍历所有Boss类型，生成到MaxNum数量
+            for i = 0, list.Length(bossQueue), 1 {
+                if !IsWaveActive { break }
+
+                var monsterInfo = bossQueue[i]
+                var monsterID = monsterInfo["MonsterID"] as int
+                var maxNum = monsterInfo["MaxNum"] as int
+                
+                // 检查是否已达到最大数量
+                if BossSpawnedCount[monsterID] >= maxNum {
+                    continue
+                }
+                
+                allBossSpawned = false
+                
+                // 生成到MaxNum数量，每次生成前检查总量限制
+                while BossSpawnedCount[monsterID] < maxNum && IsWaveActive {
+                    // 检查总量限制，超过就等待
+                    if GetActiveMonsterCount() >= MaxMonstersOnField {
+                        WaitForMillisecond(500)
+                        continue
+                    }
+                    if !IsWaveActive { break }
+                    // 生成Boss
+                    start CreateSingleMonster(monsterInfo)
+                    BossSpawnedCount[monsterID] = BossSpawnedCount[monsterID] + 1
+                }
+                
+                LogInfo("Boss生成: " + monsterInfo["Name_key"] as string + " (" + BossSpawnedCount[monsterID] + "/" + maxNum + ")")
+            }
+            
+            // 如果所有Boss都已生成完成，退出循环
+            if allBossSpawned {
+                LogInfo("所有Boss已生成完成")
+                break
+            }
+            if !IsWaveActive { break }
+            
+            WaitForMillisecond(SpawnInterval)
+        }
+    }
+    
+    // Elite生成循环：同时存在数不超过MaxNum，死亡后CD控制
+    async func SpawnEliteLoop(eliteQueue List<Map<string, object>>) {
+        var EliteLastSpawnTime int = 0
+        while IsWaveActive {
+            // 检查CD
+            if (globalEntity<Global>.GameTimeCount - EliteLastSpawnTime) < EliteSpawnCD {
+                WaitForMillisecond(1000)
+                continue
+            }else{
+                EliteLastSpawnTime = globalEntity<Global>.GameTimeCount
+            }
+
+            //循环生成所有精英怪物到最大数量
+            for i = 0, list.Length(eliteQueue), 1 {
+                if !IsWaveActive { break }
+                
+                var monsterInfo = eliteQueue[i]
+                var monsterID = monsterInfo["MonsterID"] as int
+                var maxNum = monsterInfo["MaxNum"] as int
+                
+                // 检查当前存在的Elite数量
+                if !EliteCurrentCount[monsterID] {
+                    EliteCurrentCount[monsterID] = 0
+                }
+                var currentCount = EliteCurrentCount[monsterID]
+                if currentCount >= maxNum {
+                    continue
+                }
+
+                // 检查总量限制
+                while GetActiveMonsterCount() >= MaxMonstersOnField && IsWaveActive {
+                    WaitForMillisecond(500)
+                }
+                
+                if !IsWaveActive { break }
+                
+                // 生成Elite
+                start CreateSingleMonster(monsterInfo)
+                EliteCurrentCount[monsterID] = currentCount + 1
+                      
+                LogInfo("Elite生成: " + monsterInfo["Name_key"] as string + " (当前存在: " + EliteCurrentCount[monsterID] + "/" + maxNum + ")")
+            }
+            
+            WaitForMillisecond(SpawnInterval)
+        }
+    }
+
+    // 普通怪物生成循环：每次生成指定数量的一种怪物，根据概率选择，如果全部死亡立即生成
+    async func SpawnNormalLoop(normalQueue List<Map<string, object>>) {
+        while IsWaveActive {
+            var now int = globalEntity<Global>.GameTimeCount
+            var hasNormalAlive = HasNormalMonstersAlive()
+            
+            // 如果普通怪物全部死亡，立即生成（跳过CD检查）
+            var canSpawn = false
+            if !hasNormalAlive {
+                canSpawn = true
+                //LogInfo("检测到所有普通怪物已死亡，立即生成")
+            } else {
+                // 检查CD
+                if (now - NormalLastSpawnTime) >= NormalSpawnCD {
+                    canSpawn = true
+                }
+            }
+            
+            if canSpawn {
+                // 检查总量限制
+                var currentCount = GetActiveMonsterCount()
+                if currentCount >= MaxMonstersOnField {
+                    WaitForMillisecond(500)
+                    continue
+                }
+                
+                // 根据概率选择一种怪物类型（使用已有的Possibility值）
+                var selectedMonster = SelectMonsterByPossibility(normalQueue)
+                if selectedMonster == nil {
+                    WaitForMillisecond(500)
+                    continue
+                }
+                
+                // 计算实际能生成的数量（考虑总量限制）
+                var availableSlots = MaxMonstersOnField - currentCount
+                var spawnCount = NormalSpawnBatchSize
+                if spawnCount > availableSlots {
+                    spawnCount = availableSlots
+                }
+                
+                // 生成指定数量的怪物
+                for j = 0, spawnCount, 1 {
+                    if !IsWaveActive { break }
+                    
+                    // 再次检查总量限制
+                    if GetActiveMonsterCount() >= MaxMonstersOnField {
+                        break
+                    }
+                    
+                    start CreateSingleMonster(selectedMonster)
+                }
+                
+                NormalLastSpawnTime = now
+                LogInfo("普通怪物生成: " + selectedMonster["Name_key"] as string + " x" + spawnCount)
+            }
+            
+            WaitForMillisecond(5000)  // 短暂等待，避免频繁检查
+        }
+    }
+
+    // 检查是否有普通怪物存活
+    func HasNormalMonstersAlive() bool {
+        return list.Length(ActivenNormalMonsters) > 0
+    }
+    
+    // 根据概率选择普通怪物类型（使用monsterInfo["Possibility"]）
+    func SelectMonsterByPossibility(normalQueue List<Map<string, object>>) Map<string, object> {
+        if list.Length(normalQueue) == 0 {
+            return nil
+        }
+        
+        // 计算总概率
+        var totalPossibility float = 0.0
+        for i = 0, list.Length(normalQueue), 1 {
+            var monsterInfo = normalQueue[i]
+            var possibility = monsterInfo["Possibility"] as float
+            totalPossibility = totalPossibility + possibility
+        }
+        
+        // 如果总概率为0或无效，随机选择一个
+        if totalPossibility <= 0.0 {
+            var randomIndex = math.RandomInt(0, list.Length(normalQueue))
+            return normalQueue[randomIndex]
+        }
+        
+        // 生成随机数 [0, totalPossibility)
+        var randomValue = math.RandomFloat(0.0, 1.0) * totalPossibility
+        
+        // 根据累积概率选择
+        var accumulated float = 0.0
+        for i = 0, list.Length(normalQueue), 1 {
+            var monsterInfo = normalQueue[i]
+            var possibility = monsterInfo["Possibility"] as float
+            accumulated = accumulated + possibility
+            if randomValue < accumulated {
+                return monsterInfo
+            }
+        }
+        
+        // 边界情况：返回最后一个
+        return normalQueue[list.Length(normalQueue) - 1]
+    }
+    
+    
+    
+    // 创建单个怪物
+    async func CreateSingleMonster(monsterInfo Map<string, object>) {
+        CreateFromPrefab(out var monsterEntity, EResPrefab.NormalZombie)
+        var monster = monsterEntity as entity<LevelObject>
+        LastSpawnedMonster = monster
+        WaitForNextFrame()
+        monster<Transform>.Position = GetRandomSpawnPosition()
+      
+        // 设置怪物属性
+        if HasComponent(monster, typeof(Mob)) {
+            monster<Mob>.MobName = monsterInfo["Name_key"] as string
+            var baseHP = monsterInfo["BaseHP"] as int
+            var baseDmg = monsterInfo["BaseDamage"] as int
+            var spd = monsterInfo["MoveSpeed"] as float
+            
+            // 修复类型转换：将float计算结果转换为int
+            var calculatedMaxHP int = Floor(baseHP * CurrentHPModifier)
+            var calculatedDamage int = Floor(baseDmg * CurrentDamageModifier)
+            var calculatedSpeed int = Floor(spd)
+            monster<Mob>.MaxHP = calculatedMaxHP
+            monster<Mob>.HP = monster<Mob>.MaxHP
+            monster<Mob>.Damage = calculatedDamage
+            monster<Mob>.WalkSpeed = calculatedSpeed
+        }
+        
+        // 注册怪物
+        if monster != nil {
+            list.Append(ActiveMonsters, monster)
+        }
+        if monsterInfo["IsElite"] as bool {
+            list.Append(EliteTracker, monster)
+        }
+        
+        LogInfo("生成怪物: " + monster<Mob>.MobName + " 在位置 " + monster<Transform>.Position)
+    }
+    
+    func GetRandomSpawnPosition() Vector3 {
+        // 简单的随机生成位置，实际应该根据地图设计
+        var x = RandomFloat(-8, 8)
+        var z = RandomFloat(-8, 8)
+        return Vector3{x, 0, z}
+    }
+  
+
+    
+    func GetMonsterType(monster entity<LevelObject>) int {
+        if HasComponent(monster, typeof(Mob)) {
+            var mobName = monster<Mob>.MobName
+            if mobName == "NormalZombie" { return 1 }
+            if mobName == "FastZombie" { return 2 }
+            if mobName == "TankZombie" { return 3 }
+            if mobName == "ZombieBoss" { return 4 }
+            if mobName == "SpitterZombie" { return 5 }
+            if mobName == "ExplosiveZombie" { return 6 }
+        }
+        return 0
+    }
+    
+    // 清理所有怪物（必需的基础方程）
+    func ClearAllMonsters() {
+        LogInfo("清理所有怪物")
+        
+        // 停止生成
+        IsWaveActive = false
+        
+        // 销毁所有怪物
+        for i = 0, list.Length(ActiveMonsters), 1 {
+            var monster = ActiveMonsters[i]
+            if monster != nil {
+                Destroy(monster)
+            }
+        }
+        
+        // 清理数据结构
+        list.Clear(ActiveMonsters)
+        map.Clear(MonsterDeathCount)
+        list.Clear(EliteTracker)
+        map.Clear(BossSpawnedCount)
+        map.Clear(EliteCurrentCount)
+        NormalLastSpawnTime = 0
+        //map.Clear(EliteLastSpawnTime)
+        
+        // 重置状态
+        TotalKills = 0
+        LastSpawnedMonster = nil
+        
+        LogInfo("所有怪物已清理，状态已重置")
+    }
+    
+    // 获取活跃怪物数量
+    func GetActiveMonsterCount() int {
+        var count = 0
+        for i = 0, list.Length(ActiveMonsters), 1 {
+            var monster = ActiveMonsters[i]
+            if monster != nil {
+                count = count + 1
+            }
+        }
+        return count
+    }
+    
+    // 强制结束当前波次（必需的基础方程）
+    func ForceEndWave() {
+        LogInfo("强制结束当前波次")
+        ClearAllMonsters()
+    }
+    
+    
+    
+    func OnMonsterKilled(monster entity<LevelObject>) {
+        if monster != nil {
+            list.Remove(ActiveMonsters, monster)
+            list.Remove(ActivenNormalMonsters, monster)
+            
+            // 统计死亡数量
+            if HasComponent(monster, typeof(Mob)) {
+                var monsterType = GetMonsterType(monster)
+                var currentCount = MonsterDeathCount[monsterType]
+                MonsterDeathCount[monsterType] = currentCount + 1
+                TotalKills = TotalKills + 1
+            }
+            
+            // 处理Elite死亡与CD记录
+            if list.Contain(EliteTracker, monster) {
+                list.Remove(EliteTracker,monster)
+                
+                // 减少对应MonsterID的Elite计数
+                var mobName = monster<Mob>.MobName
+                for i = 0, list.Length(WaveMonsterInfos), 1 {
+                    var monsterInfo = WaveMonsterInfos[i]
+                    if monsterInfo["Name_key"] as string == mobName {
+                        var monsterID = monsterInfo["MonsterID"] as int
+                        var currentCount = EliteCurrentCount[monsterID]
+                        if currentCount > 0 {
+                            EliteCurrentCount[monsterID] = currentCount - 1
+                        }
+                        break
+                    }
+                }
+                
+                LogInfo("Elite怪物死亡，CD开始: " + EliteSpawnCD + "ms")
+            }
+        }
+    }
+    
+    // 设置普通怪物生成CD
+    func SetNormalSpawnCD(cd int) {
+        NormalSpawnCD = cd
+        LogInfo("普通怪物生成CD设置为: " + cd + "毫秒")
+    }
+}

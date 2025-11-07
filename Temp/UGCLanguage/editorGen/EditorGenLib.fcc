@@ -1,0 +1,125 @@
+import "StdLibrary.fcc" as StdLibrary
+
+
+
+// Mob
+component Mob {
+    // MobName
+    MobName string
+
+    // MaxHP
+    MaxHP int
+
+    // HP
+    HP int
+
+    // WalkSpeed
+    WalkSpeed int
+
+    // Damage
+    Damage int
+
+    // StatusDic
+    StatusDic Map<object, object>
+
+    // CurrTarget
+    CurrTarget entity<Player>
+
+    // LastHitPlayer
+    LastHitPlayer entity<Player>
+
+}
+
+
+[element CustomUIAssetID]
+enum EResUI {
+    Skill
+    DeBug
+}
+[element PrefabID]
+enum EResPrefab {
+    NormalZombie
+    HitBox_Zombie_Body
+    HitBox_Zombie_Head
+    HitBox_Zombie_LeftArm
+    HitBox_Zombie_Leg
+    HitBox_Zombie_RightArm
+}
+[element ScriptID]
+enum EResFCG {
+    C_HitBox
+}
+[element ItemID]
+enum EResItem {
+    Gun_AK47
+}
+[element CsvID]
+enum EResCSV {
+    LevelConfig
+    MonsterInfo
+}
+[element CustomUIWidgetID]
+enum EResUISkill {
+    JoyStickFillAmount
+}
+enum EResKeyUI {
+    Skill = "Skill"
+    DeBug = "DeBug"
+}
+enum EResKeyPrefab {
+    NormalZombie = "NormalZombie"
+    HitBox_Zombie_Body = "HitBox_Zombie_Body"
+    HitBox_Zombie_Head = "HitBox_Zombie_Head"
+    HitBox_Zombie_LeftArm = "HitBox_Zombie_LeftArm"
+    HitBox_Zombie_Leg = "HitBox_Zombie_Leg"
+    HitBox_Zombie_RightArm = "HitBox_Zombie_RightArm"
+}
+enum EResKeyFCG {
+    C_HitBox = "C_HitBox"
+}
+enum EResKeyItem {
+    Gun_AK47 = "Gun_AK47"
+}
+enum EResKeyCSV {
+    LevelConfig = "LevelConfig"
+    MonsterInfo = "MonsterInfo"
+}
+enum EResKeySkill {
+    JoyStickFillAmount = "JoyStickFillAmount"
+}
+
+[platform_server]
+[platform_client]
+declare static graph Res {
+    UI Map<EResKeyUI, CustomUIAssetID>
+    Prefab Map<EResKeyPrefab, PrefabID>
+    FCG Map<EResKeyFCG, ScriptID>
+    Item Map<EResKeyItem, ItemID>
+    CSV Map<EResKeyCSV, CsvID>
+    Skill Map<EResKeySkill, CustomUIWidgetID>
+}
+
+
+
+enum EPhase {
+    // Start
+    Start = 1315
+
+    // Preparation
+    Preparation = 1513
+
+    // Rounds
+    Rounds = 3022
+
+    // Rounds / Stages
+    Stages = 3756
+
+    // Rounds / Stages
+    Stages_1 = 4045
+
+    // End
+    End = 4309
+
+}
+
+

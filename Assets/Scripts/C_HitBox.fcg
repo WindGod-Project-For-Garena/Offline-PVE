@@ -1,0 +1,30 @@
+import "StdLibrary.fcc" as StdLib
+import "EditorGenLib.fcc" as EditorLib
+import "Items.fcc" as Items
+
+[platform_client]
+graph C_HitBox {
+    //Executed when entity is created
+    Owner entity<Entity> = nil
+	Part string = ""
+
+	//funcID: SetOwner
+	func SetOwner(owner entity<Entity>, partName string) {
+		Owner = owner
+		Part = partName
+	
+	}
+
+	//eventID: 173//KAm7{g?Aok9G6x*XJfGl
+	event OnHitByBullet(weapon entity<Weapon>, hitPoint Vector3) {
+		LogInfo("OnHitByBullet")
+		LogInfo("owner: " + Owner<Entity>.Name)
+		//Owner<Transform>.Position = Owner<Transform>.Position+Vector3{1, 0, 0}
+		// if (Owner<Zombie>.ZombieName == "Boss1") {
+		// 	start Owner<boss1_ecac>.TakeDamage(locWeaponVar3, Part, 0)
+		// } else {
+		// 	start Owner<fboss_ecac>.TakeDamage(locWeaponVar3, Part, 0)
+		// }
+	}
+	
+}

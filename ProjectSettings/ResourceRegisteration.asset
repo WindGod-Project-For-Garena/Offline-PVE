@@ -1,0 +1,263 @@
+{
+  "_tag": {
+    "type": "ResourceRegisteration"
+  },
+  "_entityId": "JsXbGuFg",
+  "Resource": {
+    "ui": {
+      "id": "ui",
+      "children": [
+        {
+          "refer": {
+            "fileId": "9gh1yc3b76b-mhkbfmmd-j71ox2ky90o",
+            "filePath": "Assets\\UI\\Skill.ui",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "ui"
+          },
+          "scriptName": "Skill",
+          "children": [
+            {
+              "id": "HDKgz51F",
+              "scriptName": "JoyStickFillAmount"
+            },
+            {
+              "scriptName": ""
+            }
+          ]
+        },
+        {
+          "refer": {
+            "fileId": "kqm9gy95z-mhlsfy3t-rapyl59qt2",
+            "filePath": "Assets\\UI\\DeBug.ui",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "ui"
+          },
+          "scriptName": "DeBug",
+          "children": []
+        }
+      ]
+    },
+    "scene": {
+      "id": "scene",
+      "children": []
+    },
+    "prefab": {
+      "id": "prefab",
+      "children": [
+        {
+          "refer": {
+            "fileId": "z92cgnfg2df-lzuxmmc5-hqjmki9sazv",
+            "filePath": "Assets\\Mobs\\NormalZombie\\NormalZombie.prefab",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "prefab"
+          },
+          "scriptName": "NormalZombie",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "uv7dn8t26x-lzt9sw4f-ug8omzb8lii",
+            "filePath": "Assets\\Mobs\\NormalZombie\\HitBox\\Zombie01BodyHitBox.prefab",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "prefab"
+          },
+          "scriptName": "HitBox_Zombie_Body",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "mu9lwhri76n-lzt9ejn3-2fezc29s2hb",
+            "filePath": "Assets\\Mobs\\NormalZombie\\HitBox\\Zombie01HeadHitBox.prefab",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "prefab"
+          },
+          "scriptName": "HitBox_Zombie_Head",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "yis9qyzad5-lzta8qa6-1w70agzyr5o",
+            "filePath": "Assets\\Mobs\\NormalZombie\\HitBox\\Zombie01LeftArmHitBox.prefab",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "prefab"
+          },
+          "scriptName": "HitBox_Zombie_LeftArm",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "2kkxj64kc53-lzta9sp5-dfkf738hf1r",
+            "filePath": "Assets\\Mobs\\NormalZombie\\HitBox\\Zombie01LegHitBox.prefab",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "prefab"
+          },
+          "scriptName": "HitBox_Zombie_Leg",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "0fnj245t2f4-lztgv24y-hm4jplebgt",
+            "filePath": "Assets\\Mobs\\NormalZombie\\HitBox\\Zombie01RightArmHitBox.prefab",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "prefab"
+          },
+          "scriptName": "HitBox_Zombie_RightArm",
+          "children": []
+        }
+      ]
+    },
+    "ugcscript": {
+      "id": "ugcscript",
+      "children": [
+        {
+          "refer": {
+            "fileId": "s29up5mmysh-mha4pylw-e8sdadlg8rd",
+            "filePath": "Assets\\Scripts\\C_HitBox.fcg",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "ugcscript"
+          },
+          "scriptName": "C_HitBox",
+          "children": []
+        }
+      ]
+    },
+    "eca": {
+      "id": "eca",
+      "children": []
+    },
+    "texture": {
+      "id": "texture",
+      "children": []
+    },
+    "effecttype": {
+      "id": "effecttype",
+      "children": []
+    },
+    "sound": {
+      "id": "sound",
+      "children": []
+    },
+    "fitem": {
+      "id": "fitem",
+      "children": [
+        {
+          "refer": {
+            "fileId": "9cb4b297a2dc2e25384c2df19681304d",
+            "filePath": "lib://ffitem/item_6",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "fitem"
+          },
+          "scriptName": "Gun_AK47",
+          "children": []
+        }
+      ]
+    },
+    "fScenePrefab": {
+      "id": "fScenePrefab",
+      "children": []
+    },
+    "clothskin": {
+      "id": "clothskin",
+      "children": []
+    },
+    "weaponskin": {
+      "id": "weaponskin",
+      "children": []
+    },
+    "vehicleskin": {
+      "id": "vehicleskin",
+      "children": []
+    },
+    "emoteskin": {
+      "id": "emoteskin",
+      "children": []
+    },
+    "csv": {
+      "id": "csv",
+      "children": [
+        {
+          "refer": {
+            "fileId": "qvynabkauac-mhctomfo-m27x1ilqm9q",
+            "filePath": "Assets\\Scripts\\DataCSV\\LevelConfig.csv",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "csv"
+          },
+          "scriptName": "LevelConfig",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "s1ys4w63d4-mhctomfr-gkrblrpqng",
+            "filePath": "Assets\\Scripts\\DataCSV\\MonsterInfo.csv",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "csv"
+          },
+          "scriptName": "MonsterInfo",
+          "children": []
+        }
+      ]
+    },
+    "internalhudtype": {
+      "id": "internalhudtype",
+      "children": []
+    },
+    "textureResource": {
+      "id": "textureResource",
+      "children": []
+    },
+    "mesh": {
+      "id": "mesh",
+      "children": []
+    },
+    "material": {
+      "id": "material",
+      "children": []
+    },
+    "ac": {
+      "id": "ac",
+      "children": []
+    },
+    "particles": {
+      "id": "particles",
+      "children": []
+    },
+    "playerdata": {
+      "id": "playerdata",
+      "children": []
+    },
+    "xbt": {
+      "id": "xbt",
+      "children": []
+    },
+    "pfm": {
+      "id": "pfm",
+      "children": []
+    }
+  },
+  "children": []
+}
+//"{FE:{"v":"1.15.3997714","c":{"FF":5001},"s":100}

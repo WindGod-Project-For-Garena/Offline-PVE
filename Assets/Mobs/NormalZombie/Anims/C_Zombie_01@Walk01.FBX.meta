@@ -1,0 +1,57 @@
+{
+  "fileId": "7pu75leypam-m00s98ge-tce2etb4qcm",
+  "globalscale": 1,
+  "properties": {
+    "Common": ""
+  },
+  "subDynamicResources": {},
+  "subLOD": {},
+  "version": "1.6.0",
+  "manifest": {
+    "Meshes": [],
+    "BoneInfos": [],
+    "Anims": [
+      {
+        "OrgExtName": ".Anim",
+        "Name": "walk01.Anim",
+        "Size": 79433,
+        "ClipData": {
+          "Name": "walk01",
+          "BakeStart": 0,
+          "BakeStop": 1.8666666746139526,
+          "SampleRate": 30
+        },
+        "magicNumber": {
+          "magicNumber1": 100,
+          "magicNumber2": 98,
+          "magicNumber3": 158,
+          "magicNumber4": 134,
+          "version": 1009715
+        }
+      }
+    ],
+    "ManifestJSON": {
+      "FBXName": "C_Zombie_01@Walk01",
+      "ImportSucceeded": true,
+      "MaterialCount": 0,
+      "MaterialDetail": [],
+      "MeshCount": 0,
+      "MeshDetail": []
+    }
+  },
+  "content": {
+    "walk01.anim": {
+      "_entityName": "AnimClipEntity",
+      "_entityId": "",
+      "_preModel": {
+        "fileId": "9bt8bramsch-m00s99ip-emzeboy544g",
+        "filePath": "Assets\\ZombieAssist\\Zombie01\\C_Zombie_01.FBX",
+        "_tag": {
+          "type": "GFileRefer"
+        },
+        "fileType": "fbx"
+      },
+      "children": []
+    }
+  }
+}

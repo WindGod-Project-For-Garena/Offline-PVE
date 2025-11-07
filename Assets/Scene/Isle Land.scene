@@ -1,0 +1,6567 @@
+{
+  "_tag": {
+    "type": "Scene",
+    "resourceId": ""
+  },
+  "_entityId": "n4PlNLLi",
+  "prefabVariant": null,
+  "children": [
+    {
+      "_tag": {
+        "type": "EnvWeatherEntity",
+        "resourceId": "Primitive/Empty"
+      },
+      "_entityId": "cpCIEyrR",
+      "children": [],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "position": {
+        "x": 0,
+        "y": 100,
+        "z": 0
+      },
+      "scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "rotation": {
+        "x": 42,
+        "y": 166,
+        "z": 117
+      },
+      "visible": true,
+      "VisibilityLayer": 0,
+      "attributes": [],
+      "componentList": [],
+      "curWeatherPresetID": 999,
+      "_entityName": "FE_0_ZZ_SKYENV_SKY",
+      "currentWeather": {
+        "lightColor": {
+          "r": 87,
+          "g": 106,
+          "b": 147,
+          "a": 1
+        },
+        "lightIntensity": 2,
+        "darkness": 0.4,
+        "shadowStrength": 0.3,
+        "terrainWetness": 0,
+        "lensFlare": 0,
+        "fogColor": {
+          "r": 0,
+          "g": 24,
+          "b": 120,
+          "a": 1
+        },
+        "ambientColor": {
+          "r": 125,
+          "g": 135,
+          "b": 179,
+          "a": 1
+        },
+        "nightMode": false,
+        "resId": "UGC_SKYENV_NIGHT",
+        "enableFog": true,
+        "fogType": 1,
+        "startDistance": 0,
+        "endDistance": 300,
+        "density": 0.01,
+        "skyMaterial": null
+      },
+      "customWeather": {
+        "lightColor": {
+          "r": 87,
+          "g": 106,
+          "b": 147,
+          "a": 1
+        },
+        "lightIntensity": 2,
+        "darkness": 0.4,
+        "shadowStrength": 0.3,
+        "terrainWetness": 0,
+        "lensFlare": 0,
+        "fogColor": {
+          "r": 0,
+          "g": 24,
+          "b": 120,
+          "a": 1
+        },
+        "ambientColor": {
+          "r": 125,
+          "g": 135,
+          "b": 179,
+          "a": 1
+        },
+        "nightMode": false,
+        "resId": "UGC_SKYENV_NIGHT",
+        "enableFog": true,
+        "fogType": 1,
+        "startDistance": 0,
+        "endDistance": 300,
+        "density": 0.01
+      },
+      "BTPath": [
+        null
+      ],
+      "streamingLayer": "",
+      "aoiSetting": 0
+    },
+    {
+      "_tag": {
+        "type": "UGCSceneEntity",
+        "resourceId": "Primitive/Empty"
+      },
+      "_entityId": "mUMJyI2P",
+      "children": [
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "3fa7S2Ci",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "position": {
+            "x": -13.190999984741211,
+            "y": -0.36600005626678467,
+            "z": -5.4070000648498535
+          },
+          "scale": {
+            "x": 4,
+            "y": 2.5,
+            "z": 6
+          },
+          "rotation": {
+            "x": 0,
+            "y": 358.1960144042969,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 1,
+          "itemID": 92,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "BasicScalableItem": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "Scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            },
+            "Visibility": {},
+            "Collider": {},
+            "Appearance": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "基础斜坡 (3)",
+          "objColor": {
+            "surfaceColor": {
+              "r": 219,
+              "g": 208,
+              "b": 166,
+              "a": 1
+            }
+          },
+          "objTex": {
+            "surfaceTexRef": {
+              "fileId": "2c952fc36b6aa28b2bef8c6a6c73fec0",
+              "filePath": "lib://fftextures/WorkshopItemTexture/SceneEdit_Cube_Texture_Cement_01.png",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "texture"
+            },
+            "surfaceTex": "InGame/SceneEdit/Texture/SceneEdit_Cube_Texture_Cement_01"
+          },
+          "propsData": {
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "physicalLayer": 0,
+          "collidable": true,
+          "isTrigger": false,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "YuLqvd07",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "position": {
+            "x": -18.32699966430664,
+            "y": 3.550999641418457,
+            "z": 2.937000036239624
+          },
+          "scale": {
+            "x": 0.20000000298023224,
+            "y": 2,
+            "z": 36.5
+          },
+          "rotation": {
+            "x": 3.700000286102295,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 2,
+          "itemID": 91,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "BasicScalableItem": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "Scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            },
+            "Visibility": {},
+            "Collider": {},
+            "Appearance": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "基础块 (4)",
+          "objColor": {
+            "surfaceColor": {
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "a": 1
+            },
+            "borderColor": {
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "a": 0
+            }
+          },
+          "objTex": {
+            "surfaceTexRef": {
+              "fileId": "2c952fc36b6aa28b2bef8c6a6c73fec0",
+              "filePath": "lib://fftextures/WorkshopItemTexture/SceneEdit_Cube_Texture_Cement_01.png",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "texture"
+            },
+            "surfaceTex": "InGame/SceneEdit/Texture/SceneEdit_Cube_Texture_Cement_01",
+            "borderTexRef": null,
+            "borderTex": ""
+          },
+          "propsData": {
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "physicalLayer": 0,
+          "collidable": true,
+          "isTrigger": false,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "WuocQQnN",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "position": {
+            "x": -16.326000213623047,
+            "y": 3.550999641418457,
+            "z": 2.937000036239624
+          },
+          "scale": {
+            "x": 3.799999952316284,
+            "y": 0.4000000059604645,
+            "z": 36
+          },
+          "rotation": {
+            "x": 3.700000286102295,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 3,
+          "itemID": 91,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "BasicScalableItem": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "Scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            },
+            "Visibility": {},
+            "Collider": {},
+            "Appearance": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "基础块 (3)",
+          "objColor": {
+            "surfaceColor": {
+              "r": 86,
+              "g": 86,
+              "b": 86,
+              "a": 1
+            },
+            "borderColor": {
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "a": 0
+            }
+          },
+          "objTex": {
+            "surfaceTexRef": {
+              "fileId": "2c952fc36b6aa28b2bef8c6a6c73fec0",
+              "filePath": "lib://fftextures/WorkshopItemTexture/SceneEdit_Cube_Texture_Cement_01.png",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "texture"
+            },
+            "surfaceTex": "InGame/SceneEdit/Texture/SceneEdit_Cube_Texture_Cement_01",
+            "borderTexRef": null,
+            "borderTex": ""
+          },
+          "propsData": {
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          },
+          "physicalLayer": 0,
+          "collidable": true,
+          "isTrigger": false,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "GDfyyc6r",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "position": {
+            "x": 9.472999572753906,
+            "y": -0.2999999523162842,
+            "z": 0.014000000432133675
+          },
+          "scale": {
+            "x": 2,
+            "y": 0.30000001192092896,
+            "z": 3
+          },
+          "rotation": {
+            "x": 90,
+            "y": 80,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 4,
+          "itemID": 212,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "BasicCylinderItem": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "Scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            },
+            "Visibility": {},
+            "Collider": {},
+            "Appearance": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "基础柱体",
+          "objColor": {
+            "surfaceColor": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 1
+            }
+          },
+          "objTex": {
+            "surfaceTexRef": null,
+            "surfaceTex": ""
+          },
+          "propsData": {},
+          "physicalLayer": 0,
+          "collidable": true,
+          "isTrigger": false,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "4BLJK5eg",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "position": {
+            "x": 19.04800033569336,
+            "y": -0.2999999523162842,
+            "z": -23.027999877929688
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "rotation": {
+            "x": 0,
+            "y": 315,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 5,
+          "itemID": 247,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "DummyLevelObject": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "Scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            },
+            "Visibility": {},
+            "Collider": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "高楼E组件C",
+          "physicalLayer": 0,
+          "collidable": true,
+          "isTrigger": false,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "eupEwsI6",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "position": {
+            "x": -13.35099983215332,
+            "y": 1.95699942111969,
+            "z": 17.764999389648438
+          },
+          "scale": {
+            "x": 6,
+            "y": 1,
+            "z": 1
+          },
+          "rotation": {
+            "x": 0,
+            "y": 90,
+            "z": 3.5580005645751953
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 6,
+          "itemID": 92,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "BasicScalableItem": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "Scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            },
+            "Visibility": {},
+            "Collider": {},
+            "Appearance": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "基础斜坡 (2)",
+          "objColor": {
+            "surfaceColor": {
+              "r": 219,
+              "g": 208,
+              "b": 166,
+              "a": 1
+            }
+          },
+          "objTex": {
+            "surfaceTexRef": {
+              "fileId": "2c952fc36b6aa28b2bef8c6a6c73fec0",
+              "filePath": "lib://fftextures/WorkshopItemTexture/SceneEdit_Cube_Texture_Cement_01.png",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "texture"
+            },
+            "surfaceTex": "InGame/SceneEdit/Texture/SceneEdit_Cube_Texture_Cement_01"
+          },
+          "propsData": {
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          },
+          "physicalLayer": 0,
+          "collidable": true,
+          "isTrigger": false,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "pfYeoTfT",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "position": {
+            "x": -2.9140000343322754,
+            "y": 2.500999927520752,
+            "z": 16.415000915527344
+          },
+          "scale": {
+            "x": 5,
+            "y": 0.30000001192092896,
+            "z": 2.5
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 3.999999523162842
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 7,
+          "itemID": 91,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "BasicScalableItem": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "Scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            },
+            "Visibility": {},
+            "Collider": {},
+            "Appearance": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "基础块 (2)",
+          "objColor": {
+            "surfaceColor": {
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "a": 1
+            },
+            "borderColor": {
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "a": 0
+            }
+          },
+          "objTex": {
+            "surfaceTexRef": {
+              "fileId": "387b17e837dcbb606c2e6c6bdde6c3e3",
+              "filePath": "lib://fftextures/WorkshopItemTexture/SceneEdit_Cube_frame_Texture_01.png",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "texture"
+            },
+            "surfaceTex": "InGame/SceneEdit/Texture/SceneEdit_Cube_frame_Texture_01",
+            "borderTexRef": null,
+            "borderTex": ""
+          },
+          "propsData": {
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          },
+          "physicalLayer": 0,
+          "collidable": true,
+          "isTrigger": false,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "3vu16Vvx",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "position": {
+            "x": 10.574000358581543,
+            "y": 2.299999713897705,
+            "z": 17.320999145507812
+          },
+          "scale": {
+            "x": 8,
+            "y": 0.30000001192092896,
+            "z": 3
+          },
+          "rotation": {
+            "x": 0,
+            "y": 170,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 8,
+          "itemID": 91,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "BasicScalableItem": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "Scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            },
+            "Visibility": {},
+            "Collider": {},
+            "Appearance": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "基础块 (1)",
+          "objColor": {
+            "surfaceColor": {
+              "r": 219,
+              "g": 208,
+              "b": 166,
+              "a": 1
+            },
+            "borderColor": {
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "a": 0
+            }
+          },
+          "objTex": {
+            "surfaceTexRef": {
+              "fileId": "2c952fc36b6aa28b2bef8c6a6c73fec0",
+              "filePath": "lib://fftextures/WorkshopItemTexture/SceneEdit_Cube_Texture_Cement_01.png",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "texture"
+            },
+            "surfaceTex": "InGame/SceneEdit/Texture/SceneEdit_Cube_Texture_Cement_01",
+            "borderTexRef": null,
+            "borderTex": ""
+          },
+          "propsData": {
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          },
+          "physicalLayer": 0,
+          "collidable": true,
+          "isTrigger": false,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "O2TUi3rO",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "position": {
+            "x": 11.038999557495117,
+            "y": 2.299999713897705,
+            "z": 14.87600040435791
+          },
+          "scale": {
+            "x": 8,
+            "y": 0.30000001192092896,
+            "z": 1
+          },
+          "rotation": {
+            "x": 0,
+            "y": 170,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 9,
+          "itemID": 92,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "BasicScalableItem": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "Scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            },
+            "Visibility": {},
+            "Collider": {},
+            "Appearance": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "基础斜坡 (1)",
+          "objColor": {
+            "surfaceColor": {
+              "r": 219,
+              "g": 208,
+              "b": 166,
+              "a": 1
+            }
+          },
+          "objTex": {
+            "surfaceTexRef": {
+              "fileId": "2c952fc36b6aa28b2bef8c6a6c73fec0",
+              "filePath": "lib://fftextures/WorkshopItemTexture/SceneEdit_Cube_Texture_Cement_01.png",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "texture"
+            },
+            "surfaceTex": "InGame/SceneEdit/Texture/SceneEdit_Cube_Texture_Cement_01"
+          },
+          "propsData": {
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          },
+          "physicalLayer": 0,
+          "collidable": true,
+          "isTrigger": false,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "F33FNY7m",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "position": {
+            "x": -15.244000434875488,
+            "y": 0,
+            "z": -17.454999923706055
+          },
+          "scale": {
+            "x": 7,
+            "y": 5.099999904632568,
+            "z": 5
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 10,
+          "itemID": 91,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "BasicScalableItem": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "Scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            },
+            "Visibility": {},
+            "Collider": {},
+            "Appearance": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "基础块",
+          "objColor": {
+            "surfaceColor": {
+              "r": 219,
+              "g": 208,
+              "b": 166,
+              "a": 1
+            },
+            "borderColor": {
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "a": 0
+            }
+          },
+          "objTex": {
+            "surfaceTexRef": {
+              "fileId": "2c952fc36b6aa28b2bef8c6a6c73fec0",
+              "filePath": "lib://fftextures/WorkshopItemTexture/SceneEdit_Cube_Texture_Cement_01.png",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "texture"
+            },
+            "surfaceTex": "InGame/SceneEdit/Texture/SceneEdit_Cube_Texture_Cement_01",
+            "borderTexRef": null,
+            "borderTex": ""
+          },
+          "propsData": {
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          },
+          "physicalLayer": 0,
+          "collidable": true,
+          "isTrigger": false,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "I9lNLPxO",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "position": {
+            "x": -16.33799934387207,
+            "y": 2.7019996643066406,
+            "z": 2.9630000591278076
+          },
+          "scale": {
+            "x": 4,
+            "y": 2.299999952316284,
+            "z": 18
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 11,
+          "itemID": 92,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "BasicScalableItem": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "Scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            },
+            "Visibility": {},
+            "Collider": {},
+            "Appearance": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "基础斜坡",
+          "objColor": {
+            "surfaceColor": {
+              "r": 219,
+              "g": 208,
+              "b": 166,
+              "a": 1
+            }
+          },
+          "objTex": {
+            "surfaceTexRef": {
+              "fileId": "2c952fc36b6aa28b2bef8c6a6c73fec0",
+              "filePath": "lib://fftextures/WorkshopItemTexture/SceneEdit_Cube_Texture_Cement_01.png",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "texture"
+            },
+            "surfaceTex": "InGame/SceneEdit/Texture/SceneEdit_Cube_Texture_Cement_01"
+          },
+          "propsData": {
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          },
+          "physicalLayer": 0,
+          "collidable": true,
+          "isTrigger": false,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "CEhaJEz4",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "position": {
+            "x": 0.6240000128746033,
+            "y": -0.42799997329711914,
+            "z": -15.85099983215332
+          },
+          "scale": {
+            "x": 8,
+            "y": 3.5999999046325684,
+            "z": 1
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 12,
+          "itemID": 91,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "BasicScalableItem": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "Scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            },
+            "Visibility": {},
+            "Collider": {},
+            "Appearance": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "基础块 (6)",
+          "objColor": {
+            "surfaceColor": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 1
+            },
+            "borderColor": {
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "a": 0
+            }
+          },
+          "objTex": {
+            "surfaceTexRef": null,
+            "surfaceTex": "",
+            "borderTexRef": null,
+            "borderTex": ""
+          },
+          "propsData": {
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "physicalLayer": 0,
+          "collidable": true,
+          "isTrigger": false,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "fj6cUZVt",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "position": {
+            "x": -16.350000381469727,
+            "y": -0.2999999523162842,
+            "z": 2.9210000038146973
+          },
+          "scale": {
+            "x": 4,
+            "y": 3.049999952316284,
+            "z": 36
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 13,
+          "itemID": 91,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "BasicScalableItem": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "Scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            },
+            "Visibility": {},
+            "Collider": {},
+            "Appearance": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "基础块 (2)",
+          "objColor": {
+            "surfaceColor": {
+              "r": 219,
+              "g": 208,
+              "b": 166,
+              "a": 1
+            },
+            "borderColor": {
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "a": 0
+            }
+          },
+          "objTex": {
+            "surfaceTexRef": {
+              "fileId": "2c952fc36b6aa28b2bef8c6a6c73fec0",
+              "filePath": "lib://fftextures/WorkshopItemTexture/SceneEdit_Cube_Texture_Cement_01.png",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "texture"
+            },
+            "surfaceTex": "InGame/SceneEdit/Texture/SceneEdit_Cube_Texture_Cement_01",
+            "borderTexRef": null,
+            "borderTex": ""
+          },
+          "propsData": {
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          },
+          "physicalLayer": 0,
+          "collidable": true,
+          "isTrigger": false,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "5GE4Njqp",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "position": {
+            "x": -8.824000358581543,
+            "y": -0.42799997329711914,
+            "z": 19.427000045776367
+          },
+          "scale": {
+            "x": 3,
+            "y": 2.700000047683716,
+            "z": 1
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 14,
+          "itemID": 91,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "BasicScalableItem": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "Scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            },
+            "Visibility": {},
+            "Collider": {},
+            "Appearance": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "基础块 (5)",
+          "objColor": {
+            "surfaceColor": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 1
+            },
+            "borderColor": {
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "a": 0
+            }
+          },
+          "objTex": {
+            "surfaceTexRef": null,
+            "surfaceTex": "",
+            "borderTexRef": null,
+            "borderTex": ""
+          },
+          "propsData": {
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          },
+          "physicalLayer": 0,
+          "collidable": true,
+          "isTrigger": false,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "8F6soXyG",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "position": {
+            "x": -12.40999984741211,
+            "y": -0.29300010204315186,
+            "z": 17.781999588012695
+          },
+          "scale": {
+            "x": 4.199999809265137,
+            "y": 2.799999952316284,
+            "z": 6
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 15,
+          "itemID": 91,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "BasicScalableItem": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "Scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            },
+            "Visibility": {},
+            "Collider": {},
+            "Appearance": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "基础块 (3)",
+          "objColor": {
+            "surfaceColor": {
+              "r": 219,
+              "g": 208,
+              "b": 166,
+              "a": 1
+            },
+            "borderColor": {
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "a": 0
+            }
+          },
+          "objTex": {
+            "surfaceTexRef": {
+              "fileId": "2c952fc36b6aa28b2bef8c6a6c73fec0",
+              "filePath": "lib://fftextures/WorkshopItemTexture/SceneEdit_Cube_Texture_Cement_01.png",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "texture"
+            },
+            "surfaceTex": "InGame/SceneEdit/Texture/SceneEdit_Cube_Texture_Cement_01",
+            "borderTexRef": null,
+            "borderTex": ""
+          },
+          "propsData": {
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "physicalLayer": 0,
+          "collidable": true,
+          "isTrigger": false,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "SCgoRmvt",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "position": {
+            "x": -5.306000232696533,
+            "y": -0.29300010204315186,
+            "z": 17.781999588012695
+          },
+          "scale": {
+            "x": 4,
+            "y": 2.799999952316284,
+            "z": 6
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 16,
+          "itemID": 91,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "BasicScalableItem": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "Scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            },
+            "Visibility": {},
+            "Collider": {},
+            "Appearance": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "基础块 (2)",
+          "objColor": {
+            "surfaceColor": {
+              "r": 219,
+              "g": 208,
+              "b": 166,
+              "a": 1
+            },
+            "borderColor": {
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "a": 0
+            }
+          },
+          "objTex": {
+            "surfaceTexRef": {
+              "fileId": "2c952fc36b6aa28b2bef8c6a6c73fec0",
+              "filePath": "lib://fftextures/WorkshopItemTexture/SceneEdit_Cube_Texture_Cement_01.png",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "texture"
+            },
+            "surfaceTex": "InGame/SceneEdit/Texture/SceneEdit_Cube_Texture_Cement_01",
+            "borderTexRef": null,
+            "borderTex": ""
+          },
+          "propsData": {
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          },
+          "physicalLayer": 0,
+          "collidable": true,
+          "isTrigger": false,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "gbf30K7T",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "position": {
+            "x": -8.814000129699707,
+            "y": 1.815999150276184,
+            "z": 17.797000885009766
+          },
+          "scale": {
+            "x": 10.800000190734863,
+            "y": 0.800000011920929,
+            "z": 6
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 17,
+          "itemID": 91,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "BasicScalableItem": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "Scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            },
+            "Visibility": {},
+            "Collider": {},
+            "Appearance": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "基础块 (6)",
+          "objColor": {
+            "surfaceColor": {
+              "r": 219,
+              "g": 208,
+              "b": 166,
+              "a": 1
+            },
+            "borderColor": {
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "a": 0
+            }
+          },
+          "objTex": {
+            "surfaceTexRef": {
+              "fileId": "2c952fc36b6aa28b2bef8c6a6c73fec0",
+              "filePath": "lib://fftextures/WorkshopItemTexture/SceneEdit_Cube_Texture_Cement_01.png",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "texture"
+            },
+            "surfaceTex": "InGame/SceneEdit/Texture/SceneEdit_Cube_Texture_Cement_01",
+            "borderTexRef": null,
+            "borderTex": ""
+          },
+          "propsData": {
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          },
+          "physicalLayer": 0,
+          "collidable": true,
+          "isTrigger": false,
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "N8wSYfWa",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "position": {
+            "x": -8.767000198364258,
+            "y": 0.8290001153945923,
+            "z": 17.20199966430664
+          },
+          "scale": {
+            "x": 1,
+            "y": 0.7300000190734863,
+            "z": 0.4000000059604645
+          },
+          "rotation": {
+            "x": 0,
+            "y": 90,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 18,
+          "itemID": 107,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "DummyLevelObject": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "Scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            },
+            "Visibility": {},
+            "Collider": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "石拱桥 (1)",
+          "physicalLayer": 0,
+          "collidable": true,
+          "isTrigger": false,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "GxFD6CaK",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "position": {
+            "x": 1.7450000047683716,
+            "y": -0.42500001192092896,
+            "z": 16.618000030517578
+          },
+          "scale": {
+            "x": 1.2000000476837158,
+            "y": 1.100000023841858,
+            "z": 1.2000000476837158
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 19,
+          "itemID": 193,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "DummyLevelObject": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "Scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            },
+            "Visibility": {},
+            "Collider": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "损毁的卡车",
+          "physicalLayer": 0,
+          "collidable": true,
+          "isTrigger": false,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "7VpkNLF7",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "position": {
+            "x": 13.425000190734863,
+            "y": -0.2999999523162842,
+            "z": 6.454999923706055
+          },
+          "scale": {
+            "x": 10,
+            "y": 2.5999999046325684,
+            "z": 20
+          },
+          "rotation": {
+            "x": 0,
+            "y": 350,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 20,
+          "itemID": 91,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "BasicScalableItem": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "Scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            },
+            "Visibility": {},
+            "Collider": {},
+            "Appearance": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "基础块 (1)",
+          "objColor": {
+            "surfaceColor": {
+              "r": 219,
+              "g": 208,
+              "b": 166,
+              "a": 1
+            },
+            "borderColor": {
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "a": 0
+            }
+          },
+          "objTex": {
+            "surfaceTexRef": {
+              "fileId": "2c952fc36b6aa28b2bef8c6a6c73fec0",
+              "filePath": "lib://fftextures/WorkshopItemTexture/SceneEdit_Cube_Texture_Cement_01.png",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "texture"
+            },
+            "surfaceTex": "InGame/SceneEdit/Texture/SceneEdit_Cube_Texture_Cement_01",
+            "borderTexRef": null,
+            "borderTex": ""
+          },
+          "propsData": {
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "physicalLayer": 0,
+          "collidable": true,
+          "isTrigger": false,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "gNsRcr1y",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "position": {
+            "x": 0.6240000128746033,
+            "y": 2.2909998893737793,
+            "z": -17.833999633789062
+          },
+          "scale": {
+            "x": 1,
+            "y": 1.2000000476837158,
+            "z": 1
+          },
+          "rotation": {
+            "x": 0,
+            "y": 90,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 21,
+          "itemID": 107,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "DummyLevelObject": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "Scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            },
+            "Visibility": {},
+            "Collider": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "石拱桥",
+          "physicalLayer": 0,
+          "collidable": true,
+          "isTrigger": false,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "kMQhbv0D",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "position": {
+            "x": -7.033999919891357,
+            "y": 2.2170000076293945,
+            "z": -17.46500015258789
+          },
+          "scale": {
+            "x": 1.899999976158142,
+            "y": 1.5,
+            "z": 2.5
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 22,
+          "itemID": 9,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "DummyLevelObject": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "Scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            },
+            "Visibility": {},
+            "Collider": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "集装箱3",
+          "physicalLayer": 0,
+          "collidable": true,
+          "isTrigger": false,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "cbyy399x",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "position": {
+            "x": 10.673999786376953,
+            "y": -0.2999999523162842,
+            "z": -9.670999526977539
+          },
+          "scale": {
+            "x": 10,
+            "y": 2.5,
+            "z": 20
+          },
+          "rotation": {
+            "x": 0,
+            "y": 30.000001907348633,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 23,
+          "itemID": 91,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "BasicScalableItem": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "Scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            },
+            "Visibility": {},
+            "Collider": {},
+            "Appearance": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "基础块",
+          "objColor": {
+            "surfaceColor": {
+              "r": 219,
+              "g": 208,
+              "b": 166,
+              "a": 1
+            },
+            "borderColor": {
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "a": 0
+            }
+          },
+          "objTex": {
+            "surfaceTexRef": {
+              "fileId": "2c952fc36b6aa28b2bef8c6a6c73fec0",
+              "filePath": "lib://fftextures/WorkshopItemTexture/SceneEdit_Cube_Texture_Cement_01.png",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "texture"
+            },
+            "surfaceTex": "InGame/SceneEdit/Texture/SceneEdit_Cube_Texture_Cement_01",
+            "borderTexRef": null,
+            "borderTex": ""
+          },
+          "propsData": {
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          },
+          "physicalLayer": 0,
+          "collidable": true,
+          "isTrigger": false,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "M3zgDTsZ",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "position": {
+            "x": 1.190000057220459,
+            "y": -0.2999999523162842,
+            "z": -15.027999877929688
+          },
+          "scale": {
+            "x": 1.2999999523162842,
+            "y": 1.2999999523162842,
+            "z": 1.7000000476837158
+          },
+          "rotation": {
+            "x": 0,
+            "y": 87.78399658203125,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 24,
+          "itemID": 9,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "DummyLevelObject": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "Scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            },
+            "Visibility": {},
+            "Collider": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "集装箱3",
+          "physicalLayer": 0,
+          "collidable": true,
+          "isTrigger": false,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "mBm0d8Az",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "position": {
+            "x": -12.053000450134277,
+            "y": 2.1440000534057617,
+            "z": -11.781000137329102
+          },
+          "scale": {
+            "x": 2.5,
+            "y": 0.20000000298023224,
+            "z": 1
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 25,
+          "itemID": 1,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "DummyLevelObject": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "Scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            },
+            "Visibility": {},
+            "Collider": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "方形木箱",
+          "physicalLayer": 0,
+          "collidable": true,
+          "isTrigger": false,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "lEP5xfxB",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "position": {
+            "x": -7.482999801635742,
+            "y": -0.2990000247955322,
+            "z": -13.84000015258789
+          },
+          "scale": {
+            "x": 1.2000000476837158,
+            "y": 1,
+            "z": 2
+          },
+          "rotation": {
+            "x": 0,
+            "y": 90,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 26,
+          "itemID": 24,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "DestructibleLevelObject": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "Scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            },
+            "Visibility": {},
+            "Collider": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "破碎箱",
+          "physicalLayer": 0,
+          "collidable": true,
+          "isTrigger": false,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": [
+            "game.related12"
+          ]
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "aVpymXFu",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "position": {
+            "x": 0.7419999837875366,
+            "y": 3.381999969482422,
+            "z": -17.54400062561035
+          },
+          "scale": {
+            "x": 6,
+            "y": 1.7999999523162842,
+            "z": 5
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 27,
+          "itemID": 91,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "BasicScalableItem": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "Scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            },
+            "Visibility": {},
+            "Collider": {},
+            "Appearance": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "基础块 (3)",
+          "objColor": {
+            "surfaceColor": {
+              "r": 178,
+              "g": 164,
+              "b": 111,
+              "a": 1
+            },
+            "borderColor": {
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "a": 0
+            }
+          },
+          "objTex": {
+            "surfaceTexRef": {
+              "fileId": "2c952fc36b6aa28b2bef8c6a6c73fec0",
+              "filePath": "lib://fftextures/WorkshopItemTexture/SceneEdit_Cube_Texture_Cement_01.png",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "texture"
+            },
+            "surfaceTex": "InGame/SceneEdit/Texture/SceneEdit_Cube_Texture_Cement_01",
+            "borderTexRef": null,
+            "borderTex": ""
+          },
+          "propsData": {
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "physicalLayer": 0,
+          "collidable": true,
+          "isTrigger": false,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "KznrWKzg",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "position": {
+            "x": -15.9350004196167,
+            "y": -1.3910000324249268,
+            "z": -8.656000137329102
+          },
+          "scale": {
+            "x": 4,
+            "y": 6,
+            "z": 5
+          },
+          "rotation": {
+            "x": 3.6000001430511475,
+            "y": 359,
+            "z": 359.7959899902344
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 28,
+          "itemID": 91,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "BasicScalableItem": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "Scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            },
+            "Visibility": {},
+            "Collider": {},
+            "Appearance": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "基础块 (4)",
+          "objColor": {
+            "surfaceColor": {
+              "r": 219,
+              "g": 208,
+              "b": 166,
+              "a": 1
+            },
+            "borderColor": {
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "a": 0
+            }
+          },
+          "objTex": {
+            "surfaceTexRef": {
+              "fileId": "2c952fc36b6aa28b2bef8c6a6c73fec0",
+              "filePath": "lib://fftextures/WorkshopItemTexture/SceneEdit_Cube_Texture_Cement_01.png",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "texture"
+            },
+            "surfaceTex": "InGame/SceneEdit/Texture/SceneEdit_Cube_Texture_Cement_01",
+            "borderTexRef": null,
+            "borderTex": ""
+          },
+          "propsData": {
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "physicalLayer": 0,
+          "collidable": true,
+          "isTrigger": false,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "HZaLTepC",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "position": {
+            "x": 6.474999904632568,
+            "y": 2.187999725341797,
+            "z": -17.547000885009766
+          },
+          "scale": {
+            "x": 5.5,
+            "y": 3,
+            "z": 5
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 29,
+          "itemID": 91,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "BasicScalableItem": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "Scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            },
+            "Visibility": {},
+            "Collider": {},
+            "Appearance": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "基础块 (5)",
+          "objColor": {
+            "surfaceColor": {
+              "r": 178,
+              "g": 164,
+              "b": 111,
+              "a": 1
+            },
+            "borderColor": {
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "a": 0
+            }
+          },
+          "objTex": {
+            "surfaceTexRef": {
+              "fileId": "2c952fc36b6aa28b2bef8c6a6c73fec0",
+              "filePath": "lib://fftextures/WorkshopItemTexture/SceneEdit_Cube_Texture_Cement_01.png",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "texture"
+            },
+            "surfaceTex": "InGame/SceneEdit/Texture/SceneEdit_Cube_Texture_Cement_01",
+            "borderTexRef": null,
+            "borderTex": ""
+          },
+          "propsData": {
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "physicalLayer": 0,
+          "collidable": true,
+          "isTrigger": false,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "Pt1fM4tj",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "position": {
+            "x": 6.065000057220459,
+            "y": -0.2999999523162842,
+            "z": 19.753000259399414
+          },
+          "scale": {
+            "x": 20,
+            "y": 6,
+            "z": 5
+          },
+          "rotation": {
+            "x": 5.000000476837158,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 30,
+          "itemID": 91,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "BasicScalableItem": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "Scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            },
+            "Visibility": {},
+            "Collider": {},
+            "Appearance": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "基础块 (7)",
+          "objColor": {
+            "surfaceColor": {
+              "r": 219,
+              "g": 208,
+              "b": 166,
+              "a": 1
+            },
+            "borderColor": {
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "a": 0
+            }
+          },
+          "objTex": {
+            "surfaceTexRef": {
+              "fileId": "2c952fc36b6aa28b2bef8c6a6c73fec0",
+              "filePath": "lib://fftextures/WorkshopItemTexture/SceneEdit_Cube_Texture_Cement_01.png",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "texture"
+            },
+            "surfaceTex": "InGame/SceneEdit/Texture/SceneEdit_Cube_Texture_Cement_01",
+            "borderTexRef": null,
+            "borderTex": ""
+          },
+          "propsData": {
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "physicalLayer": 0,
+          "collidable": true,
+          "isTrigger": false,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "WiueTAjk",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "position": {
+            "x": 17.542999267578125,
+            "y": -0.25300002098083496,
+            "z": 6.854000091552734
+          },
+          "scale": {
+            "x": 5,
+            "y": 7,
+            "z": 22
+          },
+          "rotation": {
+            "x": 4.9180006980896,
+            "y": 349.5889892578125,
+            "z": 359.0979919433594
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 31,
+          "itemID": 91,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "BasicScalableItem": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "Scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            },
+            "Visibility": {},
+            "Collider": {},
+            "Appearance": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "基础块 (8)",
+          "objColor": {
+            "surfaceColor": {
+              "r": 219,
+              "g": 208,
+              "b": 166,
+              "a": 1
+            },
+            "borderColor": {
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "a": 0
+            }
+          },
+          "objTex": {
+            "surfaceTexRef": {
+              "fileId": "2c952fc36b6aa28b2bef8c6a6c73fec0",
+              "filePath": "lib://fftextures/WorkshopItemTexture/SceneEdit_Cube_Texture_Cement_01.png",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "texture"
+            },
+            "surfaceTex": "InGame/SceneEdit/Texture/SceneEdit_Cube_Texture_Cement_01",
+            "borderTexRef": null,
+            "borderTex": ""
+          },
+          "propsData": {
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "physicalLayer": 0,
+          "collidable": true,
+          "isTrigger": false,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "rWKXY25V",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "position": {
+            "x": 16.1200008392334,
+            "y": 2.0989999771118164,
+            "z": -5.420000076293945
+          },
+          "scale": {
+            "x": 5,
+            "y": 5,
+            "z": 15
+          },
+          "rotation": {
+            "x": 0,
+            "y": 30.000001907348633,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 32,
+          "itemID": 91,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "BasicScalableItem": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "Scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            },
+            "Visibility": {},
+            "Collider": {},
+            "Appearance": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "基础块 (9)",
+          "objColor": {
+            "surfaceColor": {
+              "r": 219,
+              "g": 208,
+              "b": 166,
+              "a": 1
+            },
+            "borderColor": {
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "a": 0
+            }
+          },
+          "objTex": {
+            "surfaceTexRef": {
+              "fileId": "2c952fc36b6aa28b2bef8c6a6c73fec0",
+              "filePath": "lib://fftextures/WorkshopItemTexture/SceneEdit_Cube_Texture_Cement_01.png",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "texture"
+            },
+            "surfaceTex": "InGame/SceneEdit/Texture/SceneEdit_Cube_Texture_Cement_01",
+            "borderTexRef": null,
+            "borderTex": ""
+          },
+          "propsData": {
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "physicalLayer": 0,
+          "collidable": true,
+          "isTrigger": false,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "B4EbFpdk",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "position": {
+            "x": 1.1859999895095825,
+            "y": -0.2999999523162842,
+            "z": -12.085000038146973
+          },
+          "scale": {
+            "x": 2,
+            "y": 0.30000001192092896,
+            "z": 3
+          },
+          "rotation": {
+            "x": 90,
+            "y": 357.7799987792969,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 33,
+          "itemID": 212,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "BasicCylinderItem": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "Scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            },
+            "Visibility": {},
+            "Collider": {},
+            "Appearance": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "基础柱体 (1)",
+          "objColor": {
+            "surfaceColor": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 1
+            }
+          },
+          "objTex": {
+            "surfaceTexRef": null,
+            "surfaceTex": ""
+          },
+          "propsData": {},
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "physicalLayer": 0,
+          "collidable": true,
+          "isTrigger": false,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "PtKkkiOQ",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "position": {
+            "x": 5.182000160217285,
+            "y": -0.2999999523162842,
+            "z": -14.22700023651123
+          },
+          "scale": {
+            "x": 5,
+            "y": 2.4800000190734863,
+            "z": 5
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 34,
+          "itemID": 91,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "BasicScalableItem": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "Scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            },
+            "Visibility": {},
+            "Collider": {},
+            "Appearance": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "基础块 (10)",
+          "objColor": {
+            "surfaceColor": {
+              "r": 219,
+              "g": 208,
+              "b": 166,
+              "a": 1
+            },
+            "borderColor": {
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "a": 0
+            }
+          },
+          "objTex": {
+            "surfaceTexRef": {
+              "fileId": "2c952fc36b6aa28b2bef8c6a6c73fec0",
+              "filePath": "lib://fftextures/WorkshopItemTexture/SceneEdit_Cube_Texture_Cement_01.png",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "texture"
+            },
+            "surfaceTex": "InGame/SceneEdit/Texture/SceneEdit_Cube_Texture_Cement_01",
+            "borderTexRef": null,
+            "borderTex": ""
+          },
+          "propsData": {
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          },
+          "physicalLayer": 0,
+          "collidable": true,
+          "isTrigger": false,
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "wMKc7MLJ",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "position": {
+            "x": 13.654000282287598,
+            "y": 2.0989999771118164,
+            "z": -18.240999221801758
+          },
+          "scale": {
+            "x": 5,
+            "y": 5,
+            "z": 10
+          },
+          "rotation": {
+            "x": 0,
+            "y": 39.390995025634766,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 35,
+          "itemID": 91,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "BasicScalableItem": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "Scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            },
+            "Visibility": {},
+            "Collider": {},
+            "Appearance": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "基础块 (11)",
+          "objColor": {
+            "surfaceColor": {
+              "r": 156,
+              "g": 139,
+              "b": 76,
+              "a": 1
+            },
+            "borderColor": {
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "a": 0
+            }
+          },
+          "objTex": {
+            "surfaceTexRef": {
+              "fileId": "2c952fc36b6aa28b2bef8c6a6c73fec0",
+              "filePath": "lib://fftextures/WorkshopItemTexture/SceneEdit_Cube_Texture_Cement_01.png",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "texture"
+            },
+            "surfaceTex": "InGame/SceneEdit/Texture/SceneEdit_Cube_Texture_Cement_01",
+            "borderTexRef": null,
+            "borderTex": ""
+          },
+          "propsData": {
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          },
+          "physicalLayer": 0,
+          "collidable": true,
+          "isTrigger": false,
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "cWETF9Na",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "position": {
+            "x": -10.807000160217285,
+            "y": -0.2999999523162842,
+            "z": 23.354000091552734
+          },
+          "scale": {
+            "x": 15,
+            "y": 5,
+            "z": 5
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 36,
+          "itemID": 91,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "BasicScalableItem": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {
+              "Position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "Scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              }
+            },
+            "Visibility": {},
+            "Collider": {},
+            "Appearance": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "基础块 (12)",
+          "objColor": {
+            "surfaceColor": {
+              "r": 219,
+              "g": 208,
+              "b": 166,
+              "a": 1
+            },
+            "borderColor": {
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "a": 0
+            }
+          },
+          "objTex": {
+            "surfaceTexRef": {
+              "fileId": "2c952fc36b6aa28b2bef8c6a6c73fec0",
+              "filePath": "lib://fftextures/WorkshopItemTexture/SceneEdit_Cube_Texture_Cement_01.png",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "texture"
+            },
+            "surfaceTex": "InGame/SceneEdit/Texture/SceneEdit_Cube_Texture_Cement_01",
+            "borderTexRef": null,
+            "borderTex": ""
+          },
+          "propsData": {
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          },
+          "physicalLayer": 0,
+          "collidable": true,
+          "isTrigger": false,
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "z89fYwuE",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "position": {
+            "x": -6.390999794006348,
+            "y": -0.21599996089935303,
+            "z": -13.449000358581543
+          },
+          "scale": {
+            "x": 2,
+            "y": 2.799999952316284,
+            "z": 3
+          },
+          "rotation": {
+            "x": 0,
+            "y": 90,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "isTrigger": false,
+          "collidable": true,
+          "physicalLayer": 0,
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 37,
+          "itemID": 2,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "DummyLevelObject": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {},
+            "Visibility": {},
+            "Collider": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "长木箱",
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "OedcowBN",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "position": {
+            "x": -12.781000137329102,
+            "y": -0.2999999523162842,
+            "z": -11.852999687194824
+          },
+          "scale": {
+            "x": 4,
+            "y": 2.5,
+            "z": 1
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "isTrigger": false,
+          "collidable": true,
+          "physicalLayer": 0,
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 38,
+          "itemID": 91,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "BasicScalableItem": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {},
+            "Visibility": {},
+            "Collider": {},
+            "BehaviourTreeAttachable": {},
+            "Appearance": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "基础块",
+          "objColor": {
+            "surfaceColor": {
+              "r": 219,
+              "g": 208,
+              "b": 166,
+              "a": 1
+            },
+            "borderColor": {
+              "r": 255,
+              "g": 255,
+              "b": 255,
+              "a": 0
+            }
+          },
+          "objTex": {
+            "surfaceTexRef": {
+              "fileId": "2c952fc36b6aa28b2bef8c6a6c73fec0",
+              "filePath": "lib://fftextures/WorkshopItemTexture/SceneEdit_Cube_Texture_Cement_01.png",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "texture"
+            },
+            "surfaceTex": "InGame/SceneEdit/Texture/SceneEdit_Cube_Texture_Cement_01",
+            "borderTexRef": null,
+            "borderTex": ""
+          },
+          "propsData": {
+            "scale": {
+              "x": 1,
+              "y": 1,
+              "z": 1
+            }
+          },
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "CQCLKu4U",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "position": {
+            "x": -12.128000259399414,
+            "y": 0.34900009632110596,
+            "z": -5.359000205993652
+          },
+          "scale": {
+            "x": 0.6200000047683716,
+            "y": 1,
+            "z": 1
+          },
+          "rotation": {
+            "x": 0,
+            "y": 269,
+            "z": 349
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "isTrigger": false,
+          "collidable": true,
+          "physicalLayer": 0,
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 39,
+          "itemID": 271,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "DummyLevelObject": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {
+              "TagsList": [
+                "BlackHoleTag"
+              ]
+            },
+            "Component": {},
+            "Transform": {},
+            "Visibility": {},
+            "Collider": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": [
+              "entityTag68480983"
+            ]
+          },
+          "_entityName": "废弃地铁车厢",
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": [
+            "entityTag68480983"
+          ]
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "j6PKsZ5T",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "position": {
+            "x": -18.51799964904785,
+            "y": 5.043000221252441,
+            "z": -17.523000717163086
+          },
+          "scale": {
+            "x": 1.399999976158142,
+            "y": 1.399999976158142,
+            "z": 1.399999976158142
+          },
+          "rotation": {
+            "x": 0,
+            "y": 90,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "isTrigger": false,
+          "collidable": true,
+          "physicalLayer": 0,
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 40,
+          "itemID": 105,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "DummyLevelObject": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {},
+            "Visibility": {},
+            "Collider": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "涂鸦墙 (8)",
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "z08FFnqo",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "position": {
+            "x": -17.176000595092773,
+            "y": 5.043000221252441,
+            "z": -19.950000762939453
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "isTrigger": false,
+          "collidable": true,
+          "physicalLayer": 0,
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 41,
+          "itemID": 105,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "DummyLevelObject": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {},
+            "Visibility": {},
+            "Collider": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "涂鸦墙 (7)",
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "qwtGWZwR",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "position": {
+            "x": -13.630999565124512,
+            "y": 5.043000221252441,
+            "z": -19.950000762939453
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "isTrigger": false,
+          "collidable": true,
+          "physicalLayer": 0,
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 42,
+          "itemID": 105,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "DummyLevelObject": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {},
+            "Visibility": {},
+            "Collider": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "涂鸦墙 (6)",
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "JWQjmQj4",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "position": {
+            "x": -10.604000091552734,
+            "y": 5.187999725341797,
+            "z": -20.07200050354004
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "isTrigger": false,
+          "collidable": true,
+          "physicalLayer": 0,
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 43,
+          "itemID": 105,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "DummyLevelObject": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {},
+            "Visibility": {},
+            "Collider": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "涂鸦墙 (5)",
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "FH6NqMGn",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "position": {
+            "x": -7.059000015258789,
+            "y": 5.187999725341797,
+            "z": -20.07200050354004
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "isTrigger": false,
+          "collidable": true,
+          "physicalLayer": 0,
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 44,
+          "itemID": 105,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "DummyLevelObject": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {},
+            "Visibility": {},
+            "Collider": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "涂鸦墙 (4)",
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "9T2T5fxv",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "position": {
+            "x": -3.5160000324249268,
+            "y": 5.187999725341797,
+            "z": -20.07200050354004
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "isTrigger": false,
+          "collidable": true,
+          "physicalLayer": 0,
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 45,
+          "itemID": 105,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "DummyLevelObject": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {},
+            "Visibility": {},
+            "Collider": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "涂鸦墙 (3)",
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "GnwjCWqL",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "position": {
+            "x": 0.029999999329447746,
+            "y": 5.187999725341797,
+            "z": -20.07200050354004
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "isTrigger": false,
+          "collidable": true,
+          "physicalLayer": 0,
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 46,
+          "itemID": 105,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "DummyLevelObject": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {},
+            "Visibility": {},
+            "Collider": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "涂鸦墙 (2)",
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "7aZyu1xV",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "position": {
+            "x": 7.136000156402588,
+            "y": 5.187999725341797,
+            "z": -20.07200050354004
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "isTrigger": false,
+          "collidable": true,
+          "physicalLayer": 0,
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 47,
+          "itemID": 105,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "DummyLevelObject": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {},
+            "Visibility": {},
+            "Collider": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "涂鸦墙",
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "MRm0JJeC",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "position": {
+            "x": 3.5899999141693115,
+            "y": 5.187999725341797,
+            "z": -20.07200050354004
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "isTrigger": false,
+          "collidable": true,
+          "physicalLayer": 0,
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 48,
+          "itemID": 105,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "DummyLevelObject": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {},
+            "Visibility": {},
+            "Collider": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "涂鸦墙 (1)",
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "IAPW2EhD",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "position": {
+            "x": 29.474000930786133,
+            "y": 0.029999971389770508,
+            "z": 7.24399995803833
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "rotation": {
+            "x": 0,
+            "y": 90,
+            "z": 0
+          },
+          "visible": true,
+          "VisibilityLayer": 0,
+          "attributes": [
+            2,
+            4
+          ],
+          "isTrigger": false,
+          "collidable": true,
+          "physicalLayer": 0,
+          "componentList": [
+            "AimableEntity",
+            "BehaviourTreeAttachable"
+          ],
+          "tempIndex": 49,
+          "itemID": 228,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "DummyLevelObject": {},
+            "LevelObject": {},
+            "AimableEntity": {},
+            "Entity": {},
+            "Component": {},
+            "Transform": {},
+            "Visibility": {},
+            "Collider": {},
+            "BehaviourTreeAttachable": {}
+          },
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "_entityName": "高楼A组件A",
+          "BTPath": [
+            null
+          ],
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "aoiSetting": 0,
+          "_filters": []
+        },
+        {
+          "_entityName": "WS_Plane",
+          "_tag": {
+            "type": "UGCSceneEntity",
+            "resourceId": ""
+          },
+          "_entityId": "YP2TQTuq",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "position": {
+            "x": 0,
+            "y": -0.29360318183898926,
+            "z": 0
+          },
+          "scale": {
+            "x": 30,
+            "y": 1,
+            "z": 35
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "BTPath": [
+            null
+          ],
+          "visible": false,
+          "VisibilityLayer": 0,
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "attributes": [
+            2,
+            4
+          ],
+          "isTrigger": false,
+          "collidable": true,
+          "physicalLayer": 0,
+          "physicalMaterial": null,
+          "aoiSetting": 0,
+          "initialTypes": {},
+          "componentList": [
+            "MeshRender",
+            "ColliderShape",
+            "Collider"
+          ],
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "materials": [
+            {
+              "fileId": "9o72ldm65gn-mhlgf7wn-j8nokw2s06f",
+              "filePath": "Assets\\SampleMaterials\\alpha.mat",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "material"
+            }
+          ],
+          "colliders": [
+            {
+              "enable": true,
+              "colliderType": "MeshCollider",
+              "meshUUID": {
+                "fileId": "wehss29x://56937734-67d8-4e83-b175-17c2544b25b4-WS_Plane.~@FFFUB",
+                "filePath": "wehss29x://Meshes/plane.fbx/WS_Plane",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "mesh"
+              },
+              "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "size": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              },
+              "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "isTrigger": false,
+              "radius": 0.5,
+              "height": 1,
+              "physicalMaterialUUID": null,
+              "isConvexIfMesh": false
+            }
+          ],
+          "IsNPC": false,
+          "isCreateAsEmpty": false,
+          "Rigidbody": {
+            "Type": 1,
+            "Mass": 1,
+            "CenterOfMass": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "UseGravity": true,
+            "Drag": 0.05,
+            "AngularDrag": 0.05,
+            "FreezePosX": false,
+            "FreezeRotX": false,
+            "FreezePosY": false,
+            "FreezeRotY": false,
+            "FreezePosZ": false,
+            "FreezeRotZ": false
+          },
+          "ecaScripts": [],
+          "ecaProps": {
+            "CustomLevelObject": {},
+            "LevelObject": {},
+            "Transform": {},
+            "Entity": {},
+            "Visibility": {},
+            "MeshRender": {},
+            "ColliderShape": {},
+            "Collider": {}
+          },
+          "propsData": {},
+          "entityVersion": 3,
+          "mesh": {
+            "fileId": "wehss29x://56937734-67d8-4e83-b175-17c2544b25b4-WS_Plane.~@FFFUB",
+            "filePath": "wehss29x://Meshes/plane.fbx/WS_Plane",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "mesh"
+          }
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "visible": true,
+      "VisibilityLayer": 0,
+      "attributes": [
+        2,
+        4
+      ],
+      "componentList": [
+        "AimableEntity",
+        "BehaviourTreeAttachable",
+        "Rigidbody",
+        "ColliderShape",
+        "Collider"
+      ],
+      "materials": [
+        null
+      ],
+      "colliders": [],
+      "isTrigger": false,
+      "collidable": true,
+      "physicalLayer": 0,
+      "Rigidbody": {
+        "Type": 0,
+        "Mass": 1,
+        "CenterOfMass": 0,
+        "FreezePosX": false,
+        "FreezePosY": false,
+        "FreezePosZ": false,
+        "FreezeRotX": false,
+        "FreezeRotY": false,
+        "FreezeRotZ": false
+      },
+      "isCreateAsEmpty": true,
+      "ecaScripts": [],
+      "ecaProps": {
+        "CustomLevelObject": {
+          "CustomLevelObject_81351029_custom": null
+        },
+        "LevelObject": {},
+        "AimableEntity": {},
+        "Entity": {},
+        "Component": {},
+        "Transform": {
+          "Position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "Scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          }
+        },
+        "Visibility": {},
+        "Collider": {},
+        "MeshRender": {},
+        "BehaviourTreeAttachable": {},
+        "Rigidbody": {},
+        "ColliderShape": {}
+      },
+      "_entityName": "Level",
+      "BTPath": [
+        null
+      ],
+      "propsData": {},
+      "modelOptimization": 0,
+      "entityVersion": 3,
+      "streamingLayer": "",
+      "aoiSetting": 0,
+      "entityTagData": {
+        "tagPointers": []
+      },
+      "_filters": []
+    },
+    {
+      "_tag": {
+        "type": "SceneEditEntity",
+        "resourceId": "Primitive/Empty"
+      },
+      "_entityId": "2QAK1JKL",
+      "children": [],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "position": {
+        "x": 0,
+        "y": -10,
+        "z": 0
+      },
+      "scale": {
+        "x": 41,
+        "y": 8,
+        "z": 41
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "visible": true,
+      "VisibilityLayer": 0,
+      "attributes": [
+        2,
+        4
+      ],
+      "isTrigger": false,
+      "collidable": true,
+      "physicalLayer": 0,
+      "componentList": [
+        "AimableEntity",
+        "BehaviourTreeAttachable"
+      ],
+      "tempIndex": 50,
+      "itemID": 117,
+      "seParent": null,
+      "ecaScripts": [
+        null
+      ],
+      "ecaProps": {
+        "CustomizeTrigger": {
+          "CustomizeTrigger_92100553_custom": null,
+          "PROP_38711357": 0
+        },
+        "LevelObject": {},
+        "AimableEntity": {},
+        "Entity": {},
+        "Component": {},
+        "Transform": {},
+        "Visibility": {},
+        "Collider": {},
+        "BehaviourTreeAttachable": {}
+      },
+      "entityTagData": {
+        "tagPointers": []
+      },
+      "_entityName": "ZDeadTrigger",
+      "propsData": {
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        },
+        "_levelObjectID": 1
+      },
+      "BTPath": [
+        null
+      ],
+      "modelOptimization": 0,
+      "streamingLayer": "",
+      "aoiSetting": 0,
+      "_filters": [
+        "game.related13"
+      ]
+    },
+    {
+      "_tag": {
+        "type": "UGCSceneEntity",
+        "resourceId": ""
+      },
+      "_entityId": "dxigt9S5",
+      "children": [],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "position": {
+        "x": -8.062500953674316,
+        "y": 0.7841287851333618,
+        "z": -14.030313491821289
+      },
+      "scale": {
+        "x": 15,
+        "y": 3,
+        "z": 4
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "BTPath": [
+        null
+      ],
+      "visible": false,
+      "VisibilityLayer": 0,
+      "modelOptimization": 0,
+      "streamingLayer": "",
+      "attributes": [
+        2,
+        4
+      ],
+      "isTrigger": false,
+      "collidable": true,
+      "physicalLayer": 0,
+      "physicalMaterial": null,
+      "aoiSetting": 0,
+      "initialTypes": {},
+      "componentList": [
+        "MeshRender",
+        "ColliderShape",
+        "Collider"
+      ],
+      "_filters": [],
+      "entityTagData": {
+        "tagPointers": []
+      },
+      "materials": [
+        null
+      ],
+      "colliders": [
+        {
+          "enable": true,
+          "colliderType": "Box",
+          "meshUUID": null,
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "size": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "isTrigger": false,
+          "radius": 0.5,
+          "height": 1,
+          "physicalMaterialUUID": null,
+          "isConvexIfMesh": false
+        }
+      ],
+      "IsNPC": false,
+      "isCreateAsEmpty": false,
+      "Rigidbody": {
+        "Type": 1,
+        "Mass": 1,
+        "CenterOfMass": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "UseGravity": true,
+        "Drag": 0.05,
+        "AngularDrag": 0.05,
+        "FreezePosX": false,
+        "FreezeRotX": false,
+        "FreezePosY": false,
+        "FreezeRotY": false,
+        "FreezePosZ": false,
+        "FreezeRotZ": false
+      },
+      "ecaScripts": [],
+      "ecaProps": {
+        "CustomLevelObject": {
+          "CustomLevelObject_81351029_custom": null
+        },
+        "LevelObject": {},
+        "Transform": {},
+        "Entity": {},
+        "Visibility": {},
+        "MeshRender": {},
+        "ColliderShape": {},
+        "Collider": {}
+      },
+      "propsData": {},
+      "entityVersion": 3,
+      "mesh": {
+        "fileId": "wehss29x://7d9977d6-d297-4a69-970c-c4d88446bf3b-Box001.~@FFFUB",
+        "filePath": "wehss29x://Meshes/cube.fbx/Box001",
+        "_tag": {
+          "type": "GFileRefer"
+        },
+        "fileType": "mesh"
+      },
+      "_entityName": "Box001"
+    },
+    {
+      "_tag": {
+        "type": "UGCSceneEntity",
+        "resourceId": "Primitive/Empty"
+      },
+      "_entityId": "Iic2BYjl",
+      "children": [
+        {
+          "_tag": {
+            "type": "UGCSceneEntity",
+            "resourceId": ""
+          },
+          "_entityId": "EwqxpywN",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "position": {
+            "x": -8.800000190734863,
+            "y": -0.30000001192092896,
+            "z": 16
+          },
+          "scale": {
+            "x": 2,
+            "y": 1,
+            "z": 2
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "BTPath": [
+            null
+          ],
+          "visible": true,
+          "VisibilityLayer": 0,
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "attributes": [
+            2,
+            4
+          ],
+          "isTrigger": false,
+          "collidable": false,
+          "physicalLayer": 0,
+          "physicalMaterial": null,
+          "aoiSetting": 0,
+          "initialTypes": {},
+          "componentList": [
+            "ColliderShape",
+            "Collider"
+          ],
+          "_filters": [],
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "materials": [
+            null
+          ],
+          "colliders": [
+            {
+              "enable": true,
+              "colliderType": "Box",
+              "meshUUID": null,
+              "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "size": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              },
+              "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "isTrigger": true,
+              "radius": 0.5,
+              "height": 1,
+              "physicalMaterialUUID": null,
+              "isConvexIfMesh": false
+            }
+          ],
+          "IsNPC": false,
+          "isCreateAsEmpty": false,
+          "Rigidbody": {
+            "Type": 1,
+            "Mass": 1,
+            "CenterOfMass": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "UseGravity": true,
+            "Drag": 0.05,
+            "AngularDrag": 0.05,
+            "FreezePosX": false,
+            "FreezeRotX": false,
+            "FreezePosY": false,
+            "FreezeRotY": false,
+            "FreezePosZ": false,
+            "FreezeRotZ": false
+          },
+          "ecaScripts": [],
+          "ecaProps": {
+            "CustomLevelObject": {
+              "CustomLevelObject_81351029_custom": null
+            },
+            "LevelObject": {},
+            "Transform": {},
+            "Entity": {},
+            "Visibility": {},
+            "ColliderShape": {},
+            "Collider": {},
+            "MeshRender": {}
+          },
+          "propsData": {},
+          "entityVersion": 3,
+          "_entityName": "ZombieNode1"
+        },
+        {
+          "_tag": {
+            "type": "UGCSceneEntity",
+            "resourceId": ""
+          },
+          "_entityId": "dUA08VEH",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": false,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "position": {
+            "x": 8,
+            "y": -0.30000001192092896,
+            "z": 0
+          },
+          "scale": {
+            "x": 2,
+            "y": 1,
+            "z": 2
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "BTPath": [
+            null
+          ],
+          "visible": true,
+          "VisibilityLayer": 0,
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "attributes": [
+            2,
+            4
+          ],
+          "isTrigger": false,
+          "collidable": false,
+          "physicalLayer": 0,
+          "physicalMaterial": null,
+          "aoiSetting": 0,
+          "initialTypes": {},
+          "componentList": [
+            "ColliderShape",
+            "Collider"
+          ],
+          "_filters": [],
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "materials": [
+            null
+          ],
+          "colliders": [
+            {
+              "enable": true,
+              "colliderType": "Box",
+              "meshUUID": null,
+              "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "size": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              },
+              "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "isTrigger": true,
+              "radius": 0.5,
+              "height": 1,
+              "physicalMaterialUUID": null,
+              "isConvexIfMesh": false
+            }
+          ],
+          "IsNPC": false,
+          "isCreateAsEmpty": false,
+          "Rigidbody": {
+            "Type": 1,
+            "Mass": 1,
+            "CenterOfMass": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "UseGravity": true,
+            "Drag": 0.05,
+            "AngularDrag": 0.05,
+            "FreezePosX": false,
+            "FreezeRotX": false,
+            "FreezePosY": false,
+            "FreezeRotY": false,
+            "FreezePosZ": false,
+            "FreezeRotZ": false
+          },
+          "ecaScripts": [],
+          "ecaProps": {
+            "CustomLevelObject": {
+              "CustomLevelObject_81351029_custom": null
+            },
+            "LevelObject": {},
+            "Transform": {},
+            "Entity": {},
+            "Visibility": {},
+            "ColliderShape": {},
+            "Collider": {},
+            "MeshRender": {}
+          },
+          "propsData": {},
+          "entityVersion": 3,
+          "_entityName": "ZombieNode2",
+          "editorLockValue": false,
+          "editorVisibleValue": true
+        },
+        {
+          "_tag": {
+            "type": "UGCSceneEntity",
+            "resourceId": ""
+          },
+          "_entityId": "7tzhGD9O",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "position": {
+            "x": 1,
+            "y": -0.3,
+            "z": -9
+          },
+          "scale": {
+            "x": 2,
+            "y": 1,
+            "z": 2
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "BTPath": [
+            null
+          ],
+          "visible": true,
+          "VisibilityLayer": 0,
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "attributes": [
+            2,
+            4
+          ],
+          "isTrigger": false,
+          "collidable": false,
+          "physicalLayer": 0,
+          "physicalMaterial": null,
+          "aoiSetting": 0,
+          "initialTypes": {},
+          "componentList": [
+            "ColliderShape",
+            "Collider"
+          ],
+          "_filters": [],
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "materials": [
+            null
+          ],
+          "colliders": [
+            {
+              "enable": true,
+              "colliderType": "Box",
+              "meshUUID": null,
+              "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "size": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              },
+              "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "isTrigger": true,
+              "radius": 0.5,
+              "height": 1,
+              "physicalMaterialUUID": null,
+              "isConvexIfMesh": false
+            }
+          ],
+          "IsNPC": false,
+          "isCreateAsEmpty": false,
+          "Rigidbody": {
+            "Type": 1,
+            "Mass": 1,
+            "CenterOfMass": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "UseGravity": true,
+            "Drag": 0.05,
+            "AngularDrag": 0.05,
+            "FreezePosX": false,
+            "FreezeRotX": false,
+            "FreezePosY": false,
+            "FreezeRotY": false,
+            "FreezePosZ": false,
+            "FreezeRotZ": false
+          },
+          "ecaScripts": [],
+          "ecaProps": {
+            "CustomLevelObject": {
+              "CustomLevelObject_81351029_custom": null
+            },
+            "LevelObject": {},
+            "Transform": {},
+            "Entity": {},
+            "Visibility": {},
+            "ColliderShape": {},
+            "Collider": {},
+            "MeshRender": {}
+          },
+          "propsData": {},
+          "entityVersion": 3,
+          "_entityName": "ZombieNode3",
+          "editorLockValue": false,
+          "editorVisibleValue": true
+        },
+        {
+          "_tag": {
+            "type": "UGCSceneEntity",
+            "resourceId": ""
+          },
+          "_entityId": "dRLtreJt",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "position": {
+            "x": -2.5,
+            "y": -0.30000001192092896,
+            "z": 4.5
+          },
+          "scale": {
+            "x": 2,
+            "y": 1,
+            "z": 2
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "BTPath": [
+            null
+          ],
+          "visible": true,
+          "VisibilityLayer": 0,
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "attributes": [
+            2,
+            4
+          ],
+          "isTrigger": false,
+          "collidable": false,
+          "physicalLayer": 0,
+          "physicalMaterial": null,
+          "aoiSetting": 0,
+          "initialTypes": {},
+          "componentList": [
+            "ColliderShape",
+            "Collider"
+          ],
+          "_filters": [],
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "materials": [
+            null
+          ],
+          "colliders": [
+            {
+              "enable": true,
+              "colliderType": "Box",
+              "meshUUID": null,
+              "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "size": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              },
+              "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "isTrigger": true,
+              "radius": 0.5,
+              "height": 1,
+              "physicalMaterialUUID": null,
+              "isConvexIfMesh": false
+            }
+          ],
+          "IsNPC": false,
+          "isCreateAsEmpty": false,
+          "Rigidbody": {
+            "Type": 1,
+            "Mass": 1,
+            "CenterOfMass": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "UseGravity": true,
+            "Drag": 0.05,
+            "AngularDrag": 0.05,
+            "FreezePosX": false,
+            "FreezeRotX": false,
+            "FreezePosY": false,
+            "FreezeRotY": false,
+            "FreezePosZ": false,
+            "FreezeRotZ": false
+          },
+          "ecaScripts": [],
+          "ecaProps": {
+            "CustomLevelObject": {
+              "CustomLevelObject_81351029_custom": null
+            },
+            "LevelObject": {},
+            "Transform": {},
+            "Entity": {},
+            "Visibility": {},
+            "ColliderShape": {},
+            "Collider": {},
+            "MeshRender": {}
+          },
+          "propsData": {},
+          "entityVersion": 3,
+          "_entityName": "ZombieNode4",
+          "editorLockValue": false,
+          "editorVisibleValue": true
+        },
+        {
+          "_tag": {
+            "type": "UGCSceneEntity",
+            "resourceId": ""
+          },
+          "_entityId": "ix03GxD1",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "position": {
+            "x": 1,
+            "y": 2.2869999408721924,
+            "z": -14
+          },
+          "scale": {
+            "x": 2,
+            "y": 1,
+            "z": 2
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "BTPath": [
+            null
+          ],
+          "visible": true,
+          "VisibilityLayer": 0,
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "attributes": [
+            2,
+            4
+          ],
+          "isTrigger": false,
+          "collidable": false,
+          "physicalLayer": 0,
+          "physicalMaterial": null,
+          "aoiSetting": 0,
+          "initialTypes": {},
+          "componentList": [
+            "ColliderShape",
+            "Collider"
+          ],
+          "_filters": [],
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "materials": [
+            null
+          ],
+          "colliders": [
+            {
+              "enable": true,
+              "colliderType": "Box",
+              "meshUUID": null,
+              "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "size": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              },
+              "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "isTrigger": true,
+              "radius": 0.5,
+              "height": 1,
+              "physicalMaterialUUID": null,
+              "isConvexIfMesh": false
+            }
+          ],
+          "IsNPC": false,
+          "isCreateAsEmpty": false,
+          "Rigidbody": {
+            "Type": 1,
+            "Mass": 1,
+            "CenterOfMass": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "UseGravity": true,
+            "Drag": 0.05,
+            "AngularDrag": 0.05,
+            "FreezePosX": false,
+            "FreezeRotX": false,
+            "FreezePosY": false,
+            "FreezeRotY": false,
+            "FreezePosZ": false,
+            "FreezeRotZ": false
+          },
+          "ecaScripts": [],
+          "ecaProps": {
+            "CustomLevelObject": {
+              "CustomLevelObject_81351029_custom": null
+            },
+            "LevelObject": {},
+            "Transform": {},
+            "Entity": {},
+            "Visibility": {},
+            "ColliderShape": {},
+            "Collider": {},
+            "MeshRender": {}
+          },
+          "propsData": {},
+          "entityVersion": 3,
+          "_entityName": "ZombieNode5"
+        },
+        {
+          "_tag": {
+            "type": "UGCSceneEntity",
+            "resourceId": ""
+          },
+          "_entityId": "yRUgg1Xr",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "position": {
+            "x": 12,
+            "y": 2.299999952316284,
+            "z": 3
+          },
+          "scale": {
+            "x": 2,
+            "y": 1,
+            "z": 2
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "BTPath": [
+            null
+          ],
+          "visible": true,
+          "VisibilityLayer": 0,
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "attributes": [
+            2,
+            4
+          ],
+          "isTrigger": false,
+          "collidable": false,
+          "physicalLayer": 0,
+          "physicalMaterial": null,
+          "aoiSetting": 0,
+          "initialTypes": {},
+          "componentList": [
+            "ColliderShape",
+            "Collider"
+          ],
+          "_filters": [],
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "materials": [
+            null
+          ],
+          "colliders": [
+            {
+              "enable": true,
+              "colliderType": "Box",
+              "meshUUID": null,
+              "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "size": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              },
+              "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "isTrigger": true,
+              "radius": 0.5,
+              "height": 1,
+              "physicalMaterialUUID": null,
+              "isConvexIfMesh": false
+            }
+          ],
+          "IsNPC": false,
+          "isCreateAsEmpty": false,
+          "Rigidbody": {
+            "Type": 1,
+            "Mass": 1,
+            "CenterOfMass": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "UseGravity": true,
+            "Drag": 0.05,
+            "AngularDrag": 0.05,
+            "FreezePosX": false,
+            "FreezeRotX": false,
+            "FreezePosY": false,
+            "FreezeRotY": false,
+            "FreezePosZ": false,
+            "FreezeRotZ": false
+          },
+          "ecaScripts": [],
+          "ecaProps": {
+            "CustomLevelObject": {
+              "CustomLevelObject_81351029_custom": null
+            },
+            "LevelObject": {},
+            "Transform": {},
+            "Entity": {},
+            "Visibility": {},
+            "ColliderShape": {},
+            "Collider": {},
+            "MeshRender": {}
+          },
+          "propsData": {},
+          "entityVersion": 3,
+          "_entityName": "ZombieNode6"
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": false,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "position": {
+        "x": 0,
+        "y": 20,
+        "z": 0
+      },
+      "scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "BTPath": [
+        null
+      ],
+      "visible": true,
+      "VisibilityLayer": 0,
+      "modelOptimization": 0,
+      "streamingLayer": "",
+      "attributes": [
+        2,
+        4
+      ],
+      "isTrigger": false,
+      "collidable": true,
+      "physicalLayer": 0,
+      "physicalMaterial": null,
+      "aoiSetting": 0,
+      "initialTypes": {},
+      "componentList": [],
+      "_filters": [],
+      "entityTagData": {
+        "tagPointers": []
+      },
+      "materials": [
+        null
+      ],
+      "colliders": [],
+      "IsNPC": false,
+      "isCreateAsEmpty": true,
+      "Rigidbody": {
+        "Type": 1,
+        "Mass": 1,
+        "CenterOfMass": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "UseGravity": true,
+        "Drag": 0.05,
+        "AngularDrag": 0.05,
+        "FreezePosX": false,
+        "FreezeRotX": false,
+        "FreezePosY": false,
+        "FreezeRotY": false,
+        "FreezePosZ": false,
+        "FreezeRotZ": false
+      },
+      "ecaScripts": [],
+      "ecaProps": {
+        "CustomLevelObject": {
+          "CustomLevelObject_81351029_custom": null
+        },
+        "LevelObject": {},
+        "Transform": {},
+        "Entity": {},
+        "Visibility": {},
+        "MeshRender": {}
+      },
+      "propsData": {},
+      "entityVersion": 3,
+      "_entityName": "ZombieNodes"
+    },
+    {
+      "_entityName": "特效",
+      "_tag": {
+        "type": "SceneEditEntity",
+        "resourceId": "Primitive/Empty"
+      },
+      "_entityId": "VqbEtWak",
+      "children": [],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": false,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": null,
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "BTPath": [
+        null
+      ],
+      "visible": true,
+      "VisibilityLayer": 0,
+      "modelOptimization": 0,
+      "streamingLayer": "",
+      "attributes": [
+        2,
+        4
+      ],
+      "isTrigger": false,
+      "collidable": true,
+      "physicalLayer": 0,
+      "physicalMaterial": null,
+      "aoiSetting": 0,
+      "initialTypes": {},
+      "componentList": [],
+      "entityTagData": {
+        "tagPointers": []
+      },
+      "tempIndex": 51,
+      "itemID": 224,
+      "seParent": null,
+      "ecaScripts": [
+        null
+      ],
+      "ecaProps": {
+        "EffectEntityGenerator": {},
+        "ItemContainerGenerator": {},
+        "Entity": {},
+        "EffectEntity": {},
+        "Playable": {},
+        "Loopable": {},
+        "LevelObject": {},
+        "Transform": {},
+        "Visibility": {}
+      },
+      "propsData": {
+        "effectColor": {
+          "r": 255,
+          "g": 255,
+          "b": 255,
+          "a": 1
+        },
+        "playSpeed": 100,
+        "autoPlay": true,
+        "effectTypeResId": "",
+        "effectTexture": "",
+        "effectTextureRef": null,
+        "effectTypeRef": {
+          "fileId": "EffectType_WS_VFX_THUNDER",
+          "filePath": "lib://ffEffects/T_39_HJ_WS_SOUND21",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "effecttype"
+        },
+        "effectType": "WS_VFX_THUNDER",
+        "isLoop": 0
+      }
+    }
+  ],
+  "properties": {},
+  "activeValue": {
+    "selfValue": true,
+    "valueTag": "activeValue"
+  },
+  "unlockedValue": {
+    "selfValue": true,
+    "valueTag": "unlockedValue"
+  },
+  "discriminator": "ISceneLike",
+  "_entityName": "Isle Land",
+  "mapID": 25,
+  "terrainInfo": {
+    "texture": [
+      {
+        "fileId": "e4c65232d3be1e92230bbcfdfd075038",
+        "filePath": "lib://fftextures/WorkshopItemTexture/SceneEdit_Cube_Texture_Grassland_01.png",
+        "_tag": {
+          "type": "GFileRefer"
+        },
+        "fileType": "texture"
+      }
+    ]
+  },
+  "editorVisibleValue": true
+}
+//"{FE:{"v":"1.15.3997714","c":{"FF":5001},"s":100}

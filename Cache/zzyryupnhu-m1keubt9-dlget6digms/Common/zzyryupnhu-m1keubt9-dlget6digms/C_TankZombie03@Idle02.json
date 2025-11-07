@@ -1,0 +1,36 @@
+{
+    "FBXName" : "C_TankZombie03@Idle02",
+    "ImportSucceeded" : true,
+    "MaterialCount" : 2,
+    "MaterialDetail" : [
+    {
+        "Index" : 0,
+        "MaterialName" :  "C_TankZombie02"
+    },
+    {
+        "Index" : 1,
+        "MaterialName" :  "B_tank"
+    }
+    ],
+    "MeshCount" : 2,
+    "MeshDetail" : [
+    {
+        "MeshName" : "B_tank_12",
+        "MaterialIndex" : [0,1],
+        "Transform" : {
+          "Position" : [-0, 0, 0],
+          "Rotation" : [-90, -0, -0],
+          "Scale" : [1, 1, 1]
+        }
+    },
+    {
+        "MeshName" : "Tank_Shield",
+        "MaterialIndex" : [1],
+        "Transform" : {
+          "Position" : [-0, 3.8147e-08, 3.8147e-08],
+          "Rotation" : [1.70755e-06, 3.41509e-06, -0],
+          "Scale" : [1, 1, 1]
+        }
+    }
+    ]
+}

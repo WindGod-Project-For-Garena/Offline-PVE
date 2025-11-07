@@ -1,0 +1,57 @@
+{
+  "fileId": "c5jbjr0l1l8-m00s982l-gav4pmypkow",
+  "globalscale": 1,
+  "properties": {
+    "Common": ""
+  },
+  "subDynamicResources": {},
+  "subLOD": {},
+  "version": "1.6.0",
+  "manifest": {
+    "Meshes": [],
+    "BoneInfos": [],
+    "Anims": [
+      {
+        "OrgExtName": ".Anim",
+        "Name": "get up.Anim",
+        "Size": 75365,
+        "ClipData": {
+          "Name": "get up",
+          "BakeStart": 0,
+          "BakeStop": 1.6666666269302368,
+          "SampleRate": 30
+        },
+        "magicNumber": {
+          "magicNumber1": 100,
+          "magicNumber2": 98,
+          "magicNumber3": 158,
+          "magicNumber4": 134,
+          "version": 1009715
+        }
+      }
+    ],
+    "ManifestJSON": {
+      "FBXName": "C_Zombie_01@RetUp",
+      "ImportSucceeded": true,
+      "MaterialCount": 0,
+      "MaterialDetail": [],
+      "MeshCount": 0,
+      "MeshDetail": []
+    }
+  },
+  "content": {
+    "get up.anim": {
+      "_entityName": "AnimClipEntity",
+      "_entityId": "",
+      "_preModel": {
+        "fileId": "9bt8bramsch-m00s99ip-emzeboy544g",
+        "filePath": "Assets\\ZombieAssist\\Zombie01\\C_Zombie_01.FBX",
+        "_tag": {
+          "type": "GFileRefer"
+        },
+        "fileType": "fbx"
+      },
+      "children": []
+    }
+  }
+}

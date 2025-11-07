@@ -1,0 +1,549 @@
+{
+  "NameSpace": {
+    "Name": "d7JXcoup",
+    "ID": 0,
+    "UIDSeed": 100009
+  },
+  "FileSpaces": [
+    {
+      "Path": "EditorGenLib.fcc",
+      "Symbol": {
+        "Components": [
+          {
+            "Name": "Mob",
+            "ID": 100000,
+            "Props": [
+              {
+                "ID": 100005,
+                "Name": "MobName"
+              },
+              {
+                "ID": 100001,
+                "Name": "MaxHP"
+              },
+              {
+                "ID": 100002,
+                "Name": "HP"
+              },
+              {
+                "ID": 100003,
+                "Name": "WalkSpeed"
+              },
+              {
+                "ID": 100004,
+                "Name": "Damage"
+              },
+              {
+                "ID": 100007,
+                "Name": "StatusDic"
+              },
+              {
+                "ID": 100006,
+                "Name": "CurrTarget"
+              },
+              {
+                "ID": 100008,
+                "Name": "LastHitPlayer"
+              }
+            ]
+          }
+        ],
+        "Events": [],
+        "Graphs": [
+          {
+            "ID": "EDITOR_GEN_RESOURCE_REGISTERATION_ID2oacb87rc",
+            "Name": "Res",
+            "Props": [
+              {
+                "ID": "EDITOR_GEN_Resourceui",
+                "Name": "UI"
+              },
+              {
+                "ID": "EDITOR_GEN_Resourcescene",
+                "Name": "Scene"
+              },
+              {
+                "ID": "EDITOR_GEN_Resourceprefab",
+                "Name": "Prefab"
+              },
+              {
+                "ID": "EDITOR_GEN_Resourcefcg",
+                "Name": "FCG"
+              },
+              {
+                "ID": "EDITOR_GEN_Resourceeca",
+                "Name": "ECA"
+              },
+              {
+                "ID": "EDITOR_GEN_Resourcesprite",
+                "Name": "Sprite"
+              },
+              {
+                "ID": "EDITOR_GEN_Resourceeffect",
+                "Name": "Effect"
+              },
+              {
+                "ID": "EDITOR_GEN_Resourcesound",
+                "Name": "Sound"
+              },
+              {
+                "ID": "EDITOR_GEN_Resourceitem",
+                "Name": "Item"
+              },
+              {
+                "ID": "EDITOR_GEN_Resourcelevelobject",
+                "Name": "LevelObject"
+              },
+              {
+                "ID": "EDITOR_GEN_Resourcecloth",
+                "Name": "Cloth"
+              },
+              {
+                "ID": "EDITOR_GEN_Resourceweaponskin",
+                "Name": "WeaponSkin"
+              },
+              {
+                "ID": "EDITOR_GEN_Resourcevehicleskin",
+                "Name": "VehicleSkin"
+              },
+              {
+                "ID": "EDITOR_GEN_Resourceemote",
+                "Name": "Emote"
+              },
+              {
+                "ID": "EDITOR_GEN_Resourcecsv",
+                "Name": "CSV"
+              },
+              {
+                "ID": "EDITOR_GEN_Resourceinternalhud",
+                "Name": "InternalHud"
+              },
+              {
+                "ID": "EDITOR_GEN_Resourcetexture",
+                "Name": "Texture"
+              },
+              {
+                "ID": "EDITOR_GEN_Resourcemesh",
+                "Name": "Mesh"
+              },
+              {
+                "ID": "EDITOR_GEN_Resourcematerial",
+                "Name": "Material"
+              },
+              {
+                "ID": "EDITOR_GEN_Resourceanimationcontroller",
+                "Name": "AnimationController"
+              },
+              {
+                "ID": "EDITOR_GEN_Resourceparticles",
+                "Name": "Particles"
+              },
+              {
+                "ID": "EDITOR_GEN_Resourceplayerdata",
+                "Name": "PlayerData"
+              },
+              {
+                "ID": "EDITOR_GEN_Resourcebehaviortree",
+                "Name": "BehaviorTree"
+              },
+              {
+                "ID": "EDITOR_GEN_Resourceperformance",
+                "Name": "Performance"
+              },
+              {
+                "ID": "Editor_Gen_Resource_UI_Skill",
+                "Name": "Skill"
+              },
+              {
+                "ID": "Editor_Gen_Resource_UI_DeBug",
+                "Name": "DeBug"
+              }
+            ],
+            "Funcs": []
+          }
+        ],
+        "Enums": [
+          {
+            "ID": -198880,
+            "Name": "EResFCG",
+            "Items": [
+              {
+                "Name": "C_HitBox",
+                "Value": "d7JXcoupLi9Bc3NldHMvU2NyaXB0cy9DX0hpdEJveC5mY2c="
+              }
+            ]
+          },
+          {
+            "ID": -231151,
+            "Name": "EResECA",
+            "Items": []
+          },
+          {
+            "ID": -200062,
+            "Name": "EResPrefab",
+            "Items": [
+              {
+                "Name": "NormalZombie",
+                "Value": "/1/DoDDweTl"
+              },
+              {
+                "Name": "HitBox_Zombie_Body",
+                "Value": "/2/FbiodFjI"
+              },
+              {
+                "Name": "HitBox_Zombie_Head",
+                "Value": "/3/FbiodFjI"
+              },
+              {
+                "Name": "HitBox_Zombie_LeftArm",
+                "Value": "/4/FbiodFjI"
+              },
+              {
+                "Name": "HitBox_Zombie_Leg",
+                "Value": "/5/FbiodFjI"
+              },
+              {
+                "Name": "HitBox_Zombie_RightArm",
+                "Value": "/6/FbiodFjI"
+              }
+            ]
+          },
+          {
+            "ID": -455090,
+            "Name": "EResSprite",
+            "Items": []
+          },
+          {
+            "ID": -159106,
+            "Name": "EResTexture",
+            "Items": []
+          },
+          {
+            "ID": -132365,
+            "Name": "EResEffect",
+            "Items": []
+          },
+          {
+            "ID": -921321,
+            "Name": "EResSound",
+            "Items": []
+          },
+          {
+            "ID": -19010,
+            "Name": "EResItem",
+            "Items": [
+              {
+                "Name": "Gun_AK47",
+                "Value": 6
+              }
+            ]
+          },
+          {
+            "ID": -259375,
+            "Name": "EResLevelObject",
+            "Items": []
+          },
+          {
+            "ID": -997150,
+            "Name": "EResCloth",
+            "Items": []
+          },
+          {
+            "ID": -594107,
+            "Name": "EResWeaponSkin",
+            "Items": []
+          },
+          {
+            "ID": -586252,
+            "Name": "EResVehicleSkin",
+            "Items": []
+          },
+          {
+            "ID": -167412,
+            "Name": "EResEmote",
+            "Items": []
+          },
+          {
+            "ID": -329596,
+            "Name": "EResCSV",
+            "Items": [
+              {
+                "Name": "LevelConfig",
+                "Value": "d7JXcoup.qvynabkauac-mhctomfo-m27x1ilqm9q"
+              },
+              {
+                "Name": "MonsterInfo",
+                "Value": "d7JXcoup.s1ys4w63d4-mhctomfr-gkrblrpqng"
+              }
+            ]
+          },
+          {
+            "ID": -381693,
+            "Name": "EResInternalHud",
+            "Items": []
+          },
+          {
+            "ID": -928180,
+            "Name": "EResMesh",
+            "Items": []
+          },
+          {
+            "ID": -775338,
+            "Name": "EResMaterial",
+            "Items": []
+          },
+          {
+            "ID": -325850,
+            "Name": "EResAnimationController",
+            "Items": []
+          },
+          {
+            "ID": -719822,
+            "Name": "EResParticles",
+            "Items": []
+          },
+          {
+            "ID": -142367,
+            "Name": "EResPlayerData",
+            "Items": []
+          },
+          {
+            "ID": -857121,
+            "Name": "EResBehaviorTree",
+            "Items": []
+          },
+          {
+            "ID": -321235,
+            "Name": "EResPerformance",
+            "Items": []
+          },
+          {
+            "ID": -954531,
+            "Name": "EResScene",
+            "Items": []
+          },
+          {
+            "ID": -152390,
+            "Name": "EResUI",
+            "Items": [
+              {
+                "Name": "Skill",
+                "Value": ""
+              },
+              {
+                "Name": "DeBug",
+                "Value": ""
+              }
+            ]
+          },
+          {
+            "ID": -641795,
+            "Name": "EResUISkill",
+            "Items": [
+              {
+                "Name": "JoyStickFillAmount",
+                "Value": 0
+              },
+              {
+                "Name": "",
+                "Value": 0
+              }
+            ]
+          },
+          {
+            "ID": -574669,
+            "Name": "EResUIDeBug",
+            "Items": []
+          },
+          {
+            "Name": "EResKeyUI",
+            "ID": 838139,
+            "Items": []
+          },
+          {
+            "Name": "EResKeyScene",
+            "ID": 245719,
+            "Items": []
+          },
+          {
+            "Name": "EResKeyPrefab",
+            "ID": 366989,
+            "Items": []
+          },
+          {
+            "Name": "EResKeyFCG",
+            "ID": 888076,
+            "Items": []
+          },
+          {
+            "Name": "EResKeyECA",
+            "ID": 914776,
+            "Items": []
+          },
+          {
+            "Name": "EResKeySprite",
+            "ID": 251311,
+            "Items": []
+          },
+          {
+            "Name": "EResKeyEffect",
+            "ID": 498317,
+            "Items": []
+          },
+          {
+            "Name": "EResKeySound",
+            "ID": 811726,
+            "Items": []
+          },
+          {
+            "Name": "EResKeyItem",
+            "ID": 148103,
+            "Items": []
+          },
+          {
+            "Name": "EResKeyLevelObject",
+            "ID": 931113,
+            "Items": []
+          },
+          {
+            "Name": "EResKeyCloth",
+            "ID": 913416,
+            "Items": []
+          },
+          {
+            "Name": "EResKeyWeaponSkin",
+            "ID": 191619,
+            "Items": []
+          },
+          {
+            "Name": "EResKeyVehicleSkin",
+            "ID": 148377,
+            "Items": []
+          },
+          {
+            "Name": "EResKeyEmote",
+            "ID": 588167,
+            "Items": []
+          },
+          {
+            "Name": "EResKeyCSV",
+            "ID": 860727,
+            "Items": []
+          },
+          {
+            "Name": "EResKeyInternalHud",
+            "ID": 338522,
+            "Items": []
+          },
+          {
+            "Name": "EResKeyTexture",
+            "ID": 463895,
+            "Items": []
+          },
+          {
+            "Name": "EResKeyMesh",
+            "ID": 506790,
+            "Items": []
+          },
+          {
+            "Name": "EResKeyMaterial",
+            "ID": 876933,
+            "Items": []
+          },
+          {
+            "Name": "EResKeyAnimationController",
+            "ID": 403675,
+            "Items": []
+          },
+          {
+            "Name": "EResKeyParticles",
+            "ID": 302911,
+            "Items": []
+          },
+          {
+            "Name": "EResKeyPlayerData",
+            "ID": 51424,
+            "Items": []
+          },
+          {
+            "Name": "EResKeyBehaviorTree",
+            "ID": 927249,
+            "Items": []
+          },
+          {
+            "Name": "EResKeyPerformance",
+            "ID": 673906,
+            "Items": []
+          },
+          {
+            "Name": "EResKeySkill",
+            "ID": 568702,
+            "Items": []
+          },
+          {
+            "Name": "EResKeyDeBug",
+            "ID": 305784,
+            "Items": []
+          },
+          {
+            "Name": "EPhase",
+            "ID": 200001,
+            "Items": []
+          }
+        ]
+      }
+    },
+    {
+      "Path": "wehss29x.fcc",
+      "Symbol": {
+        "Components": [],
+        "Events": [],
+        "Graphs": [],
+        "Enums": [
+          {
+            "Name": "EPhase",
+            "ID": 200001,
+            "Items": []
+          }
+        ]
+      }
+    },
+    {
+      "Path": "BA9iBjOL.fcc",
+      "Symbol": {
+        "Components": [],
+        "Events": [],
+        "Graphs": [
+          {
+            "ID": "BA9iBjOL.whgog58btr-lx1724pg-3h0scyd2o43",
+            "Name": "__BA9iBjOLzooSpawn6Point6Auto6Closerneca__",
+            "Props": [],
+            "Funcs": []
+          }
+        ],
+        "Enums": [
+          {
+            "Name": "EPhase",
+            "ID": 200001,
+            "Items": []
+          }
+        ]
+      }
+    },
+    {
+      "Path": "NnIxhh2E.fcc",
+      "Symbol": {
+        "Components": [],
+        "Events": [],
+        "Graphs": [],
+        "Enums": [
+          {
+            "Name": "EPhase",
+            "ID": 200001,
+            "Items": []
+          }
+        ]
+      }
+    }
+  ]
+}

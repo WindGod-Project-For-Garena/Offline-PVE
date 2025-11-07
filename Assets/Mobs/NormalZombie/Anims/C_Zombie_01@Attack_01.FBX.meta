@@ -1,0 +1,77 @@
+{
+  "fileId": "a8j7coo4f8n-m00s95i8-8r1j40j4uzo",
+  "globalscale": 1,
+  "properties": {
+    "Common": ""
+  },
+  "subDynamicResources": {},
+  "subLOD": {},
+  "version": "1.6.0",
+  "manifest": {
+    "Meshes": [],
+    "BoneInfos": [],
+    "Anims": [
+      {
+        "OrgExtName": ".Anim",
+        "Name": "attack01.Anim",
+        "Size": 58183,
+        "ClipData": {
+          "Name": "attack01",
+          "BakeStart": 0,
+          "BakeStop": 1.3333333730697632,
+          "SampleRate": 30
+        },
+        "magicNumber": {
+          "magicNumber1": 100,
+          "magicNumber2": 98,
+          "magicNumber3": 158,
+          "magicNumber4": 134,
+          "version": 1009715
+        }
+      }
+    ],
+    "ManifestJSON": {
+      "FBXName": "C_Zombie_01@Attack_01",
+      "ImportSucceeded": true,
+      "MaterialCount": 0,
+      "MaterialDetail": [],
+      "MeshCount": 0,
+      "MeshDetail": []
+    }
+  },
+  "content": {
+    "attack01.anim": {
+      "_entityName": "AnimClipEntity",
+      "_entityId": "",
+      "_preModel": {
+        "fileId": "glvebd7m03m-m03lt4wk-7wxymv3fjb",
+        "filePath": "Assets\\ZombieAssist\\Zombie01\\C_Zombie_01.FBX",
+        "_tag": {
+          "type": "GFileRefer"
+        },
+        "fileType": "fbx"
+      },
+      "children": [
+        {
+          "_entityId": "IyHYcIvk",
+          "EventFrameName": "事件帧",
+          "FrameIndex": 16,
+          "Time": 0.53,
+          "EventList": [
+            {
+              "eventKeyValue": "AnimationControllerAble::signal_52120933",
+              "paramList": [
+                {
+                  "type": "String",
+                  "label": "eventName",
+                  "newValue": "Zombie01Attack01"
+                }
+              ],
+              "hideParam": false
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

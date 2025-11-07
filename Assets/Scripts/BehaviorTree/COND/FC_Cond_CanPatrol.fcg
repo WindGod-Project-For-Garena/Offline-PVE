@@ -1,0 +1,31 @@
+import "StdLibrary.fcc" as StdLib
+import "EditorGenLib.fcc" as EditorLib
+import "BehaviourTree.fcc" as BehaviourTree
+import "Math.fcc" as Math
+
+graph Script_1_ {
+    //Executed when entity is created
+    event OnAwake() {
+
+    }
+    func PlayCondition(owner entity<BevTreeAttachable>) bool {
+        if(owner<Mob>.StatusDic["CanPatrol"] as bool){
+            GetNodeVariable(thisEntity<BevTreeCustomNode>,"CD",out var cd)
+            GetBlackboardValue(owner<BevTreeAttachable>.AttachTarget,"LastPatrolTime",out var lastpatrolTime)
+            if (lastpatrolTime == nil){
+                SetBlackboardValue(owner<BevTreeAttachable>.AttachTarget,"LastPatrolTime",globalEntity<Global>.GameTimeCount)
+                return true
+            }
+            var realCD = Floor(cd as int)
+            var nextTime = lastpatrolTime as int + realCD
+            if (globalEntity<Global>.GameTimeCount < nextTime){
+                return false
+            }else {
+                SetBlackboardValue(owner<BevTreeAttachable>.AttachTarget,"LastPatrolTime",globalEntity<Global>.GameTimeCount)
+                return true
+            }
+        }else {
+            return false
+        }
+    }
+}

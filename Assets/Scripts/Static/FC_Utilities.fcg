@@ -1,0 +1,57 @@
+import "StdLibrary.fcc" as StdLib
+import "EditorGenLib.fcc" as EditorLib
+import "LevelObject.fcc" as LevelObject
+import "Math.fcc" as Math
+import "List.fcc" as List
+import "Convert.fcc" as Convert
+import "Strings.fcc" as strings
+
+static graph FC_PVEUtilities {
+    //Executed when entity is created
+    //funcID: LookAt
+	func myLookAt(transform entity<Transform>, player entity<Entity>, pos Vector3) {
+		var curPos Vector3 = transform<Transform>.Position
+		var targetPos Vector3 = Vector3{0,0,0}
+		if TypeIs(player, typeof(Player)) {
+			targetPos = player<Player>.Position
+		} else if TypeIs(player, typeof(CustomizeTrigger)) {
+			targetPos = player<Transform>.Position
+		} else if TypeIs(player, typeof(CustomLevelObject)) {
+			targetPos = player<Transform>.Position
+		} else {
+			targetPos = pos
+		}
+		var sub Vector3 = targetPos - curPos
+		var angle float = ATan2(sub.X, sub.Z)
+		var mobName string = transform<Mob>.MobName
+		SetPropertySmoothly(transform, Transform.LocalRotation, Vector3{0, angle, 0})
+	}
+
+	// 通知所有玩家
+    func NotifyAllPlayers(message string, color Color, duration int) {
+        var allPlayers = GetAllPlayers()
+        for i = 0, List.Length(allPlayers), 1 {
+            NotifyShowTips(allPlayers[i], message, color, duration)
+        }
+    }
+
+	func SplitStringToInt(str string) List<int> {
+		var list List<int> = List<int>{}
+		var strList List<string> = strings.Split(str, ",")
+		for i = 0, List.Length(strList), 1 {
+			StringToInt(strList[i],out var result, out var error)
+			List.Append(list,result)
+		}
+		return list
+	}
+
+	func SplitStringToFloat(str string) List<float> {
+		var list List<float> = List<float>{}
+		var strList List<string> = strings.Split(str, ",")
+		for i = 0, List.Length(strList), 1 {
+			StringToFloat(strList[i],out var result, out var error)
+			List.Append(list,result)
+		}
+		return list
+	}
+}

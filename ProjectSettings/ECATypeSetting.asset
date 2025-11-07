@@ -1,0 +1,119 @@
+{
+  "_tag": {
+    "type": "ecaDesc",
+    "resourceId": ""
+  },
+  "_entityId": "kx6eTQhg",
+  "children": [],
+  "prefabVariant": null,
+  "activeValue": {
+    "selfValue": true,
+    "valueTag": "activeValue"
+  },
+  "unlockedValue": {
+    "selfValue": true,
+    "valueTag": "unlockedValue"
+  },
+  "editorLockValue": false,
+  "editorVisibleValue": true,
+  "TypeDefines": {
+    "CustomComponent59601760": {
+      "label": "Mob",
+      "name": "CustomComponent59601760",
+      "bases": [
+        "Component"
+      ],
+      "ecaScripts": [],
+      "typeID": 100000,
+      "PropDefines": [
+        {
+          "propID": 100005,
+          "name": "PROP_22515481",
+          "label": "MobName",
+          "type": "String",
+          "value": "",
+          "disabledType": true
+        },
+        {
+          "propID": 100001,
+          "name": "PROP_31785558",
+          "label": "MaxHP",
+          "type": "Int",
+          "value": 100,
+          "disabledType": true,
+          "param": {
+            "precision": 0,
+            "min": -2147483648,
+            "max": 2147483647
+          }
+        },
+        {
+          "propID": 100002,
+          "name": "PROP_74830943",
+          "label": "HP",
+          "type": "Int",
+          "value": 100,
+          "disabledType": true,
+          "param": {
+            "precision": 0,
+            "min": -2147483648,
+            "max": 2147483647
+          }
+        },
+        {
+          "propID": 100003,
+          "name": "PROP_93441408",
+          "label": "WalkSpeed",
+          "type": "Int",
+          "value": 4,
+          "disabledType": true,
+          "param": {
+            "precision": 0,
+            "min": -2147483648,
+            "max": 2147483647
+          }
+        },
+        {
+          "propID": 100004,
+          "name": "PROP_27635539",
+          "label": "Damage",
+          "type": "Int",
+          "value": 10,
+          "disabledType": true,
+          "param": {
+            "precision": 0,
+            "min": -2147483648,
+            "max": 2147483647
+          }
+        },
+        {
+          "propID": 100007,
+          "name": "PROP_77801521",
+          "label": "StatusDic",
+          "type": "Map",
+          "value": null,
+          "disabledType": true,
+          "param": {
+            "compType": "InputEditor",
+            "disabled": true
+          }
+        },
+        {
+          "propID": 100006,
+          "name": "PROP_92961702",
+          "label": "CurrTarget",
+          "type": "Player",
+          "value": null
+        },
+        {
+          "propID": 100008,
+          "name": "PROP_94587706",
+          "label": "LastHitPlayer",
+          "type": "Player",
+          "value": null
+        }
+      ]
+    }
+  }
+}
+//"{FE:{"v":"1.14.3883376","c":{"FF":5001},"s":100}

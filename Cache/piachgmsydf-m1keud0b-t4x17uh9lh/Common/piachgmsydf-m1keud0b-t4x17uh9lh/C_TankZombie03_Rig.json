@@ -1,0 +1,27 @@
+{
+    "FBXName" : "C_TankZombie03_Rig",
+    "ImportSucceeded" : true,
+    "MaterialCount" : 2,
+    "MaterialDetail" : [
+    {
+        "Index" : 0,
+        "MaterialName" :  "C_TankZombie02"
+    },
+    {
+        "Index" : 1,
+        "MaterialName" :  "B_tank"
+    }
+    ],
+    "MeshCount" : 1,
+    "MeshDetail" : [
+    {
+        "MeshName" : "B_tank_12",
+        "MaterialIndex" : [0,1],
+        "Transform" : {
+          "Position" : [-0, 0, 0],
+          "Rotation" : [-90, 0, -0],
+          "Scale" : [1, 1, 1]
+        }
+    }
+    ]
+}

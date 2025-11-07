@@ -1,0 +1,142 @@
+import "StdLibrary.fcc" as StdLib
+import "EditorGenLib.fcc" as EditorLib
+import "Playable.fcc" as Playable
+import "BehaviourTree.fcc" as BehaviourTree
+
+graph FC_NormalZombie {
+    //Executed when entity is created
+    HeadShoted bool = false
+	LastHitPlayer entity<Player> = nil
+	MoveTween entity<Tween> = nil
+	LastPos Vector3 = Vector3{0,0,0}
+    tickInterval int = 1
+
+	event OnAwake() {
+        WaitForNextFrame()
+        Init()
+    }
+
+	//funcID: Init
+	async func Init() {
+		CreateMoveTween(thisEntity<Transform>.Position, thisEntity<Transform>.Position)
+		thisEntity<BevTreeAttachable>.AttachTarget<BevTree>.TickInterval = tickInterval
+		thisEntity<Mob>.MobName = "NormalZombie"
+        thisEntity<Mob>.MaxHP = 600
+        thisEntity<Mob>.HP = 600
+        thisEntity<Mob>.WalkSpeed = 4
+        thisEntity<Mob>.Damage = 10
+		thisEntity<Mob>.StatusDic = Map<string, object>{
+			"HeadShot": false, 	//是否被爆头
+			"InFall": false, 	//是否在摔倒
+			"Hit": false, 		//是否受击
+			"InHit": false, 	//是否在受击
+			"CanPatrol": true, //是否可以巡逻
+		}
+        var nowTime int = globalEntity<Global>.GameTimeCount
+		SetBlackboardValue(thisEntity<BevTreeAttachable>.AttachTarget, "LastAttackTime", nowTime)
+		SetBlackboardValue(thisEntity<BevTreeAttachable>.AttachTarget, "Curstate", 0)
+		WaitForMillisecond(2000)
+		//DispatchEventWithPlatform_Deprecated(100002, thisEntity, true, List<object>{thisEntity<CustomComponent31897461>.ZombieInfo["InitSpeed"]})
+		
+        // for index3, element4 in GetAllPlayers() {
+        //     SetAttackableEntity(element4, thisEntity, 1)
+        // }
+	}
+
+	//funcID: CreateMoveTween
+	func CreateMoveTween(startPos Vector3, endPos Vector3) {
+		if MoveTween == nil {
+			LogInfo("CreateMoveTween")
+			CreateTween(thisEntity, Transform.Position, thisEntity<Transform>.Position, thisEntity<Transform>.Position, TweenStyle.Once, CreateCurve({0, 0, 1, 1}),30, out var moveTween, false)
+			MoveTween = moveTween
+			LastPos = thisEntity<Transform>.Position
+		} else {
+			//thisEntity<Transform>.Position = endPos
+			SetPropertySmoothly(thisEntity, Transform.Position, endPos)
+			// MoveTween<Tween>.StartValue = LastPos
+			// MoveTween<Tween>.EndValue = endPos
+			// LastPos = endPos
+			// Play(MoveTween, true)
+		}
+	}
+
+	// //funcID: ChangeSkinEffect
+	// func ChangeSkinEffect(locBoolVar8 bool) {
+	// 	if locBoolVar8 {
+	// 		if IsNil(thisEntity<CustomComponent31897461>.EffectDic["ColdEffect"]) {
+	// 			ShowAppearanceGroup(thisEntity, "Skin_cold")
+	// 			HideAppearanceGroup(thisEntity, "Skin")
+	// 			CreateEffect(out var createdEntity9, nil, "UGC_T_37_WZY_WS_VFX5", 1, true)
+	// 			createdEntity9<Transform>.Scale = Vector3{1.5, 1.5, 1.5}
+	// 			createdEntity9<Effect>.Color = #004699ff
+	// 			SetParent(thisEntity, createdEntity9, false)
+	// 			createdEntity9<Transform>.LocalPosition = Vector3{0, 0.5, 0}
+	// 			thisEntity<CustomComponent31897461>.EffectDic["ColdEffect"] = createdEntity9
+	// 			thisEntity<CustomComponent31897461>.ZombieInfo["InitSpeed"] = 2
+	// 		}
+	// 	} else {
+	// 		ShowAppearanceGroup(thisEntity, "Skin")
+	// 		HideAppearanceGroup(thisEntity, "Skin_cold")
+	// 	}
+	// }
+
+	// //funcID: GetMoveSpeed
+	// func GetMoveSpeed() float {
+	// 	return (thisEntity<CustomComponent31897461>.ZombieInfo["MoveSpeedScale"] * thisEntity<CustomComponent31897461>.ZombieInfo["InitSpeed"])
+	// }
+
+	// //funcID: SetPosition
+	// func SetPosition(locVector3Var10 Vector3) {
+	// 	SetPropertySmoothly(thisEntity, -97000, locVector3Var10)
+	// 	DispatchEventWithPlatform_Deprecated(100003, thisEntity, true, List<object>{locVector3Var10})
+	// }
+
+	// //eventID: 91//:Y_g@@:F{.2Z(m.miDlH
+	// event OnAwake() {
+	// 	WaitForNextFrame()
+	// 	Init()
+	// }
+
+	// //eventID: 91//r;Zn+-uY8Ahq`0JH4Yr{
+	// event OnCustomEvent100005(locStringVar11 string) {
+	// 	if (locStringVar11 == "Zombie01Attack01") {
+	// 		GetBlackboardValue(thisEntity<BevTreeAttachable>.AttachTarget, "CurTarget", out var value12)
+	// 		if (!IsNil(value12) && (Distance(value12<Player>.Position, thisEntity<Transform>.Position) <= 1.5)) {
+	// 			DealDamage(value12, nil, -19, GetDamage())
+	// 		}
+	// 	} else if (locStringVar11 == "Zombie01Attack02") {
+	// 		GetBlackboardValue(thisEntity<BevTreeAttachable>.AttachTarget, "CurTarget", out var value13)
+	// 		if (!IsNil(value13) && (Distance(value13<Player>.Position, thisEntity<Transform>.Position) <= 1.5)) {
+	// 			DealDamage(value13, nil, -19, GetDamage())
+	// 		}
+	// 	} else {
+	// 		start globalEntity<global_process_eca>.DeleteThisZombie(thisEntity)
+	// 		Destroy(thisEntity)
+	// 	}
+	// }
+
+	// //eventID: 91//pwg}5C2p/Islj^_9k~vt
+	// event OnCustomEvent100008(locPlayerVar14 entity<Player>, locStringVar15 string, locIntVar16 int) {
+	// }
+
+	// //eventID: 91//J5eI=fASwl@6,#4CIpv4
+	// event OnUpdate() {
+	// 	if thisEntity<CustomComponent31897461>.EffectDic["InCold"] {
+	// 		if (globalEntity<Global>.GameTimeCount >= thisEntity<CustomComponent31897461>.EffectDic["TimeStamp"]) {
+	// 			start globalEntity<global_old_eca>.CloseColdEffect(thisEntity)
+	// 			thisEntity<CustomComponent31897461>.EffectDic["TimeStamp"] = globalEntity<Global>.GameTimeCount
+	// 		}
+	// 	}
+	// }
+
+    // //funcID: SetYaw
+	// func SetYaw(locFloatVar1 float) {
+	// 	thisEntity<Transform>.LocalRotation = Vector3{0, locFloatVar1, 0}
+	// 	DispatchEventWithPlatform_Deprecated(100004, thisEntity, true, List<object>{locFloatVar1})
+	// }
+
+	// //funcID: GetDamage
+	// func GetDamage() int {
+	// 	return Floor((thisEntity<CustomComponent31897461>.ZombieInfo["LeftDamageScale"] * thisEntity<CustomComponent31897461>.ZombieInfo["InitDamage"]))
+	// }
+}

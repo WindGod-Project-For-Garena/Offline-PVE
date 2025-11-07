@@ -1,0 +1,1449 @@
+{
+    "W!9p4B#3RvTc": "ref",
+    "AppVersion": "0.1.3987356",
+    "ContentVersion": {
+        "FF": 5001
+    },
+    "Name": "Minicharacter",
+    "UUID": "NnIxhh2E",
+    "Children": [
+        {
+            "Name": "Mini_Kelly.prefab",
+            "UUID": "ajhddtlj7np-mgyzsomk-ci4clukli1r",
+            "Type": "prefab",
+            "PackageUUID": "",
+            "RelyOns": [
+                "NnIxhh2E.ajhddtlj7np-mgyzsomk-ci4clukli1r"
+            ],
+            "Info": {}
+        },
+        {
+            "Name": "Kelly",
+            "UUID": "3hvg893kfvt-mgz1yn12-22dnhg1pwthi",
+            "Type": "folder",
+            "SubType": "",
+            "PackageUUID": "",
+            "RelyOns": [],
+            "Children": [
+                {
+                    "Name": "Female_UGCCos_Kelly.FBX",
+                    "UUID": "24hq0yca12q-mgyz3xcb-0fu2jlw69zj",
+                    "Type": "fbx",
+                    "PackageUUID": "",
+                    "Children": [
+                        {
+                            "Name": "UGC_Bottom_Kelly.mesh",
+                            "UUID": "24hq0yca12q-mgyz3xcb-0fu2jlw69zj-UGC_Bottom_Kelly.~@FFSKIN",
+                            "Type": "mesh",
+                            "PackageUUID": "NnIxhh2E.AutoCommon_LxD6b123",
+                            "RelyOns": [
+                                "NnIxhh2E.24hq0yca12q-mgyz3xcb-0fu2jlw69zj-UGC_Bottom_Kelly.~@FFSKIN"
+                            ],
+                            "Info": {
+                                "SubMeshCount": 2,
+                                "Type": "skin"
+                            }
+                        },
+                        {
+                            "Name": "UGC_Hair_Kelly.mesh",
+                            "UUID": "24hq0yca12q-mgyz3xcb-0fu2jlw69zj-UGC_Hair_Kelly.~@FFSKIN",
+                            "Type": "mesh",
+                            "PackageUUID": "NnIxhh2E.AutoCommon_LxD6b123",
+                            "RelyOns": [
+                                "NnIxhh2E.24hq0yca12q-mgyz3xcb-0fu2jlw69zj-UGC_Hair_Kelly.~@FFSKIN"
+                            ],
+                            "Info": {
+                                "SubMeshCount": 1,
+                                "Type": "skin"
+                            }
+                        },
+                        {
+                            "Name": "UGC_Hand_Kelly.mesh",
+                            "UUID": "24hq0yca12q-mgyz3xcb-0fu2jlw69zj-UGC_Hand_Kelly.~@FFSKIN",
+                            "Type": "mesh",
+                            "PackageUUID": "NnIxhh2E.AutoCommon_LxD6b123",
+                            "RelyOns": [
+                                "NnIxhh2E.24hq0yca12q-mgyz3xcb-0fu2jlw69zj-UGC_Hand_Kelly.~@FFSKIN"
+                            ],
+                            "Info": {
+                                "SubMeshCount": 1,
+                                "Type": "skin"
+                            }
+                        },
+                        {
+                            "Name": "UGC_Head.mesh",
+                            "UUID": "24hq0yca12q-mgyz3xcb-0fu2jlw69zj-UGC_Head.~@FFSKIN",
+                            "Type": "mesh",
+                            "PackageUUID": "NnIxhh2E.AutoCommon_LxD6b123",
+                            "RelyOns": [
+                                "NnIxhh2E.24hq0yca12q-mgyz3xcb-0fu2jlw69zj-UGC_Head.~@FFSKIN"
+                            ],
+                            "Info": {
+                                "SubMeshCount": 1,
+                                "Type": "skin"
+                            }
+                        },
+                        {
+                            "Name": "UGC_Shoe_Kelly.mesh",
+                            "UUID": "24hq0yca12q-mgyz3xcb-0fu2jlw69zj-UGC_Shoe_Kelly.~@FFSKIN",
+                            "Type": "mesh",
+                            "PackageUUID": "NnIxhh2E.AutoCommon_LxD6b123",
+                            "RelyOns": [
+                                "NnIxhh2E.24hq0yca12q-mgyz3xcb-0fu2jlw69zj-UGC_Shoe_Kelly.~@FFSKIN"
+                            ],
+                            "Info": {
+                                "SubMeshCount": 1,
+                                "Type": "skin"
+                            }
+                        },
+                        {
+                            "Name": "UGC_Top_Kelly.mesh",
+                            "UUID": "24hq0yca12q-mgyz3xcb-0fu2jlw69zj-UGC_Top_Kelly.~@FFSKIN",
+                            "Type": "mesh",
+                            "PackageUUID": "NnIxhh2E.AutoCommon_LxD6b123",
+                            "RelyOns": [
+                                "NnIxhh2E.24hq0yca12q-mgyz3xcb-0fu2jlw69zj-UGC_Top_Kelly.~@FFSKIN"
+                            ],
+                            "Info": {
+                                "SubMeshCount": 2,
+                                "Type": "skin"
+                            }
+                        },
+                        {
+                            "Name": "Female_UGCCos_Kelly.sk",
+                            "UUID": "24hq0yca12q-mgyz3xcb-0fu2jlw69zj-Female_UGCCos_Kelly.sk",
+                            "Type": "sk",
+                            "PackageUUID": "NnIxhh2E.AutoCommon_LxD6b123",
+                            "RelyOns": [
+                                "NnIxhh2E.24hq0yca12q-mgyz3xcb-0fu2jlw69zj-Female_UGCCos_Kelly.sk"
+                            ],
+                            "Info": {
+                                "BoneNodes": [
+                                    {
+                                        "ChildBones": [],
+                                        "BoneName": "UGC_Top_Kelly"
+                                    },
+                                    {
+                                        "ChildBones": [],
+                                        "BoneName": "UGC_Shoe_Kelly"
+                                    },
+                                    {
+                                        "ChildBones": [],
+                                        "BoneName": "UGC_Hand_Kelly"
+                                    },
+                                    {
+                                        "ChildBones": [],
+                                        "BoneName": "UGC_Bottom_Kelly"
+                                    },
+                                    {
+                                        "ChildBones": [],
+                                        "BoneName": "Point001"
+                                    },
+                                    {
+                                        "ChildBones": [
+                                            {
+                                                "ChildBones": [
+                                                    {
+                                                        "ChildBones": [
+                                                            {
+                                                                "ChildBones": [
+                                                                    {
+                                                                        "ChildBones": [],
+                                                                        "BoneName": "ToolBagPoint"
+                                                                    },
+                                                                    {
+                                                                        "ChildBones": [
+                                                                            {
+                                                                                "ChildBones": [
+                                                                                    {
+                                                                                        "ChildBones": [
+                                                                                            {
+                                                                                                "ChildBones": [
+                                                                                                    {
+                                                                                                        "ChildBones": [
+                                                                                                            {
+                                                                                                                "ChildBones": [
+                                                                                                                    {
+                                                                                                                        "ChildBones": [],
+                                                                                                                        "BoneName": "Bip001 R Finger0Nub"
+                                                                                                                    }
+                                                                                                                ],
+                                                                                                                "BoneName": "RightHandThumb1"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "ChildBones": [],
+                                                                                                                "BoneName": "RightHandItemPoint"
+                                                                                                            }
+                                                                                                        ],
+                                                                                                        "BoneName": "bone_RightHand"
+                                                                                                    }
+                                                                                                ],
+                                                                                                "BoneName": "bone_RightForeArm"
+                                                                                            }
+                                                                                        ],
+                                                                                        "BoneName": "bone_RightArm"
+                                                                                    }
+                                                                                ],
+                                                                                "BoneName": "bone_RightClav"
+                                                                            },
+                                                                            {
+                                                                                "ChildBones": [
+                                                                                    {
+                                                                                        "ChildBones": [
+                                                                                            {
+                                                                                                "ChildBones": [
+                                                                                                    {
+                                                                                                        "ChildBones": [
+                                                                                                            {
+                                                                                                                "ChildBones": [
+                                                                                                                    {
+                                                                                                                        "ChildBones": [],
+                                                                                                                        "BoneName": "Bip001 L Finger0Nub"
+                                                                                                                    }
+                                                                                                                ],
+                                                                                                                "BoneName": "LeftHandThumb1"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "ChildBones": [],
+                                                                                                                "BoneName": "LeftHandItemPoint"
+                                                                                                            }
+                                                                                                        ],
+                                                                                                        "BoneName": "bone_LeftHand"
+                                                                                                    }
+                                                                                                ],
+                                                                                                "BoneName": "bone_LeftForeArm"
+                                                                                            }
+                                                                                        ],
+                                                                                        "BoneName": "bone_LeftArm"
+                                                                                    }
+                                                                                ],
+                                                                                "BoneName": "bone_LeftClav"
+                                                                            },
+                                                                            {
+                                                                                "ChildBones": [
+                                                                                    {
+                                                                                        "ChildBones": [
+                                                                                            {
+                                                                                                "ChildBones": [],
+                                                                                                "BoneName": "Bip001 HeadNub"
+                                                                                            }
+                                                                                        ],
+                                                                                        "BoneName": "bone_Head"
+                                                                                    }
+                                                                                ],
+                                                                                "BoneName": "bone_Neck"
+                                                                            }
+                                                                        ],
+                                                                        "BoneName": "bone_Spine1"
+                                                                    }
+                                                                ],
+                                                                "BoneName": "bone_Spine"
+                                                            },
+                                                            {
+                                                                "ChildBones": [
+                                                                    {
+                                                                        "ChildBones": [
+                                                                            {
+                                                                                "ChildBones": [
+                                                                                    {
+                                                                                        "ChildBones": [
+                                                                                            {
+                                                                                                "ChildBones": [],
+                                                                                                "BoneName": "Bip001 L Toe0Nub"
+                                                                                            }
+                                                                                        ],
+                                                                                        "BoneName": "LeftToeBase"
+                                                                                    }
+                                                                                ],
+                                                                                "BoneName": "bone_LeftAnkle"
+                                                                            }
+                                                                        ],
+                                                                        "BoneName": "bone_LeftLeg"
+                                                                    }
+                                                                ],
+                                                                "BoneName": "bone_LeftLegUpper"
+                                                            },
+                                                            {
+                                                                "ChildBones": [
+                                                                    {
+                                                                        "ChildBones": [
+                                                                            {
+                                                                                "ChildBones": [
+                                                                                    {
+                                                                                        "ChildBones": [
+                                                                                            {
+                                                                                                "ChildBones": [],
+                                                                                                "BoneName": "Bip001 R Toe0Nub"
+                                                                                            }
+                                                                                        ],
+                                                                                        "BoneName": "RightToeBase"
+                                                                                    }
+                                                                                ],
+                                                                                "BoneName": "bone_RightAnkle"
+                                                                            }
+                                                                        ],
+                                                                        "BoneName": "bone_RightLeg"
+                                                                    }
+                                                                ],
+                                                                "BoneName": "bone_RightLegUpper"
+                                                            }
+                                                        ],
+                                                        "BoneName": "bone_Hips"
+                                                    }
+                                                ],
+                                                "BoneName": "Hips"
+                                            }
+                                        ],
+                                        "BoneName": "Root"
+                                    },
+                                    {
+                                        "ChildBones": [],
+                                        "BoneName": "UGC_Hair_Kelly"
+                                    },
+                                    {
+                                        "ChildBones": [],
+                                        "BoneName": "UGC_Head"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "Name": "Female_Head_UGCCos_Kelly.mat",
+                    "UUID": "8czw17zo86o-mg3e0qux-0hrubrtifeum",
+                    "Type": "material",
+                    "PackageUUID": "NnIxhh2E.AutoClient_Td6jBDOz",
+                    "RelyOns": [
+                        "NnIxhh2E.8czw17zo86o-mg3e0qux-0hrubrtifeum",
+                        "NnIxhh2E.8uzkpj31mx-mg3e6xt1-gy0t1kp12qo",
+                        "NnIxhh2E.4lmntlcgp12-mg3e6yj9-5ym4gjdp9am",
+                        "NnIxhh2E.8guj89q1ubn-mg3e6xc8-lyk47bo90ph",
+                        "NnIxhh2E.rku5zgt7jpb-mg3e6yby-hthtws3en19",
+                        "NnIxhh2E.rej8v6ik4da-mg3e6y12-scwufif9ug"
+                    ]
+                },
+                {
+                    "Name": "Female_Head_UGCCos_Kelly_D.png",
+                    "UUID": "8uzkpj31mx-mg3e6xt1-gy0t1kp12qo",
+                    "Type": "texture",
+                    "PackageUUID": "NnIxhh2E.AutoPlatformed_SAeVNyuk",
+                    "RelyOns": [
+                        "NnIxhh2E.8uzkpj31mx-mg3e6xt1-gy0t1kp12qo"
+                    ],
+                    "Info": {
+                        "SpriteID": "Sp1",
+                        "width": 256,
+                        "height": 256
+                    },
+                    "AtlasUUID": "NnIxhh2E.a-ytvl3kdqmsd-metuejn1-5br0d0tvp3i"
+                },
+                {
+                    "Name": "Female_Headadditive_UGCCos_Kelly_A.png",
+                    "UUID": "4lmntlcgp12-mg3e6yj9-5ym4gjdp9am",
+                    "Type": "texture",
+                    "PackageUUID": "NnIxhh2E.AutoPlatformed_SAeVNyuk",
+                    "RelyOns": [
+                        "NnIxhh2E.4lmntlcgp12-mg3e6yj9-5ym4gjdp9am"
+                    ],
+                    "Info": {
+                        "SpriteID": "Sp2",
+                        "width": 256,
+                        "height": 256
+                    },
+                    "AtlasUUID": "NnIxhh2E.a-ytvl3kdqmsd-metuejn1-5br0d0tvp3i"
+                },
+                {
+                    "Name": "Female_Head_UGCCos_Kelly_A.png",
+                    "UUID": "8guj89q1ubn-mg3e6xc8-lyk47bo90ph",
+                    "Type": "texture",
+                    "PackageUUID": "NnIxhh2E.AutoPlatformed_SAeVNyuk",
+                    "RelyOns": [
+                        "NnIxhh2E.8guj89q1ubn-mg3e6xc8-lyk47bo90ph"
+                    ],
+                    "Info": {
+                        "SpriteID": "Sp3",
+                        "width": 512,
+                        "height": 512
+                    },
+                    "AtlasUUID": "NnIxhh2E.a-ytvl3kdqmsd-metuejn1-5br0d0tvp3i"
+                },
+                {
+                    "Name": "Female_Head_UGCCos_Kelly_S.png",
+                    "UUID": "rku5zgt7jpb-mg3e6yby-hthtws3en19",
+                    "Type": "texture",
+                    "PackageUUID": "NnIxhh2E.AutoPlatformed_SAeVNyuk",
+                    "RelyOns": [
+                        "NnIxhh2E.rku5zgt7jpb-mg3e6yby-hthtws3en19"
+                    ],
+                    "Info": {
+                        "SpriteID": "Sp4",
+                        "width": 256,
+                        "height": 256
+                    },
+                    "AtlasUUID": "NnIxhh2E.a-ytvl3kdqmsd-metuejn1-5br0d0tvp3i"
+                },
+                {
+                    "Name": "Female_Head_UGCCos_Kelly_N.png",
+                    "UUID": "rej8v6ik4da-mg3e6y12-scwufif9ug",
+                    "Type": "texture",
+                    "PackageUUID": "NnIxhh2E.AutoPlatformed_SAeVNyuk",
+                    "RelyOns": [
+                        "NnIxhh2E.rej8v6ik4da-mg3e6y12-scwufif9ug"
+                    ],
+                    "Info": {
+                        "SpriteID": "Sp5",
+                        "width": 256,
+                        "height": 256
+                    },
+                    "AtlasUUID": "NnIxhh2E.a-ytvl3kdqmsd-metuejn1-5br0d0tvp3i"
+                },
+                {
+                    "Name": "Female_Top_UGCCos_Kelly.mat",
+                    "UUID": "2l1am7k0hj5-mg3e0r1c-jzpps0gwoxk",
+                    "Type": "material",
+                    "PackageUUID": "NnIxhh2E.AutoClient_Td6jBDOz",
+                    "RelyOns": [
+                        "NnIxhh2E.2l1am7k0hj5-mg3e0r1c-jzpps0gwoxk",
+                        "NnIxhh2E.ag5kcur1ljd-mg3e6zb1-r7o0a51wvwn",
+                        "NnIxhh2E.kdk2064welc-mg3e6zmm-lug6cznu2o",
+                        "NnIxhh2E.dgbjfg9g5am-mg3e6zu5-euvqkkkgokp"
+                    ]
+                },
+                {
+                    "Name": "Female_Top_UGCCos_Kelly_D.png",
+                    "UUID": "ag5kcur1ljd-mg3e6zb1-r7o0a51wvwn",
+                    "Type": "texture",
+                    "PackageUUID": "NnIxhh2E.AutoPlatformed_SAeVNyuk",
+                    "RelyOns": [
+                        "NnIxhh2E.ag5kcur1ljd-mg3e6zb1-r7o0a51wvwn"
+                    ],
+                    "Info": {
+                        "SpriteID": "Sp6",
+                        "width": 512,
+                        "height": 512
+                    },
+                    "AtlasUUID": "NnIxhh2E.a-ytvl3kdqmsd-metuejn1-5br0d0tvp3i"
+                },
+                {
+                    "Name": "Female_Top_UGCCos_Kelly_NG.png",
+                    "UUID": "kdk2064welc-mg3e6zmm-lug6cznu2o",
+                    "Type": "texture",
+                    "PackageUUID": "NnIxhh2E.AutoPlatformed_SAeVNyuk",
+                    "RelyOns": [
+                        "NnIxhh2E.kdk2064welc-mg3e6zmm-lug6cznu2o"
+                    ],
+                    "Info": {
+                        "SpriteID": "Sp7",
+                        "width": 256,
+                        "height": 256
+                    },
+                    "AtlasUUID": "NnIxhh2E.a-ytvl3kdqmsd-metuejn1-5br0d0tvp3i"
+                },
+                {
+                    "Name": "Female_Top_UGCCos_Kelly_S.png",
+                    "UUID": "dgbjfg9g5am-mg3e6zu5-euvqkkkgokp",
+                    "Type": "texture",
+                    "PackageUUID": "NnIxhh2E.AutoPlatformed_SAeVNyuk",
+                    "RelyOns": [
+                        "NnIxhh2E.dgbjfg9g5am-mg3e6zu5-euvqkkkgokp"
+                    ],
+                    "Info": {
+                        "SpriteID": "Sp8",
+                        "width": 256,
+                        "height": 256
+                    },
+                    "AtlasUUID": "NnIxhh2E.a-ytvl3kdqmsd-metuejn1-5br0d0tvp3i"
+                },
+                {
+                    "Name": "Female_Body_UGCCos_Kelly.mat",
+                    "UUID": "b571sjpah0p-mg3e0qma-z75qkdz16de",
+                    "Type": "material",
+                    "PackageUUID": "NnIxhh2E.AutoClient_Td6jBDOz",
+                    "RelyOns": [
+                        "NnIxhh2E.b571sjpah0p-mg3e0qma-z75qkdz16de",
+                        "NnIxhh2E.0zx7k3344n4-mg3e7033-yr6c7deiaim",
+                        "NnIxhh2E.hogszn5yj4h-mg3e70a7-ddo4sdv85z6"
+                    ]
+                },
+                {
+                    "Name": "Female_Body_UGCCos_Kelly_D.png",
+                    "UUID": "0zx7k3344n4-mg3e7033-yr6c7deiaim",
+                    "Type": "texture",
+                    "PackageUUID": "NnIxhh2E.AutoPlatformed_SAeVNyuk",
+                    "RelyOns": [
+                        "NnIxhh2E.0zx7k3344n4-mg3e7033-yr6c7deiaim"
+                    ],
+                    "Info": {
+                        "SpriteID": "Sp9",
+                        "width": 256,
+                        "height": 256
+                    },
+                    "AtlasUUID": "NnIxhh2E.a-ytvl3kdqmsd-metuejn1-5br0d0tvp3i"
+                },
+                {
+                    "Name": "Female_Body_UGCCos_Kelly_N.png",
+                    "UUID": "hogszn5yj4h-mg3e70a7-ddo4sdv85z6",
+                    "Type": "texture",
+                    "PackageUUID": "NnIxhh2E.AutoPlatformed_SAeVNyuk",
+                    "RelyOns": [
+                        "NnIxhh2E.hogszn5yj4h-mg3e70a7-ddo4sdv85z6"
+                    ],
+                    "Info": {
+                        "SpriteID": "Sp10",
+                        "width": 256,
+                        "height": 256
+                    },
+                    "AtlasUUID": "NnIxhh2E.a-ytvl3kdqmsd-metuejn1-5br0d0tvp3i"
+                },
+                {
+                    "Name": "Female_Bottom_UGCCos_Kelly.mat",
+                    "UUID": "eabvp4as3eo-mg3e0qpc-8y3agm1g7m",
+                    "Type": "material",
+                    "PackageUUID": "NnIxhh2E.AutoClient_Td6jBDOz",
+                    "RelyOns": [
+                        "NnIxhh2E.eabvp4as3eo-mg3e0qpc-8y3agm1g7m",
+                        "NnIxhh2E.e6pqs1qmjq-mg3e70kl-n9sh61dpxk",
+                        "NnIxhh2E.sjm5vaixvl-mg3e716f-2xu870y15jr",
+                        "NnIxhh2E.twd25blr2i-mg3e71c8-s8b2zpjms1a"
+                    ]
+                },
+                {
+                    "Name": "Female_Bottom_UGCCos_Kelly_D.png",
+                    "UUID": "e6pqs1qmjq-mg3e70kl-n9sh61dpxk",
+                    "Type": "texture",
+                    "PackageUUID": "NnIxhh2E.AutoPlatformed_SAeVNyuk",
+                    "RelyOns": [
+                        "NnIxhh2E.e6pqs1qmjq-mg3e70kl-n9sh61dpxk"
+                    ],
+                    "Info": {
+                        "SpriteID": "Sp11",
+                        "width": 512,
+                        "height": 512
+                    },
+                    "AtlasUUID": "NnIxhh2E.a-ytvl3kdqmsd-metuejn1-5br0d0tvp3i"
+                },
+                {
+                    "Name": "Female_Bottom_UGCCos_Kelly_NG.png",
+                    "UUID": "sjm5vaixvl-mg3e716f-2xu870y15jr",
+                    "Type": "texture",
+                    "PackageUUID": "NnIxhh2E.AutoPlatformed_SAeVNyuk",
+                    "RelyOns": [
+                        "NnIxhh2E.sjm5vaixvl-mg3e716f-2xu870y15jr"
+                    ],
+                    "Info": {
+                        "SpriteID": "Sp12",
+                        "width": 256,
+                        "height": 256
+                    },
+                    "AtlasUUID": "NnIxhh2E.a-ytvl3kdqmsd-metuejn1-5br0d0tvp3i"
+                },
+                {
+                    "Name": "Female_Bottom_UGCCos_Kelly_S.png",
+                    "UUID": "twd25blr2i-mg3e71c8-s8b2zpjms1a",
+                    "Type": "texture",
+                    "PackageUUID": "NnIxhh2E.AutoPlatformed_SAeVNyuk",
+                    "RelyOns": [
+                        "NnIxhh2E.twd25blr2i-mg3e71c8-s8b2zpjms1a"
+                    ],
+                    "Info": {
+                        "SpriteID": "Sp13",
+                        "width": 256,
+                        "height": 256
+                    },
+                    "AtlasUUID": "NnIxhh2E.a-ytvl3kdqmsd-metuejn1-5br0d0tvp3i"
+                },
+                {
+                    "Name": "Female_Hair_UGCCos_Kelly.mat",
+                    "UUID": "jmxrqhgky6o-mg3e0qrw-vg8mlun1a3a",
+                    "Type": "material",
+                    "PackageUUID": "NnIxhh2E.AutoClient_Td6jBDOz",
+                    "RelyOns": [
+                        "NnIxhh2E.jmxrqhgky6o-mg3e0qrw-vg8mlun1a3a",
+                        "NnIxhh2E.j6n7zm5p23-mg3e6wgp-ry8g53rk2l",
+                        "NnIxhh2E.9xpb6esz4pt-mg3e6wqw-e7clhsrukti",
+                        "NnIxhh2E.kihgtmjnzfg-mg3e6x5c-uyhh5y1or3g"
+                    ]
+                },
+                {
+                    "Name": "Female_Hair_UGCCos_Kelly_D.png",
+                    "UUID": "j6n7zm5p23-mg3e6wgp-ry8g53rk2l",
+                    "Type": "texture",
+                    "PackageUUID": "NnIxhh2E.AutoPlatformed_SAeVNyuk",
+                    "RelyOns": [
+                        "NnIxhh2E.j6n7zm5p23-mg3e6wgp-ry8g53rk2l"
+                    ],
+                    "Info": {
+                        "SpriteID": "Sp14",
+                        "width": 256,
+                        "height": 256
+                    },
+                    "AtlasUUID": "NnIxhh2E.a-ytvl3kdqmsd-metuejn1-5br0d0tvp3i"
+                },
+                {
+                    "Name": "Female_Hair_UGCCos_Kelly_N.png",
+                    "UUID": "9xpb6esz4pt-mg3e6wqw-e7clhsrukti",
+                    "Type": "texture",
+                    "PackageUUID": "NnIxhh2E.AutoPlatformed_SAeVNyuk",
+                    "RelyOns": [
+                        "NnIxhh2E.9xpb6esz4pt-mg3e6wqw-e7clhsrukti"
+                    ],
+                    "Info": {
+                        "SpriteID": "Sp15",
+                        "width": 128,
+                        "height": 128
+                    },
+                    "AtlasUUID": "NnIxhh2E.a-ytvl3kdqmsd-metuejn1-5br0d0tvp3i"
+                },
+                {
+                    "Name": "Female_Hair_UGCCos_Kelly_S.png",
+                    "UUID": "kihgtmjnzfg-mg3e6x5c-uyhh5y1or3g",
+                    "Type": "texture",
+                    "PackageUUID": "NnIxhh2E.AutoPlatformed_SAeVNyuk",
+                    "RelyOns": [
+                        "NnIxhh2E.kihgtmjnzfg-mg3e6x5c-uyhh5y1or3g"
+                    ],
+                    "Info": {
+                        "SpriteID": "Sp16",
+                        "width": 128,
+                        "height": 128
+                    },
+                    "AtlasUUID": "NnIxhh2E.a-ytvl3kdqmsd-metuejn1-5br0d0tvp3i"
+                },
+                {
+                    "Name": "Female_Shoe_UGCCos_Kelly.mat",
+                    "UUID": "ml774hurgp-mg3e0qyd-k2uqrngv71g",
+                    "Type": "material",
+                    "PackageUUID": "NnIxhh2E.AutoClient_Td6jBDOz",
+                    "RelyOns": [
+                        "NnIxhh2E.ml774hurgp-mg3e0qyd-k2uqrngv71g",
+                        "NnIxhh2E.u3yolovp0s-mg3e6yo7-8imp4wdrj5b",
+                        "NnIxhh2E.1xz5akj1om9-mg3e6z12-0pnlc7ppifqj"
+                    ]
+                },
+                {
+                    "Name": "Female_Shoe_UGCCos_Kelly_D.png",
+                    "UUID": "u3yolovp0s-mg3e6yo7-8imp4wdrj5b",
+                    "Type": "texture",
+                    "PackageUUID": "NnIxhh2E.AutoPlatformed_SAeVNyuk",
+                    "RelyOns": [
+                        "NnIxhh2E.u3yolovp0s-mg3e6yo7-8imp4wdrj5b"
+                    ],
+                    "Info": {
+                        "SpriteID": "Sp17",
+                        "width": 256,
+                        "height": 256
+                    },
+                    "AtlasUUID": "NnIxhh2E.a-ytvl3kdqmsd-metuejn1-5br0d0tvp3i"
+                },
+                {
+                    "Name": "Female_Shoe_UGCCos_Kelly_NG.png",
+                    "UUID": "1xz5akj1om9-mg3e6z12-0pnlc7ppifqj",
+                    "Type": "texture",
+                    "PackageUUID": "NnIxhh2E.AutoPlatformed_SAeVNyuk",
+                    "RelyOns": [
+                        "NnIxhh2E.1xz5akj1om9-mg3e6z12-0pnlc7ppifqj"
+                    ],
+                    "Info": {
+                        "SpriteID": "Sp18",
+                        "width": 128,
+                        "height": 128
+                    },
+                    "AtlasUUID": "NnIxhh2E.a-ytvl3kdqmsd-metuejn1-5br0d0tvp3i"
+                }
+            ]
+        },
+        {
+            "Name": "Mini_Tatsuya.prefab",
+            "UUID": "ixizzacqb5f-mgyzsu9x-zygunr4frv",
+            "Type": "prefab",
+            "PackageUUID": "",
+            "RelyOns": [
+                "NnIxhh2E.ixizzacqb5f-mgyzsu9x-zygunr4frv"
+            ],
+            "Info": {}
+        },
+        {
+            "Name": "Tatsuya",
+            "UUID": "7uk01nguv9-mgz1yn15-3fs3rcehkrz",
+            "Type": "folder",
+            "SubType": "",
+            "PackageUUID": "",
+            "RelyOns": [],
+            "Children": [
+                {
+                    "Name": "UGC_Tatsuya_Rig.FBX",
+                    "UUID": "1k4mneuptnz-mgyz3yv0-auk0jgrtimd",
+                    "Type": "fbx",
+                    "PackageUUID": "",
+                    "Children": [
+                        {
+                            "Name": "UGC_Bottom_Tatsuya.mesh",
+                            "UUID": "1k4mneuptnz-mgyz3yv0-auk0jgrtimd-UGC_Bottom_Tatsuya.~@FFSKIN",
+                            "Type": "mesh",
+                            "PackageUUID": "NnIxhh2E.AutoCommon_LxD6b123",
+                            "RelyOns": [
+                                "NnIxhh2E.1k4mneuptnz-mgyz3yv0-auk0jgrtimd-UGC_Bottom_Tatsuya.~@FFSKIN"
+                            ],
+                            "Info": {
+                                "SubMeshCount": 2,
+                                "Type": "skin"
+                            }
+                        },
+                        {
+                            "Name": "UGC_Hair_Tatsuya.mesh",
+                            "UUID": "1k4mneuptnz-mgyz3yv0-auk0jgrtimd-UGC_Hair_Tatsuya.~@FFSKIN",
+                            "Type": "mesh",
+                            "PackageUUID": "NnIxhh2E.AutoCommon_LxD6b123",
+                            "RelyOns": [
+                                "NnIxhh2E.1k4mneuptnz-mgyz3yv0-auk0jgrtimd-UGC_Hair_Tatsuya.~@FFSKIN"
+                            ],
+                            "Info": {
+                                "SubMeshCount": 1,
+                                "Type": "skin"
+                            }
+                        },
+                        {
+                            "Name": "UGC_Hand_Tatsuya.mesh",
+                            "UUID": "1k4mneuptnz-mgyz3yv0-auk0jgrtimd-UGC_Hand_Tatsuya.~@FFSKIN",
+                            "Type": "mesh",
+                            "PackageUUID": "NnIxhh2E.AutoCommon_LxD6b123",
+                            "RelyOns": [
+                                "NnIxhh2E.1k4mneuptnz-mgyz3yv0-auk0jgrtimd-UGC_Hand_Tatsuya.~@FFSKIN"
+                            ],
+                            "Info": {
+                                "SubMeshCount": 2,
+                                "Type": "skin"
+                            }
+                        },
+                        {
+                            "Name": "UGC_Head_Tatsuya.mesh",
+                            "UUID": "1k4mneuptnz-mgyz3yv0-auk0jgrtimd-UGC_Head_Tatsuya.~@FFSKIN",
+                            "Type": "mesh",
+                            "PackageUUID": "NnIxhh2E.AutoCommon_LxD6b123",
+                            "RelyOns": [
+                                "NnIxhh2E.1k4mneuptnz-mgyz3yv0-auk0jgrtimd-UGC_Head_Tatsuya.~@FFSKIN"
+                            ],
+                            "Info": {
+                                "SubMeshCount": 1,
+                                "Type": "skin"
+                            }
+                        },
+                        {
+                            "Name": "UGC_Shoe_Tatsuya.mesh",
+                            "UUID": "1k4mneuptnz-mgyz3yv0-auk0jgrtimd-UGC_Shoe_Tatsuya.~@FFSKIN",
+                            "Type": "mesh",
+                            "PackageUUID": "NnIxhh2E.AutoCommon_LxD6b123",
+                            "RelyOns": [
+                                "NnIxhh2E.1k4mneuptnz-mgyz3yv0-auk0jgrtimd-UGC_Shoe_Tatsuya.~@FFSKIN"
+                            ],
+                            "Info": {
+                                "SubMeshCount": 1,
+                                "Type": "skin"
+                            }
+                        },
+                        {
+                            "Name": "UGC_Top_Tatsuya.mesh",
+                            "UUID": "1k4mneuptnz-mgyz3yv0-auk0jgrtimd-UGC_Top_Tatsuya.~@FFSKIN",
+                            "Type": "mesh",
+                            "PackageUUID": "NnIxhh2E.AutoCommon_LxD6b123",
+                            "RelyOns": [
+                                "NnIxhh2E.1k4mneuptnz-mgyz3yv0-auk0jgrtimd-UGC_Top_Tatsuya.~@FFSKIN"
+                            ],
+                            "Info": {
+                                "SubMeshCount": 2,
+                                "Type": "skin"
+                            }
+                        },
+                        {
+                            "Name": "UGC_Tatsuya_Rig.sk",
+                            "UUID": "1k4mneuptnz-mgyz3yv0-auk0jgrtimd-UGC_Tatsuya_Rig.sk",
+                            "Type": "sk",
+                            "PackageUUID": "NnIxhh2E.AutoCommon_LxD6b123",
+                            "RelyOns": [
+                                "NnIxhh2E.1k4mneuptnz-mgyz3yv0-auk0jgrtimd-UGC_Tatsuya_Rig.sk"
+                            ],
+                            "Info": {
+                                "BoneNodes": [
+                                    {
+                                        "ChildBones": [],
+                                        "BoneName": "UGC_Bottom_Tatsuya"
+                                    },
+                                    {
+                                        "ChildBones": [],
+                                        "BoneName": "UGC_Top_Tatsuya"
+                                    },
+                                    {
+                                        "ChildBones": [],
+                                        "BoneName": "UGC_Head_Tatsuya"
+                                    },
+                                    {
+                                        "ChildBones": [],
+                                        "BoneName": "UGC_Shoe_Tatsuya"
+                                    },
+                                    {
+                                        "ChildBones": [],
+                                        "BoneName": "UGC_Hair_Tatsuya"
+                                    },
+                                    {
+                                        "ChildBones": [],
+                                        "BoneName": "UGC_Hand_Tatsuya"
+                                    },
+                                    {
+                                        "ChildBones": [],
+                                        "BoneName": "Point001"
+                                    },
+                                    {
+                                        "ChildBones": [
+                                            {
+                                                "ChildBones": [
+                                                    {
+                                                        "ChildBones": [
+                                                            {
+                                                                "ChildBones": [
+                                                                    {
+                                                                        "ChildBones": [],
+                                                                        "BoneName": "ToolBagPoint"
+                                                                    },
+                                                                    {
+                                                                        "ChildBones": [
+                                                                            {
+                                                                                "ChildBones": [
+                                                                                    {
+                                                                                        "ChildBones": [
+                                                                                            {
+                                                                                                "ChildBones": [
+                                                                                                    {
+                                                                                                        "ChildBones": [
+                                                                                                            {
+                                                                                                                "ChildBones": [],
+                                                                                                                "BoneName": "RightHandThumb1"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "ChildBones": [],
+                                                                                                                "BoneName": "RightHandItemPoint"
+                                                                                                            }
+                                                                                                        ],
+                                                                                                        "BoneName": "bone_RightHand"
+                                                                                                    }
+                                                                                                ],
+                                                                                                "BoneName": "bone_RightForeArm"
+                                                                                            }
+                                                                                        ],
+                                                                                        "BoneName": "bone_RightArm"
+                                                                                    }
+                                                                                ],
+                                                                                "BoneName": "bone_RightClav"
+                                                                            },
+                                                                            {
+                                                                                "ChildBones": [
+                                                                                    {
+                                                                                        "ChildBones": [
+                                                                                            {
+                                                                                                "ChildBones": [
+                                                                                                    {
+                                                                                                        "ChildBones": [
+                                                                                                            {
+                                                                                                                "ChildBones": [],
+                                                                                                                "BoneName": "LeftHandThumb1"
+                                                                                                            },
+                                                                                                            {
+                                                                                                                "ChildBones": [],
+                                                                                                                "BoneName": "LeftHandItemPoint"
+                                                                                                            }
+                                                                                                        ],
+                                                                                                        "BoneName": "bone_LeftHand"
+                                                                                                    }
+                                                                                                ],
+                                                                                                "BoneName": "bone_LeftForeArm"
+                                                                                            }
+                                                                                        ],
+                                                                                        "BoneName": "bone_LeftArm"
+                                                                                    }
+                                                                                ],
+                                                                                "BoneName": "bone_LeftClav"
+                                                                            },
+                                                                            {
+                                                                                "ChildBones": [
+                                                                                    {
+                                                                                        "ChildBones": [],
+                                                                                        "BoneName": "bone_Head"
+                                                                                    }
+                                                                                ],
+                                                                                "BoneName": "bone_Neck"
+                                                                            }
+                                                                        ],
+                                                                        "BoneName": "bone_Spine1"
+                                                                    }
+                                                                ],
+                                                                "BoneName": "bone_Spine"
+                                                            },
+                                                            {
+                                                                "ChildBones": [
+                                                                    {
+                                                                        "ChildBones": [
+                                                                            {
+                                                                                "ChildBones": [
+                                                                                    {
+                                                                                        "ChildBones": [],
+                                                                                        "BoneName": "LeftToeBase"
+                                                                                    }
+                                                                                ],
+                                                                                "BoneName": "bone_LeftAnkle"
+                                                                            }
+                                                                        ],
+                                                                        "BoneName": "bone_LeftLeg"
+                                                                    }
+                                                                ],
+                                                                "BoneName": "bone_LeftLegUpper"
+                                                            },
+                                                            {
+                                                                "ChildBones": [
+                                                                    {
+                                                                        "ChildBones": [
+                                                                            {
+                                                                                "ChildBones": [
+                                                                                    {
+                                                                                        "ChildBones": [],
+                                                                                        "BoneName": "RightToeBase"
+                                                                                    }
+                                                                                ],
+                                                                                "BoneName": "bone_RightAnkle"
+                                                                            }
+                                                                        ],
+                                                                        "BoneName": "bone_RightLeg"
+                                                                    }
+                                                                ],
+                                                                "BoneName": "bone_RightLegUpper"
+                                                            }
+                                                        ],
+                                                        "BoneName": "bone_Hips"
+                                                    }
+                                                ],
+                                                "BoneName": "Hips"
+                                            }
+                                        ],
+                                        "BoneName": "Root"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "Name": "Male_Head_UGCCos_Tatsuya.mat",
+                    "UUID": "q2e47g31kj-mebbs0zw-p52bymrcgm8",
+                    "Type": "material",
+                    "PackageUUID": "NnIxhh2E.AutoClient_aoaK7s9R",
+                    "RelyOns": [
+                        "NnIxhh2E.q2e47g31kj-mebbs0zw-p52bymrcgm8",
+                        "NnIxhh2E.8uzkpj31mx-mg3e6xt1-gy0t1kp12qo",
+                        "NnIxhh2E.26xg4ydnhjy-mg3e0arm-ck5igvvqrma",
+                        "NnIxhh2E.rku5zgt7jpb-mg3e6yby-hthtws3en19",
+                        "NnIxhh2E.rej8v6ik4da-mg3e6y12-scwufif9ug"
+                    ]
+                },
+                {
+                    "Name": "Male_Head_UGCCos_Tatsuya_A.png",
+                    "UUID": "26xg4ydnhjy-mg3e0arm-ck5igvvqrma",
+                    "Type": "texture",
+                    "PackageUUID": "NnIxhh2E.AutoPlatformed_SAeVNyuk",
+                    "RelyOns": [
+                        "NnIxhh2E.26xg4ydnhjy-mg3e0arm-ck5igvvqrma"
+                    ],
+                    "Info": {
+                        "SpriteID": "Sp19",
+                        "width": 256,
+                        "height": 256
+                    },
+                    "AtlasUUID": "NnIxhh2E.a-ytvl3kdqmsd-metuejn1-5br0d0tvp3i"
+                },
+                {
+                    "Name": "Male_Top_UGCCos_Tatsuya.mat",
+                    "UUID": "xpk7vz6m7mp-mebbu7n2-pjibkgej7cc",
+                    "Type": "material",
+                    "PackageUUID": "NnIxhh2E.AutoClient_aoaK7s9R",
+                    "RelyOns": [
+                        "NnIxhh2E.xpk7vz6m7mp-mebbu7n2-pjibkgej7cc",
+                        "NnIxhh2E.udi4adai10h-mg3e0bf2-cynchvzmuqh",
+                        "NnIxhh2E.yh5pg4g5skp-mg3e0bo4-5bfgb73n5fk",
+                        "NnIxhh2E.rxtc8govd9o-mg3e07tf-j1skrc0ps0l"
+                    ]
+                },
+                {
+                    "Name": "Male_Top_UGCCos_Tatsuya_D.png",
+                    "UUID": "udi4adai10h-mg3e0bf2-cynchvzmuqh",
+                    "Type": "texture",
+                    "PackageUUID": "NnIxhh2E.AutoPlatformed_SAeVNyuk",
+                    "RelyOns": [
+                        "NnIxhh2E.udi4adai10h-mg3e0bf2-cynchvzmuqh"
+                    ],
+                    "Info": {
+                        "SpriteID": "Sp20",
+                        "width": 512,
+                        "height": 512
+                    },
+                    "AtlasUUID": "NnIxhh2E.a-ytvl3kdqmsd-metuejn1-5br0d0tvp3i"
+                },
+                {
+                    "Name": "Male_Top_UGCCos_Tatsuya_NG.png",
+                    "UUID": "yh5pg4g5skp-mg3e0bo4-5bfgb73n5fk",
+                    "Type": "texture",
+                    "PackageUUID": "NnIxhh2E.AutoPlatformed_SAeVNyuk",
+                    "RelyOns": [
+                        "NnIxhh2E.yh5pg4g5skp-mg3e0bo4-5bfgb73n5fk"
+                    ],
+                    "Info": {
+                        "SpriteID": "Sp21",
+                        "width": 256,
+                        "height": 256
+                    },
+                    "AtlasUUID": "NnIxhh2E.a-ytvl3kdqmsd-metuejn1-5br0d0tvp3i"
+                },
+                {
+                    "Name": "Male_Top_UGCCos_Tatsuya_S.png",
+                    "UUID": "rxtc8govd9o-mg3e07tf-j1skrc0ps0l",
+                    "Type": "texture",
+                    "PackageUUID": "NnIxhh2E.AutoPlatformed_SAeVNyuk",
+                    "RelyOns": [
+                        "NnIxhh2E.rxtc8govd9o-mg3e07tf-j1skrc0ps0l"
+                    ],
+                    "Info": {
+                        "SpriteID": "Sp22",
+                        "width": 256,
+                        "height": 256
+                    },
+                    "AtlasUUID": "NnIxhh2E.a-ytvl3kdqmsd-metuejn1-5br0d0tvp3i"
+                },
+                {
+                    "Name": "Male_Body_UGCCos_Kelly.mat",
+                    "UUID": "g9vx3mxpiwn-mebc78az-hhqcft5rrsu",
+                    "Type": "material",
+                    "PackageUUID": "NnIxhh2E.AutoClient_aoaK7s9R",
+                    "RelyOns": [
+                        "NnIxhh2E.g9vx3mxpiwn-mebc78az-hhqcft5rrsu",
+                        "NnIxhh2E.0zx7k3344n4-mg3e7033-yr6c7deiaim",
+                        "NnIxhh2E.iosrwrs3do-mg3e07y8-so0hrh7jme",
+                        "NnIxhh2E.hogszn5yj4h-mg3e70a7-ddo4sdv85z6"
+                    ]
+                },
+                {
+                    "Name": "Male_Body_UGCCos_Tatsuya_A.png",
+                    "UUID": "iosrwrs3do-mg3e07y8-so0hrh7jme",
+                    "Type": "texture",
+                    "PackageUUID": "NnIxhh2E.AutoPlatformed_SAeVNyuk",
+                    "RelyOns": [
+                        "NnIxhh2E.iosrwrs3do-mg3e07y8-so0hrh7jme"
+                    ],
+                    "Info": {
+                        "SpriteID": "Sp23",
+                        "width": 256,
+                        "height": 256
+                    },
+                    "AtlasUUID": "NnIxhh2E.a-ytvl3kdqmsd-metuejn1-5br0d0tvp3i"
+                },
+                {
+                    "Name": "Male_Bottom_UGCCos_Tatsuya.mat",
+                    "UUID": "n834se15wuo-mebbkqxo-aknrptycn8",
+                    "Type": "material",
+                    "PackageUUID": "NnIxhh2E.AutoClient_aoaK7s9R",
+                    "RelyOns": [
+                        "NnIxhh2E.n834se15wuo-mebbkqxo-aknrptycn8",
+                        "NnIxhh2E.0o41ufklbvbm-mg3e083a-o39x1nmfph",
+                        "NnIxhh2E.5f76doa2pg-mg3e089n-216fqvaoxju",
+                        "NnIxhh2E.igbtbjc8ty-mg3e08q7-lweglh1r4gr"
+                    ]
+                },
+                {
+                    "Name": "Male_Bottom_UGCCos_Tatsuya_D.png",
+                    "UUID": "0o41ufklbvbm-mg3e083a-o39x1nmfph",
+                    "Type": "texture",
+                    "PackageUUID": "NnIxhh2E.AutoPlatformed_SAeVNyuk",
+                    "RelyOns": [
+                        "NnIxhh2E.0o41ufklbvbm-mg3e083a-o39x1nmfph"
+                    ],
+                    "Info": {
+                        "SpriteID": "Sp24",
+                        "width": 512,
+                        "height": 512
+                    },
+                    "AtlasUUID": "NnIxhh2E.a-ytvl3kdqmsd-metuejn1-5br0d0tvp3i"
+                },
+                {
+                    "Name": "Male_Bottom_UGCCos_Tatsuya_NG.png",
+                    "UUID": "5f76doa2pg-mg3e089n-216fqvaoxju",
+                    "Type": "texture",
+                    "PackageUUID": "NnIxhh2E.AutoPlatformed_SAeVNyuk",
+                    "RelyOns": [
+                        "NnIxhh2E.5f76doa2pg-mg3e089n-216fqvaoxju"
+                    ],
+                    "Info": {
+                        "SpriteID": "Sp1",
+                        "width": 256,
+                        "height": 256
+                    },
+                    "AtlasUUID": "NnIxhh2E.a-yphmqeic06-mecg7b89-1erw2gj4f7c"
+                },
+                {
+                    "Name": "Male_Bottom_UGCCos_Tatsuya_S.png",
+                    "UUID": "igbtbjc8ty-mg3e08q7-lweglh1r4gr",
+                    "Type": "texture",
+                    "PackageUUID": "NnIxhh2E.AutoPlatformed_SAeVNyuk",
+                    "RelyOns": [
+                        "NnIxhh2E.igbtbjc8ty-mg3e08q7-lweglh1r4gr"
+                    ],
+                    "Info": {
+                        "SpriteID": "Sp2",
+                        "width": 256,
+                        "height": 256
+                    },
+                    "AtlasUUID": "NnIxhh2E.a-yphmqeic06-mecg7b89-1erw2gj4f7c"
+                },
+                {
+                    "Name": "Male_Hair_UGCCos_Tatsuya.mat",
+                    "UUID": "swoxn7arkh-mebbnftu-7bvlxt0rfvj",
+                    "Type": "material",
+                    "PackageUUID": "NnIxhh2E.AutoClient_aoaK7s9R",
+                    "RelyOns": [
+                        "NnIxhh2E.swoxn7arkh-mebbnftu-7bvlxt0rfvj",
+                        "NnIxhh2E.1xngryx6ydc-mg3e0905-1mjntx1unt7",
+                        "NnIxhh2E.bh6xjccr3xa-mg3e097e-40fpp21ervw",
+                        "NnIxhh2E.oopik7zvdv-mg3e0a4g-z6psvo32irp"
+                    ]
+                },
+                {
+                    "Name": "Male_Hair_UGCCos_Tatsuya_D.png",
+                    "UUID": "1xngryx6ydc-mg3e0905-1mjntx1unt7",
+                    "Type": "texture",
+                    "PackageUUID": "NnIxhh2E.AutoPlatformed_SAeVNyuk",
+                    "RelyOns": [
+                        "NnIxhh2E.1xngryx6ydc-mg3e0905-1mjntx1unt7"
+                    ],
+                    "Info": {
+                        "SpriteID": "Sp3",
+                        "width": 256,
+                        "height": 256
+                    },
+                    "AtlasUUID": "NnIxhh2E.a-yphmqeic06-mecg7b89-1erw2gj4f7c"
+                },
+                {
+                    "Name": "Male_Hair_UGCCos_Tatsuya_NG.png",
+                    "UUID": "bh6xjccr3xa-mg3e097e-40fpp21ervw",
+                    "Type": "texture",
+                    "PackageUUID": "NnIxhh2E.AutoPlatformed_SAeVNyuk",
+                    "RelyOns": [
+                        "NnIxhh2E.bh6xjccr3xa-mg3e097e-40fpp21ervw"
+                    ],
+                    "Info": {
+                        "SpriteID": "Sp25",
+                        "width": 128,
+                        "height": 128
+                    },
+                    "AtlasUUID": "NnIxhh2E.a-ytvl3kdqmsd-metuejn1-5br0d0tvp3i"
+                },
+                {
+                    "Name": "Male_Hair_UGCCos_Tatsuya_S.png",
+                    "UUID": "oopik7zvdv-mg3e0a4g-z6psvo32irp",
+                    "Type": "texture",
+                    "PackageUUID": "NnIxhh2E.AutoPlatformed_SAeVNyuk",
+                    "RelyOns": [
+                        "NnIxhh2E.oopik7zvdv-mg3e0a4g-z6psvo32irp"
+                    ],
+                    "Info": {
+                        "SpriteID": "Sp26",
+                        "width": 128,
+                        "height": 128
+                    },
+                    "AtlasUUID": "NnIxhh2E.a-ytvl3kdqmsd-metuejn1-5br0d0tvp3i"
+                },
+                {
+                    "Name": "Male_Hand_UGCCos_Tatsuya.mat",
+                    "UUID": "s3rjjdud7r-mebbq4eq-6pee7y4lzo",
+                    "Type": "material",
+                    "PackageUUID": "NnIxhh2E.AutoClient_aoaK7s9R",
+                    "RelyOns": [
+                        "NnIxhh2E.s3rjjdud7r-mebbq4eq-6pee7y4lzo",
+                        "NnIxhh2E.owp80jid1vm-mg3e0aa7-yqem8ehhod",
+                        "NnIxhh2E.sdoecn9iojr-mg3e0ahi-ecg9k5pxif",
+                        "NnIxhh2E.s7znh9x682-mg3e0ams-7a4ni54pckk"
+                    ]
+                },
+                {
+                    "Name": "Male_Hand_UGCCos_Tatsuya_D.png",
+                    "UUID": "owp80jid1vm-mg3e0aa7-yqem8ehhod",
+                    "Type": "texture",
+                    "PackageUUID": "NnIxhh2E.AutoPlatformed_SAeVNyuk",
+                    "RelyOns": [
+                        "NnIxhh2E.owp80jid1vm-mg3e0aa7-yqem8ehhod"
+                    ],
+                    "Info": {
+                        "SpriteID": "Sp4",
+                        "width": 512,
+                        "height": 512
+                    },
+                    "AtlasUUID": "NnIxhh2E.a-yphmqeic06-mecg7b89-1erw2gj4f7c"
+                },
+                {
+                    "Name": "Male_Hand_UGCCos_Tatsuya_NG.png",
+                    "UUID": "sdoecn9iojr-mg3e0ahi-ecg9k5pxif",
+                    "Type": "texture",
+                    "PackageUUID": "NnIxhh2E.AutoPlatformed_SAeVNyuk",
+                    "RelyOns": [
+                        "NnIxhh2E.sdoecn9iojr-mg3e0ahi-ecg9k5pxif"
+                    ],
+                    "Info": {
+                        "SpriteID": "Sp5",
+                        "width": 256,
+                        "height": 256
+                    },
+                    "AtlasUUID": "NnIxhh2E.a-yphmqeic06-mecg7b89-1erw2gj4f7c"
+                },
+                {
+                    "Name": "Male_Hand_UGCCos_Tatsuya_S.png",
+                    "UUID": "s7znh9x682-mg3e0ams-7a4ni54pckk",
+                    "Type": "texture",
+                    "PackageUUID": "NnIxhh2E.AutoPlatformed_SAeVNyuk",
+                    "RelyOns": [
+                        "NnIxhh2E.s7znh9x682-mg3e0ams-7a4ni54pckk"
+                    ],
+                    "Info": {
+                        "SpriteID": "Sp6",
+                        "width": 256,
+                        "height": 256
+                    },
+                    "AtlasUUID": "NnIxhh2E.a-yphmqeic06-mecg7b89-1erw2gj4f7c"
+                },
+                {
+                    "Name": "Male_Shoe_UGCCos_Tatsuya.mat",
+                    "UUID": "ofae0wvbsgr-mebc12oz-a9asa0kx45a",
+                    "Type": "material",
+                    "PackageUUID": "NnIxhh2E.AutoClient_aoaK7s9R",
+                    "RelyOns": [
+                        "NnIxhh2E.ofae0wvbsgr-mebc12oz-a9asa0kx45a",
+                        "NnIxhh2E.uphyx91g9e-mg3e0aw5-dnsz1tksbyu",
+                        "NnIxhh2E.jmkzoeji7wr-mg3e0b1h-ate076ou35c",
+                        "NnIxhh2E.w62slnif7m-mg3e0b6y-v1aoi3yagu9"
+                    ]
+                },
+                {
+                    "Name": "Male_Shoe_UGCCos_Tatsuya_D.png",
+                    "UUID": "uphyx91g9e-mg3e0aw5-dnsz1tksbyu",
+                    "Type": "texture",
+                    "PackageUUID": "NnIxhh2E.AutoPlatformed_SAeVNyuk",
+                    "RelyOns": [
+                        "NnIxhh2E.uphyx91g9e-mg3e0aw5-dnsz1tksbyu"
+                    ],
+                    "Info": {
+                        "SpriteID": "Sp7",
+                        "width": 256,
+                        "height": 256
+                    },
+                    "AtlasUUID": "NnIxhh2E.a-yphmqeic06-mecg7b89-1erw2gj4f7c"
+                },
+                {
+                    "Name": "Male_Shoe_UGCCos_Tatsuya_NG.png",
+                    "UUID": "jmkzoeji7wr-mg3e0b1h-ate076ou35c",
+                    "Type": "texture",
+                    "PackageUUID": "NnIxhh2E.AutoPlatformed_SAeVNyuk",
+                    "RelyOns": [
+                        "NnIxhh2E.jmkzoeji7wr-mg3e0b1h-ate076ou35c"
+                    ],
+                    "Info": {
+                        "SpriteID": "Sp27",
+                        "width": 128,
+                        "height": 128
+                    },
+                    "AtlasUUID": "NnIxhh2E.a-ytvl3kdqmsd-metuejn1-5br0d0tvp3i"
+                },
+                {
+                    "Name": "Male_Shoe_UGCCos_Tatsuya_S.png",
+                    "UUID": "w62slnif7m-mg3e0b6y-v1aoi3yagu9",
+                    "Type": "texture",
+                    "PackageUUID": "NnIxhh2E.AutoPlatformed_SAeVNyuk",
+                    "RelyOns": [
+                        "NnIxhh2E.w62slnif7m-mg3e0b6y-v1aoi3yagu9"
+                    ],
+                    "Info": {
+                        "SpriteID": "Sp28",
+                        "width": 128,
+                        "height": 128
+                    },
+                    "AtlasUUID": "NnIxhh2E.a-ytvl3kdqmsd-metuejn1-5br0d0tvp3i"
+                }
+            ]
+        }
+    ],
+    "ResPackages": [
+        {
+            "Name": "NnIxhh2E.AutoClient_Td6jBDOz",
+            "UUID": "NnIxhh2E.AutoClient_Td6jBDOz",
+            "UseVersionMD5": "0APxiMCvrnPR4EIlyjdPx4Zu//Y=",
+            "WhoRequire": 0,
+            "FileList": [
+                {
+                    "SubFileID": "Client",
+                    "SHA1": "PBsALnVKwyO7fgoRGmycU3zWn8w=",
+                    "FileSize": 1589,
+                    "URL": "https://dl-sbt-craftland.freefiremobile.com/7434ACCE-c744e3ca-cd25-4f53-be73-26644fcf6545_10120011_1760959743_res1",
+                    "PlatformRequireMask": 7
+                }
+            ]
+        },
+        {
+            "Name": "NnIxhh2E.AutoPlatformed_SAeVNyuk",
+            "UUID": "NnIxhh2E.AutoPlatformed_SAeVNyuk",
+            "UseVersionMD5": "negE50PWP+OOx7qwydRwEuYKk38=",
+            "WhoRequire": 0,
+            "FileList": [
+                {
+                    "SubFileID": "Android",
+                    "SHA1": "9bxIcNuEgsB4x22ngkkSI1nYH3E=",
+                    "FileSize": 1186454,
+                    "URL": "https://dl-sbt-craftland.freefiremobile.com/744C3ACE-c744e3ca-cd25-4f53-be73-26644fcf6545_10120011_1760959743_res2",
+                    "PlatformRequireMask": 1
+                },
+                {
+                    "SubFileID": "Ios",
+                    "SHA1": "zD2CW4h05FKVEm3GE2iMv19xiy4=",
+                    "FileSize": 1411842,
+                    "URL": "https://dl-sbt-craftland.freefiremobile.com/3C4E4CA7-c744e3ca-cd25-4f53-be73-26644fcf6545_10120011_1760959743_res3",
+                    "PlatformRequireMask": 2
+                },
+                {
+                    "SubFileID": "WebGL",
+                    "SHA1": "tMUX5OxEvVUrgrmUCsf4NlXA9Ws=",
+                    "FileSize": 1280136,
+                    "URL": "https://dl-sbt-craftland.freefiremobile.com/C447AC3E-c744e3ca-cd25-4f53-be73-26644fcf6545_10120011_1760959743_res4",
+                    "PlatformRequireMask": 4
+                }
+            ]
+        },
+        {
+            "Name": "Atlas-NnIxhh2E.a-ytvl3kdqmsd-metuejn1-5br0d0tvp3i",
+            "UUID": "NnIxhh2E.a-ytvl3kdqmsd-metuejn1-5br0d0tvp3i",
+            "UseVersionMD5": "VmQk8f1fPtCO5zt5sU17D0Y+wbY=",
+            "WhoRequire": 0,
+            "FileList": [
+                {
+                    "SubFileID": "Android.pck",
+                    "SHA1": "byYM5TltaBGUEfl2d6blDnzUK1Q=",
+                    "FileSize": 719085,
+                    "URL": "https://dl-sbt-craftland.freefiremobile.com/4EC4A3C7-c744e3ca-cd25-4f53-be73-26644fcf6545_10120011_1760959743_res5",
+                    "PlatformRequireMask": 1
+                },
+                {
+                    "SubFileID": "Ios.pck",
+                    "SHA1": "6debcKBrRvQysRJ7HN0hnzSLJvg=",
+                    "FileSize": 750144,
+                    "URL": "https://dl-sbt-craftland.freefiremobile.com/74CAC4E3-c744e3ca-cd25-4f53-be73-26644fcf6545_10120011_1760959743_res6",
+                    "PlatformRequireMask": 2
+                },
+                {
+                    "SubFileID": "WebGL.pck",
+                    "SHA1": "xfSeJrXaBOQ2ICkVkyF2Dc8Dpdg=",
+                    "FileSize": 747031,
+                    "URL": "https://dl-sbt-craftland.freefiremobile.com/4EAC743C-c744e3ca-cd25-4f53-be73-26644fcf6545_10120011_1760959743_res7",
+                    "PlatformRequireMask": 4
+                }
+            ]
+        },
+        {
+            "Name": "NnIxhh2E.AutoClient_aoaK7s9R",
+            "UUID": "NnIxhh2E.AutoClient_aoaK7s9R",
+            "UseVersionMD5": "HiW9X606ebXzK3Ea687nAHMNGBk=",
+            "WhoRequire": 0,
+            "FileList": [
+                {
+                    "SubFileID": "Client",
+                    "SHA1": "IyR0EHbLmDbmfAqTNRV1NDQwOo4=",
+                    "FileSize": 1714,
+                    "URL": "https://dl-sbt-craftland.freefiremobile.com/3ACEC474-c744e3ca-cd25-4f53-be73-26644fcf6545_10120011_1760959743_res8",
+                    "PlatformRequireMask": 7
+                }
+            ]
+        },
+        {
+            "Name": "Atlas-NnIxhh2E.a-yphmqeic06-mecg7b89-1erw2gj4f7c",
+            "UUID": "NnIxhh2E.a-yphmqeic06-mecg7b89-1erw2gj4f7c",
+            "UseVersionMD5": "Ig1x5KsUMfIlhDtDF1eqzjTqrKM=",
+            "WhoRequire": 0,
+            "FileList": [
+                {
+                    "SubFileID": "Android.pck",
+                    "SHA1": "YjZfITk+yIUuCCbjLZRPCPzaBQU=",
+                    "FileSize": 202244,
+                    "URL": "https://dl-sbt-craftland.freefiremobile.com/7CE434CA-c744e3ca-cd25-4f53-be73-26644fcf6545_10120011_1760959743_res9",
+                    "PlatformRequireMask": 1
+                },
+                {
+                    "SubFileID": "Ios.pck",
+                    "SHA1": "2NK4ezxmGk49UezbpTUJ3Zll/Rk=",
+                    "FileSize": 220507,
+                    "URL": "https://dl-sbt-craftland.freefiremobile.com/4EACC734-c744e3ca-cd25-4f53-be73-26644fcf6545_10120011_1760959743_res10",
+                    "PlatformRequireMask": 2
+                },
+                {
+                    "SubFileID": "WebGL.pck",
+                    "SHA1": "/nVPtv7pXvF83S9HQ0lCBOSY43c=",
+                    "FileSize": 202554,
+                    "URL": "https://dl-sbt-craftland.freefiremobile.com/34A7C4CE-c744e3ca-cd25-4f53-be73-26644fcf6545_10120011_1760959743_res11",
+                    "PlatformRequireMask": 4
+                }
+            ]
+        },
+        {
+            "Name": "NnIxhh2E.AutoCommon_LxD6b123",
+            "UUID": "NnIxhh2E.AutoCommon_LxD6b123",
+            "UseVersionMD5": "tRVB2KuhYQVwsPGWLN2uDF9srQ4=",
+            "WhoRequire": 0,
+            "FileList": [
+                {
+                    "SubFileID": "Client",
+                    "SHA1": "EqoGKiFZ6rgcsI60NXBMdEYInzc=",
+                    "FileSize": 475189,
+                    "URL": "https://dl-sbt-craftland.freefiremobile.com/A437CEC4-c744e3ca-cd25-4f53-be73-26644fcf6545_10120011_1760959743_res12",
+                    "PlatformRequireMask": 7
+                }
+            ]
+        }
+    ],
+    "TypeList": {},
+    "EnumList": {},
+    "EventList": {},
+    "SymbolSetting": "{\"_tag\":{\"type\":\"EditorGenSymbolSetting\"},\"_entityId\":\"d18tdDBW\",\"GenSymbol\":{\"Components\":{},\"Events\":{},\"Graphs\":{},\"Enums\":{}},\"children\":[]}",
+    "StoreInfo": {
+        "store_env": "http://ugcstore-sbt.web.garena.local",
+        "asset_id": 48423,
+        "ob_version": 12,
+        "Title": "Minicharacter角色资源",
+        "Desc": "",
+        "Author": "NO/60wnf",
+        "fe_version": "0.1.3987356",
+        "Thumbnails": [
+            "https://dl-sbt-craftland.freefiremobile.com/5bb84abc-8a10-4e06-abba-ed119e69406e_10120011_1759055937_pic1"
+        ],
+        "fe_namespace": "NnIxhh2E",
+        "Tags": [
+            "faZXb5d4"
+        ],
+        "CategoryL1": 1,
+        "CategoryL2": 0,
+        "ResourceType": 3,
+        "Thumbnails_CL": [],
+        "Category_CL": 0
+    },
+    "UgcItems": [
+        {
+            "type": "gfile",
+            "folder": "9",
+            "fileId": "ajhddtlj7np-mgyzsomk-ci4clukli1r",
+            "sortID": 10000
+        },
+        {
+            "type": "gfile",
+            "folder": "9",
+            "fileId": "ixizzacqb5f-mgyzsu9x-zygunr4frv",
+            "sortID": 10001
+        }
+    ]
+}

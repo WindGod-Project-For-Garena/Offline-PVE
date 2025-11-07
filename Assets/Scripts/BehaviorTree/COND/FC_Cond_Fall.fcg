@@ -1,0 +1,17 @@
+import "StdLibrary.fcc" as StdLib
+import "EditorGenLib.fcc" as EditorLib
+import "BehaviourTree.fcc" as BehaviourTree
+
+graph FC_Cond_Fall {
+    //Executed when entity is created
+    //funcID: PlayConditon
+	func PlayConditon(NodeName entity<BevTreeAttachable>) bool {
+		if NodeName<Mob>.StatusDic["HeadShot"] {
+            //设置摔倒状态
+            NodeName<Mob>.StatusDic["InFall"] = true
+			return true
+		} else {
+			return false
+		}
+	}
+}

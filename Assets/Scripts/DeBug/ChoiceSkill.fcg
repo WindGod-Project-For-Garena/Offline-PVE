@@ -1,0 +1,93 @@
+import "StdLibrary.fcc" as StdLib
+import "EditorGenLib.fcc" as EditorLib
+import "Player.fcc" as Player
+import "Hud.fcc" as Hud
+import "Math.fcc" as Math
+import "Camera.fcc" as Camera
+import "Playable.fcc" as Playable
+import "Animation.fcc" as Animation
+import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
+
+[platform_client]
+graph ChoiceSkill {
+    x int = 0
+    y int = 0
+    MaxSkillAmount int = 3
+    
+    //————————————————————————————————————————————————//
+    func ChoiceSkill(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        y = y + 1
+        if y > MaxSkillAmount-1 { 
+            y = 1
+        }
+        
+        x = x + 1
+        if x > MaxSkillAmount-1 { 
+            x = 1
+        }
+        
+        var DeBugUI entity<CustomUI> = GetLocalPlayer()<PlayerJionGame>.DeBugUI
+        var DeBugUI_ChoiceSkill = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/ChoiceSkill/文本_level")
+        DeBugUI_ChoiceSkill<UIWidgetLabel>.Content = "技能" + y
+        GetLocalPlayer()<PlayerJionGame>.UpdatecdSkill(x)
+        
+        // 动态切换技能按钮
+        var SkillUI entity<CustomUI> = GetLocalPlayer()<PlayerJionGame>.SkillUI
+        
+        // 隐藏所有技能面板
+        for i = 1, MaxSkillAmount,1{
+            LogInfo(i)
+            var skillPanel = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_" + i)
+            var joyStickAmount = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_" + i + "/JoyStickFillAmount")
+            skillPanel<UIWidget>.Active = false
+            joyStickAmount<UIWidget>.Active = false
+        }
+        
+        // 显示当前选中的技能
+        var currentSkillPanel = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_" + y)
+        var currentJoyStick = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_" + y + "/JoyStickFillAmount")
+        currentSkillPanel<UIWidget>.Active = true
+        currentJoyStick<UIWidget>.Active = false
+        
+        //————————————————————————————————————————————————// 更新UI显示当前技能的等级
+        UpdateSkillUI(y)
+    }
+    
+    // 更新技能UI显示
+    func UpdateSkillUI(skillIndex int) {
+        var DeBugUI entity<CustomUI> = GetLocalPlayer()<PlayerJionGame>.DeBugUI
+        
+        if skillIndex == 1 {
+            // 获取技能1的等级数据
+            var rangeLevel = GetLocalPlayer()<PlayerJionGame>.CurrentSkill_1_DeBug_LIST["Range"]
+            var damageLevel = GetLocalPlayer()<PlayerJionGame>.CurrentSkill_1_DeBug_LIST["Damage"]
+            var cdLevel = GetLocalPlayer()<PlayerJionGame>.CurrentSkill_1_DeBug_LIST["CD"]
+            
+            // 更新UI显示
+            var DeBugUI_Range = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/Range/文本_level")
+            DeBugUI_Range<UIWidgetLabel>.Content = rangeLevel + "级"
+            
+            var DeBugUI_Damage = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/Damage/文本_level")
+            DeBugUI_Damage<UIWidgetLabel>.Content = damageLevel + "级"
+            
+            var DeBugUI_CD = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/cdlevelup/文本_level")
+            DeBugUI_CD<UIWidgetLabel>.Content = cdLevel + "级"
+        }
+        if skillIndex == 2 {
+            // 获取技能2的等级数据
+            var rangeLevel = GetLocalPlayer()<PlayerJionGame>.CurrentSkill_2_DeBug_LIST["Range"]
+            var damageLevel = GetLocalPlayer()<PlayerJionGame>.CurrentSkill_2_DeBug_LIST["Damage"]
+            var cdLevel = GetLocalPlayer()<PlayerJionGame>.CurrentSkill_2_DeBug_LIST["CD"]
+            
+            // 更新UI显示
+            var DeBugUI_Range = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/Range/文本_level")
+            DeBugUI_Range<UIWidgetLabel>.Content = rangeLevel + "级"
+            
+            var DeBugUI_Damage = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/Damage/文本_level")
+            DeBugUI_Damage<UIWidgetLabel>.Content = damageLevel + "级"
+            
+            var DeBugUI_CD = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/cdlevelup/文本_level")
+            DeBugUI_CD<UIWidgetLabel>.Content = cdLevel + "级"
+        }
+    }
+}

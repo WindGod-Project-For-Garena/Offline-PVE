@@ -1,0 +1,17 @@
+import "StdLibrary.fcc" as StdLib
+import "EditorGenLib.fcc" as EditorLib
+import "Player.fcc" as Player
+import "Items.fcc" as Items
+import "Hud.fcc" as Hud
+
+graph GameWorkFlow {
+    //Executed when entity is created
+    event OnAwake() {
+
+        
+    }
+    event OnPlayerJoin(player entity<Player>) {
+        AddItem(player, ItemIDType.AK, 1, out var itemList)
+
+    }
+}

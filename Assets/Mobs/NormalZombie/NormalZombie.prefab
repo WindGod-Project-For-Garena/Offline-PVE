@@ -1,0 +1,434 @@
+{
+  "_tag": {
+    "type": "Prefab"
+  },
+  "_entityId": "2Svo3B9M",
+  "children": [
+    {
+      "_tag": {
+        "type": "UGCSceneEntity",
+        "resourceId": ""
+      },
+      "_entityId": "DoDDweTl",
+      "children": [],
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "position": {
+        "x": 0,
+        "y": -0.3,
+        "z": 0
+      },
+      "scale": {
+        "x": 1.5,
+        "y": 1.5,
+        "z": 1.5
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "BTPath": [
+        {
+          "fileId": "deactam6hc-lzrvmj32-wft19y35a1h",
+          "filePath": "Assets\\ZombieAssist\\Zombie01\\Zombie01.xbt",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "xbt"
+        }
+      ],
+      "visible": true,
+      "VisibilityLayer": 0,
+      "modelOptimization": 0,
+      "streamingLayer": "",
+      "attributes": [
+        2,
+        4
+      ],
+      "isTrigger": false,
+      "collidable": true,
+      "physicalLayer": 1,
+      "physicalMaterial": null,
+      "initialTypes": {},
+      "componentList": [
+        "AvatarAble",
+        "AnimationControllerAble",
+        "ColliderShape",
+        "Collider",
+        "AimableEntity",
+        "AimAssistEntity",
+        "BehaviourTreeAttachable",
+        "CustomComponent59601760"
+      ],
+      "_filters": [
+        "node.withscript"
+      ],
+      "entityTagData": {
+        "tagPointers": []
+      },
+      "materials": [
+        null
+      ],
+      "colliders": [
+        {
+          "colliderType": "Capsule",
+          "enable": true,
+          "isTrigger": false,
+          "position": {
+            "x": 0,
+            "y": 0.5,
+            "z": 0
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "size": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "radius": 0.05,
+          "height": 0.8,
+          "isConvexIfMesh": false
+        }
+      ],
+      "Rigidbody": {
+        "Type": 1,
+        "Mass": 1,
+        "CenterOfMass": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "UseGravity": false,
+        "Drag": 0.05,
+        "AngularDrag": 0.05,
+        "FreezePosX": false,
+        "FreezePosY": false,
+        "FreezePosZ": false,
+        "FreezeRotX": false,
+        "FreezeRotY": false,
+        "FreezeRotZ": false
+      },
+      "isCreateAsEmpty": false,
+      "ecaScripts": [
+        {
+          "fileId": "bqbirgsrqdq-mh8v0y7a-96xy5oijvzw",
+          "filePath": "Assets\\Scripts\\ZombieScripts\\FC_NormalZombie.fcg",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "ugcscript"
+        },
+        {
+          "fileId": "ccvs78qvc7a-mha18zqv-4scswvqy86h",
+          "filePath": "Assets\\Scripts\\ZombieScripts\\C_NormalZombie.fcg",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "ugcscript"
+        }
+      ],
+      "ecaProps": {
+        "CustomLevelObject": {
+          "PROP_14360378": 0,
+          "CustomLevelObject_81351029_custom": null
+        },
+        "LevelObject": {
+          "PROP_52849513": 0,
+          "PROP_45897236": 0
+        },
+        "Transform": {},
+        "Entity": {},
+        "Visibility": {},
+        "AvatarAble": {},
+        "AnimationControllerAble": {
+          "acRef": {
+            "fileId": "6z5rzcb6zuk-lzs1onvh-prec8jqapn",
+            "filePath": "Assets\\ZombieAssist\\Zombie01\\Zombie01.ac",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "ac"
+          }
+        },
+        "ColliderShape": {},
+        "Collider": {},
+        "AimableEntity": {},
+        "AimAssistEntity": {},
+        "BehaviourTreeAttachable": {},
+        "MeshRender": {},
+        "CustomComponent31897461": {
+          "PROP_49135054": 600,
+          "PROP_81455094": 600,
+          "PROP_73815879": 4,
+          "PROP_66147538": 20,
+          "PROP_45837287": 1,
+          "PROP_70190061": 1,
+          "PROP_44090358": 1,
+          "PROP_29109301": 1,
+          "PROP_73716871": 0.6,
+          "PROP_76912094": 0.6,
+          "PROP_30104596": 1,
+          "PROP_69523903": "",
+          "PROP_56297798": null,
+          "PROP_35241580": null,
+          "PROP_29661490": null,
+          "PROP_92573979": null,
+          "PROP_20114578": null,
+          "PROP_57044040": null
+        },
+        "CustomComponent59601760": {
+          "PROP_31785558": 100,
+          "PROP_22515481": "",
+          "PROP_74830943": 100,
+          "PROP_93441408": 4,
+          "PROP_27635539": 10,
+          "PROP_77801521": null,
+          "PROP_92961702": null,
+          "PROP_94587706": null
+        }
+      },
+      "entityVersion": 3,
+      "_entityName": "C_Zombie01",
+      "skeleton": {
+        "fileId": "glvebd7m03m-m03lt4wk-7wxymv3fjb-C_Zombie_01.sk",
+        "filePath": "fab://Assets\\ZombieAssist\\Zombie01\\C_Zombie_01.FBX\\C_Zombie_01.sk",
+        "_tag": {
+          "type": "GFileRefer"
+        },
+        "fileType": "sk"
+      },
+      "boneEntity": {
+        "_tag": {
+          "type": "BoneContentEntity"
+        },
+        "_entityId": "ffIPx3Nj",
+        "children": [
+          {
+            "_tag": {
+              "type": "BoneMeshGroupEntity"
+            },
+            "_entityId": "K1Rfzxpz",
+            "children": [
+              {
+                "_tag": {
+                  "type": "BoneMeshEntity"
+                },
+                "_entityId": "sTcFcN0V",
+                "children": [],
+                "activeValue": {
+                  "selfValue": true,
+                  "valueTag": "activeValue"
+                },
+                "unlockedValue": {
+                  "selfValue": true,
+                  "valueTag": "unlockedValue"
+                },
+                "_mesh": {
+                  "fileId": "glvebd7m03m-m03lt4wk-7wxymv3fjb-C_Zombie_01.~@FFSKIN",
+                  "filePath": "fab://Assets\\ZombieAssist\\Zombie01\\C_Zombie_01.FBX\\C_Zombie_01.mesh",
+                  "_tag": {
+                    "type": "GFileRefer"
+                  },
+                  "fileType": "mesh"
+                },
+                "materials": [
+                  {
+                    "fileId": "hn9btrfbgsn-m10h1zfm-xvunzc86ie9",
+                    "filePath": "Assets\\ZombieAsset\\Zombie01\\Materials\\NormalZombie_OG.mat",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "material"
+                  }
+                ],
+                "avatarPartInfo": {
+                  "bone": "C_Zombie_01",
+                  "bindType": 0
+                },
+                "position": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "scale": {
+                  "x": 1,
+                  "y": 1,
+                  "z": 1
+                },
+                "rotation": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "_entityName": "C_Zombie_01.mesh",
+                "prefabVariant": null,
+                "partType": 0
+              }
+            ],
+            "activeValue": {
+              "selfValue": true,
+              "valueTag": "activeValue"
+            },
+            "unlockedValue": null,
+            "groupId": "",
+            "enable": true,
+            "_entityName": "Skin",
+            "prefabVariant": null
+          },
+          {
+            "_tag": {
+              "type": "BoneMeshGroupEntity"
+            },
+            "_entityId": "kodp8uyP",
+            "children": [
+              {
+                "_tag": {
+                  "type": "BoneMeshEntity"
+                },
+                "_entityId": "WWkdmrYz",
+                "children": [],
+                "prefabVariant": null,
+                "activeValue": {
+                  "selfValue": true,
+                  "valueTag": "activeValue"
+                },
+                "unlockedValue": {
+                  "selfValue": true,
+                  "valueTag": "unlockedValue"
+                },
+                "editorLockValue": false,
+                "editorVisibleValue": true,
+                "_mesh": {
+                  "fileId": "glvebd7m03m-m03lt4wk-7wxymv3fjb-C_Zombie_01.~@FFSKIN",
+                  "filePath": "fab://Assets\\ZombieAsset\\NormalZombie\\C_Zombie_01.FBX\\C_Zombie_01.mesh",
+                  "_tag": {
+                    "type": "GFileRefer"
+                  },
+                  "fileType": "mesh"
+                },
+                "_cloth": null,
+                "partType": 0,
+                "causeAnimationTypeChange": false,
+                "outwardType": 0,
+                "materials": [
+                  {
+                    "fileId": "6z2d8qbxpkb-ma1yo477-wy4p99juoi",
+                    "filePath": "Assets\\ZombieAsset\\ZombieMatsEffect\\NormalZombie_cold.mat",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "material"
+                  }
+                ],
+                "avatarPartInfo": {
+                  "bone": "C_Zombie_01",
+                  "bindType": 0
+                },
+                "position": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "scale": {
+                  "x": 1,
+                  "y": 1,
+                  "z": 1
+                },
+                "rotation": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "_entityName": "C_Zombie_01.mesh"
+              }
+            ],
+            "prefabVariant": null,
+            "activeValue": {
+              "selfValue": true,
+              "valueTag": "activeValue"
+            },
+            "unlockedValue": null,
+            "editorLockValue": false,
+            "editorVisibleValue": true,
+            "groupId": "",
+            "enable": false,
+            "_entityName": "Skin_cold"
+          }
+        ],
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "BTPath": [
+          null
+        ],
+        "visible": true,
+        "VisibilityLayer": 0,
+        "modelOptimization": 0,
+        "streamingLayer": "",
+        "attributes": [
+          2,
+          4
+        ],
+        "isTrigger": false,
+        "collidable": true,
+        "physicalLayer": 0,
+        "physicalMaterial": null,
+        "initialTypes": {},
+        "componentList": [],
+        "_filters": [],
+        "_entityName": "C_Zombie_01",
+        "prefabVariant": null
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "prefabVariant": null,
+      "propsData": {},
+      "aoiSetting": 0
+    }
+  ],
+  "prefabVariant": null,
+  "activeValue": {
+    "selfValue": true,
+    "valueTag": "activeValue"
+  },
+  "unlockedValue": {
+    "selfValue": true,
+    "valueTag": "unlockedValue"
+  },
+  "editorLockValue": false,
+  "editorVisibleValue": true,
+  "discriminator": "ISceneLike",
+  "_entityName": "NormalZombie"
+}
+//"{FE:{"v":"1.15.3997714","c":{"FF":5001},"s":100}

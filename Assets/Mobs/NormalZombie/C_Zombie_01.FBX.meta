@@ -1,0 +1,150 @@
+{
+  "fileId": "glvebd7m03m-m03lt4wk-7wxymv3fjb",
+  "globalscale": 1,
+  "properties": {
+    "Common": ""
+  },
+  "subDynamicResources": {},
+  "subLOD": {},
+  "version": "1.6.0",
+  "manifest": {
+    "Meshes": [
+      {
+        "Name": "C_Zombie_01.~@FFSKIN",
+        "MeshName": "C_Zombie_01",
+        "Type": "skin",
+        "OrgExtName": ".~@FFSKIN"
+      }
+    ],
+    "BoneInfos": [
+      {
+        "Name": "C_Zombie_01.sk",
+        "BoneNodes": [
+          {
+            "ChildBones": [],
+            "BoneName": "C_Zombie_01"
+          },
+          {
+            "ChildBones": [
+              {
+                "ChildBones": [
+                  {
+                    "ChildBones": [
+                      {
+                        "ChildBones": [
+                          {
+                            "ChildBones": [],
+                            "BoneName": "bone_R_Foot"
+                          }
+                        ],
+                        "BoneName": "bone_R_Claf"
+                      }
+                    ],
+                    "BoneName": "bone_R_Thigh"
+                  },
+                  {
+                    "ChildBones": [
+                      {
+                        "ChildBones": [
+                          {
+                            "ChildBones": [],
+                            "BoneName": "bone_L_Foot"
+                          }
+                        ],
+                        "BoneName": "bone_L_Claf"
+                      }
+                    ],
+                    "BoneName": "bone_L_Thigh"
+                  },
+                  {
+                    "ChildBones": [
+                      {
+                        "ChildBones": [
+                          {
+                            "ChildBones": [
+                              {
+                                "ChildBones": [
+                                  {
+                                    "ChildBones": [],
+                                    "BoneName": "bone_R_Hand"
+                                  }
+                                ],
+                                "BoneName": "bone_R_Forearm"
+                              }
+                            ],
+                            "BoneName": "bone_R_UpperArm"
+                          },
+                          {
+                            "ChildBones": [
+                              {
+                                "ChildBones": [
+                                  {
+                                    "ChildBones": [],
+                                    "BoneName": "bone_L_Hand"
+                                  }
+                                ],
+                                "BoneName": "bone_L_Forearm"
+                              }
+                            ],
+                            "BoneName": "bone_L_UpperArm"
+                          },
+                          {
+                            "ChildBones": [],
+                            "BoneName": "bone_Head"
+                          }
+                        ],
+                        "BoneName": "bone_Spine01"
+                      }
+                    ],
+                    "BoneName": "bone_Spine"
+                  }
+                ],
+                "BoneName": "bone_Pelvis"
+              }
+            ],
+            "BoneName": "Root"
+          }
+        ],
+        "OrgExtName": ".sk"
+      }
+    ],
+    "Anims": [],
+    "ManifestJSON": {
+      "FBXName": "C_Zombie_01",
+      "ImportSucceeded": true,
+      "MaterialCount": 1,
+      "MaterialDetail": [
+        {
+          "Index": 0,
+          "MaterialName": "C_Zombie_01"
+        }
+      ],
+      "MeshCount": 1,
+      "MeshDetail": [
+        {
+          "MeshName": "C_Zombie_01",
+          "MaterialIndex": [
+            0
+          ],
+          "Transform": {
+            "Position": [
+              0,
+              0,
+              0
+            ],
+            "Rotation": [
+              -90,
+              0,
+              0
+            ],
+            "Scale": [
+              1,
+              1,
+              1
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

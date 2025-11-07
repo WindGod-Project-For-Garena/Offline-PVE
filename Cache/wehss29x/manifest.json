@@ -1,0 +1,194 @@
+{
+    "W!9p4B#3RvTc": "ref",
+    "AppVersion": "1.0.191",
+    "Name": "Basic Object",
+    "UUID": "wehss29x",
+    "Children": [{
+            "Name": "Meshes",
+            "UUID": "p8mvjo7f4g-lp6qx1d6-uh53o6thfts",
+            "Type": "folder",
+            "PackageUUID": "",
+            "RelyOns": [],
+            "Children": [{
+                    "Name": "cone.fbx",
+                    "UUID": "c2ce394e-c59e-4f72-8f2b-9f287d9cb292",
+                    "Type": "fbx",
+                    "PackageUUID": "",
+                    "Children": [{
+                            "Name": "Cone001",
+                            "UUID": "c2ce394e-c59e-4f72-8f2b-9f287d9cb292-Cone001.~@FFFUB",
+                            "Type": "mesh",
+                            "PackageUUID": "wehss29x.AutoCommon_qZC7wUI3",
+                            "RelyOns": ["wehss29x.c2ce394e-c59e-4f72-8f2b-9f287d9cb292-Cone001.~@FFFUB"],
+                            "Info": {
+                                "SubMeshCount": 1,
+                                "Type": "common"
+                            }
+                        }
+                    ]
+                }, {
+                    "Name": "cube.fbx",
+                    "UUID": "7d9977d6-d297-4a69-970c-c4d88446bf3b",
+                    "Type": "fbx",
+                    "PackageUUID": "",
+                    "Children": [{
+                            "Name": "Box001",
+                            "UUID": "7d9977d6-d297-4a69-970c-c4d88446bf3b-Box001.~@FFFUB",
+                            "Type": "mesh",
+                            "PackageUUID": "wehss29x.AutoCommon_qZC7wUI3",
+                            "RelyOns": ["wehss29x.7d9977d6-d297-4a69-970c-c4d88446bf3b-Box001.~@FFFUB"],
+                            "Info": {
+                                "SubMeshCount": 1,
+                                "Type": "common",
+								"ColliderInfo": {
+									"colliderType":"Box",
+									"size" : {
+										"x" :1,
+										"y" :1,
+										"z" :1
+									}
+								}
+                            }
+                        }
+                    ]
+                }, {
+                    "Name": "cylinder.fbx",
+                    "UUID": "bd350b6d-6306-4bc9-834b-1246ecda5e40",
+                    "Type": "fbx",
+                    "PackageUUID": "",
+                    "Children": [{
+                            "Name": "Cylinder001",
+                            "UUID": "bd350b6d-6306-4bc9-834b-1246ecda5e40-Cylinder001.~@FFFUB",
+                            "Type": "mesh",
+                            "PackageUUID": "wehss29x.AutoCommon_qZC7wUI3",
+                            "RelyOns": ["wehss29x.bd350b6d-6306-4bc9-834b-1246ecda5e40-Cylinder001.~@FFFUB"],
+                            "Info": {
+                                "SubMeshCount": 1,
+                                "Type": "common"
+                            }
+                        }
+                    ]
+                }, {
+                    "Name": "plane.fbx",
+                    "UUID": "56937734-67d8-4e83-b175-17c2544b25b4",
+                    "Type": "fbx",
+                    "PackageUUID": "",
+                    "Children": [{
+                            "Name": "WS_Plane",
+                            "UUID": "56937734-67d8-4e83-b175-17c2544b25b4-WS_Plane.~@FFFUB",
+                            "Type": "mesh",
+                            "PackageUUID": "wehss29x.AutoCommon_qZC7wUI3",
+                            "RelyOns": ["wehss29x.56937734-67d8-4e83-b175-17c2544b25b4-WS_Plane.~@FFFUB"],
+                            "Info": {
+                                "SubMeshCount": 1,
+                                "Type": "common"
+                            }
+                        }
+                    ]
+                }, {
+                    "Name": "sphere.fbx",
+                    "UUID": "772ab186-6b5b-4775-b674-92e3e730f58d",
+                    "Type": "fbx",
+                    "PackageUUID": "",
+                    "Children": [{
+                            "Name": "Sphere001",
+                            "UUID": "772ab186-6b5b-4775-b674-92e3e730f58d-Sphere001.~@FFFUB",
+                            "Type": "mesh",
+                            "PackageUUID": "wehss29x.AutoCommon_qZC7wUI3",
+                            "RelyOns": ["wehss29x.772ab186-6b5b-4775-b674-92e3e730f58d-Sphere001.~@FFFUB"],
+                            "Info": {
+                                "SubMeshCount": 1,
+                                "Type": "common",
+								"ColliderInfo": {
+									"colliderType":"Sphere",
+									"radius" : 0.5
+								}
+                            }
+                        }
+                    ]
+                }, {
+                    "Name": "triangular prism.fbx",
+                    "UUID": "b3cb5869-eb3e-4b90-825e-f25291507b60",
+                    "Type": "fbx",
+                    "PackageUUID": "",
+                    "Children": [{
+                            "Name": "triangular prism",
+                            "UUID": "b3cb5869-eb3e-4b90-825e-f25291507b60-triangular_prism.~@FFFUB",
+                            "Type": "mesh",
+                            "PackageUUID": "wehss29x.AutoCommon_qZC7wUI3",
+                            "RelyOns": ["wehss29x.b3cb5869-eb3e-4b90-825e-f25291507b60-triangular_prism.~@FFFUB"],
+                            "Info": {
+                                "SubMeshCount": 1,
+                                "Type": "common"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "ResPackages": [{
+            "Name": "wehss29x.AutoCommon_qZC7wUI3",
+            "UUID": "wehss29x.AutoCommon_qZC7wUI3",
+            "UseVersionMD5": "IuMdacV39LmRCD/6YHMSdJfa2Tg=",
+            "WhoRequire": 2,
+            "FileList": [{
+                    "SubFileID": "Client",
+                    "SHA1": "XqNdSnwpu2PKn/Si1pNSVYqpQiA=",
+                    "FileSize": 62269,
+                    "URL": "https://dl-rct-craftland.freefiremobile.com/bcf6ba28-8e95-11ee-aa3f-0242ac150006_10000003_1_res1",
+                    "PlatformRequireMask": 7
+                }, {
+                    "SubFileID": "Server",
+                    "SHA1": "pG5PT51rRgL2wJHVZzP55nHBZFk=",
+                    "FileSize": 24315,
+                    "URL": "https://dl-rct-craftland.freefiremobile.com/bcf6ba28-8e95-11ee-aa3f-0242ac150006_10000003_1_res2",
+                    "PlatformRequireMask": 8
+                }
+            ]
+        }
+    ],
+	"UgcItems": [{
+            "type": "folder",
+            "folder": "1",
+            "fileId": "1/BasicShapdes",
+            "name": "FE_39_ZQ_PART_PART",
+            "sortID": 0
+        }, {
+            "type": "gfile",
+            "folder": "1/BasicShapdes",
+            "fileId": "7d9977d6-d297-4a69-970c-c4d88446bf3b-Box001.~@FFFUB"
+        }, {
+            "type": "gfile",
+            "folder": "1/BasicShapdes",
+            "fileId": "c2ce394e-c59e-4f72-8f2b-9f287d9cb292-Cone001.~@FFFUB"
+        }, {
+            "type": "gfile",
+            "folder": "1/BasicShapdes",
+            "fileId": "bd350b6d-6306-4bc9-834b-1246ecda5e40-Cylinder001.~@FFFUB"
+        }, {
+            "type": "gfile",
+            "folder": "1/BasicShapdes",
+            "fileId": "772ab186-6b5b-4775-b674-92e3e730f58d-Sphere001.~@FFFUB"
+        }, {
+            "type": "gfile",
+            "folder": "1/BasicShapdes",
+            "fileId": "b3cb5869-eb3e-4b90-825e-f25291507b60-triangular_prism.~@FFFUB"
+        }, {
+            "type": "gfile",
+            "folder": "1/BasicShapdes",
+            "fileId": "56937734-67d8-4e83-b175-17c2544b25b4-WS_Plane.~@FFFUB"
+        }
+    ],
+    "StoreInfo": {
+        "store_env": "http://genesis.test.jingle.cn",
+        "asset_id": 29,
+        "ob_version": 6,
+        "Title": "BasicShapes",
+        "Desc": "",
+        "Author": "cat",
+        "fe_version": "0.0.0",
+        "Thumbnails": ["https://dl-rct-craftland.freefiremobile.com/c0cf0b64-53a8-11ee-b738-0242ac150006_10000003_1_pic1", "https://dl-rct-craftland.freefiremobile.com/c0cf0b64-53a8-11ee-b738-0242ac150006_10000003_1_pic2", "https://dl-rct-craftland.freefiremobile.com/c0cf0b64-53a8-11ee-b738-0242ac150006_10000003_1_pic3", "https://dl-rct-craftland.freefiremobile.com/d90627ea-8ccd-11ee-9c4e-0242ac150006_10000003_1_pic1", "https://dl-rct-craftland.freefiremobile.com/d90627ea-8ccd-11ee-9c4e-0242ac150006_10000003_1_pic2"],
+        "fe_namespace": "wehss29x"
+    }
+}

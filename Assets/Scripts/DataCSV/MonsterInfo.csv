@@ -1,0 +1,6 @@
+ID,Name_key,BaseHP,BaseDamage,MoveSpeed,IsElite,IsBoss,PrefabID
+int,string,int,int,float,bool,bool,string
+1,NormalZombie,600,10,4,FALSE,FALSE,NormalZombie
+2,AxeZombie,300,8,6,FALSE,FALSE,NormalZombie
+3,TankZombie,1200,20,2,TRUE,FALSE,NormalZombie
+4,ZombieBoss,3000,50,3,FALSE,TRUE,NormalZombie

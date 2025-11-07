@@ -1,0 +1,18 @@
+import "StdLibrary.fcc" as StdLib
+import "EditorGenLib.fcc" as EditorLib
+import "BehaviourTree.fcc" as BehaviourTree
+
+graph FC_Cond_IsHit {
+    //Executed when entity is created
+    event OnAwake() {
+
+    }
+    func PlayCondition(Owner entity<BevTreeAttachable>) bool{
+        if (Owner<Mob>.StatusDic["Hit"] as bool){
+            //var InHit = !(Owner<ZombieCom>.ZombieInfo["InHit"] as bool)
+            Owner<Mob>.StatusDic["InHit"] = true
+        }else {
+            return false
+        }
+    }
+}

@@ -1,0 +1,203 @@
+import "StdLibrary.fcc" as StdLib
+import "EditorGenLib.fcc" as EditorLib
+import "Player.fcc" as Player
+import "Items.fcc" as Items
+import "Hud.fcc" as Hud
+import "../SkillUI/SkillUI.fcg" as SkillUI
+import "Math.fcc" as Math
+import "Map.fcc" as Map
+
+[platform_client]
+graph PlayerJionGame {
+    SkillUI entity<CustomHud>
+    DeBugUI entity<CustomHud>
+    //当前技能（1号技能，2号技能）
+    CurrentSkill int = 0
+    
+    // 技能1数据
+    CurrentSkill_1_DATA_LIST Map<string,int> = Map<string,int>{"Range":1,"Damage":0,"CD":5000}
+    CurrentSkill_1_DeBug_LIST Map<string,int> = Map<string,int>{"Range":0,"Damage":0,"CD":0}
+    Skill1_RangeState Map<string,int> = Map<string,int>{"x":1,"y":0}
+    Skill1_DamageState Map<string,int> = Map<string,int>{"x":0,"y":0}
+    Skill1_CDState Map<string,int> = Map<string,int>{"x":5000,"y":0}
+    
+    // 技能2数据
+    CurrentSkill_2_DATA_LIST Map<string,int> = Map<string,int>{"Range":1,"Damage":0,"CD":5000}
+    CurrentSkill_2_DeBug_LIST Map<string,int> = Map<string,int>{"Range":0,"Damage":0,"CD":0}
+    Skill2_RangeState Map<string,int> = Map<string,int>{"x":1,"y":0}
+    Skill2_DamageState Map<string,int> = Map<string,int>{"x":5,"y":0}
+    Skill2_CDState Map<string,int> = Map<string,int>{"x":5000,"y":0}
+    
+    // 常量
+    MaxRange int = 6
+    MaxDamage int = 30
+    MinCD int = 2500
+    
+    //————————————————————————————————————————————————//
+    event OnPlayerJoin(player entity<Player>) {
+        if GetLocalPlayer() == player {
+            CreateCustomUIClient(out var SkillUIEntity, EResUI.Skill)
+            SkillUI = SkillUIEntity
+            SkillUIEntity<CustomUI>.IsVisible = true
+
+            CreateCustomUIClient(out var DeBugUIEntity, EResUI.DeBug)
+            DeBugUI = DeBugUIEntity
+            DeBugUIEntity<CustomUI>.IsVisible = true
+
+            var Skill_1Panel = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_1")
+            Skill_1Panel<UIWidget>.Active = false
+            var JoyStickButton_1 = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_1/JoyStickFillAmount")
+            JoyStickButton_1<UIWidget>.Active = false
+
+            var Skill_2Panel = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_2")
+            Skill_2Panel<UIWidget>.Active = false
+            var JoyStickButton_2 = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_2/JoyStickFillAmount")
+            JoyStickButton_2<UIWidget>.Active = false
+        }
+    }
+    
+    func GetSkillData(CurrentSkill int) Map<string,int> {
+        if CurrentSkill == 1 {
+            return CurrentSkill_1_DATA_LIST
+        } 
+        if CurrentSkill == 2 {
+            return CurrentSkill_2_DATA_LIST
+        } 
+    }
+    
+    // 更新当前技能
+    func UpdatecdSkill(x int) {
+        CurrentSkill = x
+    }
+    
+    //———————————————————————————————————————————————————————————————————//
+    // 范围更新函数
+    func UpdateRange_1() {
+        var x = Skill1_RangeState["x"]
+        var y = Skill1_RangeState["y"]
+        
+        x = x + 1
+        y = y + 1
+        if x > MaxRange { 
+            x = 1
+            y = 0
+        }
+        
+        Skill1_RangeState["x"] = x
+        Skill1_RangeState["y"] = y
+        CurrentSkill_1_DATA_LIST["Range"] = x
+        CurrentSkill_1_DeBug_LIST["Range"] = y
+        
+        // 更新UI
+        var DeBugUI_Range = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/Range/文本_level")
+        DeBugUI_Range<UIWidgetLabel>.Content = y + "级"
+    }
+    
+    func UpdateRange_2() {
+        var x = Skill2_RangeState["x"]
+        var y = Skill2_RangeState["y"]
+        
+        x = x + 1
+        y = y + 1
+        if x > MaxRange { 
+            x = 1
+            y = 0
+        }
+        
+        Skill2_RangeState["x"] = x
+        Skill2_RangeState["y"] = y
+        CurrentSkill_2_DATA_LIST["Range"] = x
+        CurrentSkill_2_DeBug_LIST["Range"] = y
+        
+        // 更新UI
+        var DeBugUI_Range = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/Range/文本_level")
+        DeBugUI_Range<UIWidgetLabel>.Content = y + "级"
+    }
+    //———————————————————————————————————————————————————————————————————//
+    // 伤害更新函数
+    func UpdateDamage_1() {
+        var x = Skill1_DamageState["x"]
+        var y = Skill1_DamageState["y"]
+        
+        x = x + 5
+        y = y + 1
+        if x > MaxDamage {
+            x = 5
+            y = 0
+        }
+        
+        Skill1_DamageState["x"] = x
+        Skill1_DamageState["y"] = y
+        CurrentSkill_1_DATA_LIST["Damage"] = x
+        CurrentSkill_1_DeBug_LIST["Damage"] = y
+        
+        // 更新UI
+        var DeBugUI_Damage = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/Damage/文本_level")
+        DeBugUI_Damage<UIWidgetLabel>.Content = y + "级"
+    }
+    
+    func UpdateDamage_2() {
+        var x = Skill2_DamageState["x"]
+        var y = Skill2_DamageState["y"]
+        
+        x = x + 5
+        y = y + 1
+        if x > MaxDamage {
+            x = 5
+            y = 0
+        }
+        
+        Skill2_DamageState["x"] = x
+        Skill2_DamageState["y"] = y
+        CurrentSkill_2_DATA_LIST["Damage"] = x
+        CurrentSkill_2_DeBug_LIST["Damage"] = y
+        
+        // 更新UI
+        var DeBugUI_Damage = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/Damage/文本_level")
+        DeBugUI_Damage<UIWidgetLabel>.Content = y + "级"
+    }
+    //———————————————————————————————————————————————————————————————————//
+    // CD更新函数
+    func UpdateCD_1() {
+        var x = Skill1_CDState["x"]
+        var y = Skill1_CDState["y"]
+        
+        x = x - 500
+        y = y + 1
+        if x < MinCD {
+            x = 5000
+            y = 0
+        }
+        
+        Skill1_CDState["x"] = x
+        Skill1_CDState["y"] = y
+        CurrentSkill_1_DATA_LIST["CD"] = x
+        CurrentSkill_1_DeBug_LIST["CD"] = y
+        
+        // 更新UI
+        var DeBugUI_CD = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/cdlevelup/文本_level")
+        DeBugUI_CD<UIWidgetLabel>.Content = y + "级"
+    }
+    
+    func UpdateCD_2() {
+        var x = Skill2_CDState["x"]
+        var y = Skill2_CDState["y"]
+        
+        x = x - 500
+        y = y + 1
+        if x < MinCD {
+            x = 5000
+            y = 0
+        }
+        
+        Skill2_CDState["x"] = x
+        Skill2_CDState["y"] = y
+        CurrentSkill_2_DATA_LIST["CD"] = x
+        CurrentSkill_2_DeBug_LIST["CD"] = y
+        
+        // 更新UI
+        var DeBugUI_CD = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/cdlevelup/文本_level")
+        DeBugUI_CD<UIWidgetLabel>.Content = y + "级"
+    }
+    //———————————————————————————————————————————————————————————————————//
+}

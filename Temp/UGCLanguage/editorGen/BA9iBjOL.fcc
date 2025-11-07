@@ -1,0 +1,40 @@
+
+
+
+
+
+
+//TODO: export resources enum in package
+
+
+// BA9iBjOL://Spawn Point Auto Closer.eca
+[platform_server]
+declare graph __BA9iBjOLzooSpawn6Point6Auto6Closerneca__ {
+}
+
+
+
+
+
+enum EPhase {
+    // Start
+    Start = 1315
+
+    // Preparation
+    Preparation = 1513
+
+    // Rounds
+    Rounds = 3022
+
+    // Rounds / Stages
+    Stages = 3756
+
+    // Rounds / Stages
+    Stages_1 = 4045
+
+    // End
+    End = 4309
+
+}
+
+

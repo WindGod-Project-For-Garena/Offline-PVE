@@ -1,0 +1,54 @@
+import "StdLibrary.fcc" as StdLib
+import "EditorGenLib.fcc" as EditorLib
+import "Player.fcc" as Player
+import "Math.fcc" as Math
+import "BehaviourTree.fcc" as BehaviourTree
+import "Playable.fcc" as Playable
+import "Hostility.fcc" as Hostility
+
+graph Script_1_ {
+    
+    func PlayCondition(owner entity<BevTreeAttachable>) bool{
+        //获取当前目标
+        var curTarget entity<Player> = owner<Mob>.CurrTarget
+        GetNodeVariable(thisEntity<BevTreeCustomNode>,"SeekRange",out var SeekRange)
+        var tempTarget = curTarget 
+        
+        if (curTarget != nil){
+            if(tempTarget<Player>.HP <= 0){
+                return false
+            }
+            if(IsInRange(owner<Transform>,tempTarget,SeekRange as float)){
+                return true
+            }else{
+                owner<Mob>.StatusDic["CurrTarget"] = nil
+
+            }
+        }
+        for i,player in GetAllPlayers(){//遍历所有玩家，可以改为1个玩家
+            var tempteam = player<Player>.HostTeam
+            if(player<Player>.HP <= 0){
+              continue  
+            }else if(IsInRange(owner<Transform>,player<Player>,SeekRange as float)){
+                owner<Mob>.CurrTarget = player
+                
+                return true
+            }else{
+                continue
+            }
+        }
+        return false
+    }
+
+    func IsInRange(mob entity<Transform>,player1 entity<Player>,range1 float) bool{
+        var zombiePos = mob<Transform>.Position
+        var playerPos = player1<Player>.Position
+        if (Distance(zombiePos,playerPos) <= range1) {
+            return true
+        }else{
+            return false
+        }
+    }
+
+
+}

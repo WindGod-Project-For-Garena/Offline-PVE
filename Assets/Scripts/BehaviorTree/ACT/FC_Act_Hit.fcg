@@ -1,0 +1,29 @@
+import "StdLibrary.fcc" as StdLib
+import "EditorGenLib.fcc" as EditorLib
+import "BehaviourTree.fcc" as BehaviourTree
+import "Animation.fcc" as Animation
+
+graph Script_1_ {
+    _HitBeginTime int
+    _HitAniTime int
+    //Executed when entity is created
+    event OnNodeEnter(nodeName string, owner entity<BevTreeAttachable>) {
+        _HitBeginTime = globalEntity<Global>.GameTimeCount
+        GetNodeVariable(thisEntity<BevTreeCustomNode>,"Duration",out var Duration)
+        PlayAnimation(owner<AnimationControllerAttachable>,"Hit",1,LoopType.Once)
+        _HitAniTime = Duration as int
+
+        if (owner<Mob>.CurrTarget == nil){
+            owner<Mob>.CurrTarget = owner<Mob>.LastHitPlayer
+        }
+    }
+    func PlayAction(owner entity<BevTreeAttachable>) BevTreeNodeStatus{
+        if (globalEntity<Global>.GameTimeCount >= _HitAniTime + _HitBeginTime){
+            owner<Mob>.StatusDic["Hit"] = false
+            owner<Mob>.StatusDic["InHit"] = false
+            return BevTreeNodeStatus.Finish
+        }else{
+            return BevTreeNodeStatus.Running
+        }
+    }
+}

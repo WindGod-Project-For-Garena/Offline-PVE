@@ -1,0 +1,12 @@
+import "StdLibrary.fcc" as StdLib
+import "EditorGenLib.fcc" as EditorLib
+import "BehaviourTree.fcc" as BehaviourTree
+
+//Fake Client: Currently using server script
+graph FC_Cond_IsDead {
+    //Executed when entity is created
+
+    func PlayConditon(Owner entity<BevTreeAttachable>) bool {
+		return (Owner<Mob>.HP <= 0)
+	}
+}
