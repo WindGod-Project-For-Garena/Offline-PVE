@@ -3,6 +3,7 @@ import "EditorGenLib.fcc" as EditorLib
 import "BehaviourTree.fcc" as BehaviourTree
 import "Animation.fcc" as Animation
 import "Strings.fcc" as Strings
+import "../../PVE/FC_PVEMonsterManager.fcg" as PVEMonsterManager
 
 
 //Fake Client: Currently using server script
@@ -10,11 +11,14 @@ graph FC_Act_Death {
     //Executed when entity is created
     //funcID: PlayAction
 	func PlayAction(Owner entity<BevTreeAttachable>) BTreeNodeState {
+		//LogInfo("running death")
 		return BevTreeNodeStatus.Running
 	}
 
 	//eventID: 42//s8004_dup_block
 	event OnNodeEnter(NodeName string, Owner entity<BevTreeAttachable>) {
 		PlayAnimation(Owner as entity<AnimationControllerAttachable>, "Dead", 1, LoopType.Once)
+		PVEMonsterManager.OnMonsterKilled(Owner as entity<LevelObject>)
+
 	}
 }

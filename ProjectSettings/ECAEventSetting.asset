@@ -3,8 +3,40 @@
     "type": "ecaEventDesc"
   },
   "_entityId": "sOWAgy2P",
-  "customEventDefines": {},
-  "customName": {},
+  "customEventDefines": {
+    "signal_40948046": {
+      "name": "MobAttackEvent_AC",
+      "eventType": 1,
+      "enitityType": "AnimationControllerAble",
+      "typeID": 100000,
+      "props": [
+        {
+          "name": "attackName",
+          "value": "String",
+          "key": 1
+        }
+      ],
+      "propCount": 1,
+      "apiTargetV2": "both",
+      "version": 45,
+      "key": "signal_40948046"
+    },
+    "signal_87958515": {
+      "name": "MobDeathEvent_AC",
+      "eventType": 1,
+      "enitityType": "AnimationControllerAble",
+      "typeID": 100001,
+      "props": [],
+      "propCount": 0,
+      "apiTargetV2": "both",
+      "version": 45,
+      "key": "signal_87958515"
+    }
+  },
+  "customName": {
+    "MobAttackEvent_AC": "signal_40948046",
+    "MobDeathEvent_AC": "signal_87958515"
+  },
   "children": []
 }
 //"{FE:{"v":"1.15.3997714","c":{"FF":5001},"s":100}

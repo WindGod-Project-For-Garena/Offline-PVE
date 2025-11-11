@@ -15,6 +15,7 @@ graph FC_Act_Fall {
 			//重置摔倒状态
 			NodeName<Mob>.StatusDic["InFall"] = false
 			NodeName<Mob>.StatusDic["HeadShot"] = false
+			//NodeName<Mob>.StatusDic["CanPatrol"] = true
 			return BevTreeNodeStatus.Finish
 		} else {
 			return BevTreeNodeStatus.Running

@@ -2,14 +2,22 @@ import "StdLibrary.fcc" as StdLib
 import "EditorGenLib.fcc" as EditorLib
 import "Playable.fcc" as Playable
 import "BehaviourTree.fcc" as BehaviourTree
+import "Camera.fcc" as Camera
+import "Math.fcc" as Math
+import "Combat.fcc" as Combat
+import "../CustomEvent.fcc" as CustomEvent
+import "../PVE/FC_PVEMonsterManager.fcg" as PVEMonsterManager
 
 graph FC_NormalZombie {
     //Executed when entity is created
     HeadShoted bool = false
 	LastHitPlayer entity<Player> = nil
-	MoveTween entity<Tween> = nil
+	moveTween entity<Tween> = nil
 	LastPos Vector3 = Vector3{0,0,0}
     tickInterval int = 1
+	tweenDuration float = 2000
+	counter int = 0
+	hateGainInterval int = 3000
 
 	event OnAwake() {
         WaitForNextFrame()
@@ -18,12 +26,12 @@ graph FC_NormalZombie {
 
 	//funcID: Init
 	async func Init() {
-		CreateMoveTween(thisEntity<Transform>.Position, thisEntity<Transform>.Position)
+		CreateMoveTween(Vector3{0,0,0})
 		thisEntity<BevTreeAttachable>.AttachTarget<BevTree>.TickInterval = tickInterval
 		thisEntity<Mob>.MobName = "NormalZombie"
         thisEntity<Mob>.MaxHP = 600
         thisEntity<Mob>.HP = 600
-        thisEntity<Mob>.WalkSpeed = 4
+        thisEntity<Mob>.WalkSpeed = 1.5
         thisEntity<Mob>.Damage = 10
 		thisEntity<Mob>.StatusDic = Map<string, object>{
 			"HeadShot": false, 	//是否被爆头
@@ -31,7 +39,9 @@ graph FC_NormalZombie {
 			"Hit": false, 		//是否受击
 			"InHit": false, 	//是否在受击
 			"CanPatrol": true, //是否可以巡逻
+			"Walk": false, 		//是否在行走
 		}
+		thisEntity<Mob>.DetectRange = 10
         var nowTime int = globalEntity<Global>.GameTimeCount
 		SetBlackboardValue(thisEntity<BevTreeAttachable>.AttachTarget, "LastAttackTime", nowTime)
 		SetBlackboardValue(thisEntity<BevTreeAttachable>.AttachTarget, "Curstate", 0)
@@ -44,21 +54,78 @@ graph FC_NormalZombie {
 	}
 
 	//funcID: CreateMoveTween
-	func CreateMoveTween(startPos Vector3, endPos Vector3) {
-		if MoveTween == nil {
-			LogInfo("CreateMoveTween")
-			CreateTween(thisEntity, Transform.Position, thisEntity<Transform>.Position, thisEntity<Transform>.Position, TweenStyle.Once, CreateCurve({0, 0, 1, 1}),30, out var moveTween, false)
-			MoveTween = moveTween
-			LastPos = thisEntity<Transform>.Position
-		} else {
-			//thisEntity<Transform>.Position = endPos
-			SetPropertySmoothly(thisEntity, Transform.Position, endPos)
-			// MoveTween<Tween>.StartValue = LastPos
-			// MoveTween<Tween>.EndValue = endPos
-			// LastPos = endPos
-			// Play(MoveTween, true)
+	func CreateMoveTween(velocity Vector3) {	
+		//LogInfo("create move tween: " + velocity)
+		
+		if moveTween != nil{
+
+			var endPos Vector3 = thisEntity<Transform>.Position + velocity * tweenDuration/1000
+			
+			//LogInfo("create move tween: " + endPos + "currPostion" + thisEntity<Transform>.Position)
+			moveTween<Tween>.Duration = tweenDuration
+			moveTween<Tween>.EndValue = endPos
+			moveTween<Tween>.StartValue = thisEntity<Transform>.Position
+			Play(moveTween,true)
+		}else{
+			var endPos Vector3 = thisEntity<Transform>.Position + velocity * tweenDuration/1000
+			CreateTween(thisEntity,Transform.Position,thisEntity<Transform>.Position,
+				endPos,TweenStyle.Once,CreateCurve({0.25, 0.1, 0.25, 1}),tweenDuration,out var tweenEntity,true)
+			moveTween = tweenEntity
+		}
+		
+	
+	}
+
+	func StopMoveTween() {
+		if moveTween != nil{
+			Pause(moveTween)
+			//Destroy(moveTween)
 		}
 	}
+
+	//eventID: 91//r;Zn+-uY8Ahq`0JH4Yr{ //animation
+	event MobAttackEvent_AC(attackName string) {
+		if (attackName == "NormalAttack1") {
+			//LogInfo("NormalAttack1")
+			var curTarget = thisEntity<Mob>.CurrTarget
+		//	LogInfo("curTarget: " + curTarget as entity<Player><Player>.Position)
+			if (curTarget != nil && (Distance(curTarget as entity<Player><Player>.Position, thisEntity as entity<LevelObject><Transform>.Position) <= 1.5)) {		
+				
+				DealDamage(curTarget as entity<Combatable>, nil, DamageType.Monster, GetDamage())
+			}
+		} else if (attackName == "NormalAttack2") {
+			
+		} else {
+			//start globalEntity<global_process_eca>.DeleteThisZombie(thisEntity)
+			//Destroy(thisEntity)
+		}
+	}
+
+	event MobDeathEvent_AC() {
+		PVEMonsterManager.OnMonsterKilledAnimationFinished(thisEntity as entity<LevelObject>)
+	}
+
+	event OnDamageMob(mob entity<Entity>, part string, damage int, player entity<Player>) {
+		//LogInfo("OnDamageMob: " + part + " damage: " + damage + "HP: " + mob<Mob>.HP)
+		//LogInfo("mob: " + mob + "thisEntity: " + thisEntity)
+
+		//处理仇恨值
+		if mob<Mob>.HateGainTime > globalEntity<Global>.GameTimeCount - hateGainInterval {
+			mob<Mob>.HateTarget = player
+			mob<Mob>.HateGainTime = globalEntity<Global>.GameTimeCount
+		}
+
+		//处理血量，如果血量小于0，则死亡
+		mob<Mob>.HP = mob<Mob>.HP - damage
+		if (mob<Mob>.HP <= 0) {
+			mob<Mob>.HP = 0
+		}
+
+
+		
+	}
+
+
 
 	// //funcID: ChangeSkinEffect
 	// func ChangeSkinEffect(locBoolVar8 bool) {
@@ -97,23 +164,7 @@ graph FC_NormalZombie {
 	// 	Init()
 	// }
 
-	// //eventID: 91//r;Zn+-uY8Ahq`0JH4Yr{
-	// event OnCustomEvent100005(locStringVar11 string) {
-	// 	if (locStringVar11 == "Zombie01Attack01") {
-	// 		GetBlackboardValue(thisEntity<BevTreeAttachable>.AttachTarget, "CurTarget", out var value12)
-	// 		if (!IsNil(value12) && (Distance(value12<Player>.Position, thisEntity<Transform>.Position) <= 1.5)) {
-	// 			DealDamage(value12, nil, -19, GetDamage())
-	// 		}
-	// 	} else if (locStringVar11 == "Zombie01Attack02") {
-	// 		GetBlackboardValue(thisEntity<BevTreeAttachable>.AttachTarget, "CurTarget", out var value13)
-	// 		if (!IsNil(value13) && (Distance(value13<Player>.Position, thisEntity<Transform>.Position) <= 1.5)) {
-	// 			DealDamage(value13, nil, -19, GetDamage())
-	// 		}
-	// 	} else {
-	// 		start globalEntity<global_process_eca>.DeleteThisZombie(thisEntity)
-	// 		Destroy(thisEntity)
-	// 	}
-	// }
+	
 
 	// //eventID: 91//pwg}5C2p/Islj^_9k~vt
 	// event OnCustomEvent100008(locPlayerVar14 entity<Player>, locStringVar15 string, locIntVar16 int) {
@@ -135,8 +186,8 @@ graph FC_NormalZombie {
 	// 	DispatchEventWithPlatform_Deprecated(100004, thisEntity, true, List<object>{locFloatVar1})
 	// }
 
-	// //funcID: GetDamage
-	// func GetDamage() int {
-	// 	return Floor((thisEntity<CustomComponent31897461>.ZombieInfo["LeftDamageScale"] * thisEntity<CustomComponent31897461>.ZombieInfo["InitDamage"]))
-	// }
+	//funcID: GetDamage
+	func GetDamage() int {
+		return Floor((thisEntity<Mob>.Damage))
+	}
 }

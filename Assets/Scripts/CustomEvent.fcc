@@ -1,0 +1,6 @@
+import "StdLibrary.fcc" as StdLib
+
+[platform_client]
+[platform_server]
+//退出游戏事件，当玩家退出游戏时触发
+event OnDamageMob(mob entity<Entity>, part string, damage int, player entity<Player>)

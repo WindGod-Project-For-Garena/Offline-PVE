@@ -1,0 +1,42 @@
+import "StdLibrary.fcc" as StdLib
+import "EditorGenLib.fcc" as EditorLib
+import "Items.fcc" as Items
+import "Convert.fcc" as Convert
+import "../CustomEvent.fcc" as CustomEvent
+
+[platform_client]
+static graph C_MobHandler {
+    //Executed when entity is created
+    event OnAwake() {
+
+    }
+    //funcID: TakeDamage
+	func TakeDamage(weapon entity<Weapon>, part string, owner entity<Entity>) {
+		var damage int = weapon<Weapon>.Damage
+		if (part == "Head") {
+			damage = damage * 2
+			DispatchEventToEntity(OnDamageMob, owner, PlatformType.Server, List<object>{owner, part, damage, weapon<Weapon>.Owner})
+			CreateDamageNum(ToString(damage), 14, #C40F04, 1000, owner as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
+		} else if (part == "Body") {
+			damage = damage
+			DispatchEventToEntity(OnDamageMob, owner, PlatformType.Server, List<object>{owner, part, damage, weapon<Weapon>.Owner})
+			CreateDamageNum(ToString(damage), 10, #dde511, 800, owner as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
+		} else if (part == "LeftArm") {
+			damage = damage
+			DispatchEventToEntity(OnDamageMob, owner, PlatformType.Server, List<object>{owner, part, damage, weapon<Weapon>.Owner})
+			CreateDamageNum(ToString(damage), 10, #dde511, 800, owner as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
+		} else if (part == "RightArm") {
+			damage = damage
+			DispatchEventToEntity(OnDamageMob, owner, PlatformType.Server, List<object>{owner, part, damage, weapon<Weapon>.Owner})
+			CreateDamageNum(ToString(damage), 10, #dde511, 800, owner as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
+		} else if (part == "LeftLeg") {
+			damage = damage
+			DispatchEventToEntity(OnDamageMob, owner, PlatformType.Server, List<object>{owner, part, damage, weapon<Weapon>.Owner})
+			CreateDamageNum(ToString(damage), 10, #dde511, 800, owner as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
+		} else {
+			damage = damage
+			DispatchEventToEntity(OnDamageMob, owner, PlatformType.Server, List<object>{owner, part, damage, weapon<Weapon>.Owner})
+			CreateDamageNum(ToString(damage), 10, #dde511, 800, owner as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
+		}
+	}
+}

@@ -1,6 +1,7 @@
 import "StdLibrary.fcc" as StdLib
 import "EditorGenLib.fcc" as EditorLib
 import "Items.fcc" as Items
+import "../Scripts/PVE/C_MobHandler.fcg" as MobHandler
 
 [platform_client]
 graph C_HitBox {
@@ -17,14 +18,9 @@ graph C_HitBox {
 
 	//eventID: 173//KAm7{g?Aok9G6x*XJfGl
 	event OnHitByBullet(weapon entity<Weapon>, hitPoint Vector3) {
-		LogInfo("OnHitByBullet")
-		LogInfo("owner: " + Owner<Entity>.Name)
-		//Owner<Transform>.Position = Owner<Transform>.Position+Vector3{1, 0, 0}
-		// if (Owner<Zombie>.ZombieName == "Boss1") {
-		// 	start Owner<boss1_ecac>.TakeDamage(locWeaponVar3, Part, 0)
-		// } else {
-		// 	start Owner<fboss_ecac>.TakeDamage(locWeaponVar3, Part, 0)
-		// }
+		//LogInfo("OnHitByBullet")
+		//LogInfo("owner: " + Owner<Entity>.Name)
+		MobHandler.TakeDamage(weapon, Part, Owner)
 	}
 	
 }

@@ -197,7 +197,46 @@
           "resourceId": ""
         },
         "_entityId": "rl3sYBfj",
-        "children": [],
+        "children": [
+          {
+            "_entityName": "",
+            "_tag": {
+              "type": "EventFrameEntity"
+            },
+            "_entityId": "qtvcFuQx",
+            "children": [],
+            "prefabVariant": null,
+            "activeValue": {
+              "selfValue": true,
+              "valueTag": "activeValue"
+            },
+            "unlockedValue": {
+              "selfValue": true,
+              "valueTag": "unlockedValue"
+            },
+            "editorLockValue": false,
+            "editorVisibleValue": true,
+            "from": "ACState",
+            "FrameIndex": 17,
+            "EventFrameName": "Event Frame 1",
+            "startTime": 0.5666666666666667,
+            "EventList": [
+              {
+                "eventKeyValue": "AnimationControllerAble::signal_40948046",
+                "paramList": [
+                  {
+                    "type": "String",
+                    "label": "attackName",
+                    "newValue": "NormalAttack1"
+                  }
+                ],
+                "hideParam": false
+              }
+            ],
+            "dsada": "Sphere",
+            "enable": false
+          }
+        ],
         "prefabVariant": null,
         "activeValue": {
           "selfValue": true,
@@ -500,7 +539,7 @@
       },
       "editorLockValue": false,
       "editorVisibleValue": true,
-      "isLoop": false,
+      "isLoop": true,
       "DisableChanged": false,
       "_entityName": "Walk",
       "eventFrameGroup": {
@@ -673,7 +712,7 @@
               "fadeInTime": 0.3,
               "enablefadeTime": true,
               "startTime": 0,
-              "endTime": 1.0666667222976685,
+              "endTime": 1.1000003333333335,
               "wrapMode": 0,
               "postExtrapolate": 0
             }
@@ -717,7 +756,34 @@
           "resourceId": ""
         },
         "_entityId": "odVR4rEL",
-        "children": [],
+        "children": [
+          {
+            "_entityName": "",
+            "_tag": {
+              "type": "EventFrameEntity"
+            },
+            "_entityId": "ICP8sWLm",
+            "children": [],
+            "prefabVariant": null,
+            "activeValue": null,
+            "unlockedValue": null,
+            "editorLockValue": false,
+            "editorVisibleValue": true,
+            "from": "ACState",
+            "FrameIndex": 31,
+            "EventFrameName": "Event Frame 1",
+            "startTime": 1.0333333333333334,
+            "EventList": [
+              {
+                "eventKeyValue": "AnimationControllerAble::signal_87958515",
+                "paramList": [],
+                "hideParam": true
+              }
+            ],
+            "dsada": "Sphere",
+            "enable": false
+          }
+        ],
         "prefabVariant": null,
         "activeValue": {
           "selfValue": true,

@@ -23,8 +23,11 @@ graph Script_1_ {
         var dist float = Magnitude(sub1)
 
         GetNodeVariable(thisEntity<BevTreeCustomNode>,"KeepDist",out var keepdist)
-        
-        //LogInfo("KeepDist: " + (dist as float > keepdist as float + 0.1))
+        var detectionRange float = owner<Mob>.DetectRange
+        if (dist > detectionRange){
+            return false
+        }
+       // LogInfo("KeepDist: " + (dist as float > keepdist as float + 0.1))
         return dist > (keepdist as float + 0.1)
     }
 }

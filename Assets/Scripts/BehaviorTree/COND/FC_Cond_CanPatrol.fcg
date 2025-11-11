@@ -9,22 +9,28 @@ graph Script_1_ {
 
     }
     func PlayCondition(owner entity<BevTreeAttachable>) bool {
+        
         if(owner<Mob>.StatusDic["CanPatrol"] as bool){
+
             GetNodeVariable(thisEntity<BevTreeCustomNode>,"CD",out var cd)
             GetBlackboardValue(owner<BevTreeAttachable>.AttachTarget,"LastPatrolTime",out var lastpatrolTime)
             if (lastpatrolTime == nil){
                 SetBlackboardValue(owner<BevTreeAttachable>.AttachTarget,"LastPatrolTime",globalEntity<Global>.GameTimeCount)
+                //LogInfo("can patrol: first time")
                 return true
             }
             var realCD = Floor(cd as int)
             var nextTime = lastpatrolTime as int + realCD
             if (globalEntity<Global>.GameTimeCount < nextTime){
+                //LogInfo("can patrol: not time to patrol")
                 return false
             }else {
                 SetBlackboardValue(owner<BevTreeAttachable>.AttachTarget,"LastPatrolTime",globalEntity<Global>.GameTimeCount)
+                //LogInfo("can patrol: time to patrol")
                 return true
             }
         }else {
+            //LogInfo("can patrol: not can patrol")
             return false
         }
     }

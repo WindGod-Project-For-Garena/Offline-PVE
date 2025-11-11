@@ -5,6 +5,7 @@ import "Math.fcc" as Math
 import "List.fcc" as List
 import "Convert.fcc" as Convert
 import "Strings.fcc" as strings
+import "BehaviourTree.fcc" as BehaviourTree
 
 static graph FC_PVEUtilities {
     //Executed when entity is created
@@ -54,4 +55,24 @@ static graph FC_PVEUtilities {
 		}
 		return list
 	}
+
+	//funcID: IsInRange
+	func IsInRange(Mob entity<Transform>, player entity<Player>, range float) bool {
+		var mobPos Vector3 = Mob<Transform>.Position
+		var playerPos Vector3 = Vector3{0,0,0}
+		if TypeIs(player, typeof(Player)) {
+			playerPos = player<Player>.Position
+		} else if TypeIs(player, typeof(CustomizeTrigger)) {
+			playerPos = player<Transform>.Position
+		} else if TypeIs(player, typeof(CustomLevelObject)) {
+			playerPos = player<Transform>.Position
+		}
+		if (Distance(mobPos, playerPos) <= range) {
+			return true
+		} else {
+			return false
+		}
+	}
+
+
 }

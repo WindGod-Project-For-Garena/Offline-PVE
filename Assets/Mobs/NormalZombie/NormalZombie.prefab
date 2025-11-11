@@ -195,7 +195,9 @@
           "PROP_27635539": 10,
           "PROP_77801521": null,
           "PROP_92961702": null,
-          "PROP_94587706": null
+          "PROP_94587706": null,
+          "PROP_98675041": 0,
+          "PROP_38748133": []
         }
       },
       "entityVersion": 3,
@@ -282,8 +284,8 @@
             },
             "unlockedValue": null,
             "groupId": "",
-            "enable": true,
-            "_entityName": "Skin",
+            "enable": false,
+            "_entityName": "NormalZombie",
             "prefabVariant": null
           },
           {
@@ -323,8 +325,8 @@
                 "outwardType": 0,
                 "materials": [
                   {
-                    "fileId": "6z2d8qbxpkb-ma1yo477-wy4p99juoi",
-                    "filePath": "Assets\\ZombieAsset\\ZombieMatsEffect\\NormalZombie_cold.mat",
+                    "fileId": "fkjn3hb7ehl-lzs3ehkz-5g2op7h9p7c",
+                    "filePath": "Assets\\Mobs\\NormalZombie\\Materials\\Zombie01_Ice.mat",
                     "_tag": {
                       "type": "GFileRefer"
                     },
@@ -363,7 +365,83 @@
             "editorVisibleValue": true,
             "groupId": "",
             "enable": false,
-            "_entityName": "Skin_cold"
+            "_entityName": "NormalZombie_Blue"
+          },
+          {
+            "_entityName": "NormalZombie_Red",
+            "_tag": {
+              "type": "BoneMeshGroupEntity"
+            },
+            "_entityId": "v3iRdxF4",
+            "children": [
+              {
+                "_entityName": "C_Zombie_01.mesh",
+                "_tag": {
+                  "type": "BoneMeshEntity"
+                },
+                "_entityId": "FZDn0fhG",
+                "children": [],
+                "prefabVariant": null,
+                "activeValue": {
+                  "selfValue": true,
+                  "valueTag": "activeValue"
+                },
+                "unlockedValue": null,
+                "editorLockValue": false,
+                "editorVisibleValue": true,
+                "_mesh": {
+                  "fileId": "glvebd7m03m-m03lt4wk-7wxymv3fjb-C_Zombie_01.~@FFSKIN",
+                  "filePath": "fab://Assets\\Mobs\\NormalZombie\\C_Zombie_01.FBX\\C_Zombie_01.mesh",
+                  "_tag": {
+                    "type": "GFileRefer"
+                  },
+                  "fileType": "mesh"
+                },
+                "_cloth": null,
+                "partType": 0,
+                "causeAnimationTypeChange": false,
+                "outwardType": 0,
+                "materials": [
+                  {
+                    "fileId": "0w1woh3g172-lzs3gk5x-4spkugwr4m4",
+                    "filePath": "Assets\\Mobs\\NormalZombie\\Materials\\Zombie01_Red.mat",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "material"
+                  }
+                ],
+                "avatarPartInfo": {
+                  "bone": "C_Zombie_01",
+                  "bindType": 0
+                },
+                "position": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "scale": {
+                  "x": 1,
+                  "y": 1,
+                  "z": 1
+                },
+                "rotation": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                }
+              }
+            ],
+            "prefabVariant": null,
+            "activeValue": {
+              "selfValue": true,
+              "valueTag": "activeValue"
+            },
+            "unlockedValue": null,
+            "editorLockValue": false,
+            "editorVisibleValue": true,
+            "groupId": "",
+            "enable": false
           }
         ],
         "activeValue": {

@@ -1,0 +1,19 @@
+import "StdLibrary.fcc" as StdLib
+import "EditorGenLib.fcc" as EditorLib
+
+static graph FC_Config {
+    //Executed when entity is created
+    MobPrefabIDs Map<string, EResPrefab> = Map<string, EResPrefab>{}
+    event OnAwake() {
+        MobPrefabIDs = Map<string, EResPrefab>{
+            "NormalZombie": EResPrefab.NormalZombie,
+            "NormalZombie_Blue": EResPrefab.NormalZombie,
+            "NormalZombie_Red": EResPrefab.NormalZombie,
+        }
+       
+
+
+
+    }
+
+}

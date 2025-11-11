@@ -42,7 +42,7 @@
   "content": {
     "attack02.anim": {
       "_entityName": "AnimClipEntity",
-      "_entityId": "",
+      "_entityId": "EGATnhsS",
       "_preModel": {
         "fileId": "9bt8bramsch-m00s99ip-emzeboy544g",
         "filePath": "Assets\\ZombieAssist\\Zombie01\\C_Zombie_01.FBX",
@@ -51,27 +51,7 @@
         },
         "fileType": "fbx"
       },
-      "children": [
-        {
-          "_entityId": "R1KEzeth",
-          "EventFrameName": "事件帧",
-          "FrameIndex": 15,
-          "Time": 0.5,
-          "EventList": [
-            {
-              "eventKeyValue": "AnimationControllerAble::signal_52120933",
-              "paramList": [
-                {
-                  "type": "String",
-                  "label": "eventName",
-                  "newValue": "Zombie01Attack02"
-                }
-              ],
-              "hideParam": false
-            }
-          ]
-        }
-      ]
+      "children": []
     }
   }
 }

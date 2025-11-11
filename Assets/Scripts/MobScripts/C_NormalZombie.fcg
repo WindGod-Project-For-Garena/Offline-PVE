@@ -2,6 +2,9 @@ import "StdLibrary.fcc" as StdLib
 import "EditorGenLib.fcc" as EditorLib
 import "Avatar.fcc" as Avatar
 import "../C_HitBox.fcg" as HitBox
+import "Items.fcc" as Items
+import "Convert.fcc" as Convert
+import "../CustomEvent.fcc" as CustomEvent
 
 [platform_client]
 graph C_NormalZombie {
@@ -44,34 +47,7 @@ graph C_NormalZombie {
 		PartNameDic = Map<string, string>{"Head":"bone_Head", "Body":"bone_Spine", "LeftArm":"bone_L_Forearm", "RightArm":"bone_R_Forearm", "LeftLeg":"bone_L_Claf", "RightLeg":"bone_R_Claf"}
 	}
 
-	// //funcID: TakeDamage
-	// func TakeDamage(locWeaponVar1 entity<Weapon>, locStringVar2 string) {
-	// 	if (locStringVar2 == "Head") {
-	// 		var locIntVar3 int = (locWeaponVar1<Weapon>.Damage * 2)
-	// 		DispatchEventWithPlatform(100021, globalEntity, 3, List<object>{thisEntity, locStringVar2, locIntVar3, locWeaponVar1<Weapon>.Owner})
-	// 		CreateDamageNum(ToString(locIntVar3), 20, -16449281, 1000, thisEntity, Vector3{0,1,0}, NewVector2(100, 100), true)
-	// 	} else if (locStringVar2 == "Body") {
-	// 		var locIntVar4 int = locWeaponVar1<Weapon>.Damage
-	// 		DispatchEventWithPlatform(100021, globalEntity, 3, List<object>{thisEntity, locStringVar2, locIntVar4, locWeaponVar1<Weapon>.Owner})
-	// 		CreateDamageNum(ToString(locIntVar4), 15, -3866369, 800, thisEntity, Vector3{0,1,0}, NewVector2(100, 100), true)
-	// 	} else if (locStringVar2 == "LeftArm") {
-	// 		var locIntVar5 int = locWeaponVar1<Weapon>.Damage
-	// 		DispatchEventWithPlatform(100021, globalEntity, 3, List<object>{thisEntity, locStringVar2, locIntVar5, locWeaponVar1<Weapon>.Owner})
-	// 		CreateDamageNum(ToString(locIntVar5), 15, -3866369, 800, thisEntity, Vector3{0,1,0}, NewVector2(100, 100), true)
-	// 	} else if (locStringVar2 == "RightArm") {
-	// 		var locIntVar6 int = locWeaponVar1<Weapon>.Damage
-	// 		DispatchEventWithPlatform(100021, globalEntity, 3, List<object>{thisEntity, locStringVar2, locIntVar6, locWeaponVar1<Weapon>.Owner})
-	// 		CreateDamageNum(ToString(locIntVar6), 15, -3866369, 800, thisEntity, Vector3{0,1,0}, NewVector2(100, 100), true)
-	// 	} else if (locStringVar2 == "LeftLeg") {
-	// 		var locIntVar7 int = locWeaponVar1<Weapon>.Damage
-	// 		DispatchEventWithPlatform(100021, globalEntity, 3, List<object>{thisEntity, locStringVar2, locIntVar7, locWeaponVar1<Weapon>.Owner})
-	// 		CreateDamageNum(ToString(locIntVar7), 15, -3866369, 800, thisEntity, Vector3{0,1,0}, NewVector2(100, 100), true)
-	// 	} else {
-	// 		var locIntVar8 int = locWeaponVar1<Weapon>.Damage
-	// 		DispatchEventWithPlatform(100021, globalEntity, 3, List<object>{thisEntity, locStringVar2, locIntVar8, locWeaponVar1<Weapon>.Owner})
-	// 		CreateDamageNum(ToString(locIntVar8), 15, -3866369, 800, thisEntity, Vector3{0,1,0}, NewVector2(100, 100), true)
-	// 	}
-	// }
+	
 
 	// //funcID: BreakEffect
 	// func BreakEffect(locStringVar9 string, locIntVar10 int) {

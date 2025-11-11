@@ -7,7 +7,9 @@ import "Strings.fcc" as strings
 import "CSVData.fcc" as CSVData
 import "Math.fcc" as math
 import "../Static/FC_Utilities.fcg" as Utilities
-import "../SuperFcc/TransferList.fcc" as TransferList
+import "../Static/FC_Config.fcg" as Config
+import "Avatar.fcc" as Avatar
+
 
 static graph FC_PVEMonsterManager {
     // 配置参数
@@ -48,6 +50,10 @@ static graph FC_PVEMonsterManager {
     
     // 获取最后生成的怪物（用于Elite追踪）
     LastSpawnedMonster entity<LevelObject> = nil
+
+    // 怪物父节点
+    ActiveMonsterParentNode entity<Entity> = nil
+    PendingRemoveMonsterParentNode entity<Entity> = nil
   
     event OnAwake() {
         LogInfo("PVE怪物管理器初始化")
@@ -62,6 +68,8 @@ static graph FC_PVEMonsterManager {
         map.Clear(MonsterDeathCount)
         map.Clear(LevelRowInfos)
         list.Clear(WaveMonsterInfos)
+        ActiveMonsterParentNode = EResSceneIsleLand.ActiveMobs as entity<Entity>
+        PendingRemoveMonsterParentNode = EResSceneIsleLand.PendingRemoveMobs as entity<Entity>
         
         LogInfo("怪物管理器初始化完成")
     }
@@ -98,7 +106,7 @@ static graph FC_PVEMonsterManager {
     
     
     // 开始新的关卡, 关卡开启并不代表波次开始, 波次开始需要手动调用StartWave
-    func StartLevel(level int) {
+    func LevelInitialize(level int) {
         CurrentLevel = level
         CurrentWave = 1
         LogInfo("开始关卡: " + level)
@@ -112,11 +120,10 @@ static graph FC_PVEMonsterManager {
     }
     
     // 开始新的波次
-    func StartWave(level int, wave int) {
-        CurrentLevel = level
+    func StartWave(wave int) {
         CurrentWave = wave
         
-        LogInfo("开始关卡 " + level + " 波次 " + wave)
+        LogInfo("开始关卡 " + CurrentLevel + " 波次 " + wave)
         
         var waveRowInfo Map<string, object> = LevelRowInfos[wave]
         
@@ -139,7 +146,6 @@ static graph FC_PVEMonsterManager {
             monsterInfo["MoveSpeed"] = monsterRow[4]
             monsterInfo["IsElite"] = monsterRow[5]
             monsterInfo["IsBoss"] = monsterRow[6]
-            monsterInfo["PrefabID"] = monsterRow[7]
 
             list.Append(WaveMonsterInfos, monsterInfo)         
         } 
@@ -184,8 +190,8 @@ static graph FC_PVEMonsterManager {
         //map.Clear(EliteLastSpawnTime)
         
         // 启动三个独立的生成循环（Boss -> Elite -> Normal）
-        start SpawnBossLoop(bossQueue)
-        start SpawnEliteLoop(eliteQueue)
+        //start SpawnBossLoop(bossQueue)
+        //start SpawnEliteLoop(eliteQueue)
         start SpawnNormalLoop(normalQueue)
         
         LogInfo("波次怪物生成循环已启动")
@@ -206,8 +212,10 @@ static graph FC_PVEMonsterManager {
                 var maxNum = monsterInfo["MaxNum"] as int
                 
                 // 检查是否已达到最大数量
-                if BossSpawnedCount[monsterID] >= maxNum {
+                if BossSpawnedCount[monsterID] != nil && BossSpawnedCount[monsterID] >= maxNum {
                     continue
+                }else if BossSpawnedCount[monsterID] == nil {
+                    BossSpawnedCount[monsterID] = 0
                 }
                 
                 allBossSpawned = false
@@ -221,6 +229,8 @@ static graph FC_PVEMonsterManager {
                     }
                     if !IsWaveActive { break }
                     // 生成Boss
+                    LogInfo("---------生成Boss: " + monsterInfo["Name_key"] as string)
+
                     start CreateSingleMonster(monsterInfo)
                     BossSpawnedCount[monsterID] = BossSpawnedCount[monsterID] + 1
                 }
@@ -260,11 +270,11 @@ static graph FC_PVEMonsterManager {
                 var maxNum = monsterInfo["MaxNum"] as int
                 
                 // 检查当前存在的Elite数量
-                if !EliteCurrentCount[monsterID] {
+                if EliteCurrentCount[monsterID] == nil {
                     EliteCurrentCount[monsterID] = 0
                 }
                 var currentCount = EliteCurrentCount[monsterID]
-                if currentCount >= maxNum {
+                if currentCount != nil && currentCount >= maxNum {
                     continue
                 }
 
@@ -276,6 +286,7 @@ static graph FC_PVEMonsterManager {
                 if !IsWaveActive { break }
                 
                 // 生成Elite
+                LogInfo("---------生成Elite: " + monsterInfo["Name_key"] as string)
                 start CreateSingleMonster(monsterInfo)
                 EliteCurrentCount[monsterID] = currentCount + 1
                       
@@ -314,6 +325,11 @@ static graph FC_PVEMonsterManager {
                 
                 // 根据概率选择一种怪物类型（使用已有的Possibility值）
                 var selectedMonster = SelectMonsterByPossibility(normalQueue)
+                // LogInfo("normalQueue: " )
+                // for i = 0, list.Length(normalQueue), 1 {
+                //     var monsterInfo = normalQueue[i]
+                //     LogInfo("monsterInfo: " + monsterInfo["Name_key"] as string)
+                // }
                 if selectedMonster == nil {
                     WaitForMillisecond(500)
                     continue
@@ -335,6 +351,7 @@ static graph FC_PVEMonsterManager {
                         break
                     }
                     
+                   // LogInfo("---------生成普通怪物: " + selectedMonster["Name_key"] as string)
                     start CreateSingleMonster(selectedMonster)
                 }
                 
@@ -393,7 +410,15 @@ static graph FC_PVEMonsterManager {
     
     // 创建单个怪物
     async func CreateSingleMonster(monsterInfo Map<string, object>) {
-        CreateFromPrefab(out var monsterEntity, EResPrefab.NormalZombie)
+        var name_key = monsterInfo["Name_key"] as string
+       // LogInfo("name_key: " + name_key)
+        var prefabID = Config.MobPrefabIDs[name_key]
+
+        CreateFromPrefab(out var monsterEntity, prefabID)
+        WaitForNextFrame()
+        ShowAppearanceGroup(monsterEntity as entity<Appearance>,name_key)
+
+        SetParent(ActiveMonsterParentNode<Transform>, monsterEntity<Transform>, true)
         var monster = monsterEntity as entity<LevelObject>
         LastSpawnedMonster = monster
         WaitForNextFrame()
@@ -409,24 +434,23 @@ static graph FC_PVEMonsterManager {
             // 修复类型转换：将float计算结果转换为int
             var calculatedMaxHP int = Floor(baseHP * CurrentHPModifier)
             var calculatedDamage int = Floor(baseDmg * CurrentDamageModifier)
-            var calculatedSpeed int = Floor(spd)
+            var calculatedSpeed float = spd
             monster<Mob>.MaxHP = calculatedMaxHP
             monster<Mob>.HP = monster<Mob>.MaxHP
             monster<Mob>.Damage = calculatedDamage
             monster<Mob>.WalkSpeed = calculatedSpeed
         }
-        
+
         // 注册怪物
         if monster != nil {
             list.Append(ActiveMonsters, monster)
-            BroadcastCustomEvent(InitMonster, PlatformType.Client, {ActiveMonsters})
-            // DispatchEventToEntity(InitMonster, globalEntity, PlatformType.Client,ActiveMonsters)
         }
         if monsterInfo["IsElite"] as bool {
             list.Append(EliteTracker, monster)
         }
         
-        LogInfo("生成怪物: " + monster<Mob>.MobName + " 在位置 " + monster<Transform>.Position)
+       // LogInfo("生成怪物: " + monster<Mob>.MobName + " 在位置 " + monster<Transform>.Position)
+       // LogInfo("ActiveMonsters: " + list.Length(ActiveMonsters))
     }
     
     func GetRandomSpawnPosition() Vector3 {
@@ -504,12 +528,18 @@ static graph FC_PVEMonsterManager {
     
     func OnMonsterKilled(monster entity<LevelObject>) {
         if monster != nil {
+            SetParent(PendingRemoveMonsterParentNode<Transform>, monster<Transform>, true)
             list.Remove(ActiveMonsters, monster)
             list.Remove(ActivenNormalMonsters, monster)
             
             // 统计死亡数量
             if HasComponent(monster, typeof(Mob)) {
                 var monsterType = GetMonsterType(monster)
+                
+                if map.ContainKey(MonsterDeathCount, monsterType) == false {
+                    MonsterDeathCount[monsterType] = 0
+                }
+                LogInfo("MonsterDeathCount: " + MonsterDeathCount)
                 var currentCount = MonsterDeathCount[monsterType]
                 MonsterDeathCount[monsterType] = currentCount + 1
                 TotalKills = TotalKills + 1
@@ -536,6 +566,13 @@ static graph FC_PVEMonsterManager {
                 LogInfo("Elite怪物死亡，CD开始: " + EliteSpawnCD + "ms")
             }
         }
+        
+    }
+
+    func OnMonsterKilledAnimationFinished(monster entity<LevelObject>) {
+        if monster != nil {
+            Destroy(monster)
+        }
     }
     
     // 设置普通怪物生成CD
@@ -543,4 +580,7 @@ static graph FC_PVEMonsterManager {
         NormalSpawnCD = cd
         LogInfo("普通怪物生成CD设置为: " + cd + "毫秒")
     }
+
+
+    
 }

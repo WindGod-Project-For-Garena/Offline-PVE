@@ -1,0 +1,125 @@
+import "StdLibrary.fcc" as stdlibrary
+import "Scene.fcc" as scene
+import "EditorGenLib.fcc" as editorgenlib
+import "Playable.fcc" as playable
+import "BehaviourTree.fcc" as behaviourtree
+import "Animation.fcc" as animation
+import "Math.fcc" as math
+import "Strings.fcc" as strings
+import "../../Static/FC_Utilities.fcg" as PVEUtilities
+import "../../MobScripts/FC_NormalZombie.fcg" as mobScript
+import "List.fcc" as List
+
+
+//graphID: 3Y2qYTtj.37ilwxb4lqo-m21izyhk-qm9mkctbtz8
+graph FC_Act_Patrol { 
+	TargetPos Vector3 = Vector3{0,0,0}
+	PathList List<Vector3> = List<Vector3>{}
+	LastFindPathTime float = 0
+	Dist float = 0
+	LastTickTime int = 0
+	KeepDist float = 0
+	Mover entity<FrameSelfRelative> = nil
+	inAnimation bool = false
+	//funcID: FindPat
+	newTargetPosInterval int = 3000
+    
+	PatrolSpeed float = 1.0
+
+
+	//funcID: PlayAction
+	func PlayAction(owner entity<BevTreeAttachable>) BTreeNodeState {
+		var gameTime int = globalEntity<Global>.GameTimeCount
+		LastTickTime = gameTime
+
+		if TargetPos == nil {
+			PlayAnimation(owner as entity<AnimationControllerAttachable>, "Idle", 1, LoopType.Loop)
+			return BevTreeNodeStatus.Finish
+		}
+		
+		
+		if ((gameTime - LastFindPathTime) > newTargetPosInterval) {
+			newTargetPosInterval = math.RandomInt(5000, 8000) //3-6秒随机间隔
+			LastFindPathTime = gameTime
+			//TargetPos
+			TargetPos = GetTargetPos(owner)
+		//	LogInfo("get new targetPos: " + TargetPos)
+			var selfPos Vector3 = owner<Transform>.Position
+			var sub Vector3 = TargetPos - selfPos
+			var dir Vector3 = Normalize(sub)
+			var velocity Vector3 = dir * PatrolSpeed
+			//LogInfo("velocity: " + velocity)
+			Dist = Magnitude(sub)
+			if (Dist <= KeepDist) {
+				//LogInfo("finish walk animation: close to targetPos")
+				PlayAnimation(owner as entity<AnimationControllerAttachable>, "Idle", 1, LoopType.Once)
+				return BevTreeNodeStatus.Finish
+			}
+
+			PVEUtilities.myLookAt(owner<Transform>, nil, TargetPos)
+			owner<mobScript>.CreateMoveTween(velocity)
+		}
+
+
+		return BevTreeNodeStatus.Running
+		
+	}
+
+	//eventID: 39//s8004_dup_block
+	event OnNodeEnter(nodeName string, owner entity<BevTreeAttachable>) {
+		LogInfo("OnNodeEnter: " + nodeName)
+		LastTickTime = globalEntity<Global>.GameTimeCount
+		GetNodeVariable(thisEntity as entity<BevTreeCustomNode>, "KeepDist", out var keepDist)
+		KeepDist = keepDist as float
+		if (!inAnimation) {
+			//获得TargetPosition
+			TargetPos = GetTargetPos(owner)
+			inAnimation = true
+			//var Speed float = owner<Mob>.WalkSpeed
+			
+			PlayAnimation(owner as entity<AnimationControllerAttachable>, "Walk", 1, LoopType.Loop)
+				
+		}
+		
+		
+		
+		LastFindPathTime = 0
+	
+	}
+
+	event OnNodeExit(nodeName string, owner entity<BevTreeAttachable>) {
+		owner<mobScript>.StopMoveTween()
+		inAnimation = false
+		PlayAnimation(owner as entity<AnimationControllerAttachable>, "Idle", 1, LoopType.Loop)
+		//LogInfo("stop walk animation")
+	}
+
+	func GetTargetPos(owner entity<BevTreeAttachable>) Vector3 {
+		var myPos Vector3 = owner<Transform>.Position
+		
+		// 边界范围：-15 到 15
+		var minBound float = -15.0
+		var maxBound float = 15.0
+		var minDist float = 1.0  // 最小距离1米
+		var maxDist float = 5.0  // 最大距离5米
+		var edgeBuffer float = 0.5  // 边缘缓冲距离
+		
+		// 生成随机角度（0 到 360）
+		var randomAngle float = math.RandomFloat(0.0, 360)
+		
+		// 生成随机距离（1-3米）
+		var randomDist float = math.RandomFloat(minDist, maxDist)
+		
+		// 计算目标点的X和Z坐标
+		var targetX float = myPos.X + randomDist * math.Cos(randomAngle)
+		var targetZ float = myPos.Z + randomDist * math.Sin(randomAngle)
+		
+		// 限制在边界范围内
+		targetX = math.Clamp(targetX, minBound + edgeBuffer, maxBound - edgeBuffer) as float
+		targetZ = math.Clamp(targetZ, minBound + edgeBuffer, maxBound - edgeBuffer) as float
+		
+		var targetPos Vector3 = Vector3{targetX, -0.3, targetZ}
+		return targetPos
+	}
+
+}

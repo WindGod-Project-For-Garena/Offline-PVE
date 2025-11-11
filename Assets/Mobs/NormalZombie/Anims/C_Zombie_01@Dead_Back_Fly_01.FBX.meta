@@ -42,36 +42,16 @@
   "content": {
     "Dead_Back_Fly_01.anim": {
       "_entityName": "AnimClipEntity",
-      "_entityId": "",
+      "_entityId": "JH62NWj2",
       "_preModel": {
-        "fileId": "9bt8bramsch-m00s99ip-emzeboy544g",
-        "filePath": "Assets\\ZombieAssist\\Zombie01\\C_Zombie_01.FBX",
+        "fileId": "glvebd7m03m-m03lt4wk-7wxymv3fjb",
+        "filePath": "Assets\\Mobs\\NormalZombie\\C_Zombie_01.FBX",
         "_tag": {
           "type": "GFileRefer"
         },
         "fileType": "fbx"
       },
-      "children": [
-        {
-          "_entityId": "ZhcPSWYx",
-          "EventFrameName": "事件帧",
-          "FrameIndex": 30,
-          "Time": 1,
-          "EventList": [
-            {
-              "eventKeyValue": "AnimationControllerAble::signal_52120933",
-              "paramList": [
-                {
-                  "type": "String",
-                  "label": "eventName",
-                  "newValue": "Zombie01Dead"
-                }
-              ],
-              "hideParam": false
-            }
-          ]
-        }
-      ]
+      "children": []
     }
   }
 }

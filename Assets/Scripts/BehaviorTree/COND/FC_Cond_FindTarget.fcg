@@ -10,9 +10,18 @@ graph Script_1_ {
     
     func PlayCondition(owner entity<BevTreeAttachable>) bool{
         //获取当前目标
+       // LogInfo("PlayCondition: can find target")
         var curTarget entity<Player> = owner<Mob>.CurrTarget
         GetNodeVariable(thisEntity<BevTreeCustomNode>,"SeekRange",out var SeekRange)
         var tempTarget = curTarget 
+
+
+        //如果有仇恨目标，则返回true
+        if (owner<Mob>.HateTarget != nil && owner<Mob>.HateGainTime > globalEntity<Global>.GameTimeCount - 5000) {
+            owner<Mob>.CurrTarget = owner<Mob>.HateTarget
+            LogInfo("find hate target: " + owner<Mob>.HateTarget)
+            return true
+        }
         
         if (curTarget != nil){
             if(tempTarget<Player>.HP <= 0){

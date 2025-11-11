@@ -9,26 +9,6 @@
       "children": [
         {
           "refer": {
-            "fileId": "9gh1yc3b76b-mhkbfmmd-j71ox2ky90o",
-            "filePath": "Assets\\UI\\Skill.ui",
-            "_tag": {
-              "type": "GFileRefer"
-            },
-            "fileType": "ui"
-          },
-          "scriptName": "Skill",
-          "children": [
-            {
-              "id": "HDKgz51F",
-              "scriptName": "JoyStickFillAmount"
-            },
-            {
-              "scriptName": ""
-            }
-          ]
-        },
-        {
-          "refer": {
             "fileId": "kqm9gy95z-mhlsfy3t-rapyl59qt2",
             "filePath": "Assets\\UI\\DeBug.ui",
             "_tag": {
@@ -38,12 +18,46 @@
           },
           "scriptName": "DeBug",
           "children": []
+        },
+        {
+          "refer": {
+            "fileId": "9gh1yc3b76b-mhkbfmmd-j71ox2ky90o",
+            "filePath": "Assets\\UI\\Skill.ui",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "ui"
+          },
+          "scriptName": "Skill",
+          "children": []
         }
       ]
     },
     "scene": {
       "id": "scene",
-      "children": []
+      "children": [
+        {
+          "refer": {
+            "fileId": "5pfvrz33sx-mh1rfjuw-kgrbwdyyk7",
+            "filePath": "Assets\\Scene\\Isle Land.scene",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "scene"
+          },
+          "scriptName": "IsleLand",
+          "children": [
+            {
+              "id": "YHaqiPGU",
+              "scriptName": "PendingRemoveMobs"
+            },
+            {
+              "id": "dSJcClWT",
+              "scriptName": "ActiveMobs"
+            }
+          ]
+        }
+      ]
     },
     "prefab": {
       "id": "prefab",

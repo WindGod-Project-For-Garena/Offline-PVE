@@ -11,6 +11,7 @@ graph Script_1_ {
  
     event OnNodeEnter(nodeName string, owner entity<BevTreeAttachable>) {
         //var attackScale = owner<ZombieCom>.ZombieInfo["LeftAttackSPDScale"] as float
+        //LogInfo("OnNodeEnter: Attack")
         var attackScale float= 1
         GetNodeVariable(thisEntity<BevTreeCustomNode>,"Duration",out var duration)
         _Duration = Ceil(duration as int * attackScale)
@@ -36,5 +37,8 @@ graph Script_1_ {
         }else{
             return false
         }
+    }
+    event OnNodeExit(nodeName string, owner entity<BevTreeAttachable>) {
+        //LogInfo("OnNodeExit: Attack")
     }
 }

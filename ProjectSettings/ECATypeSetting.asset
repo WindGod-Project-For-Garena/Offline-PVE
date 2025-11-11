@@ -61,19 +61,6 @@
           }
         },
         {
-          "propID": 100003,
-          "name": "PROP_93441408",
-          "label": "WalkSpeed",
-          "type": "Int",
-          "value": 4,
-          "disabledType": true,
-          "param": {
-            "precision": 0,
-            "min": -2147483648,
-            "max": 2147483647
-          }
-        },
-        {
           "propID": 100004,
           "name": "PROP_27635539",
           "label": "Damage",
@@ -103,17 +90,67 @@
           "name": "PROP_92961702",
           "label": "CurrTarget",
           "type": "Player",
-          "value": null
+          "value": null,
+          "disabledType": true,
+          "param": {
+            "compType": "InputEditor",
+            "disabled": true
+          }
         },
         {
           "propID": 100008,
           "name": "PROP_94587706",
           "label": "LastHitPlayer",
           "type": "Player",
-          "value": null
+          "value": null,
+          "disabledType": true,
+          "param": {
+            "compType": "InputEditor",
+            "disabled": true
+          }
+        },
+        {
+          "propID": 100010,
+          "name": "PROP_84519962",
+          "label": "DetectRange",
+          "type": "Float",
+          "value": 10,
+          "observable": false,
+          "disabledType": true,
+          "param": {
+            "precision": 2
+          }
+        },
+        {
+          "propID": 100012,
+          "name": "PROP_12765276",
+          "label": "WalkSpeed",
+          "type": "Float",
+          "value": 2,
+          "observable": false,
+          "disabledType": true,
+          "param": {
+            "precision": 2
+          }
+        },
+        {
+          "propID": 100013,
+          "name": "PROP_90540570",
+          "label": "HateTarget",
+          "type": "Player",
+          "value": null,
+          "observable": false
+        },
+        {
+          "propID": 100014,
+          "name": "PROP_42420456",
+          "label": "HateGainTime",
+          "type": "Int",
+          "value": 0,
+          "observable": false
         }
       ]
     }
   }
 }
-//"{FE:{"v":"1.14.3883376","c":{"FF":5001},"s":100}
+//"{FE:{"v":"1.15.3997714","c":{"FF":5001},"s":100}

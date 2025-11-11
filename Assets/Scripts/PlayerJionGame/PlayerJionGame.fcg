@@ -15,11 +15,16 @@ graph PlayerJionGame {
     CurrentSkill int = 0
     
     // 技能1数据
-    CurrentSkill_1_DATA_LIST Map<string,int> = Map<string,int>{"Range":1,"Damage":5,"CD":5000}
+    CurrentSkill_1_DATA_LIST Map<string,int> = Map<string,int>{"Range":2,"Damage":50,"CD":5000}
     CurrentSkill_1_DeBug_LIST Map<string,int> = Map<string,int>{"Range":0,"Damage":0,"CD":0}        //Debug
     Skill1_RangeState Map<string,int> = Map<string,int>{"x":1,"y":0}        //Debug
     Skill1_DamageState Map<string,int> = Map<string,int>{"x":5,"y":0}        //Debug
     Skill1_CDState Map<string,int> = Map<string,int>{"x":5000,"y":0}        //Debug
+
+
+
+
+
     
     // 技能2数据
     CurrentSkill_2_DATA_LIST Map<string,int> = Map<string,int>{"Count":3,"Damage":5,"CD":5000}
@@ -36,8 +41,8 @@ graph PlayerJionGame {
     Skill3_CDState Map<string,int> = Map<string,int>{"x":5000,"y":0}        //Debug
     
     // 技能1数据常量
-    Skill_1_MaxRange int = 6
-    Skill_1_MaxDamage int = 30
+    Skill_1_MaxRange int = 7
+    Skill_1_MaxDamage int = 250
     Skill_1_MinCD int = 2500
     // 技能2数据常量
     Skill_2_MaxCount int = 8
@@ -163,10 +168,10 @@ graph PlayerJionGame {
         var x = Skill1_DamageState["x"]
         var y = Skill1_DamageState["y"]
         
-        x = x + 5
+        x = x + 50
         y = y + 1
         if x > Skill_1_MaxDamage {
-            x = 5
+            x = 50
             y = 0
         }
         

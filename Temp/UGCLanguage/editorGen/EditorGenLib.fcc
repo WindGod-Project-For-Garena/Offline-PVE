@@ -1,4 +1,5 @@
 import "StdLibrary.fcc" as StdLibrary
+import "Economy.fcc" as Economy
 
 
 
@@ -13,9 +14,6 @@ component Mob {
     // HP
     HP int
 
-    // WalkSpeed
-    WalkSpeed int
-
     // Damage
     Damage int
 
@@ -28,13 +26,29 @@ component Mob {
     // LastHitPlayer
     LastHitPlayer entity<Player>
 
+    // DetectRange
+    DetectRange float
+
+    // WalkSpeed
+    WalkSpeed float
+
+    // HateTarget
+    HateTarget entity<Player>
+
+    // HateGainTime
+    HateGainTime int
+
 }
 
 
 [element CustomUIAssetID]
 enum EResUI {
-    Skill
     DeBug
+    Skill
+}
+[element string]
+enum EResScene {
+    IsleLand
 }
 [element PrefabID]
 enum EResPrefab {
@@ -58,13 +72,17 @@ enum EResCSV {
     LevelConfig
     MonsterInfo
 }
-[element CustomUIWidgetID]
-enum EResUISkill {
-    JoyStickFillAmount
+[element entity]
+enum EResSceneIsleLand {
+    PendingRemoveMobs
+    ActiveMobs
 }
 enum EResKeyUI {
-    Skill = "Skill"
     DeBug = "DeBug"
+    Skill = "Skill"
+}
+enum EResKeyScene {
+    IsleLand = "IsleLand"
 }
 enum EResKeyPrefab {
     NormalZombie = "NormalZombie"
@@ -84,19 +102,31 @@ enum EResKeyCSV {
     LevelConfig = "LevelConfig"
     MonsterInfo = "MonsterInfo"
 }
-enum EResKeySkill {
-    JoyStickFillAmount = "JoyStickFillAmount"
+enum EResKeyIsleLand {
+    PendingRemoveMobs = "PendingRemoveMobs"
+    ActiveMobs = "ActiveMobs"
 }
+// MobAttackEvent_AC(attackName String)
+[platform_client]
+[platform_server]
+event MobAttackEvent_AC( attackName string)
+
+// MobDeathEvent_AC()
+[platform_client]
+[platform_server]
+event MobDeathEvent_AC()
+
 
 [platform_server]
 [platform_client]
 declare static graph Res {
     UI Map<EResKeyUI, CustomUIAssetID>
+    Scene Map<EResKeyScene, string>
     Prefab Map<EResKeyPrefab, PrefabID>
     FCG Map<EResKeyFCG, ScriptID>
     Item Map<EResKeyItem, ItemID>
     CSV Map<EResKeyCSV, CsvID>
-    Skill Map<EResKeySkill, CustomUIWidgetID>
+    IsleLand Map<EResKeyIsleLand, entity>
 }
 
 

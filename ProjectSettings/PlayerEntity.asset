@@ -75,14 +75,7 @@
       "fileType": "ugcscript"
     }
   ],
-  "avatarInfo": {
-    "fileId": "eyxzcdsyydm-mheiuv6m-kj8h96bodzi",
-    "filePath": "Assets\\New PlayerData.playerdata",
-    "_tag": {
-      "type": "GFileRefer"
-    },
-    "fileType": "playerdata"
-  },
+  "avatarInfo": null,
   "sceneData": {
     "enableDepthMap": false,
     "local_tab_index": 0,
@@ -144,9 +137,9 @@
     "race_MinNumOfMatchStart": 2,
     "fullcustom_multirounds_enabled": true,
     "fullcustom_round_num": 3,
-    "fullcustom_revive_enabled": false,
+    "fullcustom_revive_enabled": true,
     "fullcustom_revive_rule": 0,
-    "fullcustom_revive_time": 100,
+    "fullcustom_revive_time": 1,
     "fullcustom_round_preparing_time": 5,
     "fullcustom_round_time": 180,
     "fullcustom_team_num": 2,
@@ -305,7 +298,7 @@
     "ECCTParam_JumpMaxCount": 0,
     "ECCTParam_JumpHeight": 0.8,
     "ECCTParam_CanMoveInAir": false,
-    "ECCTParam_PlayerPhysicalLayer": 2,
+    "ECCTParam_PlayerPhysicalLayer": 0,
     "ECCTParam_EnableRotateWithGravity": false
   },
   "_entityName": "T_43_YU_WS_MODULE_PLAYER",
