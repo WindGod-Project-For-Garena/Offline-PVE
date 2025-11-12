@@ -19,23 +19,12 @@ import "../CustomEvent.fcc" as CustomEvent
 graph SkillUI {
     previewEffectEntity entity<Effect>
     effectEntity entity<Effect>
-    //物理碰撞层级为0
     ScreenLayer int = 0
-    //——————————————————————————————————————————————————————————————————————————————//
-    //怪物列表
-    //ActiveMonsters List<entity<LevelObject>> = List<entity<LevelObject>>{}
-    //——————————————————————————————————————————————————————————————————————————————//
-    //特效旋转动画
     tween entity<Tween>
-    //特效旋转动画时间
-    RotTime int = 1000      //1秒
-    //释放后生成特效的位置
+    RotTime int = 1000
     ReleasedEffectPosition Vector3
-    //遥感控件FillAmount
     JoyStickButton entity<UIWidget>
-    //CD填充动画
     FillAmountTween entity<Tween>
-    //——————————————————————————————————————————————————————————————————————————————//
     ActiveMonstersParentNode entity<Entity> 
     
 
@@ -43,7 +32,7 @@ graph SkillUI {
         ActiveMonstersParentNode = EResSceneIsleLand.ActiveMobs as entity<Entity>
     }
 
-    //超级炫酷的暴力色彩艺术
+    // 特效颜色
     func  BoomColor(createdEntity entity<Effect>,value int){
         var color = #FF98D4FF
         if value == 1 {
@@ -62,9 +51,8 @@ graph SkillUI {
         createdEntity<Effect>.Color = color
     }
 
-    func StartRotTween(createdEntity entity<Effect>){               //旋转特效
+    func StartRotTween(createdEntity entity<Effect>){
         if tween == nil{
-            //创建特效动画
             var rotstart = Vector3{0, 0, 0}
             var rotend = Vector3{0, 360, 0}     
             CreateTween(
@@ -74,107 +62,96 @@ graph SkillUI {
                 rotend,
                 TweenStyle.Loop,
                 CreateCurve({0, 0, 1, 1}),
-                RotTime,  // 旋转动画时间
+                RotTime,
                 out var RotTweenEntity,
                 true)
             tween = RotTweenEntity
         }
     }
-    //——————————————————————————————————————————————————————————————————————————————//
-    event OnJoyStickMove(player entity<Player>, delta Vector2){         //当遥感技能按下时
+    
+    //————————————————————————————————————————————————//
+    event OnJoyStickMove(player entity<Player>, delta Vector2){
         var TouchPoint Vector2 = Vector2{0,0}
         ScreenTouchRay(TouchPoint, out var startPosition, out var direction)
         var layerMask List<int> = List<int>{ScreenLayer}
         ScreenSingleRaycast(TouchPoint, 100, layerMask, true, out var hitEntity, out var hitPosition, out var hitDistance, out var hitNormal)
         ReleasedEffectPosition = hitPosition
-        // ----------------------------- //
+        
         var CurrentSkill = GetLocalPlayer()<PlayerJionGame>.CurrentSkill
-        if  CurrentSkill == 1 {     
-            Skill_1(CurrentSkill,hitPosition)
+        if CurrentSkill == 1 {     
+            Skill_1(CurrentSkill, hitPosition)
         }
-        if   CurrentSkill == 2 {
-            Skill_2(CurrentSkill,hitPosition)
+        if CurrentSkill == 2 {
+            Skill_2(CurrentSkill, hitPosition)
         }
     }
 
-    //  技能1
-    func Skill_1(CurrentSkill int,hitPosition Vector3){
-        // 只在第一次满足条件时创建特效
+    // 技能1预览
+    func Skill_1(CurrentSkill int, hitPosition Vector3){
         if previewEffectEntity == nil {
-            CreateEffectClient(out var NewcreatedEntity, VFXType.LightBeamPreDiscarded , LoopType.Once, true)
-            previewEffectEntity = NewcreatedEntity
-       
-        }
-        // 特效缩放
-        var EffectRange Map<string,int> = GetLocalPlayer()<PlayerJionGame>.GetSkillData(CurrentSkill)
-        var Size int = EffectRange["Range"]
-        previewEffectEntity<Transform>.Scale = Vector3{Size, 0.1, Size}
-        // 特效颜色
-        BoomColor(previewEffectEntity,Size)
-            
-        
-        // 特效位置
-        previewEffectEntity<Transform>.Position = hitPosition
-        // 特效旋转
-        StartRotTween(previewEffectEntity)
-
-
-        
-    }
-
-    //  技能2
-    func Skill_2(CurrentSkill int,hitPosition Vector3){
-       // 只在第一次满足条件时创建特效
-        if previewEffectEntity == nil {
-            CreateEffectClient(out var NewcreatedEntity, VFXType.LightBeamPreDiscarded , LoopType.Once, true)
+            CreateEffectClient(out var NewcreatedEntity, VFXType.LightBeamPreDiscarded, LoopType.Once, true)
             previewEffectEntity = NewcreatedEntity
         }
-        // 特效缩放
-        var EffectRange Map<string,int> = GetLocalPlayer()<PlayerJionGame>.GetSkillData(CurrentSkill)
-        var Size int = EffectRange["Range"]
+        
+        var skillLevel = GetLocalPlayer()<PlayerJionGame>.GetCurrentSkillLevel(CurrentSkill)
+        var skillDataInt = GetLocalPlayer()<PlayerJionGame>.GetSkillDataInt("Skill1", skillLevel)
+        var Size = skillDataInt["size"]
+        
         previewEffectEntity<Transform>.Scale = Vector3{Size, 0.1, Size}
-        // 特效颜色
-        BoomColor(previewEffectEntity,Size)
-        // 特效位置
+        BoomColor(previewEffectEntity, Size)
         previewEffectEntity<Transform>.Position = hitPosition
-        // 特效旋转
         StartRotTween(previewEffectEntity)
     }
 
-    //——————————————————————————————————————————————————————————————————————————————//
-    event OnJoyStickReleased(player entity<Player>){                //当遥感技能释放时
+    // 技能2预览
+    func Skill_2(CurrentSkill int, hitPosition Vector3){
+        if previewEffectEntity == nil {
+            CreateEffectClient(out var NewcreatedEntity, VFXType.LightBeamPreDiscarded, LoopType.Once, true)
+            previewEffectEntity = NewcreatedEntity
+        }
+        
+        var skillLevel = GetLocalPlayer()<PlayerJionGame>.GetCurrentSkillLevel(CurrentSkill)
+        var skillDataInt = GetLocalPlayer()<PlayerJionGame>.GetSkillDataInt("Skill2", skillLevel)
+        var Size = skillDataInt["Count"]
+        
+        previewEffectEntity<Transform>.Scale = Vector3{Size, 0.1, Size}
+        BoomColor(previewEffectEntity, Size)
+        previewEffectEntity<Transform>.Position = hitPosition
+        StartRotTween(previewEffectEntity)
+    }
+
+    //————————————————————————————————————————————————//
+    event OnJoyStickReleased(player entity<Player>){
         Destroy(previewEffectEntity)
         Destroy(tween)
-        //-----------------------------//
+        
         var CurrentSkill = GetLocalPlayer()<PlayerJionGame>.CurrentSkill
-        //-----------------------------//
-        if  CurrentSkill == 1 {     
+        if CurrentSkill == 1 {     
             start Skill_1_Released(CurrentSkill)
         }
-        if   CurrentSkill == 2 {
+        if CurrentSkill == 2 {
             start Skill_2_Released(CurrentSkill)
         }
     }
 
-    //  技能1释放
+    // 技能1释放
     async func Skill_1_Released(CurrentSkill int){
-        //释放特效
-        CreateEffectClient(out var NewcreatedEntity, VFXType.CurseExplosion , LoopType.Once, true)
+        var skillLevel = GetLocalPlayer()<PlayerJionGame>.GetCurrentSkillLevel(CurrentSkill)
+        var skillDataFloat = GetLocalPlayer()<PlayerJionGame>.GetSkillDataFloat("Skill1", skillLevel)
+        var skillDataInt = GetLocalPlayer()<PlayerJionGame>.GetSkillDataInt("Skill1", skillLevel)
+        
+        var Size = skillDataInt["size"]
+        var CurrentDamage = skillDataFloat["Damage"]
+        var CurrentcdTime = skillDataInt["CD"]
+        
+        // 释放特效
+        CreateEffectClient(out var NewcreatedEntity, VFXType.CurseExplosion, LoopType.Once, true)
         effectEntity = NewcreatedEntity
-        // 特效位置
         effectEntity<Transform>.Position = ReleasedEffectPosition
-        // 特效缩放
-        var EffectRange Map<string,int> = GetLocalPlayer()<PlayerJionGame>.GetSkillData(CurrentSkill)
-        var Size int = EffectRange["Range"]
         effectEntity<Transform>.Scale = Vector3{Size, Size, Size}
-        // 特效颜色
-        BoomColor(effectEntity,Size)
-        // 设置伤害
-        var skillInfo Map<string,int> = GetLocalPlayer()<PlayerJionGame>.GetSkillData(CurrentSkill)
-        var CurrentDamage int = skillInfo["Damage"]
-
+        BoomColor(effectEntity, Size)
        
-        //造成伤害
+        // 造成伤害
         var monsters = getMonsterWithinDistance(Size)
         for i = 0, List.Length(monsters), 1 {
             var monster = monsters[i]
@@ -182,55 +159,36 @@ graph SkillUI {
             CreateDamageNum(CurrentDamage, 10, #dde511, 800, monster as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
         }
 
-
-
-
-
-        //-----------------------------//
-        // 设置技能CD时间
-        var cdTime Map<string,int> = GetLocalPlayer()<PlayerJionGame>.GetSkillData(CurrentSkill)
-        var CurrentcdTime int = skillInfo["CD"]
-        var SkillUI entity<CustomUI> = GetLocalPlayer()<PlayerJionGame>.SkillUI
-        JoyStickButton = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_1/JoyStickFillAmount")
-        JoyStickButton<UIWidget>.Active = true
-        JoyStickButton<UIWidgetButton>.FillAmount = 0
-        if FillAmountTween == nil{
-            //CD填充动画
-            CreateTween(
-                JoyStickButton,
-                UIWidgetButton.FillAmount,
-                0,
-                1,
-                TweenStyle.Once,
-                CreateCurve({0, 0, 1, 1}),
-                CurrentcdTime, 
-                out var FillAmountTweenEntity,
-                true)
-            FillAmountTween = FillAmountTweenEntity
-            WaitForMillisecond(CurrentcdTime)
-            Destroy(FillAmountTween)
-            JoyStickButton<UIWidget>.Active = false
-        }
+        // 设置CD
+        StartSkillCD(CurrentSkill, CurrentcdTime)
     }
-    //——————————————————————————————————————————————————————————————————————————————//
+    
     // 技能2释放
     async func Skill_2_Released(CurrentSkill int){
-        // 获取技能数据
-        var SkillData Map<string,int> = GetLocalPlayer()<PlayerJionGame>.GetSkillData(CurrentSkill)
-        var ColorComp Map<string,int> = GetLocalPlayer()<PlayerJionGame>.Skill2_CountState
-        var Count int = SkillData["Count"]
-        var CurrentDamage int = SkillData["Damage"]
-        var CurrentcdTime int = SkillData["CD"]
-        var ColorValue int = ColorComp["y"]
+        var skillLevel = GetLocalPlayer()<PlayerJionGame>.GetCurrentSkillLevel(CurrentSkill)
+        var skillDataFloat = GetLocalPlayer()<PlayerJionGame>.GetSkillDataFloat("Skill2", skillLevel)
+        var skillDataInt = GetLocalPlayer()<PlayerJionGame>.GetSkillDataInt("Skill2", skillLevel)
         
-        // 设置技能CD时间
+        var Count = skillDataInt["Count"]
+        var CurrentDamage = skillDataFloat["Damage"]
+        var CurrentcdTime = skillDataInt["CD"]
+        
+        // 设置CD
+        StartSkillCD(CurrentSkill, CurrentcdTime)
+        
+        // 释放雷击
+        start PlayThunderEffects(Count, skillLevel, CurrentDamage)
+    }
+
+    // 启动技能CD
+    func StartSkillCD(skillNum int, cdTime int) {
         var SkillUI entity<CustomUI> = GetLocalPlayer()<PlayerJionGame>.SkillUI
-        JoyStickButton = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_2/JoyStickFillAmount")
+        var buttonPath = "/Skill_" + skillNum + "/JoyStickFillAmount"
+        JoyStickButton = GetWidgetByPath(GetLocalPlayer(), SkillUI, buttonPath)
         JoyStickButton<UIWidget>.Active = true
         JoyStickButton<UIWidgetButton>.FillAmount = 0
         
         if FillAmountTween == nil{
-            // CD填充动画 - 立即开始，不受特效影响
             CreateTween(
                 JoyStickButton,
                 UIWidgetButton.FillAmount,
@@ -238,85 +196,65 @@ graph SkillUI {
                 1,
                 TweenStyle.Once,
                 CreateCurve({0, 0, 1, 1}),
-                CurrentcdTime, 
+                cdTime, 
                 out var FillAmountTweenEntity,
                 true)
             FillAmountTween = FillAmountTweenEntity
-            
-            // 异步启动CD计时器，独立于特效
-            start HandleSkillCD(CurrentcdTime)
-            
-            // 异步启动雷击特效，不阻塞CD
-            start PlayThunderEffects(Count,ColorValue, CurrentDamage)
+            start HandleSkillCD(cdTime)
         }
     }
 
-    // 处理技能CD的独立函数
+    // 处理技能CD
     async func HandleSkillCD(cdTime int) {
         WaitForMillisecond(cdTime)
         Destroy(FillAmountTween)
         JoyStickButton<UIWidget>.Active = false
     }
 
-    // 播放雷击特效的独立函数
-    async func PlayThunderEffects(Count int, ColorValue int, damage int) {
-        // 释放Count道雷，每道延迟0.2秒
+    // 播放雷击特效
+    async func PlayThunderEffects(Count int, skillLevel int, damage float) {
         for i = 0, Count, 1 {
             var randomMonster = GetRandomMonster()
             if randomMonster != nil {
-                start CreateThunder(i, randomMonster, ColorValue, damage)
+                start CreateThunder(i, randomMonster, skillLevel, damage)
                 WaitForMillisecond(200)
-            } else {
-                LogInfo("没有找到可攻击的怪物，跳过第 " + (i + 1) + " 道雷")
             }
         }
     }
 
-    // 从怪物列表中随机选择一个怪物
+    // 获取随机怪物
     func GetRandomMonster() entity<LevelObject> {
         var activeMonsters = GetChildren(ActiveMonstersParentNode)
-        if List.Length(activeMonsters) == 0 {
-            return nil
-        }
-        
+        if List.Length(activeMonsters) == 0 { return nil }
         var randomIndex = RandomInt(0, List.Length(activeMonsters) - 1)
         return activeMonsters[randomIndex] as entity<LevelObject>
     }
 
-    // 创建单道雷的函数
-    async func CreateThunder(index int, targetMonster entity<LevelObject>, ColorValue int ,damage int) {
-        // 获取怪物的位置
+    // 创建单道雷
+    async func CreateThunder(index int, targetMonster entity<LevelObject>, skillLevel int, damage float) {
         var thunderPosition = targetMonster<Transform>.Position
-        // 创建雷击特效
         CreateEffectClient(out var thunderEffect, VFXType.Thunder, LoopType.Once, true)
         thunderEffect<Transform>.Position = thunderPosition
         thunderEffect<Transform>.Scale = Vector3{0.8,2,0.8}
-        SetParentClient(targetMonster,thunderEffect ,true)
-        // 设置特效颜色
-        BoomColor(thunderEffect, ColorValue)
-        // 对目标怪物造成伤害
+        SetParentClient(targetMonster, thunderEffect, true)
+        BoomColor(thunderEffect, skillLevel)
         ApplyThunderDamage(targetMonster, damage)
-        LogInfo("第 " + (index + 1) + " 道雷攻击怪物在位置 " + thunderPosition + " 释放")
     }
 
-    // 应用雷击伤害的函数
-    func ApplyThunderDamage(targetMonster entity<LevelObject>, damage int) {
+    // 应用雷击伤害
+    func ApplyThunderDamage(targetMonster entity<LevelObject>, damage float) {
         DispatchEventToEntity(OnDamageMob, targetMonster, PlatformType.Server, List<object>{targetMonster, nil, damage, GetLocalPlayer()})
         CreateDamageNum(damage, 10, #dde511, 800, targetMonster as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
-
-        LogInfo("无限的力量！无限的力量！对怪物造成 " + damage + " 点伤害")
     }
-    //——————————————————————————————————————————————————————————————————————————————//
 
-
+    // 获取范围内怪物
     func getMonsterWithinDistance(distance int) List<entity<LevelObject>> {
-        //------这里以后做成碰撞检测----//
         var monsters List<entity<LevelObject>> = List<entity<LevelObject>>{}
         var activeMonsters List<entity<LevelObject>> = GetChildren(ActiveMonstersParentNode) as List<entity<LevelObject>>
         for i = 0, List.Length(activeMonsters), 1 {
             var monster = activeMonsters[i]
             if Distance(monster<Transform>.Position, ReleasedEffectPosition) <= distance {
-                List.Append(monsters,monster)
+                List.Append(monsters, monster)
             }
         }
         return monsters
