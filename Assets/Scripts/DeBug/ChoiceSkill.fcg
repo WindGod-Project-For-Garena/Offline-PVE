@@ -62,8 +62,7 @@ graph ChoiceSkill {
         if skillIndex == 1 {
             // 获取技能1的等级和实际数据
             var skillLevel = GetLocalPlayer()<PlayerJionGame>.Skill1_Level
-            var skillDataFloat = GetLocalPlayer()<PlayerJionGame>.GetSkillDataFloat("Skill1", skillLevel)
-            var skillDataInt = GetLocalPlayer()<PlayerJionGame>.GetSkillDataInt("Skill1", skillLevel)
+            var skillData = GetLocalPlayer()<PlayerJionGame>.GetSkillData("Skill1", skillLevel)
             
             // 更新UI显示
             var DeBugUI_Range = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/Range/文本_level")
@@ -81,8 +80,7 @@ graph ChoiceSkill {
         if skillIndex == 2 {
             // 获取技能2的等级和实际数据
             var skillLevel = GetLocalPlayer()<PlayerJionGame>.Skill2_Level
-            var skillDataFloat = GetLocalPlayer()<PlayerJionGame>.GetSkillDataFloat("Skill2", skillLevel)
-            var skillDataInt = GetLocalPlayer()<PlayerJionGame>.GetSkillDataInt("Skill2", skillLevel)
+            var skillData = GetLocalPlayer()<PlayerJionGame>.GetSkillData("Skill2", skillLevel)
             
             // 更新UI显示
             var DeBugUI_Range = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/Range/文本_level")
@@ -97,8 +95,7 @@ graph ChoiceSkill {
         if skillIndex == 3 {
             // 获取技能3的等级和实际数据
             var skillLevel = GetLocalPlayer()<PlayerJionGame>.Skill3_Level
-            var skillDataFloat = GetLocalPlayer()<PlayerJionGame>.GetSkillDataFloat("Skill1", skillLevel)  // 假设技能3使用Skill1的数据结构
-            var skillDataInt = GetLocalPlayer()<PlayerJionGame>.GetSkillDataInt("Skill1", skillLevel)      // 假设技能3使用Skill1的数据结构
+            var skillData = GetLocalPlayer()<PlayerJionGame>.GetSkillData("Skill1", skillLevel)  // 假设技能3使用Skill1的数据结构
             
             // 更新UI显示
             var DeBugUI_Range = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/Range/文本_level")
@@ -153,21 +150,18 @@ graph ChoiceSkill {
     }
 
     //  技能3(被动技能)
+    // 技能3(被动技能)
     func Skill_3(skillLevel int){
-       // 只在第一次满足条件时创建特效
-        CreateEffectClient(out var NewcreatedEntity, VFXType.LightBeamPreDiscarded , LoopType.Once, true)
+        CreateEffectClient(out var NewcreatedEntity, VFXType.LightBeamPreDiscarded, LoopType.Once, true)
         createdEntity = NewcreatedEntity
-        SetParentClient(GetLocalPlayer(),createdEntity ,false)
+        SetParentClient(GetLocalPlayer(), createdEntity, false)
         
-        // 获取技能3的Size数据
-        var skillDataInt = GetLocalPlayer()<PlayerJionGame>.GetSkillDataInt("Skill1", skillLevel)  // 假设技能3使用Skill1的数据结构
-        var Size = skillDataInt["size"]
+        // 获取技能3的数据
+        var skillData = GetLocalPlayer()<PlayerJionGame>.GetSkillData("Skill1", skillLevel)  // 假设技能3使用Skill1的数据结构
+        var Size = skillData["size"] as int
         
-        // 特效缩放
         createdEntity<Transform>.Scale = Vector3{Size, 0.1, Size}
-        // 特效颜色
         BoomColor(createdEntity, Size)
-        // 特效旋转
         StartRotTween(createdEntity)
     }
 }

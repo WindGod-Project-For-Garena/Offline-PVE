@@ -16,42 +16,77 @@ graph PlayerJionGame {
     SkillUI entity<CustomHud>
     DeBugUI entity<CustomHud>
     
-    // 技能数据
-    SkillDataFloat = Map<string, Map<string, Map<string, float>>>{
+    // 技能数据 - 使用object类型混合存储float和int
+    SkillData = Map<string, Map<string, Map<string, object>>>{
         "Skill1":{
-            "Level_0":{"Range": 1.0, "Damage": 50.0},
-            "Level_1":{"Range": 2.0, "Damage": 100.0},
-            "Level_2":{"Range": 3.0, "Damage": 150.0},
-            "Level_3":{"Range": 4.0, "Damage": 200.0},
-            "Level_4":{"Range": 5.0, "Damage": 250.0},
-            "Level_5":{"Range": 6.0, "Damage": 300.0},
+            "Level_0":{
+                "Range": 1.0, 
+                "Damage": 50,
+                "CD": 5000,
+                "size": 1,
+            },
+            "Level_1":{
+                "Range": 2.0, 
+                "Damage": 100,
+                "CD": 4500,
+                "size": 2,
+            },
+            "Level_2":{
+                "Range": 3.0, 
+                "Damage": 150,
+                "CD": 4000,
+                "size": 3,
+            },
+            "Level_3":{
+                "Range": 4.0, 
+                "Damage": 200,
+                "CD": 3500,
+                "size": 4,
+            },
+            "Level_4":{
+                "Range": 5.0, 
+                "Damage": 250,
+                "CD": 3000,
+                "size": 5,
+            },
+            "Level_5":{
+                "Range": 6.0, 
+                "Damage": 300,
+                "CD": 2500,
+                "size": 6,
+            },
         },
         "Skill2":{
-            "Level_0":{"Damage": 5.0},
-            "Level_1":{"Damage": 10.0},
-            "Level_2":{"Damage": 15.0},
-            "Level_3":{"Damage": 20.0},
-            "Level_4":{"Damage": 25.0},
-            "Level_5":{"Damage": 30.0},
-        },
-    }
-    
-    SkillDataInt = Map<string, Map<string, Map<string, int>>>{
-        "Skill1":{
-            "Level_0":{"CD":5000, "size":1},
-            "Level_1":{"CD":4500, "size":2},
-            "Level_2":{"CD":4000, "size":3},
-            "Level_3":{"CD":3500, "size":4},
-            "Level_4":{"CD":3000, "size":5},
-            "Level_5":{"CD":2500, "size":6},
-        },
-        "Skill2":{
-            "Level_0":{"Count": 3, "CD":5000},
-            "Level_1":{"Count": 4, "CD":4500},
-            "Level_2":{"Count": 5, "CD":4000},
-            "Level_3":{"Count": 6, "CD":3500},
-            "Level_4":{"Count": 7, "CD":3000},
-            "Level_5":{"Count": 8, "CD":2500},
+            "Level_0":{
+                "Count": 3, 
+                "Damage": 5,
+                "CD": 5000,
+            },
+            "Level_1":{
+                "Count": 4, 
+                "Damage": 10,
+                "CD": 4500,
+            },
+            "Level_2":{
+                "Count": 5, 
+                "Damage": 15,
+                "CD": 4000,
+            },
+            "Level_3":{
+                "Count": 6, 
+                "Damage": 20,
+                "CD": 3500,
+            },
+            "Level_4":{
+                "Count": 7, 
+                "Damage": 25,
+                "CD": 3000,
+            },
+            "Level_5":{
+                "Count": 8, 
+                "Damage": 30,
+                "CD": 2500,
+            },
         },
     }
     
@@ -93,18 +128,11 @@ graph PlayerJionGame {
     
     //————————————————————————————————————————————————//
     // 获取技能数据的函数
-    func GetSkillDataFloat(skillType string, level int) Map<string, float> {
-        if SkillDataFloat[skillType] != nil && SkillDataFloat[skillType]["Level_" + level] != nil {
-            return SkillDataFloat[skillType]["Level_" + level]
+    func GetSkillData(skillType string, level int) Map<string, object> {
+        if SkillData[skillType] != nil && SkillData[skillType]["Level_" + level] != nil {
+            return SkillData[skillType]["Level_" + level]
         }
-        return Map<string, float>{}
-    }
-    
-    func GetSkillDataInt(skillType string, level int) Map<string, int> {
-        if SkillDataInt[skillType] != nil && SkillDataInt[skillType]["Level_" + level] != nil {
-            return SkillDataInt[skillType]["Level_" + level]
-        }
-        return Map<string, int>{}
+        return Map<string, object>{}
     }
     
     // 获取当前技能等级
