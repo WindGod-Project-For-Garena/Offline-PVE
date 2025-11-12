@@ -15,7 +15,6 @@ graph ChoiceSkill {
     x int = 0
     y int = 0
     MaxSkillAmount int = 4
-    rangeLevel_3 int = 0
     //————————————————————————————————————————————————//
     func ChoiceSkill(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
         y = y + 1
@@ -31,7 +30,6 @@ graph ChoiceSkill {
         var DeBugUI entity<CustomUI> = GetLocalPlayer()<PlayerJionGame>.DeBugUI
         var DeBugUI_ChoiceSkill = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/ChoiceSkill/文本_level")
         DeBugUI_ChoiceSkill<UIWidgetLabel>.Content = "技能" + y
-        rangeLevel_3 = y
         GetLocalPlayer()<PlayerJionGame>.UpdatecdSkill(x)
         
         // 动态切换技能按钮
@@ -59,55 +57,60 @@ graph ChoiceSkill {
     func UpdateSkillUI(skillIndex int) {
         var DeBugUI entity<CustomUI> = GetLocalPlayer()<PlayerJionGame>.DeBugUI
         
+        // 先销毁之前的特效
+        Destroy(createdEntity)
+        Destroy(tween)
+        
         if skillIndex == 1 {
-            // 获取技能1的等级和实际数据
-            var skillLevel = GetLocalPlayer()<PlayerJionGame>.Skill1_Level
-            var skillData = GetLocalPlayer()<PlayerJionGame>.GetSkillData("Skill1", skillLevel)
+            // 获取技能1的各个属性等级
+            var rangeLevel = GetLocalPlayer()<PlayerJionGame>.GetCurrentSkillLevel(1, "Range")
+            var damageLevel = GetLocalPlayer()<PlayerJionGame>.GetCurrentSkillLevel(1, "Damage")
+            var cdLevel = GetLocalPlayer()<PlayerJionGame>.GetCurrentSkillLevel(1, "CD")
             
             // 更新UI显示
             var DeBugUI_Range = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/Range/文本_level")
-            DeBugUI_Range<UIWidgetLabel>.Content = skillLevel + "级"
+            DeBugUI_Range<UIWidgetLabel>.Content = rangeLevel + "级"
             
             var DeBugUI_Damage = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/Damage/文本_level")
-            DeBugUI_Damage<UIWidgetLabel>.Content = skillLevel + "级"
+            DeBugUI_Damage<UIWidgetLabel>.Content = damageLevel + "级"
             
             var DeBugUI_CD = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/cdlevelup/文本_level")
-            DeBugUI_CD<UIWidgetLabel>.Content = skillLevel + "级"
-
-            Destroy(createdEntity)
-            Destroy(tween)
+            DeBugUI_CD<UIWidgetLabel>.Content = cdLevel + "级"
         }
         if skillIndex == 2 {
-            // 获取技能2的等级和实际数据
-            var skillLevel = GetLocalPlayer()<PlayerJionGame>.Skill2_Level
-            var skillData = GetLocalPlayer()<PlayerJionGame>.GetSkillData("Skill2", skillLevel)
+            // 获取技能2的各个属性等级
+            var rangeLevel = GetLocalPlayer()<PlayerJionGame>.GetCurrentSkillLevel(2, "Range")
+            var damageLevel = GetLocalPlayer()<PlayerJionGame>.GetCurrentSkillLevel(2, "Damage")
+            var cdLevel = GetLocalPlayer()<PlayerJionGame>.GetCurrentSkillLevel(2, "CD")
             
             // 更新UI显示
             var DeBugUI_Range = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/Range/文本_level")
-            DeBugUI_Range<UIWidgetLabel>.Content = skillLevel + "级"
+            DeBugUI_Range<UIWidgetLabel>.Content = rangeLevel + "级"
             
             var DeBugUI_Damage = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/Damage/文本_level")
-            DeBugUI_Damage<UIWidgetLabel>.Content = skillLevel + "级"
+            DeBugUI_Damage<UIWidgetLabel>.Content = damageLevel + "级"
             
             var DeBugUI_CD = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/cdlevelup/文本_level")
-            DeBugUI_CD<UIWidgetLabel>.Content = skillLevel + "级"
+            DeBugUI_CD<UIWidgetLabel>.Content = cdLevel + "级"
         }
         if skillIndex == 3 {
-            // 获取技能3的等级和实际数据
-            var skillLevel = GetLocalPlayer()<PlayerJionGame>.Skill3_Level
-            var skillData = GetLocalPlayer()<PlayerJionGame>.GetSkillData("Skill1", skillLevel)  // 假设技能3使用Skill1的数据结构
+            // 获取技能3的各个属性等级
+            var rangeLevel = GetLocalPlayer()<PlayerJionGame>.GetCurrentSkillLevel(3, "Range")
+            var damageLevel = GetLocalPlayer()<PlayerJionGame>.GetCurrentSkillLevel(3, "Damage")
+            var cdLevel = GetLocalPlayer()<PlayerJionGame>.GetCurrentSkillLevel(3, "CD")
             
             // 更新UI显示
             var DeBugUI_Range = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/Range/文本_level")
-            DeBugUI_Range<UIWidgetLabel>.Content = skillLevel + "级"
+            DeBugUI_Range<UIWidgetLabel>.Content = rangeLevel + "级"
             
             var DeBugUI_Damage = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/Damage/文本_level")
-            DeBugUI_Damage<UIWidgetLabel>.Content = skillLevel + "级"
+            DeBugUI_Damage<UIWidgetLabel>.Content = damageLevel + "级"
             
             var DeBugUI_CD = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/cdlevelup/文本_level")
-            DeBugUI_CD<UIWidgetLabel>.Content = skillLevel + "级"
+            DeBugUI_CD<UIWidgetLabel>.Content = cdLevel + "级"
             
-            Skill_3(skillLevel)
+            // 显示技能3的特效
+            Skill_3(rangeLevel)
         }
     }
 //————————————————————————————————————————————————————————————————————————————————————————————————————————//
@@ -149,15 +152,14 @@ graph ChoiceSkill {
         }
     }
 
-    //  技能3(被动技能)
     // 技能3(被动技能)
-    func Skill_3(skillLevel int){
+    func Skill_3(rangeLevel int){
         CreateEffectClient(out var NewcreatedEntity, VFXType.LightBeamPreDiscarded, LoopType.Once, true)
         createdEntity = NewcreatedEntity
         SetParentClient(GetLocalPlayer(), createdEntity, false)
         
-        // 获取技能3的数据
-        var skillData = GetLocalPlayer()<PlayerJionGame>.GetSkillData("Skill1", skillLevel)  // 假设技能3使用Skill1的数据结构
+        // 技能3使用技能1的数据结构，但使用技能3自己的等级
+        var skillData = GetLocalPlayer()<PlayerJionGame>.GetSkillData("Skill1", rangeLevel) 
         var Size = skillData["size"] as int
         
         createdEntity<Transform>.Scale = Vector3{Size, 0.1, Size}

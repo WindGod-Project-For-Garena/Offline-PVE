@@ -93,9 +93,10 @@ graph SkillUI {
             previewEffectEntity = NewcreatedEntity
         }
         
-        var skillLevel = GetLocalPlayer()<PlayerJionGame>.GetCurrentSkillLevel(CurrentSkill)
-        var skillData = GetLocalPlayer()<PlayerJionGame>.GetSkillData("Skill1", skillLevel)
-        var Size = skillData["size"] as int  
+        // 获取技能1的范围等级
+        var rangeLevel = GetLocalPlayer()<PlayerJionGame>.GetCurrentSkillLevel(CurrentSkill, "Range")
+        var skillData = GetLocalPlayer()<PlayerJionGame>.GetSkillData("Skill1", rangeLevel)
+        var Size = skillData["size"] as int
         
         previewEffectEntity<Transform>.Scale = Vector3{Size, 0.1, Size}
         BoomColor(previewEffectEntity, Size)
@@ -110,8 +111,9 @@ graph SkillUI {
             previewEffectEntity = NewcreatedEntity
         }
         
-        var skillLevel = GetLocalPlayer()<PlayerJionGame>.GetCurrentSkillLevel(CurrentSkill)
-        var skillData = GetLocalPlayer()<PlayerJionGame>.GetSkillData("Skill2", skillLevel)
+        // 获取技能1的范围等级
+        var rangeLevel = GetLocalPlayer()<PlayerJionGame>.GetCurrentSkillLevel(CurrentSkill, "Count")
+        var skillData = GetLocalPlayer()<PlayerJionGame>.GetSkillData("Skill2", rangeLevel)
         var Size = skillData["Count"] as int
         
         previewEffectEntity<Transform>.Scale = Vector3{Size, 0.1, Size}
@@ -136,12 +138,18 @@ graph SkillUI {
 
     // 技能1释放
     async func Skill_1_Released(CurrentSkill int){
-        var skillLevel = GetLocalPlayer()<PlayerJionGame>.GetCurrentSkillLevel(CurrentSkill)
-        var skillData = GetLocalPlayer()<PlayerJionGame>.GetSkillData("Skill1", skillLevel)
+        // 获取技能1的各个属性等级
+        var rangeLevel = GetLocalPlayer()<PlayerJionGame>.GetCurrentSkillLevel(CurrentSkill, "Range")
+        var damageLevel = GetLocalPlayer()<PlayerJionGame>.GetCurrentSkillLevel(CurrentSkill, "Damage")
+        var cdLevel = GetLocalPlayer()<PlayerJionGame>.GetCurrentSkillLevel(CurrentSkill, "CD")
         
-        var Size = skillData["size"] as int       
-        var CurrentDamage = skillData["Damage"] as int 
-        var CurrentcdTime = skillData["CD"]  as int  
+        var rangeData = GetLocalPlayer()<PlayerJionGame>.GetSkillData("Skill1", rangeLevel)
+        var damageData = GetLocalPlayer()<PlayerJionGame>.GetSkillData("Skill1", damageLevel)
+        var cdData = GetLocalPlayer()<PlayerJionGame>.GetSkillData("Skill1", cdLevel)
+        
+        var Size = rangeData["size"] as int
+        var CurrentDamage = damageData["Damage"] as int
+        var CurrentcdTime = cdData["CD"] as int
         
         // 释放特效
         CreateEffectClient(out var NewcreatedEntity, VFXType.CurseExplosion, LoopType.Once, true)
@@ -164,18 +172,24 @@ graph SkillUI {
     
     // 技能2释放
     async func Skill_2_Released(CurrentSkill int){
-        var skillLevel = GetLocalPlayer()<PlayerJionGame>.GetCurrentSkillLevel(CurrentSkill)
-        var skillData = GetLocalPlayer()<PlayerJionGame>.GetSkillData("Skill2", skillLevel)
+        // 获取技能2的各个属性等级
+        var CountLevel = GetLocalPlayer()<PlayerJionGame>.GetCurrentSkillLevel(CurrentSkill, "Range")
+        var damageLevel = GetLocalPlayer()<PlayerJionGame>.GetCurrentSkillLevel(CurrentSkill, "Damage")
+        var cdLevel = GetLocalPlayer()<PlayerJionGame>.GetCurrentSkillLevel(CurrentSkill, "CD")
         
-        var Count = skillData["Count"]  as int    
-        var CurrentDamage = skillData["Damage"] as int    
-        var CurrentcdTime = skillData["CD"] as int    
+        var CountData = GetLocalPlayer()<PlayerJionGame>.GetSkillData("Skill2", CountLevel)
+        var damageData = GetLocalPlayer()<PlayerJionGame>.GetSkillData("Skill2", damageLevel)
+        var cdData = GetLocalPlayer()<PlayerJionGame>.GetSkillData("Skill2", cdLevel)
+        
+        var Count = CountData["Count"] as int
+        var CurrentDamage = damageData["Damage"] as int
+        var CurrentcdTime = cdData["CD"] as int
 
         // 设置CD
         StartSkillCD(CurrentSkill, CurrentcdTime)
         
         // 释放雷击
-        start PlayThunderEffects(Count, skillLevel, CurrentDamage)
+        start PlayThunderEffects(Count, CountLevel, CurrentDamage)
     }
 
     // 启动技能CD
@@ -210,11 +224,11 @@ graph SkillUI {
     }
 
     // 播放雷击特效
-    async func PlayThunderEffects(Count int, skillLevel int, damage int) {
+    async func PlayThunderEffects(Count int, CountLevel int, damage int) {
         for i = 0, Count, 1 {
             var randomMonster = GetRandomMonster()
             if randomMonster != nil {
-                start CreateThunder(i, randomMonster, skillLevel, damage)
+                start CreateThunder(i, randomMonster, CountLevel, damage)
                 WaitForMillisecond(200)
             }
         }
@@ -229,13 +243,13 @@ graph SkillUI {
     }
 
     // 创建单道雷
-    async func CreateThunder(index int, targetMonster entity<LevelObject>, skillLevel int, damage int) {
+    async func CreateThunder(index int, targetMonster entity<LevelObject>, CountLevel int, damage int) {
         var thunderPosition = targetMonster<Transform>.Position
         CreateEffectClient(out var thunderEffect, VFXType.Thunder, LoopType.Once, true)
         thunderEffect<Transform>.Position = thunderPosition
         thunderEffect<Transform>.Scale = Vector3{0.8,2,0.8}
         SetParentClient(targetMonster, thunderEffect, true)
-        BoomColor(thunderEffect, skillLevel)
+        BoomColor(thunderEffect, CountLevel)
         ApplyThunderDamage(targetMonster, damage)
     }
 
