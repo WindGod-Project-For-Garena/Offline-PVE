@@ -1,0 +1,42 @@
+import "StdLibrary.fcc" as StdLib
+import "EditorGenLib.fcc" as EditorLib
+import "Playable.fcc" as Playable
+
+graph FC_ZombieComponent {
+    //Executed when entity is created
+    moveTween entity<Tween> = nil
+	tweenDuration float = 2000
+
+    event OnAwake() {
+
+    }
+    	//funcID: CreateMoveTween
+	func CreateMoveTween(velocity Vector3) {	
+	//	LogInfo("create move tween: " + velocity)
+		
+		if moveTween != nil{
+
+			var endPos Vector3 = thisEntity<Transform>.Position + velocity * tweenDuration/1000
+			
+			//LogInfo("create move tween: " + endPos + "currPostion" + thisEntity<Transform>.Position)
+			moveTween<Tween>.Duration = tweenDuration
+			moveTween<Tween>.EndValue = endPos
+			moveTween<Tween>.StartValue = thisEntity<Transform>.Position
+			Play(moveTween,true)
+		}else{
+			var endPos Vector3 = thisEntity<Transform>.Position + velocity * tweenDuration/1000
+			CreateTween(thisEntity,Transform.Position,thisEntity<Transform>.Position,
+				endPos,TweenStyle.Once,CreateCurve({0.25, 0.1, 0.25, 1}),tweenDuration,out var tweenEntity,true)
+			moveTween = tweenEntity
+		}
+		
+	
+	}
+
+	func StopMoveTween() {
+		if moveTween != nil{
+			Pause(moveTween)
+			//Destroy(moveTween)
+		}
+	}
+}

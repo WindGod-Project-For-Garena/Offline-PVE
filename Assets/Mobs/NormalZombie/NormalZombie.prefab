@@ -136,6 +136,14 @@
             "type": "GFileRefer"
           },
           "fileType": "ugcscript"
+        },
+        {
+          "fileId": "f124lylha6e-mhvqlgm0-c863tnvxd0n",
+          "filePath": "Assets\\Scripts\\MobScripts\\FC_MobComponent.fcg",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "ugcscript"
         }
       ],
       "ecaProps": {
@@ -197,7 +205,12 @@
           "PROP_92961702": null,
           "PROP_94587706": null,
           "PROP_98675041": 0,
-          "PROP_38748133": []
+          "PROP_38748133": [],
+          "PROP_12765276": 2,
+          "PROP_84519962": 10,
+          "PROP_90540570": null,
+          "PROP_42420456": 0,
+          "PROP_26191266": null
         }
       },
       "entityVersion": 3,
@@ -386,7 +399,10 @@
                   "selfValue": true,
                   "valueTag": "activeValue"
                 },
-                "unlockedValue": null,
+                "unlockedValue": {
+                  "selfValue": true,
+                  "valueTag": "unlockedValue"
+                },
                 "editorLockValue": false,
                 "editorVisibleValue": true,
                 "_mesh": {
@@ -509,4 +525,4 @@
   "discriminator": "ISceneLike",
   "_entityName": "NormalZombie"
 }
-//"{FE:{"v":"1.15.3997714","c":{"FF":5001},"s":100}
+//"{FE:{"v":"1.15.4008519","c":{"FF":5001},"s":100}

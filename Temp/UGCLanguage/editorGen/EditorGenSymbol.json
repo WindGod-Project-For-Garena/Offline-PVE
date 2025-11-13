@@ -2,7 +2,7 @@
   "NameSpace": {
     "Name": "d7JXcoup",
     "ID": 0,
-    "UIDSeed": 100015
+    "UIDSeed": 100059
   },
   "FileSpaces": [
     {
@@ -30,6 +30,10 @@
                 "Name": "Damage"
               },
               {
+                "ID": 100012,
+                "Name": "WalkSpeed"
+              },
+              {
                 "ID": 100007,
                 "Name": "StatusDic"
               },
@@ -38,16 +42,8 @@
                 "Name": "CurrTarget"
               },
               {
-                "ID": 100008,
-                "Name": "LastHitPlayer"
-              },
-              {
                 "ID": 100010,
                 "Name": "DetectRange"
-              },
-              {
-                "ID": 100012,
-                "Name": "WalkSpeed"
               },
               {
                 "ID": 100013,
@@ -56,6 +52,89 @@
               {
                 "ID": 100014,
                 "Name": "HateGainTime"
+              },
+              {
+                "ID": 100015,
+                "Name": "LastHitPlayer"
+              }
+            ]
+          },
+          {
+            "Name": "AnimationControllerAttachable",
+            "ID": 314,
+            "Props": []
+          },
+          {
+            "Name": "Player",
+            "ID": 14,
+            "Props": []
+          },
+          {
+            "Name": "Combatable",
+            "ID": 12,
+            "Props": []
+          },
+          {
+            "Name": "CustomLevelObject",
+            "ID": 186,
+            "Props": [
+              {
+                "ID": 100003,
+                "Name": "Zombie"
+              }
+            ]
+          },
+          {
+            "Name": "LevelObject",
+            "ID": 16,
+            "Props": []
+          },
+          {
+            "Name": "BevTreeAttachable",
+            "ID": 293,
+            "Props": []
+          },
+          {
+            "Name": "Weapon",
+            "ID": 79,
+            "Props": [
+              {
+                "ID": 100058,
+                "Name": "owner11"
+              }
+            ]
+          },
+          {
+            "Name": "UIWidgetButton",
+            "ID": 41,
+            "Props": [
+              {
+                "ID": 100011,
+                "Name": "BtnIcon"
+              },
+              {
+                "ID": 100016,
+                "Name": "BtnTxt"
+              },
+              {
+                "ID": 100008,
+                "Name": "BuffID"
+              },
+              {
+                "ID": 100009,
+                "Name": "BuffName"
+              },
+              {
+                "ID": 100046,
+                "Name": "ButtonParameter"
+              },
+              {
+                "ID": 100047,
+                "Name": "key"
+              },
+              {
+                "ID": 100049,
+                "Name": "active"
               }
             ]
           }
@@ -68,11 +147,29 @@
           {
             "ID": 100001,
             "Name": "MobDeathEvent_AC"
+          },
+          {
+            "ID": 100003,
+            "Name": "ZombieAnimationEvent"
+          },
+          {
+            "ID": 100004,
+            "Name": "C2SZBHurtEvent"
+          },
+          {
+            "ID": 100005,
+            "Name": "C2SSkillEvent"
           }
         ],
         "Graphs": [
           {
-            "ID": "EDITOR_GEN_RESOURCE_REGISTERATION_ID6f5uyvzdx",
+            "ID": "d7JXcoup.9e0o11zs1vu-mhwtfdjw-ghfejt3xkp",
+            "Name": "__AssetsA3New6ECAneca__",
+            "Props": [],
+            "Funcs": []
+          },
+          {
+            "ID": "EDITOR_GEN_RESOURCE_REGISTERATION_IDx8n5745k6",
             "Name": "Res",
             "Props": [
               {
@@ -172,6 +269,10 @@
                 "Name": "Performance"
               },
               {
+                "ID": "EDITOR_GEN_Resourceskill",
+                "Name": "Skill"
+              },
+              {
                 "ID": "Editor_Gen_Resource_Scene_IsleLand",
                 "Name": "IsleLand"
               },
@@ -180,8 +281,8 @@
                 "Name": "DeBug"
               },
               {
-                "ID": "Editor_Gen_Resource_UI_Skill",
-                "Name": "Skill"
+                "ID": "Editor_Gen_Resource_UI_SkillUI",
+                "Name": "SkillUI"
               }
             ],
             "Funcs": []
@@ -189,7 +290,12 @@
         ],
         "Enums": [
           {
-            "ID": -329999,
+            "Name": "SkillFireWidgetType",
+            "ID": 200001,
+            "Items": []
+          },
+          {
+            "ID": -423701,
             "Name": "EResFCG",
             "Items": [
               {
@@ -199,12 +305,12 @@
             ]
           },
           {
-            "ID": -603726,
+            "ID": -322306,
             "Name": "EResECA",
             "Items": []
           },
           {
-            "ID": -364232,
+            "ID": -672806,
             "Name": "EResPrefab",
             "Items": [
               {
@@ -230,31 +336,91 @@
               {
                 "Name": "HitBox_Zombie_RightArm",
                 "Value": "/6/FbiodFjI"
+              },
+              {
+                "Name": "GrenadeZombie",
+                "Value": "/7/DoDDweTl"
+              },
+              {
+                "Name": "HitBox_GrenadeZombie_Body",
+                "Value": "/8/FbiodFjI"
+              },
+              {
+                "Name": "HitBox_GrenadeZombie_Head",
+                "Value": "/9/FbiodFjI"
+              },
+              {
+                "Name": "HitBox_GrenadeZombie_LeftArm",
+                "Value": "/10/FbiodFjI"
+              },
+              {
+                "Name": "HitBox_GrenadeZombie_Leg",
+                "Value": "/11/FbiodFjI"
+              },
+              {
+                "Name": "HitBox_GrenadeZombie_RightArm",
+                "Value": "/12/FbiodFjI"
+              },
+              {
+                "Name": "SkillWaring_Circle",
+                "Value": "/13/kdxlfh30"
+              },
+              {
+                "Name": "SkillEffect_GrenadeZombie",
+                "Value": "/14/JaImgEI6"
+              },
+              {
+                "Name": "ShieldZombie",
+                "Value": "/15/DoDDweTl"
+              },
+              {
+                "Name": "HitBox_ShieldZombie_Body",
+                "Value": "/16/FbiodFjI"
+              },
+              {
+                "Name": "HitBox_ShieldZombie_Head",
+                "Value": "/17/FbiodFjI"
+              },
+              {
+                "Name": "HitBox_ShieldZombie_LeftArm",
+                "Value": "/18/FbiodFjI"
+              },
+              {
+                "Name": "HitBox_ShieldZombie_Leg",
+                "Value": "/19/FbiodFjI"
+              },
+              {
+                "Name": "HitBox_ShieldZombie_RightArm",
+                "Value": "/20/FbiodFjI"
+              },
+              {
+                "Name": "HitBox_ShieldZombie_Shield",
+                "Value": "/21/FbiodFjI"
               }
             ]
           },
           {
-            "ID": -433382,
+            "ID": -583314,
             "Name": "EResSprite",
             "Items": []
           },
           {
-            "ID": -841487,
+            "ID": -226182,
             "Name": "EResTexture",
             "Items": []
           },
           {
-            "ID": -345340,
+            "ID": -198261,
             "Name": "EResEffect",
             "Items": []
           },
           {
-            "ID": -778393,
+            "ID": -166519,
             "Name": "EResSound",
             "Items": []
           },
           {
-            "ID": -899511,
+            "ID": -610458,
             "Name": "EResItem",
             "Items": [
               {
@@ -264,32 +430,32 @@
             ]
           },
           {
-            "ID": -578503,
+            "ID": -810761,
             "Name": "EResLevelObject",
             "Items": []
           },
           {
-            "ID": -510319,
+            "ID": -976139,
             "Name": "EResCloth",
             "Items": []
           },
           {
-            "ID": -465305,
+            "ID": -897138,
             "Name": "EResWeaponSkin",
             "Items": []
           },
           {
-            "ID": -889535,
+            "ID": -214342,
             "Name": "EResVehicleSkin",
             "Items": []
           },
           {
-            "ID": -953614,
+            "ID": -463314,
             "Name": "EResEmote",
             "Items": []
           },
           {
-            "ID": -969530,
+            "ID": -222135,
             "Name": "EResCSV",
             "Items": [
               {
@@ -303,47 +469,52 @@
             ]
           },
           {
-            "ID": -623496,
+            "ID": -990340,
             "Name": "EResInternalHud",
             "Items": []
           },
           {
-            "ID": -642836,
+            "ID": -58292,
             "Name": "EResMesh",
             "Items": []
           },
           {
-            "ID": -706872,
+            "ID": -247746,
             "Name": "EResMaterial",
             "Items": []
           },
           {
-            "ID": -618223,
+            "ID": -971777,
             "Name": "EResAnimationController",
             "Items": []
           },
           {
-            "ID": -762160,
+            "ID": -102441,
             "Name": "EResParticles",
             "Items": []
           },
           {
-            "ID": -151629,
+            "ID": -910812,
             "Name": "EResPlayerData",
             "Items": []
           },
           {
-            "ID": -65391,
+            "ID": -520997,
             "Name": "EResBehaviorTree",
             "Items": []
           },
           {
-            "ID": -380632,
+            "ID": -343188,
             "Name": "EResPerformance",
             "Items": []
           },
           {
-            "ID": -927788,
+            "ID": -572333,
+            "Name": "EResSkill",
+            "Items": []
+          },
+          {
+            "ID": -698352,
             "Name": "EResScene",
             "Items": [
               {
@@ -353,7 +524,7 @@
             ]
           },
           {
-            "ID": -383074,
+            "ID": -571148,
             "Name": "EResUI",
             "Items": [
               {
@@ -361,178 +532,193 @@
                 "Value": ""
               },
               {
-                "Name": "Skill",
+                "Name": "SkillUI",
                 "Value": ""
               }
             ]
           },
           {
-            "ID": -595800,
+            "ID": -17927,
             "Name": "EResSceneIsleLand",
             "Items": [
               {
                 "Name": "PendingRemoveMobs",
-                "Value": "/7/YHaqiPGU"
+                "Value": "/22/YHaqiPGU"
               },
               {
                 "Name": "ActiveMobs",
-                "Value": "/7/dSJcClWT"
+                "Value": "/22/dSJcClWT"
               }
             ]
           },
           {
-            "ID": -705262,
+            "ID": -399058,
             "Name": "EResUIDeBug",
             "Items": []
           },
           {
-            "ID": -22428,
-            "Name": "EResUISkill",
+            "ID": -650000,
+            "Name": "EResUISkillUI",
             "Items": []
           },
           {
             "Name": "EResKeyUI",
-            "ID": 399736,
+            "ID": 229476,
             "Items": []
           },
           {
             "Name": "EResKeyScene",
-            "ID": 628656,
+            "ID": 391636,
             "Items": []
           },
           {
             "Name": "EResKeyPrefab",
-            "ID": 82833,
+            "ID": 621274,
             "Items": []
           },
           {
             "Name": "EResKeyFCG",
-            "ID": 263993,
+            "ID": 631679,
             "Items": []
           },
           {
             "Name": "EResKeyECA",
-            "ID": 454979,
+            "ID": 58949,
             "Items": []
           },
           {
             "Name": "EResKeySprite",
-            "ID": 37281,
+            "ID": 742485,
             "Items": []
           },
           {
             "Name": "EResKeyEffect",
-            "ID": 559036,
+            "ID": 971649,
             "Items": []
           },
           {
             "Name": "EResKeySound",
-            "ID": 336066,
+            "ID": 325769,
             "Items": []
           },
           {
             "Name": "EResKeyItem",
-            "ID": 36486,
+            "ID": 717346,
             "Items": []
           },
           {
             "Name": "EResKeyLevelObject",
-            "ID": 803934,
+            "ID": 257350,
             "Items": []
           },
           {
             "Name": "EResKeyCloth",
-            "ID": 464205,
+            "ID": 563842,
             "Items": []
           },
           {
             "Name": "EResKeyWeaponSkin",
-            "ID": 634462,
+            "ID": 382508,
             "Items": []
           },
           {
             "Name": "EResKeyVehicleSkin",
-            "ID": 514134,
+            "ID": 117161,
             "Items": []
           },
           {
             "Name": "EResKeyEmote",
-            "ID": 688563,
+            "ID": 377421,
             "Items": []
           },
           {
             "Name": "EResKeyCSV",
-            "ID": 793444,
+            "ID": 117573,
             "Items": []
           },
           {
             "Name": "EResKeyInternalHud",
-            "ID": 127862,
+            "ID": 622299,
             "Items": []
           },
           {
             "Name": "EResKeyTexture",
-            "ID": 673040,
+            "ID": 830486,
             "Items": []
           },
           {
             "Name": "EResKeyMesh",
-            "ID": 122397,
+            "ID": 423427,
             "Items": []
           },
           {
             "Name": "EResKeyMaterial",
-            "ID": 383954,
+            "ID": 347094,
             "Items": []
           },
           {
             "Name": "EResKeyAnimationController",
-            "ID": 993226,
+            "ID": 230555,
             "Items": []
           },
           {
             "Name": "EResKeyParticles",
-            "ID": 314688,
+            "ID": 517885,
             "Items": []
           },
           {
             "Name": "EResKeyPlayerData",
-            "ID": 661176,
+            "ID": 560787,
             "Items": []
           },
           {
             "Name": "EResKeyBehaviorTree",
-            "ID": 76225,
+            "ID": 57283,
             "Items": []
           },
           {
             "Name": "EResKeyPerformance",
-            "ID": 698057,
-            "Items": []
-          },
-          {
-            "Name": "EResKeyIsleLand",
-            "ID": 694395,
-            "Items": []
-          },
-          {
-            "Name": "EResKeyDeBug",
-            "ID": 633028,
+            "ID": 448968,
             "Items": []
           },
           {
             "Name": "EResKeySkill",
-            "ID": 398099,
+            "ID": 570564,
+            "Items": []
+          },
+          {
+            "Name": "EResKeyIsleLand",
+            "ID": 271321,
+            "Items": []
+          },
+          {
+            "Name": "EResKeyDeBug",
+            "ID": 175329,
+            "Items": []
+          },
+          {
+            "Name": "EResKeySkillUI",
+            "ID": 918688,
             "Items": []
           },
           {
             "Name": "EPhase",
-            "ID": 200001,
+            "ID": 200002,
             "Items": []
           },
           {
             "Name": "ECustomShop",
-            "ID": 200002,
+            "ID": 200003,
+            "Items": []
+          },
+          {
+            "Name": "EPhysicalLayer",
+            "ID": 200004,
+            "Items": []
+          },
+          {
+            "Name": "EVisibilityLayer",
+            "ID": 200005,
             "Items": []
           }
         ]
@@ -547,12 +733,22 @@
         "Enums": [
           {
             "Name": "EPhase",
-            "ID": 200001,
+            "ID": 200002,
             "Items": []
           },
           {
             "Name": "ECustomShop",
-            "ID": 200002,
+            "ID": 200003,
+            "Items": []
+          },
+          {
+            "Name": "EPhysicalLayer",
+            "ID": 200004,
+            "Items": []
+          },
+          {
+            "Name": "EVisibilityLayer",
+            "ID": 200005,
             "Items": []
           }
         ]
@@ -574,12 +770,22 @@
         "Enums": [
           {
             "Name": "EPhase",
-            "ID": 200001,
+            "ID": 200002,
             "Items": []
           },
           {
             "Name": "ECustomShop",
-            "ID": 200002,
+            "ID": 200003,
+            "Items": []
+          },
+          {
+            "Name": "EPhysicalLayer",
+            "ID": 200004,
+            "Items": []
+          },
+          {
+            "Name": "EVisibilityLayer",
+            "ID": 200005,
             "Items": []
           }
         ]
@@ -594,12 +800,22 @@
         "Enums": [
           {
             "Name": "EPhase",
-            "ID": 200001,
+            "ID": 200002,
             "Items": []
           },
           {
             "Name": "ECustomShop",
-            "ID": 200002,
+            "ID": 200003,
+            "Items": []
+          },
+          {
+            "Name": "EPhysicalLayer",
+            "ID": 200004,
+            "Items": []
+          },
+          {
+            "Name": "EVisibilityLayer",
+            "ID": 200005,
             "Items": []
           }
         ]

@@ -1,0 +1,77 @@
+{
+  "fileId": "a5m3q0nei0l-m36qlej6-pvrwe01kcxc",
+  "globalscale": 1,
+  "properties": {
+    "Common": ""
+  },
+  "subDynamicResources": {},
+  "subLOD": {},
+  "version": "1.6.1",
+  "manifest": {
+    "Meshes": [],
+    "BoneInfos": [],
+    "Anims": [
+      {
+        "OrgExtName": ".Anim",
+        "Name": "Attack02.Anim",
+        "Size": 70450,
+        "ClipData": {
+          "Name": "Attack02",
+          "BakeStart": 0,
+          "BakeStop": 1.3333333730697632,
+          "SampleRate": 30
+        },
+        "magicNumber": {
+          "magicNumber1": 100,
+          "magicNumber2": 98,
+          "magicNumber3": 158,
+          "magicNumber4": 134,
+          "version": 1009715
+        }
+      }
+    ],
+    "ManifestJSON": {
+      "FBXName": "C_GrenadierZombie_01@Attack02_Generic",
+      "ImportSucceeded": true,
+      "MaterialCount": 0,
+      "MaterialDetail": [],
+      "MeshCount": 0,
+      "MeshDetail": []
+    }
+  },
+  "content": {
+    "Attack02.anim": {
+      "_entityName": "AnimClipEntity",
+      "_entityId": "efTUlRcX",
+      "_preModel": {
+        "fileId": "bbdni1tbbk-m36r9lam-ogj6gbm2w1b",
+        "filePath": "Assets\\ZombieAsset\\GrenadierZombie\\C_GrenadierZombie_01.FBX",
+        "_tag": {
+          "type": "GFileRefer"
+        },
+        "fileType": "fbx"
+      },
+      "children": [
+        {
+          "_entityId": "EzlIBt1Y",
+          "EventFrameName": "事件帧",
+          "FrameIndex": 16,
+          "Time": 0.53,
+          "EventList": [
+            {
+              "eventKeyValue": "AnimationControllerAble::signal_52120933",
+              "paramList": [
+                {
+                  "type": "String",
+                  "label": "eventName",
+                  "newValue": "GrenadierZombieAttack01"
+                }
+              ],
+              "hideParam": false
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

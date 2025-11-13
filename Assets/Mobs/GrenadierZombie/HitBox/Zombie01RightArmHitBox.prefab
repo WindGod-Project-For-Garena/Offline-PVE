@@ -1,0 +1,162 @@
+{
+  "_tag": {
+    "type": "Prefab"
+  },
+  "_entityId": "CwcdPpoY",
+  "children": [
+    {
+      "_tag": {
+        "type": "UGCSceneEntity",
+        "resourceId": "Primitive/Empty"
+      },
+      "_entityId": "FbiodFjI",
+      "children": [],
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "BTPath": [
+        null
+      ],
+      "visible": true,
+      "VisibilityLayer": 0,
+      "modelOptimization": 0,
+      "streamingLayer": "",
+      "attributes": [
+        4
+      ],
+      "isTrigger": false,
+      "collidable": true,
+      "physicalLayer": 1,
+      "physicalMaterial": null,
+      "initialTypes": {},
+      "componentList": [
+        "AimableEntity",
+        "AimAssistEntity",
+        "Collider",
+        "ColliderShape"
+      ],
+      "_filters": [
+        "node.withscript"
+      ],
+      "materials": [
+        null
+      ],
+      "colliders": [
+        {
+          "colliderType": "Box",
+          "enable": true,
+          "isTrigger": false,
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "rotation": {
+            "x": 0,
+            "y": 25,
+            "z": 0
+          },
+          "size": {
+            "x": 0.3,
+            "y": 0.3,
+            "z": 0.6
+          },
+          "radius": 0.2,
+          "height": 1,
+          "isConvexIfMesh": false
+        }
+      ],
+      "Rigidbody": {
+        "Type": 1,
+        "Mass": 1,
+        "CenterOfMass": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "UseGravity": false,
+        "Drag": 0.05,
+        "AngularDrag": 0.05,
+        "FreezePosX": false,
+        "FreezePosY": false,
+        "FreezePosZ": false,
+        "FreezeRotX": false,
+        "FreezeRotY": false,
+        "FreezeRotZ": false
+      },
+      "isCreateAsEmpty": true,
+      "ecaScripts": [
+        {
+          "fileId": "4zlrg11vvr-luwbao5o-vduz7fcpcb",
+          "filePath": "Assets\\ECAC\\ZombieHead.ecac",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "ecaclient"
+        }
+      ],
+      "ecaProps": {
+        "CustomLevelObject": {
+          "PROP_14360378": 0,
+          "CustomLevelObject_81351029_custom": null
+        },
+        "LevelObject": {
+          "PROP_52849513": 0,
+          "PROP_45897236": 0
+        },
+        "Transform": {},
+        "Entity": {},
+        "Visibility": {},
+        "AimableEntity": {},
+        "AimAssistEntity": {},
+        "Collider": {},
+        "ColliderShape": {},
+        "MeshRender": {}
+      },
+      "entityVersion": 3,
+      "_entityName": "HeadCollider",
+      "prefabVariant": null,
+      "entityTagData": {
+        "tagPointers": []
+      },
+      "propsData": {},
+      "aoiSetting": 0
+    }
+  ],
+  "prefabVariant": null,
+  "activeValue": {
+    "selfValue": true,
+    "valueTag": "activeValue"
+  },
+  "unlockedValue": {
+    "selfValue": true,
+    "valueTag": "unlockedValue"
+  },
+  "editorLockValue": false,
+  "editorVisibleValue": true,
+  "discriminator": "ISceneLike",
+  "_entityName": "Zombie01RightArmHitBox"
+}
+//"{FE:{"v":"1.13.3737256","c":{"FF":4901},"s":100}

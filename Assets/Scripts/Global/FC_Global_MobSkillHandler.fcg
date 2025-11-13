@@ -1,0 +1,201 @@
+import "StdLibrary.fcc" as StdLib
+import "EditorGenLib.fcc" as EditorLib
+import "List.fcc" as List
+import "Map.fcc" as Map
+import "Playable.fcc" as Playable
+import "Animation.fcc" as Animation
+import "Math.fcc" as Math
+import "Combat.fcc" as Combat
+
+static graph FC_Global_MobSkillHandler {
+    //Executed when entity is created
+    entityEffectDic Map<entity<Entity>, List<entity<object>>> = Map<entity<Entity>, List<entity<object>>>{}
+    event OnAwake() {
+
+    }
+
+    func displayWarningEffect(mob entity<Mob>,position Vector3,scale float) entity<object> {
+        CreateFromPrefab(out var warningEffect,EResPrefab.SkillWaring_Circle)
+        warningEffect<Transform>.Position = position
+        warningEffect<Transform>.Scale = Vector3{0.9*scale,0.1*scale,0.9*scale}
+
+        if Map.ContainKey(entityEffectDic, mob) == false {
+            entityEffectDic[mob] = List<entity<object>>{}
+        }
+        var effectList List<entity<object>> = entityEffectDic[mob]
+        List.Append(effectList, warningEffect)
+        return warningEffect
+    }
+
+    async func releaseSkill_GrenadeZombieNormalAttack(mob entity<Mob>,position Vector3,scale float, warningEffect entity<object>) {
+        var projectileEffect entity<Effect> = nil
+        var skillEffect entity<Effect> = nil
+        var projectileTween entity<Tween> = nil
+        var skillAlphaTween entity<Tween> = nil
+
+        var skillDamage int = mob<Mob>.Damage
+
+        //var hitPlayerList List<entity<Player>> = List<entity<Player>>{}
+
+        
+		CreateEffect(out var effect2, nil,VFXType.Trailing, LoopType.Once, false)
+		projectileEffect = effect2 as entity<Effect>
+		projectileEffect<Visibility>.IsVisible = false
+
+		CreateTween(projectileEffect,Transform.Position,Vector3{0,0,0},
+			Vector3{0,0,0},TweenStyle.Once,CreateCurve({0.25, 0.1, 0.25, 1}),800,out var tweenEntity,false)
+		projectileTween = tweenEntity
+
+		CreateFromPrefab(out var onGroundEffect,EResPrefab.SkillEffect_GrenadeZombie)
+		skillEffect = onGroundEffect as entity<Effect>
+		skillEffect<Visibility>.IsVisible = false
+        skillEffect<Transform>.Scale = Vector3{scale*1.7,scale*0.4,scale*1.7}
+
+		CreateTween(skillEffect,Effect.DiffuseAlpha,0,1,TweenStyle.Once,CreateCurve({0.25, 0.1, 0.25, 1}),1000,out var tweenEntity2,false)
+		skillAlphaTween = tweenEntity2
+
+    
+        projectileEffect<Effect>.Color = #1c6b1e
+        skillEffect<Effect>.Color = #1c6b1e
+
+        skillEffect<Effect>.DiffuseAlpha = 100
+        projectileEffect<Visibility>.IsVisible = true
+
+        projectileTween<Tween>.StartValue = mob<Transform>.Position + Vector3{0,1.2,0}
+
+        projectileTween<Tween>.EndValue = position
+        Play(projectileTween,true)
+
+        //隐藏Warning特效
+        WaitForMillisecond(800)
+        Destroy(warningEffect as entity<Entity>)
+        Destroy(projectileEffect as entity<Entity>)
+
+        //显示技能特效
+        skillEffect<Visibility>.IsVisible = true
+        skillEffect<Transform>.Position = position
+        Play(skillEffect,true)
+
+
+        //检测技能特效是否命中目标
+        for i, player in GetAllPlayers() {
+            if (Math.Distance(player<Player>.Position, position) <= scale) {
+                DealDamage(player as entity<Combatable>, nil, DamageType.Monster, skillDamage)
+            }
+        }
+        
+       
+
+        WaitForMillisecond(1000)
+        //隐藏技能特效
+        skillAlphaTween<Tween>.StartValue = 100
+        skillAlphaTween<Tween>.EndValue = 0
+        Play(skillAlphaTween,true)
+
+        WaitForMillisecond(1000)
+        Destroy(skillEffect as entity<Entity>)
+        Destroy(skillAlphaTween as entity<Entity>)
+        Destroy(projectileTween as entity<Entity>)
+
+
+    }
+    //火焰版本
+    async func releaseSkill_GrenadeZombieNormalAttack2(mob entity<Mob>,position Vector3,scale float, warningEffect entity<object>) {
+        var projectileEffect entity<Effect> = nil
+        var skillEffect entity<Effect> = nil
+        var projectileTween entity<Tween> = nil
+        var skillAlphaTween entity<Tween> = nil
+
+        var dotDamageScale float = 0.5
+
+        var skillFogEffect entity<Effect> = nil
+        var skillFogTween entity<Tween> = nil
+
+        var skillDamage int = mob<Mob>.Damage
+
+        //var hitPlayerList List<entity<Player>> = List<entity<Player>>{}
+
+        
+		CreateEffect(out var effect2, nil,VFXType.Trailing, LoopType.Once, false)
+		projectileEffect = effect2 as entity<Effect>
+		projectileEffect<Visibility>.IsVisible = false
+
+		CreateTween(projectileEffect,Transform.Position,Vector3{0,0,0},
+			Vector3{0,0,0},TweenStyle.Once,CreateCurve({0.25, 0.1, 0.25, 1}),800,out var tweenEntity,false)
+		projectileTween = tweenEntity
+
+		CreateFromPrefab(out var onGroundEffect,EResPrefab.SkillEffect_GrenadeZombie)
+		skillEffect = onGroundEffect as entity<Effect>
+		skillEffect<Visibility>.IsVisible = false
+        skillEffect<Transform>.Scale = Vector3{scale*1.7,scale*0.4,scale*1.7}
+
+        skillFogEffect = GetChildByIndex(skillEffect,0) as entity<Effect>
+        
+
+		CreateTween(skillEffect,Effect.DiffuseAlpha,100,0,TweenStyle.Once,CreateCurve({0.25, 0.1, 0.25, 1}),1000,out var tweenEntity2,false)
+		skillAlphaTween = tweenEntity2
+
+        CreateTween(skillFogEffect,Effect.DiffuseAlpha,100,0,TweenStyle.Once,CreateCurve({0.25, 0.1, 0.25, 1}),1000,out var tweenEntity3,false)
+        skillFogTween = tweenEntity3
+       
+        projectileEffect<Effect>.Color = #B52222
+        skillEffect<Effect>.Color = #B52222
+        
+        skillEffect<Effect>.DiffuseAlpha = 100
+        projectileEffect<Visibility>.IsVisible = true
+        projectileTween<Tween>.StartValue = mob<Transform>.Position + Vector3{0,1.2,0}
+
+
+        projectileTween<Tween>.EndValue = position
+        Play(projectileTween,true)
+
+        //隐藏Warning特效
+        WaitForMillisecond(800)
+        Destroy(warningEffect as entity<Entity>)
+        Destroy(projectileEffect as entity<Entity>)
+
+        //显示技能特效
+        skillEffect<Visibility>.IsVisible = true
+        skillEffect<Transform>.Position = position
+        skillFogEffect<Visibility>.IsVisible = true
+        skillFogEffect<Transform>.Position = position - Vector3{0,0.5*scale,0}
+        Play(skillEffect,true)
+
+
+        //检测技能特效是否命中目标
+        for i, player in GetAllPlayers() {
+            if (Math.Distance(player<Player>.Position, position) <= scale) {
+                DealDamage(player as entity<Combatable>, nil, DamageType.Monster, skillDamage)
+            }
+        }
+
+        //2次额外伤害判断
+        WaitForMillisecond(1000)
+        for i, player in GetAllPlayers() {
+            if (Math.Distance(player<Player>.Position, position) <= scale) {
+                DealDamage(player as entity<Combatable>, nil, DamageType.Monster, Floor(1.0*skillDamage*dotDamageScale))
+            }
+        }   
+        WaitForMillisecond(1000)
+        for i, player in GetAllPlayers() {
+            if (Math.Distance(player<Player>.Position, position) <= scale) {
+                DealDamage(player as entity<Combatable>, nil, DamageType.Monster, Floor(1.0*skillDamage*dotDamageScale))
+            }
+        }   
+
+        WaitForMillisecond(1000)
+        //隐藏技能特效
+        Play(skillAlphaTween,true)
+        Play(skillFogTween,true)
+        
+
+        WaitForMillisecond(1000)
+        Destroy(skillEffect as entity<Entity>)
+        Destroy(skillAlphaTween as entity<Entity>)
+        Destroy(projectileTween as entity<Entity>)
+
+
+    }
+
+
+}

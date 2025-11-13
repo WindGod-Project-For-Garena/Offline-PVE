@@ -1,0 +1,57 @@
+{
+  "fileId": "fgoix2pxlua-m1keuch5-7rn550b6qza",
+  "globalscale": 1,
+  "properties": {
+    "Common": ""
+  },
+  "subDynamicResources": {},
+  "subLOD": {},
+  "version": "1.6.1",
+  "manifest": {
+    "Meshes": [],
+    "BoneInfos": [],
+    "Anims": [
+      {
+        "OrgExtName": ".Anim",
+        "Name": "C_TankZombie03@ShieldBreaking.Anim",
+        "Size": 98885,
+        "ClipData": {
+          "Name": "C_TankZombie03@ShieldBreaking",
+          "BakeStart": 0,
+          "BakeStop": 1.5333333015441895,
+          "SampleRate": 30
+        },
+        "magicNumber": {
+          "magicNumber1": 100,
+          "magicNumber2": 98,
+          "magicNumber3": 158,
+          "magicNumber4": 134,
+          "version": 1009715
+        }
+      }
+    ],
+    "ManifestJSON": {
+      "FBXName": "C_TankZombie03@ShieldBreaking",
+      "ImportSucceeded": true,
+      "MaterialCount": 0,
+      "MaterialDetail": [],
+      "MeshCount": 0,
+      "MeshDetail": []
+    }
+  },
+  "content": {
+    "C_TankZombie03@ShieldBreaking.anim": {
+      "_entityName": "AnimClipEntity",
+      "_entityId": "6Y9fu04T",
+      "_preModel": {
+        "fileId": "8h93yorl30f-m1ha263d-5sn08xwmjgj",
+        "filePath": "Assets\\ZombieAsset\\ShieldZombie\\New\\C_TankZombie03_Rig.FBX",
+        "_tag": {
+          "type": "GFileRefer"
+        },
+        "fileType": "fbx"
+      },
+      "children": []
+    }
+  }
+}

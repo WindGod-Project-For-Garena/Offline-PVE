@@ -1,0 +1,77 @@
+{
+  "fileId": "umr11li9rpn-m1keualx-0bisdgdx9kgn",
+  "globalscale": 1,
+  "properties": {
+    "Common": ""
+  },
+  "subDynamicResources": {},
+  "subLOD": {},
+  "version": "1.6.1",
+  "manifest": {
+    "Meshes": [],
+    "BoneInfos": [],
+    "Anims": [
+      {
+        "OrgExtName": ".Anim",
+        "Name": "C_TankZombie03@Attack01.Anim",
+        "Size": 136005,
+        "ClipData": {
+          "Name": "C_TankZombie03@Attack01",
+          "BakeStart": 0,
+          "BakeStop": 2.1666667461395264,
+          "SampleRate": 30
+        },
+        "magicNumber": {
+          "magicNumber1": 100,
+          "magicNumber2": 98,
+          "magicNumber3": 158,
+          "magicNumber4": 134,
+          "version": 1009715
+        }
+      }
+    ],
+    "ManifestJSON": {
+      "FBXName": "C_TankZombie03@Attack01",
+      "ImportSucceeded": true,
+      "MaterialCount": 0,
+      "MaterialDetail": [],
+      "MeshCount": 0,
+      "MeshDetail": []
+    }
+  },
+  "content": {
+    "C_TankZombie03@Attack01.anim": {
+      "_entityName": "AnimClipEntity",
+      "_entityId": "Gu12sq9t",
+      "_preModel": {
+        "fileId": "8h93yorl30f-m1ha263d-5sn08xwmjgj",
+        "filePath": "Assets\\ZombieAsset\\ShieldZombie\\New\\C_TankZombie03_Rig.FBX",
+        "_tag": {
+          "type": "GFileRefer"
+        },
+        "fileType": "fbx"
+      },
+      "children": [
+        {
+          "_entityId": "kQZG7Y8b",
+          "EventFrameName": "事件帧",
+          "FrameIndex": 34,
+          "Time": 1.13,
+          "EventList": [
+            {
+              "eventKeyValue": "AnimationControllerAble::signal_52120933",
+              "paramList": [
+                {
+                  "type": "String",
+                  "label": "eventName",
+                  "newValue": "ShieldZombieAttack01"
+                }
+              ],
+              "hideParam": false
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

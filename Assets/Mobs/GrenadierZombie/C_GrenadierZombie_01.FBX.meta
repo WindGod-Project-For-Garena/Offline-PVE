@@ -1,0 +1,157 @@
+{
+  "fileId": "bmk88b5acxi-mde7s29n-g3ive0f5pfm",
+  "globalscale": 1,
+  "properties": {
+    "Common": ""
+  },
+  "subDynamicResources": {},
+  "version": "1.6.1",
+  "manifest": {
+    "Meshes": [
+      {
+        "Name": "C_CYuanChengGuai.~@FFSKIN",
+        "MeshName": "C_CYuanChengGuai",
+        "Type": "skin",
+        "OrgExtName": ".~@FFSKIN"
+      }
+    ],
+    "BoneInfos": [
+      {
+        "Name": "C_GrenadierZombie_01.sk",
+        "BoneNodes": [
+          {
+            "ChildBones": [],
+            "BoneName": "C_CYuanChengGuai"
+          },
+          {
+            "ChildBones": [
+              {
+                "ChildBones": [
+                  {
+                    "ChildBones": [
+                      {
+                        "ChildBones": [
+                          {
+                            "ChildBones": [],
+                            "BoneName": "bone_R_Foot"
+                          }
+                        ],
+                        "BoneName": "bone_R_Claf"
+                      }
+                    ],
+                    "BoneName": "bone_R_Thigh"
+                  },
+                  {
+                    "ChildBones": [
+                      {
+                        "ChildBones": [
+                          {
+                            "ChildBones": [],
+                            "BoneName": "bone_L_Foot"
+                          }
+                        ],
+                        "BoneName": "bone_L_Claf"
+                      }
+                    ],
+                    "BoneName": "bone_L_Thigh"
+                  },
+                  {
+                    "ChildBones": [
+                      {
+                        "ChildBones": [
+                          {
+                            "ChildBones": [
+                              {
+                                "ChildBones": [
+                                  {
+                                    "ChildBones": [],
+                                    "BoneName": "bone_R_Hand"
+                                  }
+                                ],
+                                "BoneName": "bone_R_Forearm"
+                              }
+                            ],
+                            "BoneName": "bone_R_UpperArm"
+                          },
+                          {
+                            "ChildBones": [
+                              {
+                                "ChildBones": [],
+                                "BoneName": "bone_L_Hand"
+                              }
+                            ],
+                            "BoneName": "bone_L_UpperArm"
+                          },
+                          {
+                            "ChildBones": [],
+                            "BoneName": "bone_Head"
+                          }
+                        ],
+                        "BoneName": "bone_Spine01"
+                      },
+                      {
+                        "ChildBones": [],
+                        "BoneName": "bone_01"
+                      },
+                      {
+                        "ChildBones": [
+                          {
+                            "ChildBones": [],
+                            "BoneName": "Bone002"
+                          }
+                        ],
+                        "BoneName": "bone_01"
+                      }
+                    ],
+                    "BoneName": "bone_Spine"
+                  }
+                ],
+                "BoneName": "bone_Pelvis"
+              }
+            ],
+            "BoneName": "Root"
+          }
+        ],
+        "OrgExtName": ".sk"
+      }
+    ],
+    "Anims": [],
+    "ManifestJSON": {
+      "FBXName": "C_GrenadierZombie_01",
+      "ImportSucceeded": true,
+      "MaterialCount": 1,
+      "MaterialDetail": [
+        {
+          "Index": 0,
+          "MaterialName": "Material #0"
+        }
+      ],
+      "MeshCount": 1,
+      "MeshDetail": [
+        {
+          "MeshName": "C_CYuanChengGuai",
+          "MaterialIndex": [
+            0
+          ],
+          "Transform": {
+            "Position": [
+              0,
+              0,
+              0
+            ],
+            "Rotation": [
+              -90,
+              0,
+              0
+            ],
+            "Scale": [
+              1,
+              1,
+              1
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

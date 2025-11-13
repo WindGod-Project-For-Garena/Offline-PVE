@@ -1,0 +1,118 @@
+import "StdLibrary.fcc" as StdLib
+import "EditorGenLib.fcc" as EditorLib
+import "Playable.fcc" as Playable
+import "BehaviourTree.fcc" as BehaviourTree
+import "Camera.fcc" as Camera
+import "Math.fcc" as Math
+import "Combat.fcc" as Combat
+import "../CustomEvent.fcc" as CustomEvent
+import "../PVE/FC_PVEMonsterManager.fcg" as PVEMonsterManager
+import "Animation.fcc" as Animation
+import "Physics.fcc" as Physics
+import "../Global/FC_Global_MobSkillHandler.fcg" as MobSkillHandler
+
+graph FC_NormalZombie {
+    //Executed when entity is created
+    HeadShoted bool = false
+	LastHitPlayer entity<Player> = nil
+	
+	hitPos Vector3 = Vector3{0,0,0}
+    tickInterval int = 1
+	
+	counter int = 0
+	hateGainInterval int = 3000
+	
+	preDisplayEffect entity<Effect> = nil
+
+
+	
+
+	event OnAwake() {
+        WaitForNextFrame()
+        Init()
+    }
+
+	//funcID: Init
+	async func Init() {
+		//CreateMoveTween(Vector3{0,0,0})
+		thisEntity<BevTreeAttachable>.AttachTarget<BevTree>.TickInterval = tickInterval
+		thisEntity<Mob>.MobName = "NormalZombie"
+        thisEntity<Mob>.MaxHP = 600
+        thisEntity<Mob>.HP = 600
+        thisEntity<Mob>.WalkSpeed = 1.5
+        thisEntity<Mob>.Damage = 10
+		thisEntity<Mob>.StatusDic = Map<string, object>{
+			"HeadShot": false, 	//是否被爆头
+			"InFall": false, 	//是否在摔倒
+			"Hit": false, 		//是否受击
+			"InHit": false, 	//是否在受击
+			"CanPatrol": true, //是否可以巡逻
+			"Walk": false, 		//是否在行走
+		}
+		thisEntity<Mob>.DetectRange = 15
+        var nowTime int = globalEntity<Global>.GameTimeCount
+		SetBlackboardValue(thisEntity<BevTreeAttachable>.AttachTarget, "LastAttackTime", nowTime)
+		SetBlackboardValue(thisEntity<BevTreeAttachable>.AttachTarget, "Curstate", 0)
+
+		//WaitForMillisecond(2000)
+		
+		//DispatchEventWithPlatform_Deprecated(100002, thisEntity, true, List<object>{thisEntity<CustomComponent31897461>.ZombieInfo["InitSpeed"]})
+		
+        // for index3, element4 in GetAllPlayers() {
+        //     SetAttackableEntity(element4, thisEntity, 1)
+        // }
+	}
+	func startGarenadeSkill() {
+		var curTarget = thisEntity<Mob>.CurrTarget
+		SingleRaycast(curTarget<Player>.Position + Vector3{0,0.5,0}, Vector3{0,-3,0}, 5, List<int>{}, false, out var hitEntities, out var hitPoint, out var hitDistances, out var hitNormals)
+		hitPos = hitPoint+Vector3{0,0.05,0}
+		preDisplayEffect = MobSkillHandler.displayWarningEffect(thisEntity as entity<Mob>,hitPos,1.5) as entity<Effect>
+	}
+	
+
+	//eventID: 91//r;Zn+-uY8Ahq`0JH4Yr{ //animation
+	event MobAttackEvent_AC(attackName string) {
+		var curTarget = thisEntity<Mob>.CurrTarget
+		var zombieName string = thisEntity<Mob>.MobName
+
+		if (attackName == "NormalAttack") {
+			if (zombieName == "GrenadeZombie") {
+				start MobSkillHandler.releaseSkill_GrenadeZombieNormalAttack(thisEntity as entity<Mob>,hitPos,1.5,preDisplayEffect)
+			}else if (zombieName == "GrenadeZombie_Red") {
+				start MobSkillHandler.releaseSkill_GrenadeZombieNormalAttack2(thisEntity as entity<Mob>,hitPos,1.5,preDisplayEffect)
+			}
+
+		}
+	}
+
+	event MobDeathEvent_AC() {
+		PVEMonsterManager.OnMonsterKilledAnimationFinished(thisEntity as entity<LevelObject>)
+	}
+
+	event OnDamageMob(mob entity<Entity>, part string, damage int, player entity<Player>) {
+		//LogInfo("OnDamageMob: " + part + " damage: " + damage + "HP: " + mob<Mob>.HP)
+		//LogInfo("mob: " + mob + "thisEntity: " + thisEntity)
+
+		//处理仇恨值
+		if mob<Mob>.HateGainTime > globalEntity<Global>.GameTimeCount - hateGainInterval {
+			mob<Mob>.HateTarget = player
+			mob<Mob>.HateGainTime = globalEntity<Global>.GameTimeCount
+		}
+
+		//处理血量，如果血量小于0，则死亡
+		mob<Mob>.HP = mob<Mob>.HP - damage
+		if (mob<Mob>.HP <= 0) {
+			mob<Mob>.HP = 0
+		}
+
+
+		
+	}
+
+
+
+	//funcID: GetDamage
+	func GetDamage() int {
+		return Floor((thisEntity<Mob>.Damage))
+	}
+}

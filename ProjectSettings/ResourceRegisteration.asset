@@ -28,7 +28,7 @@
             },
             "fileType": "ui"
           },
-          "scriptName": "Skill",
+          "scriptName": "SkillUI",
           "children": []
         }
       ]
@@ -132,6 +132,186 @@
             "fileType": "prefab"
           },
           "scriptName": "HitBox_Zombie_RightArm",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "rgg4h4kfk8q-m2cplspy-0jndmgmlzdgm",
+            "filePath": "Assets\\Mobs\\GrenadierZombie\\GrenadierZombie.prefab",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "prefab"
+          },
+          "scriptName": "GrenadeZombie",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "doah4u122gg-m2cplk1d-nj53tf3qrl",
+            "filePath": "Assets\\Mobs\\GrenadierZombie\\HitBox\\Zombie01BodyHitBox.prefab",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "prefab"
+          },
+          "scriptName": "HitBox_GrenadeZombie_Body",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "k9tmo4x1evn-m2cplk1u-axz2kuk67kp",
+            "filePath": "Assets\\Mobs\\GrenadierZombie\\HitBox\\Zombie01HeadHitBox.prefab",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "prefab"
+          },
+          "scriptName": "HitBox_GrenadeZombie_Head",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "sq1f3jucx8-m2cplk1w-a6uqec2g3qm",
+            "filePath": "Assets\\Mobs\\GrenadierZombie\\HitBox\\Zombie01LeftArmHitBox.prefab",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "prefab"
+          },
+          "scriptName": "HitBox_GrenadeZombie_LeftArm",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "njaoy1qj23-m2cplk1y-fwxadtaq488",
+            "filePath": "Assets\\Mobs\\GrenadierZombie\\HitBox\\Zombie01LegHitBox.prefab",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "prefab"
+          },
+          "scriptName": "HitBox_GrenadeZombie_Leg",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "p2hgnzl13n9-m2cplk20-kzx6timgiu",
+            "filePath": "Assets\\Mobs\\GrenadierZombie\\HitBox\\Zombie01RightArmHitBox.prefab",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "prefab"
+          },
+          "scriptName": "HitBox_GrenadeZombie_RightArm",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "v9pv0r7vwdd-mhvrblz4-pqkn1j1i51g",
+            "filePath": "Assets\\Prefab\\SkillWaring_Circle.prefab",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "prefab"
+          },
+          "scriptName": "SkillWaring_Circle",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "7n0opftgun6-mhvtntpo-uoa6pj53txn",
+            "filePath": "Assets\\Prefab\\SkillEffect_GrenadeZombie.prefab",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "prefab"
+          },
+          "scriptName": "SkillEffect_GrenadeZombie",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "sy8h11wtes-m1keszqe-1wfsc0otvbb",
+            "filePath": "Assets\\Mobs\\ShieldZombie\\ShieldZombie.prefab",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "prefab"
+          },
+          "scriptName": "ShieldZombie",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "3j1fx67mcux-m1keu9xs-hefvopzgay7",
+            "filePath": "Assets\\Mobs\\ShieldZombie\\HitBox\\ShieldZombieBodyHitBox.prefab",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "prefab"
+          },
+          "scriptName": "HitBox_ShieldZombie_Body",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "hxpco0ezpb-m1keu9xt-1td9rajcaie",
+            "filePath": "Assets\\Mobs\\ShieldZombie\\HitBox\\ShieldZombieHeadHitBox.prefab",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "prefab"
+          },
+          "scriptName": "HitBox_ShieldZombie_Head",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "te73x9ppqbp-m1keu9xu-g038tl217kq",
+            "filePath": "Assets\\Mobs\\ShieldZombie\\HitBox\\ShieldZombieLeftArmHitBox.prefab",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "prefab"
+          },
+          "scriptName": "HitBox_ShieldZombie_LeftArm",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "vymer0ezft-m1keu9xv-3ss8ukt16ef",
+            "filePath": "Assets\\Mobs\\ShieldZombie\\HitBox\\ShieldZombieLegHitBox.prefab",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "prefab"
+          },
+          "scriptName": "HitBox_ShieldZombie_Leg",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "i94yuogkk3-m1keu9xx-h69bwhxcth9",
+            "filePath": "Assets\\Mobs\\ShieldZombie\\HitBox\\ShieldZombieRightArmHitBox.prefab",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "prefab"
+          },
+          "scriptName": "HitBox_ShieldZombie_RightArm",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "ys929fdi6hg-m1keu9xy-01kdedeglzom",
+            "filePath": "Assets\\Mobs\\ShieldZombie\\HitBox\\ShieldZombieShieldHitBox.prefab",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "prefab"
+          },
+          "scriptName": "HitBox_ShieldZombie_Shield",
           "children": []
         }
       ]
@@ -270,8 +450,12 @@
     "pfm": {
       "id": "pfm",
       "children": []
+    },
+    "skilltype": {
+      "id": "skilltype",
+      "children": []
     }
   },
   "children": []
 }
-//"{FE:{"v":"1.15.3997714","c":{"FF":5001},"s":100}
+//"{FE:{"v":"1.15.4008519","c":{"FF":5001},"s":100}

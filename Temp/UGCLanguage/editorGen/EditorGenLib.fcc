@@ -1,4 +1,7 @@
 import "StdLibrary.fcc" as StdLibrary
+import "BehaviourTree.fcc" as BehaviourTree
+import "Items.fcc" as Items
+import "Hud.fcc" as Hud
 import "Economy.fcc" as Economy
 
 
@@ -17,20 +20,17 @@ component Mob {
     // Damage
     Damage int
 
+    // WalkSpeed
+    WalkSpeed float
+
     // StatusDic
     StatusDic Map<object, object>
 
     // CurrTarget
     CurrTarget entity<Player>
 
-    // LastHitPlayer
-    LastHitPlayer entity<Player>
-
     // DetectRange
     DetectRange float
-
-    // WalkSpeed
-    WalkSpeed float
 
     // HateTarget
     HateTarget entity<Player>
@@ -38,13 +38,85 @@ component Mob {
     // HateGainTime
     HateGainTime int
 
+    // LastHitPlayer
+    LastHitPlayer entity<Player>
+
 }
 
+// 动画实体
+partial component AnimationControllerAttachable {
+}
+
+// Player
+partial component Player {
+}
+
+// Combatable
+partial component Combatable {
+}
+
+// 自定义物件
+partial component CustomLevelObject {
+    // Zombie
+    Zombie entity<Entity>
+
+}
+
+// 关卡物件
+partial component LevelObject {
+}
+
+// 可挂载行为树实体
+partial component BevTreeAttachable {
+}
+
+// 武器组件
+partial component Weapon {
+    // owner11
+    owner11 entity<Player>
+
+}
+
+// 按钮控件
+partial component UIWidgetButton {
+    // BtnIcon
+    BtnIcon entity<Entity>
+
+    // BtnTxt
+    BtnTxt entity<Entity>
+
+    // BuffID
+    BuffID int
+
+    // BuffName
+    BuffName entity<Entity>
+
+    // ButtonParameter
+    ButtonParameter int
+
+    // key
+    key string
+
+    // active
+    active bool
+
+}
+
+
+// SkillFireWidgetType, type: Int
+enum SkillFireWidgetType {
+    // Button
+    Button = 0
+
+    // Joy
+    Joy = 1
+
+}
 
 [element CustomUIAssetID]
 enum EResUI {
     DeBug
-    Skill
+    SkillUI
 }
 [element string]
 enum EResScene {
@@ -58,6 +130,21 @@ enum EResPrefab {
     HitBox_Zombie_LeftArm
     HitBox_Zombie_Leg
     HitBox_Zombie_RightArm
+    GrenadeZombie
+    HitBox_GrenadeZombie_Body
+    HitBox_GrenadeZombie_Head
+    HitBox_GrenadeZombie_LeftArm
+    HitBox_GrenadeZombie_Leg
+    HitBox_GrenadeZombie_RightArm
+    SkillWaring_Circle
+    SkillEffect_GrenadeZombie
+    ShieldZombie
+    HitBox_ShieldZombie_Body
+    HitBox_ShieldZombie_Head
+    HitBox_ShieldZombie_LeftArm
+    HitBox_ShieldZombie_Leg
+    HitBox_ShieldZombie_RightArm
+    HitBox_ShieldZombie_Shield
 }
 [element ScriptID]
 enum EResFCG {
@@ -79,7 +166,7 @@ enum EResSceneIsleLand {
 }
 enum EResKeyUI {
     DeBug = "DeBug"
-    Skill = "Skill"
+    SkillUI = "SkillUI"
 }
 enum EResKeyScene {
     IsleLand = "IsleLand"
@@ -91,6 +178,21 @@ enum EResKeyPrefab {
     HitBox_Zombie_LeftArm = "HitBox_Zombie_LeftArm"
     HitBox_Zombie_Leg = "HitBox_Zombie_Leg"
     HitBox_Zombie_RightArm = "HitBox_Zombie_RightArm"
+    GrenadeZombie = "GrenadeZombie"
+    HitBox_GrenadeZombie_Body = "HitBox_GrenadeZombie_Body"
+    HitBox_GrenadeZombie_Head = "HitBox_GrenadeZombie_Head"
+    HitBox_GrenadeZombie_LeftArm = "HitBox_GrenadeZombie_LeftArm"
+    HitBox_GrenadeZombie_Leg = "HitBox_GrenadeZombie_Leg"
+    HitBox_GrenadeZombie_RightArm = "HitBox_GrenadeZombie_RightArm"
+    SkillWaring_Circle = "SkillWaring_Circle"
+    SkillEffect_GrenadeZombie = "SkillEffect_GrenadeZombie"
+    ShieldZombie = "ShieldZombie"
+    HitBox_ShieldZombie_Body = "HitBox_ShieldZombie_Body"
+    HitBox_ShieldZombie_Head = "HitBox_ShieldZombie_Head"
+    HitBox_ShieldZombie_LeftArm = "HitBox_ShieldZombie_LeftArm"
+    HitBox_ShieldZombie_Leg = "HitBox_ShieldZombie_Leg"
+    HitBox_ShieldZombie_RightArm = "HitBox_ShieldZombie_RightArm"
+    HitBox_ShieldZombie_Shield = "HitBox_ShieldZombie_Shield"
 }
 enum EResKeyFCG {
     C_HitBox = "C_HitBox"
@@ -116,6 +218,26 @@ event MobAttackEvent_AC( attackName string)
 [platform_server]
 event MobDeathEvent_AC()
 
+// ZombieAnimationEvent(eventName String)
+[platform_client]
+[platform_server]
+event ZombieAnimationEvent( eventName string)
+
+// C2SZBHurtEvent(Zombie LevelObject, Part String, Damage Int, Player Player)
+[platform_client]
+[platform_server]
+event C2SZBHurtEvent( Zombie entity<LevelObject>,  Part string,  Damage int,  Player entity<Player>)
+
+// C2SSkillEvent(UseSkillPlayer Player, StartPos Vector3, StartRot Vector3, SkillTypeNum Int, TargetPos Vector3, TargetRot Vector3)
+[platform_client]
+[platform_server]
+event C2SSkillEvent( UseSkillPlayer entity<Player>,  StartPos Vector3,  StartRot Vector3,  SkillTypeNum int,  TargetPos Vector3,  TargetRot Vector3)
+
+
+// Assets\New ECA.eca
+[platform_server]
+declare graph __AssetsA3New6ECAneca__ {
+}
 
 [platform_server]
 [platform_client]
@@ -149,6 +271,24 @@ enum EPhase {
 
     // 游戏结束
     End = 4309
+
+}
+
+
+
+enum EPhysicalLayer {
+    // 0:默认
+    Default = 0
+
+    // 1:Zombie
+    Zombie = 1
+
+}
+
+
+enum EVisibilityLayer {
+    // 0:默认
+    Default = 0
 
 }
 

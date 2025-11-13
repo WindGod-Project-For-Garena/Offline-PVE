@@ -36,15 +36,25 @@ graph C_NormalZombie {
 
 		CreateFromPrefab(out var leftArmHitbox, EResPrefab.HitBox_Zombie_LeftArm)
 		AddScript(leftArmHitbox, EResFCG.C_HitBox)
-        SetParentClient(GetSkeletonPartByName(thisEntity, "bone_L_Claf"), leftArmHitbox<Transform>, false)
-        leftArmHitbox<HitBox>.SetOwner(thisEntity, "LeftLeg")
+        SetParentClient(GetSkeletonPartByName(thisEntity, "bone_L_Forearm"), leftArmHitbox<Transform>, false)
+        leftArmHitbox<HitBox>.SetOwner(thisEntity, "LeftArm")
 
 		CreateFromPrefab(out var rightArmHitbox, EResPrefab.HitBox_Zombie_RightArm)
 		AddScript(rightArmHitbox, EResFCG.C_HitBox)
-        SetParentClient(GetSkeletonPartByName(thisEntity, "bone_R_Claf"), rightArmHitbox<Transform>, false)
-		rightArmHitbox<HitBox>.SetOwner(thisEntity, "RightLeg")
+        SetParentClient(GetSkeletonPartByName(thisEntity, "bone_L_Forearm"), rightArmHitbox<Transform>, false)
+		rightArmHitbox<HitBox>.SetOwner(thisEntity, "RightArm")
+
+		CreateFromPrefab(out var leftLegHitbox, EResPrefab.HitBox_Zombie_Leg)
+		AddScript(leftLegHitbox, EResFCG.C_HitBox)
+        SetParentClient(GetSkeletonPartByName(thisEntity, "bone_L_Claf"), leftLegHitbox<Transform>, false)
+        leftLegHitbox<HitBox>.SetOwner(thisEntity, "LeftLeg")
+
+		CreateFromPrefab(out var rightLegHitbox, EResPrefab.HitBox_Zombie_Leg)
+		AddScript(rightLegHitbox, EResFCG.C_HitBox)
+        SetParentClient(GetSkeletonPartByName(thisEntity, "bone_R_Claf"), rightLegHitbox<Transform>, false)
+        rightLegHitbox<HitBox>.SetOwner(thisEntity, "RightLeg")
         
-		PartNameDic = Map<string, string>{"Head":"bone_Head", "Body":"bone_Spine", "LeftArm":"bone_L_Forearm", "RightArm":"bone_R_Forearm", "LeftLeg":"bone_L_Claf", "RightLeg":"bone_R_Claf"}
+		//PartNameDic = Map<string, string>{"Head":"bone_Head", "Body":"bone_Spine", "LeftArm":"bone_L_Forearm", "RightArm":"bone_R_Forearm", "LeftLeg":"bone_L_Claf", "RightLeg":"bone_R_Claf"}
 	}
 
 	

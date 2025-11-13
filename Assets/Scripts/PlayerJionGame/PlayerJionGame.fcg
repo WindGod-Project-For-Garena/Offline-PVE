@@ -55,7 +55,7 @@ graph PlayerJionGame {
     //————————————————————————————————————————————————//
     event OnPlayerJoin(player entity<Player>) {
         if GetLocalPlayer() == player {
-            CreateCustomUIClient(out var SkillUIEntity, EResUI.Skill)
+            CreateCustomUIClient(out var SkillUIEntity, EResUI.SkillUI)
             SkillUI = SkillUIEntity
             SkillUIEntity<CustomUI>.IsVisible = true
 

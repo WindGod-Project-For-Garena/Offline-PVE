@@ -15,7 +15,7 @@ static graph FC_PVEController {
     MaxWaves int = 4
     
     // 游戏配置
-    WaveTimeLimit int = 90000  // 每波次时间限制（ms）
+    WaveTimeLimit int = 30000  // 每波次时间限制（ms）
     
     
     // 统计信息

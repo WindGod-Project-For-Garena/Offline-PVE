@@ -31,12 +31,104 @@
       "apiTargetV2": "both",
       "version": 45,
       "key": "signal_87958515"
+    },
+    "signal_52120933": {
+      "name": "ZombieAnimationEvent",
+      "enitityType": "AnimationControllerAble",
+      "typeID": 100003,
+      "props": [
+        {
+          "name": "eventName",
+          "value": "String",
+          "key": 1
+        }
+      ],
+      "propCount": 1,
+      "apiTargetV2": "both",
+      "key": "signal_52120933"
+    },
+    "signal_10180040": {
+      "name": "C2SZBHurtEvent",
+      "eventType": 0,
+      "enitityType": "Entity",
+      "typeID": 100004,
+      "props": [
+        {
+          "name": "Zombie",
+          "value": "LevelObject",
+          "key": 1
+        },
+        {
+          "name": "Part",
+          "value": "String",
+          "key": 3
+        },
+        {
+          "name": "Damage",
+          "value": "Int",
+          "key": 5
+        },
+        {
+          "name": "Player",
+          "value": "Player",
+          "key": 6
+        }
+      ],
+      "propCount": 6,
+      "apiTargetV2": "both",
+      "version": 45,
+      "key": "signal_10180040"
+    },
+    "signal_39342731": {
+      "name": "C2SSkillEvent",
+      "eventType": 0,
+      "enitityType": "Entity",
+      "typeID": 100005,
+      "props": [
+        {
+          "name": "UseSkillPlayer",
+          "value": "Player",
+          "key": 1
+        },
+        {
+          "name": "StartPos",
+          "value": "Vector3",
+          "key": 2
+        },
+        {
+          "name": "StartRot",
+          "value": "Vector3",
+          "key": 3
+        },
+        {
+          "name": "SkillTypeNum",
+          "value": "Int",
+          "key": 4
+        },
+        {
+          "name": "TargetPos",
+          "value": "Vector3",
+          "key": 5
+        },
+        {
+          "name": "TargetRot",
+          "value": "Vector3",
+          "key": 6
+        }
+      ],
+      "propCount": 6,
+      "apiTargetV2": "both",
+      "version": 45,
+      "key": "signal_39342731"
     }
   },
   "customName": {
     "MobAttackEvent_AC": "signal_40948046",
-    "MobDeathEvent_AC": "signal_87958515"
+    "MobDeathEvent_AC": "signal_87958515",
+    "ZombieAnimationEvent": "signal_52120933",
+    "C2SZBHurtEvent": "signal_10180040",
+    "C2SSkillEvent": "signal_39342731"
   },
   "children": []
 }
-//"{FE:{"v":"1.15.3997714","c":{"FF":5001},"s":100}
+//"{FE:{"v":"1.15.4008519","c":{"FF":5001},"s":100}

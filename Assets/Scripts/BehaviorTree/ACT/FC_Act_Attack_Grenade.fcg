@@ -1,0 +1,48 @@
+import "Animation.fcc" as Animation
+import "StdLibrary.fcc" as StdLib
+import "EditorGenLib.fcc" as EditorLib
+import "BehaviourTree.fcc" as BehaviourTree
+import "Math.fcc" as Math
+import "../../MobScripts/FC_GrenadeZombie.fcg" as garenadeZombie
+import "../../Static/FC_Utilities.fcg" as Utilities
+
+graph Script_1_ {
+    _Duration int
+    _AttackBeginTime int
+    //Executed when entity is created
+ 
+    event OnNodeEnter(nodeName string, owner entity<BevTreeAttachable>) {
+        //var attackScale = owner<ZombieCom>.ZombieInfo["LeftAttackSPDScale"] as float
+        //LogInfo("OnNodeEnter: Attack")
+        var attackScale float= 1
+        GetNodeVariable(thisEntity<BevTreeCustomNode>,"Duration",out var duration)
+        _Duration = Ceil(duration as int * attackScale)
+        GetBlackboardValue(owner<BevTreeAttachable>.AttachTarget,"CurTarget",out var curTarget)
+        globalEntity<Utilities>.myLookAt(owner<Transform>,curTarget as entity<Player>,Vector3{0,0,0})
+        _AttackBeginTime = globalEntity<Global>.GameTimeCount
+        SetBlackboardValue(owner<BevTreeAttachable>.AttachTarget,"LastAttackTime",_AttackBeginTime)
+        var attackspeed float = 1.0/attackScale
+        PlayAnimation(owner<AnimationControllerAttachable>,"Attack",attackspeed,LoopType.Once)
+        owner<garenadeZombie>.startGarenadeSkill()
+    }
+    func PlayAction(owner entity<BevTreeAttachable>) BevTreeNodeStatus{
+        if(globalEntity<Global>.GameTimeCount >= _AttackBeginTime+_Duration){
+            return BevTreeNodeStatus.Finish
+        }else{
+            return BevTreeNodeStatus.Running
+        }
+    }
+    func IsInRange(mob entity<Transform>,player1 entity<Player>,range1 float) bool{
+        var zombiePos = mob<Transform>.Position
+        var playerPos = player1<Player>.Position
+   
+        if (Distance(zombiePos,playerPos) <= range1) {
+            return true
+        }else{
+            return false
+        }
+    }
+    event OnNodeExit(nodeName string, owner entity<BevTreeAttachable>) {
+        //LogInfo("OnNodeExit: Attack")
+    }
+}

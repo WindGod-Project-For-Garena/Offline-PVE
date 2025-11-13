@@ -1,0 +1,77 @@
+{
+  "fileId": "745p6w7lme6-m1keuben-i77u0j28cz",
+  "globalscale": 1,
+  "properties": {
+    "Common": ""
+  },
+  "subDynamicResources": {},
+  "subLOD": {},
+  "version": "1.6.1",
+  "manifest": {
+    "Meshes": [],
+    "BoneInfos": [],
+    "Anims": [
+      {
+        "OrgExtName": ".Anim",
+        "Name": "C_TankZombie03@Death01.Anim",
+        "Size": 127912,
+        "ClipData": {
+          "Name": "C_TankZombie03@Death01",
+          "BakeStart": 0,
+          "BakeStop": 2,
+          "SampleRate": 30
+        },
+        "magicNumber": {
+          "magicNumber1": 100,
+          "magicNumber2": 98,
+          "magicNumber3": 158,
+          "magicNumber4": 134,
+          "version": 1009715
+        }
+      }
+    ],
+    "ManifestJSON": {
+      "FBXName": "C_TankZombie03@Death01",
+      "ImportSucceeded": true,
+      "MaterialCount": 0,
+      "MaterialDetail": [],
+      "MeshCount": 0,
+      "MeshDetail": []
+    }
+  },
+  "content": {
+    "C_TankZombie03@Death01.anim": {
+      "_entityName": "AnimClipEntity",
+      "_entityId": "oCESZ0YE",
+      "_preModel": {
+        "fileId": "8h93yorl30f-m1ha263d-5sn08xwmjgj",
+        "filePath": "Assets\\ZombieAsset\\ShieldZombie\\New\\C_TankZombie03_Rig.FBX",
+        "_tag": {
+          "type": "GFileRefer"
+        },
+        "fileType": "fbx"
+      },
+      "children": [
+        {
+          "_entityId": "LtO5iAUM",
+          "EventFrameName": "事件帧",
+          "FrameIndex": 52,
+          "Time": 1.73,
+          "EventList": [
+            {
+              "eventKeyValue": "AnimationControllerAble::signal_52120933",
+              "paramList": [
+                {
+                  "type": "String",
+                  "label": "eventName",
+                  "newValue": "ShieldZombieDead"
+                }
+              ],
+              "hideParam": false
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

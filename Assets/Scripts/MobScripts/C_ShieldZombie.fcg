@@ -1,0 +1,108 @@
+import "StdLibrary.fcc" as StdLib
+import "EditorGenLib.fcc" as EditorLib
+import "Avatar.fcc" as Avatar
+import "../C_HitBox.fcg" as HitBox
+import "Items.fcc" as Items
+import "Convert.fcc" as Convert
+import "../CustomEvent.fcc" as CustomEvent
+
+[platform_client]
+graph C_NormalZombie {
+    //Executed when entity is created
+    FuryEffect entity<Effect> = nil
+	TargetPosition Vector3 = Vector3{0,0,0}
+	Rotation Quaternion = Quaternion{0,0,0,0}
+	IsPosDirty bool = false
+	Speed float = 0
+	IsRotDirty bool = false
+	InvincibleEffect entity<Effect> = nil
+	PartNameDic Map<object, object> = nil
+
+
+    //eventID: 176//85*!fZV_I.Gt8f?E6:$4
+	event OnAwake() {
+		WaitForMillisecond(1000)
+		//LogInfo("添加受击盒")
+		
+        CreateFromPrefab(out var headHitbox, EResPrefab.HitBox_ShieldZombie_Head)
+		AddScript(headHitbox, EResFCG.C_HitBox)
+        SetParentClient(GetSkeletonPartByName(thisEntity, "Bip001 Head"), headHitbox<Transform>, false)
+		headHitbox<HitBox>.SetOwner(thisEntity, "Head")
+        
+		CreateFromPrefab(out var bodyHitbox, EResPrefab.HitBox_ShieldZombie_Body)
+        AddScript(bodyHitbox, EResFCG.C_HitBox)
+        SetParentClient(GetSkeletonPartByName(thisEntity, "Bip001 Spine"), bodyHitbox<Transform>, false)
+        bodyHitbox<HitBox>.SetOwner(thisEntity, "Body")
+
+		CreateFromPrefab(out var leftArmHitbox, EResPrefab.HitBox_ShieldZombie_LeftArm)
+		AddScript(leftArmHitbox, EResFCG.C_HitBox)
+        SetParentClient(GetSkeletonPartByName(thisEntity, "Bip001 L Forearm"), leftArmHitbox<Transform>, false)
+        leftArmHitbox<HitBox>.SetOwner(thisEntity, "LeftArm")
+
+		CreateFromPrefab(out var rightArmHitbox, EResPrefab.HitBox_ShieldZombie_RightArm)
+		AddScript(rightArmHitbox, EResFCG.C_HitBox)
+        SetParentClient(GetSkeletonPartByName(thisEntity, "Bip001 R Forearm"), rightArmHitbox<Transform>, false)
+		rightArmHitbox<HitBox>.SetOwner(thisEntity, "RightArm")
+        
+		CreateFromPrefab(out var leftLegHitbox, EResPrefab.HitBox_ShieldZombie_Leg)
+		AddScript(leftLegHitbox, EResFCG.C_HitBox)
+        SetParentClient(GetSkeletonPartByName(thisEntity, "Bip001 L Calf"), leftLegHitbox<Transform>, false)
+        leftLegHitbox<HitBox>.SetOwner(thisEntity, "LeftLeg")
+
+		CreateFromPrefab(out var rightLegHitbox, EResPrefab.HitBox_ShieldZombie_Leg)
+		AddScript(rightLegHitbox, EResFCG.C_HitBox)
+        SetParentClient(GetSkeletonPartByName(thisEntity, "Bip001 R Calf"), rightLegHitbox<Transform>, false)
+        rightLegHitbox<HitBox>.SetOwner(thisEntity, "RightLeg")
+
+		//PartNameDic = Map<string, string>{"Head":"bone_Head", "Body":"bone_Spine", "LeftArm":"bone_L_Forearm", "RightArm":"bone_R_Forearm", "LeftLeg":"bone_L_Claf", "RightLeg":"bone_R_Claf"}
+
+	}
+
+	
+
+	// //funcID: BreakEffect
+	// func BreakEffect(locStringVar9 string, locIntVar10 int) {
+	// 	CreateEffectClient(out var createdEntity11, "UGC_T_37_WZY_WS_VFX3", 2, true)
+	// 	createdEntity11<Effect>.Color = #ff1212ff
+	// 	SetParentClient(GetSkeletonPartByName(thisEntity, PartNameDic[locStringVar9]), createdEntity11, false)
+	// 	WaitForMillisecond(1500)
+	// 	Destroy(createdEntity11)
+	// }
+
+	// //eventID: 176//lQ:YfVQ:)7ySIYk46*pK
+	// event OnCustomEvent100003(locVector3Var12 Vector3) {
+	// 	TargetPosition = locVector3Var12
+	// 	IsPosDirty = true
+	// }
+
+	// //eventID: 176//6V}v^-$%f5sV.jabo`C^
+	// event OnCustomEvent100002(locFloatVar13 float) {
+	// 	Speed = locFloatVar13
+	// 	LogInfo(Connect("SyncSpeed:", locFloatVar13))
+	// }
+
+	// //eventID: 176//5o%==oJ]_+sEK4/58a^_
+	// event OnCustomEvent100005(locStringVar14 string) {
+	// 	if (locStringVar14 == "Zombie01Dead") {
+	// 		Destroy(thisEntity)
+	// 	}
+	// }
+
+	// //eventID: 176//8dE;SL6uo%+~L{Av!Z*[
+	// event CustomComponent31897461(locFloatVar15 float) {
+	// 	thisEntity<Transform>.LocalRotation = Vector3{0, locFloatVar15, 0}
+	// 	LogInfo(Connect("SyncYaw:", locFloatVar15))
+	// }
+
+	
+
+	// //eventID: 176//$qwOybt,dFR3[jOF]x,|
+	// event OnHitByBullet(locWeaponVar22 entity<Weapon>, unknown2Vector323 Vector3) {
+	// 	TakeDamage(locWeaponVar22, "Body")
+	// }
+
+	// //eventID: 176//Oa;_zGivn6R|VoYMdem?
+	// event OnCustomEvent100010(locAnimationControllerAttachableVar24 entity<AnimationControllerAttachable>, locStringVar25 string, locIntVar26 int) {
+	// 	start BreakEffect(locStringVar25, locIntVar26)
+	// }
+}

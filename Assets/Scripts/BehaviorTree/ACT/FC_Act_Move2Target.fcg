@@ -7,7 +7,7 @@ import "Animation.fcc" as Animation
 import "Physics.fcc" as Physics
 import "List.fcc" as List
 import "Math.fcc" as Math
-import "../../MobScripts/FC_NormalZombie.fcg" as mobScript
+import "../../MobScripts/FC_MobComponent.fcg" as mobComponent
 import "../../Static/FC_Utilities.fcg" as PVEUtilities
 import "Player.fcc" as Player
 
@@ -43,10 +43,12 @@ graph FC_Act_Move2Target {
 		if (curTarget == nil) {
 			PlayAnimation(owner as entity<AnimationControllerAttachable>, "Idle", 1, LoopType.Once)
 			inAnimation = false
-			owner<mobScript>.StopMoveTween()
+			owner<mobComponent>.StopMoveTween()
 			LogInfo("finish walk animation: no target")
 			return BevTreeNodeStatus.Finish
+
 		}
+		
 
 		
 		var currPos Vector3 = owner<Transform>.Position
@@ -87,7 +89,8 @@ graph FC_Act_Move2Target {
 			//----这里检测没有排除玩家---//---场景的基础块也不可以更改层级---//
 			//LogInfo("find path to player - 间隔寻路")
 			LastFindPathTime = gameTime
-			SingleRaycast((curTarget<Player>.Position+ Vector3{0,0.5,0}), Vector3{0,-3,0}, 5, List<int>{}, false, out var hitEntities, out var hitPoint, out var hitDistances, out var hitNormals)
+			var offset Vector3 = Vector3{Math.RandomFloat(-0.8,0.8),0.5,Math.RandomFloat(-0.8,0.8)}
+			SingleRaycast((curTarget<Player>.Position + offset), Vector3{0,-3,0}, 5, List<int>{}, false, out var hitEntities, out var hitPoint, out var hitDistances, out var hitNormals)
 			TargetPos = hitPoint
 			sub = TargetPos - currPos
 			normalizeDir = Normalize(sub)
@@ -95,15 +98,15 @@ graph FC_Act_Move2Target {
 			var velocity Vector3 = normalizeDir * Speed
 			Dist = Magnitude(sub)
 			if (Dist <= KeepDist) {
-				LogInfo("finish walk animation: close to targetPos")
+				//LogInfo("finish walk animation: close to targetPos")
 				
 				return BevTreeNodeStatus.Finish
 			}
 
 			PVEUtilities.myLookAt(owner<Transform>, curTarget, TargetPos)
 			//移动到下一个寻路点
-			//LogInfo("move to normailzeDir: " + normalizeDir)
-			owner<mobScript>.CreateMoveTween(velocity)
+		//	LogInfo("move to normailzeDir: " + normalizeDir)
+			owner<mobComponent>.CreateMoveTween(velocity)
 			
 		}
 		//可能跳出来了，就没有Finish了
@@ -126,7 +129,7 @@ graph FC_Act_Move2Target {
 		if (!inAnimation) {
 			inAnimation = true
 		//	LogInfo("play walk animation")
-			if Speed <= 2 {
+			if Speed <= 1.5 {
 				PlayAnimation(owner as entity<AnimationControllerAttachable>, "Walk", 1, LoopType.Loop)
 			} else {
 				PlayAnimation(owner as entity<AnimationControllerAttachable>, "Run", 1, LoopType.Loop)
@@ -136,7 +139,7 @@ graph FC_Act_Move2Target {
 	}
 
 	event OnNodeExit(nodeName string, owner entity<BevTreeAttachable>) {
-		owner<mobScript>.StopMoveTween()
+		owner<mobComponent>.StopMoveTween()
 		inAnimation = false
 		PlayAnimation(owner as entity<AnimationControllerAttachable>, "Idle", 1, LoopType.Loop)
 		//LogInfo("stop move2Target")

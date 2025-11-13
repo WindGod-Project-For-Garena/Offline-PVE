@@ -3,6 +3,7 @@ import "StdLibrary.fcc" as StdLib
 import "EditorGenLib.fcc" as EditorLib
 import "BehaviourTree.fcc" as BehaviourTree
 import "Math.fcc" as Math
+import "../../Static/FC_Utilities.fcg" as Utilities
 
 graph Script_1_ {
     _Duration int
@@ -12,11 +13,11 @@ graph Script_1_ {
     event OnNodeEnter(nodeName string, owner entity<BevTreeAttachable>) {
         //var attackScale = owner<ZombieCom>.ZombieInfo["LeftAttackSPDScale"] as float
         //LogInfo("OnNodeEnter: Attack")
-        var attackScale float= 1
+        var attackScale float= 0.5
         GetNodeVariable(thisEntity<BevTreeCustomNode>,"Duration",out var duration)
         _Duration = Ceil(duration as int * attackScale)
         GetBlackboardValue(owner<BevTreeAttachable>.AttachTarget,"CurTarget",out var curTarget)
-        //globalEntity<AIFUNC>.LookAt(owner<Transform>,curTarget as entity<Player>,nil)
+        globalEntity<Utilities>.myLookAt(owner<Transform>,curTarget as entity<Player>,Vector3{0,0,0})
         _AttackBeginTime = globalEntity<Global>.GameTimeCount
         SetBlackboardValue(owner<BevTreeAttachable>.AttachTarget,"LastAttackTime",_AttackBeginTime)
         var attackspeed float = 1.0/attackScale

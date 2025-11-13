@@ -1,0 +1,203 @@
+{
+  "fileId": "piachgmsydf-m1keud0b-t4x17uh9lh",
+  "globalscale": 1,
+  "properties": {
+    "Common": ""
+  },
+  "subDynamicResources": {},
+  "subLOD": {},
+  "version": "1.6.1",
+  "manifest": {
+    "Meshes": [
+      {
+        "Name": "B_tank_12.~@FFSKIN",
+        "MeshName": "B_tank_12",
+        "Type": "skin",
+        "OrgExtName": ".~@FFSKIN"
+      }
+    ],
+    "BoneInfos": [
+      {
+        "Name": "C_TankZombie03_Rig.sk",
+        "BoneNodes": [
+          {
+            "ChildBones": [],
+            "BoneName": "B_tank_12"
+          },
+          {
+            "ChildBones": [
+              {
+                "ChildBones": [
+                  {
+                    "ChildBones": [],
+                    "BoneName": "Bip001 Footsteps"
+                  },
+                  {
+                    "ChildBones": [
+                      {
+                        "ChildBones": [
+                          {
+                            "ChildBones": [
+                              {
+                                "ChildBones": [
+                                  {
+                                    "ChildBones": [
+                                      {
+                                        "ChildBones": [
+                                          {
+                                            "ChildBones": [
+                                              {
+                                                "ChildBones": [
+                                                  {
+                                                    "ChildBones": [],
+                                                    "BoneName": "bone_Right_Weapon001"
+                                                  }
+                                                ],
+                                                "BoneName": "Bip001 L Hand"
+                                              }
+                                            ],
+                                            "BoneName": "Bip001 L Forearm"
+                                          }
+                                        ],
+                                        "BoneName": "Bip001 L UpperArm"
+                                      }
+                                    ],
+                                    "BoneName": "Bip001 L Clavicle"
+                                  },
+                                  {
+                                    "ChildBones": [
+                                      {
+                                        "ChildBones": [
+                                          {
+                                            "ChildBones": [
+                                              {
+                                                "ChildBones": [
+                                                  {
+                                                    "ChildBones": [],
+                                                    "BoneName": "bone_Right_Weapon"
+                                                  }
+                                                ],
+                                                "BoneName": "Bip001 R Hand"
+                                              }
+                                            ],
+                                            "BoneName": "Bip001 R Forearm"
+                                          }
+                                        ],
+                                        "BoneName": "Bip001 R UpperArm"
+                                      }
+                                    ],
+                                    "BoneName": "Bip001 R Clavicle"
+                                  },
+                                  {
+                                    "ChildBones": [],
+                                    "BoneName": "Bip001 Head"
+                                  }
+                                ],
+                                "BoneName": "Bip001 Neck"
+                              }
+                            ],
+                            "BoneName": "Bip001 Spine1"
+                          },
+                          {
+                            "ChildBones": [
+                              {
+                                "ChildBones": [
+                                  {
+                                    "ChildBones": [
+                                      {
+                                        "ChildBones": [],
+                                        "BoneName": "Bip001 L Toe0"
+                                      }
+                                    ],
+                                    "BoneName": "Bip001 L Foot"
+                                  }
+                                ],
+                                "BoneName": "Bip001 L Calf"
+                              }
+                            ],
+                            "BoneName": "Bip001 L Thigh"
+                          },
+                          {
+                            "ChildBones": [
+                              {
+                                "ChildBones": [
+                                  {
+                                    "ChildBones": [
+                                      {
+                                        "ChildBones": [],
+                                        "BoneName": "Bip001 R Toe0"
+                                      }
+                                    ],
+                                    "BoneName": "Bip001 R Foot"
+                                  }
+                                ],
+                                "BoneName": "Bip001 R Calf"
+                              }
+                            ],
+                            "BoneName": "Bip001 R Thigh"
+                          }
+                        ],
+                        "BoneName": "Bip001 Spine"
+                      }
+                    ],
+                    "BoneName": "Bip001 Pelvis"
+                  }
+                ],
+                "BoneName": "Bip001"
+              }
+            ],
+            "BoneName": "bone_Root"
+          },
+          {
+            "ChildBones": [],
+            "BoneName": "Point001"
+          }
+        ],
+        "OrgExtName": ".sk"
+      }
+    ],
+    "Anims": [],
+    "ManifestJSON": {
+      "FBXName": "C_TankZombie03_Rig",
+      "ImportSucceeded": true,
+      "MaterialCount": 2,
+      "MaterialDetail": [
+        {
+          "Index": 0,
+          "MaterialName": "C_TankZombie02"
+        },
+        {
+          "Index": 1,
+          "MaterialName": "B_tank"
+        }
+      ],
+      "MeshCount": 1,
+      "MeshDetail": [
+        {
+          "MeshName": "B_tank_12",
+          "MaterialIndex": [
+            0,
+            1
+          ],
+          "Transform": {
+            "Position": [
+              0,
+              0,
+              0
+            ],
+            "Rotation": [
+              -90,
+              0,
+              0
+            ],
+            "Scale": [
+              1,
+              1,
+              1
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

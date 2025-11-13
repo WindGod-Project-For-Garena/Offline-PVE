@@ -18,6 +18,7 @@ graph Script_1_ {
         }
     }
     func playCondition(owner entity<BevTreeAttachable>) bool{
+        //LogInfo("playCondition: CanAttack")
         GetNodeVariable(thisEntity<BevTreeCustomNode>,"CD",out var cd)
         GetBlackboardValue(owner<BevTreeAttachable>.AttachTarget,"LastAttackTime",out var LastAttackTime)
         if (LastAttackTime == nil){

@@ -1,0 +1,112 @@
+{
+  "_entityName": "SkillWaring_Circle",
+  "_tag": {
+    "type": "Prefab"
+  },
+  "_entityId": "JHKWQGIk",
+  "children": [
+    {
+      "_entityName": "Visual effects",
+      "_tag": {
+        "type": "SceneEditEntity",
+        "resourceId": "Primitive/Empty"
+      },
+      "_entityId": "kdxlfh30",
+      "children": [],
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": null,
+      "position": {
+        "x": 6.900000095367432,
+        "y": -0.01600000075995922,
+        "z": 0.7699999809265137
+      },
+      "scale": {
+        "x": 0.8999999761581421,
+        "y": 0.10000000149011612,
+        "z": 0.8999999761581421
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "BTPath": [
+        null
+      ],
+      "visible": true,
+      "VisibilityLayer": 0,
+      "modelOptimization": 0,
+      "streamingLayer": "",
+      "attributes": [
+        2,
+        4
+      ],
+      "isTrigger": false,
+      "collidable": true,
+      "physicalLayer": 0,
+      "physicalMaterial": null,
+      "aoiSetting": 0,
+      "initialTypes": {},
+      "componentList": [],
+      "entityTagData": {
+        "tagPointers": []
+      },
+      "tempIndex": 526,
+      "itemID": 224,
+      "seParent": null,
+      "ecaScripts": [
+        null
+      ],
+      "ecaProps": {
+        "EffectEntityGenerator": {},
+        "ItemContainerGenerator": {},
+        "Entity": {},
+        "EffectEntity": {},
+        "Playable": {},
+        "Loopable": {},
+        "LevelObject": {},
+        "Transform": {},
+        "Visibility": {}
+      },
+      "propsData": {
+        "effectColor": {
+          "r": 255,
+          "g": 57,
+          "b": 57,
+          "a": 1
+        },
+        "playSpeed": 50,
+        "autoPlay": true,
+        "effectTypeResId": "",
+        "effectTexture": "",
+        "effectTextureRef": null,
+        "effectTypeRef": {
+          "fileId": "EffectType_UGC_T_34_LY_WS_VFX5",
+          "filePath": "lib://ffEffects/T_34_LY_WS_VFX5",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "effecttype"
+        },
+        "effectType": "UGC_T_34_LY_WS_VFX5",
+        "isLoop": 0
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "prefabVariant": null
+    }
+  ],
+  "prefabVariant": null,
+  "activeValue": {
+    "selfValue": true,
+    "valueTag": "activeValue"
+  },
+  "unlockedValue": null,
+  "editorLockValue": false,
+  "editorVisibleValue": true,
+  "discriminator": "ISceneLike"
+}
+//"{FE:{"v":"1.15.4008519","c":{"FF":5001},"s":100}

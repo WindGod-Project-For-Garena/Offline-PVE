@@ -74,6 +74,18 @@
           }
         },
         {
+          "propID": 100012,
+          "name": "PROP_12765276",
+          "label": "WalkSpeed",
+          "type": "Float",
+          "value": 2,
+          "observable": false,
+          "disabledType": true,
+          "param": {
+            "precision": 2
+          }
+        },
+        {
           "propID": 100007,
           "name": "PROP_77801521",
           "label": "StatusDic",
@@ -98,18 +110,6 @@
           }
         },
         {
-          "propID": 100008,
-          "name": "PROP_94587706",
-          "label": "LastHitPlayer",
-          "type": "Player",
-          "value": null,
-          "disabledType": true,
-          "param": {
-            "compType": "InputEditor",
-            "disabled": true
-          }
-        },
-        {
           "propID": 100010,
           "name": "PROP_84519962",
           "label": "DetectRange",
@@ -122,24 +122,17 @@
           }
         },
         {
-          "propID": 100012,
-          "name": "PROP_12765276",
-          "label": "WalkSpeed",
-          "type": "Float",
-          "value": 2,
-          "observable": false,
-          "disabledType": true,
-          "param": {
-            "precision": 2
-          }
-        },
-        {
           "propID": 100013,
           "name": "PROP_90540570",
           "label": "HateTarget",
           "type": "Player",
           "value": null,
-          "observable": false
+          "observable": false,
+          "disabledType": true,
+          "param": {
+            "compType": "InputEditor",
+            "disabled": true
+          }
         },
         {
           "propID": 100014,
@@ -147,10 +140,233 @@
           "label": "HateGainTime",
           "type": "Int",
           "value": 0,
-          "observable": false
+          "observable": false,
+          "disabledType": true,
+          "param": {
+            "precision": 0,
+            "min": -2147483648,
+            "max": 2147483647
+          }
+        },
+        {
+          "propID": 100015,
+          "name": "PROP_26191266",
+          "label": "LastHitPlayer",
+          "type": "Player",
+          "value": null,
+          "observable": false,
+          "disabledType": true,
+          "param": {
+            "compType": "InputEditor",
+            "disabled": true
+          }
         }
       ]
+    },
+    "AnimationControllerAble": {
+      "label": "动画实体",
+      "name": "AnimationControllerAble",
+      "bases": [
+        "Entity"
+      ],
+      "ecaScripts": [],
+      "typeID": 314,
+      "PropDefines": [],
+      "IsPartial": true
+    },
+    "Player": {
+      "label": "Player",
+      "name": "Player",
+      "bases": [
+        "FightingEntity",
+        "ScoreableEntity",
+        "RankableEntity",
+        "Visibility",
+        "BuffableEntity",
+        "FormulableEntity",
+        "AnimationControllerAble"
+      ],
+      "ecaScripts": [],
+      "typeID": 14,
+      "PropDefines": [],
+      "IsPartial": true
+    },
+    "FightingEntity": {
+      "label": "Combatable",
+      "name": "FightingEntity",
+      "bases": [
+        "AimableEntity"
+      ],
+      "ecaScripts": [],
+      "typeID": 12,
+      "PropDefines": [],
+      "IsPartial": true
+    },
+    "CustomLevelObject": {
+      "label": "自定义物件",
+      "name": "CustomLevelObject",
+      "bases": [
+        "LevelObject"
+      ],
+      "ecaScripts": [],
+      "typeID": 186,
+      "PropDefines": [
+        {
+          "name": "CustomLevelObject_81351029_custom",
+          "label": "Zombie",
+          "type": "Entity",
+          "value": null,
+          "disabledType": true,
+          "param": {
+            "type": "SceneEditEntity",
+            "disabled": true
+          },
+          "propID": 100003
+        }
+      ],
+      "IsPartial": true
+    },
+    "LevelObject": {
+      "label": "关卡物件",
+      "name": "LevelObject",
+      "bases": [
+        "Transform",
+        "Visibility"
+      ],
+      "ecaScripts": [],
+      "typeID": 16,
+      "PropDefines": [],
+      "IsPartial": true
+    },
+    "BehaviourTreeAttachable": {
+      "label": "可挂载行为树实体",
+      "name": "BehaviourTreeAttachable",
+      "bases": [
+        "Entity"
+      ],
+      "ecaScripts": [],
+      "typeID": 293,
+      "PropDefines": [],
+      "IsPartial": true
+    },
+    "Weapon": {
+      "label": "武器组件",
+      "name": "Weapon",
+      "bases": [
+        "FormulableEntity",
+        "BuffableEntity"
+      ],
+      "ecaScripts": [],
+      "typeID": 79,
+      "PropDefines": [
+        {
+          "propID": 100058,
+          "name": "PROP_77507584",
+          "label": "owner11",
+          "type": "Player",
+          "value": null,
+          "disabledType": true,
+          "param": {
+            "compType": "InputEditor",
+            "disabled": true
+          }
+        }
+      ],
+      "IsPartial": true
+    },
+    "HudButtonWidget": {
+      "label": "按钮控件",
+      "name": "HudButtonWidget",
+      "bases": [
+        "HudWidget"
+      ],
+      "ecaScripts": [],
+      "typeID": 41,
+      "PropDefines": [
+        {
+          "name": "HudButtonWidget_15026837_custom",
+          "label": "BtnIcon",
+          "type": "Entity",
+          "value": null,
+          "disabledType": true,
+          "param": {
+            "type": "SceneEditEntity",
+            "disabled": true
+          },
+          "propID": 100011
+        },
+        {
+          "name": "HudButtonWidget_67680512_custom",
+          "label": "BtnTxt",
+          "type": "Entity",
+          "value": null,
+          "disabledType": true,
+          "param": {
+            "type": "SceneEditEntity",
+            "disabled": true
+          },
+          "propID": 100016
+        },
+        {
+          "name": "HudButtonWidget_33700402_custom",
+          "label": "BuffID",
+          "type": "Int",
+          "value": 0,
+          "disabledType": true,
+          "param": {
+            "precision": 0,
+            "min": -2147483648,
+            "max": 2147483647
+          },
+          "propID": 100008
+        },
+        {
+          "name": "HudButtonWidget_52340716_custom",
+          "label": "BuffName",
+          "type": "Entity",
+          "value": null,
+          "propID": 100009,
+          "disabledType": true,
+          "param": {
+            "type": "SceneEditEntity",
+            "disabled": true
+          }
+        },
+        {
+          "name": "HudButtonWidget_47946058_custom",
+          "label": "ButtonParameter",
+          "type": "Int",
+          "value": 0,
+          "disabledType": true,
+          "param": {
+            "precision": 0,
+            "min": -2147483648,
+            "max": 2147483647
+          },
+          "propID": 100046
+        },
+        {
+          "name": "HudButtonWidget_73587085_custom",
+          "label": "key",
+          "type": "String",
+          "value": "",
+          "propID": 100047,
+          "disabledType": true
+        },
+        {
+          "propID": 100049,
+          "name": "HudButtonWidget_39454785_custom",
+          "label": "active",
+          "type": "Bool",
+          "value": true,
+          "disabledType": true,
+          "param": {
+            "size": "small"
+          }
+        }
+      ],
+      "IsPartial": true
     }
   }
 }
-//"{FE:{"v":"1.15.3997714","c":{"FF":5001},"s":100}
+//"{FE:{"v":"1.15.4008519","c":{"FF":5001},"s":100}

@@ -4,8 +4,32 @@
   },
   "_entityId": "F9G9PNGC",
   "enumCount": 0,
-  "enumDefines": {},
-  "enumNameMap": {},
+  "enumDefines": {
+    "CustomEnum38128129": {
+      "label": "SkillFireWidgetType",
+      "key": "CustomEnum38128129",
+      "type": "Int",
+      "info": [
+        {
+          "label": "Button",
+          "key": "E64974848",
+          "type": "Int",
+          "value": 0
+        },
+        {
+          "label": "Joy",
+          "key": "E10551256",
+          "value": 1,
+          "type": "Int"
+        }
+      ],
+      "isCustom": true,
+      "isDirty": false
+    }
+  },
+  "enumNameMap": {
+    "SkillFireWidgetType": "CustomEnum38128129"
+  },
   "children": []
 }
-//"{FE:{"v":"1.15.3997714","c":{"FF":5001},"s":100}
+//"{FE:{"v":"1.15.4008519","c":{"FF":5001},"s":100}

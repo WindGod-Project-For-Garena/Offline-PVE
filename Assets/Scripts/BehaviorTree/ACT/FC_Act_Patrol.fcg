@@ -7,7 +7,7 @@ import "Animation.fcc" as animation
 import "Math.fcc" as math
 import "Strings.fcc" as strings
 import "../../Static/FC_Utilities.fcg" as PVEUtilities
-import "../../MobScripts/FC_NormalZombie.fcg" as mobScript
+import "../../MobScripts/FC_MobComponent.fcg" as mobComponent
 import "List.fcc" as List
 
 
@@ -57,7 +57,7 @@ graph FC_Act_Patrol {
 			}
 
 			PVEUtilities.myLookAt(owner<Transform>, nil, TargetPos)
-			owner<mobScript>.CreateMoveTween(velocity)
+			owner<mobComponent>.CreateMoveTween(velocity)
 		}
 
 
@@ -67,7 +67,7 @@ graph FC_Act_Patrol {
 
 	//eventID: 39//s8004_dup_block
 	event OnNodeEnter(nodeName string, owner entity<BevTreeAttachable>) {
-		LogInfo("OnNodeEnter: " + nodeName)
+	//	LogInfo("OnNodeEnter: " + nodeName)
 		LastTickTime = globalEntity<Global>.GameTimeCount
 		GetNodeVariable(thisEntity as entity<BevTreeCustomNode>, "KeepDist", out var keepDist)
 		KeepDist = keepDist as float
@@ -88,7 +88,7 @@ graph FC_Act_Patrol {
 	}
 
 	event OnNodeExit(nodeName string, owner entity<BevTreeAttachable>) {
-		owner<mobScript>.StopMoveTween()
+		owner<mobComponent>.StopMoveTween()
 		inAnimation = false
 		PlayAnimation(owner as entity<AnimationControllerAttachable>, "Idle", 1, LoopType.Loop)
 		//LogInfo("stop walk animation")

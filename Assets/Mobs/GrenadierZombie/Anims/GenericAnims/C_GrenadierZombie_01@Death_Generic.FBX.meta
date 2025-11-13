@@ -1,0 +1,77 @@
+{
+  "fileId": "2vk85o9y9pk-m36qleox-fg4ggbeb8e",
+  "globalscale": 1,
+  "properties": {
+    "Common": ""
+  },
+  "subDynamicResources": {},
+  "subLOD": {},
+  "version": "1.6.1",
+  "manifest": {
+    "Meshes": [],
+    "BoneInfos": [],
+    "Anims": [
+      {
+        "OrgExtName": ".Anim",
+        "Name": "Death.Anim",
+        "Size": 95339,
+        "ClipData": {
+          "Name": "Death",
+          "BakeStart": 0,
+          "BakeStop": 1.5,
+          "SampleRate": 30
+        },
+        "magicNumber": {
+          "magicNumber1": 100,
+          "magicNumber2": 98,
+          "magicNumber3": 158,
+          "magicNumber4": 134,
+          "version": 1009715
+        }
+      }
+    ],
+    "ManifestJSON": {
+      "FBXName": "C_GrenadierZombie_01@Death_Generic",
+      "ImportSucceeded": true,
+      "MaterialCount": 0,
+      "MaterialDetail": [],
+      "MeshCount": 0,
+      "MeshDetail": []
+    }
+  },
+  "content": {
+    "Death.anim": {
+      "_entityName": "AnimClipEntity",
+      "_entityId": "HLYaMPG9",
+      "_preModel": {
+        "fileId": "bbdni1tbbk-m36r9lam-ogj6gbm2w1b",
+        "filePath": "Assets\\ZombieAsset\\GrenadierZombie\\C_GrenadierZombie_01.FBX",
+        "_tag": {
+          "type": "GFileRefer"
+        },
+        "fileType": "fbx"
+      },
+      "children": [
+        {
+          "_entityId": "4EeRhtbU",
+          "EventFrameName": "事件帧",
+          "FrameIndex": 43,
+          "Time": 1.43,
+          "EventList": [
+            {
+              "eventKeyValue": "AnimationControllerAble::signal_52120933",
+              "paramList": [
+                {
+                  "type": "String",
+                  "label": "eventName",
+                  "newValue": "GrenadierZombieDead"
+                }
+              ],
+              "hideParam": false
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -765,8 +765,14 @@
             "_entityId": "ICP8sWLm",
             "children": [],
             "prefabVariant": null,
-            "activeValue": null,
-            "unlockedValue": null,
+            "activeValue": {
+              "selfValue": true,
+              "valueTag": "activeValue"
+            },
+            "unlockedValue": {
+              "selfValue": true,
+              "valueTag": "unlockedValue"
+            },
             "editorLockValue": false,
             "editorVisibleValue": true,
             "from": "ACState",
@@ -777,7 +783,7 @@
               {
                 "eventKeyValue": "AnimationControllerAble::signal_87958515",
                 "paramList": [],
-                "hideParam": true
+                "hideParam": false
               }
             ],
             "dsada": "Sphere",
@@ -1248,110 +1254,6 @@
         "DisableChanged": false
       },
       "_eventFrameList": []
-    },
-    {
-      "_tag": {
-        "type": "ACStateEntity"
-      },
-      "_entityId": "vMZc016L",
-      "children": [
-        {
-          "_tag": {
-            "type": "ACLayerEntity"
-          },
-          "_entityId": "JiUMqyYE",
-          "children": [
-            {
-              "_tag": {
-                "type": "ACClipEntity"
-              },
-              "_entityId": "9E1dza57",
-              "children": [],
-              "prefabVariant": null,
-              "activeValue": {
-                "selfValue": true,
-                "valueTag": "activeValue"
-              },
-              "unlockedValue": {
-                "selfValue": true,
-                "valueTag": "unlockedValue"
-              },
-              "editorLockValue": false,
-              "editorVisibleValue": true,
-              "speed": 1,
-              "loop": false,
-              "fadeInTime": 0.3,
-              "enablefadeTime": true,
-              "clipRefer": {
-                "fileId": "ce8ahbgp3x5-m00s97sa-ywfkpjx5mm-Idle01.Anim",
-                "filePath": "fab://Assets\\Mobs\\NormalZombie\\Anims\\C_Zombie_01@Idle01.FBX\\Idle01.anim",
-                "_tag": {
-                  "type": "GFileRefer"
-                },
-                "fileType": "anim"
-              },
-              "wrapMode": 0,
-              "postExtrapolate": 0,
-              "startTime": 0,
-              "endTime": 3,
-              "_entityName": "Idle01.anim"
-            }
-          ],
-          "prefabVariant": null,
-          "activeValue": {
-            "selfValue": true,
-            "valueTag": "activeValue"
-          },
-          "unlockedValue": {
-            "selfValue": true,
-            "valueTag": "unlockedValue"
-          },
-          "editorLockValue": false,
-          "editorVisibleValue": true,
-          "isLoop": false,
-          "isBaseLayer": true,
-          "mute": false,
-          "bodypartId": null,
-          "DisableChanged": false,
-          "_entityName": "Base Layer"
-        }
-      ],
-      "prefabVariant": null,
-      "activeValue": {
-        "selfValue": true,
-        "valueTag": "activeValue"
-      },
-      "unlockedValue": {
-        "selfValue": true,
-        "valueTag": "unlockedValue"
-      },
-      "editorLockValue": false,
-      "editorVisibleValue": true,
-      "isLoop": true,
-      "_eventFrameList": [],
-      "eventFrameGroup": {
-        "_tag": {
-          "type": "ACEventFrameGroup"
-        },
-        "_entityId": "DKtI53fy",
-        "children": [],
-        "prefabVariant": null,
-        "activeValue": {
-          "selfValue": true,
-          "valueTag": "activeValue"
-        },
-        "unlockedValue": {
-          "selfValue": true,
-          "valueTag": "unlockedValue"
-        },
-        "editorLockValue": false,
-        "editorVisibleValue": true,
-        "DisableChanged": false
-      },
-      "selectedBodyparts": [],
-      "muteEvent": false,
-      "DisableChanged": false,
-      "_entityName": "myIdle"
     }
   ],
   "prefabVariant": null,
@@ -1376,4 +1278,4 @@
     "fileType": "fbx"
   }
 }
-//"{FE:{"v":"1.15.3997714","c":{"FF":5001},"s":100}
+//"{FE:{"v":"1.15.4008519","c":{"FF":5001},"s":100}

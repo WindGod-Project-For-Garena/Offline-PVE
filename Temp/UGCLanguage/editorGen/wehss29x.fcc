@@ -33,3 +33,21 @@ enum EPhase {
 }
 
 
+
+enum EPhysicalLayer {
+    // 0:默认
+    Default = 0
+
+    // 1:Zombie
+    Zombie = 1
+
+}
+
+
+enum EVisibilityLayer {
+    // 0:默认
+    Default = 0
+
+}
+
+
