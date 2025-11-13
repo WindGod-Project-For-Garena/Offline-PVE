@@ -7,6 +7,8 @@ import "Math.fcc" as Math
 import "Combat.fcc" as Combat
 import "../CustomEvent.fcc" as CustomEvent
 import "../PVE/FC_PVEMonsterManager.fcg" as PVEMonsterManager
+import "Physics.fcc" as Physics
+import "../Global/FC_Global_MobSkillHandler.fcg" as MobSkillHandler
 
 graph FC_NormalZombie {
     //Executed when entity is created
@@ -18,6 +20,10 @@ graph FC_NormalZombie {
 	tweenDuration float = 2000
 	counter int = 0
 	hateGainInterval int = 3000
+
+	hitPos Vector3 = Vector3{0,0,0}
+	preDisplayEffect entity<Effect> = nil
+
 
 	event OnAwake() {
         WaitForNextFrame()
@@ -53,7 +59,13 @@ graph FC_NormalZombie {
         // }
 	}
 
-
+	func startShieldZombieSkill() {
+		LogInfo("111111111111111111111")
+		var curTarget = thisEntity<Mob>.CurrTarget
+		SingleRaycast(curTarget<Player>.Position + Vector3{0,0.5,0}, Vector3{0,-3,0}, 5, List<int>{}, false, out var hitEntities, out var hitPoint, out var hitDistances, out var hitNormals)
+		hitPos = hitPoint+Vector3{0,0.05,0}
+		preDisplayEffect = MobSkillHandler.displayWarningEffect(thisEntity as entity<Mob>,hitPos,1.5) as entity<Effect>
+	}
 
 	//eventID: 91//r;Zn+-uY8Ahq`0JH4Yr{ //animation
 	event MobAttackEvent_AC(attackName string) {
