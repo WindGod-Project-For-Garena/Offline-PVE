@@ -21,8 +21,6 @@ graph Script_1_ {
         globalEntity<Utilities>.myLookAt(owner<Transform>,curTarget as entity<Player>,Vector3{0,0,0})
         _AttackBeginTime = globalEntity<Global>.GameTimeCount
         SetBlackboardValue(owner<BevTreeAttachable>.AttachTarget,"LastAttackTime",_AttackBeginTime)
-        var attackspeed float = 1.0/attackScale
-        PlayAnimation(owner<AnimationControllerAttachable>,"Attack",attackspeed,LoopType.Once)
         var TargetEntity = owner<AnimationControllerAttachable>
         owner<ShieldZombie>.startShieldZombieSkill(TargetEntity)
     }

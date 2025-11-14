@@ -14,7 +14,7 @@ import "Playable.fcc" as Playable
 
 static graph FC_PVEMonsterManager {
     // 配置参数
-    MaxMonstersOnField int = 1
+    MaxMonstersOnField int = 5
     SpawnInterval int = 5000  // 毫秒
     EliteSpawnCD int = 10000  // Elite怪物生成CD(毫秒)
     

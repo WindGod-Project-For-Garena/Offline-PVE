@@ -66,12 +66,14 @@ graph FC_NormalZombie {
 
 	// 盾牌僵尸技能，当玩家进入一定范围时，触发冲击技能
 	async func startShieldZombieSkill(TargetEntity entity<AnimationControllerAttachable>) {
+		var skillRange float = 10.0        //冲击距离
+		var speed float = 15.0            //冲击速度
+		var actualDuration float = 800  // 毫秒
+
 		LogInfo("盾牌僵尸开始冲击技能")
 		var curTarget = thisEntity<Mob>.CurrTarget
 		// 重置碰撞检测状态
 		SetBlackboardValue(thisEntity<BevTreeAttachable>.AttachTarget, "HasHitTarget", false)
-		// 播放冲击动画
-		PlayAnimation(TargetEntity, "Run", 2.0, LoopType.Once)
 		// 计算冲击方向
 		var currPos Vector3 = TargetEntity<Transform>.Position
 		var targetOffset Vector3 = Vector3{Math.RandomFloat(-0.8, 0.8), 0, Math.RandomFloat(-0.8, 0.8)}
@@ -81,10 +83,13 @@ graph FC_NormalZombie {
 		TargetPos = groundHitPoint
 		var direction = Normalize(TargetPos - currPos)
 		direction.Y = 0 // 保持水平移动
+		// 先让怪物面向目标方向
+		PVEUtilities.myLookAt(TargetEntity<Transform>, curTarget, TargetPos)
+		// 地面播放开始时的预警特效
+		wait MobSkillHandler.GroundWrringEffect(TargetEntity)
+		// 播放冲击动画
+		PlayAnimation(TargetEntity, "Run", 2.0, LoopType.Once)
 		// 计算冲击距离
-		var skillRange float = 8.0        //冲击距离
-		var speed float = 15.0            //冲击速度
-		var actualDuration float = 800  // 毫秒
 		// 射线检测前方障碍物
 		SingleRaycast(currPos, direction, skillRange, List<int>{}, false, out var hitEntities, out var hitPoint, out var hitDistances, out var hitNormals)
 		var finalTargetPos Vector3        //最终目标位置
@@ -98,7 +103,7 @@ graph FC_NormalZombie {
 		} else {        //没有障碍物，冲击到目标位置
 			finalTargetPos = currPos + direction * skillRange        
 		}
-		// 面向目标
+		// 确保怪物面向最终目标位置
 		PVEUtilities.myLookAt(TargetEntity<Transform>, curTarget, finalTargetPos)
 		// 创建移动tween
 		CreateSkillMoveTween(finalTargetPos, actualDuration)
