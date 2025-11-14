@@ -23,7 +23,8 @@ graph Script_1_ {
         SetBlackboardValue(owner<BevTreeAttachable>.AttachTarget,"LastAttackTime",_AttackBeginTime)
         var attackspeed float = 1.0/attackScale
         PlayAnimation(owner<AnimationControllerAttachable>,"Attack",attackspeed,LoopType.Once)
-        owner<ShieldZombie>.startShieldZombieSkill()
+        var TargetEntity = owner<AnimationControllerAttachable>
+        owner<ShieldZombie>.startShieldZombieSkill(TargetEntity)
     }
     func PlayAction(owner entity<BevTreeAttachable>) BevTreeNodeStatus{
         if(globalEntity<Global>.GameTimeCount >= _AttackBeginTime+_Duration){
