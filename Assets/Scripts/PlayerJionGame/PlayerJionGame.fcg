@@ -10,29 +10,36 @@ import "CSVData.fcc" as CSVData
 import "List.fcc" as List
 import "Convert.fcc" as Convert
 import "Strings.fcc" as strings
+import "../PVE/UI_C_SkillLevelUp.fcg" as UI_C_SkillLevelUp
+import "../CustomEvent.fcc" as CustomEvent
 
 [platform_client]
 graph PlayerJionGame {
     SkillUI entity<CustomHud>
     DeBugUI entity<CustomHud>
+    HomeUI entity<CustomHud>
+
+    inGameDebugUI entity<CustomHud>
+
+    SkillLevelUpUI entity<CustomHud>
     
     // 技能数据
     SkillData = Map<string, Map<string, Map<string, object>>>{
         "Skill1":{
-            "Level_0":{"Range": 1.0, "Damage": 50, "CD": 5000, "size": 1},
-            "Level_1":{"Range": 2.0, "Damage": 100, "CD": 4500, "size": 2},
-            "Level_2":{"Range": 3.0, "Damage": 150, "CD": 4000, "size": 3},
-            "Level_3":{"Range": 4.0, "Damage": 200, "CD": 3500, "size": 4},
-            "Level_4":{"Range": 5.0, "Damage": 250, "CD": 3000, "size": 5},
-            "Level_5":{"Range": 6.0, "Damage": 300, "CD": 2500, "size": 6},
+            "Level_0":{"Range": 2.0, "Damage": 100, "CD": 8000, "size": 1},
+            "Level_1":{"Range": 2.5, "Damage": 200, "CD": 7000, "size": 2},
+            "Level_2":{"Range": 3.0, "Damage": 300, "CD": 6000, "size": 3},
+            "Level_3":{"Range": 3.5, "Damage": 400, "CD": 5000, "size": 4},
+            "Level_4":{"Range": 4.0, "Damage": 500, "CD": 4000, "size": 5},
+            "Level_5":{"Range": 6.0, "Damage": 750, "CD": 3000, "size": 6},
         },
         "Skill2":{
-            "Level_0":{"Count": 3, "Damage": 5, "CD": 5000},
-            "Level_1":{"Count": 4, "Damage": 10, "CD": 4500},
-            "Level_2":{"Count": 5, "Damage": 15, "CD": 4000},
-            "Level_3":{"Count": 6, "Damage": 20, "CD": 3500},
-            "Level_4":{"Count": 7, "Damage": 25, "CD": 3000},
-            "Level_5":{"Count": 8, "Damage": 30, "CD": 2500},
+            "Level_0":{"Count": 3, "Damage": 80, "CD": 8000},
+            "Level_1":{"Count": 4, "Damage": 160, "CD": 7000},
+            "Level_2":{"Count": 5, "Damage": 240, "CD": 6000},
+            "Level_3":{"Count": 6, "Damage": 320, "CD": 5000},
+            "Level_4":{"Count": 7, "Damage": 400, "CD": 4000},
+            "Level_5":{"Count": 8, "Damage": 500, "CD": 3000},
         },
     }
     
@@ -54,14 +61,28 @@ graph PlayerJionGame {
     
     //————————————————————————————————————————————————//
     event OnPlayerJoin(player entity<Player>) {
+
+        
+        
         if GetLocalPlayer() == player {
+            CreateCustomUIClient(out var ui, EResUI.HomeUI)
+            HomeUI = ui
+
+            CreateCustomUIClient(out var inGameDebugUIEntity, EResUI.InGameDebug)
+            inGameDebugUI = inGameDebugUIEntity
+    
+
+
+            CreateCustomUIClient(out var SkillLevelUpUIEntity, EResUI.SkillLevelUp)
+            SkillLevelUpUI = SkillLevelUpUIEntity
+            SkillLevelUpUIEntity<CustomUI>.IsVisible = false
             CreateCustomUIClient(out var SkillUIEntity, EResUI.SkillUI)
             SkillUI = SkillUIEntity
             SkillUIEntity<CustomUI>.IsVisible = true
 
             CreateCustomUIClient(out var DeBugUIEntity, EResUI.DeBug)
             DeBugUI = DeBugUIEntity
-            DeBugUIEntity<CustomUI>.IsVisible = true
+            DeBugUIEntity<CustomUI>.IsVisible = false
 
             var Skill_1Panel = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_1")
             Skill_1Panel<UIWidget>.Active = false
@@ -79,6 +100,54 @@ graph PlayerJionGame {
             JoyStickButton_3<UIWidget>.Active = false
         }
     }
+
+    
+
+    //显示技能和升级技能使用
+
+    func resetSkillLevel(){
+        Skill1_RangeLevel = 0
+        Skill1_DamageLevel = 0
+        Skill1_CDLevel = 0
+        
+        Skill2_RangeLevel = 0
+        Skill2_DamageLevel = 0
+        Skill2_CDLevel = 0
+        
+        Skill3_RangeLevel = 0
+        Skill3_DamageLevel = 0
+        Skill3_CDLevel = 0
+    }
+
+    event ToClient_DisplaySkillLevelUpUI() {
+        SkillLevelUpUI<UI_C_SkillLevelUp>.displaySkillLevelupUI()
+    }
+
+    event ToClient_GameComplete() {
+        HomeUI<CustomUI>.IsVisible = true
+    }
+
+
+    func displaySkillByIndex(index int) {
+        // 动态切换技能按钮
+
+        // 隐藏所有技能面板
+        for i = 1, 3,1{
+            var skillPanel = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_" + i)
+            var joyStickAmount = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_" + i + "/JoyStickFillAmount")
+            skillPanel<UIWidget>.Active = false
+            joyStickAmount<UIWidget>.Active = false
+        }
+        
+        // 显示当前选中的技能
+        var currentSkillPanel = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_" + index)
+        var currentJoyStick = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_" + index + "/JoyStickFillAmount")
+        currentSkillPanel<UIWidget>.Active = true
+        currentJoyStick<UIWidget>.Active = false
+    }
+
+
+    
     
     //————————————————————————————————————————————————//
     // 获取技能数据的函数
@@ -183,4 +252,7 @@ graph PlayerJionGame {
         var DeBugUI_CD = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/cdlevelup/文本_level")
         DeBugUI_CD<UIWidgetLabel>.Content = cdLevel + "级"
     }
+
+
+
 }

@@ -4,3 +4,37 @@ import "StdLibrary.fcc" as StdLib
 [platform_server]
 //退出游戏事件，当玩家退出游戏时触发
 event OnDamageMob(mob entity<Entity>, part string, damage int, player entity<Player>)
+
+
+[platform_client]
+[platform_server]
+//游戏开始事件，开始游戏被点击
+event OnGameStartClick(level int, skillIndex int, ability1Level int, ability2Level int, ability3Level int)
+
+[platform_client]
+[platform_server]
+//显示升级技能事件，显示升级技能时触发
+event ToClient_DisplaySkillLevelUpUI()
+
+[platform_client]
+[platform_server]
+//开始下一波事件，开始下一波时触发
+event ToServer_StartNextWave()
+
+
+[platform_client]
+[platform_server]
+//游戏结束事件，游戏结束时触发
+event ToClient_GameComplete()
+
+
+[platform_client]
+[platform_server]
+//显示游戏调试UI事件，显示游戏调试UI时触发
+event S_Debug_NextWave()
+
+[platform_client]
+[platform_server]
+//显示游戏调试UI事件，显示游戏调试UI时触发
+event S_Debug_GameComplete()
+

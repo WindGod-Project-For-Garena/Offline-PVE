@@ -1,12 +1,12 @@
 ID,Name_key,BaseHP,BaseDamage,MoveSpeed,IsElite,IsBoss,Type,¡Ÿ ±¥Ê,ID,Name_key,BaseHP,BaseDamage,MoveSpeed,IsElite,IsBoss,Type
 int,string,int,int,float,bool,bool,bool,,int,string,int,int,float,bool,bool,bool
-1,ShieldZombie,100,10,0.8,FALSE,FALSE,melee,,1,ShieldZombie,100,10,0.8,FALSE,FALSE,melee
-2,ShieldZombie,200,20,1.7,FALSE,FALSE,melee,,2,ShieldZombie,200,20,1.7,FALSE,FALSE,melee
-3,ShieldZombie,300,30,2.5,FALSE,FALSE,melee,,3,ShieldZombie,300,30,2.5,FALSE,FALSE,melee
-4,ShieldZombie,75,20,0.8,FALSE,FALSE,range,,4,ShieldZombie,75,20,0.8,FALSE,FALSE,range
-5,ShieldZombie,150,40,0.8,FALSE,FALSE,range,,5,ShieldZombie,150,40,0.8,FALSE,FALSE,range
-6,ShieldZombie,1000,50,1.2,FALSE,FALSE,melee,,6,ShieldZombie,1000,50,1.2,TRUE,FALSE,melee
-7,ShieldZombie,2000,100,1.2,FALSE,FALSE,melee,,7,ShieldZombie,2000,100,1.2,TRUE,FALSE,melee
-8,ShieldZombie,300,8,6,FALSE,FALSE,melee,,8,ShieldZombie,300,8,6,FALSE,FALSE,melee
-9,ShieldZombie,1200,20,2,FALSE,FALSE,melee,,9,ShieldZombie,1200,20,2,TRUE,FALSE,melee
-10,ShieldZombie,3000,50,3,FALSE,FALSE,melee,,10,ShieldZombie,3000,50,3,FALSE,TRUE,melee
+1,NormalZombie,200,20,0.8,FALSE,FALSE,melee,,1,NormalZombie,100,10,0.8,FALSE,FALSE,melee
+2,NormalZombie_Blue,250,25,1.7,FALSE,FALSE,melee,,2,NormalZombie_Blue,200,20,1.7,FALSE,FALSE,melee
+3,NormalZombie_Red,350,30,2.8,FALSE,FALSE,melee,,3,NormalZombie_Red,300,30,2.5,FALSE,FALSE,melee
+4,GrenadeZombie,200,30,0.8,FALSE,FALSE,range,,4,GrenadeZombie,75,20,0.8,FALSE,FALSE,range
+5,GrenadeZombie_Red,300,40,0.8,FALSE,FALSE,range,,5,GrenadeZombie_Red,150,40,0.8,FALSE,FALSE,range
+6,ShieldZombie,3000,50,1.2,TRUE,FALSE,melee,,6,ShieldZombie,1000,50,1.2,TRUE,FALSE,melee
+7,ShieldZombie_Iron,4500,50,1.2,TRUE,FALSE,melee,,7,ShieldZombie_Iron,2000,100,1.2,TRUE,FALSE,melee
+,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,

@@ -26,6 +26,8 @@ graph SkillUI {
     JoyStickButton entity<UIWidget>
     FillAmountTween entity<Tween>
     ActiveMonstersParentNode entity<Entity> 
+
+    skillMultiplier float = 1
     
 
     event OnAwake() {
@@ -162,8 +164,9 @@ graph SkillUI {
         var monsters = getMonsterWithinDistance(Size)
         for i = 0, List.Length(monsters), 1 {
             var monster = monsters[i]
-            DispatchEventToEntity(OnDamageMob, monster, PlatformType.Server, List<object>{monster, nil, CurrentDamage, GetLocalPlayer()})
-            CreateDamageNum(CurrentDamage, 10, #dde511, 800, monster as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
+            var damage int = Math.Ceil(CurrentDamage * skillMultiplier)
+            DispatchEventToEntity(OnDamageMob, monster, PlatformType.Server, List<object>{monster, nil, damage, GetLocalPlayer()})
+            CreateDamageNum(damage, 10, #dde511, 800, monster as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
         }
 
         // 设置CD
@@ -250,14 +253,14 @@ graph SkillUI {
         thunderEffect<Transform>.Scale = Vector3{0.8,2,0.8}
         SetParentClient(targetMonster, thunderEffect, true)
         BoomColor(thunderEffect, CountLevel)
-        ApplyThunderDamage(targetMonster, damage)
+
+        var realDamage int = Math.Ceil(damage * skillMultiplier)
+        //造成伤害
+        DispatchEventToEntity(OnDamageMob, targetMonster, PlatformType.Server, List<object>{targetMonster, nil, realDamage, GetLocalPlayer()})
+        CreateDamageNum(realDamage, 10, #dde511, 800, targetMonster as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
+      
     }
 
-    // 应用雷击伤害
-    func ApplyThunderDamage(targetMonster entity<LevelObject>, damage int) {
-        DispatchEventToEntity(OnDamageMob, targetMonster, PlatformType.Server, List<object>{targetMonster, nil, damage, GetLocalPlayer()})
-        CreateDamageNum(damage, 10, #dde511, 800, targetMonster as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
-    }
 
     // 获取范围内怪物
     func getMonsterWithinDistance(distance int) List<entity<LevelObject>> {
@@ -271,4 +274,6 @@ graph SkillUI {
         }
         return monsters
     }
+
+    
 }

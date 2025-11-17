@@ -1,0 +1,115 @@
+{
+  "_entityName": "SkillWaring_Circle (1)",
+  "_tag": {
+    "type": "Prefab"
+  },
+  "_entityId": "ZH89tIPU",
+  "children": [
+    {
+      "_entityName": "Visual effects",
+      "_tag": {
+        "type": "SceneEditEntity",
+        "resourceId": "Primitive/Empty"
+      },
+      "_entityId": "GmioTlPI",
+      "children": [],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": null,
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "position": {
+        "x": 6.900000095367432,
+        "y": -0.01600000075995922,
+        "z": 0.7699999809265137
+      },
+      "scale": {
+        "x": 10,
+        "y": 0.02,
+        "z": 1.0000004768371582
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "BTPath": [
+        null
+      ],
+      "visible": true,
+      "VisibilityLayer": 0,
+      "modelOptimization": 0,
+      "streamingLayer": "",
+      "attributes": [
+        2,
+        4
+      ],
+      "isTrigger": false,
+      "collidable": true,
+      "physicalLayer": 0,
+      "physicalMaterial": null,
+      "aoiSetting": 0,
+      "initialTypes": {},
+      "componentList": [],
+      "entityTagData": {
+        "tagPointers": []
+      },
+      "tempIndex": 133,
+      "itemID": 224,
+      "seParent": null,
+      "ecaScripts": [
+        null
+      ],
+      "ecaProps": {
+        "EffectEntityGenerator": {},
+        "ItemContainerGenerator": {},
+        "Entity": {},
+        "EffectEntity": {},
+        "Playable": {},
+        "Loopable": {},
+        "LevelObject": {},
+        "Transform": {},
+        "Visibility": {}
+      },
+      "propsData": {
+        "effectColor": {
+          "r": 255,
+          "g": 0,
+          "b": 0,
+          "a": 0.2
+        },
+        "playSpeed": 100,
+        "autoPlay": true,
+        "effectTypeResId": "",
+        "effectTexture": "",
+        "effectTextureRef": null,
+        "effectTypeRef": {
+          "fileId": "EffectType_WS_FF_VFX_SPAWNAREA",
+          "filePath": "lib://ffEffects/T_40_HJ_WS_EFFECT34",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "effecttype"
+        },
+        "effectType": "WS_FF_VFX_SPAWNAREA",
+        "isLoop": 0
+      }
+    }
+  ],
+  "prefabVariant": null,
+  "activeValue": {
+    "selfValue": true,
+    "valueTag": "activeValue"
+  },
+  "unlockedValue": {
+    "selfValue": true,
+    "valueTag": "unlockedValue"
+  },
+  "editorLockValue": false,
+  "editorVisibleValue": true,
+  "discriminator": "ISceneLike"
+}
+//"{FE:{"v":"1.15.4008519","c":{"FF":5001},"s":100}

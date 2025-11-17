@@ -36,12 +36,12 @@ graph C_NormalZombie {
 
 		CreateFromPrefab(out var leftArmHitbox, EResPrefab.HitBox_GrenadeZombie_LeftArm)
 		AddScript(leftArmHitbox, EResFCG.C_HitBox)
-        SetParentClient(GetSkeletonPartByName(thisEntity, "bone_L_Forearm"), leftArmHitbox<Transform>, false)
+        SetParentClient(GetSkeletonPartByName(thisEntity, "bone_L_UpperArm"), leftArmHitbox<Transform>, false)
         leftArmHitbox<HitBox>.SetOwner(thisEntity, "LeftArm")
 
 		CreateFromPrefab(out var rightArmHitbox, EResPrefab.HitBox_GrenadeZombie_RightArm)
 		AddScript(rightArmHitbox, EResFCG.C_HitBox)
-        SetParentClient(GetSkeletonPartByName(thisEntity, "bone_L_Forearm"), rightArmHitbox<Transform>, false)
+        SetParentClient(GetSkeletonPartByName(thisEntity, "bone_R_Forearm"), rightArmHitbox<Transform>, false)
 		rightArmHitbox<HitBox>.SetOwner(thisEntity, "RightArm")
 
 		CreateFromPrefab(out var leftLegHitbox, EResPrefab.HitBox_GrenadeZombie_Leg)

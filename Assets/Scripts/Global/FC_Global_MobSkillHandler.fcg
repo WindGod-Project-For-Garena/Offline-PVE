@@ -127,7 +127,7 @@ static graph FC_Global_MobSkillHandler {
 		CreateFromPrefab(out var onGroundEffect,EResPrefab.SkillEffect_GrenadeZombie)
 		skillEffect = onGroundEffect as entity<Effect>
 		skillEffect<Visibility>.IsVisible = false
-        skillEffect<Transform>.Scale = Vector3{scale*1.7,scale*0.4,scale*1.7}
+        skillEffect<Transform>.Scale = Vector3{scale*1.7,scale*0.2,scale*1.7}
 
         skillFogEffect = GetChildByIndex(skillEffect,0) as entity<Effect>
         
@@ -199,17 +199,17 @@ static graph FC_Global_MobSkillHandler {
     //————————————————————————————————————————————————————————————————————————————————//
     //盾牌僵尸特效处理程序
     async func GroundWrringEffect(TargetEntity entity) {
-        CreateEffect(out var WarringEffect, nil, VFXType.Spawnpoint, LoopType.Once, false)
+        CreateEffect(out var WarningEffect, nil, VFXType.Spawnpoint, LoopType.Once, false)
 		// 设置特效位置（怪物前面6米的位置）
 		var effectOffset float = 6 // 特效在怪物前方的偏移距离
 		var effectPos = TargetEntity<Transform>.Position + TargetEntity<Transform>.Forward * effectOffset
 		effectPos.Y = -0.2 // 保持在地面上方
-		WarringEffect<Transform>.Position = effectPos
+		WarningEffect<Transform>.Position = effectPos
 		// 使用怪物当前的朝向作为特效朝向
-		WarringEffect<Transform>.Forward = TargetEntity<Transform>.Forward
-		WarringEffect<Transform>.Rotation = TargetEntity<Transform>.Rotation + Vector3{0, 90, 0}
+		WarningEffect<Transform>.Forward = TargetEntity<Transform>.Forward
+        WarningEffect<Transform>.Rotation = TargetEntity<Transform>.Rotation + Vector3{0, 90, 0}
 		// 设置特效缩放
-		WarringEffect<Transform>.Scale = Vector3{10, 0.02, 1}
+		WarningEffect<Transform>.Scale = Vector3{10, 0.02, 1}
         // CreateTween(
         //     WarringEffect,
         //     Transform.Scale,
@@ -222,11 +222,12 @@ static graph FC_Global_MobSkillHandler {
         //     false,
         // )
 		// 设置特效颜色
-		WarringEffect<Effect>.Color = #F15A24
+		WarningEffect<Effect>.Color = #FF0000
+        WarningEffect<Effect>.DiffuseAlpha = 20
 		// 等待1秒
 		WaitForMillisecond(1000)
 		// Destroy(tweenEntity)
-		Destroy(WarringEffect)
+		Destroy(WarningEffect)
     }
 
 }

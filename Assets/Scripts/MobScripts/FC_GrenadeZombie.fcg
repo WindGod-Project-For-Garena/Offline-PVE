@@ -90,7 +90,6 @@ graph FC_NormalZombie {
 	}
 
 	event OnDamageMob(mob entity<Entity>, part string, damage int, player entity<Player>) {
-		//LogInfo("OnDamageMob: " + part + " damage: " + damage + "HP: " + mob<Mob>.HP)
 		//LogInfo("mob: " + mob + "thisEntity: " + thisEntity)
 
 		//处理仇恨值

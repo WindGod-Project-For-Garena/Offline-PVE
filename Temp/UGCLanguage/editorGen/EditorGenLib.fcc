@@ -117,6 +117,10 @@ enum SkillFireWidgetType {
 enum EResUI {
     DeBug
     SkillUI
+    HomeUI
+    SkillLevelUp
+    InGameDebug
+    WarningEffect
 }
 [element string]
 enum EResScene {
@@ -145,10 +149,13 @@ enum EResPrefab {
     HitBox_ShieldZombie_Leg
     HitBox_ShieldZombie_RightArm
     HitBox_ShieldZombie_Shield
+    ElemationAsh
+    SkillWaring_Square
 }
 [element ScriptID]
 enum EResFCG {
     C_HitBox
+    HomeUI
 }
 [element ItemID]
 enum EResItem {
@@ -164,9 +171,36 @@ enum EResSceneIsleLand {
     PendingRemoveMobs
     ActiveMobs
 }
+[element CustomUIWidgetID]
+enum EResUIHomeUI {
+    Button_right
+    Button_left
+    LevelNum
+    Skill_1
+    Skill_2
+    Skill_3
+    StartButton
+    AbilityLevel1
+    AbilityLevel2
+    AbilityLevel3
+}
+[element CustomUIWidgetID]
+enum EResUISkillLevelUp {
+    AttributeName1
+    AttributeLevel1
+    AttributeName2
+    AttributeLevel2
+    AttributeName3
+    AttributeLevel3
+    SkillPoint
+}
 enum EResKeyUI {
     DeBug = "DeBug"
     SkillUI = "SkillUI"
+    HomeUI = "HomeUI"
+    SkillLevelUp = "SkillLevelUp"
+    InGameDebug = "InGameDebug"
+    WarningEffect = "WarningEffect"
 }
 enum EResKeyScene {
     IsleLand = "IsleLand"
@@ -193,9 +227,12 @@ enum EResKeyPrefab {
     HitBox_ShieldZombie_Leg = "HitBox_ShieldZombie_Leg"
     HitBox_ShieldZombie_RightArm = "HitBox_ShieldZombie_RightArm"
     HitBox_ShieldZombie_Shield = "HitBox_ShieldZombie_Shield"
+    ElemationAsh = "ElemationAsh"
+    SkillWaring_Square = "SkillWaring_Square"
 }
 enum EResKeyFCG {
     C_HitBox = "C_HitBox"
+    HomeUI = "HomeUI"
 }
 enum EResKeyItem {
     Gun_AK47 = "Gun_AK47"
@@ -207,6 +244,27 @@ enum EResKeyCSV {
 enum EResKeyIsleLand {
     PendingRemoveMobs = "PendingRemoveMobs"
     ActiveMobs = "ActiveMobs"
+}
+enum EResKeyHomeUI {
+    Button_right = "Button_right"
+    Button_left = "Button_left"
+    LevelNum = "LevelNum"
+    Skill_1 = "Skill_1"
+    Skill_2 = "Skill_2"
+    Skill_3 = "Skill_3"
+    StartButton = "StartButton"
+    AbilityLevel1 = "AbilityLevel1"
+    AbilityLevel2 = "AbilityLevel2"
+    AbilityLevel3 = "AbilityLevel3"
+}
+enum EResKeySkillLevelUp {
+    AttributeName1 = "AttributeName1"
+    AttributeLevel1 = "AttributeLevel1"
+    AttributeName2 = "AttributeName2"
+    AttributeLevel2 = "AttributeLevel2"
+    AttributeName3 = "AttributeName3"
+    AttributeLevel3 = "AttributeLevel3"
+    SkillPoint = "SkillPoint"
 }
 // MobAttackEvent_AC(attackName String)
 [platform_client]
@@ -249,6 +307,8 @@ declare static graph Res {
     Item Map<EResKeyItem, ItemID>
     CSV Map<EResKeyCSV, CsvID>
     IsleLand Map<EResKeyIsleLand, entity>
+    HomeUI Map<EResKeyHomeUI, CustomUIWidgetID>
+    SkillLevelUp Map<EResKeySkillLevelUp, CustomUIWidgetID>
 }
 
 

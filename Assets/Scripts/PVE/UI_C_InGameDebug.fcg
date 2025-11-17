@@ -1,0 +1,27 @@
+import "StdLibrary.fcc" as StdLib
+import "EditorGenLib.fcc" as EditorLib
+import "Hud.fcc" as Hud
+import "../CustomEvent.fcc" as CustomEvent
+
+
+
+
+[platform_client]
+graph UI_HomeUI {
+    //Executed when entity is created
+
+    
+    
+    event OnAwake() {
+       
+    }
+
+    func onNextWaveButtonClick(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        DispatchEventToEntity(S_Debug_NextWave,globalEntity, PlatformType.Server, List<object>{})
+    }
+
+   
+
+
+
+}

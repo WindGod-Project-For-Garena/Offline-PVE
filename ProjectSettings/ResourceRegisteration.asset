@@ -30,6 +30,124 @@
           },
           "scriptName": "SkillUI",
           "children": []
+        },
+        {
+          "refer": {
+            "fileId": "f1xb7h7s259-mhxb700u-oxf7r0cwyl",
+            "filePath": "Assets\\UI\\HomeUI.ui",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "ui"
+          },
+          "scriptName": "HomeUI",
+          "children": [
+            {
+              "id": "rtwJ28aY",
+              "scriptName": "Button_right"
+            },
+            {
+              "id": "Cvf1G6fw",
+              "scriptName": "Button_left"
+            },
+            {
+              "id": "XGqlTTds",
+              "scriptName": "LevelNum"
+            },
+            {
+              "id": "NLdWsKsA",
+              "scriptName": "Skill_1"
+            },
+            {
+              "id": "qYvz9yOO",
+              "scriptName": "Skill_2"
+            },
+            {
+              "id": "oAg7iPJI",
+              "scriptName": "Skill_3"
+            },
+            {
+              "id": "htEMrpxF",
+              "scriptName": "StartButton"
+            },
+            {
+              "id": "foMhlkOw",
+              "scriptName": "AbilityLevel1"
+            },
+            {
+              "id": "NBhZsQst",
+              "scriptName": "AbilityLevel2"
+            },
+            {
+              "id": "bumhqipa",
+              "scriptName": "AbilityLevel3"
+            }
+          ]
+        },
+        {
+          "refer": {
+            "fileId": "fgnbjwsfvyi-mhyebow7-kgbe8aqdgym",
+            "filePath": "Assets\\UI\\SkillLevelUp.ui",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "ui"
+          },
+          "scriptName": "SkillLevelUp",
+          "children": [
+            {
+              "id": "Ba1gHlY2",
+              "scriptName": "AttributeName1"
+            },
+            {
+              "id": "NDP9VS9A",
+              "scriptName": "AttributeLevel1"
+            },
+            {
+              "id": "FNEjRRHG",
+              "scriptName": "AttributeName2"
+            },
+            {
+              "id": "As8w7TBj",
+              "scriptName": "AttributeLevel2"
+            },
+            {
+              "id": "buX6YvJI",
+              "scriptName": "AttributeName3"
+            },
+            {
+              "id": "KfKcYEtG",
+              "scriptName": "AttributeLevel3"
+            },
+            {
+              "id": "ZtViFO0Z",
+              "scriptName": "SkillPoint"
+            }
+          ]
+        },
+        {
+          "refer": {
+            "fileId": "3vmjud5l0id-mhymayyw-b5rsp3b3wov",
+            "filePath": "Assets\\UI\\InGameDebug.ui",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "ui"
+          },
+          "scriptName": "InGameDebug",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "5xxo69k1b0e-mi2jdqnj-uo58eo4vxr",
+            "filePath": "Assets\\UI\\WarningEffect.ui",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "ui"
+          },
+          "scriptName": "WarningEffect",
+          "children": []
         }
       ]
     },
@@ -313,6 +431,30 @@
           },
           "scriptName": "HitBox_ShieldZombie_Shield",
           "children": []
+        },
+        {
+          "refer": {
+            "fileId": "jb2cpsca7sj-mhx8a74u-oaz4kamq4df",
+            "filePath": "Assets\\Prefab\\ElemationAsh.prefab",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "prefab"
+          },
+          "scriptName": "ElemationAsh",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "zqwi92rcgxb-mhypkg1w-a65t9ine05r",
+            "filePath": "Assets\\Prefab\\SkillWaring_Square.prefab",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "prefab"
+          },
+          "scriptName": "SkillWaring_Square",
+          "children": []
         }
       ]
     },
@@ -329,6 +471,18 @@
             "fileType": "ugcscript"
           },
           "scriptName": "C_HitBox",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "ib290qp153d-mhxditfr-cstq6pvvk9u",
+            "filePath": "Assets\\Scripts\\PVE\\UI_C_HomeUI.fcg",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "ugcscript"
+          },
+          "scriptName": "HomeUI",
           "children": []
         }
       ]

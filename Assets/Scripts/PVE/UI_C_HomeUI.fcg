@@ -1,0 +1,119 @@
+import "StdLibrary.fcc" as StdLib
+import "EditorGenLib.fcc" as EditorLib
+import "Hud.fcc" as Hud
+import "Convert.fcc" as Convert
+import "Math.fcc" as Math
+import "../CustomEvent.fcc" as CustomEvent
+import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
+import "../SkillUI/SkillUI.fcg" as SkillUI
+
+
+[platform_client]
+graph UI_HomeUI {
+    //Executed when entity is created
+
+    buttonLeft entity<UIWidgetButton> = nil
+    buttonRight entity<UIWidgetButton> = nil
+    levelNum entity<UIWidgetLabel> = nil
+    skill1 entity<UIWidgetButton> = nil
+    skill2 entity<UIWidgetButton> = nil
+    skill3 entity<UIWidgetButton> = nil
+    ability1Text entity<UIWidgetLabel> = nil
+    ability2Text entity<UIWidgetLabel> = nil
+    ability3Text entity<UIWidgetLabel> = nil
+
+    level int = 1
+    skillIndex int = 1
+    ability1Level int = 0
+    ability2Level int = 0
+    ability3Level int = 0
+    
+    event OnAwake() {
+        buttonLeft = GetWidgetFromCustomUI(GetLocalPlayer(),thisEntity as entity<CustomUI> , EResUIHomeUI.Button_left) as entity<UIWidgetButton>
+        buttonRight = GetWidgetFromCustomUI(GetLocalPlayer(),thisEntity as entity<CustomUI> , EResUIHomeUI.Button_right) as entity<UIWidgetButton>
+        levelNum = GetWidgetFromCustomUI(GetLocalPlayer(),thisEntity as entity<CustomUI> , EResUIHomeUI.LevelNum) as entity<UIWidgetLabel>
+        skill1 = GetWidgetFromCustomUI(GetLocalPlayer(),thisEntity as entity<CustomUI> , EResUIHomeUI.Skill_1) as entity<UIWidgetButton>
+        skill2 = GetWidgetFromCustomUI(GetLocalPlayer(),thisEntity as entity<CustomUI> , EResUIHomeUI.Skill_2) as entity<UIWidgetButton>
+        skill3 = GetWidgetFromCustomUI(GetLocalPlayer(),thisEntity as entity<CustomUI> , EResUIHomeUI.Skill_3) as entity<UIWidgetButton>
+
+        ability1Text = GetWidgetFromCustomUI(GetLocalPlayer(),thisEntity as entity<CustomUI> , EResUIHomeUI.AbilityLevel1) as entity<UIWidgetLabel>
+        ability2Text = GetWidgetFromCustomUI(GetLocalPlayer(),thisEntity as entity<CustomUI> , EResUIHomeUI.AbilityLevel2) as entity<UIWidgetLabel>
+        ability3Text = GetWidgetFromCustomUI(GetLocalPlayer(),thisEntity as entity<CustomUI> , EResUIHomeUI.AbilityLevel3) as entity<UIWidgetLabel>
+    }
+
+    func onLeftButtonClick(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        StringToInt(levelNum<UIWidgetLabel>.Content,out var levelText,out var error)
+        level = levelText - 1
+        
+        if level < 1 {
+            level = 1
+        }
+        levelNum<UIWidgetLabel>.Content = level
+    }
+
+    func onRightButtonClick(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        StringToInt(levelNum<UIWidgetLabel>.Content,out var levelText,out var error)
+        level = levelText + 1
+        
+        if level > 10 {
+            level = 10
+        }
+        levelNum<UIWidgetLabel>.Content = level
+    }
+
+    func OnSkill1Click(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        skillIndex = 1
+        skill1<UIWidgetButton>.Color = #FF8900
+        skill2<UIWidgetButton>.Color = #F2A245
+        skill3<UIWidgetButton>.Color = #F2A245
+    }
+
+    func OnSkill2Click(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        skillIndex = 2
+        skill1<UIWidgetButton>.Color = #F2A245
+        skill2<UIWidgetButton>.Color = #FF8900
+        skill3<UIWidgetButton>.Color = #F2A245
+    }
+
+    func OnSkill3Click(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        skillIndex = 3
+        skill1<UIWidgetButton>.Color = #F2A245
+        skill2<UIWidgetButton>.Color = #F2A245
+        skill3<UIWidgetButton>.Color = #FF8900
+    }
+
+    func OnAbility1Click(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        ability1Level = (ability1Level + 1) % 10
+        ability1Text<UIWidgetLabel>.Content = "LV." + ability1Level
+    }
+    func OnAbility2Click(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        ability2Level = (ability2Level + 1) % 10
+        ability2Text<UIWidgetLabel>.Content = "LV." + ability2Level
+    }
+    func OnAbility3Click(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        ability3Level = (ability3Level + 1) % 10
+        ability3Text<UIWidgetLabel>.Content = "LV." + ability3Level
+    }
+
+
+    func OnStartButtonClick(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        DispatchEventToEntity(OnGameStartClick, globalEntity, PlatformType.Server, List<object>{level, skillIndex,ability1Level,ability2Level,ability3Level})
+        
+        
+        
+        //临时处理，因为客户端服务端不互通
+        var skillMultiplier float = 1.0 * ability3Level + 1
+        GetLocalPlayer()<PlayerJionGame>.SkillUI<SkillUI>.skillMultiplier = skillMultiplier
+        thisEntity<CustomUI>.IsVisible = false
+
+        GetLocalPlayer()<PlayerJionGame>.CurrentSkill = skillIndex
+        GetLocalPlayer()<PlayerJionGame>.displaySkillByIndex(skillIndex)
+        GetLocalPlayer()<PlayerJionGame>.resetSkillLevel()
+       
+    }
+   
+
+
+
+
+}

@@ -1,0 +1,46 @@
+import "StdLibrary.fcc" as StdLib
+import "EditorGenLib.fcc" as EditorLib
+import "BehaviourTree.fcc" as BehaviourTree
+import "Math.fcc" as Math
+
+graph Script_1_ {
+    nextTime int = 0
+    //Executed when entity is created
+    event OnAwake() {
+
+    }
+    func IsInRange(mob entity<Transform>,player1 entity<Player>,range1 float) bool{
+        var zombiePos = mob<Transform>.Position
+        var playerPos = player1<Player>.Position
+        if (Distance(zombiePos,playerPos) <= range1) {
+            return true
+        }else{
+            return false
+        }
+    }
+    func playCondition(owner entity<BevTreeAttachable>) bool{
+        //LogInfo("playCondition: CanAttack")
+        GetNodeVariable(thisEntity<BevTreeCustomNode>,"CD",out var cd)
+        GetBlackboardValue(owner<BevTreeAttachable>.AttachTarget,"LastAttackTime",out var LastAttackTime)
+        if (LastAttackTime == nil){
+            var realCD = cd as int
+            nextTime = Math.Ceil(globalEntity<Global>.GameTimeCount + RandomFloat(1,2) * realCD)
+            return true
+        }
+        //var realCD = Ceil(Floor(cd as int) * owner<ZombieCom>.ZombieInfo["LeftAttackSPDScale"] as float)
+        
+        if (globalEntity<Global>.GameTimeCount < nextTime){
+            return false
+        }
+        
+        var realCD = cd as int
+        nextTime = Math.Ceil(globalEntity<Global>.GameTimeCount + RandomFloat(1,2) * realCD)
+        var curTarget entity<Player> = owner<Mob>.CurrTarget
+        if (curTarget == nil){
+            return false
+        }
+        GetNodeVariable(thisEntity<BevTreeCustomNode>,"Range",out var RangeX)
+        var TempPlayer = curTarget as entity<Player>
+        return IsInRange(owner<Transform>,TempPlayer<Player>,RangeX as float)
+    }
+}

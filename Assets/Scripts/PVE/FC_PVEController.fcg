@@ -5,17 +5,26 @@ import "List.fcc" as list
 import "./FC_PVEMonsterManager.fcg" as monsterManager
 import "../Static/FC_Utilities.fcg" as Utilities
 import "Convert.fcc" as Convert
+import "Items.fcc" as Items
+import "../CustomEvent.fcc" as CustomEvent
+import "Math.fcc" as Math
 
 static graph FC_PVEController {
     // 控制器状态
     IsGameActive bool = false
     CurrentLevel int = 1
-    CurrentWave int = 1
-    MaxLevels int = 3
+    CurrentWave int = 0
+    MaxLevels int = 10
     MaxWaves int = 4
+    weaponMultiplier float = 1.0
+    healthMultiplier float = 1.0
+    skillMultiplier float = 1.0
+
+    currPlayer entity<Player> = nil
+    currentWeapon entity<Weapon> = nil
     
     // 游戏配置
-    WaveTimeLimit int = 60000  // 每波次时间限制（ms）
+    WaveTimeLimit int = 30000  // 每波次时间限制（ms）
     
     
     // 统计信息
@@ -40,6 +49,46 @@ static graph FC_PVEController {
         
         LogInfo("PVE控制器初始化完成")
     }
+
+    event OnPlayerJoin(player entity<Player>) {
+        currPlayer = player
+    }
+
+    event OnGameStartClick(level int, skillIndex int, ability1Level int, ability2Level int, ability3Level int) {
+        weaponMultiplier = 1.0 * ability1Level + 1
+        healthMultiplier = 1.0 * ability2Level + 1
+        skillMultiplier = 1.0 * ability3Level + 1
+
+        //删除武器
+        Destroy(currentWeapon)
+        //临时发放武器
+        AddItem(currPlayer, ItemIDType.GoldMP5_III, 1, out var itemList)
+        currentWeapon = itemList[0] as entity<Weapon>
+        currentWeapon<Weapon>.IsConsumeAmmo = false
+        currentWeapon<Weapon>.Damage = Math.Ceil(currentWeapon<Weapon>.Damage * weaponMultiplier)
+        currPlayer<Player>.IsDropOnEliminated = false
+
+        //设置血量
+        currPlayer<Player>.MaxHP = Math.Ceil(200 * healthMultiplier)
+        currPlayer<Player>.HP = currPlayer<Player>.MaxHP
+
+        //设置技能Multiplier
+
+       
+        LogInfo("游戏开始 - 关卡: " + level + "，技能: " + skillIndex)
+        StartPVEGame(level)
+    }
+
+    event ToServer_StartNextWave() {
+        CurrentWave = CurrentWave + 1
+        StartWave(CurrentWave)
+    }
+
+    event S_Debug_NextWave() {
+        IsCountdownActive = false
+    }
+
+  
     
     // 开始PVE游戏（指定关卡）
     func StartPVEGame(level int) {
@@ -58,17 +107,25 @@ static graph FC_PVEController {
         IsGameActive = true
         GameStartTime = globalEntity<Global>.GameTimeCount
         CurrentLevel = level
-        CurrentWave = 1
+        CurrentWave = 0
         // 通知所有玩家
         Utilities.NotifyAllPlayers("PVE游戏开始！关卡: " + level, #00FF00FF, 5000)
+
+        //显示升级技能
+
         
         // 通知怪物管理器开始关卡
         monsterManager.LevelInitialize(level)
+
+        //通知客户端显示升级技能UI(这里写法玩家硬写的)
+        DispatchEventToEntity(ToClient_DisplaySkillLevelUpUI,GetAllPlayers()[0], PlatformType.Client, List<object>{})
+        
         
         // 开始第一波
-        StartWave(1)
+        //StartWave(1)
     }
     
+
   
     // 开始指定波次
     func StartWave(wave int) {
@@ -102,43 +159,17 @@ static graph FC_PVEController {
         }
 
         // 倒计时结束，检查玩家存活状态
-        if IsCountdownActive {
-            start StartNextWave()
+        if IsCountdownActive && MaxWaves > CurrentWave {
+            IsCountdownActive = false
+            monsterManager.ForceEndWave()
+            DispatchEventToEntity(ToClient_DisplaySkillLevelUpUI,GetAllPlayers()[0], PlatformType.Client, List<object>{})
+        }else{
+            monsterManager.ForceEndWave()
+            OnGameComplete()
         }
     }
     
-    // 波次时间到
-    async func StartNextWave() {
-        IsCountdownActive = false
-        monsterManager.ForceEndWave()
-
-        // 检查玩家存活状态
-        if CheckPlayersAlive() {
-            LogInfo("波次 " + CurrentWave + " 时间到，玩家存活，进入下一波")
-            Utilities.NotifyAllPlayers("波次 " + CurrentWave + " 完成！玩家存活！", #00FF00FF, 3000)
-            
-            // 检查是否还有下一波
-            if CurrentWave < MaxWaves {
-                // 等待一段时间后开始下一波
-                //WaitForMillisecond(WaveDelay)
-
-                Utilities.NotifyAllPlayers("波次 " + CurrentWave + "在5秒后开始！", #FF0000FF, 5000)
-                WaitForMillisecond(5000)
-               
-                StartWave( CurrentWave + 1)
-                
-
-            } else {
-                // 关卡完成
-                start OnGameComplete()
-            }
-        } else {
-            LogInfo("波次 " + CurrentWave + " 时间到，玩家死亡，游戏结束")
-            Utilities.NotifyAllPlayers("波次 " + CurrentWave + " 失败！玩家死亡！", #FF0000FF, 5000)
-            
-            OnGameOver()
-        }
-    }
+   
 
     
     // 检查玩家存活状态
@@ -207,7 +238,9 @@ static graph FC_PVEController {
     async func OnGameComplete() {
         LogInfo("PVE游戏完成！")
         Utilities.NotifyAllPlayers("恭喜！PVE游戏完成！", #FFD700FF, 10000)  
-        
+        //GetAllPlayers()[0]<Player>
+        var localPlayer entity<Player> = GetAllPlayers()[0]
+        localPlayer<Player>.Invincible = true
         // 显示最终统计
         ShowFinalStats()
 
@@ -226,10 +259,15 @@ static graph FC_PVEController {
         // 清理所有怪物
         monsterManager.ClearAllMonsters()
         
+        
         // 清理BOSS
         //bossHandler.ForceEndBossFight()
         
         Utilities.NotifyAllPlayers("PVE游戏结束", #FF0000FF, 3000)
+        var localPlayer entity<Player> = GetAllPlayers()[0]
+        localPlayer<Player>.Invincible = false
+
+        DispatchEventToEntity(ToClient_GameComplete,GetAllPlayers()[0], PlatformType.Client, List<object>{})
     }
 
     

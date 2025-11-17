@@ -10,11 +10,13 @@ import "../Static/FC_Utilities.fcg" as Utilities
 import "../Static/FC_Config.fcg" as Config
 import "Avatar.fcc" as Avatar
 import "Playable.fcc" as Playable
+import "Animation.fcc" as Animation
+import "LevelObject.fcc" as LevelObject
 
 
 static graph FC_PVEMonsterManager {
     // 配置参数
-    MaxMonstersOnField int = 5
+    MaxMonstersOnField int = 20
     SpawnInterval int = 5000  // 毫秒
     EliteSpawnCD int = 10000  // Elite怪物生成CD(毫秒)
     
@@ -82,6 +84,8 @@ static graph FC_PVEMonsterManager {
     func LoadCurrentLevelRows(level int) {
         Map.Clear(LevelRowInfos)
         for i,rowValue in ReadCSVColumn(EResCSV.LevelConfig,1) {
+            LogInfo("rowValue: " + rowValue)
+
             if rowValue == level {
                 var rowInfo List<object> = ReadCSVRow(EResCSV.LevelConfig,i+1)
                 LogInfo(rowInfo)
@@ -126,7 +130,9 @@ static graph FC_PVEMonsterManager {
         CurrentWave = wave
         
         LogInfo("开始关卡 " + CurrentLevel + " 波次 " + wave)
-        
+        for key, value in LevelRowInfos {
+            LogInfo(key + ": " + value)
+        }
         var waveRowInfo Map<string, object> = LevelRowInfos[wave]
         
         
@@ -271,7 +277,7 @@ static graph FC_PVEMonsterManager {
                 continue
             }else{
                 EliteLastSpawnTime = globalEntity<Global>.GameTimeCount
-                LogInfo("EliteCD已到，开始生成Elite")
+                LogInfo("EliteCD已到, 开始生成Elite")
             }
 
             //循环生成所有精英怪物到最大数量
@@ -342,11 +348,6 @@ static graph FC_PVEMonsterManager {
                 
                 // 根据概率选择一种怪物类型（使用已有的Possibility值）
                 var selectedMonster = SelectMonsterByPossibility(normalQueue)
-                // LogInfo("normalQueue: " )
-                // for i = 0, list.Length(normalQueue), 1 {
-                //     var monsterInfo = normalQueue[i]
-                //     LogInfo("monsterInfo: " + monsterInfo["Name_key"] as string)
-                // }
                 if selectedMonster == nil {
                     WaitForMillisecond(500)
                     continue
@@ -473,14 +474,7 @@ static graph FC_PVEMonsterManager {
        // LogInfo("生成怪物: " + monster<Mob>.MobName + " 在位置 " + monster<Transform>.Position)
        // LogInfo("ActiveMonsters: " + list.Length(ActiveMonsters))
     }
-    // async func test(monster entity<Mob>) {
-    //     while true {    
-    //     LogInfo("monster: " + monster)
-    //         LogInfo("monster<Transform>.Position: " + monster<Transform>.Position)
-    //         monster<Transform>.Position = Vector3{0,3,0}
-    //         WaitForMillisecond(1000)
-    //     }
-    // }
+
 
     
     func GetRandomSpawnPosition(monster entity<Mob>) Vector3 {
@@ -525,7 +519,7 @@ static graph FC_PVEMonsterManager {
         for i = 0, list.Length(ActiveMonsters), 1 {
             var monster = ActiveMonsters[i]
             if monster != nil {
-                Destroy(monster)
+                start myDestroyMonster(monster)
             }
         }
         
@@ -610,7 +604,7 @@ static graph FC_PVEMonsterManager {
 
     func OnMonsterKilledAnimationFinished(monster entity<LevelObject>) {
         if monster != nil {
-            Destroy(monster)
+            start myDestroyMonster(monster)
         }
     }
     
@@ -618,6 +612,18 @@ static graph FC_PVEMonsterManager {
     func SetNormalSpawnCD(cd int) {
         NormalSpawnCD = cd
         LogInfo("普通怪物生成CD设置为: " + cd + "毫秒")
+    }
+
+
+    async func myDestroyMonster(monster entity<LevelObject>) {
+        if monster != nil {
+            CreateFromPrefab(out var effect, EResPrefab.ElemationAsh)
+            effect<Transform>.Position = monster<Transform>.Position - Vector3{0,0.3,0}
+          
+            Destroy(monster)
+            WaitForMillisecond(1500)
+            Destroy(effect)
+        }
     }
 
 

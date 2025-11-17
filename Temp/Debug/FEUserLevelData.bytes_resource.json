@@ -2,6 +2,7 @@
  "OptionalResourceNames": [
   "UGC_T_34_LY_WS_VFX2",
   "WS_VFX_TRAILING",
+  "WS_FF_VFX_SPAWNAREA",
   "UGC_T_37_WZY_WS_VFX3",
   "WS_VFX_THUNDER",
   "SceneEdit_Cube_Texture_Cement_01",
@@ -14,10 +15,15 @@
   "FF_ingame_hud_UGC_Dyeing_SkilliconBg",
   "T_34_M_WS_ICON_CORPSE",
   "UI_icon_buff_01",
+  "HuntingGroun d_BG_Bag_01",
+  "T_34_M_WS_ICON_ARROW",
+  "FF_UI_Profile_Block_03",
+  "FF_UI_Profile_Btn_bg",
   "BRMOBILEDIFFUSECOLOR_UGC",
   "UGC_T_34_LY_WS_VFX5",
   "UGC_T_37_WZY_WS_VFX4",
-  "WS_VFX_FLOG"
+  "WS_VFX_FLOG",
+  "VFX_UGC_BOOM_01"
  ],
  "MapIds": [],
  "LevelObjectIds": [
@@ -39,7 +45,7 @@
   10000
  ],
  "CSSharedItemID": [
-  6
+  121
  ],
  "CustomLevelObjectUUIDs": [],
  "CustomLevelObjectPackageInfo": [],
@@ -54,10 +60,17 @@
     "PlatformSpecial": true
    },
    {
+    "Name": "Atlas-d7JXcoup.a-8ejaml9j7g8-mi2jj82u-ddvqlrt676d",
+    "UUID": "d7JXcoup.a-8ejaml9j7g8-mi2jj82u-ddvqlrt676d",
+    "WhoRequire": 0,
+    "UseVersionMD5": "Mio+wLf+V7U4zbLmiGZxDHOS5dM=",
+    "PlatformSpecial": true
+   },
+   {
     "Name": "d7JXcoup.AutoCommon_re6SjviS",
     "UUID": "d7JXcoup.AutoCommon_re6SjviS",
     "WhoRequire": 0,
-    "UseVersionMD5": "MmWnLMJ8BUpINpZ3/OStKDXjmqg=",
+    "UseVersionMD5": "H693hZzfnVVKxUGnc1UpXVZc8aQ=",
     "PlatformSpecial": false
    },
    {
@@ -99,7 +112,14 @@
     "Name": "d7JXcoup.AutoCommon_p5dt1C2B",
     "UUID": "d7JXcoup.AutoCommon_p5dt1C2B",
     "WhoRequire": 0,
-    "UseVersionMD5": "sKRhlm+MXxRoEYMmQYATiiiCAmg=",
+    "UseVersionMD5": "lG6xxJv/ZfeUb3bzcwGbhqNF8AY=",
+    "PlatformSpecial": false
+   },
+   {
+    "Name": "d7JXcoup.ColliderCommon_ZVbqXCtt",
+    "UUID": "d7JXcoup.ColliderCommon_ZVbqXCtt",
+    "WhoRequire": 0,
+    "UseVersionMD5": "Y48/zCJCODAMJLYstikErmoDC6c=",
     "PlatformSpecial": false
    },
    {
@@ -117,24 +137,17 @@
     "PlatformSpecial": true
    },
    {
-    "Name": "d7JXcoup.AutoCommon_gpIFBRE7",
-    "UUID": "d7JXcoup.AutoCommon_gpIFBRE7",
-    "WhoRequire": 0,
-    "UseVersionMD5": "jsElDreDCI86okHqRN0OuO28kmM=",
-    "PlatformSpecial": false
-   },
-   {
     "Name": "d7JXcoup.ColliderCommon_vVUqj7Ua",
     "UUID": "d7JXcoup.ColliderCommon_vVUqj7Ua",
     "WhoRequire": 0,
-    "UseVersionMD5": "TNG+TmKUpwn98za50Ba1cB8lMSo=",
+    "UseVersionMD5": "RSpicbr5cP2QKJvZaTEOFgwszUo=",
     "PlatformSpecial": false
    },
    {
     "Name": "d7JXcoup.server",
     "UUID": "d7JXcoup.server",
     "WhoRequire": 1,
-    "UseVersionMD5": "HKSBNHHfgHHX406T9odYnTQe62s=",
+    "UseVersionMD5": "pV3HM4spaiXD90dsgz1cu+fzbdg=",
     "PlatformSpecial": false
    }
   ],

@@ -1,23 +1,32 @@
 import "StdLibrary.fcc" as std
 import "EditorGenLib.fcc" as gen
 import "./FC_PVEController.fcg" as PVEController
+import "Hud.fcc" as Hud
+import "../CustomEvent.fcc" as CustomEvent
 
 
 // PVE系统使用示例
 static graph FC_PVEExample {
-    
+    startUI entity<CustomHud> = nil
+
     event OnAwake() {
         LogInfo("PVE示例脚本启动")
-        start InitializePVESystem()
+        
+
+        
     }
-    
+
     async func InitializePVESystem() {
         // 创建PVE控制器
         WaitForMillisecond(5000)
         LogInfo("PVE系统初始化完成")
 
+       
+      
+
+        
         // 自动开始游戏
-        PVEController.StartPVEGame(1)
+        //PVEController.StartPVEGame(1)
     }
 
 }

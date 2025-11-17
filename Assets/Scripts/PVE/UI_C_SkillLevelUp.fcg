@@ -1,0 +1,178 @@
+import "StdLibrary.fcc" as StdLib
+import "EditorGenLib.fcc" as EditorLib
+import "Hud.fcc" as Hud
+import "Convert.fcc" as Convert
+import "Math.fcc" as Math
+import "../CustomEvent.fcc" as CustomEvent
+import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
+import "../SkillUI/SkillUI.fcg" as SkillUI
+
+
+
+[platform_client]
+graph UI_SkillLvelUp {
+    //Executed when entity is created
+
+  
+    attribute1Level int = 0
+    attribute2Level int = 0
+    attribute3Level int = 0
+    
+    attributeName1 entity<UIWidgetLabel> = nil
+    attributeName2 entity<UIWidgetLabel> = nil
+    attributeName3 entity<UIWidgetLabel> = nil
+    attributeLevel1 entity<UIWidgetLabel> = nil
+    attributeLevel2 entity<UIWidgetLabel> = nil
+    attributeLevel3 entity<UIWidgetLabel> = nil
+
+    skillPoint int = 0
+    skillPointText entity<UIWidgetLabel> = nil
+
+    event OnAwake() {
+        attributeName1 = GetWidgetFromCustomUI(GetLocalPlayer(),thisEntity as entity<CustomUI> , EResUISkillLevelUp.AttributeName1) as entity<UIWidgetLabel>
+        attributeName2 = GetWidgetFromCustomUI(GetLocalPlayer(),thisEntity as entity<CustomUI> , EResUISkillLevelUp.AttributeName2) as entity<UIWidgetLabel>
+        attributeName3 = GetWidgetFromCustomUI(GetLocalPlayer(),thisEntity as entity<CustomUI> , EResUISkillLevelUp.AttributeName3) as entity<UIWidgetLabel>
+        attributeLevel1 = GetWidgetFromCustomUI(GetLocalPlayer(),thisEntity as entity<CustomUI> , EResUISkillLevelUp.AttributeLevel1) as entity<UIWidgetLabel>
+        attributeLevel2 = GetWidgetFromCustomUI(GetLocalPlayer(),thisEntity as entity<CustomUI> , EResUISkillLevelUp.AttributeLevel2) as entity<UIWidgetLabel>
+        attributeLevel3 = GetWidgetFromCustomUI(GetLocalPlayer(),thisEntity as entity<CustomUI> , EResUISkillLevelUp.AttributeLevel3) as entity<UIWidgetLabel>
+
+        skillPointText = GetWidgetFromCustomUI(GetLocalPlayer(),thisEntity as entity<CustomUI> , EResUISkillLevelUp.SkillPoint) as entity<UIWidgetLabel>
+
+
+    }
+
+    func displaySkillLevelupUI(){
+        thisEntity<CustomUI>.IsVisible = true
+        var currentSkill = GetLocalPlayer()<PlayerJionGame>.CurrentSkill
+        if currentSkill == 1 {
+            attribute1Level = GetLocalPlayer()<PlayerJionGame>.Skill1_RangeLevel
+            attribute2Level = GetLocalPlayer()<PlayerJionGame>.Skill1_DamageLevel
+            attribute3Level = GetLocalPlayer()<PlayerJionGame>.Skill1_CDLevel
+            attributeName1<UIWidgetLabel>.Content = "范围"
+            attributeName2<UIWidgetLabel>.Content = "伤害"
+            attributeName3<UIWidgetLabel>.Content = "CD"
+            attributeLevel1<UIWidgetLabel>.Content = "LV." + attribute1Level
+            attributeLevel2<UIWidgetLabel>.Content = "LV." + attribute2Level
+            attributeLevel3<UIWidgetLabel>.Content = "LV." + attribute3Level
+        }else if currentSkill == 2 {
+            attribute1Level = GetLocalPlayer()<PlayerJionGame>.Skill2_RangeLevel
+            attribute2Level = GetLocalPlayer()<PlayerJionGame>.Skill2_DamageLevel
+            attribute3Level = GetLocalPlayer()<PlayerJionGame>.Skill2_CDLevel
+            attributeName1<UIWidgetLabel>.Content = "闪电数"
+            attributeName2<UIWidgetLabel>.Content = "伤害"
+            attributeName3<UIWidgetLabel>.Content = "CD"
+            attributeLevel1<UIWidgetLabel>.Content = "LV." + attribute1Level
+            attributeLevel2<UIWidgetLabel>.Content = "LV." + attribute2Level
+            attributeLevel3<UIWidgetLabel>.Content = "LV." + attribute3Level
+        }else if currentSkill == 3 {
+            attribute1Level = GetLocalPlayer()<PlayerJionGame>.Skill3_RangeLevel
+            attribute2Level = GetLocalPlayer()<PlayerJionGame>.Skill3_DamageLevel
+            attribute3Level = GetLocalPlayer()<PlayerJionGame>.Skill3_CDLevel
+            attributeName1<UIWidgetLabel>.Content = "范围"
+            attributeName2<UIWidgetLabel>.Content = "伤害"
+            attributeName3<UIWidgetLabel>.Content = "CD"
+            attributeLevel1<UIWidgetLabel>.Content = "LV." + attribute1Level
+            attributeLevel2<UIWidgetLabel>.Content = "LV." + attribute2Level
+            attributeLevel3<UIWidgetLabel>.Content = "LV." + attribute3Level
+        }
+        //每次调用默认3点技能点
+        skillPoint = 100
+        skillPointText<UIWidgetLabel>.Content = "技能点: " + skillPoint
+    }
+
+
+    func onAttribute1Click(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        var currentSkill = GetLocalPlayer()<PlayerJionGame>.CurrentSkill
+
+        if (currentSkill == 1 && GetLocalPlayer()<PlayerJionGame>.Skill1_RangeLevel >= 5) || 
+        (currentSkill == 2 && GetLocalPlayer()<PlayerJionGame>.Skill2_RangeLevel >= 5) || 
+        (currentSkill == 3 && GetLocalPlayer()<PlayerJionGame>.Skill3_RangeLevel >= 5) {
+            NotifyShowTips(triggerPlayer, "技能已满级",#FFBA00, 3000)
+            return
+        }
+        
+        if skillPoint > 0 {
+            skillPoint = skillPoint - 1
+            skillPointText<UIWidgetLabel>.Content = "技能点: " + skillPoint
+            if currentSkill == 1 {
+                GetLocalPlayer()<PlayerJionGame>.Skill1_RangeLevel = GetLocalPlayer()<PlayerJionGame>.Skill1_RangeLevel + 1
+                attributeLevel1<UIWidgetLabel>.Content = "LV." + GetLocalPlayer()<PlayerJionGame>.Skill1_RangeLevel
+            }else if currentSkill == 2 {
+                GetLocalPlayer()<PlayerJionGame>.Skill2_RangeLevel = GetLocalPlayer()<PlayerJionGame>.Skill2_RangeLevel + 1
+                attributeLevel1<UIWidgetLabel>.Content = "LV." + GetLocalPlayer()<PlayerJionGame>.Skill2_RangeLevel
+            }else if currentSkill == 3 {
+                GetLocalPlayer()<PlayerJionGame>.Skill3_RangeLevel = GetLocalPlayer()<PlayerJionGame>.Skill3_RangeLevel + 1
+                attributeLevel1<UIWidgetLabel>.Content = "LV." + GetLocalPlayer()<PlayerJionGame>.Skill3_RangeLevel
+            }   
+        }else {
+            //提示玩家没有技能点
+            NotifyShowTips(triggerPlayer, "没有技能点了",#FFBA00, 3000)
+        }
+    }
+    func onAttribute2Click(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        var currentSkill = GetLocalPlayer()<PlayerJionGame>.CurrentSkill
+        if (currentSkill == 1 && GetLocalPlayer()<PlayerJionGame>.Skill1_DamageLevel >= 5) || 
+        (currentSkill == 2 && GetLocalPlayer()<PlayerJionGame>.Skill2_DamageLevel >= 5) || 
+        (currentSkill == 3 && GetLocalPlayer()<PlayerJionGame>.Skill3_DamageLevel >= 5) {
+            NotifyShowTips(triggerPlayer, "技能已满级",#FFBA00, 3000)
+            return
+        }
+        if skillPoint > 0 {
+            skillPoint = skillPoint - 1
+            skillPointText<UIWidgetLabel>.Content = "技能点: " + skillPoint
+            if currentSkill == 1 {
+                GetLocalPlayer()<PlayerJionGame>.Skill1_DamageLevel = GetLocalPlayer()<PlayerJionGame>.Skill1_DamageLevel + 1
+                attributeLevel2<UIWidgetLabel>.Content = "LV." + GetLocalPlayer()<PlayerJionGame>.Skill1_DamageLevel
+            }else if currentSkill == 2 {
+                GetLocalPlayer()<PlayerJionGame>.Skill2_DamageLevel = GetLocalPlayer()<PlayerJionGame>.Skill2_DamageLevel + 1
+                attributeLevel2<UIWidgetLabel>.Content = "LV." + GetLocalPlayer()<PlayerJionGame>.Skill2_DamageLevel
+            }else if currentSkill == 3 {
+                GetLocalPlayer()<PlayerJionGame>.Skill3_DamageLevel = GetLocalPlayer()<PlayerJionGame>.Skill3_DamageLevel + 1
+                attributeLevel2<UIWidgetLabel>.Content = "LV." + GetLocalPlayer()<PlayerJionGame>.Skill3_DamageLevel
+            }
+        }else {
+            //提示玩家没有技能点
+            NotifyShowTips(triggerPlayer, "没有技能点了",#FFBA00, 3000)
+        }
+    }
+    func onAttribute3Click(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        var currentSkill = GetLocalPlayer()<PlayerJionGame>.CurrentSkill
+        if (currentSkill == 1 && GetLocalPlayer()<PlayerJionGame>.Skill1_CDLevel >= 5) || 
+        (currentSkill == 2 && GetLocalPlayer()<PlayerJionGame>.Skill2_CDLevel >= 5) || 
+        (currentSkill == 3 && GetLocalPlayer()<PlayerJionGame>.Skill3_CDLevel >= 5) {
+            NotifyShowTips(triggerPlayer, "技能已满级",#FFBA00, 3000)
+            return
+        }
+        if skillPoint > 0 {
+            skillPoint = skillPoint - 1
+            skillPointText<UIWidgetLabel>.Content = "技能点: " + skillPoint
+            if currentSkill == 1 {
+                GetLocalPlayer()<PlayerJionGame>.Skill1_CDLevel = GetLocalPlayer()<PlayerJionGame>.Skill1_CDLevel + 1
+                attributeLevel3<UIWidgetLabel>.Content = "LV." + GetLocalPlayer()<PlayerJionGame>.Skill1_CDLevel
+            }else if currentSkill == 2 {
+                GetLocalPlayer()<PlayerJionGame>.Skill2_CDLevel = GetLocalPlayer()<PlayerJionGame>.Skill2_CDLevel + 1
+                attributeLevel3<UIWidgetLabel>.Content = "LV." + GetLocalPlayer()<PlayerJionGame>.Skill2_CDLevel
+            }else if currentSkill == 3 {
+                GetLocalPlayer()<PlayerJionGame>.Skill3_CDLevel = GetLocalPlayer()<PlayerJionGame>.Skill3_CDLevel + 1
+                attributeLevel3<UIWidgetLabel>.Content = "LV." + GetLocalPlayer()<PlayerJionGame>.Skill3_CDLevel
+            }
+        }else {
+            //提示玩家没有技能点
+            NotifyShowTips(triggerPlayer, "没有技能点了",#FFBA00, 3000)
+        }
+    }
+
+    func onNextWaveClick(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        DispatchEventToEntity(ToServer_StartNextWave, globalEntity, PlatformType.Server, List<object>{})
+        thisEntity<CustomUI>.IsVisible = false
+    }
+    
+
+   
+
+
+
+
+
+
+}

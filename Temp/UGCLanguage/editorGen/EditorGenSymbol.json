@@ -163,13 +163,13 @@
         ],
         "Graphs": [
           {
-            "ID": "d7JXcoup.9e0o11zs1vu-mhwtfdjw-ghfejt3xkp",
+            "ID": "d7JXcoup.4wtaipgl97w-mi2jhi4x-4lslw1mrf26",
             "Name": "__AssetsA3New6ECAneca__",
             "Props": [],
             "Funcs": []
           },
           {
-            "ID": "EDITOR_GEN_RESOURCE_REGISTERATION_IDx8n5745k6",
+            "ID": "EDITOR_GEN_RESOURCE_REGISTERATION_IDt5mvb5z5w",
             "Name": "Res",
             "Props": [
               {
@@ -283,6 +283,22 @@
               {
                 "ID": "Editor_Gen_Resource_UI_SkillUI",
                 "Name": "SkillUI"
+              },
+              {
+                "ID": "Editor_Gen_Resource_UI_HomeUI",
+                "Name": "HomeUI"
+              },
+              {
+                "ID": "Editor_Gen_Resource_UI_SkillLevelUp",
+                "Name": "SkillLevelUp"
+              },
+              {
+                "ID": "Editor_Gen_Resource_UI_InGameDebug",
+                "Name": "InGameDebug"
+              },
+              {
+                "ID": "Editor_Gen_Resource_UI_WarningEffect",
+                "Name": "WarningEffect"
               }
             ],
             "Funcs": []
@@ -295,22 +311,26 @@
             "Items": []
           },
           {
-            "ID": -154621,
+            "ID": -62781,
             "Name": "EResFCG",
             "Items": [
               {
                 "Name": "C_HitBox",
                 "Value": "d7JXcoupLi9Bc3NldHMvU2NyaXB0cy9DX0hpdEJveC5mY2c="
+              },
+              {
+                "Name": "HomeUI",
+                "Value": "d7JXcoupLi9Bc3NldHMvU2NyaXB0cy9QVkUvVUlfQ19Ib21lVUkuZmNn"
               }
             ]
           },
           {
-            "ID": -855945,
+            "ID": -386162,
             "Name": "EResECA",
             "Items": []
           },
           {
-            "ID": -265041,
+            "ID": -213938,
             "Name": "EResPrefab",
             "Items": [
               {
@@ -396,31 +416,39 @@
               {
                 "Name": "HitBox_ShieldZombie_Shield",
                 "Value": "/21/FbiodFjI"
+              },
+              {
+                "Name": "ElemationAsh",
+                "Value": "/22/nh4STPi9"
+              },
+              {
+                "Name": "SkillWaring_Square",
+                "Value": "/23/GmioTlPI"
               }
             ]
           },
           {
-            "ID": -931671,
+            "ID": -394072,
             "Name": "EResSprite",
             "Items": []
           },
           {
-            "ID": -433089,
+            "ID": -514589,
             "Name": "EResTexture",
             "Items": []
           },
           {
-            "ID": -836993,
+            "ID": -374343,
             "Name": "EResEffect",
             "Items": []
           },
           {
-            "ID": -186131,
+            "ID": -139677,
             "Name": "EResSound",
             "Items": []
           },
           {
-            "ID": -705140,
+            "ID": -780926,
             "Name": "EResItem",
             "Items": [
               {
@@ -430,32 +458,32 @@
             ]
           },
           {
-            "ID": -670556,
+            "ID": -254307,
             "Name": "EResLevelObject",
             "Items": []
           },
           {
-            "ID": -504031,
+            "ID": -630146,
             "Name": "EResCloth",
             "Items": []
           },
           {
-            "ID": -374284,
+            "ID": -25213,
             "Name": "EResWeaponSkin",
             "Items": []
           },
           {
-            "ID": -775421,
+            "ID": -734588,
             "Name": "EResVehicleSkin",
             "Items": []
           },
           {
-            "ID": -239001,
+            "ID": -401397,
             "Name": "EResEmote",
             "Items": []
           },
           {
-            "ID": -505366,
+            "ID": -461404,
             "Name": "EResCSV",
             "Items": [
               {
@@ -469,52 +497,52 @@
             ]
           },
           {
-            "ID": -420597,
+            "ID": -549433,
             "Name": "EResInternalHud",
             "Items": []
           },
           {
-            "ID": -550887,
+            "ID": -860115,
             "Name": "EResMesh",
             "Items": []
           },
           {
-            "ID": -689467,
+            "ID": -130998,
             "Name": "EResMaterial",
             "Items": []
           },
           {
-            "ID": -395167,
+            "ID": -19806,
             "Name": "EResAnimationController",
             "Items": []
           },
           {
-            "ID": -431730,
+            "ID": -443796,
             "Name": "EResParticles",
             "Items": []
           },
           {
-            "ID": -21852,
+            "ID": -435413,
             "Name": "EResPlayerData",
             "Items": []
           },
           {
-            "ID": -963270,
+            "ID": -373852,
             "Name": "EResBehaviorTree",
             "Items": []
           },
           {
-            "ID": -224297,
+            "ID": -466759,
             "Name": "EResPerformance",
             "Items": []
           },
           {
-            "ID": -200836,
+            "ID": -822750,
             "Name": "EResSkill",
             "Items": []
           },
           {
-            "ID": -47752,
+            "ID": -424141,
             "Name": "EResScene",
             "Items": [
               {
@@ -524,181 +552,307 @@
             ]
           },
           {
-            "ID": -525909,
+            "ID": -189553,
             "Name": "EResUI",
             "Items": [
               {
                 "Name": "DeBug",
-                "Value": ""
+                "Value": "/25/I1NmYoLv"
               },
               {
                 "Name": "SkillUI",
-                "Value": ""
+                "Value": "/26/jsEtqWBw"
+              },
+              {
+                "Name": "HomeUI",
+                "Value": "/27/XR6RLi23"
+              },
+              {
+                "Name": "SkillLevelUp",
+                "Value": "/28/KHFRqDxI"
+              },
+              {
+                "Name": "InGameDebug",
+                "Value": "/29/W18F5Usk"
+              },
+              {
+                "Name": "WarningEffect",
+                "Value": "/30/nuTkSKy6"
               }
             ]
           },
           {
-            "ID": -190746,
+            "ID": -335160,
             "Name": "EResSceneIsleLand",
             "Items": [
               {
                 "Name": "PendingRemoveMobs",
-                "Value": "/22/YHaqiPGU"
+                "Value": "/24/YHaqiPGU"
               },
               {
                 "Name": "ActiveMobs",
-                "Value": "/22/dSJcClWT"
+                "Value": "/24/dSJcClWT"
               }
             ]
           },
           {
-            "ID": -766576,
+            "ID": -19277,
             "Name": "EResUIDeBug",
             "Items": []
           },
           {
-            "ID": -886946,
+            "ID": -439927,
             "Name": "EResUISkillUI",
             "Items": []
           },
           {
+            "ID": -97250,
+            "Name": "EResUIHomeUI",
+            "Items": [
+              {
+                "Name": "Button_right",
+                "Value": 1
+              },
+              {
+                "Name": "Button_left",
+                "Value": 2
+              },
+              {
+                "Name": "LevelNum",
+                "Value": 3
+              },
+              {
+                "Name": "Skill_1",
+                "Value": 4
+              },
+              {
+                "Name": "Skill_2",
+                "Value": 5
+              },
+              {
+                "Name": "Skill_3",
+                "Value": 6
+              },
+              {
+                "Name": "StartButton",
+                "Value": 7
+              },
+              {
+                "Name": "AbilityLevel1",
+                "Value": 8
+              },
+              {
+                "Name": "AbilityLevel2",
+                "Value": 9
+              },
+              {
+                "Name": "AbilityLevel3",
+                "Value": 10
+              }
+            ]
+          },
+          {
+            "ID": -262025,
+            "Name": "EResUISkillLevelUp",
+            "Items": [
+              {
+                "Name": "AttributeName1",
+                "Value": 11
+              },
+              {
+                "Name": "AttributeLevel1",
+                "Value": 12
+              },
+              {
+                "Name": "AttributeName2",
+                "Value": 13
+              },
+              {
+                "Name": "AttributeLevel2",
+                "Value": 14
+              },
+              {
+                "Name": "AttributeName3",
+                "Value": 15
+              },
+              {
+                "Name": "AttributeLevel3",
+                "Value": 16
+              },
+              {
+                "Name": "SkillPoint",
+                "Value": 17
+              }
+            ]
+          },
+          {
+            "ID": -472603,
+            "Name": "EResUIInGameDebug",
+            "Items": []
+          },
+          {
+            "ID": -114369,
+            "Name": "EResUIWarningEffect",
+            "Items": []
+          },
+          {
             "Name": "EResKeyUI",
-            "ID": 364451,
+            "ID": 995490,
             "Items": []
           },
           {
             "Name": "EResKeyScene",
-            "ID": 470314,
+            "ID": 178860,
             "Items": []
           },
           {
             "Name": "EResKeyPrefab",
-            "ID": 552531,
+            "ID": 597551,
             "Items": []
           },
           {
             "Name": "EResKeyFCG",
-            "ID": 670297,
+            "ID": 691606,
             "Items": []
           },
           {
             "Name": "EResKeyECA",
-            "ID": 668542,
+            "ID": 577484,
             "Items": []
           },
           {
             "Name": "EResKeySprite",
-            "ID": 319411,
+            "ID": 274036,
             "Items": []
           },
           {
             "Name": "EResKeyEffect",
-            "ID": 751028,
+            "ID": 28049,
             "Items": []
           },
           {
             "Name": "EResKeySound",
-            "ID": 382720,
+            "ID": 51513,
             "Items": []
           },
           {
             "Name": "EResKeyItem",
-            "ID": 667679,
+            "ID": 841820,
             "Items": []
           },
           {
             "Name": "EResKeyLevelObject",
-            "ID": 387218,
+            "ID": 310666,
             "Items": []
           },
           {
             "Name": "EResKeyCloth",
-            "ID": 856481,
+            "ID": 789501,
             "Items": []
           },
           {
             "Name": "EResKeyWeaponSkin",
-            "ID": 10986,
+            "ID": 224942,
             "Items": []
           },
           {
             "Name": "EResKeyVehicleSkin",
-            "ID": 18081,
+            "ID": 778359,
             "Items": []
           },
           {
             "Name": "EResKeyEmote",
-            "ID": 486517,
+            "ID": 368154,
             "Items": []
           },
           {
             "Name": "EResKeyCSV",
-            "ID": 98784,
+            "ID": 92243,
             "Items": []
           },
           {
             "Name": "EResKeyInternalHud",
-            "ID": 830160,
+            "ID": 540760,
             "Items": []
           },
           {
             "Name": "EResKeyTexture",
-            "ID": 608376,
+            "ID": 691232,
             "Items": []
           },
           {
             "Name": "EResKeyMesh",
-            "ID": 394981,
+            "ID": 924117,
             "Items": []
           },
           {
             "Name": "EResKeyMaterial",
-            "ID": 226007,
+            "ID": 320225,
             "Items": []
           },
           {
             "Name": "EResKeyAnimationController",
-            "ID": 772655,
+            "ID": 943933,
             "Items": []
           },
           {
             "Name": "EResKeyParticles",
-            "ID": 839096,
+            "ID": 618475,
             "Items": []
           },
           {
             "Name": "EResKeyPlayerData",
-            "ID": 553105,
+            "ID": 596642,
             "Items": []
           },
           {
             "Name": "EResKeyBehaviorTree",
-            "ID": 424075,
+            "ID": 418122,
             "Items": []
           },
           {
             "Name": "EResKeyPerformance",
-            "ID": 634652,
+            "ID": 436393,
             "Items": []
           },
           {
             "Name": "EResKeySkill",
-            "ID": 425078,
+            "ID": 485661,
             "Items": []
           },
           {
             "Name": "EResKeyIsleLand",
-            "ID": 647902,
+            "ID": 37805,
             "Items": []
           },
           {
             "Name": "EResKeyDeBug",
-            "ID": 516578,
+            "ID": 325971,
             "Items": []
           },
           {
             "Name": "EResKeySkillUI",
-            "ID": 631253,
+            "ID": 817819,
+            "Items": []
+          },
+          {
+            "Name": "EResKeyHomeUI",
+            "ID": 585918,
+            "Items": []
+          },
+          {
+            "Name": "EResKeySkillLevelUp",
+            "ID": 369224,
+            "Items": []
+          },
+          {
+            "Name": "EResKeyInGameDebug",
+            "ID": 202294,
+            "Items": []
+          },
+          {
+            "Name": "EResKeyWarningEffect",
+            "ID": 560543,
             "Items": []
           },
           {

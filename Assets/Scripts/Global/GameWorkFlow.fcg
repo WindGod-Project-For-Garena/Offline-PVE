@@ -10,9 +10,9 @@ graph GameWorkFlow {
         
     }
     event OnPlayerJoin(player entity<Player>) {
-        AddItem(player, ItemIDType.AK, 1, out var itemList)
-        itemList[0] as entity<Weapon><Weapon>.IsConsumeAmmo = false
-        player<Player>.IsDropOnEliminated = false
+        // AddItem(player, ItemIDType.AK, 1, out var itemList)
+        // itemList[0] as entity<Weapon><Weapon>.IsConsumeAmmo = false
+        // player<Player>.IsDropOnEliminated = false
         
     }
 }
