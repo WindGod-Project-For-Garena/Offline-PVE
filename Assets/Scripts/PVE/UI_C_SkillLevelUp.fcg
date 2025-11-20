@@ -76,7 +76,7 @@ graph UI_SkillLvelUp {
             attributeLevel3<UIWidgetLabel>.Content = "LV." + attribute3Level
         }
         //每次调用默认3点技能点
-        skillPoint = 100
+        skillPoint = 3
         skillPointText<UIWidgetLabel>.Content = "技能点: " + skillPoint
     }
 

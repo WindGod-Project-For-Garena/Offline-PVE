@@ -296,7 +296,7 @@ static graph FC_PVEMonsterManager {
                 
                 var currentCount = EliteCurrentCount[monsterID]
                 if currentCount >= maxNum {
-                    LogInfo("Elite数量已达到最大，等待下次生成")
+                    LogInfo("Elite数量已达到最大,等待下次生成")
                     continue
                 }
 

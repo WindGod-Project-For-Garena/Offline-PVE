@@ -661,8 +661,14 @@
             "_entityId": "oPACslf2",
             "children": [],
             "prefabVariant": null,
-            "activeValue": null,
-            "unlockedValue": null,
+            "activeValue": {
+              "selfValue": true,
+              "valueTag": "activeValue"
+            },
+            "unlockedValue": {
+              "selfValue": true,
+              "valueTag": "unlockedValue"
+            },
             "editorLockValue": false,
             "editorVisibleValue": true,
             "from": "ACState",

@@ -66,7 +66,8 @@ graph FC_NormalZombie {
 		var curTarget = thisEntity<Mob>.CurrTarget
 		SingleRaycast(curTarget<Player>.Position + Vector3{0,0.5,0}, Vector3{0,-3,0}, 5, List<int>{}, false, out var hitEntities, out var hitPoint, out var hitDistances, out var hitNormals)
 		hitPos = hitPoint+Vector3{0,0.05,0}
-		preDisplayEffect = MobSkillHandler.displayWarningEffect(thisEntity as entity<Mob>,hitPos,1.5) as entity<Effect>
+		start MobSkillHandler.displayWarningEffect_New(thisEntity as entity<Mob>,hitPos,1.5,1300)
+		//preDisplayEffect = MobSkillHandler.displayWarningEffect_New(thisEntity as entity<Mob>,hitPos,1.5,1300) as entity<Effect>
 	}
 	
 
@@ -77,9 +78,9 @@ graph FC_NormalZombie {
 
 		if (attackName == "NormalAttack") {
 			if (zombieName == "GrenadeZombie") {
-				start MobSkillHandler.releaseSkill_GrenadeZombieNormalAttack(thisEntity as entity<Mob>,hitPos,1.5,preDisplayEffect)
+				start MobSkillHandler.releaseSkill_GrenadeZombieNormalAttack(thisEntity as entity<Mob>,hitPos,1.5)
 			}else if (zombieName == "GrenadeZombie_Red") {
-				start MobSkillHandler.releaseSkill_GrenadeZombieNormalAttack2(thisEntity as entity<Mob>,hitPos,1.5,preDisplayEffect)
+				start MobSkillHandler.releaseSkill_GrenadeZombieNormalAttack2(thisEntity as entity<Mob>,hitPos,1.5)
 			}
 
 		}

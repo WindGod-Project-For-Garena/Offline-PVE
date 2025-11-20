@@ -6,6 +6,7 @@ import "Playable.fcc" as Playable
 import "Animation.fcc" as Animation
 import "Math.fcc" as Math
 import "Combat.fcc" as Combat
+import "Hud.fcc" as Hud
 
 static graph FC_Global_MobSkillHandler {
     //Executed when entity is created
@@ -27,7 +28,33 @@ static graph FC_Global_MobSkillHandler {
         return warningEffect
     }
 
-    async func releaseSkill_GrenadeZombieNormalAttack(mob entity<Mob>,position Vector3,scale float, warningEffect entity<object>) {
+    //这个方程只给某个玩家创建
+    async func displayWarningEffect_New(mob entity<Mob>,position Vector3,scale float,duration int)  {
+        LogInfo("displayWarningEffect scale: " + scale)
+        CreateCustomUI(out var warningEffect,nil,EResUI.WarningEffect)
+        warningEffect<CustomUI>.InScene = true
+        warningEffect<CustomUI>.WorldPosition = position
+        warningEffect<CustomUI>.Rotation = Vector3{90,0,0}
+        warningEffect<CustomUI>.Scale = Vector3{scale*1.5,scale*1.5,scale*1.5}
+        var image_center entity<UIWidget> = GetWidgetFromCustomUI(nil, warningEffect, EResUIWarningEffect.Image_center)
+        CreateTween(image_center,UIWidget.SizeDelta,Vector2{0,0},Vector2{Math.Ceil(scale*250),
+            Math.Ceil(scale*250)},TweenStyle.Once,CreateCurve({0.25, 0.1, 0.25, 1}),duration,out var tweenEntity,true)
+
+
+
+        if Map.ContainKey(entityEffectDic, mob) == false {
+            entityEffectDic[mob] = List<entity<object>>{}
+        }
+        var effectList List<entity<object>> = entityEffectDic[mob]
+        List.Append(effectList, warningEffect)
+
+        WaitForMillisecond(duration)
+        Destroy(warningEffect as entity<Entity>)
+        Destroy(tweenEntity as entity<Entity>)
+        
+    }
+
+    async func releaseSkill_GrenadeZombieNormalAttack(mob entity<Mob>,position Vector3,scale float) {
         var projectileEffect entity<Effect> = nil
         var skillEffect entity<Effect> = nil
         var projectileTween entity<Tween> = nil
@@ -68,7 +95,7 @@ static graph FC_Global_MobSkillHandler {
 
         //隐藏Warning特效
         WaitForMillisecond(800)
-        Destroy(warningEffect as entity<Entity>)
+        //Destroy(warningEffect as entity<Entity>)
         Destroy(projectileEffect as entity<Entity>)
 
         //显示技能特效
@@ -100,7 +127,7 @@ static graph FC_Global_MobSkillHandler {
 
     }
     //火焰版本
-    async func releaseSkill_GrenadeZombieNormalAttack2(mob entity<Mob>,position Vector3,scale float, warningEffect entity<object>) {
+    async func releaseSkill_GrenadeZombieNormalAttack2(mob entity<Mob>,position Vector3,scale float) {
         var projectileEffect entity<Effect> = nil
         var skillEffect entity<Effect> = nil
         var projectileTween entity<Tween> = nil
@@ -151,7 +178,7 @@ static graph FC_Global_MobSkillHandler {
 
         //隐藏Warning特效
         WaitForMillisecond(800)
-        Destroy(warningEffect as entity<Entity>)
+        //Destroy(warningEffect as entity<Entity>)
         Destroy(projectileEffect as entity<Entity>)
 
         //显示技能特效

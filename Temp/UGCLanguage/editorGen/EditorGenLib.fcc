@@ -194,6 +194,10 @@ enum EResUISkillLevelUp {
     AttributeLevel3
     SkillPoint
 }
+[element CustomUIWidgetID]
+enum EResUIWarningEffect {
+    Image_center
+}
 enum EResKeyUI {
     DeBug = "DeBug"
     SkillUI = "SkillUI"
@@ -266,6 +270,9 @@ enum EResKeySkillLevelUp {
     AttributeLevel3 = "AttributeLevel3"
     SkillPoint = "SkillPoint"
 }
+enum EResKeyWarningEffect {
+    Image_center = "Image_center"
+}
 // MobAttackEvent_AC(attackName String)
 [platform_client]
 [platform_server]
@@ -309,6 +316,7 @@ declare static graph Res {
     IsleLand Map<EResKeyIsleLand, entity>
     HomeUI Map<EResKeyHomeUI, CustomUIWidgetID>
     SkillLevelUp Map<EResKeySkillLevelUp, CustomUIWidgetID>
+    WarningEffect Map<EResKeyWarningEffect, CustomUIWidgetID>
 }
 
 
