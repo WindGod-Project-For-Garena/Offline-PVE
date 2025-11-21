@@ -123,6 +123,8 @@ enum EResUI {
     WarningEffect
     NewHome
     ChoiceHero
+    GiftedPanel
+    HeroPanel
 }
 [element string]
 enum EResScene {
@@ -209,6 +211,8 @@ enum EResKeyUI {
     WarningEffect = "WarningEffect"
     NewHome = "NewHome"
     ChoiceHero = "ChoiceHero"
+    GiftedPanel = "GiftedPanel"
+    HeroPanel = "HeroPanel"
 }
 enum EResKeyScene {
     IsleLand = "IsleLand"

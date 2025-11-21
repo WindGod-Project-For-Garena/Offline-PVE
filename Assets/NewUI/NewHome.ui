@@ -158,7 +158,14 @@
           "disabled": "#494949",
           "onClicks": [],
           "enableBorderImage": true,
-          "clickHandlers": [],
+          "clickHandlers": [
+            {
+              "eventName": "OnClick",
+              "funcKey": "ToNewGame",
+              "type": "ugcscript",
+              "fileID": "osqngkypl2p-mi8kywzb-uj042mvzg2e"
+            }
+          ],
           "disableCollider": false,
           "fillType": 1,
           "slicedBorder": {
@@ -366,7 +373,14 @@
           "disabled": "#494949",
           "onClicks": [],
           "enableBorderImage": true,
-          "clickHandlers": [],
+          "clickHandlers": [
+            {
+              "eventName": "OnClick",
+              "funcKey": "ToHeroPanel",
+              "type": "ugcscript",
+              "fileID": "osqngkypl2p-mi8kywzb-uj042mvzg2e"
+            }
+          ],
           "disableCollider": false,
           "fillType": 1,
           "slicedBorder": {
@@ -576,7 +590,14 @@
           "disabled": "#494949",
           "onClicks": [],
           "enableBorderImage": true,
-          "clickHandlers": [],
+          "clickHandlers": [
+            {
+              "eventName": "OnClick",
+              "funcKey": "ToGiftedPanel",
+              "type": "ugcscript",
+              "fileID": "osqngkypl2p-mi8kywzb-uj042mvzg2e"
+            }
+          ],
           "disableCollider": false,
           "fillType": 1,
           "slicedBorder": {
@@ -676,7 +697,16 @@
     "alpha": 100,
     "priority": 0
   },
-  "ecaScripts": [],
+  "ecaScripts": [
+    {
+      "fileId": "osqngkypl2p-mi8kywzb-uj042mvzg2e",
+      "filePath": "Assets\\Scripts\\Home\\NewHome.fcg",
+      "_tag": {
+        "type": "GFileRefer"
+      },
+      "fileType": "ugcscript"
+    }
+  ],
   "ecaProps": {
     "CustomHud": {},
     "Entity": {}

@@ -18,11 +18,13 @@ graph PlayerJionGame {
     SkillUI entity<CustomHud>
     DeBugUI entity<CustomHud>
     HomeUI entity<CustomHud>
-
     inGameDebugUI entity<CustomHud>
-
     SkillLevelUpUI entity<CustomHud>
-    
+    //主页面
+    NewHomeUI entity<CustomHud>     //主页面
+    StartGameUI entity<CustomHud>   //开始游戏选择英雄页面
+    HeroUI entity<CustomHud>        //英雄页面
+    GiftedUI entity<CustomHud>      //天赋页面
     // 技能数据
     SkillData = Map<string, Map<string, Map<string, object>>>{
         "Skill1":{
@@ -42,10 +44,8 @@ graph PlayerJionGame {
             "Level_5":{"Count": 8, "Damage": 500, "CD": 3000},
         },
     }
-    
     //当前技能
     CurrentSkill int = 0
-    
     // 每个技能的各个属性等级（范围、伤害、CD分别维护）
     Skill1_RangeLevel int = 0
     Skill1_DamageLevel int = 0
@@ -58,24 +58,19 @@ graph PlayerJionGame {
     Skill3_RangeLevel int = 0
     Skill3_DamageLevel int = 0
     Skill3_CDLevel int = 0
-    
     //————————————————————————————————————————————————//
     event OnPlayerJoin(player entity<Player>) {
-
-        
-        
         if GetLocalPlayer() == player {
-            CreateCustomUIClient(out var ui, EResUI.HomeUI)
-            HomeUI = ui
+            // CreateCustomUIClient(out var ui, EResUI.HomeUI)
+            // HomeUI = ui
 
             CreateCustomUIClient(out var inGameDebugUIEntity, EResUI.InGameDebug)
             inGameDebugUI = inGameDebugUIEntity
-    
-
 
             CreateCustomUIClient(out var SkillLevelUpUIEntity, EResUI.SkillLevelUp)
             SkillLevelUpUI = SkillLevelUpUIEntity
             SkillLevelUpUIEntity<CustomUI>.IsVisible = false
+
             CreateCustomUIClient(out var SkillUIEntity, EResUI.SkillUI)
             SkillUI = SkillUIEntity
             SkillUIEntity<CustomUI>.IsVisible = true
@@ -83,6 +78,22 @@ graph PlayerJionGame {
             CreateCustomUIClient(out var DeBugUIEntity, EResUI.DeBug)
             DeBugUI = DeBugUIEntity
             DeBugUIEntity<CustomUI>.IsVisible = false
+
+            CreateCustomUIClient(out var NewHomeUIEntity, EResUI.NewHome)
+            NewHomeUI = NewHomeUIEntity
+            NewHomeUIEntity<CustomUI>.IsVisible = true
+
+            CreateCustomUIClient(out var StartGameUIEntity, EResUI.ChoiceHero)
+            StartGameUI = StartGameUIEntity
+            StartGameUIEntity<CustomUI>.IsVisible = false
+
+            CreateCustomUIClient(out var HeroPanelUIEntity, EResUI.HeroPanel)
+            HeroUI = HeroPanelUIEntity
+            HeroPanelUIEntity<CustomUI>.IsVisible = false
+
+            CreateCustomUIClient(out var GiftedPanelUIEntity, EResUI.GiftedPanel)
+            GiftedUI = GiftedPanelUIEntity
+            GiftedPanelUIEntity<CustomUI>.IsVisible = false
 
             var Skill_1Panel = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_1")
             Skill_1Panel<UIWidget>.Active = false

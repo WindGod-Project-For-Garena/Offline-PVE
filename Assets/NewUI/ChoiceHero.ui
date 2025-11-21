@@ -1815,7 +1815,7 @@
               "clickHandlers": [
                 {
                   "eventName": "OnClick",
-                  "funcKey": "OnSkill1Click",
+                  "funcKey": "OnSkill2Click",
                   "type": "ugcscript",
                   "fileID": "ib290qp153d-mhxditfr-cstq6pvvk9u"
                 }
@@ -2103,8 +2103,8 @@
             "y": 0.5
           },
           "anchoredPosition": {
-            "x": -33,
-            "y": -194
+            "x": 0,
+            "y": -200
           },
           "sizeDelta": {
             "x": 200,
@@ -2128,7 +2128,14 @@
           "disabled": "#494949",
           "onClicks": [],
           "enableBorderImage": true,
-          "clickHandlers": [],
+          "clickHandlers": [
+            {
+              "eventName": "OnClick",
+              "funcKey": "OnStartButtonClick",
+              "type": "ugcscript",
+              "fileID": "ib290qp153d-mhxditfr-cstq6pvvk9u"
+            }
+          ],
           "disableCollider": false,
           "fillType": 1,
           "slicedBorder": {
@@ -2185,6 +2192,217 @@
       "entityTagData": {
         "tagPointers": []
       }
+    },
+    {
+      "_entityName": "Back",
+      "_tag": {
+        "type": "UIButtonEntity",
+        "resourceId": ""
+      },
+      "_entityId": "AjqvgAhH",
+      "children": [
+        {
+          "_entityName": "text",
+          "_tag": {
+            "type": "UITextEntity",
+            "resourceId": ""
+          },
+          "_entityId": "B9CBJ0ny",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": null,
+          "propsData": {
+            "activeSelf": true,
+            "transform": {
+              "rotate": 0,
+              "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "pivot": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "anchoredPosition": {
+                "x": 0,
+                "y": 0
+              },
+              "sizeDelta": {
+                "x": 120,
+                "y": 50
+              }
+            },
+            "alpha": 100,
+            "priority": 0,
+            "text": {
+              "value": "返回",
+              "key": "",
+              "font": "Default",
+              "fontSize": 24,
+              "fontStyle": {
+                "bold": false,
+                "italic": false,
+                "underline": false
+              },
+              "color": "#ffffff",
+              "alignment": {
+                "h": "center",
+                "v": "middle"
+              },
+              "lineSpacing": 0,
+              "background": false,
+              "backgroundColor": "#e7b200",
+              "overflow": 0,
+              "backgroundRGBA": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
+              "shadow": false,
+              "shadowColor": "#000000",
+              "shadowOffset": {
+                "x": 1,
+                "y": 1
+              }
+            }
+          },
+          "ecaScripts": [],
+          "ecaProps": {
+            "HudLabelWidget": {},
+            "HudWidget": {},
+            "Entity": {}
+          },
+          "componentList": [],
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": null,
+      "propsData": {
+        "activeSelf": true,
+        "transform": {
+          "rotate": 0,
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchoredPosition": {
+            "x": -500,
+            "y": -200
+          },
+          "sizeDelta": {
+            "x": 150,
+            "y": 50
+          }
+        },
+        "alpha": 100,
+        "priority": 0,
+        "button": {
+          "spriteName": {
+            "fileId": "4fea53c19488f972a3e911c826b1bea7",
+            "filePath": "lib://fftextures/WorkshopIconLibrary/UGC_Btn_02_Big_Normal.png",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "texture"
+          },
+          "normal": "#FFFFFF",
+          "highlight": "#e2a222",
+          "pressed": "#C5C5C5",
+          "disabled": "#494949",
+          "onClicks": [],
+          "enableBorderImage": true,
+          "clickHandlers": [
+            {
+              "eventName": "OnClick",
+              "funcKey": "ToNewHome",
+              "type": "ugcscript",
+              "fileID": "eruheyrze8l-mi8kz55v-cl4kxj7eiy"
+            }
+          ],
+          "disableCollider": false,
+          "fillType": 1,
+          "slicedBorder": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "tiledBorder": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "centerInvisible": false,
+          "fillDir": 0,
+          "fillAmount": 0,
+          "invertFill": false,
+          "reverse": {
+            "x": false,
+            "y": false
+          },
+          "flip": 0,
+          "gradient": 1,
+          "gradientTop": {
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 1
+          },
+          "gradientBottom": {
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 1
+          }
+        }
+      },
+      "ecaScripts": [],
+      "ecaProps": {
+        "HudButtonWidget": {
+          "HudButtonWidget_15026837_custom": null,
+          "HudButtonWidget_67680512_custom": null,
+          "HudButtonWidget_33700402_custom": 0,
+          "HudButtonWidget_52340716_custom": null,
+          "HudButtonWidget_47946058_custom": 0,
+          "HudButtonWidget_73587085_custom": "",
+          "HudButtonWidget_39454785_custom": true
+        },
+        "HudWidget": {},
+        "Entity": {}
+      },
+      "componentList": [],
+      "entityTagData": {
+        "tagPointers": []
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true
     }
   ],
   "prefabVariant": null,
@@ -2226,7 +2444,24 @@
     "alpha": 100,
     "priority": 0
   },
-  "ecaScripts": [],
+  "ecaScripts": [
+    {
+      "fileId": "eruheyrze8l-mi8kz55v-cl4kxj7eiy",
+      "filePath": "Assets\\Scripts\\Home\\ChoiceHero.fcg",
+      "_tag": {
+        "type": "GFileRefer"
+      },
+      "fileType": "ugcscript"
+    },
+    {
+      "fileId": "ib290qp153d-mhxditfr-cstq6pvvk9u",
+      "filePath": "Assets\\Scripts\\PVE\\UI_C_HomeUI.fcg",
+      "_tag": {
+        "type": "GFileRefer"
+      },
+      "fileType": "ugcscript"
+    }
+  ],
   "ecaProps": {
     "CustomHud": {},
     "Entity": {}
