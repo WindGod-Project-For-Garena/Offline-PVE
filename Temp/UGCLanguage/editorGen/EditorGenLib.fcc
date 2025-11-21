@@ -121,6 +121,8 @@ enum EResUI {
     SkillLevelUp
     InGameDebug
     WarningEffect
+    NewHome
+    ChoiceHero
 }
 [element string]
 enum EResScene {
@@ -205,6 +207,8 @@ enum EResKeyUI {
     SkillLevelUp = "SkillLevelUp"
     InGameDebug = "InGameDebug"
     WarningEffect = "WarningEffect"
+    NewHome = "NewHome"
+    ChoiceHero = "ChoiceHero"
 }
 enum EResKeyScene {
     IsleLand = "IsleLand"

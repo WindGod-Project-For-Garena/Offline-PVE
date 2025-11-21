@@ -1,5 +1,5 @@
 {
-  "_entityName": "Root",
+  "_entityName": "NewHome",
   "_tag": {
     "type": "UIRootEntity",
     "resourceId": ""
@@ -27,7 +27,10 @@
             "selfValue": true,
             "valueTag": "activeValue"
           },
-          "unlockedValue": null,
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
           "editorLockValue": false,
           "editorVisibleValue": true,
           "propsData": {
@@ -47,8 +50,8 @@
                 "y": 0.5
               },
               "anchoredPosition": {
-                "x": 5,
-                "y": 2
+                "x": 0,
+                "y": 0
               },
               "sizeDelta": {
                 "x": 120,
@@ -107,7 +110,10 @@
         "selfValue": true,
         "valueTag": "activeValue"
       },
-      "unlockedValue": null,
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
       "editorLockValue": false,
       "editorVisibleValue": true,
       "propsData": {
@@ -127,11 +133,11 @@
             "y": 0.5
           },
           "anchoredPosition": {
-            "x": 15,
-            "y": 46
+            "x": 0,
+            "y": 50
           },
           "sizeDelta": {
-            "x": 314,
+            "x": 310,
             "y": 70
           }
         },
@@ -211,7 +217,7 @@
       }
     },
     {
-      "_entityName": "Button (1)",
+      "_entityName": "Hero",
       "_tag": {
         "type": "UIButtonEntity",
         "resourceId": ""
@@ -231,7 +237,10 @@
             "selfValue": true,
             "valueTag": "activeValue"
           },
-          "unlockedValue": null,
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
           "propsData": {
             "activeSelf": true,
             "transform": {
@@ -249,8 +258,8 @@
                 "y": 0.5
               },
               "anchoredPosition": {
-                "x": 6,
-                "y": -1
+                "x": 0,
+                "y": 0
               },
               "sizeDelta": {
                 "x": 120,
@@ -311,7 +320,10 @@
         "selfValue": true,
         "valueTag": "activeValue"
       },
-      "unlockedValue": null,
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
       "propsData": {
         "activeSelf": true,
         "transform": {
@@ -330,7 +342,7 @@
           },
           "anchoredPosition": {
             "x": 100,
-            "y": -49
+            "y": -50
           },
           "sizeDelta": {
             "x": 150,
@@ -415,7 +427,7 @@
       "editorVisibleValue": true
     },
     {
-      "_entityName": "Button (2)",
+      "_entityName": "Gifted",
       "_tag": {
         "type": "UIButtonEntity",
         "resourceId": ""
@@ -435,7 +447,10 @@
             "selfValue": true,
             "valueTag": "activeValue"
           },
-          "unlockedValue": null,
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
           "propsData": {
             "activeSelf": true,
             "transform": {
@@ -453,8 +468,8 @@
                 "y": 0.5
               },
               "anchoredPosition": {
-                "x": 6,
-                "y": -1
+                "x": 0,
+                "y": 0
               },
               "sizeDelta": {
                 "x": 120,
@@ -515,7 +530,10 @@
         "selfValue": true,
         "valueTag": "activeValue"
       },
-      "unlockedValue": null,
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
       "propsData": {
         "activeSelf": true,
         "transform": {
@@ -533,11 +551,11 @@
             "y": 0.5
           },
           "anchoredPosition": {
-            "x": -62,
-            "y": -51
+            "x": -100,
+            "y": -50
           },
           "sizeDelta": {
-            "x": 156,
+            "x": 150,
             "y": 70
           }
         },
@@ -624,7 +642,10 @@
     "selfValue": true,
     "valueTag": "activeValue"
   },
-  "unlockedValue": null,
+  "unlockedValue": {
+    "selfValue": true,
+    "valueTag": "unlockedValue"
+  },
   "editorLockValue": false,
   "editorVisibleValue": true,
   "propsData": {
@@ -668,4 +689,4 @@
   "discriminator": "ISceneLike",
   "version": 3
 }
-//"{FE:{"v":"1.15.4008519","c":{"FF":5001},"s":100}
+//"{FE:{"v":"1.15.4020050","c":{"FF":5001},"s":100}

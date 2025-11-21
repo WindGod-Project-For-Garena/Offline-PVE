@@ -1,5 +1,5 @@
 {
-  "_entityName": "Root",
+  "_entityName": "ChoiceHero",
   "_tag": {
     "type": "UIRootEntity",
     "resourceId": ""
@@ -7,7 +7,7 @@
   "_entityId": "YtVqvxb3",
   "children": [
     {
-      "_entityName": "Image (1)",
+      "_entityName": "ChoiceLevel",
       "_tag": {
         "type": "UIImageEntity",
         "resourceId": ""
@@ -544,7 +544,7 @@
       "editorVisibleValue": true
     },
     {
-      "_entityName": "Image (2)",
+      "_entityName": "ChoiceHero",
       "_tag": {
         "type": "UIImageEntity",
         "resourceId": ""
@@ -642,7 +642,7 @@
           "editorVisibleValue": true
         },
         {
-          "_entityName": "Skill_1",
+          "_entityName": "Hero_1",
           "_tag": {
             "type": "UIButtonEntity",
             "resourceId": ""
@@ -946,7 +946,10 @@
                 "selfValue": true,
                 "valueTag": "activeValue"
               },
-              "unlockedValue": null,
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
               "editorLockValue": false,
               "editorVisibleValue": true,
               "propsData": {
@@ -1047,7 +1050,10 @@
                 "selfValue": true,
                 "valueTag": "activeValue"
               },
-              "unlockedValue": null,
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
               "propsData": {
                 "activeSelf": true,
                 "transform": {
@@ -1255,7 +1261,7 @@
           "editorVisibleValue": true
         },
         {
-          "_entityName": "Skill_1 (1)",
+          "_entityName": "Hero_2",
           "_tag": {
             "type": "UIButtonEntity",
             "resourceId": ""
@@ -1559,7 +1565,10 @@
                 "selfValue": true,
                 "valueTag": "activeValue"
               },
-              "unlockedValue": null,
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
               "propsData": {
                 "activeSelf": true,
                 "transform": {
@@ -1660,7 +1669,10 @@
                 "selfValue": true,
                 "valueTag": "activeValue"
               },
-              "unlockedValue": null,
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
               "propsData": {
                 "activeSelf": true,
                 "transform": {
@@ -1965,7 +1977,7 @@
       "editorVisibleValue": true
     },
     {
-      "_entityName": "Button",
+      "_entityName": "StartGameButton",
       "_tag": {
         "type": "UIButtonEntity",
         "resourceId": ""
@@ -1985,7 +1997,10 @@
             "selfValue": true,
             "valueTag": "activeValue"
           },
-          "unlockedValue": null,
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
           "editorLockValue": false,
           "editorVisibleValue": true,
           "propsData": {
@@ -2065,7 +2080,10 @@
         "selfValue": true,
         "valueTag": "activeValue"
       },
-      "unlockedValue": null,
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
       "editorLockValue": false,
       "editorVisibleValue": true,
       "propsData": {
@@ -2174,7 +2192,10 @@
     "selfValue": true,
     "valueTag": "activeValue"
   },
-  "unlockedValue": null,
+  "unlockedValue": {
+    "selfValue": true,
+    "valueTag": "unlockedValue"
+  },
   "editorLockValue": false,
   "editorVisibleValue": true,
   "propsData": {
@@ -2218,4 +2239,4 @@
   "discriminator": "ISceneLike",
   "version": 3
 }
-//"{FE:{"v":"1.15.4008519","c":{"FF":5001},"s":100}
+//"{FE:{"v":"1.15.4020050","c":{"FF":5001},"s":100}
