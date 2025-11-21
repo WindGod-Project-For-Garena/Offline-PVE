@@ -202,6 +202,10 @@ enum EResUISkillLevelUp {
 enum EResUIWarningEffect {
     Image_center
 }
+[element CustomUIWidgetID]
+enum EResUIChoiceHero {
+    LevelNum
+}
 enum EResKeyUI {
     DeBug = "DeBug"
     SkillUI = "SkillUI"
@@ -281,6 +285,9 @@ enum EResKeySkillLevelUp {
 enum EResKeyWarningEffect {
     Image_center = "Image_center"
 }
+enum EResKeyChoiceHero {
+    LevelNum = "LevelNum"
+}
 // MobAttackEvent_AC(attackName String)
 [platform_client]
 [platform_server]
@@ -325,6 +332,7 @@ declare static graph Res {
     HomeUI Map<EResKeyHomeUI, CustomUIWidgetID>
     SkillLevelUp Map<EResKeySkillLevelUp, CustomUIWidgetID>
     WarningEffect Map<EResKeyWarningEffect, CustomUIWidgetID>
+    ChoiceHero Map<EResKeyChoiceHero, CustomUIWidgetID>
 }
 
 

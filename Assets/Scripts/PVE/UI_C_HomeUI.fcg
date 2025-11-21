@@ -31,7 +31,8 @@ graph UI_HomeUI {
     event OnAwake() {
         buttonLeft = GetWidgetFromCustomUI(GetLocalPlayer(),thisEntity as entity<CustomUI> , EResUIHomeUI.Button_left) as entity<UIWidgetButton>
         buttonRight = GetWidgetFromCustomUI(GetLocalPlayer(),thisEntity as entity<CustomUI> , EResUIHomeUI.Button_right) as entity<UIWidgetButton>
-        levelNum = GetWidgetFromCustomUI(GetLocalPlayer(),thisEntity as entity<CustomUI> , EResUIHomeUI.LevelNum) as entity<UIWidgetLabel>
+        levelNum = GetWidgetFromCustomUI(GetLocalPlayer(),thisEntity as entity<CustomUI> , EResUIChoiceHero.LevelNum) as entity<UIWidgetLabel>
+        
         skill1 = GetWidgetFromCustomUI(GetLocalPlayer(),thisEntity as entity<CustomUI> , EResUIHomeUI.Skill_1) as entity<UIWidgetButton>
         skill2 = GetWidgetFromCustomUI(GetLocalPlayer(),thisEntity as entity<CustomUI> , EResUIHomeUI.Skill_2) as entity<UIWidgetButton>
         skill3 = GetWidgetFromCustomUI(GetLocalPlayer(),thisEntity as entity<CustomUI> , EResUIHomeUI.Skill_3) as entity<UIWidgetButton>
