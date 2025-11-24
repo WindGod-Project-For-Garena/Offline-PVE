@@ -205,6 +205,8 @@ enum EResUIWarningEffect {
 [element CustomUIWidgetID]
 enum EResUIChoiceHero {
     LevelNum
+    Hero_1
+    Hero_2
 }
 enum EResKeyUI {
     DeBug = "DeBug"
@@ -287,6 +289,8 @@ enum EResKeyWarningEffect {
 }
 enum EResKeyChoiceHero {
     LevelNum = "LevelNum"
+    Hero_1 = "Hero_1"
+    Hero_2 = "Hero_2"
 }
 // MobAttackEvent_AC(attackName String)
 [platform_client]

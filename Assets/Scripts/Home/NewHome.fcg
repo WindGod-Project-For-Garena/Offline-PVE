@@ -7,16 +7,24 @@ import "Camera.fcc" as Camera
 import "Playable.fcc" as Playable
 import "Animation.fcc" as Animation
 import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
-
+import "../PVE/UI_C_HomeUI.fcg" as UI_C_HomeUI
 
 [platform_client]
 graph NewHome {
    //前往选择角色开始游戏面板
-   func ToNewGame(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
-        var NewHomeUIEntity = GetLocalPlayer()<PlayerJionGame>.NewHomeUI
-        NewHomeUIEntity<CustomUI>.IsVisible = false
+   async func ToNewGame(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
         var StartGameUIEntity = GetLocalPlayer()<PlayerJionGame>.StartGameUI
         StartGameUIEntity<CustomUI>.IsVisible = true
+
+        var skill1 entity<UIWidgetButton> = GetWidgetFromCustomUI(GetLocalPlayer(),StartGameUIEntity , EResUIChoiceHero.Hero_1) as entity<UIWidgetButton>
+        var skill2 entity<UIWidgetButton> = GetWidgetFromCustomUI(GetLocalPlayer(),StartGameUIEntity , EResUIChoiceHero.Hero_2) as entity<UIWidgetButton>
+        skill1<UIWidgetButton>.Color = #FF8900
+        skill2<UIWidgetButton>.Color = #F2A245
+        var skillIndex int = 1
+        GetLocalPlayer()<PlayerJionGame>.displaySkillByIndex(skillIndex)
+
+        var NewHomeUIEntity = GetLocalPlayer()<PlayerJionGame>.NewHomeUI
+        NewHomeUIEntity<CustomUI>.IsVisible = false
    }
    //前往角色面板
    func ToHeroPanel(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
