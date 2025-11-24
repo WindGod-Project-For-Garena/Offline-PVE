@@ -97,8 +97,6 @@ graph UI_HomeUI {
     }
 
     func OnStartButtonClick(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
-        DispatchEventToEntity(OnGameStartClick, globalEntity, PlatformType.Server, List<object>{level, skillIndex,ability1Level,ability2Level,ability3Level})
-        
         //临时处理，因为客户端服务端不互通
         var skillMultiplier float = 1.0 * ability3Level + 1
         GetLocalPlayer()<PlayerJionGame>.SkillUI<SkillUI>.skillMultiplier = skillMultiplier
@@ -107,6 +105,6 @@ graph UI_HomeUI {
         GetLocalPlayer()<PlayerJionGame>.CurrentSkill = skillIndex
         GetLocalPlayer()<PlayerJionGame>.displaySkillByIndex(skillIndex)
         GetLocalPlayer()<PlayerJionGame>.resetSkillLevel()
-       
+        GetLocalPlayer()<PlayerJionGame>.ShowChoiceThreeCardUI(level, skillIndex,ability1Level,ability2Level,ability3Level)
     }
 }

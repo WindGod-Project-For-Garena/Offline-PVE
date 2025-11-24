@@ -15,7 +15,7 @@ graph ChoiceHero {
    func ToNewHome(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
         var NewHomeUIEntity = GetLocalPlayer()<PlayerJionGame>.NewHomeUI
         NewHomeUIEntity<CustomUI>.IsVisible = true
-        var StartGameUIEntity = GetLocalPlayer()<PlayerJionGame>.StartGameUI
-        StartGameUIEntity<CustomUI>.IsVisible = false
+        var ChoiceHeroUIEntity = GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI
+        ChoiceHeroUIEntity<CustomUI>.IsVisible = false
    }
 }

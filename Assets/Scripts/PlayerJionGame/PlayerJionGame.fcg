@@ -22,7 +22,8 @@ graph PlayerJionGame {
     SkillLevelUpUI entity<CustomHud>
     //主页面
     NewHomeUI entity<CustomHud>     //主页面
-    StartGameUI entity<CustomHud>   //开始游戏选择英雄页面
+    ChoiceHeroUI entity<CustomHud>   //开始游戏选择英雄页面
+    ChoiceThreeCardUI entity<CustomHud>   //三选一卡牌界面
     HeroUI entity<CustomHud>        //英雄页面
     GiftedUI entity<CustomHud>      //天赋页面
     // 技能数据
@@ -58,6 +59,12 @@ graph PlayerJionGame {
     Skill3_RangeLevel int = 0
     Skill3_DamageLevel int = 0
     Skill3_CDLevel int = 0
+    // 触发下一波的传参
+    level int = 1
+    skillIndex int = 1
+    ability1Level int = 0
+    ability2Level int = 0
+    ability3Level int = 0
     //————————————————————————————————————————————————//
     event OnPlayerJoin(player entity<Player>) {
         if GetLocalPlayer() == player {
@@ -83,9 +90,9 @@ graph PlayerJionGame {
             NewHomeUI = NewHomeUIEntity
             NewHomeUIEntity<CustomUI>.IsVisible = true
 
-            CreateCustomUIClient(out var StartGameUIEntity, EResUI.ChoiceHero)
-            StartGameUI = StartGameUIEntity
-            StartGameUIEntity<CustomUI>.IsVisible = false
+            CreateCustomUIClient(out var ChoiceHeroUIEntity, EResUI.ChoiceHero)
+            ChoiceHeroUI = ChoiceHeroUIEntity
+            ChoiceHeroUIEntity<CustomUI>.IsVisible = false
 
             CreateCustomUIClient(out var HeroPanelUIEntity, EResUI.HeroPanel)
             HeroUI = HeroPanelUIEntity
@@ -94,6 +101,10 @@ graph PlayerJionGame {
             CreateCustomUIClient(out var GiftedPanelUIEntity, EResUI.GiftedPanel)
             GiftedUI = GiftedPanelUIEntity
             GiftedPanelUIEntity<CustomUI>.IsVisible = false
+
+            CreateCustomUIClient(out var ChoiceThreeCardUIEntity, EResUI.ChoiceThreeCard)
+            ChoiceThreeCardUI = ChoiceThreeCardUIEntity
+            ChoiceThreeCardUIEntity<CustomUI>.IsVisible = false
 
             var Skill_1Panel = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_1")
             Skill_1Panel<UIWidget>.Active = false
@@ -112,10 +123,17 @@ graph PlayerJionGame {
         }
     }
 
-    
+    //显示三选一卡牌界面
+    func ShowChoiceThreeCardUI(level int, skillIndex int, ability1Level int, ability2Level int, ability3Level int){
+        level = level
+        skillIndex = skillIndex
+        ability1Level = ability1Level
+        ability2Level = ability2Level
+        ability3Level = ability3Level
+        ChoiceThreeCardUI<CustomUI>.IsVisible = true
+    }
 
     //显示技能和升级技能使用
-
     func resetSkillLevel(){
         Skill1_RangeLevel = 0
         Skill1_DamageLevel = 0
@@ -266,7 +284,4 @@ graph PlayerJionGame {
         var DeBugUI_CD = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/cdlevelup/文本_level")
         DeBugUI_CD<UIWidgetLabel>.Content = cdLevel + "级"
     }
-
-
-
 }

@@ -1,0 +1,55 @@
+import "StdLibrary.fcc" as StdLib
+import "EditorGenLib.fcc" as EditorLib
+import "Player.fcc" as Player
+import "Hud.fcc" as Hud
+import "Math.fcc" as Math
+import "Camera.fcc" as Camera
+import "Playable.fcc" as Playable
+import "Animation.fcc" as Animation
+import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
+import "../PVE/UI_C_HomeUI.fcg" as UI_C_HomeUI
+import "../CustomEvent.fcc" as CustomEvent
+
+[platform_client]
+graph ChoiceThreeCard {
+   NowChoiceCard int = 0
+   //选择卡牌1
+   func Card_1(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+      NowChoiceCard = 1
+   }
+   //选择卡牌2
+   func Card_2(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+      NowChoiceCard = 2
+   }
+   //选择卡牌3
+   func Card_3(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+      NowChoiceCard = 3
+   }
+   //下一波开始
+   func NextWave(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+      if NowChoiceCard == 0 {
+         return
+      }
+      if NowChoiceCard != 0{
+         //开始卡牌数值等功能
+         Update(triggerPlayer)
+      }
+   }
+   //开始卡牌数值等功能
+   func Update(triggerPlayer entity<Player>) {
+      //数据处理完毕，关闭界面
+      Close(triggerPlayer)
+   }
+   //关闭界面
+   func Close(triggerPlayer entity<Player>) {
+      var ChoiceThreeCardUI = GetLocalPlayer()<PlayerJionGame>.ChoiceThreeCardUI
+      ChoiceThreeCardUI<CustomUI>.IsVisible = false
+      //开始下一波
+      var level = GetLocalPlayer()<PlayerJionGame>.level
+      var skillIndex = GetLocalPlayer()<PlayerJionGame>.skillIndex
+      var ability1Level = GetLocalPlayer()<PlayerJionGame>.ability1Level
+      var ability2Level = GetLocalPlayer()<PlayerJionGame>.ability2Level
+      var ability3Level = GetLocalPlayer()<PlayerJionGame>.ability3Level
+      DispatchEventToEntity(OnGameStartClick, globalEntity, PlatformType.Server, List<object>{level, skillIndex,ability1Level,ability2Level,ability3Level})
+   }
+}

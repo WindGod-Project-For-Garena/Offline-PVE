@@ -13,11 +13,11 @@ import "../PVE/UI_C_HomeUI.fcg" as UI_C_HomeUI
 graph NewHome {
    //前往选择角色开始游戏面板
    async func ToNewGame(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
-        var StartGameUIEntity = GetLocalPlayer()<PlayerJionGame>.StartGameUI
-        StartGameUIEntity<CustomUI>.IsVisible = true
+        var ChoiceHeroUIEntity = GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI
+        ChoiceHeroUIEntity<CustomUI>.IsVisible = true
 
-        var skill1 entity<UIWidgetButton> = GetWidgetFromCustomUI(GetLocalPlayer(),StartGameUIEntity , EResUIChoiceHero.Hero_1) as entity<UIWidgetButton>
-        var skill2 entity<UIWidgetButton> = GetWidgetFromCustomUI(GetLocalPlayer(),StartGameUIEntity , EResUIChoiceHero.Hero_2) as entity<UIWidgetButton>
+        var skill1 entity<UIWidgetButton> = GetWidgetFromCustomUI(GetLocalPlayer(),ChoiceHeroUIEntity , EResUIChoiceHero.Hero_1) as entity<UIWidgetButton>
+        var skill2 entity<UIWidgetButton> = GetWidgetFromCustomUI(GetLocalPlayer(),ChoiceHeroUIEntity , EResUIChoiceHero.Hero_2) as entity<UIWidgetButton>
         skill1<UIWidgetButton>.Color = #FF8900
         skill2<UIWidgetButton>.Color = #F2A245
         var skillIndex int = 1

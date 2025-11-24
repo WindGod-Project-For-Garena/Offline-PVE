@@ -125,6 +125,7 @@ enum EResUI {
     ChoiceHero
     GiftedPanel
     HeroPanel
+    ChoiceThreeCard
 }
 [element string]
 enum EResScene {
@@ -219,6 +220,7 @@ enum EResKeyUI {
     ChoiceHero = "ChoiceHero"
     GiftedPanel = "GiftedPanel"
     HeroPanel = "HeroPanel"
+    ChoiceThreeCard = "ChoiceThreeCard"
 }
 enum EResKeyScene {
     IsleLand = "IsleLand"
