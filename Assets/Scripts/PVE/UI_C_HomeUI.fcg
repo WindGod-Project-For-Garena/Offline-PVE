@@ -103,6 +103,6 @@ graph UI_HomeUI {
 
         GetLocalPlayer()<PlayerJionGame>.displaySkillByIndex(GetLocalPlayer()<PlayerJionGame>.CurrentSkill)
         GetLocalPlayer()<PlayerJionGame>.resetSkillLevel()
-        GetLocalPlayer()<PlayerJionGame>.ShowChoiceThreeCardUI(level,ability1Level,ability2Level,ability3Level)
+        start GetLocalPlayer()<PlayerJionGame>.ShowChoiceThreeCardUI(level,ability1Level,ability2Level,ability3Level)
     }
 }

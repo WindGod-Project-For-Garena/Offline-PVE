@@ -51,6 +51,8 @@ graph ChoiceOneOfThreeCard {
          //开始卡牌数值等功能
          Update(triggerPlayer)
       }
+      var SecondDownUI = GetLocalPlayer()<PlayerJionGame>.SecondDownUI
+      SecondDownUI<CustomUI>.IsVisible = false
    }
    //开始卡牌数值等功能
    func Update(triggerPlayer entity<Player>) {
@@ -77,6 +79,6 @@ graph ChoiceOneOfThreeCard {
       var ability1Level = GetLocalPlayer()<PlayerJionGame>.ability1Level
       var ability2Level = GetLocalPlayer()<PlayerJionGame>.ability2Level
       var ability3Level = GetLocalPlayer()<PlayerJionGame>.ability3Level
-      GetLocalPlayer()<PlayerJionGame>.ShowChoiceThreeCardUI(level, ability1Level, ability2Level, ability3Level)
+      GetLocalPlayer()<PlayerJionGame>.RefeshCard(level, ability1Level, ability2Level, ability3Level)
    }
 }

@@ -26,6 +26,7 @@ graph PlayerJionGame {
     ChoiceThreeCardUI entity<CustomHud>   //三选一卡牌界面
     HeroUI entity<CustomHud>        //英雄页面
     GiftedUI entity<CustomHud>      //天赋页面
+    SecondDownUI entity<CustomHud>      //倒计时页面
     // 技能数据
     SkillData = Map<string, Map<string, Map<string, object>>>{
         "Skill1":{
@@ -116,6 +117,10 @@ graph PlayerJionGame {
             ChoiceThreeCardUI = ChoiceThreeCardUIEntity
             ChoiceThreeCardUIEntity<CustomUI>.IsVisible = false
 
+            CreateCustomUIClient(out var SecondDownUIEntity, EResUI.SecondDown)
+            SecondDownUI = SecondDownUIEntity
+            SecondDownUIEntity<CustomUI>.IsVisible = false
+
             var Skill_1Panel = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_1")
             Skill_1Panel<UIWidget>.Active = false
             var JoyStickButton_1 = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_1/JoyStickFillAmount")
@@ -179,7 +184,17 @@ graph PlayerJionGame {
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     //显示三选一卡牌界面
-    func ShowChoiceThreeCardUI(level int, ability1Level int, ability2Level int, ability3Level int){
+    async func ShowChoiceThreeCardUI(level int, ability1Level int, ability2Level int, ability3Level int){
+        level = level
+        ability1Level = ability1Level
+        ability2Level = ability2Level
+        ability3Level = ability3Level
+        ChoiceThreeCardUI<CustomUI>.IsVisible = true
+        StartThree_choose_One(level, CurrentSkill, ability1Level, ability2Level, ability3Level)
+        start ShowSecondDown(10000)
+    }
+
+    func  RefeshCard(level int, ability1Level int, ability2Level int, ability3Level int) {
         level = level
         ability1Level = ability1Level
         ability2Level = ability2Level
@@ -187,7 +202,87 @@ graph PlayerJionGame {
         ChoiceThreeCardUI<CustomUI>.IsVisible = true
         StartThree_choose_One(level, CurrentSkill, ability1Level, ability2Level, ability3Level)
     }
+    
+    async func ShowSecondDown(time int) {
+        SecondDownUI<CustomUI>.IsVisible = true
+        var SecondDownText = GetWidgetByPath(GetLocalPlayer(), SecondDownUI, "/SecondDown/TextBackBoard/Text")
+        while time >= 0 {
+            SecondDownText<UIWidgetLabel>.Content = (time / 1000)
+            WaitForMillisecond(1000)
+            time = time - 1000
+            if time == 0 {
+                AutoChoiceBestOneCard()
+                SecondDownUI<CustomUI>.IsVisible = false
+            }
+            if  SecondDownUI<CustomUI>.IsVisible == false{
+                LogInfo("打断计时打断计时打断计时打断计时打断计时")
+                time = -1
+                break
+            }
+        }
+    }
 
+    // 自动选择当前最好的一张牌
+    func AutoChoiceBestOneCard() {
+        // 使用已经生成的卡牌信息
+        var card1 = Skill_1_CardData[CurrentRandomCards[0]]
+        var card2 = Skill_1_CardData[CurrentRandomCards[1]]
+        var card3 = Skill_1_CardData[CurrentRandomCards[2]]
+        
+        // 获取三张卡的稀有度
+        var rarity1 = card1["Rarity"] as int
+        var rarity2 = card2["Rarity"] as int
+        var rarity3 = card3["Rarity"] as int
+        
+        var highestRarity = Math.Max(rarity1, Math.Max(rarity2, rarity3))
+        
+        LogInfo("三张卡牌稀有度: " + Convert.ToString(rarity1) + ", " + Convert.ToString(rarity2) + ", " + Convert.ToString(rarity3))
+        LogInfo("最高稀有度: " + Convert.ToString(highestRarity))
+        
+        // 找出所有最高稀有度的卡牌索引
+        var bestCardIndices = List<int>{}
+        
+        if rarity1 == highestRarity {
+            List.Append(bestCardIndices, 0)
+        }
+        if rarity2 == highestRarity {
+            List.Append(bestCardIndices, 1)
+        }
+        if rarity3 == highestRarity {
+            List.Append(bestCardIndices, 2)
+        }
+        
+        // 选择最终卡牌
+        var selectedIndex = 0
+        
+        if List.Length(bestCardIndices) == 1 {
+            // 只有一张最高稀有度
+            selectedIndex = bestCardIndices[0]
+            LogInfo("唯一最高稀有度，选择卡牌" + Convert.ToString(selectedIndex + 1))
+        } else {
+            // 多张相同最高稀有度，随机选一个
+            var randomIndexInList = RandomInt(0, List.Length(bestCardIndices))
+            selectedIndex = bestCardIndices[randomIndexInList]
+            LogInfo("多张相同最高稀有度，随机选择卡牌" + Convert.ToString(selectedIndex + 1))
+        }
+        
+        var selectedCardId = CurrentRandomCards[selectedIndex]
+        LogInfo("最终选择 - 位置:" + Convert.ToString(selectedIndex + 1) + " ID:" + Convert.ToString(selectedCardId) + " 稀有度:" + Convert.ToString(highestRarity))
+        
+        // 选择逻辑
+        SelectCard(selectedCardId, CurrentSkill)
+        ApplyCardEffect(selectedCardId, CurrentSkill)
+        
+        // 隐藏选择界面
+        ChoiceThreeCardUI<CustomUI>.IsVisible = false
+        
+        // 触发选择效果
+        // OnCardSelected(selectedCardId, selectedIndex)
+
+        //开始下一波
+        DispatchEventToEntity(OnGameStartClick, globalEntity, PlatformType.Server, List<object>{level, CurrentSkill,ability1Level,ability2Level,ability3Level})
+    }
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     func StartThree_choose_One(level int, CurrentSkill int, ability1Level int, ability2Level int, ability3Level int){
         // 生成三个不重复的随机卡牌
         var cards = List<Map<string, object>>{}
@@ -234,7 +329,7 @@ graph PlayerJionGame {
             LogError("卡牌生成数量不足，只有" + Convert.ToString(List.Length(cards)) + "张")
         }
     }
-
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     // 生成随机卡牌（不允许重复选择）
     func GenerateRandomCard(CurrentSkill int) Map<string, object> {
         var cardDataMap = Map<int, Map<string, object>>{}
@@ -280,7 +375,7 @@ graph PlayerJionGame {
         // 返回对应的卡牌数据
         return cardDataMap[randomCardId]
     }
-
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     // 选择卡牌（当玩家选择某张卡牌时调用）
     func SelectCard(cardId int, CurrentSkill int) {
         var selectedCards = List<int>{}
@@ -309,7 +404,7 @@ graph PlayerJionGame {
             LogInfo("当前已选卡牌数量:" + Convert.ToString(List.Length(selectedCards)))
         }
     }
-
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     // 应用卡牌效果
     func ApplyCardEffect(cardId int, CurrentSkill int) {
         var cardDataMap = Map<int, Map<string, object>>{}
@@ -326,7 +421,7 @@ graph PlayerJionGame {
             LogInfo("应用卡牌效果 - ID:" + Convert.ToString(cardId) + "属性:" + Convert.ToString(cardInfo["Nature"]) + "数值:" + Convert.ToString(cardInfo["Value"]))
         }
     }
-
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     // 重置已选卡牌（开始新游戏时调用）
     func ResetSelectedCards() {
         List.Clear(SelectedCards_1)
