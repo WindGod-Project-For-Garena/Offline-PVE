@@ -20,6 +20,7 @@ graph NewHome {
         var skill2 entity<UIWidgetButton> = GetWidgetFromCustomUI(GetLocalPlayer(),ChoiceHeroUIEntity , EResUIChoiceHero.Hero_2) as entity<UIWidgetButton>
         skill1<UIWidgetButton>.Color = #FF8900
         skill2<UIWidgetButton>.Color = #F2A245
+        //默认选择第一个技能
         var skillIndex int = 1
         GetLocalPlayer()<PlayerJionGame>.displaySkillByIndex(skillIndex)
 

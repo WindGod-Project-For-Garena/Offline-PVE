@@ -12,25 +12,42 @@ import "../CustomEvent.fcc" as CustomEvent
 
 [platform_client]
 graph ChoiceOneOfThreeCard {
-    NowChoiceCard int = 0
    //选择卡牌1
    func Card_1(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
-      NowChoiceCard = 1
+      GetLocalPlayer()<PlayerJionGame>.NowChoiceCard = 1
    }
    //选择卡牌2
    func Card_2(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
-      NowChoiceCard = 2
+      GetLocalPlayer()<PlayerJionGame>.NowChoiceCard = 2
    }
    //选择卡牌3
    func Card_3(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
-      NowChoiceCard = 3
+      GetLocalPlayer()<PlayerJionGame>.NowChoiceCard = 3
    }
    //下一波开始
    func NextWave(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
-      if NowChoiceCard == 0 {
+      if GetLocalPlayer()<PlayerJionGame>.NowChoiceCard == 0 {
          return
       }
-      if NowChoiceCard != 0{
+      var CurrentskillIndex = GetLocalPlayer()<PlayerJionGame>.CurrentSkill
+
+      if GetLocalPlayer()<PlayerJionGame>.NowChoiceCard == 1 {
+         var CurrentRandomCards = GetLocalPlayer()<PlayerJionGame>.CurrentRandomCards[0]
+         GetLocalPlayer()<PlayerJionGame>.SelectCard(CurrentRandomCards, CurrentskillIndex)
+         GetLocalPlayer()<PlayerJionGame>.ApplyCardEffect(CurrentRandomCards, CurrentskillIndex)
+      }
+      if GetLocalPlayer()<PlayerJionGame>.NowChoiceCard == 2 {
+         var CurrentRandomCards = GetLocalPlayer()<PlayerJionGame>.CurrentRandomCards[1]
+         GetLocalPlayer()<PlayerJionGame>.SelectCard(CurrentRandomCards, CurrentskillIndex)
+         GetLocalPlayer()<PlayerJionGame>.ApplyCardEffect(CurrentRandomCards, CurrentskillIndex)
+      }
+      if GetLocalPlayer()<PlayerJionGame>.NowChoiceCard == 3 {
+         var CurrentRandomCards = GetLocalPlayer()<PlayerJionGame>.CurrentRandomCards[2]
+         GetLocalPlayer()<PlayerJionGame>.SelectCard(CurrentRandomCards, CurrentskillIndex)
+         GetLocalPlayer()<PlayerJionGame>.ApplyCardEffect(CurrentRandomCards, CurrentskillIndex)
+      }
+      
+      if GetLocalPlayer()<PlayerJionGame>.NowChoiceCard != 0{
          //开始卡牌数值等功能
          Update(triggerPlayer)
       }
@@ -40,16 +57,26 @@ graph ChoiceOneOfThreeCard {
       //数据处理完毕，关闭界面
       Close(triggerPlayer)
    }
+
    //关闭界面
    func Close(triggerPlayer entity<Player>) {
       var ChoiceThreeCardUI = GetLocalPlayer()<PlayerJionGame>.ChoiceThreeCardUI
       ChoiceThreeCardUI<CustomUI>.IsVisible = false
       //开始下一波
       var level = GetLocalPlayer()<PlayerJionGame>.level
-      var skillIndex = GetLocalPlayer()<PlayerJionGame>.skillIndex
+      var CurrentSkill = GetLocalPlayer()<PlayerJionGame>.CurrentSkill
       var ability1Level = GetLocalPlayer()<PlayerJionGame>.ability1Level
       var ability2Level = GetLocalPlayer()<PlayerJionGame>.ability2Level
       var ability3Level = GetLocalPlayer()<PlayerJionGame>.ability3Level
-      DispatchEventToEntity(OnGameStartClick, globalEntity, PlatformType.Server, List<object>{level, skillIndex,ability1Level,ability2Level,ability3Level})
+      DispatchEventToEntity(OnGameStartClick, globalEntity, PlatformType.Server, List<object>{level, CurrentSkill,ability1Level,ability2Level,ability3Level})
+   }
+
+   //刷新卡牌
+   func RefreshCards(button entity<UIWidgetButton>, triggerPlayer entity<Player>){
+      var level = GetLocalPlayer()<PlayerJionGame>.level
+      var ability1Level = GetLocalPlayer()<PlayerJionGame>.ability1Level
+      var ability2Level = GetLocalPlayer()<PlayerJionGame>.ability2Level
+      var ability3Level = GetLocalPlayer()<PlayerJionGame>.ability3Level
+      GetLocalPlayer()<PlayerJionGame>.ShowChoiceThreeCardUI(level, ability1Level, ability2Level, ability3Level)
    }
 }

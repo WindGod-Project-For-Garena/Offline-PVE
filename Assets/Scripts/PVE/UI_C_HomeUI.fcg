@@ -23,7 +23,6 @@ graph UI_HomeUI {
     ability3Text entity<UIWidgetLabel> = nil
 
     level int = 1
-    skillIndex int = 1
     ability1Level int = 0
     ability2Level int = 0
     ability3Level int = 0
@@ -63,21 +62,21 @@ graph UI_HomeUI {
     }
 
     func OnSkill1Click(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
-        skillIndex = 1
+        GetLocalPlayer()<PlayerJionGame>.CurrentSkill = 1
         skill1<UIWidgetButton>.Color = #FF8900
         skill2<UIWidgetButton>.Color = #F2A245
         // skill3<UIWidgetButton>.Color = #F2A245
     }
 
     func OnSkill2Click(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
-        skillIndex = 2
+        GetLocalPlayer()<PlayerJionGame>.CurrentSkill = 2
         skill1<UIWidgetButton>.Color = #F2A245
         skill2<UIWidgetButton>.Color = #FF8900
         // skill3<UIWidgetButton>.Color = #F2A245
     }
 
     func OnSkill3Click(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
-        skillIndex = 3
+        GetLocalPlayer()<PlayerJionGame>.CurrentSkill = 3
         skill1<UIWidgetButton>.Color = #F2A245
         skill2<UIWidgetButton>.Color = #F2A245
         // skill3<UIWidgetButton>.Color = #FF8900
@@ -102,9 +101,8 @@ graph UI_HomeUI {
         GetLocalPlayer()<PlayerJionGame>.SkillUI<SkillUI>.skillMultiplier = skillMultiplier
         thisEntity<CustomUI>.IsVisible = false
 
-        GetLocalPlayer()<PlayerJionGame>.CurrentSkill = skillIndex
-        GetLocalPlayer()<PlayerJionGame>.displaySkillByIndex(skillIndex)
+        GetLocalPlayer()<PlayerJionGame>.displaySkillByIndex(GetLocalPlayer()<PlayerJionGame>.CurrentSkill)
         GetLocalPlayer()<PlayerJionGame>.resetSkillLevel()
-        GetLocalPlayer()<PlayerJionGame>.ShowChoiceThreeCardUI(level, skillIndex,ability1Level,ability2Level,ability3Level)
+        GetLocalPlayer()<PlayerJionGame>.ShowChoiceThreeCardUI(level,ability1Level,ability2Level,ability3Level)
     }
 }

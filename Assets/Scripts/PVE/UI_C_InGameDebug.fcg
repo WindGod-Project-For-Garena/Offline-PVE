@@ -2,26 +2,19 @@ import "StdLibrary.fcc" as StdLib
 import "EditorGenLib.fcc" as EditorLib
 import "Hud.fcc" as Hud
 import "../CustomEvent.fcc" as CustomEvent
-
-
-
+import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
 
 [platform_client]
 graph UI_HomeUI {
-    //Executed when entity is created
-
-    
-    
-    event OnAwake() {
-       
-    }
-
     func onNextWaveButtonClick(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
         DispatchEventToEntity(S_Debug_NextWave,globalEntity, PlatformType.Server, List<object>{})
+
+        var NewHomeUI = GetLocalPlayer()<PlayerJionGame>.NewHomeUI
+        NewHomeUI<CustomUI>.IsVisible = true
+
+        //恢复默认选择技能1
+        GetLocalPlayer()<PlayerJionGame>.CurrentSkill = 1
+        //恢复默认没有选择卡牌
+        GetLocalPlayer()<PlayerJionGame>.NowChoiceCard = 0
     }
-
-   
-
-
-
 }

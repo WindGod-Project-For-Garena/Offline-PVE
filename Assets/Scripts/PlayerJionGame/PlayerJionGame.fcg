@@ -46,7 +46,9 @@ graph PlayerJionGame {
         },
     }
     //当前技能
-    CurrentSkill int = 0
+    CurrentSkill int = 1
+    //当前选择的卡牌第几张1-3
+    NowChoiceCard int = 0
     // 每个技能的各个属性等级（范围、伤害、CD分别维护）
     Skill1_RangeLevel int = 0
     Skill1_DamageLevel int = 0
@@ -61,7 +63,6 @@ graph PlayerJionGame {
     Skill3_CDLevel int = 0
     // 触发下一波的传参
     level int = 1
-    skillIndex int = 1
     ability1Level int = 0
     ability2Level int = 0
     ability3Level int = 0
@@ -69,6 +70,11 @@ graph PlayerJionGame {
     // 技能卡牌词条属性库
     Skill_1_CardData Map<int, Map<string, object>> = Map<int, Map<string, object>>{}
     Skill_2_CardData Map<int, Map<string, object>> = Map<int, Map<string, object>>{}
+    // 已选卡牌记录
+    SelectedCards_1 List<int> = List<int>{}  // 技能1已选掉的卡牌
+    SelectedCards_2 List<int> = List<int>{}  // 技能2已选掉的卡牌
+    // 当前选择的卡
+    CurrentRandomCards List<int> = List<int>{}      // 当前随机出来的卡牌
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     event OnPlayerJoin(player entity<Player>) {
         if GetLocalPlayer() == player {
@@ -173,13 +179,251 @@ graph PlayerJionGame {
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     //显示三选一卡牌界面
-    func ShowChoiceThreeCardUI(level int, skillIndex int, ability1Level int, ability2Level int, ability3Level int){
+    func ShowChoiceThreeCardUI(level int, ability1Level int, ability2Level int, ability3Level int){
         level = level
-        skillIndex = skillIndex
         ability1Level = ability1Level
         ability2Level = ability2Level
         ability3Level = ability3Level
         ChoiceThreeCardUI<CustomUI>.IsVisible = true
+        StartThree_choose_One(level, CurrentSkill, ability1Level, ability2Level, ability3Level)
+    }
+
+    func StartThree_choose_One(level int, CurrentSkill int, ability1Level int, ability2Level int, ability3Level int){
+        // 生成三个不重复的随机卡牌
+        var cards = List<Map<string, object>>{}
+        while List.Length(cards) < 3 {
+            var newCard Map<string, object> = GenerateRandomCard(CurrentSkill)
+            if  newCard != nil {
+                // 检查卡牌是否已存在，避免重复
+                var isDuplicate = false
+                for i, existingCard in cards {
+                    if existingCard["CardID"] == newCard["CardID"] {
+                        isDuplicate = true
+                        break
+                    }
+                }
+                if isDuplicate == false {
+                    List.Append(cards, newCard)
+                    LogInfo("生成卡牌:" + Convert.ToString(newCard["CardID"]) + "-" + Convert.ToString(newCard["Nature"]))
+                }
+            } else {
+                LogInfo("技能" + Convert.ToString(CurrentSkill) + "的所有卡牌都已选择过")
+                break
+            }
+        }
+        
+        // 显示生成的三个卡牌
+        if List.Length(cards) >= 3 {
+            var card1 = cards[0]
+            var card2 = cards[1]
+            var card3 = cards[2]
+            // 保存卡牌ID到 CurrentRandomCards
+            List.Clear(CurrentRandomCards)
+            List.Append(CurrentRandomCards, card1["CardID"] as int)
+            List.Append(CurrentRandomCards, card2["CardID"] as int)
+            List.Append(CurrentRandomCards, card3["CardID"] as int)
+            
+            LogInfo("=== 三选一卡牌生成完成 ===")
+            LogInfo("卡牌1 - ID:" + Convert.ToString(card1["CardID"]) + "属性:" + Convert.ToString(card1["Nature"]))
+            LogInfo("卡牌2 - ID:" + Convert.ToString(card2["CardID"]) + "属性:" + Convert.ToString(card2["Nature"]))
+            LogInfo("卡牌3 - ID:" + Convert.ToString(card3["CardID"]) + "属性:" + Convert.ToString(card3["Nature"]))
+            
+            // 卡牌数据显示到UI
+            UpdateCardUI(card1, card2, card3)
+        } else {
+            LogError("卡牌生成数量不足，只有" + Convert.ToString(List.Length(cards)) + "张")
+        }
+    }
+
+    // 生成随机卡牌（不允许重复选择）
+    func GenerateRandomCard(CurrentSkill int) Map<string, object> {
+        var cardDataMap = Map<int, Map<string, object>>{}
+        var selectedCards = List<int>{}
+        
+        // 选择对应的牌库和已选记录
+        if CurrentSkill == 1 {
+            cardDataMap = Skill_1_CardData
+            selectedCards = SelectedCards_1
+        } else if CurrentSkill == 2 {
+            cardDataMap = Skill_2_CardData
+            selectedCards = SelectedCards_2
+        } else {
+            LogError("无效的技能索引:" + Convert.ToString(CurrentSkill))
+            return nil
+        }
+        
+        // 获取所有未选过的卡牌ID
+        var availableCardIds = List<int>{}
+        for cardId, cardData in cardDataMap {
+            var isSelected = false
+            for i, selectedId in selectedCards {
+                if selectedId == cardId {
+                    isSelected = true
+                    break
+                }
+            }
+            if isSelected == false {
+                List.Append(availableCardIds, cardId)
+            }
+        }
+        
+        // 如果没有可用卡牌，返回空
+        if List.Length(availableCardIds) == 0 {
+            LogWarning("技能" + Convert.ToString(CurrentSkill) + "的所有卡牌都已选择过")
+            return nil
+        }
+        
+        // 随机选择一个卡牌ID
+        var randomIndex = RandomInt(0, List.Length(availableCardIds))
+        var randomCardId = availableCardIds[randomIndex]
+        
+        // 返回对应的卡牌数据
+        return cardDataMap[randomCardId]
+    }
+
+    // 选择卡牌（当玩家选择某张卡牌时调用）
+    func SelectCard(cardId int, CurrentSkill int) {
+        var selectedCards = List<int>{}
+        
+        if CurrentSkill == 1 {
+            selectedCards = SelectedCards_1
+        } else if CurrentSkill == 2 {
+            selectedCards = SelectedCards_2
+        } else {
+            LogError("无效的技能索引:" + Convert.ToString(CurrentSkill))
+            return
+        }
+        
+        // 检查是否已选择过
+        var alreadySelected = false
+        for i, selectedId in selectedCards {
+            if selectedId == cardId {
+                alreadySelected = true
+                break
+            }
+        }
+        
+        if alreadySelected == false {
+            List.Append(selectedCards, cardId)
+            LogInfo("卡牌" + Convert.ToString(cardId) + "已添加到已选列表，技能" + Convert.ToString(CurrentSkill))
+            LogInfo("当前已选卡牌数量:" + Convert.ToString(List.Length(selectedCards)))
+        }
+    }
+
+    // 应用卡牌效果
+    func ApplyCardEffect(cardId int, CurrentSkill int) {
+        var cardDataMap = Map<int, Map<string, object>>{}
+        
+        if CurrentSkill == 1 {
+            cardDataMap = Skill_1_CardData
+        } else if CurrentSkill == 2 {
+            cardDataMap = Skill_2_CardData
+        }
+        
+        var cardInfo = cardDataMap[cardId]
+        if cardInfo != nil {
+            //根据卡牌的Nature和Value来应用效果
+            LogInfo("应用卡牌效果 - ID:" + Convert.ToString(cardId) + "属性:" + Convert.ToString(cardInfo["Nature"]) + "数值:" + Convert.ToString(cardInfo["Value"]))
+        }
+    }
+
+    // 重置已选卡牌（开始新游戏时调用）
+    func ResetSelectedCards() {
+        List.Clear(SelectedCards_1)
+        List.Clear(SelectedCards_2)
+        LogInfo("已选卡牌列表已重置")
+    }
+
+    // 获取剩余可用卡牌数量
+    func GetAvailableCardCount(CurrentSkill int) int {
+        var cardDataMap = Map<int, Map<string, object>>{}
+        var selectedCards = List<int>{}
+        if CurrentSkill == 1 {
+            cardDataMap = Skill_1_CardData
+            selectedCards = SelectedCards_1
+        } else if CurrentSkill == 2 {
+            cardDataMap = Skill_2_CardData
+            selectedCards = SelectedCards_2
+        }
+        return Map.Length(cardDataMap) - List.Length(selectedCards)
+    }
+
+    func UpdateCardUI(card1 Map<string, object>, card2 Map<string, object>, card3 Map<string, object>) {
+        // 更新卡牌1的UI
+        if card1 != nil {
+            //——————————————————————————————————————————————————————————————————————————————————————————————//
+            // 设置卡牌1的图标
+            var card1Icon = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/ChoiceThreeCardPanel/Card_1/icon")
+            // card1Icon<UIWidgetImage>.SetImage("CardIcon_" + Convert.ToString(card1["CardID"]))
+            //——————————————————————————————————————————————————————————————————————————————————————————————//
+            // 设置卡牌1的技能说明
+            var card1Text = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/ChoiceThreeCardPanel/Card_1/IFMText")
+            var description = GenerateCardDescription(card1)
+            card1Text<UIWidgetLabel>.Content = description
+            //——————————————————————————————————————————————————————————————————————————————————————————————//
+            // 设置卡牌1的稀有度显示
+            var rarity1 = card1["Rarity"] as int
+            UpdateCardRarityUI(1, rarity1)
+        }
+        // 更新卡牌2的UI
+        if card2 != nil {
+            //——————————————————————————————————————————————————————————————————————————————————————————————//
+            // 设置卡牌2的图标
+            var card2Icon = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/ChoiceThreeCardPanel/Card_2/icon")
+            // card2Icon<UIWidgetImage>.SetImage("CardIcon_" + Convert.ToString(card2["CardID"]))
+            //——————————————————————————————————————————————————————————————————————————————————————————————//
+            // 设置卡牌2的技能说明
+            var card2Text = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/ChoiceThreeCardPanel/Card_2/IFMText")
+            var description = GenerateCardDescription(card2)
+            card2Text<UIWidgetLabel>.Content = description
+            //——————————————————————————————————————————————————————————————————————————————————————————————//
+            // 设置卡牌2的稀有度显示
+            var rarity2 = card2["Rarity"] as int
+            UpdateCardRarityUI(2, rarity2)
+        }
+        // 更新卡牌3的UI
+        if card3 != nil {
+            //——————————————————————————————————————————————————————————————————————————————————————————————//
+            // 设置卡牌3的图标
+            var card3Icon = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/ChoiceThreeCardPanel/Card_3/icon")
+            // card3Icon<UIWidgetImage>.SetImage("CardIcon_" + Convert.ToString(card3["CardID"]))
+            //——————————————————————————————————————————————————————————————————————————————————————————————//
+            // 设置卡牌3的技能说明
+            var card3Text = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/ChoiceThreeCardPanel/Card_3/IFMText")
+            var description = GenerateCardDescription(card3)
+            card3Text<UIWidgetLabel>.Content = description
+            //——————————————————————————————————————————————————————————————————————————————————————————————//
+            // 设置卡牌2的稀有度显示
+            var rarity3 = card3["Rarity"] as int
+            UpdateCardRarityUI(3, rarity3)
+        }
+        LogInfo("卡牌UI更新完成")
+    }
+    // 生成卡牌描述文本
+    func GenerateCardDescription(card Map<string, object>) string {
+        var translationText = Convert.ToString(card["TranslationText"])
+        // 如果有翻译文本，直接使用
+        if translationText != "" && translationText != "None" {
+            return translationText
+        }
+    }
+    // 更新卡牌稀有度显示（根据稀有度显示不同的边框颜色）
+    func UpdateCardRarityUI(cardIndex int, rarity int) {
+        var rarityPath = "/ChoiceThreeCardPanel/Card_" + Convert.ToString(cardIndex)
+        var rarityWidget = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, rarityPath)
+        if rarityWidget != nil {
+            // 根据稀有度设置不同的颜色
+            if rarity == 1 {
+                // 普通 - 蓝色
+                rarityWidget<UIWidgetButton>.Color = #1B92D6
+            } else if rarity == 2 {
+                // 稀有 - 紫色
+                rarityWidget<UIWidgetButton>.Color = #6C00FF
+            } else if rarity == 3 {
+                // 史诗 - 金色
+                rarityWidget<UIWidgetButton>.Color = #FFD700
+            }
+        }
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     //显示技能和升级技能使用
