@@ -11,8 +11,8 @@ import "../PVE/UI_C_HomeUI.fcg" as UI_C_HomeUI
 import "../CustomEvent.fcc" as CustomEvent
 
 [platform_client]
-graph ChoiceThreeCard {
-   NowChoiceCard int = 0
+graph ChoiceOneOfThreeCard {
+    NowChoiceCard int = 0
    //选择卡牌1
    func Card_1(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
       NowChoiceCard = 1
