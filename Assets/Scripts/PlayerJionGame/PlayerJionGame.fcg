@@ -65,7 +65,11 @@ graph PlayerJionGame {
     ability1Level int = 0
     ability2Level int = 0
     ability3Level int = 0
-    //————————————————————————————————————————————————//
+    //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+    // 技能卡牌词条属性库
+    Skill_1_CardData Map<int, Map<string, object>> = Map<int, Map<string, object>>{}
+    Skill_2_CardData Map<int, Map<string, object>> = Map<int, Map<string, object>>{}
+    //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     event OnPlayerJoin(player entity<Player>) {
         if GetLocalPlayer() == player {
             // CreateCustomUIClient(out var ui, EResUI.HomeUI)
@@ -120,9 +124,54 @@ graph PlayerJionGame {
             Skill_3Panel<UIWidget>.Active = false
             var JoyStickButton_3 = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_3/JoyStickFillAmount")
             JoyStickButton_3<UIWidget>.Active = false
+
+            InjectSkill_1_CardData()
+            InjectSkill_2_CardData()
         }
     }
-
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+    // 注入技能1的卡牌数据
+    func InjectSkill_1_CardData() {
+        // 解析CSV
+        Map.Clear(Skill_1_CardData)
+        for cardId = 1, 33, 1 {
+            var cardInfo = Map<string, object>{}
+            cardInfo["CardID"] = cardId
+            // 从CSV读取卡牌数据，从第三行开始读取
+            var cardRow = CSVData.ReadCSVRow(EResCSV.Skill_1_CardData, cardId + 2)
+            cardInfo["Nature"] = cardRow[1]
+            cardInfo["Value"] = cardRow[2] as List<float>
+            cardInfo["Rarity"] = cardRow[3] as List<int>
+            cardInfo["TranslationText"] = cardRow[4]
+            cardInfo["Sktchtext"] = cardRow[5]
+            Skill_1_CardData[cardId] = cardInfo
+            // 在显示时格式化浮点数，保留两位小数
+            LogInfo(Skill_1_CardData[cardId])
+        }
+        LogInfo("技能1卡牌数据注入完成")
+    }
+    
+    // 注入技能2的卡牌数据
+    func InjectSkill_2_CardData() {
+        // 解析CSV
+        Map.Clear(Skill_2_CardData)
+        for cardId = 1, 31, 1 {
+            var cardInfo = Map<string, object>{}
+            cardInfo["CardID"] = cardId
+            // 从CSV读取卡牌数据，从第三行开始读取
+            var cardRow = CSVData.ReadCSVRow(EResCSV.Skill_2_CardData, cardId + 2)
+            cardInfo["Nature"] = cardRow[1]
+            cardInfo["Value"] = cardRow[2] as List<float>
+            cardInfo["Rarity"] = cardRow[3] as List<int>
+            cardInfo["TranslationText"] = cardRow[4]
+            cardInfo["Sktchtext"] = cardRow[5]
+            Skill_2_CardData[cardId] = cardInfo
+            // 在显示时格式化浮点数，保留两位小数
+            LogInfo(Skill_2_CardData[cardId])
+        }
+        LogInfo("技能2卡牌数据注入完成")
+    }
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     //显示三选一卡牌界面
     func ShowChoiceThreeCardUI(level int, skillIndex int, ability1Level int, ability2Level int, ability3Level int){
         level = level
@@ -132,7 +181,7 @@ graph PlayerJionGame {
         ability3Level = ability3Level
         ChoiceThreeCardUI<CustomUI>.IsVisible = true
     }
-
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     //显示技能和升级技能使用
     func resetSkillLevel(){
         Skill1_RangeLevel = 0

@@ -170,6 +170,8 @@ enum EResItem {
 enum EResCSV {
     LevelConfig
     MonsterInfo
+    Skill_1_CardData
+    Skill_2_CardData
 }
 [element entity]
 enum EResSceneIsleLand {
@@ -260,6 +262,8 @@ enum EResKeyItem {
 enum EResKeyCSV {
     LevelConfig = "LevelConfig"
     MonsterInfo = "MonsterInfo"
+    Skill_1_CardData = "Skill_1_CardData"
+    Skill_2_CardData = "Skill_2_CardData"
 }
 enum EResKeyIsleLand {
     PendingRemoveMobs = "PendingRemoveMobs"

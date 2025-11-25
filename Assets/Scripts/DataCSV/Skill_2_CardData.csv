@@ -1,31 +1,32 @@
-CardID,Nature,Value,Rarity,TranslationText,Sktchtext
-1,movespeed,0.1,1,ÒÆ¶¯ËÙ¶È+10% ,skillCard_Lightning_01
-2,WeaponDamage,0.5,1,ÎäÆ÷ÉËº¦+50%,skillCard_Lightning_02
-3,movespeed,0.2,2,ÒÆ¶¯ËÙ¶È+20%,skillCard_Lightning_03
-4,WeaponDamage,0.8,2,ÎäÆ÷ÉËº¦+80%,skillCard_Lightning_04
-5,movespeed,0.3,3,ÒÆ¶¯ËÙ¶È+30%,skillCard_Lightning_05
-6,WeaponDamage,1.5,3,ÎäÆ÷ÉËº¦+150%,skillCard_Lightning_06
-7,LightningAmount,1,1,ÉÁµçÊıÁ¿+1,skillCard_Lightning_07
-8,SkillCD,0.15,1,¼¼ÄÜÀäÈ´-15%,skillCard_Lightning_08
-9,SkillDamage,0.5,1,ÉÁµçÉËº¦+50%,skillCard_Lightning_09
-10,LightningAmount,2,2,ÉÁµçÊıÁ¿+2,skillCard_Lightning_10
-11,SkillCD,0.3,2,¼¼ÄÜÀäÈ´-30%,skillCard_Lightning_11
-12,SkillDamage,0.8,2,ÉÁµçÉËº¦+80%,skillCard_Lightning_12
-13,LightningAmount,3,3,ÉÁµçÊıÁ¿+3,skillCard_Lightning_13
-14,SkillDamage,1.5,3,ÉÁµçÉËº¦+150%,skillCard_Lightning_14
-15,SkillAmount,2,3,ÉÁµçÁ¬ĞøÊÍ·Å2´Î,skillCard_Lightning_15
-16,LightningRange,1,1,ÉÁµç±¬Õ¨·¶Î§+1m,skillCard_Lightning_16
-17,LightningRange,2,2,ÉÁµç±¬Õ¨·¶Î§+2m,skillCard_Lightning_17
-18,LightningExplosion,0.5,2,ÉÁµçÃüÖĞ²úÉúĞ¡±¬Õ¨,skillCard_Lightning_18
-19,LightningRange,3,3,ÉÁµç±¬Õ¨·¶Î§+3m,skillCard_Lightning_19
-20,LightningExplosion,1,3,Ã¿µÀÉÁµçÃüÖĞÊ±£¬¶îÍâÔì³ÉÒ»´Î100%ÉËº¦µÄ´ó·¶Î§±¬Õ¨,skillCard_Lightning_20
-21,WeaponLightningProb,0.05,1,ÎäÆ÷ÉÁµç´¥·¢¼¸ÂÊ+5%,skillCard_Lightning_21
-22,ReloadSpeed,0.25,1,»»µ¯ËÙ¶ÈÌáÉı25%,skillCard_Lightning_22
-23,ReloadNow,0,2,¼¼ÄÜºóÁ¢¿Ì×°µ¯,skillCard_Lightning_23
-24,WeaponLightningProb,0.1,2,ÎäÆ÷ÉÁµç´¥·¢¼¸ÂÊ+10%,skillCard_Lightning_24
-25,WeaponMaxMagazine,10,2,µ¯Ï»ÈİÁ¿+10,skillCard_Lightning_25
-26,AttackSpeed,0.2,2,¹¥»÷ËÙ¶È+20%,skillCard_Lightning_26
-27,ReloadSpeed,0.5,2,»»µ¯ËÙ¶ÈÌáÉı50%,skillCard_Lightning_27
-28,WeaponLightningProb,0.15,3,ÎäÆ÷ÉÁµç´¥·¢¼¸ÂÊ+15%,skillCard_Lightning_28
-29,ReloadBuff,0.3,3,Ã¿´Î»»µ¯ºóµÄ5ÃëÄÚ£¬ÉäËÙÌáÉı30%,skillCard_Lightning_29
-30,ReloadSpeed,0.75,3,»»µ¯ËÙ¶ÈÌáÉı75%,skillCard_Lightning_30
+ï»¿CardID,Nature,Value,Rarity,TranslationText,Sktchtext
+int,string,float,int,string,string
+1,movespeed,0.1,1,ç§»åŠ¨é€Ÿåº¦+10% ,skillCard_Lightning_01
+2,WeaponDamage,0.5,1,æ­¦å™¨ä¼¤å®³+50%,skillCard_Lightning_02
+3,movespeed,0.2,2,ç§»åŠ¨é€Ÿåº¦+20%,skillCard_Lightning_03
+4,WeaponDamage,0.8,2,æ­¦å™¨ä¼¤å®³+80%,skillCard_Lightning_04
+5,movespeed,0.3,3,ç§»åŠ¨é€Ÿåº¦+30%,skillCard_Lightning_05
+6,WeaponDamage,1.5,3,æ­¦å™¨ä¼¤å®³+150%,skillCard_Lightning_06
+7,LightningAmount,1,1,é—ªç”µæ•°é‡+1,skillCard_Lightning_07
+8,SkillCD,0.15,1,æŠ€èƒ½å†·å´-15%,skillCard_Lightning_08
+9,SkillDamage,0.5,1,é—ªç”µä¼¤å®³+50%,skillCard_Lightning_09
+10,LightningAmount,2,2,é—ªç”µæ•°é‡+2,skillCard_Lightning_10
+11,SkillCD,0.3,2,æŠ€èƒ½å†·å´-30%,skillCard_Lightning_11
+12,SkillDamage,0.8,2,é—ªç”µä¼¤å®³+80%,skillCard_Lightning_12
+13,LightningAmount,3,3,é—ªç”µæ•°é‡+3,skillCard_Lightning_13
+14,SkillDamage,1.5,3,é—ªç”µä¼¤å®³+150%,skillCard_Lightning_14
+15,SkillAmount,2,3,é—ªç”µè¿ç»­é‡Šæ”¾2æ¬¡,skillCard_Lightning_15
+16,LightningRange,1,1,é—ªç”µçˆ†ç‚¸èŒƒå›´+1m,skillCard_Lightning_16
+17,LightningRange,2,2,é—ªç”µçˆ†ç‚¸èŒƒå›´+2m,skillCard_Lightning_17
+18,LightningExplosion,0.5,2,é—ªç”µå‘½ä¸­äº§ç”Ÿå°çˆ†ç‚¸,skillCard_Lightning_18
+19,LightningRange,3,3,é—ªç”µçˆ†ç‚¸èŒƒå›´+3m,skillCard_Lightning_19
+20,LightningExplosion,1,3,æ¯é“é—ªç”µå‘½ä¸­æ—¶ï¼Œé¢å¤–é€ æˆä¸€æ¬¡100%ä¼¤å®³çš„å¤§èŒƒå›´çˆ†ç‚¸,skillCard_Lightning_20
+21,WeaponLightningProb,0.05,1,æ­¦å™¨é—ªç”µè§¦å‘å‡ ç‡+5%,skillCard_Lightning_21
+22,ReloadSpeed,0.25,1,æ¢å¼¹é€Ÿåº¦æå‡25%,skillCard_Lightning_22
+23,ReloadNow,0,2,æŠ€èƒ½åç«‹åˆ»è£…å¼¹,skillCard_Lightning_23
+24,WeaponLightningProb,0.1,2,æ­¦å™¨é—ªç”µè§¦å‘å‡ ç‡+10%,skillCard_Lightning_24
+25,WeaponMaxMagazine,10,2,å¼¹åŒ£å®¹é‡+10,skillCard_Lightning_25
+26,AttackSpeed,0.2,2,æ”»å‡»é€Ÿåº¦+20%,skillCard_Lightning_26
+27,ReloadSpeed,0.5,2,æ¢å¼¹é€Ÿåº¦æå‡50%,skillCard_Lightning_27
+28,WeaponLightningProb,0.15,3,æ­¦å™¨é—ªç”µè§¦å‘å‡ ç‡+15%,skillCard_Lightning_28
+29,ReloadBuff,0.3,3,æ¯æ¬¡æ¢å¼¹åçš„5ç§’å†…ï¼Œå°„é€Ÿæå‡30%,skillCard_Lightning_29
+30,ReloadSpeed,0.75,3,æ¢å¼¹é€Ÿåº¦æå‡75%,skillCard_Lightning_30
