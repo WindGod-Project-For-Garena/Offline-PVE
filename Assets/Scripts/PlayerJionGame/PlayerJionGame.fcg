@@ -79,6 +79,8 @@ graph PlayerJionGame {
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     //天赋卡牌属性库
     Gifted_CardData Map<int, Map<string, object>> = Map<int, Map<string, object>>{}
+    //天赋卡牌概率库
+    Gifted_CardProbability Map<int, int> = Map<int, int>{}
     //已抽到的天赋卡牌数量，记录什么卡牌什么数量
     Gifted_Card_Count Map<int, int> = Map<int, int>{}
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
@@ -144,6 +146,7 @@ graph PlayerJionGame {
             InjectSkill_1_CardData()
             InjectSkill_2_CardData()
             InjectGifted_CardData()
+            InjectGiftCardProbabilityData()
             InitAllGiftedCardUI()
         }
     }
@@ -551,6 +554,25 @@ graph PlayerJionGame {
         }
         LogInfo("天赋卡片注入完成")
     }
+
+    //注入天赋卡片概率数据
+    func InjectGiftCardProbabilityData() {
+        // 解析CSV
+        Map.Clear(Gifted_CardProbability)
+        for cardCount = 1, 11, 1 {
+            var cardInfo = Map<string, object>{}
+            cardInfo["MinCount"] = cardCount
+            // 从CSV读取卡牌数据，从第三行开始读取
+            var cardRow = CSVData.ReadCSVRow(EResCSV.GiftedData, cardCount + 2)
+            cardInfo["Price"] = cardRow[1]
+            cardInfo["CommonProb"] = cardRow[2] as List<float>
+            cardInfo["RareProb"] = cardRow[3] as List<float>
+            cardInfo["EpicProb"] = cardRow[4] as List<float>
+            Gifted_CardData[cardCount] = cardInfo
+            // 在显示时格式化浮点数，保留两位小数
+            LogInfo(Gifted_CardData[cardCount])
+        }
+    }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     // 抽取天赋卡牌
     func DrawCard() {
@@ -778,7 +800,7 @@ graph PlayerJionGame {
         return 0
     }
 
-    
+
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     //显示技能和升级技能使用
     func resetSkillLevel(){
