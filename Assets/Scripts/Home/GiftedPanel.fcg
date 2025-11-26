@@ -11,11 +11,56 @@ import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
 
 [platform_client]
 graph GiftedPanel {
-    //前往选择角色开始游戏面板
-   func ToNewHome(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
-        var NewHomeUIEntity = GetLocalPlayer()<PlayerJionGame>.NewHomeUI
-        NewHomeUIEntity<CustomUI>.IsVisible = true
-        var GiftedUIEntity = GetLocalPlayer()<PlayerJionGame>.GiftedUI
-        GiftedUIEntity<CustomUI>.IsVisible = false
-   }
+     //前往选择角色开始游戏面板
+     func ToNewHome(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+          var NewHomeUIEntity = GetLocalPlayer()<PlayerJionGame>.NewHomeUI
+          NewHomeUIEntity<CustomUI>.IsVisible = true
+          var GiftedUIEntity = GetLocalPlayer()<PlayerJionGame>.GiftedUI
+          GiftedUIEntity<CustomUI>.IsVisible = false
+     }
+
+     func DrawCard(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+          LogInfo("抽卡抽卡抽抽抽")
+          GetLocalPlayer()<PlayerJionGame>.DrawCard()
+     }
+
+     func Card1(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+          LogInfo("卡片1")
+     }
+
+     func Card2(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+          LogInfo("卡片2")
+     }
+
+     func Card3(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+          LogInfo("卡片3")
+     }
+
+     func Card4(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+          LogInfo("卡片4")
+     }
+
+     func Card5(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+          LogInfo("卡片5")
+     }
+
+     func Card6(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+          LogInfo("卡片6")
+     }
+
+     func Card7(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+          LogInfo("卡片7")
+     }
+
+     func Card8(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+          LogInfo("卡片8")
+     }
+
+     func Card9(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+          LogInfo("卡片9")
+     }
+
+     func Card10(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+          LogInfo("卡片10")
+     }
 }

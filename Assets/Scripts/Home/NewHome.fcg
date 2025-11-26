@@ -36,5 +36,7 @@ graph NewHome {
    func ToGiftedPanel(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
         var GiftedUIEntity = GetLocalPlayer()<PlayerJionGame>.GiftedUI
         GiftedUIEntity<CustomUI>.IsVisible = true
+        //初始化天赋面板
+        GetLocalPlayer()<PlayerJionGame>.InitAllGiftedCardUI()
    }
 }
