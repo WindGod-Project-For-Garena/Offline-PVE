@@ -20,7 +20,6 @@ graph GiftedPanel {
      }
 
      func DrawCard(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
-          LogInfo("抽卡抽卡抽抽抽")
           GetLocalPlayer()<PlayerJionGame>.DrawCard()
      }
 

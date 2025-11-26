@@ -68,6 +68,8 @@ graph PlayerJionGame {
     ability2Level int = 0
     ability3Level int = 0
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+    Money int = 999999
+    //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     // 技能卡牌词条属性库
     Skill_1_CardData Map<int, Map<string, object>> = Map<int, Map<string, object>>{}
     Skill_2_CardData Map<int, Map<string, object>> = Map<int, Map<string, object>>{}
@@ -79,10 +81,13 @@ graph PlayerJionGame {
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     //天赋卡牌属性库
     Gifted_CardData Map<int, Map<string, object>> = Map<int, Map<string, object>>{}
-    //天赋卡牌概率库
-    Gifted_CardProbability Map<int, int> = Map<int, int>{}
     //已抽到的天赋卡牌数量，记录什么卡牌什么数量
     Gifted_Card_Count Map<int, int> = Map<int, int>{}
+    //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+    // 天赋卡牌概率库
+    Gifted_CardProbability List<Map<string, object>> = List<Map<string, object>>{}
+    // 总抽卡次数
+    TotalDrawCount int = 0
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     event OnPlayerJoin(player entity<Player>) {
         if GetLocalPlayer() == player {
@@ -167,7 +172,7 @@ graph PlayerJionGame {
             cardInfo["Sktchtext"] = cardRow[5]
             Skill_1_CardData[cardId] = cardInfo
             // 在显示时格式化浮点数，保留两位小数
-            LogInfo(Skill_1_CardData[cardId])
+            // LogInfo(Skill_1_CardData[cardId])
         }
         LogInfo("技能1卡牌数据注入完成")
     }
@@ -188,7 +193,7 @@ graph PlayerJionGame {
             cardInfo["Sktchtext"] = cardRow[5]
             Skill_2_CardData[cardId] = cardInfo
             // 在显示时格式化浮点数，保留两位小数
-            LogInfo(Skill_2_CardData[cardId])
+            // LogInfo(Skill_2_CardData[cardId])
         }
         LogInfo("技能2卡牌数据注入完成")
     }
@@ -550,33 +555,74 @@ graph PlayerJionGame {
             cardInfo["Sktchtext"] = cardRow[5]
             Gifted_CardData[cardId] = cardInfo
             // 在显示时格式化浮点数，保留两位小数
-            LogInfo(Gifted_CardData[cardId])
+            // LogInfo(Gifted_CardData[cardId])
         }
         LogInfo("天赋卡片注入完成")
     }
 
-    //注入天赋卡片概率数据
+    // 注入天赋卡片概率数据
     func InjectGiftCardProbabilityData() {
         // 解析CSV
-        Map.Clear(Gifted_CardProbability)
-        for cardCount = 1, 11, 1 {
-            var cardInfo = Map<string, object>{}
-            cardInfo["MinCount"] = cardCount
-            // 从CSV读取卡牌数据，从第三行开始读取
-            var cardRow = CSVData.ReadCSVRow(EResCSV.GiftedData, cardCount + 2)
-            cardInfo["Price"] = cardRow[1]
-            cardInfo["CommonProb"] = cardRow[2] as List<float>
-            cardInfo["RareProb"] = cardRow[3] as List<float>
-            cardInfo["EpicProb"] = cardRow[4] as List<float>
-            Gifted_CardData[cardCount] = cardInfo
-            // 在显示时格式化浮点数，保留两位小数
-            LogInfo(Gifted_CardData[cardCount])
+        List.Clear(Gifted_CardProbability)
+        for rowIndex = 1, 11, 1 {
+            var configInfo = Map<string, object>{}
+            // 从CSV读取概率数据，从第三行开始读取
+            var configRow = CSVData.ReadCSVRow(EResCSV.GiftCardProbabilityData, rowIndex + 2)
+            configInfo["MinCount"] = configRow[0] as int
+            configInfo["Price"] = configRow[1] as int
+            configInfo["CommonProb"] = configRow[2] as float
+            configInfo["RareProb"] = configRow[3] as float
+            configInfo["EpicProb"] = configRow[4] as float
+            List.Append(Gifted_CardProbability, configInfo)
+            // LogInfo("抽卡配置" + Convert.ToString(rowIndex) + ": " + Convert.ToString(configInfo))
         }
+        LogInfo("天赋卡片概率数据注入完成")
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
-    // 抽取天赋卡牌
-    func DrawCard() {
-        // 获取所有可抽取的卡牌ID（排除已达到最大次数的卡牌）
+// 获取当前抽卡配置
+    func GetCurrentDrawConfig() Map<string, object> {
+        for i, config in Gifted_CardProbability {
+            if TotalDrawCount >= config["MinCount"] as int {
+                // 检查是否是最后一个配置
+                if i == List.Length(Gifted_CardProbability) - 1 {
+                    return config
+                }
+                // 检查下一个配置的最小次数是否大于当前抽卡次数
+                var nextConfig = Gifted_CardProbability[i + 1]
+                if TotalDrawCount < nextConfig["MinCount"] as int {
+                    return config
+                }
+            }
+        }
+        // 默认返回第一个配置
+        return Gifted_CardProbability[0]
+    }
+
+    // 获取当前抽卡价格
+    func GetCurrentDrawPrice() int {
+        var config = GetCurrentDrawConfig()
+        return config["Price"] as int
+    }
+
+    // 根据概率随机选择卡牌稀有度
+    func SelectCardByProbability() int {
+        var config = GetCurrentDrawConfig()
+        var randomValue = RandomFloat(0.0, 1.0)
+        var commonProb = config["CommonProb"] as float
+        var rareProb = config["RareProb"] as float
+        var epicProb = config["EpicProb"] as float
+        LogInfo("当前概率 - 普通:" + Convert.ToString(commonProb) + " 稀有:" + Convert.ToString(rareProb) + " 史诗:" + Convert.ToString(epicProb))
+        if randomValue < commonProb {
+            return 1  // 普通
+        } else if randomValue < commonProb + rareProb {
+            return 2  // 稀有
+        } else {
+            return 3  // 史诗
+        }
+    }
+
+    // 根据稀有度筛选可抽取的卡牌
+    func GetAvailableCardsByRarity(targetRarity int) List<int> {
         var availableCardIds = List<int>{}
         for cardId, cardData in Gifted_CardData {
             var nature = Convert.ToString(cardData["Nature"])
@@ -588,9 +634,73 @@ graph PlayerJionGame {
             // 检查是否达到最大抽取次数
             var maxCount = GetMaxDrawCount(nature)
             if currentCount < maxCount {
-                List.Append(availableCardIds, cardId)
+                // 检查稀有度是否匹配
+                var cardRarity = cardData["Rarity"] as int
+                if cardRarity == targetRarity {
+                    List.Append(availableCardIds, cardId)
+                }
             }
         }
+        
+        return availableCardIds
+    }
+
+    // 抽卡
+    func DrawCard() {
+        // 获取当前抽卡价格
+        var currentPrice = GetCurrentDrawPrice()
+        var currentConfig = GetCurrentDrawConfig()
+        
+        LogInfo("开始抽卡 - 总次数:" + Convert.ToString(TotalDrawCount) + 
+                " 价格:" + Convert.ToString(currentPrice) +
+                " 阶段:" + Convert.ToString(currentConfig["MinCount"]) + "+")
+        
+        // 检查玩家是否有足够的货币
+        if  Money < currentPrice {
+            LogWarning("货币不足，需要" + Convert.ToString(currentPrice))
+            return
+        }
+        
+        // 扣除货币
+        DeductPlayerCurrency(currentPrice)
+        
+        // 根据概率选择稀有度
+        var selectedRarity = SelectCardByProbability()
+        LogInfo("概率选择稀有度:" + Convert.ToString(selectedRarity))
+        
+        // 获取该稀有度下可抽取的卡牌
+        var availableCardIds = GetAvailableCardsByRarity(selectedRarity)
+        
+        // 如果该稀有度没有可抽取的卡牌，降级到下一个稀有度
+        if List.Length(availableCardIds) == 0 {
+            LogWarning("稀有度" + Convert.ToString(selectedRarity) + "没有可抽取的卡牌，尝试降级")
+            if selectedRarity == 3 {  // 史诗降级到稀有
+                availableCardIds = GetAvailableCardsByRarity(2)
+                if List.Length(availableCardIds) == 0 {
+                    availableCardIds = GetAvailableCardsByRarity(1)  // 稀有降级到普通
+                }
+            } else if selectedRarity == 2 {  // 稀有降级到普通
+                availableCardIds = GetAvailableCardsByRarity(1)
+            }
+        }
+        
+        // 如果仍然没有可抽取的卡牌，获取所有可抽取的卡牌
+        if List.Length(availableCardIds) == 0 {
+            LogWarning("特定稀有度没有可抽取的卡牌，获取所有可抽取卡牌")
+            availableCardIds = List<int>{}
+            for cardId, cardData in Gifted_CardData {
+                var nature = Convert.ToString(cardData["Nature"])
+                var currentCount = 0
+                if Gifted_Card_Count[cardId] != nil {
+                    currentCount = Gifted_Card_Count[cardId]
+                }
+                var maxCount = GetMaxDrawCount(nature)
+                if currentCount < maxCount {
+                    List.Append(availableCardIds, cardId)
+                }
+            }
+        }
+        
         // 如果没有可抽取的卡牌，提示并返回
         if List.Length(availableCardIds) == 0 {
             LogWarning("所有卡牌都已达到最大抽取次数")
@@ -606,14 +716,53 @@ graph PlayerJionGame {
             currentCount = Gifted_Card_Count[selectedCardId]
         }
         Gifted_Card_Count[selectedCardId] = currentCount + 1
+        
+        // 更新总抽卡次数
+        TotalDrawCount = TotalDrawCount + 1
+        
         // 应用卡牌效果
         ApplyGiftedCardEffect(selectedCardId)
+        
         // 更新UI显示
         UpdateGiftedCardUI(selectedCard)
-        LogInfo("抽取天赋卡牌 - ID:" + Convert.ToString(selectedCardId) + 
-                " 属性:" + Convert.ToString(selectedCard["Nature"]) + 
-                " 数值:" + Convert.ToString(selectedCard["Value"]) + 
+        
+        // 更新抽卡UI显示（价格、概率等）
+        UpdateDrawCardUI()
+        
+        LogInfo("抽取天赋卡牌完成 - 总次数:" + Convert.ToString(TotalDrawCount) + 
+                " 价格:" + Convert.ToString(currentPrice) + 
+                " 目标稀有度:" + Convert.ToString(selectedRarity) + 
+                " 实际卡牌:" + Convert.ToString(selectedCardId) + 
+                " 实际稀有度:" + Convert.ToString(selectedCard["Rarity"]) + 
                 " 当前次数:" + Convert.ToString(Gifted_Card_Count[selectedCardId]))
+    }
+
+    // 扣除玩家货币
+    func DeductPlayerCurrency(price int) {
+        Money = Money - price
+    }
+
+    // 更新抽卡UI显示（价格、概率等信息）
+    func UpdateDrawCardUI() {
+        var currentConfig = GetCurrentDrawConfig()
+        var currentPrice = currentConfig["Price"] as int
+        var commonProb = currentConfig["CommonProb"] as float * 100
+        var rareProb = currentConfig["RareProb"] as float * 100
+        var epicProb = currentConfig["EpicProb"] as float * 100
+        // 更新剩余价格显示
+        var NowMoneyText = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/Panel/MoneyPanel/Text/MoneyText")
+        if NowMoneyText != nil {
+            NowMoneyText<UIWidgetLabel>.Content = Convert.ToString(Money)
+        }
+        // 更新当前阶段价格显示
+        var priceText = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/Panel/DrawCard/Image/Money")
+        if priceText != nil {
+            priceText<UIWidgetLabel>.Content = Convert.ToString(currentPrice)
+        }
+        LogInfo("抽卡UI更新 - 价格:" + Convert.ToString(currentPrice) + 
+                " 概率:普通" + Convert.ToString(Math.Round(commonProb)) + 
+                "% 稀有" + Convert.ToString(Math.Round(rareProb)) + 
+                "% 史诗" + Convert.ToString(Math.Round(epicProb)) + "%")
     }
 
     // 获取卡牌最大抽取次数
@@ -636,7 +785,7 @@ graph PlayerJionGame {
         var value = cardInfo["Value"] as float
         var currentCount = Gifted_Card_Count[cardId]
         
-        LogInfo("应用天赋卡牌效果 - 属性:" + nature + " 数值:" + Convert.ToString(value) + " 第" + Convert.ToString(currentCount) + "次")
+        // LogInfo("应用天赋卡牌效果 - 属性:" + nature + " 数值:" + Convert.ToString(value) + " 第" + Convert.ToString(currentCount) + "次")
         
         // 根据属性类型应用效果
 
@@ -728,16 +877,24 @@ graph PlayerJionGame {
     func InitAllGiftedCardUI() {
         // 获取列表父节点
         var listParent = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/Panel/List")
-        if listParent == nil {
-            LogError("找不到列表父节点: /Panel/List")
-            return
-        }
         for cardId = 1, 11, 1 {
             var cardInfo = Gifted_CardData[cardId]
             if cardInfo != nil {
                 // 根据当前计数更新UI状态
                 UpdateSingleGiftedCardUI(cardId, listParent)
             }
+        }
+        var currentConfig = GetCurrentDrawConfig()
+        var currentPrice = currentConfig["Price"] as int
+        // 更新剩余价格显示
+        var NowMoneyText = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/Panel/MoneyPanel/Text/MoneyText")
+        if NowMoneyText != nil {
+            NowMoneyText<UIWidgetLabel>.Content = Convert.ToString(Money)
+        }
+        // 更新当前阶段价格显示
+        var priceText = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/Panel/DrawCard/Image/Money")
+        if priceText != nil {
+            priceText<UIWidgetLabel>.Content = Convert.ToString(currentPrice)
         }
         LogInfo("所有天赋卡牌UI初始化完成")
     }
@@ -747,10 +904,6 @@ graph PlayerJionGame {
         var cardInfo = Gifted_CardData[cardId]
         var currentCount = GetCardDrawCount(cardId)
         var cardEntity = GetChildByName(listParent, "Card" + Convert.ToString(cardId))
-        if cardEntity == nil {
-            LogError("找不到卡牌实体: Card" + Convert.ToString(cardId))
-            return
-        }
         if currentCount > 0 {
             // 已点亮的状态
             var iconImageEntity = GetChildByName(cardEntity, "IconImage")
