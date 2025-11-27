@@ -12,10 +12,22 @@ import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
 [platform_client]
 graph HeroPanel {
     //前往选择角色开始游戏面板
-   func ToNewHome(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
-        var NewHomeUIEntity = GetLocalPlayer()<PlayerJionGame>.NewHomeUI
-        NewHomeUIEntity<CustomUI>.IsVisible = true
-        var HeroUIEntity = GetLocalPlayer()<PlayerJionGame>.HeroUI
-        HeroUIEntity<CustomUI>.IsVisible = false
-   }
+     func ToNewHome(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+          var NewHomeUIEntity = GetLocalPlayer()<PlayerJionGame>.NewHomeUI
+          NewHomeUIEntity<CustomUI>.IsVisible = true
+          var HeroUIEntity = GetLocalPlayer()<PlayerJionGame>.HeroUI
+          HeroUIEntity<CustomUI>.IsVisible = false
+     }
+
+     //选择角色1
+     func ToHero1(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+          var hero int = 1
+          GetLocalPlayer()<PlayerJionGame>.InitAllCardBookUI(hero)
+     }
+
+     //选择角色2
+     func ToHero2(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+          var hero int = 2
+          GetLocalPlayer()<PlayerJionGame>.InitAllCardBookUI(hero)
+     }
 }

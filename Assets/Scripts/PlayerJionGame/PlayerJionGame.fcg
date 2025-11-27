@@ -579,7 +579,7 @@ graph PlayerJionGame {
         LogInfo("天赋卡片概率数据注入完成")
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
-// 获取当前抽卡配置
+    // 获取当前抽卡配置
     func GetCurrentDrawConfig() Map<string, object> {
         for i, config in Gifted_CardProbability {
             if TotalDrawCount >= config["MinCount"] as int {
@@ -952,8 +952,111 @@ graph PlayerJionGame {
         }
         return 0
     }
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+//—————————————————————————————————————————————————以下为职业卡牌图鉴的数据————————————————————————————————————————————————————//
+//—————————————————————————————————————————————————以下为职业卡牌图鉴的数据————————————————————————————————————————————————————//
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+    // 初始化所有卡牌图鉴UI状态
+    func InitAllCardBookUI(hero int) {
+        // 获取列表父节点
+        var listGrandfather = GetWidgetByPath(GetLocalPlayer(), HeroUI, "/Panel/RollPanel")
+        var listParent = GetChildByName(listGrandfather, "List")
+        if hero == 1 {
+            // 职业1有33张卡牌
+            for cardId = 1, 33, 1 {
+                var cardInfo = Skill_1_CardData[cardId]
+                if cardInfo != nil {
+                    // 根据当前计数更新UI状态
+                    UpdateSingleCardBookUI(cardId, listParent ,cardInfo)
+                }
+            }
+            // 隐藏多余的卡牌（如果有的话）
+            for cardId = 33, 40, 1 {
+                var cardEntity = GetChildByName(listParent, "Card (" + Convert.ToString(cardId) + ")")
+                if cardEntity != nil {
+                    cardEntity<UIWidget>.Active = false
+                }
+            }
+        }
+        if hero == 2 {
+            // 职业2有31张卡牌
+            for cardId = 1, 31, 1 {
+                var cardInfo = Skill_2_CardData[cardId]
+                if cardInfo != nil {
+                    // 根据当前计数更新UI状态
+                    UpdateSingleCardBookUI(cardId, listParent ,cardInfo)
+                }
+            }
+            // 隐藏多余的卡牌（31-33张）
+            for cardId = 31, 40, 1 {
+                var cardEntity = GetChildByName(listParent, "Card (" + Convert.ToString(cardId) + ")")
+                if cardEntity != nil {
+                    cardEntity<UIWidget>.Active = false
+                }
+            }
+        }
+    }
 
+    // 更新单个卡牌的UI状态
+    func UpdateSingleCardBookUI(cardId int, listParent entity<Entity> ,cardInfo Map<string, object>) {
+        var cardEntity = GetChildByName(listParent, "Card (" + Convert.ToString(cardId) + ")")
+        if cardEntity == nil {
+            LogWarning("卡牌实体不存在: Card (" + Convert.ToString(cardId) + ")")
+            return
+        }
+        // 确保卡牌显示
+        cardEntity<UIWidget>.Active = true
+        if cardInfo == nil {
+            LogWarning("卡牌数据不存在，ID:" + Convert.ToString(cardId))
+            return
+        }
+        // 显示面板
+        var hasCardPanelEntity = GetChildByName(cardEntity, "HasCardPanel")
+        if hasCardPanelEntity != nil {
+            hasCardPanelEntity<UIWidget>.Active = true
+        }
+        //——————————————————————————————————————————————————————————————————————————————————————————————//
+        // 显示图标
+        var iconImageEntity = GetChildByName(cardEntity, "IconImage")
+        if iconImageEntity != nil {
+            iconImageEntity<UIWidget>.Active = false
+        }
+        var hasCardIconEntity = GetChildByName(hasCardPanelEntity, "icon")
+        if hasCardIconEntity != nil {
+            // 设置卡牌图标
+            // hasCardIconEntity<UIWidgetImage>.SetImage("CardIcon_" + Convert.ToString(cardId))
+            hasCardIconEntity<UIWidget>.Active = true
+        }
+        //——————————————————————————————————————————————————————————————————————————————————————————————//
+        // 显示详细信息
+        var IFMTextEntity = GetChildByName(hasCardPanelEntity, "IFMText")
+        if IFMTextEntity != nil {
+            var description = GenerateCardDescription(cardInfo)
+            IFMTextEntity<UIWidgetLabel>.Content = description
+            IFMTextEntity<UIWidget>.Active = true
+        }
+        //——————————————————————————————————————————————————————————————————————————————————————————————//
+        // 设置稀有度显示
+        var rarity = cardInfo["Rarity"] as int
+        UpdateCardBookRarityUI(cardEntity, rarity)
+    }
 
+    // 更新卡牌图鉴稀有度显示（根据稀有度显示不同的边框颜色）
+    func UpdateCardBookRarityUI(cardEntity entity<Entity>, rarity int) {
+        if cardEntity != nil {
+            // 根据稀有度设置不同的颜色
+            if rarity == 1 {
+                // 普通 - 蓝色
+                cardEntity<UIWidgetButton>.Color = #1B92D6
+            } else if rarity == 2 {
+                // 稀有 - 紫色
+                cardEntity<UIWidgetButton>.Color = #6C00FF
+            } else if rarity == 3 {
+                // 史诗 - 金色
+                cardEntity<UIWidgetButton>.Color = #FFD700
+            }
+        }
+    }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     //显示技能和升级技能使用
     func resetSkillLevel(){
