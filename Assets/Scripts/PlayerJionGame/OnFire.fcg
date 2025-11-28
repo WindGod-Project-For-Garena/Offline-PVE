@@ -14,7 +14,6 @@ import "../CustomEvent.fcc" as CustomEvent
 [platform_client]
 graph OnFire {
     //子弹判定
-    AmmoJudgement int = 0
     skillMultiplier float = 1
     ActiveMonstersParentNode entity<Entity> 
     ReleasedEffectPosition Vector3
@@ -46,12 +45,12 @@ graph OnFire {
         //如果是1号角色武器
         if  SkillID == 1 {
             //最后一颗子弹发射一颗榴弹，造成半径1m的20点技能伤害
-            AmmoJudgement = AmmoJudgement + 1
-            if AmmoJudgement == 3 {
+            GetLocalPlayer()<PlayerJionGame>.AmmoJudgement += 1
+            if GetLocalPlayer()<PlayerJionGame>.AmmoJudgement == 3 {
                 //发射榴弹
                 FireGrenade(SkillID)
                 //重置子弹判定
-                AmmoJudgement = 0
+                GetLocalPlayer()<PlayerJionGame>.AmmoJudgement = 0
             }
         }
         //如果是2号角色武器
@@ -65,7 +64,7 @@ graph OnFire {
 
     //重置子弹判定（重新装弹）
     event ReLoadAmmo(){
-        AmmoJudgement = 0
+        GetLocalPlayer()<PlayerJionGame>.AmmoJudgement = 0
     }
 //————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     //榴弹发射

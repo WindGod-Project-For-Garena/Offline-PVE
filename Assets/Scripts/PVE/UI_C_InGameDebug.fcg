@@ -18,6 +18,6 @@ graph UI_HomeUI {
         //恢复默认没有选择卡牌
         GetLocalPlayer()<PlayerJionGame>.NowChoiceCard = 0
         //重置子弹判定
-        GetLocalPlayer()<OnFire>.AmmoJudgement = 0
+        GetLocalPlayer()<PlayerJionGame>.AmmoJudgement = 0
     }
 }

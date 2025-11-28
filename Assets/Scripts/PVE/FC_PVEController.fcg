@@ -28,7 +28,6 @@ static graph FC_PVEController {
     // 游戏配置
     WaveTimeLimit int = 30000  // 每波次时间限制（ms）
     
-    
     // 统计信息
     GameStartTime int = 0
     
@@ -56,6 +55,15 @@ static graph FC_PVEController {
         currPlayer = player
     }
 
+    // 玩家复活删除武器
+    event OnPlayerRevived(player entity<Player>, revivalSource PlayerReviveSourceType){
+        DestroyItem(player, ItemIDType.M1887X, 1)
+        DestroyItem(player,  ItemIDType.SGAmmo, 999)
+        DestroyItem(player, ItemIDType.GoldMP5_III, 1)
+        DestroyItem(player,  ItemIDType.SGAmmo, 999)
+    }
+
+    // 游戏开始
     event OnGameStartClick(level int, skillIndex int, ability1Level int, ability2Level int, ability3Level int) {
         weaponMultiplier = 1.0 * ability1Level + 1
         healthMultiplier = 1.0 * ability2Level + 1
@@ -173,6 +181,10 @@ static graph FC_PVEController {
                 Utilities.NotifyAllPlayers("波次 " + CurrentWave + " 剩余时间: " + remainTime + "秒", #FFFFFF, 1000)
             }
             WaitForMillisecond(WaveCountdownInterval)
+            var DeadOrAlive bool = CheckPlayersAlive() // 检查玩家存活状态
+            if DeadOrAlive == false {
+                OnGameOver()
+            }
         }
 
         // 倒计时结束，检查玩家存活状态
@@ -186,9 +198,6 @@ static graph FC_PVEController {
         }
     }
     
-   
-
-    
     // 检查玩家存活状态
     func CheckPlayersAlive() bool {
         var allPlayers = GetAllPlayers()
@@ -200,9 +209,6 @@ static graph FC_PVEController {
         }
         return false  // 所有玩家都死亡
     }
-    
-   
-    
     
     // 显示最终统计
     func ShowFinalStats() {
@@ -240,10 +246,6 @@ static graph FC_PVEController {
         return status
     }
     
-    
-    
-    // 事件处理
-    
     // 游戏失败
     func OnGameOver() {
         LogInfo("PVE游戏失败！")
@@ -262,25 +264,23 @@ static graph FC_PVEController {
         ShowFinalStats()
 
         // 等待一段时间后结束游戏
-        WaitForMillisecond(3000)
+        WaitForMillisecond(1000)
         EndPVEGame()
     }
-
 
      // 结束PVE游戏
      func EndPVEGame() {
         LogInfo("结束PVE游戏")
         IsGameActive = false
         IsCountdownActive = false
-        
+
         // 清理所有怪物
         monsterManager.ClearAllMonsters()
-        
         
         // 清理BOSS
         //bossHandler.ForceEndBossFight()
         
-        Utilities.NotifyAllPlayers("PVE游戏结束", #FF0000FF, 3000)
+        Utilities.NotifyAllPlayers("PVE游戏结束", #FF0000FF, 1000)
         var localPlayer entity<Player> = GetAllPlayers()[0]
         localPlayer<Player>.Invincible = false
 

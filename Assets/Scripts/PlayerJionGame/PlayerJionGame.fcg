@@ -89,6 +89,8 @@ graph PlayerJionGame {
     // 总抽卡次数
     TotalDrawCount int = 0
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+    AmmoJudgement int = 0
+    //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     event OnPlayerJoin(player entity<Player>) {
         if GetLocalPlayer() == player {
             // CreateCustomUIClient(out var ui, EResUI.HomeUI)
@@ -1091,6 +1093,12 @@ graph PlayerJionGame {
             skillPanel<UIWidget>.Active = false
             joyStickAmount<UIWidget>.Active = false
         }
+        //恢复默认选择技能1
+        CurrentSkill = 1
+        //恢复默认没有选择卡牌
+        NowChoiceCard = 0
+        //重置子弹判定
+        AmmoJudgement = 0
     }
 
     func displaySkillByIndex(index int) {
