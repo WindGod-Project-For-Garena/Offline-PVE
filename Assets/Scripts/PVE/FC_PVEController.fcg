@@ -23,6 +23,8 @@ static graph FC_PVEController {
     currPlayer entity<Player> = nil
     currentWeapon entity<Weapon> = nil
     
+    skillId int = 0
+
     // 游戏配置
     WaveTimeLimit int = 30000  // 每波次时间限制（ms）
     
@@ -58,13 +60,26 @@ static graph FC_PVEController {
         weaponMultiplier = 1.0 * ability1Level + 1
         healthMultiplier = 1.0 * ability2Level + 1
         skillMultiplier = 1.0 * ability3Level + 1
-
+        skillId = skillIndex
         //删除武器
         Destroy(currentWeapon)
         //临时发放武器
-        AddItem(currPlayer, ItemIDType.GoldMP5_III, 1, out var itemList)
-        currentWeapon = itemList[0] as entity<Weapon>
-        currentWeapon<Weapon>.IsConsumeAmmo = false
+        if  skillIndex == 1 {
+            DestroyItem(currPlayer, ItemIDType.M1887X, 1)
+            AddItem(currPlayer, ItemIDType.M1887X, 1, out var itemList)
+            currentWeapon = itemList[0] as entity<Weapon>
+
+            DestroyItem(currPlayer,  ItemIDType.SGAmmo, 999)
+            AddItem(currPlayer, ItemIDType.SGAmmo, 999, out var createdEntity)
+        }
+        if skillIndex == 2 {
+            DestroyItem(currPlayer, ItemIDType.GoldMP5_III, 1)
+            AddItem(currPlayer, ItemIDType.GoldMP5_III, 1, out var itemList)
+            currentWeapon = itemList[0] as entity<Weapon>
+
+            DestroyItem(currPlayer,  ItemIDType.SGAmmo, 999)
+            AddItem(currPlayer, ItemIDType.SMGAmmo, 999, out var createdEntity)
+        }
         currentWeapon<Weapon>.Damage = Math.Ceil(currentWeapon<Weapon>.Damage * weaponMultiplier)
         currPlayer<Player>.IsDropOnEliminated = false
 
@@ -86,9 +101,11 @@ static graph FC_PVEController {
 
     event S_Debug_NextWave() {
         IsCountdownActive = false
+        DestroyItem(currPlayer, ItemIDType.M1887X, 1)
+        DestroyItem(currPlayer,  ItemIDType.SGAmmo, 999)
+        DestroyItem(currPlayer, ItemIDType.GoldMP5_III, 1)
+        DestroyItem(currPlayer,  ItemIDType.SGAmmo, 999)
     }
-
-  
     
     // 开始PVE游戏（指定关卡）
     func StartPVEGame(level int) {

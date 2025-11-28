@@ -108,20 +108,22 @@ graph SkillUI {
 
     // 技能2
     func Skill_2(CurrentSkill int, hitPosition Vector3){
-        if previewEffectEntity == nil {
-            CreateEffectClient(out var NewcreatedEntity, VFXType.LightBeamPreDiscarded, LoopType.Once, true)
-            previewEffectEntity = NewcreatedEntity
-        }
+        // 技能一不需要特效
+        return
+        // if previewEffectEntity == nil {
+        //     CreateEffectClient(out var NewcreatedEntity, VFXType.LightBeamPreDiscarded, LoopType.Once, true)
+        //     previewEffectEntity = NewcreatedEntity
+        // }
         
-        // 获取技能1的范围等级
-        var rangeLevel = GetLocalPlayer()<PlayerJionGame>.GetCurrentSkillLevel(CurrentSkill, "Count")
-        var skillData = GetLocalPlayer()<PlayerJionGame>.GetSkillData("Skill2", rangeLevel)
-        var Size = skillData["Count"] as int
+        // // 获取技能2的数量等级
+        // var CountLevel = GetLocalPlayer()<PlayerJionGame>.GetCurrentSkillLevel(CurrentSkill, "Count")
+        // var skillData = GetLocalPlayer()<PlayerJionGame>.GetSkillData("Skill2", CountLevel)
+        // var Size = skillData["Count"] as int
         
-        previewEffectEntity<Transform>.Scale = Vector3{Size, 0.1, Size}
-        BoomColor(previewEffectEntity, Size)
-        previewEffectEntity<Transform>.Position = hitPosition
-        StartRotTween(previewEffectEntity)
+        // previewEffectEntity<Transform>.Scale = Vector3{Size, 0.1, Size}
+        // BoomColor(previewEffectEntity, Size)
+        // previewEffectEntity<Transform>.Position = hitPosition
+        // StartRotTween(previewEffectEntity)
     }
 
     //————————————————————————————————————————————————//

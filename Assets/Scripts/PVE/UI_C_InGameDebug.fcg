@@ -3,6 +3,7 @@ import "EditorGenLib.fcc" as EditorLib
 import "Hud.fcc" as Hud
 import "../CustomEvent.fcc" as CustomEvent
 import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
+import "../PlayerJionGame/OnFire.fcg" as OnFire
 
 [platform_client]
 graph UI_HomeUI {
@@ -16,5 +17,7 @@ graph UI_HomeUI {
         GetLocalPlayer()<PlayerJionGame>.CurrentSkill = 1
         //恢复默认没有选择卡牌
         GetLocalPlayer()<PlayerJionGame>.NowChoiceCard = 0
+        //重置子弹判定
+        GetLocalPlayer()<OnFire>.AmmoJudgement = 0
     }
 }

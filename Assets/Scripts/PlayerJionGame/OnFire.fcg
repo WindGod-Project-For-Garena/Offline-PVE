@@ -1,0 +1,170 @@
+import "StdLibrary.fcc" as StdLib
+import "EditorGenLib.fcc" as EditorLib
+import "Items.fcc" as Items
+import "Player.fcc" as Player
+import "Workflow.fcc" as Workflow
+import "./PlayerJionGame.fcg" as PlayerJionGame
+import "Math.fcc" as Math
+import "Playable.fcc" as Playable
+import "Animation.fcc" as Animation
+import "Camera.fcc" as Camera
+import "List.fcc" as List
+import "../CustomEvent.fcc" as CustomEvent
+
+[platform_client]
+graph OnFire {
+    //子弹判定
+    AmmoJudgement int = 0
+    skillMultiplier float = 1
+    ActiveMonstersParentNode entity<Entity> 
+    ReleasedEffectPosition Vector3
+    event OnAwake() {
+        ActiveMonstersParentNode = EResSceneIsleLand.ActiveMobs as entity<Entity>
+    }
+
+    // 特效颜色
+    func  BoomColor(createdEntity entity<Effect>,value int){
+        var color = #FF98D4FF
+        if value == 1 {
+            color = #FF98D4FF 
+        } else if value == 2 {
+            color = #98FFFFFF 
+        } else if value == 3 {
+            color = #98FF98FF
+        } else if value == 4 {
+            color = #98CDFFFF 
+        } else if value == 5 {
+            color = #FF9898FF 
+        } else if value == 6 {
+            color = #FFF098FF 
+        }
+        createdEntity<Effect>.Color = color
+    }
+
+    event OnFire() {
+        var SkillID = GetLocalPlayer()<PlayerJionGame>.CurrentSkill
+        //如果是1号角色武器
+        if  SkillID == 1 {
+            //最后一颗子弹发射一颗榴弹，造成半径1m的20点技能伤害
+            AmmoJudgement = AmmoJudgement + 1
+            if AmmoJudgement == 3 {
+                //发射榴弹
+                FireGrenade(SkillID)
+                //重置子弹判定
+                AmmoJudgement = 0
+            }
+        }
+        //如果是2号角色武器
+        if  SkillID == 2 {
+            //每发子弹有5%概率造成闪电
+            if  RandomInt(0,100) < 5{
+                LightningTrigger(SkillID)
+            }
+        }
+    }
+
+    //重置子弹判定（重新装弹）
+    event ReLoadAmmo(){
+        AmmoJudgement = 0
+    }
+//————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+    //榴弹发射
+    func  FireGrenade(SkillID int) {
+        var TouchPoint Vector2 = Vector2{0,0}
+        ScreenTouchRay(TouchPoint, out var startPosition, out var direction)
+        var layerMask List<int> = List<int>{1}
+        ScreenSingleRaycast(TouchPoint, 100, layerMask, true, out var hitEntity, out var hitPosition, out var hitDistance, out var hitNormal)
+        // 检查是否命中实体
+        if hitEntity != nil{
+            var hitEntityPosition = hitEntity<Transform>.Position
+            ReleasedEffectPosition = hitEntityPosition
+            LogInfo("命中实体: " + hitEntity + ", 命中实体位置: " + ReleasedEffectPosition)
+        } else {
+            var layerMask List<int> = List<int>{0}
+            ScreenSingleRaycast(TouchPoint, 100, layerMask, true, out var hitEntity, out var hitPosition, out var hitDistance, out var hitNormal)
+            ReleasedEffectPosition = hitPosition
+            LogInfo("未命中实体，使用射线终点: " + ReleasedEffectPosition)
+        }
+
+        // 获取技能1的各个属性等级
+        // var rangeLevel = GetLocalPlayer()<PlayerJionGame>.GetCurrentSkillLevel(SkillID, "Range")
+        // var damageLevel = GetLocalPlayer()<PlayerJionGame>.GetCurrentSkillLevel(SkillID, "Damage")
+        
+        // var rangeData = GetLocalPlayer()<PlayerJionGame>.GetSkillData("Skill1", rangeLevel)
+        // var damageData = GetLocalPlayer()<PlayerJionGame>.GetSkillData("Skill1", damageLevel)
+        
+        // var Size = rangeData["size"] as int
+        // var CurrentDamage = damageData["Damage"] as int
+        var Size = 4
+        var CurrentDamage = 20
+        
+        // 释放特效
+        CreateEffectClient(out var NewcreatedEntity, VFXType.CurseExplosion, LoopType.Once, true)
+        var effectEntity = NewcreatedEntity
+        effectEntity<Transform>.Position = ReleasedEffectPosition
+        effectEntity<Transform>.Scale = Vector3{Size, Size, Size}
+        BoomColor(effectEntity, Size)
+    
+        // 造成伤害
+        var monsters = getMonsterWithinDistance(Size)
+        for i = 0, List.Length(monsters), 1 {
+            var monster = monsters[i]
+            var skillMultiplier float = 1
+            var damage int = Math.Ceil(CurrentDamage * skillMultiplier)
+            DispatchEventToEntity(OnDamageMob, monster, PlatformType.Server, List<object>{monster, nil, damage, GetLocalPlayer()})
+            CreateDamageNum(damage, 10, #dde511, 800, monster as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
+        }
+    }
+
+    // 获取范围内怪物
+    func getMonsterWithinDistance(distance int) List<entity<LevelObject>> {
+        var monsters List<entity<LevelObject>> = List<entity<LevelObject>>{}
+        var activeMonsters List<entity<LevelObject>> = GetChildren(ActiveMonstersParentNode) as List<entity<LevelObject>>
+        for i = 0, List.Length(activeMonsters), 1 {
+            var monster = activeMonsters[i]
+            if Distance(monster<Transform>.Position, ReleasedEffectPosition) <= distance {
+                List.Append(monsters, monster)
+            }
+        }
+        return monsters
+    }
+//————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+    //闪电触发
+    func  LightningTrigger(SkillID int) {
+        var TouchPoint Vector2 = Vector2{0,0}
+        ScreenTouchRay(TouchPoint, out var startPosition, out var direction)
+        var layerMask List<int> = List<int>{1}
+        ScreenSingleRaycast(TouchPoint, 100, layerMask, true, out var hitEntity, out var hitPosition, out var hitDistance, out var hitNormal)
+        // 检查是否命中实体
+        if hitEntity != nil{
+            var hitEntityPosition = hitEntity<Transform>.Position
+            ReleasedEffectPosition = hitEntityPosition
+            LogInfo("命中实体: " + hitEntity + ", 命中实体位置: " + ReleasedEffectPosition)
+        } else {
+            return
+        }
+
+        // 获取技能2的各个属性等级
+        var damageLevel = GetLocalPlayer()<PlayerJionGame>.GetCurrentSkillLevel(SkillID, "Damage")
+        var damageData = GetLocalPlayer()<PlayerJionGame>.GetSkillData("Skill2", damageLevel)
+        var CurrentDamage = damageData["Damage"] as int
+
+        // 释放雷击
+        start PlayThunderEffects(CurrentDamage,hitEntity)
+    }
+
+    // 播放雷击特效
+    async func PlayThunderEffects(damage int,hitEntity entity<Entity>) {
+        var thunderPosition = hitEntity<Transform>.Position
+        CreateEffectClient(out var thunderEffect, VFXType.Thunder, LoopType.Once, true)
+        thunderEffect<Transform>.Position = thunderPosition
+        thunderEffect<Transform>.Scale = Vector3{0.8,2,0.8}
+        SetParentClient(hitEntity as entity<LevelObject>, thunderEffect, true)
+        var CountLevel = 1
+        BoomColor(thunderEffect, CountLevel)
+        //造成伤害
+        var realDamage int = Math.Ceil(damage * skillMultiplier)
+        DispatchEventToEntity(OnDamageMob, hitEntity, PlatformType.Server, List<object>{hitEntity, nil, realDamage, GetLocalPlayer()})
+        CreateDamageNum(realDamage, 10, #dde511, 800, hitEntity as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
+    }
+}

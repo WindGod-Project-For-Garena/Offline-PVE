@@ -1,0 +1,24 @@
+import "StdLibrary.fcc" as StdLib
+import "EditorGenLib.fcc" as EditorLib
+import "Items.fcc" as Items
+import "Player.fcc" as Player
+import "../PVE/FC_PVEController.fcg" as PVEController
+import "Workflow.fcc" as Workflow
+import "../CustomEvent.fcc" as CustomEvent
+
+[platform_server]
+graph Reload {
+    event OnReload(){
+        LogInfo("武器已重装")
+        var SkillIndex = PVEController.skillId
+        var currPlayer = PVEController.currPlayer
+        var currentWeapon = PVEController.currentWeapon
+        if (SkillIndex == 1) {
+            AddItem(currPlayer, ItemIDType.SGAmmo, 999, out var createdEntity)
+        }
+        if (SkillIndex == 2) {
+            AddItem(currPlayer, ItemIDType.SMGAmmo, 999, out var createdEntity)
+        }
+        DispatchEventToEntity(ReLoadAmmo, currentWeapon, PlatformType.Client, List<object>{})
+    }
+}
