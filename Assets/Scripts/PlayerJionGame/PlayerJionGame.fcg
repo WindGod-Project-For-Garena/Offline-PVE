@@ -71,6 +71,40 @@ graph PlayerJionGame {
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     Money int = 999999
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+    // 玩家个人属性
+    PlayerData Map<string, object> = Map<string, object>{
+        // 玩家基础属性
+        "HP": 100,                  // 生命值
+        "MoveSpeed": 10,            // 移动速度
+        "WeaponDamage": 20,         // 武器伤害
+        "AttackSpeed": 1.0,         // 攻击速度
+        "ReloadSpeed": 2.0,         // 换弹速度
+        "WeaponMaxMagazine": 30,    // 最大弹匣容量
+        
+        // 技能1（爆裂轰炸）
+        "SkillDamage": 50,          // 爆裂轰炸伤害
+        "SkillRange": 5,            // 爆裂轰炸范围
+        "SkillCD": 15.0,            // 爆裂轰炸冷却
+        "SkillAmount": 1,           // 爆裂轰炸连续释放次数
+        "SkillFireDamage": 5,       // 爆裂轰炸燃烧伤害
+        
+        // 技能2（闪电）
+        "LightningAmount": 3,       // 闪电数量
+        "LightningRange": 3,        // 闪电爆炸范围
+        "LightningExplosion": 0.0,  // 闪电爆炸效果
+        
+        // 武器特效属性
+        "WeaponBoomRange": 2,           // 榴弹爆炸范围
+        "WeaponBoomProbability": 0.0,   // 普攻触发榴弹概率
+        "WeaponDoubleBoom": 0,          // 榴弹击败后二次爆炸
+        "WeaponBoomDamage": 25,         // 榴弹伤害
+        "WeaponLightningProb": 0.0,     // 武器闪电触发概率
+        
+        // 特殊效果属性
+        "ReloadBuff": 0.0,              // 换弹后射速提升
+        "ReloadNow": 0,                 // 技能后立即装弹
+    }
+    //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     // 技能卡牌词条属性库
     Skill_1_CardData Map<int, Map<string, object>> = Map<int, Map<string, object>>{}
     Skill_2_CardData Map<int, Map<string, object>> = Map<int, Map<string, object>>{}
