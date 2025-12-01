@@ -1,0 +1,43 @@
+import "StdLibrary.fcc" as StdLib
+import "EditorGenLib.fcc" as EditorLib
+import "Player.fcc" as Player
+import "Items.fcc" as Items
+import "Hud.fcc" as Hud
+import "../SkillUI/SkillUI.fcg" as SkillUI
+import "Math.fcc" as Math
+import "Map.fcc" as Map
+import "CSVData.fcc" as CSVData
+import "List.fcc" as List
+import "Convert.fcc" as Convert
+import "Strings.fcc" as strings
+import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
+
+[platform_client]
+graph FinalStats {
+    func BackNewHome(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        var GameOverFinalUI = GetLocalPlayer()<PlayerJionGame>.GameOverFinalUI
+        GameOverFinalUI<CustomUI>.IsVisible = false
+        var NewHomeUI = GetLocalPlayer()<PlayerJionGame>.NewHomeUI
+        NewHomeUI<CustomUI>.IsVisible = true
+    }
+    
+    func ContinueGame(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        var GameOverFinalUI = GetLocalPlayer()<PlayerJionGame>.GameOverFinalUI
+        GameOverFinalUI<CustomUI>.IsVisible = false
+
+        var ChoiceHeroUIEntity = GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI
+        ChoiceHeroUIEntity<CustomUI>.IsVisible = true
+
+        var skill1 entity<UIWidgetButton> = GetWidgetFromCustomUI(GetLocalPlayer(),ChoiceHeroUIEntity , EResUIChoiceHero.Hero_1) as entity<UIWidgetButton>
+        var skill2 entity<UIWidgetButton> = GetWidgetFromCustomUI(GetLocalPlayer(),ChoiceHeroUIEntity , EResUIChoiceHero.Hero_2) as entity<UIWidgetButton>
+        skill1<UIWidgetButton>.Color = #FF8900
+        skill2<UIWidgetButton>.Color = #F2A245
+        
+        //默认选择第一个技能
+        var skillIndex int = 1
+        GetLocalPlayer()<PlayerJionGame>.displaySkillByIndex(skillIndex)
+
+        var NewHomeUIEntity = GetLocalPlayer()<PlayerJionGame>.NewHomeUI
+        NewHomeUIEntity<CustomUI>.IsVisible = false
+    }
+}

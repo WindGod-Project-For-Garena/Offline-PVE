@@ -27,6 +27,7 @@ graph PlayerJionGame {
     HeroUI entity<CustomHud>        //英雄页面
     GiftedUI entity<CustomHud>      //天赋页面
     SecondDownUI entity<CustomHud>      //倒计时页面
+    GameOverFinalUI entity<CustomHud>      //結算页面
     // 技能数据
     SkillData = Map<string, Map<string, Map<string, object>>>{
         "Skill1":{
@@ -134,6 +135,10 @@ graph PlayerJionGame {
             CreateCustomUIClient(out var SecondDownUIEntity, EResUI.SecondDown)
             SecondDownUI = SecondDownUIEntity
             SecondDownUIEntity<CustomUI>.IsVisible = false
+
+            CreateCustomUIClient(out var GameOverFinalUIEntity, EResUI.GameOverFinal)
+            GameOverFinalUI = GameOverFinalUIEntity
+            GameOverFinalUIEntity<CustomUI>.IsVisible = false
 
             var Skill_1Panel = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_1")
             Skill_1Panel<UIWidget>.Active = false
@@ -1060,10 +1065,44 @@ graph PlayerJionGame {
         }
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
-//—————————————————————————————————————————————————以下为武器技能相关方程——————————————————————————————————————————————————————//
-//—————————————————————————————————————————————————以下为武器技能相关方程——————————————————————————————————————————————————————//
+//—————————————————————————————————————————————————以下为結算統計相关方程——————————————————————————————————————————————————————//
+//—————————————————————————————————————————————————以下为結算統計相关方程——————————————————————————————————————————————————————//
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
-    
+    event ToClient_ShowFinalStats(currTime int, GameStartTime int, IsGameSuccess bool, totalTime int, CurrentLevel int) {
+        LogInfo(CurrentSkill)
+        GameOverFinalUI<CustomUI>.IsVisible = true
+        var HeroEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/Hero/Name")                  //使用角色
+        var StepEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/Step/Name")                  //當前關卡
+        var IsPassOrNoEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/IsPassOrNo")           //通關狀態
+        var PassYesEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/IsPassOrNo/Yes")          //通關成功
+        var PassNoEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/IsPassOrNo/No")            //通關失敗
+        var PassTimeEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/PassTime/text")          //通關時間
+        var BossKillTimeEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/BossKillTime/text")  //殺死BOSS時間
+        var GetMoneyEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/GetMoney/text")          //獲得金錢
+        if  CurrentSkill == 1 {
+            HeroEntity<UIWidgetLabel>.Content = "近卫爆破手"
+        }
+        if  CurrentSkill == 2 {
+            HeroEntity<UIWidgetLabel>.Content = "风暴游击手"
+        }
+        StepEntity<UIWidgetLabel>.Content = "第" + Convert.ToString(CurrentLevel) + "关"        
+        PassTimeEntity<UIWidgetLabel>.Content = Convert.ToString(totalTime)
+        BossKillTimeEntity<UIWidgetLabel>.Content = Convert.ToString(totalTime)
+        GetMoneyEntity<UIWidgetLabel>.Content = 1000
+        //  通關顯示
+        if  IsGameSuccess == true {
+            PassYesEntity<UIWidget>.Active = true
+            PassNoEntity<UIWidget>.Active = false
+            IsPassOrNoEntity<UIWidgetLabel>.Content = "通关成功"
+        } else {
+            PassYesEntity<UIWidget>.Active = false
+            PassNoEntity<UIWidget>.Active = true
+            IsPassOrNoEntity<UIWidgetLabel>.Content = "通关失败"
+        }
+
+        //恢复默认选择技能1
+        CurrentSkill = 1
+    }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     //显示技能和升级技能使用
     func resetSkillLevel(){
@@ -1085,7 +1124,6 @@ graph PlayerJionGame {
     }
 
     event ToClient_GameComplete() {
-        NewHomeUI<CustomUI>.IsVisible = true
         // 隐藏所有技能面板
         for i = 1, 3,1{
             var skillPanel = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_" + i)
@@ -1093,8 +1131,6 @@ graph PlayerJionGame {
             skillPanel<UIWidget>.Active = false
             joyStickAmount<UIWidget>.Active = false
         }
-        //恢复默认选择技能1
-        CurrentSkill = 1
         //恢复默认没有选择卡牌
         NowChoiceCard = 0
         //重置子弹判定

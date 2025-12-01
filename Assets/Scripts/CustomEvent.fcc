@@ -43,3 +43,8 @@ event S_Debug_GameComplete()
 //显示游戏调试UI事件，显示游戏调试UI时触发
 event ReLoadAmmo()
 
+[platform_client]
+[platform_server]
+//显示游戏调试UI事件，显示游戏调试UI时触发
+event ToClient_ShowFinalStats(currTime int, GameStartTime int, IsGameSuccess bool, totalTime int, CurrentLevel int)
+
