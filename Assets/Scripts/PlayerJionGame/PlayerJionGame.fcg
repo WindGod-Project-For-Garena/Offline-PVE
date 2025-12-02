@@ -81,7 +81,7 @@ graph PlayerJionGame {
         "ReloadSpeed": 2,         // 换弹速度
         "WeaponMaxMagazine": 30,    // 最大弹匣容量
     }
-
+    // -----------------------局外天赋-------------------------//
     // 技能1（爆裂轰炸）数据
     Skill1Data Map<string, object> = Map<string, object>{
         // 技能1基础属性
@@ -115,6 +115,11 @@ graph PlayerJionGame {
         "WeaponLightningProb": 0,     // 武器闪电触发概率
         "ReloadBuff": 0,              // 换弹后射速提升（百分比）
     }
+    // -----------------------局内三选一（局内游玩需要用到该数值）-------------------------//
+    // 技能1（爆裂轰炸）数据
+    Skill1DataInGame Map<string, object> = Map<string, object>{}
+    // 技能2（闪电）数据
+    Skill2DataInGame Map<string, object> = Map<string, object>{}
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     // 技能卡牌词条属性库
     Skill_1_CardData Map<int, Map<string, object>> = Map<int, Map<string, object>>{}
