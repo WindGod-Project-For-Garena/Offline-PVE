@@ -71,38 +71,49 @@ graph PlayerJionGame {
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     Money int = 999999
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
-    // 玩家个人属性
+    // 玩家基础属性数据
     PlayerData Map<string, object> = Map<string, object>{
-        // 玩家基础属性
+        // 基础属性
         "HP": 100,                  // 生命值
         "MoveSpeed": 10,            // 移动速度
         "WeaponDamage": 20,         // 武器伤害
-        "AttackSpeed": 1.0,         // 攻击速度
-        "ReloadSpeed": 2.0,         // 换弹速度
+        "AttackSpeed": 1,         // 攻击速度
+        "ReloadSpeed": 2,         // 换弹速度
         "WeaponMaxMagazine": 30,    // 最大弹匣容量
-        
-        // 技能1（爆裂轰炸）
+    }
+
+    // 技能1（爆裂轰炸）数据
+    Skill1Data Map<string, object> = Map<string, object>{
+        // 技能1基础属性
         "SkillDamage": 50,          // 爆裂轰炸伤害
         "SkillRange": 5,            // 爆裂轰炸范围
-        "SkillCD": 15.0,            // 爆裂轰炸冷却
+        "SkillCD": 1500,            // 爆裂轰炸冷却
         "SkillAmount": 1,           // 爆裂轰炸连续释放次数
         "SkillFireDamage": 5,       // 爆裂轰炸燃烧伤害
+        "SkillFireDuration": 3,     // 燃烧持续时间（秒）
         
-        // 技能2（闪电）
-        "LightningAmount": 3,       // 闪电数量
-        "LightningRange": 3,        // 闪电爆炸范围
-        "LightningExplosion": 0.0,  // 闪电爆炸效果
-        
-        // 武器特效属性
+        // 技能1武器特效属性
         "WeaponBoomRange": 2,           // 榴弹爆炸范围
-        "WeaponBoomProbability": 0.0,   // 普攻触发榴弹概率
-        "WeaponDoubleBoom": 0,          // 榴弹击败后二次爆炸
+        "WeaponBoomProbability": 0,     // 普攻触发榴弹概率
+        "WeaponDoubleBoom": 0,          // 榴弹击败后二次爆炸次数
         "WeaponBoomDamage": 25,         // 榴弹伤害
-        "WeaponLightningProb": 0.0,     // 武器闪电触发概率
         
-        // 特殊效果属性
-        "ReloadBuff": 0.0,              // 换弹后射速提升
+        // 技能1特殊效果
         "ReloadNow": 0,                 // 技能后立即装弹
+    }
+
+    // 技能2（闪电）数据
+    Skill2Data Map<string, object> = Map<string, object>{
+        // 技能2基础属性
+        "SkillDamage": 25,        // 闪电伤害
+        "SkillAmount": 3,         // 闪电数量
+        "SkillRange": 3,          // 闪电爆炸范围
+        "SkillExplosion": 0,    // 闪电命中产生小爆炸伤害（百分比）
+        "SkillCD": 1500,          // 闪电冷却时间
+        
+        // 技能2武器特效属性
+        "WeaponLightningProb": 0,     // 武器闪电触发概率
+        "ReloadBuff": 0,              // 换弹后射速提升（百分比）
     }
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     // 技能卡牌词条属性库
@@ -461,10 +472,12 @@ graph PlayerJionGame {
         }
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     // 应用卡牌效果
     func ApplyCardEffect(cardId int, CurrentSkill int) {
         var cardDataMap = Map<int, Map<string, object>>{}
-        
+    
         if CurrentSkill == 1 {
             cardDataMap = Skill_1_CardData
         } else if CurrentSkill == 2 {
@@ -473,10 +486,235 @@ graph PlayerJionGame {
         
         var cardInfo = cardDataMap[cardId]
         if cardInfo != nil {
-            //根据卡牌的Nature和Value来应用效果
-            LogInfo("应用卡牌效果 - ID:" + Convert.ToString(cardId) + "属性:" + Convert.ToString(cardInfo["Nature"]) + "数值:" + Convert.ToString(cardInfo["Value"]))
+            var nature = Convert.ToString(cardInfo["Nature"])
+            var value = cardInfo["Value"] as float
+            
+            LogInfo("应用卡牌效果 - 技能" + Convert.ToString(CurrentSkill) + 
+                    " ID:" + Convert.ToString(cardId) + 
+                    " 属性:" + nature + 
+                    " 数值:" + Convert.ToString(value))
+            
+            // 根据当前技能和属性应用效果
+            ApplySkillCardEffect(CurrentSkill, nature, value)
         }
     }
+    
+    // 应用技能卡牌效果（区分技能1和技能2）
+    func ApplySkillCardEffect(skillNum int, attributeName string, value float) {
+        var currentPlayer = GetLocalPlayer()
+    
+        // 玩家基础属性
+        if attributeName == "movespeed" {
+            // 移动速度加成
+            var currentSpeed = PlayerData["MoveSpeed"] as float
+            var increase = currentSpeed * value
+            PlayerData["MoveSpeed"] = currentSpeed + increase
+            currentPlayer<Player>.RunSpeedScale = PlayerData["MoveSpeed"] as float
+            
+            LogInfo("移动速度增加 " + Convert.ToString(value * 100) + 
+                    "%，当前移速: " + Convert.ToString(PlayerData["MoveSpeed"]))
+        }
+        if attributeName == "WeaponDamage" {
+            // 武器伤害加成
+            var currentDamage = PlayerData["WeaponDamage"] as int
+            var increase = currentDamage * value
+            PlayerData["WeaponDamage"] = Round(currentDamage + increase) as int
+            
+            LogInfo("武器伤害增加 " + Convert.ToString(value * 100) + 
+                    "%，当前武器伤害: " + Convert.ToString(PlayerData["WeaponDamage"]))
+        }
+        if attributeName == "AttackSpeed" {
+            // 攻击速度加成
+            var currentAttackSpeed = PlayerData["AttackSpeed"] as float
+            var increase = currentAttackSpeed * value
+            PlayerData["AttackSpeed"] = currentAttackSpeed + increase
+            
+            LogInfo("攻击速度增加 " + Convert.ToString(value * 100) + 
+                    "%，当前攻击速度: " + Convert.ToString(PlayerData["AttackSpeed"]))
+        }
+        if attributeName == "ReloadSpeed" {
+            // 换弹速度加成（减少换弹时间）
+            var currentReloadSpeed = PlayerData["ReloadSpeed"] as float
+            var reduction = currentReloadSpeed * value  // value是百分比，如0.25表示减少25%时间
+            PlayerData["ReloadSpeed"] = Math.Max(0.1, currentReloadSpeed - reduction)
+            
+            LogInfo("换弹速度提升 " + Convert.ToString(value * 100) + 
+                    "%，当前换弹时间: " + Convert.ToString(PlayerData["ReloadSpeed"]))
+        }
+        if attributeName == "WeaponMaxMagazine" {
+            // 弹匣容量加成
+            var currentMagazine = PlayerData["WeaponMaxMagazine"] as int
+            PlayerData["WeaponMaxMagazine"] = currentMagazine + Round(value) as int
+            
+            LogInfo("弹匣容量增加 " + Convert.ToString(value) + 
+                    "发，当前弹匣容量: " + Convert.ToString(PlayerData["WeaponMaxMagazine"]))
+        }
+        
+        // 技能1专属属性
+        if skillNum == 1 {
+            if attributeName == "SkillRange" {
+                // 爆裂轰炸范围
+                var currentRange = Skill1Data["SkillRange"] as float
+                Skill1Data["SkillRange"] = currentRange + value
+                
+                LogInfo("技能1范围增加 " + Convert.ToString(value) + 
+                        "m，当前范围: " + Convert.ToString(Skill1Data["SkillRange"]))
+            }
+            if attributeName == "SkillCD" {
+                // 爆裂轰炸冷却减少
+                var currentCD = Skill1Data["SkillCD"] as int
+                var reduction = currentCD * value  // value是百分比，如0.15表示减少15%冷却
+                Skill1Data["SkillCD"] = Math.Max(0.5, currentCD - reduction)
+                
+                LogInfo("技能1冷却减少 " + Convert.ToString(value * 100) + 
+                        "%，当前冷却: " + Convert.ToString(Skill1Data["SkillCD"]))
+            }
+            if attributeName == "SkillDamage" {
+                // 爆裂轰炸伤害加成
+                var currentDamage = Skill1Data["SkillDamage"] as int
+                var increase = currentDamage * value
+                Skill1Data["SkillDamage"] = Round(currentDamage + increase) as int
+                
+                LogInfo("技能1伤害增加 " + Convert.ToString(value * 100) + 
+                        "%，当前伤害: " + Convert.ToString(Skill1Data["SkillDamage"]))
+            }
+            if attributeName == "SkillAmount" {
+                // 爆裂轰炸连续释放次数
+                var currentAmount = Skill1Data["SkillAmount"] as int
+                Skill1Data["SkillAmount"] = currentAmount + Round(value) as int
+                
+                LogInfo("技能1连续释放次数增加 " + Convert.ToString(value) + 
+                        "次，当前次数: " + Convert.ToString(Skill1Data["SkillAmount"]))
+            }
+            if attributeName == "SkillFireDamage" {
+                // 爆裂轰炸燃烧伤害
+                var currentFireDamage = Skill1Data["SkillFireDamage"] as float
+                var increase = currentFireDamage * value
+                Skill1Data["SkillFireDamage"] = Round(currentFireDamage + increase) as int
+                
+                LogInfo("技能1燃烧伤害增加 " + Convert.ToString(value * 100) + 
+                        "%，当前燃烧伤害: " + Convert.ToString(Skill1Data["SkillFireDamage"]))
+            }
+            if attributeName == "WeaponBoomRange" {
+                // 榴弹爆炸范围
+                var currentBoomRange = Skill1Data["WeaponBoomRange"] as float
+                Skill1Data["WeaponBoomRange"] = Round(currentBoomRange + value) as int
+                
+                LogInfo("榴弹爆炸范围增加 " + Convert.ToString(value) + 
+                        "m，当前范围: " + Convert.ToString(Skill1Data["WeaponBoomRange"]))
+            }
+            if attributeName == "WeaponBoomProbability" {
+                // 普攻触发榴弹概率
+                var currentProbability = Skill1Data["WeaponBoomProbability"] as float
+                Skill1Data["WeaponBoomProbability"] = Math.Min(1.0, currentProbability + value)
+                
+                LogInfo("榴弹触发概率增加 " + Convert.ToString(value * 100) + 
+                        "%，当前概率: " + Convert.ToString(Skill1Data["WeaponBoomProbability"] as float * 100) + "%")
+            }
+            if attributeName == "WeaponDoubleBoom" {
+                // 榴弹二次爆炸
+                var currentDoubleBoom = Skill1Data["WeaponDoubleBoom"] as int
+                Skill1Data["WeaponDoubleBoom"] = currentDoubleBoom + Round(value) as int
+                
+                LogInfo("榴弹二次爆炸次数增加 " + Convert.ToString(value) + 
+                        "次，当前次数: " + Convert.ToString(Skill1Data["WeaponDoubleBoom"]))
+            }
+            if attributeName == "WeaponBoomDamage" {
+                // 榴弹伤害加成
+                var currentBoomDamage = Skill1Data["WeaponBoomDamage"] as float
+                var increase = currentBoomDamage * value
+                Skill1Data["WeaponBoomDamage"] = Round(currentBoomDamage + increase) as int
+                
+                LogInfo("榴弹伤害增加 " + Convert.ToString(value * 100) + 
+                        "%，当前伤害: " + Convert.ToString(Skill1Data["WeaponBoomDamage"]))
+            }
+            if attributeName == "ReloadNow" {
+                // 技能后立即装弹
+                Skill1Data["ReloadNow"] = 1
+                LogInfo("获得技能后立即装弹效果")
+            }
+        }
+        
+        // 技能2专属属性
+        if skillNum == 2 {
+            if attributeName == "LightningAmount" {
+                // 闪电数量
+                var currentAmount = Skill2Data["SkillAmount"] as int
+                Skill2Data["SkillAmount"] = currentAmount + Round(value) as int
+                
+                LogInfo("闪电数量增加 " + Convert.ToString(value) + 
+                        "道，当前数量: " + Convert.ToString(Skill2Data["SkillAmount"]))
+            }
+            if attributeName == "SkillCD" {
+                // 闪电冷却减少
+                var currentCD = Skill2Data["SkillCD"] as float
+                var reduction = currentCD * value  // value是百分比，如0.15表示减少15%冷却
+                Skill2Data["SkillCD"] = Math.Max(0.5, currentCD - reduction)
+                
+                LogInfo("闪电冷却减少 " + Convert.ToString(value * 100) + 
+                        "%，当前冷却: " + Convert.ToString(Skill2Data["SkillCD"]))
+            }
+            if attributeName == "SkillDamage" {
+                // 闪电伤害加成
+                var currentDamage = Skill2Data["SkillDamage"] as float
+                var increase = currentDamage * value
+                Skill2Data["SkillDamage"] = Round(currentDamage + increase) as int
+                
+                LogInfo("闪电伤害增加 " + Convert.ToString(value * 100) + 
+                        "%，当前伤害: " + Convert.ToString(Skill2Data["SkillDamage"]))
+            }
+            if attributeName == "SkillAmount" {
+                // 闪电连续释放次数
+                var currentAmount = Skill2Data["SkillAmount"] as int
+                Skill2Data["SkillAmount"] = currentAmount + Round(value) as int
+                
+                LogInfo("闪电连续释放次数增加 " + Convert.ToString(value) + 
+                        "次，当前次数: " + Convert.ToString(Skill2Data["SkillAmount"]))
+            }
+            if attributeName == "LightningRange" {
+                // 闪电爆炸范围
+                var currentRange = Skill2Data["SkillRange"] as float
+                Skill2Data["SkillRange"] = Round(currentRange + value) as int
+                
+                LogInfo("闪电爆炸范围增加 " + Convert.ToString(value) + 
+                        "m，当前范围: " + Convert.ToString(Skill2Data["SkillRange"]))
+            }
+            if attributeName == "LightningExplosion" {
+                // 闪电爆炸效果
+                var currentExplosion = Skill2Data["SkillExplosion"] as float
+                Skill2Data["SkillExplosion"] = Round(currentExplosion + value) as int
+                
+                if value == 1.0 {
+                    LogInfo("获得闪电命中大范围爆炸效果，额外造成100%伤害")
+                } else if value == 0.5 {
+                    LogInfo("获得闪电命中小范围爆炸效果，额外造成50%伤害")
+                }
+            }
+            if attributeName == "WeaponLightningProb" {
+                // 武器闪电触发概率
+                var currentProbability = Skill2Data["WeaponLightningProb"] as float
+                Skill2Data["WeaponLightningProb"] = Math.Min(1.0, currentProbability + value)
+                
+                LogInfo("武器闪电触发概率增加 " + Convert.ToString(value * 100) + 
+                        "%，当前概率: " + Convert.ToString(Skill2Data["WeaponLightningProb"] as float * 100) + "%")
+            }
+            if attributeName == "ReloadBuff" {
+                // 换弹后射速提升
+                var currentReloadBuff = Skill2Data["ReloadBuff"] as float
+                Skill2Data["ReloadBuff"] = currentReloadBuff + value
+                
+                LogInfo("换弹后射速提升增加 " + Convert.ToString(value * 100) + 
+                        "%，当前加成: " + Convert.ToString(Skill2Data["ReloadBuff"] as float * 100) + "%")
+            }
+            if attributeName == "ReloadNow" {
+                // 技能后立即装弹（技能2）
+                // 注意：虽然同名，但这是针对技能2的效果
+                LogInfo("获得闪电释放后立即装弹效果")
+            }
+        }
+    }
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     // 重置已选卡牌（开始新游戏时调用）
     func ResetSelectedCards() {
@@ -824,12 +1062,95 @@ graph PlayerJionGame {
         }
         var nature = Convert.ToString(cardInfo["Nature"])
         var value = cardInfo["Value"] as float
-        var currentCount = Gifted_Card_Count[cardId]
-        
-        // LogInfo("应用天赋卡牌效果 - 属性:" + nature + " 数值:" + Convert.ToString(value) + " 第" + Convert.ToString(currentCount) + "次")
+        var currentCount = GetCardDrawCount(cardId)
         
         // 根据属性类型应用效果
+        if nature == "HP" {
+            UpdatePlayerAttribute("HP", value)
+        } 
+        if nature == "MoveSpeed" {
+            UpdatePlayerAttribute("MoveSpeed", value)
+        }
+        if nature == "WeaponDamage" {
+            UpdatePlayerAttribute("WeaponDamage", value)
+        }
+        if nature == "SkillDamage" {
+            var current1Value = Skill1Data["SkillDamage"] as int
+            var increase1 = current1Value * value
+            Skill1Data["SkillDamage"] = Round(current1Value + increase1) as int
+            LogInfo("技能1伤害增加 " + Convert.ToString(value * 100) + "%，当前技能伤害: " + Convert.ToString(Skill1Data["SkillDamage"]))
 
+            var current2Value = Skill2Data["SkillDamage"] as int
+            var increase2 = current2Value * value
+            Skill2Data["SkillDamage"] = Round(current2Value + increase2) as int
+            LogInfo("技能2伤害增加 " + Convert.ToString(value * 100) + "%，当前技能伤害: " + Convert.ToString(Skill2Data["SkillDamage"]))
+        }
+        // 打印当前属性
+        ShowAllAttributes()
+        
+        // 发送到服务器
+        var allAttributes = Map<string, object>{}
+        for key, value in PlayerData {
+            allAttributes[key] = value
+        }
+        for key, value in Skill1Data {
+            allAttributes["Skill1_" + key] = value
+        }
+        for key, value in Skill2Data {
+            allAttributes["Skill2_" + key] = value
+        }
+        
+        DispatchEventToEntity(OnPlayerAttributesUpdate, globalEntity, PlatformType.Server, List<object>{PlayerData})
+    }
+
+    func UpdatePlayerAttribute(attributeName string, value float) {
+        if PlayerData[attributeName] != nil {
+            if attributeName == "HP" {
+                // HP：直接数值相加
+                PlayerData[attributeName] = PlayerData[attributeName] as int + value as int
+                LogInfo("HP增加 " + Convert.ToString(value as int) + "点，当前HP: " + Convert.ToString(PlayerData[attributeName]))
+                // 设置最大血量
+                GetLocalPlayer()<Player>.MaxHP = Round(PlayerData[attributeName] as int)
+                // 设置当前血量
+                GetLocalPlayer()<Player>.HP = GetLocalPlayer()<Player>.MaxHP
+            } 
+            if attributeName == "MoveSpeed" {
+                // 移速：百分比加成
+                var currentSpeed = PlayerData[attributeName] as float
+                var increase = currentSpeed * value
+                PlayerData[attributeName] = currentSpeed + increase
+                LogInfo("移速增加 " + Convert.ToString(value * 100) + "%，当前移速: " + Convert.ToString(PlayerData[attributeName]))
+                // 设置当前移速
+                GetLocalPlayer()<Player>.RunSpeedScale = PlayerData[attributeName] as int
+            }
+            if attributeName == "WeaponDamage" {
+                // 武器伤害：百分比加成
+                var currentDamage = (PlayerData[attributeName] as int)
+                var increase = currentDamage * value
+                PlayerData[attributeName] = Round(currentDamage + increase) as int
+                LogInfo("武器伤害增加 " + Convert.ToString(value * 100) + "%，当前武器伤害: " + Convert.ToString(PlayerData[attributeName]))
+            }
+        }
+    }
+
+    // 显示当前所有属性
+    func ShowAllAttributes() {
+        LogInfo("=== 当前所有属性 ===")
+        LogInfo("--- 玩家基础属性 ---")
+        for key, value in PlayerData {
+            LogInfo(key + ": " + Convert.ToString(value))
+        }
+        
+        LogInfo("--- 技能1属性 ---")
+        for key, value in Skill1Data {
+            LogInfo(key + ": " + Convert.ToString(value))
+        }
+        
+        LogInfo("--- 技能2属性 ---")
+        for key, value in Skill2Data {
+            LogInfo(key + ": " + Convert.ToString(value))
+        }
+        LogInfo("==================")
     }
 
     // 更新天赋卡牌UI显示

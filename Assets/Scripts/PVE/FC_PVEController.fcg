@@ -39,6 +39,9 @@ static graph FC_PVEController {
     // 游戲成功或失敗
     IsGameSuccess bool = false
     
+    // 玩家个人属性
+    PlayerData Map<string, object> = Map<string, object>{}
+
     event OnAwake() {
         LogInfo("PVE控制器初始化")
         InitializeController()
@@ -58,6 +61,10 @@ static graph FC_PVEController {
         currPlayer = player
     }
 
+    event OnPlayerAttributesUpdate(NewPlayerData Map<string, object>) {
+        PlayerData = NewPlayerData
+    }
+
     // 玩家复活删除武器
     event OnPlayerRevived(player entity<Player>, revivalSource PlayerReviveSourceType){
         DestroyItem(player, ItemIDType.M1887X, 1)
@@ -74,7 +81,7 @@ static graph FC_PVEController {
         skillId = skillIndex
         //删除武器
         Destroy(currentWeapon)
-        //临时发放武器
+        //发放武器
         if  skillIndex == 1 {
             DestroyItem(currPlayer, ItemIDType.M1887X, 1)
             AddItem(currPlayer, ItemIDType.M1887X, 1, out var itemList)
@@ -91,16 +98,11 @@ static graph FC_PVEController {
             DestroyItem(currPlayer,  ItemIDType.SGAmmo, 999)
             AddItem(currPlayer, ItemIDType.SMGAmmo, 999, out var createdEntity)
         }
-        currentWeapon<Weapon>.Damage = Math.Ceil(currentWeapon<Weapon>.Damage * weaponMultiplier)
+        //设置武器伤害
+        var weaponDamage = (PlayerData["WeaponDamage"] as int)
+        currentWeapon<Weapon>.Damage = weaponDamage
         currPlayer<Player>.IsDropOnEliminated = false
-
-        //设置血量
-        currPlayer<Player>.MaxHP = Math.Ceil(200 * healthMultiplier)
-        currPlayer<Player>.HP = currPlayer<Player>.MaxHP
-
-        //设置技能Multiplier
-
-       
+        
         LogInfo("游戏开始 - 关卡: " + level + "，技能: " + skillIndex)
         StartPVEGame(level)
     }

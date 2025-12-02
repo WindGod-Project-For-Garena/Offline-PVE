@@ -85,17 +85,8 @@ graph OnFire {
             LogInfo("未命中实体，使用射线终点: " + ReleasedEffectPosition)
         }
 
-        // 获取技能1的各个属性等级
-        // var rangeLevel = GetLocalPlayer()<PlayerJionGame>.GetCurrentSkillLevel(SkillID, "Range")
-        // var damageLevel = GetLocalPlayer()<PlayerJionGame>.GetCurrentSkillLevel(SkillID, "Damage")
-        
-        // var rangeData = GetLocalPlayer()<PlayerJionGame>.GetSkillData("Skill1", rangeLevel)
-        // var damageData = GetLocalPlayer()<PlayerJionGame>.GetSkillData("Skill1", damageLevel)
-        
-        // var Size = rangeData["size"] as int
-        // var CurrentDamage = damageData["Damage"] as int
-        var Size = 4
-        var CurrentDamage = 20
+        var Size = GetLocalPlayer()<PlayerJionGame>.Skill1Data["WeaponBoomRange"] as int
+        var CurrentDamage = GetLocalPlayer()<PlayerJionGame>.Skill1Data["WeaponBoomDamage"] as int
         
         // 释放特效
         CreateEffectClient(out var NewcreatedEntity, VFXType.CurseExplosion, LoopType.Once, true)
@@ -144,9 +135,8 @@ graph OnFire {
         }
 
         // 获取技能2的各个属性等级
-        var damageLevel = GetLocalPlayer()<PlayerJionGame>.GetCurrentSkillLevel(SkillID, "Damage")
-        var damageData = GetLocalPlayer()<PlayerJionGame>.GetSkillData("Skill2", damageLevel)
-        var CurrentDamage = damageData["Damage"] as int
+        var count = GetLocalPlayer()<PlayerJionGame>.Skill2Data["SkillAmount"] as int
+        var CurrentDamage = GetLocalPlayer()<PlayerJionGame>.Skill2Data["SkillDamage"] as int
 
         // 释放雷击
         start PlayThunderEffects(CurrentDamage,hitEntity)

@@ -84,7 +84,7 @@ static graph FC_PVEMonsterManager {
     func LoadCurrentLevelRows(level int) {
         Map.Clear(LevelRowInfos)
         for i,rowValue in ReadCSVColumn(EResCSV.LevelConfig,1) {
-            LogInfo("rowValue: " + rowValue)
+            // LogInfo("rowValue: " + rowValue)
 
             if rowValue == level {
                 var rowInfo List<object> = ReadCSVRow(EResCSV.LevelConfig,i+1)

@@ -28,7 +28,6 @@ graph SkillUI {
     ActiveMonstersParentNode entity<Entity> 
 
     skillMultiplier float = 1
-    
 
     event OnAwake() {
         ActiveMonstersParentNode = EResSceneIsleLand.ActiveMobs as entity<Entity>
@@ -108,7 +107,7 @@ graph SkillUI {
 
     // 技能2
     func Skill_2(CurrentSkill int, hitPosition Vector3){
-        // 技能一不需要特效
+        // 技能2不需要特效
         return
         // if previewEffectEntity == nil {
         //     CreateEffectClient(out var NewcreatedEntity, VFXType.LightBeamPreDiscarded, LoopType.Once, true)
@@ -143,17 +142,9 @@ graph SkillUI {
     // 技能1释放
     async func Skill_1_Released(CurrentSkill int){
         // 获取技能1的各个属性等级
-        var rangeLevel = GetLocalPlayer()<PlayerJionGame>.GetCurrentSkillLevel(CurrentSkill, "Range")
-        var damageLevel = GetLocalPlayer()<PlayerJionGame>.GetCurrentSkillLevel(CurrentSkill, "Damage")
-        var cdLevel = GetLocalPlayer()<PlayerJionGame>.GetCurrentSkillLevel(CurrentSkill, "CD")
-        
-        var rangeData = GetLocalPlayer()<PlayerJionGame>.GetSkillData("Skill1", rangeLevel)
-        var damageData = GetLocalPlayer()<PlayerJionGame>.GetSkillData("Skill1", damageLevel)
-        var cdData = GetLocalPlayer()<PlayerJionGame>.GetSkillData("Skill1", cdLevel)
-        
-        var Size = rangeData["size"] as int
-        var CurrentDamage = damageData["Damage"] as int
-        var CurrentcdTime = cdData["CD"] as int
+        var CurrentDamage int = Round(GetLocalPlayer()<PlayerJionGame>.Skill1Data["SkillDamage"] as int)
+        var Size int = Round(GetLocalPlayer()<PlayerJionGame>.Skill1Data["SkillRange"] as int)
+        var CurrentcdTime int = Round(GetLocalPlayer()<PlayerJionGame>.Skill1Data["SkillCD"] as int)
         
         // 释放特效
         CreateEffectClient(out var NewcreatedEntity, VFXType.CurseExplosion, LoopType.Once, true)
@@ -178,23 +169,15 @@ graph SkillUI {
     // 技能2释放
     async func Skill_2_Released(CurrentSkill int){
         // 获取技能2的各个属性等级
-        var CountLevel = GetLocalPlayer()<PlayerJionGame>.GetCurrentSkillLevel(CurrentSkill, "Range")
-        var damageLevel = GetLocalPlayer()<PlayerJionGame>.GetCurrentSkillLevel(CurrentSkill, "Damage")
-        var cdLevel = GetLocalPlayer()<PlayerJionGame>.GetCurrentSkillLevel(CurrentSkill, "CD")
-        
-        var CountData = GetLocalPlayer()<PlayerJionGame>.GetSkillData("Skill2", CountLevel)
-        var damageData = GetLocalPlayer()<PlayerJionGame>.GetSkillData("Skill2", damageLevel)
-        var cdData = GetLocalPlayer()<PlayerJionGame>.GetSkillData("Skill2", cdLevel)
-        
-        var Count = CountData["Count"] as int
-        var CurrentDamage = damageData["Damage"] as int
-        var CurrentcdTime = cdData["CD"] as int
+        var CurrentDamage = GetLocalPlayer()<PlayerJionGame>.Skill2Data["SkillDamage"] as int
+        var Count = GetLocalPlayer()<PlayerJionGame>.Skill2Data["SkillAmount"] as int
+        var CurrentcdTime = GetLocalPlayer()<PlayerJionGame>.Skill2Data["SkillCD"] as int
 
         // 设置CD
         StartSkillCD(CurrentSkill, CurrentcdTime)
         
         // 释放雷击
-        start PlayThunderEffects(Count, CountLevel, CurrentDamage)
+        start PlayThunderEffects(Count, CurrentDamage)
     }
 
     // 启动技能CD
@@ -229,11 +212,11 @@ graph SkillUI {
     }
 
     // 播放雷击特效
-    async func PlayThunderEffects(Count int, CountLevel int, damage int) {
+    async func PlayThunderEffects(Count int, damage int) {
         for i = 0, Count, 1 {
             var randomMonster = GetRandomMonster()
             if randomMonster != nil {
-                start CreateThunder(i, randomMonster, CountLevel, damage)
+                start CreateThunder(i, randomMonster, damage)
                 WaitForMillisecond(200)
             }
         }
@@ -248,19 +231,18 @@ graph SkillUI {
     }
 
     // 创建单道雷
-    async func CreateThunder(index int, targetMonster entity<LevelObject>, CountLevel int, damage int) {
+    async func CreateThunder(index int, targetMonster entity<LevelObject>, damage int) {
         var thunderPosition = targetMonster<Transform>.Position
         CreateEffectClient(out var thunderEffect, VFXType.Thunder, LoopType.Once, true)
         thunderEffect<Transform>.Position = thunderPosition
         thunderEffect<Transform>.Scale = Vector3{0.8,2,0.8}
         SetParentClient(targetMonster, thunderEffect, true)
-        BoomColor(thunderEffect, CountLevel)
+        BoomColor(thunderEffect, 3)
 
         var realDamage int = Math.Ceil(damage * skillMultiplier)
         //造成伤害
         DispatchEventToEntity(OnDamageMob, targetMonster, PlatformType.Server, List<object>{targetMonster, nil, realDamage, GetLocalPlayer()})
         CreateDamageNum(realDamage, 10, #dde511, 800, targetMonster as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
-      
     }
 
 

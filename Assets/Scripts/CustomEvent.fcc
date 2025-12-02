@@ -48,3 +48,7 @@ event ReLoadAmmo()
 //显示游戏调试UI事件，显示游戏调试UI时触发
 event ToClient_ShowFinalStats(currTime int, GameStartTime int, IsGameSuccess bool, totalTime int, CurrentLevel int)
 
+[platform_client]
+[platform_server]
+//显示游戏调试UI事件，显示游戏调试UI时触发
+event OnPlayerAttributesUpdate(PlayerData Map<string, object>)
