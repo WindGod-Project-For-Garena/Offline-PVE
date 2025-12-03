@@ -1,0 +1,77 @@
+{
+  "fileId": "0ppnlcfa2ku-m3i6riqm-8biyh2fh3zm",
+  "globalscale": 1,
+  "properties": {
+    "Common": ""
+  },
+  "subDynamicResources": {},
+  "subLOD": {},
+  "version": "1.6.1",
+  "manifest": {
+    "Meshes": [],
+    "BoneInfos": [],
+    "Anims": [
+      {
+        "OrgExtName": ".Anim",
+        "Name": "Take 001.Anim",
+        "Size": 50179,
+        "ClipData": {
+          "Name": "Take 001",
+          "BakeStart": 0,
+          "BakeStop": 0.4000000059604645,
+          "SampleRate": 30
+        },
+        "magicNumber": {
+          "magicNumber1": 100,
+          "magicNumber2": 98,
+          "magicNumber3": 158,
+          "magicNumber4": 134,
+          "version": 1009715
+        }
+      }
+    ],
+    "ManifestJSON": {
+      "FBXName": "BossButcher@CastStart",
+      "ImportSucceeded": true,
+      "MaterialCount": 0,
+      "MaterialDetail": [],
+      "MeshCount": 0,
+      "MeshDetail": []
+    }
+  },
+  "content": {
+    "Take 001.anim": {
+      "_entityName": "AnimClipEntity",
+      "_entityId": "JT8Lp8Co",
+      "_preModel": {
+        "fileId": "9vel9h3f3ur-m3i6ro22-txsdy9gig4",
+        "filePath": "Assets\\ZombieAsset\\Boss01\\BossButcher.FBX",
+        "_tag": {
+          "type": "GFileRefer"
+        },
+        "fileType": "fbx"
+      },
+      "children": [
+        {
+          "_entityId": "qS4H9kg5",
+          "EventFrameName": "事件帧",
+          "FrameIndex": 10,
+          "Time": 0.33,
+          "EventList": [
+            {
+              "eventKeyValue": "AnimationControllerAble::signal_52120933",
+              "paramList": [
+                {
+                  "type": "String",
+                  "label": "eventName",
+                  "newValue": "Boss1CastStart"
+                }
+              ],
+              "hideParam": false
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -40,7 +40,7 @@ static graph FC_PVEController {
     IsGameSuccess bool = false
     
     // 玩家个人属性
-    PlayerData Map<string, object> = Map<string, object>{}
+    PlayerDataInGame Map<string, object> = Map<string, object>{}
 
     event OnAwake() {
         LogInfo("PVE控制器初始化")
@@ -61,8 +61,8 @@ static graph FC_PVEController {
         currPlayer = player
     }
 
-    event OnPlayerAttributesUpdate(NewPlayerData Map<string, object>) {
-        PlayerData = NewPlayerData
+    event OnPlayerAttributesUpdate(NewPlayerDataInGame Map<string, object>) {
+        PlayerDataInGame = NewPlayerDataInGame
     }
 
     // 玩家复活删除武器
@@ -99,10 +99,19 @@ static graph FC_PVEController {
             AddItem(currPlayer, ItemIDType.SMGAmmo, 999, out var createdEntity)
         }
         //设置武器伤害
-        var weaponDamage = (PlayerData["WeaponDamage"] as int)
+        var weaponDamage = Round(PlayerDataInGame["WeaponDamage"] as int)
         currentWeapon<Weapon>.Damage = weaponDamage
         currPlayer<Player>.IsDropOnEliminated = false
         
+        // 使用局内数据更新玩家属性
+        if PlayerDataInGame["HP"] != nil {
+            currPlayer<Player>.MaxHP = PlayerDataInGame["HP"] as int
+            currPlayer<Player>.HP = currPlayer<Player>.MaxHP
+        }
+        if PlayerDataInGame["MoveSpeed"] != nil {
+            currPlayer<Player>.RunSpeedScale = PlayerDataInGame["MoveSpeed"] as float
+        }
+
         LogInfo("游戏开始 - 关卡: " + level + "，技能: " + skillIndex)
         StartPVEGame(level)
     }

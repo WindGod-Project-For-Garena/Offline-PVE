@@ -1,0 +1,169 @@
+{
+  "fileId": "sdvsvu47p1q-m7vix2tr-b84agq54oct",
+  "globalscale": 1,
+  "properties": {
+    "Common": ""
+  },
+  "subDynamicResources": {},
+  "version": "1.6.1",
+  "manifest": {
+    "Meshes": [
+      {
+        "Name": "Egg_Pumpkin_LOD0.~@FFSKIN",
+        "MeshName": "Egg_Pumpkin_LOD0",
+        "Type": "skin",
+        "OrgExtName": ".~@FFSKIN"
+      }
+    ],
+    "BoneInfos": [
+      {
+        "Name": "HalloweenBoss_Rig.sk",
+        "BoneNodes": [
+          {
+            "ChildBones": [],
+            "BoneName": "Egg_Pumpkin_LOD0"
+          },
+          {
+            "ChildBones": [
+              {
+                "ChildBones": [
+                  {
+                    "ChildBones": [],
+                    "BoneName": "Bone1081"
+                  },
+                  {
+                    "ChildBones": [],
+                    "BoneName": "Bone108"
+                  }
+                ],
+                "BoneName": "Bone001"
+              },
+              {
+                "ChildBones": [
+                  {
+                    "ChildBones": [
+                      {
+                        "ChildBones": [
+                          {
+                            "ChildBones": [
+                              {
+                                "ChildBones": [],
+                                "BoneName": "Bone008"
+                              }
+                            ],
+                            "BoneName": "Bone007"
+                          }
+                        ],
+                        "BoneName": "Bone006"
+                      }
+                    ],
+                    "BoneName": "Bone005"
+                  },
+                  {
+                    "ChildBones": [
+                      {
+                        "ChildBones": [],
+                        "BoneName": "Bone107"
+                      }
+                    ],
+                    "BoneName": "Bone106"
+                  }
+                ],
+                "BoneName": "Bone004"
+              },
+              {
+                "ChildBones": [
+                  {
+                    "ChildBones": [],
+                    "BoneName": "Bone010"
+                  }
+                ],
+                "BoneName": "Bone009"
+              },
+              {
+                "ChildBones": [
+                  {
+                    "ChildBones": [],
+                    "BoneName": "Bone105"
+                  }
+                ],
+                "BoneName": "Bone104"
+              },
+              {
+                "ChildBones": [
+                  {
+                    "ChildBones": [],
+                    "BoneName": "Bone0101"
+                  }
+                ],
+                "BoneName": "Bone0091"
+              },
+              {
+                "ChildBones": [
+                  {
+                    "ChildBones": [],
+                    "BoneName": "Bone103"
+                  }
+                ],
+                "BoneName": "Bone102"
+              },
+              {
+                "ChildBones": [
+                  {
+                    "ChildBones": [],
+                    "BoneName": "Bone003"
+                  }
+                ],
+                "BoneName": "Bone002"
+              }
+            ],
+            "BoneName": "bone_Root"
+          },
+          {
+            "ChildBones": [],
+            "BoneName": "Point001"
+          }
+        ],
+        "OrgExtName": ".sk"
+      }
+    ],
+    "Anims": [],
+    "ManifestJSON": {
+      "FBXName": "HalloweenBoss_Rig",
+      "ImportSucceeded": true,
+      "MaterialCount": 1,
+      "MaterialDetail": [
+        {
+          "Index": 0,
+          "MaterialName": "Material #2"
+        }
+      ],
+      "MeshCount": 1,
+      "MeshDetail": [
+        {
+          "MeshName": "Egg_Pumpkin_LOD0",
+          "MaterialIndex": [
+            0
+          ],
+          "Transform": {
+            "Position": [
+              0,
+              0,
+              0
+            ],
+            "Rotation": [
+              0.00000250448,
+              0,
+              0
+            ],
+            "Scale": [
+              1,
+              1,
+              1
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "fileId": "4r87vtebtda-m3i6rkre-721c421rt6s",
+  "globalscale": 1,
+  "properties": {
+    "Common": ""
+  },
+  "subDynamicResources": {},
+  "subLOD": {},
+  "version": "1.6.1",
+  "manifest": {
+    "Meshes": [],
+    "BoneInfos": [],
+    "Anims": [
+      {
+        "OrgExtName": ".Anim",
+        "Name": "Take 001.Anim",
+        "Size": 46971,
+        "ClipData": {
+          "Name": "Take 001",
+          "BakeStart": 0,
+          "BakeStop": 0.4333333373069763,
+          "SampleRate": 30
+        },
+        "magicNumber": {
+          "magicNumber1": 100,
+          "magicNumber2": 98,
+          "magicNumber3": 158,
+          "magicNumber4": 134,
+          "version": 1009715
+        }
+      }
+    ],
+    "ManifestJSON": {
+      "FBXName": "BossButcher@Flinch_Run",
+      "ImportSucceeded": true,
+      "MaterialCount": 0,
+      "MaterialDetail": [],
+      "MeshCount": 0,
+      "MeshDetail": []
+    }
+  },
+  "content": {
+    "Take 001.anim": {
+      "_entityName": "AnimClipEntity",
+      "_entityId": "xMfQ7fUb",
+      "_preModel": {
+        "fileId": "9vel9h3f3ur-m3i6ro22-txsdy9gig4",
+        "filePath": "Assets\\ZombieAsset\\Boss01\\BossButcher.FBX",
+        "_tag": {
+          "type": "GFileRefer"
+        },
+        "fileType": "fbx"
+      },
+      "children": []
+    }
+  }
+}

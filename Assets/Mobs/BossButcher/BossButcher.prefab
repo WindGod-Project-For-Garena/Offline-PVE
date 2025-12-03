@@ -1,0 +1,702 @@
+{
+  "_tag": {
+    "type": "Prefab"
+  },
+  "_entityId": "sQ7AjM7H",
+  "children": [
+    {
+      "_tag": {
+        "type": "UGCSceneEntity",
+        "resourceId": ""
+      },
+      "_entityId": "DoDDweTl",
+      "children": [
+        {
+          "_entityName": "Box001",
+          "_tag": {
+            "type": "UGCSceneEntity",
+            "resourceId": ""
+          },
+          "_entityId": "qOqVsJ81",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": null,
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "position": {
+            "x": 0,
+            "y": 1.3155491352081299,
+            "z": 0
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "BTPath": [
+            null
+          ],
+          "visible": true,
+          "VisibilityLayer": 0,
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "attributes": [
+            2,
+            4
+          ],
+          "isTrigger": false,
+          "collidable": false,
+          "physicalLayer": 0,
+          "physicalMaterial": null,
+          "aoiSetting": 0,
+          "initialTypes": {},
+          "componentList": [
+            "MeshRender",
+            "ColliderShape",
+            "Collider"
+          ],
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "materials": [
+            null
+          ],
+          "colliders": [
+            {
+              "enable": true,
+              "colliderType": "Box",
+              "meshUUID": null,
+              "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "size": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              },
+              "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "isTrigger": false,
+              "radius": 0.5,
+              "height": 1,
+              "physicalMaterialUUID": null,
+              "isConvexIfMesh": false
+            }
+          ],
+          "IsNPC": false,
+          "isCreateAsEmpty": false,
+          "Rigidbody": {
+            "Type": 1,
+            "Mass": 1,
+            "CenterOfMass": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            },
+            "UseGravity": true,
+            "Drag": 0.05,
+            "AngularDrag": 0.05,
+            "FreezePosX": false,
+            "FreezeRotX": false,
+            "FreezePosY": false,
+            "FreezeRotY": false,
+            "FreezePosZ": false,
+            "FreezeRotZ": false
+          },
+          "ecaScripts": [],
+          "ecaProps": {
+            "CustomLevelObject": {
+              "CustomLevelObject_81351029_custom": null
+            },
+            "LevelObject": {},
+            "Transform": {},
+            "Entity": {},
+            "Visibility": {},
+            "MeshRender": {},
+            "ColliderShape": {},
+            "Collider": {}
+          },
+          "propsData": {},
+          "entityVersion": 3,
+          "mesh": {
+            "fileId": "wehss29x://7d9977d6-d297-4a69-970c-c4d88446bf3b-Box001.~@FFFUB",
+            "filePath": "wehss29x://Meshes/cube.fbx/Box001",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "mesh"
+          }
+        }
+      ],
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "position": {
+        "x": 0,
+        "y": -0.3,
+        "z": 0
+      },
+      "scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "BTPath": [
+        {
+          "fileId": "s3dynzjrzz-m3i77rzf-l9ytbu3czel",
+          "filePath": "Assets\\ZombieAsset\\Boss01\\Boss1.xbt",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "xbt"
+        }
+      ],
+      "visible": true,
+      "VisibilityLayer": 0,
+      "modelOptimization": 0,
+      "streamingLayer": "",
+      "attributes": [
+        2,
+        4
+      ],
+      "isTrigger": false,
+      "collidable": true,
+      "physicalLayer": 1,
+      "physicalMaterial": null,
+      "initialTypes": {},
+      "componentList": [
+        "AvatarAble",
+        "AnimationControllerAble",
+        "ColliderShape",
+        "Collider",
+        "AimableEntity",
+        "AimAssistEntity",
+        "BehaviourTreeAttachable",
+        "CustomComponent59601760"
+      ],
+      "_filters": [
+        "node.withscript"
+      ],
+      "entityTagData": {
+        "tagPointers": []
+      },
+      "materials": [
+        null
+      ],
+      "colliders": [
+        {
+          "colliderType": "Capsule",
+          "enable": true,
+          "isTrigger": false,
+          "position": {
+            "x": 0,
+            "y": 1.1,
+            "z": 0
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "size": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "radius": 0.5,
+          "height": 1.5,
+          "isConvexIfMesh": false
+        }
+      ],
+      "Rigidbody": {
+        "Type": 1,
+        "Mass": 1,
+        "CenterOfMass": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "UseGravity": false,
+        "Drag": 0.05,
+        "AngularDrag": 0.05,
+        "FreezePosX": false,
+        "FreezePosY": false,
+        "FreezePosZ": false,
+        "FreezeRotX": false,
+        "FreezeRotY": false,
+        "FreezeRotZ": false
+      },
+      "isCreateAsEmpty": false,
+      "ecaScripts": [
+        {
+          "fileId": "gwfwh1xpjrf-mio9f1um-vjp9dmua28",
+          "filePath": "Assets\\Scripts\\MobScripts\\C_BossButcher.fcg",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "ugcscript"
+        },
+        {
+          "fileId": "pmaqljth6jb-mio9edw1-htgaa22iqts",
+          "filePath": "Assets\\Scripts\\MobScripts\\FC_BossButcher.fcg",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "ugcscript"
+        },
+        {
+          "fileId": "f124lylha6e-mhvqlgm0-c863tnvxd0n",
+          "filePath": "Assets\\Scripts\\MobScripts\\FC_MobComponent.fcg",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "ugcscript"
+        }
+      ],
+      "ecaProps": {
+        "CustomLevelObject": {
+          "PROP_14360378": 0,
+          "CustomLevelObject_81351029_custom": null
+        },
+        "LevelObject": {
+          "PROP_52849513": 0,
+          "PROP_45897236": 0
+        },
+        "Transform": {},
+        "Entity": {},
+        "Visibility": {},
+        "AvatarAble": {},
+        "AnimationControllerAble": {
+          "acRef": {
+            "fileId": "kt9oxie39jp-m3i77rxm-5elemuiwuhe",
+            "filePath": "Assets\\ZombieAsset\\Boss01\\Boss1.ac",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "ac"
+          }
+        },
+        "ColliderShape": {},
+        "Collider": {},
+        "AimableEntity": {},
+        "AimAssistEntity": {},
+        "BehaviourTreeAttachable": {},
+        "MeshRender": {},
+        "CustomComponent31897461": {
+          "PROP_49135054": 600,
+          "PROP_81455094": 600,
+          "PROP_73815879": 4,
+          "PROP_66147538": 20,
+          "PROP_45837287": 1,
+          "PROP_70190061": 1,
+          "PROP_44090358": 1,
+          "PROP_29109301": 1,
+          "PROP_73716871": 0.6,
+          "PROP_76912094": 0.6,
+          "PROP_30104596": 1,
+          "PROP_69523903": "",
+          "PROP_56297798": null,
+          "PROP_35241580": null,
+          "PROP_29661490": null,
+          "PROP_92573979": null,
+          "PROP_20114578": null,
+          "PROP_92060434": 0,
+          "PROP_57044040": null
+        },
+        "CustomComponent59601760": {
+          "PROP_22515481": "Mob",
+          "PROP_31785558": 100,
+          "PROP_74830943": 100,
+          "PROP_27635539": 10,
+          "PROP_12765276": 2,
+          "PROP_77801521": null,
+          "PROP_92961702": null,
+          "PROP_84519962": 10,
+          "PROP_90540570": null,
+          "PROP_42420456": 0,
+          "PROP_26191266": null
+        }
+      },
+      "entityVersion": 3,
+      "_entityName": "C_Zombie01",
+      "skeleton": {
+        "fileId": "9vel9h3f3ur-m3i6ro22-txsdy9gig4-BossButcher.sk",
+        "filePath": "fab://Assets\\ZombieAsset\\Boss01\\BossButcher.FBX\\BossButcher.sk",
+        "_tag": {
+          "type": "GFileRefer"
+        },
+        "fileType": "sk"
+      },
+      "boneEntity": {
+        "_tag": {
+          "type": "BoneContentEntity"
+        },
+        "_entityId": "AyF50QKI",
+        "children": [
+          {
+            "_tag": {
+              "type": "BoneMeshGroupEntity"
+            },
+            "_entityId": "Y4kSXxjG",
+            "children": [
+              {
+                "_tag": {
+                  "type": "BoneMeshEntity"
+                },
+                "_entityId": "pLiSjOJo",
+                "children": [],
+                "prefabVariant": null,
+                "activeValue": {
+                  "selfValue": true,
+                  "valueTag": "activeValue"
+                },
+                "unlockedValue": {
+                  "selfValue": true,
+                  "valueTag": "unlockedValue"
+                },
+                "editorLockValue": false,
+                "editorVisibleValue": true,
+                "_mesh": {
+                  "fileId": "9vel9h3f3ur-m3i6ro22-txsdy9gig4-BossButcher.~@FFSKIN",
+                  "filePath": "Assets\\Mobs\\BossButcher\\Boss01\\BossButcher.FBX\\BossButcher.mesh",
+                  "_tag": {
+                    "type": "GFileRefer"
+                  },
+                  "fileType": "mesh"
+                },
+                "_cloth": null,
+                "partType": 0,
+                "causeAnimationTypeChange": false,
+                "outwardType": 0,
+                "materials": [
+                  {
+                    "fileId": "lawv0ak46k9-m3i6w6ln-r3f9jebeleo",
+                    "filePath": "Assets\\ZombieAsset\\Boss01\\Materials\\Butcher.mat",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "material"
+                  }
+                ],
+                "avatarPartInfo": {
+                  "bone": "Root",
+                  "bindType": 0
+                },
+                "position": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "scale": {
+                  "x": 1,
+                  "y": 1,
+                  "z": 1
+                },
+                "rotation": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "_entityName": "BossButcher.mesh"
+              },
+              {
+                "_tag": {
+                  "type": "BoneMeshEntity"
+                },
+                "_entityId": "5RkKnvUY",
+                "children": [],
+                "prefabVariant": null,
+                "activeValue": {
+                  "selfValue": true,
+                  "valueTag": "activeValue"
+                },
+                "unlockedValue": {
+                  "selfValue": true,
+                  "valueTag": "unlockedValue"
+                },
+                "editorLockValue": false,
+                "editorVisibleValue": true,
+                "_mesh": {
+                  "fileId": "9vel9h3f3ur-m3i6ro22-txsdy9gig4-BossButcherWeapon.~@FFSKIN",
+                  "filePath": "fab://Assets\\ZombieAsset\\Boss01\\BossButcher.FBX\\BossButcherWeapon.mesh",
+                  "_tag": {
+                    "type": "GFileRefer"
+                  },
+                  "fileType": "mesh"
+                },
+                "_cloth": null,
+                "partType": 0,
+                "causeAnimationTypeChange": false,
+                "outwardType": 0,
+                "materials": [
+                  {
+                    "fileId": "iv6rgaehz3r-m3i6x5ci-md8bj0hrbrf",
+                    "filePath": "Assets\\ZombieAsset\\Boss01\\Materials\\Butcher Weapon.mat",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "material"
+                  }
+                ],
+                "avatarPartInfo": {
+                  "bone": "Root",
+                  "bindType": 1
+                },
+                "position": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "scale": {
+                  "x": 1,
+                  "y": 1,
+                  "z": 1
+                },
+                "rotation": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "_entityName": "BossButcherWeapon.mesh"
+              }
+            ],
+            "prefabVariant": null,
+            "activeValue": {
+              "selfValue": true,
+              "valueTag": "activeValue"
+            },
+            "unlockedValue": null,
+            "editorLockValue": false,
+            "editorVisibleValue": true,
+            "groupId": "",
+            "enable": true,
+            "_entityName": "BossButcher"
+          },
+          {
+            "_tag": {
+              "type": "BoneMeshGroupEntity"
+            },
+            "_entityId": "52GCVYMc",
+            "children": [
+              {
+                "_tag": {
+                  "type": "BoneMeshEntity"
+                },
+                "_entityId": "sP3GtzWF",
+                "children": [],
+                "prefabVariant": null,
+                "activeValue": {
+                  "selfValue": true,
+                  "valueTag": "activeValue"
+                },
+                "unlockedValue": {
+                  "selfValue": true,
+                  "valueTag": "unlockedValue"
+                },
+                "_mesh": {
+                  "fileId": "9vel9h3f3ur-m3i6ro22-txsdy9gig4-BossButcher.~@FFSKIN",
+                  "filePath": "fab://Assets\\ZombieAsset\\Boss01\\BossButcher.FBX\\BossButcher.mesh",
+                  "_tag": {
+                    "type": "GFileRefer"
+                  },
+                  "fileType": "mesh"
+                },
+                "_cloth": null,
+                "partType": 0,
+                "causeAnimationTypeChange": false,
+                "outwardType": 0,
+                "materials": [
+                  {
+                    "fileId": "pkvbbg7odgc-mdofzw8x-x7i9x3zlxk7",
+                    "filePath": "Assets\\ZombieAsset\\Boss01\\Materials\\ButcherCold.mat",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "material"
+                  }
+                ],
+                "avatarPartInfo": {
+                  "bone": "Root",
+                  "bindType": 0
+                },
+                "position": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "scale": {
+                  "x": 1,
+                  "y": 1,
+                  "z": 1
+                },
+                "rotation": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "_entityName": "BossButcher.mesh"
+              },
+              {
+                "_tag": {
+                  "type": "BoneMeshEntity"
+                },
+                "_entityId": "IWhHFKSx",
+                "children": [],
+                "prefabVariant": null,
+                "activeValue": {
+                  "selfValue": true,
+                  "valueTag": "activeValue"
+                },
+                "unlockedValue": {
+                  "selfValue": true,
+                  "valueTag": "unlockedValue"
+                },
+                "_mesh": {
+                  "fileId": "9vel9h3f3ur-m3i6ro22-txsdy9gig4-BossButcherWeapon.~@FFSKIN",
+                  "filePath": "fab://Assets\\ZombieAsset\\Boss01\\BossButcher.FBX\\BossButcherWeapon.mesh",
+                  "_tag": {
+                    "type": "GFileRefer"
+                  },
+                  "fileType": "mesh"
+                },
+                "_cloth": null,
+                "partType": 0,
+                "causeAnimationTypeChange": false,
+                "outwardType": 0,
+                "materials": [
+                  {
+                    "fileId": "iv6rgaehz3r-m3i6x5ci-md8bj0hrbrf",
+                    "filePath": "Assets\\ZombieAsset\\Boss01\\Materials\\Butcher Weapon.mat",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "material"
+                  }
+                ],
+                "avatarPartInfo": {
+                  "bone": "Root",
+                  "bindType": 0
+                },
+                "position": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "scale": {
+                  "x": 1,
+                  "y": 1,
+                  "z": 1
+                },
+                "rotation": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "_entityName": "BossButcherWeapon.mesh"
+              }
+            ],
+            "prefabVariant": null,
+            "activeValue": {
+              "selfValue": true,
+              "valueTag": "activeValue"
+            },
+            "unlockedValue": null,
+            "editorLockValue": false,
+            "editorVisibleValue": true,
+            "groupId": "",
+            "enable": false,
+            "_entityName": "BossButcher_cold"
+          }
+        ],
+        "prefabVariant": null,
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
+        "editorLockValue": false,
+        "editorVisibleValue": true,
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "BTPath": [
+          null
+        ],
+        "visible": true,
+        "VisibilityLayer": 0,
+        "modelOptimization": 0,
+        "streamingLayer": "",
+        "attributes": [
+          2,
+          4
+        ],
+        "isTrigger": false,
+        "collidable": true,
+        "physicalLayer": 0,
+        "physicalMaterial": null,
+        "initialTypes": {},
+        "componentList": [],
+        "_filters": [],
+        "_entityName": "C_Zombie01"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "prefabVariant": null,
+      "propsData": {},
+      "aoiSetting": 0
+    }
+  ],
+  "prefabVariant": null,
+  "activeValue": {
+    "selfValue": true,
+    "valueTag": "activeValue"
+  },
+  "unlockedValue": {
+    "selfValue": true,
+    "valueTag": "unlockedValue"
+  },
+  "editorLockValue": false,
+  "editorVisibleValue": true,
+  "discriminator": "ISceneLike",
+  "_entityName": "BossButcher"
+}
+//"{FE:{"v":"1.15.4020050","c":{"FF":5001},"s":100}

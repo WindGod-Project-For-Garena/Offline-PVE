@@ -250,6 +250,18 @@
           },
           "scriptName": "GameOverFinal",
           "children": []
+        },
+        {
+          "refer": {
+            "fileId": "5vfo2vj6qov-miod2z9v-2x632zdmg0n",
+            "filePath": "Assets\\New UI.ui",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "ui"
+          },
+          "scriptName": "NewUI",
+          "children": []
         }
       ]
     },
@@ -556,6 +568,78 @@
             "fileType": "prefab"
           },
           "scriptName": "SkillWaring_Square",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "7vdr3wg3py-m3i77s0z-f13pi4t4ln",
+            "filePath": "Assets\\Mobs\\BossButcher\\BossButcher.prefab",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "prefab"
+          },
+          "scriptName": "BossButcher",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "sjn5r40lmrf-m3i77rvs-m20l682v44k",
+            "filePath": "Assets\\Mobs\\BossButcher\\HitBox\\BossButcherHeadHitBox.prefab",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "prefab"
+          },
+          "scriptName": "HitBox_BossButcher_Head",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "xy4kqy60hfb-m3i77rvv-mq5mhc9i9b",
+            "filePath": "Assets\\Mobs\\BossButcher\\HitBox\\BossButcherLeftArmHitBox.prefab",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "prefab"
+          },
+          "scriptName": "HitBox_BossButcher_LeftArm",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "ohq3fw2bbiq-m3i77rvx-yfa6ow8iwo",
+            "filePath": "Assets\\Mobs\\BossButcher\\HitBox\\BossButcherLegHitBox.prefab",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "prefab"
+          },
+          "scriptName": "HitBox_BossButcher_Leg",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "c6hrd8toz4-m3i77rvz-95malai1y3b",
+            "filePath": "Assets\\Mobs\\BossButcher\\HitBox\\BossButcherRightArmHitBox.prefab",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "prefab"
+          },
+          "scriptName": "HitBox_BossButcher_RightArm",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "yig94ptzgw-miobaf7r-5uqne6hbweh",
+            "filePath": "Assets\\Mobs\\BossButcher\\HitBox\\BossButcherBodyHitBox.prefab",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "prefab"
+          },
+          "scriptName": "HitBox_BossButcher_Body",
           "children": []
         }
       ]

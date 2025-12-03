@@ -1,0 +1,284 @@
+{
+  "fileId": "9vel9h3f3ur-m3i6ro22-txsdy9gig4",
+  "globalscale": 1,
+  "properties": {
+    "Common": ""
+  },
+  "subDynamicResources": {},
+  "subLOD": {},
+  "version": "1.6.1",
+  "manifest": {
+    "Meshes": [
+      {
+        "Name": "BossButcher.~@FFSKIN",
+        "MeshName": "BossButcher",
+        "Type": "skin",
+        "OrgExtName": ".~@FFSKIN"
+      },
+      {
+        "Name": "BossButcherWeapon.~@FFSKIN",
+        "MeshName": "BossButcherWeapon",
+        "Type": "skin",
+        "OrgExtName": ".~@FFSKIN"
+      }
+    ],
+    "BoneInfos": [
+      {
+        "Name": "BossButcher.sk",
+        "BoneNodes": [
+          {
+            "ChildBones": [
+              {
+                "ChildBones": [
+                  {
+                    "ChildBones": [
+                      {
+                        "ChildBones": [
+                          {
+                            "ChildBones": [
+                              {
+                                "ChildBones": [
+                                  {
+                                    "ChildBones": [],
+                                    "BoneName": "Bip001 Head"
+                                  },
+                                  {
+                                    "ChildBones": [
+                                      {
+                                        "ChildBones": [
+                                          {
+                                            "ChildBones": [
+                                              {
+                                                "ChildBones": [
+                                                  {
+                                                    "ChildBones": [
+                                                      {
+                                                        "ChildBones": [],
+                                                        "BoneName": "Bip001 L Finger01"
+                                                      }
+                                                    ],
+                                                    "BoneName": "Bip001 L Finger0"
+                                                  },
+                                                  {
+                                                    "ChildBones": [
+                                                      {
+                                                        "ChildBones": [],
+                                                        "BoneName": "Bip001 L Finger11"
+                                                      }
+                                                    ],
+                                                    "BoneName": "Bip001 L Finger1"
+                                                  }
+                                                ],
+                                                "BoneName": "Bip001 L Hand"
+                                              }
+                                            ],
+                                            "BoneName": "Bip001 L Forearm"
+                                          }
+                                        ],
+                                        "BoneName": "Bip001 L UpperArm"
+                                      }
+                                    ],
+                                    "BoneName": "Bip001 L Clavicle"
+                                  },
+                                  {
+                                    "ChildBones": [
+                                      {
+                                        "ChildBones": [
+                                          {
+                                            "ChildBones": [
+                                              {
+                                                "ChildBones": [
+                                                  {
+                                                    "ChildBones": [
+                                                      {
+                                                        "ChildBones": [],
+                                                        "BoneName": "Bip001 R Finger01"
+                                                      }
+                                                    ],
+                                                    "BoneName": "Bip001 R Finger0"
+                                                  },
+                                                  {
+                                                    "ChildBones": [
+                                                      {
+                                                        "ChildBones": [],
+                                                        "BoneName": "Bip001 R Finger11"
+                                                      }
+                                                    ],
+                                                    "BoneName": "Bip001 R Finger1"
+                                                  },
+                                                  {
+                                                    "ChildBones": [],
+                                                    "BoneName": "Weapon_Point"
+                                                  }
+                                                ],
+                                                "BoneName": "Bip001 R Hand"
+                                              }
+                                            ],
+                                            "BoneName": "Bip001 R Forearm"
+                                          }
+                                        ],
+                                        "BoneName": "Bip001 R UpperArm"
+                                      }
+                                    ],
+                                    "BoneName": "Bip001 R Clavicle"
+                                  }
+                                ],
+                                "BoneName": "Bip001 Neck"
+                              }
+                            ],
+                            "BoneName": "Bip001 Spine1"
+                          }
+                        ],
+                        "BoneName": "Bip001 Spine"
+                      },
+                      {
+                        "ChildBones": [
+                          {
+                            "ChildBones": [
+                              {
+                                "ChildBones": [
+                                  {
+                                    "ChildBones": [],
+                                    "BoneName": "Bip001 L Toe0"
+                                  }
+                                ],
+                                "BoneName": "Bip001 L Foot"
+                              }
+                            ],
+                            "BoneName": "Bip001 L Calf"
+                          }
+                        ],
+                        "BoneName": "Bip001 L Thigh"
+                      },
+                      {
+                        "ChildBones": [
+                          {
+                            "ChildBones": [
+                              {
+                                "ChildBones": [
+                                  {
+                                    "ChildBones": [],
+                                    "BoneName": "Bip001 R Toe0"
+                                  }
+                                ],
+                                "BoneName": "Bip001 R Foot"
+                              }
+                            ],
+                            "BoneName": "Bip001 R Calf"
+                          },
+                          {
+                            "ChildBones": [],
+                            "BoneName": "Bone001"
+                          }
+                        ],
+                        "BoneName": "Bip001 R Thigh"
+                      },
+                      {
+                        "ChildBones": [],
+                        "BoneName": "bone01"
+                      },
+                      {
+                        "ChildBones": [],
+                        "BoneName": "bone02"
+                      }
+                    ],
+                    "BoneName": "Bip001 Pelvis"
+                  },
+                  {
+                    "ChildBones": [
+                      {
+                        "ChildBones": [],
+                        "BoneName": "bone_Weapon02"
+                      },
+                      {
+                        "ChildBones": [],
+                        "BoneName": "bone_Weapon01"
+                      }
+                    ],
+                    "BoneName": "Weapon_Root"
+                  }
+                ],
+                "BoneName": "Bip001"
+              }
+            ],
+            "BoneName": "Root"
+          },
+          {
+            "ChildBones": [],
+            "BoneName": "BossButcher"
+          },
+          {
+            "ChildBones": [],
+            "BoneName": "BossButcherWeapon"
+          }
+        ],
+        "OrgExtName": ".sk"
+      }
+    ],
+    "Anims": [],
+    "ManifestJSON": {
+      "FBXName": "BossButcher",
+      "ImportSucceeded": true,
+      "MaterialCount": 2,
+      "MaterialDetail": [
+        {
+          "Index": 0,
+          "MaterialName": "boos"
+        },
+        {
+          "Index": 1,
+          "MaterialName": "boos_wuqi"
+        }
+      ],
+      "MeshCount": 2,
+      "MeshDetail": [
+        {
+          "MeshName": "BossButcher",
+          "MaterialIndex": [
+            0
+          ],
+          "Transform": {
+            "Position": [
+              0,
+              0,
+              0
+            ],
+            "Rotation": [
+              -90,
+              0,
+              0
+            ],
+            "Scale": [
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "MeshName": "BossButcherWeapon",
+          "MaterialIndex": [
+            1
+          ],
+          "Transform": {
+            "Position": [
+              0,
+              0,
+              0
+            ],
+            "Rotation": [
+              -90,
+              0,
+              0
+            ],
+            "Scale": [
+              1,
+              1,
+              1
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

@@ -142,9 +142,9 @@ graph SkillUI {
     // 技能1释放
     async func Skill_1_Released(CurrentSkill int){
         // 获取技能1的各个属性等级
-        var CurrentDamage int = Round(GetLocalPlayer()<PlayerJionGame>.Skill1Data["SkillDamage"] as int)
-        var Size int = Round(GetLocalPlayer()<PlayerJionGame>.Skill1Data["SkillRange"] as int)
-        var CurrentcdTime int = Round(GetLocalPlayer()<PlayerJionGame>.Skill1Data["SkillCD"] as int)
+        var CurrentDamage int = Round(GetLocalPlayer()<PlayerJionGame>.Skill1DataInGame["SkillDamage"] as int)
+        var Size int = Round(GetLocalPlayer()<PlayerJionGame>.Skill1DataInGame["SkillRange"] as int)
+        var CurrentcdTime int = Round(GetLocalPlayer()<PlayerJionGame>.Skill1DataInGame["SkillCD"] as int)
         
         // 释放特效
         CreateEffectClient(out var NewcreatedEntity, VFXType.CurseExplosion, LoopType.Once, true)
@@ -169,9 +169,9 @@ graph SkillUI {
     // 技能2释放
     async func Skill_2_Released(CurrentSkill int){
         // 获取技能2的各个属性等级
-        var CurrentDamage = GetLocalPlayer()<PlayerJionGame>.Skill2Data["SkillDamage"] as int
-        var Count = GetLocalPlayer()<PlayerJionGame>.Skill2Data["SkillAmount"] as int
-        var CurrentcdTime = GetLocalPlayer()<PlayerJionGame>.Skill2Data["SkillCD"] as int
+        var CurrentDamage = GetLocalPlayer()<PlayerJionGame>.Skill2DataInGame["SkillDamage"] as int
+        var Count = GetLocalPlayer()<PlayerJionGame>.Skill2DataInGame["SkillAmount"] as int
+        var CurrentcdTime = GetLocalPlayer()<PlayerJionGame>.Skill2DataInGame["SkillCD"] as int
 
         // 设置CD
         StartSkillCD(CurrentSkill, CurrentcdTime)

@@ -74,8 +74,8 @@ graph PlayerJionGame {
     // 玩家基础属性数据
     PlayerData Map<string, object> = Map<string, object>{
         // 基础属性
-        "HP": 100,                  // 生命值
-        "MoveSpeed": 10,            // 移动速度
+        "HP": 200,                  // 生命值
+        "MoveSpeed": 1,            // 移动速度
         "WeaponDamage": 20,         // 武器伤害
         "AttackSpeed": 1,         // 攻击速度
         "ReloadSpeed": 2,         // 换弹速度
@@ -115,11 +115,23 @@ graph PlayerJionGame {
         "WeaponLightningProb": 0,     // 武器闪电触发概率
         "ReloadBuff": 0,              // 换弹后射速提升（百分比）
     }
+    // -----------------------局外天赋加成后数据-------------------------//
+    // 玩家基础天赋加成属性数据
+    PlayerDataWithOuterBonus Map<string, object> = Map<string, object>{}
+    // 技能1（爆裂轰炸）数据
+    Skill1DataWithOuterBonus Map<string, object> = Map<string, object>{}
+    // 技能2（闪电）数据
+    Skill2DataWithOuterBonus Map<string, object> = Map<string, object>{}
     // -----------------------局内三选一（局内游玩需要用到该数值）-------------------------//
+    // 玩家基础天赋加成属性数据
+    PlayerDataInGame Map<string, object> = Map<string, object>{}
     // 技能1（爆裂轰炸）数据
     Skill1DataInGame Map<string, object> = Map<string, object>{}
     // 技能2（闪电）数据
     Skill2DataInGame Map<string, object> = Map<string, object>{}
+    //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+    //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+    //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     // 技能卡牌词条属性库
     Skill_1_CardData Map<int, Map<string, object>> = Map<int, Map<string, object>>{}
@@ -210,7 +222,45 @@ graph PlayerJionGame {
             InjectGifted_CardData()
             InjectGiftCardProbabilityData()
             InitAllGiftedCardUI()
+            // 初始化局外天赋加成后数据（复制基础数据）
+            CopyToOuterBonusData()
+            // 初始化局内数据（复制局外数据）
+            CopyToInGameData()
         }
+    }
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+    // 复制基础数据到局外加成数据
+    func CopyToOuterBonusData() {
+        // 复制玩家基础数据
+        for key, value in PlayerData {
+            PlayerDataWithOuterBonus[key] = value
+        }
+        // 复制技能1基础数据
+        for key, value in Skill1Data {
+            Skill1DataWithOuterBonus[key] = value
+        }
+        // 复制技能2基础数据
+        for key, value in Skill2Data {
+            Skill2DataWithOuterBonus[key] = value
+        }
+        LogInfo("局外天赋加成数据已初始化（复制基础数据）")
+    }
+
+    // 复制局外数据到局内数据
+    func CopyToInGameData() {
+        // 复制局外玩家数据到局内
+        for key, value in PlayerDataWithOuterBonus {
+            PlayerDataInGame[key] = value
+        }
+        // 复制局外技能1数据到局内
+        for key, value in Skill1DataWithOuterBonus {
+            Skill1DataInGame[key] = value
+        }
+        // 复制局外技能2数据到局内
+        for key, value in Skill2DataWithOuterBonus {
+            Skill2DataInGame[key] = value
+        }
+        LogInfo("局内数据已初始化（复制局外数据）")
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     // 注入技能1的卡牌数据
@@ -950,14 +1000,12 @@ graph PlayerJionGame {
         
         // 根据概率选择稀有度
         var selectedRarity = SelectCardByProbability()
-        LogInfo("概率选择稀有度:" + Convert.ToString(selectedRarity))
         
         // 获取该稀有度下可抽取的卡牌
         var availableCardIds = GetAvailableCardsByRarity(selectedRarity)
         
         // 如果该稀有度没有可抽取的卡牌，降级到下一个稀有度
         if List.Length(availableCardIds) == 0 {
-            LogWarning("稀有度" + Convert.ToString(selectedRarity) + "没有可抽取的卡牌，尝试降级")
             if selectedRarity == 3 {  // 史诗降级到稀有
                 availableCardIds = GetAvailableCardsByRarity(2)
                 if List.Length(availableCardIds) == 0 {
@@ -1012,13 +1060,6 @@ graph PlayerJionGame {
         
         // 更新抽卡UI显示（价格、概率等）
         UpdateDrawCardUI()
-        
-        LogInfo("抽取天赋卡牌完成 - 总次数:" + Convert.ToString(TotalDrawCount) + 
-                " 价格:" + Convert.ToString(currentPrice) + 
-                " 目标稀有度:" + Convert.ToString(selectedRarity) + 
-                " 实际卡牌:" + Convert.ToString(selectedCardId) + 
-                " 实际稀有度:" + Convert.ToString(selectedCard["Rarity"]) + 
-                " 当前次数:" + Convert.ToString(Gifted_Card_Count[selectedCardId]))
     }
 
     // 扣除玩家货币
@@ -1043,10 +1084,6 @@ graph PlayerJionGame {
         if priceText != nil {
             priceText<UIWidgetLabel>.Content = Convert.ToString(currentPrice)
         }
-        LogInfo("抽卡UI更新 - 价格:" + Convert.ToString(currentPrice) + 
-                " 概率:普通" + Convert.ToString(Math.Round(commonProb)) + 
-                "% 稀有" + Convert.ToString(Math.Round(rareProb)) + 
-                "% 史诗" + Convert.ToString(Math.Round(epicProb)) + "%")
     }
 
     // 获取卡牌最大抽取次数
@@ -1059,7 +1096,7 @@ graph PlayerJionGame {
         return 99999999
     }
 
-    // 应用天赋卡牌效果
+    // 应用卡牌效果
     func ApplyGiftedCardEffect(cardId int) {
         var cardInfo = Gifted_CardData[cardId]
         if cardInfo == nil {
@@ -1067,75 +1104,71 @@ graph PlayerJionGame {
         }
         var nature = Convert.ToString(cardInfo["Nature"])
         var value = cardInfo["Value"] as float
-        var currentCount = GetCardDrawCount(cardId)
         
-        // 根据属性类型应用效果
+        LogInfo("应用天赋卡牌效果: " + nature + " 值: " + Convert.ToString(value))
+        
+        // 局外天赋加成：基于原始基础数据计算
         if nature == "HP" {
-            UpdatePlayerAttribute("HP", value)
-        } 
-        if nature == "MoveSpeed" {
-            UpdatePlayerAttribute("MoveSpeed", value)
-        }
-        if nature == "WeaponDamage" {
-            UpdatePlayerAttribute("WeaponDamage", value)
-        }
-        if nature == "SkillDamage" {
-            var current1Value = Skill1Data["SkillDamage"] as int
-            var increase1 = current1Value * value
-            Skill1Data["SkillDamage"] = Round(current1Value + increase1) as int
-            LogInfo("技能1伤害增加 " + Convert.ToString(value * 100) + "%，当前技能伤害: " + Convert.ToString(Skill1Data["SkillDamage"]))
-
-            var current2Value = Skill2Data["SkillDamage"] as int
-            var increase2 = current2Value * value
-            Skill2Data["SkillDamage"] = Round(current2Value + increase2) as int
-            LogInfo("技能2伤害增加 " + Convert.ToString(value * 100) + "%，当前技能伤害: " + Convert.ToString(Skill2Data["SkillDamage"]))
-        }
-        // 打印当前属性
-        ShowAllAttributes()
-        
-        // 发送到服务器
-        var allAttributes = Map<string, object>{}
-        for key, value in PlayerData {
-            allAttributes[key] = value
-        }
-        for key, value in Skill1Data {
-            allAttributes["Skill1_" + key] = value
-        }
-        for key, value in Skill2Data {
-            allAttributes["Skill2_" + key] = value
-        }
-        
-        DispatchEventToEntity(OnPlayerAttributesUpdate, globalEntity, PlatformType.Server, List<object>{PlayerData})
-    }
-
-    func UpdatePlayerAttribute(attributeName string, value float) {
-        if PlayerData[attributeName] != nil {
-            if attributeName == "HP" {
-                // HP：直接数值相加
-                PlayerData[attributeName] = PlayerData[attributeName] as int + value as int
-                LogInfo("HP增加 " + Convert.ToString(value as int) + "点，当前HP: " + Convert.ToString(PlayerData[attributeName]))
-                // 设置最大血量
-                GetLocalPlayer()<Player>.MaxHP = Round(PlayerData[attributeName] as int)
-                // 设置当前血量
-                GetLocalPlayer()<Player>.HP = GetLocalPlayer()<Player>.MaxHP
-            } 
-            if attributeName == "MoveSpeed" {
-                // 移速：百分比加成
-                var currentSpeed = PlayerData[attributeName] as float
-                var increase = currentSpeed * value
-                PlayerData[attributeName] = currentSpeed + increase
-                LogInfo("移速增加 " + Convert.ToString(value * 100) + "%，当前移速: " + Convert.ToString(PlayerData[attributeName]))
-                // 设置当前移速
-                GetLocalPlayer()<Player>.RunSpeedScale = PlayerData[attributeName] as int
+            // HP是固定值加成
+            var baseHP = PlayerData["HP"] as int
+            var currentOuterHP = 0
+            if PlayerDataWithOuterBonus["HP"] != nil {
+                currentOuterHP = Round(PlayerDataWithOuterBonus["HP"] as int)
+            } else {
+                currentOuterHP = baseHP
             }
-            if attributeName == "WeaponDamage" {
-                // 武器伤害：百分比加成
-                var currentDamage = (PlayerData[attributeName] as int)
-                var increase = currentDamage * value
-                PlayerData[attributeName] = Round(currentDamage + increase) as int
-                LogInfo("武器伤害增加 " + Convert.ToString(value * 100) + "%，当前武器伤害: " + Convert.ToString(PlayerData[attributeName]))
+            PlayerDataWithOuterBonus["HP"] = currentOuterHP + value as int
+            LogInfo("局外HP: 基础" + Convert.ToString(baseHP) + " + " + Convert.ToString(value) + " = " + Convert.ToString(PlayerDataWithOuterBonus["HP"]))
+        } else if nature == "MoveSpeed" {
+            // 移速：百分比加成
+            var baseSpeed = PlayerData["MoveSpeed"] as float
+            var currentMultiplier = 1.0
+            if PlayerDataWithOuterBonus["MoveSpeed_Multiplier"] != nil {
+                currentMultiplier = PlayerDataWithOuterBonus["MoveSpeed_Multiplier"] as float
             }
+            PlayerDataWithOuterBonus["MoveSpeed_Multiplier"] = currentMultiplier + value
+            PlayerDataWithOuterBonus["MoveSpeed"] = baseSpeed * PlayerDataWithOuterBonus["MoveSpeed_Multiplier"] as float
+            LogInfo("局外移速: 基础" + Convert.ToString(baseSpeed) + " × " + Convert.ToString(PlayerDataWithOuterBonus["MoveSpeed_Multiplier"]) + " = " + Convert.ToString(PlayerDataWithOuterBonus["MoveSpeed"]))
+        } else if nature == "WeaponDamage" {
+            // 武器伤害：百分比加成
+            var baseDamage = PlayerData["WeaponDamage"] as int
+            var currentMultiplier = 1.0
+            if PlayerDataWithOuterBonus["WeaponDamage_Multiplier"] != nil {
+                currentMultiplier = PlayerDataWithOuterBonus["WeaponDamage_Multiplier"] as float
+            }
+            PlayerDataWithOuterBonus["WeaponDamage_Multiplier"] = currentMultiplier + value
+            PlayerDataWithOuterBonus["WeaponDamage"] = Round(baseDamage * PlayerDataWithOuterBonus["WeaponDamage_Multiplier"] as float) as int
+            LogInfo("局外武器伤害: 基础" + Convert.ToString(baseDamage) + " × " + Convert.ToString(PlayerDataWithOuterBonus["WeaponDamage_Multiplier"]) + " = " + Convert.ToString(PlayerDataWithOuterBonus["WeaponDamage"]))
+        } else if nature == "SkillDamage" {
+            // 技能伤害：同时影响技能1和技能2
+            var baseSkill1Damage = Skill1Data["SkillDamage"] as int
+            var baseSkill2Damage = Skill2Data["SkillDamage"] as int
+            
+            // 技能1
+            var currentMultiplier1 = 1.0
+            if Skill1DataWithOuterBonus["SkillDamage_Multiplier"] != nil {
+                currentMultiplier1 = Skill1DataWithOuterBonus["SkillDamage_Multiplier"] as float
+            }
+            Skill1DataWithOuterBonus["SkillDamage_Multiplier"] = currentMultiplier1 + value
+            Skill1DataWithOuterBonus["SkillDamage"] = Round(baseSkill1Damage * Skill1DataWithOuterBonus["SkillDamage_Multiplier"] as float) as int
+            
+            // 技能2
+            var currentMultiplier2 = 1.0
+            if Skill2DataWithOuterBonus["SkillDamage_Multiplier"] != nil {
+                currentMultiplier2 = Skill2DataWithOuterBonus["SkillDamage_Multiplier"] as float
+            }
+            Skill2DataWithOuterBonus["SkillDamage_Multiplier"] = currentMultiplier2 + value
+            Skill2DataWithOuterBonus["SkillDamage"] = Round(baseSkill2Damage * Skill2DataWithOuterBonus["SkillDamage_Multiplier"] as float) as int
+            
+            LogInfo("局外技能伤害: 技能1 基础" + Convert.ToString(baseSkill1Damage) + " × " + Convert.ToString(Skill1DataWithOuterBonus["SkillDamage_Multiplier"]) + " = " + Convert.ToString(Skill1DataWithOuterBonus["SkillDamage"]))
+            LogInfo("局外技能伤害: 技能2 基础" + Convert.ToString(baseSkill2Damage) + " × " + Convert.ToString(Skill2DataWithOuterBonus["SkillDamage_Multiplier"]) + " = " + Convert.ToString(Skill2DataWithOuterBonus["SkillDamage"]))
         }
+        
+        // 将局外数据复制到局内数据（开始游戏时）
+        CopyToInGameData()
+        
+        // 发送属性到服务器     更新玩家当前属性（使用局内数据）
+        DispatchEventToEntity(OnPlayerAttributesUpdate, globalEntity, PlatformType.Server, List<object>{PlayerDataInGame})
     }
 
     // 显示当前所有属性
@@ -1263,7 +1296,6 @@ graph PlayerJionGame {
         if priceText != nil {
             priceText<UIWidgetLabel>.Content = Convert.ToString(currentPrice)
         }
-        LogInfo("所有天赋卡牌UI初始化完成")
     }
 
     // 更新单个卡牌的UI状态

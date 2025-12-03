@@ -430,7 +430,7 @@ static graph FC_PVEMonsterManager {
     // 创建单个怪物
     async func CreateSingleMonster(monsterInfo Map<string, object>) {
         var name_key = monsterInfo["Name_key"] as string
-       // LogInfo("name_key: " + name_key)
+        LogInfo("name_key: " + name_key)
         var prefabID = Config.MobPrefabIDs[name_key]
         
         CreateFromPrefab(out var monsterEntity, prefabID)

@@ -1,0 +1,115 @@
+{
+  "fileId": "pk55p9w1ghd-m3i6rn6o-rzounuf28gf",
+  "globalscale": 1,
+  "properties": {
+    "Common": ""
+  },
+  "subDynamicResources": {},
+  "subLOD": {},
+  "version": "1.6.1",
+  "manifest": {
+    "Meshes": [],
+    "BoneInfos": [],
+    "Anims": [
+      {
+        "OrgExtName": ".Anim",
+        "Name": "BossButcher@SpinLoop.Anim",
+        "Size": 123163,
+        "ClipData": {
+          "Name": "BossButcher@SpinLoop",
+          "BakeStart": 0,
+          "BakeStop": 1.2000000476837158,
+          "SampleRate": 30
+        },
+        "magicNumber": {
+          "magicNumber1": 100,
+          "magicNumber2": 98,
+          "magicNumber3": 158,
+          "magicNumber4": 134,
+          "version": 1009715
+        }
+      }
+    ],
+    "ManifestJSON": {
+      "FBXName": "BossButcher@SpinLoop",
+      "ImportSucceeded": true,
+      "MaterialCount": 0,
+      "MaterialDetail": [],
+      "MeshCount": 0,
+      "MeshDetail": []
+    }
+  },
+  "content": {
+    "BossButcher@SpinLoop.anim": {
+      "_entityName": "AnimClipEntity",
+      "_entityId": "Y0JcBzrP",
+      "_preModel": {
+        "fileId": "9vel9h3f3ur-m3i6ro22-txsdy9gig4",
+        "filePath": "Assets\\ZombieAsset\\Boss01\\BossButcher.FBX",
+        "_tag": {
+          "type": "GFileRefer"
+        },
+        "fileType": "fbx"
+      },
+      "children": [
+        {
+          "_entityId": "G9CrMKfH",
+          "EventFrameName": "事件帧",
+          "FrameIndex": 5,
+          "Time": 0.17,
+          "EventList": [
+            {
+              "eventKeyValue": "AnimationControllerAble::signal_52120933",
+              "paramList": [
+                {
+                  "type": "String",
+                  "label": "eventName",
+                  "newValue": "Boss1SpinAttack"
+                }
+              ],
+              "hideParam": false
+            }
+          ]
+        },
+        {
+          "_entityId": "0RWkJf4I",
+          "EventFrameName": "事件帧 (1)",
+          "FrameIndex": 15,
+          "Time": 0.5,
+          "EventList": [
+            {
+              "eventKeyValue": "AnimationControllerAble::signal_52120933",
+              "paramList": [
+                {
+                  "type": "String",
+                  "label": "eventName",
+                  "newValue": "Boss1SpinAttack"
+                }
+              ],
+              "hideParam": false
+            }
+          ]
+        },
+        {
+          "_entityId": "QzVk76We",
+          "EventFrameName": "事件帧 (2)",
+          "FrameIndex": 25,
+          "Time": 0.83,
+          "EventList": [
+            {
+              "eventKeyValue": "AnimationControllerAble::signal_52120933",
+              "paramList": [
+                {
+                  "type": "String",
+                  "label": "eventName",
+                  "newValue": "Boss1SpinAttack"
+                }
+              ],
+              "hideParam": false
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

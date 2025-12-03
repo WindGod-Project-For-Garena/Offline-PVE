@@ -49,6 +49,7 @@ graph UI_HomeUI {
             level = 1
         }
         levelNum<UIWidgetLabel>.Content = level
+        GetLocalPlayer()<PlayerJionGame>.level = level
     }
 
     func onRightButtonClick(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
@@ -59,6 +60,7 @@ graph UI_HomeUI {
             level = 10
         }
         levelNum<UIWidgetLabel>.Content = level
+        GetLocalPlayer()<PlayerJionGame>.level = level
     }
 
     func OnSkill1Click(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {

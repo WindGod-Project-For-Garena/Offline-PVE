@@ -1,0 +1,230 @@
+import "StdLibrary.fcc" as StdLib
+import "EditorGenLib.fcc" as EditorLib
+import "Playable.fcc" as Playable
+import "BehaviourTree.fcc" as BehaviourTree
+import "Camera.fcc" as Camera
+import "Math.fcc" as Math
+import "Combat.fcc" as Combat
+import "../CustomEvent.fcc" as CustomEvent
+import "../PVE/FC_PVEMonsterManager.fcg" as PVEMonsterManager
+import "Physics.fcc" as Physics
+import "../Global/FC_Global_MobSkillHandler.fcg" as MobSkillHandler
+import "Animation.fcc" as Animation
+import "../Static/FC_Utilities.fcg" as PVEUtilities
+
+graph FC_NormalZombie {
+    //Executed when entity is created
+    HeadShoted bool = false
+	LastHitPlayer entity<Player> = nil
+	moveTween entity<Tween> = nil
+	LastPos Vector3 = Vector3{0,0,0}
+    tickInterval int = 1
+	tweenDuration float = 1000
+	counter int = 0
+	hateGainInterval int = 3000
+
+	hitPos Vector3 = Vector3{0,0,0}
+	preDisplayEffect entity<Effect> = nil
+
+    Dist float = 0
+	KeepDist float = 0
+	TargetPos Vector3 = Vector3{0,0,0}
+
+	event OnAwake() {
+        WaitForNextFrame()
+        Init()
+    }
+
+	//funcID: Init
+	async func Init() {
+		//CreateMoveTween(Vector3{0,0,0})
+		thisEntity<BevTreeAttachable>.AttachTarget<BevTree>.TickInterval = tickInterval
+		thisEntity<Mob>.MobName = "NormalZombie"
+        thisEntity<Mob>.MaxHP = 600
+        thisEntity<Mob>.HP = 600
+        thisEntity<Mob>.WalkSpeed = 1.5
+        thisEntity<Mob>.Damage = 10
+		thisEntity<Mob>.StatusDic = Map<string, object>{
+			"HeadShot": false, 	//是否被爆头
+			"InFall": false, 	//是否在摔倒
+			"Hit": false, 		//是否受击
+			"InHit": false, 	//是否在受击
+			"CanPatrol": true, //是否可以巡逻
+			"Walk": false, 		//是否在行走
+		}
+		thisEntity<Mob>.DetectRange = 15
+        var nowTime int = globalEntity<Global>.GameTimeCount
+		SetBlackboardValue(thisEntity<BevTreeAttachable>.AttachTarget, "LastAttackTime", nowTime)
+		SetBlackboardValue(thisEntity<BevTreeAttachable>.AttachTarget, "Curstate", 0)
+		WaitForMillisecond(2000)
+		//DispatchEventWithPlatform_Deprecated(100002, thisEntity, true, List<object>{thisEntity<CustomComponent31897461>.ZombieInfo["InitSpeed"]})
+		
+        // for index3, element4 in GetAllPlayers() {
+        //     SetAttackableEntity(element4, thisEntity, 1)
+        // }
+	}
+
+	// 剪刀僵尸技能，当玩家进入一定范围时，触发冲击技能
+	async func startBossButcherSkill(TargetEntity entity<AnimationControllerAttachable>) {
+		var skillRange float = 10.0        //冲击距离
+		var speed float = 15.0            //冲击速度
+		var actualDuration float = 800  // 毫秒
+
+		//LogInfo("剪刀僵尸开始冲击技能")
+		var curTarget = thisEntity<Mob>.CurrTarget
+		// 重置碰撞检测状态
+		SetBlackboardValue(thisEntity<BevTreeAttachable>.AttachTarget, "HasHitTarget", false)
+		// 计算冲击方向
+		var currPos Vector3 = TargetEntity<Transform>.Position
+		var targetOffset Vector3 = Vector3{Math.RandomFloat(-0.8, 0.8), 0, Math.RandomFloat(-0.8, 0.8)}
+		var targetPosWithOffset = curTarget<Transform>.Position + targetOffset
+		// 射线检测确保目标位置有效
+		SingleRaycast(curTarget<Player>.Position + Vector3{0, 5, 0}, Vector3{0, -10, 0}, 10, List<int>{}, false, out var groundHitEntities, out var groundHitPoint, out var groundHitDistances, out var groundHitNormals)
+		TargetPos = groundHitPoint
+		var direction = Normalize(TargetPos - currPos)
+		direction.Y = 0 // 保持水平移动
+		// 先让怪物面向目标方向
+		PVEUtilities.myLookAt(TargetEntity<Transform>, curTarget, TargetPos)
+		// 地面播放开始时的预警特效
+		wait MobSkillHandler.GroundWrringEffect(TargetEntity)
+		// 播放冲击动画
+		PlayAnimation(TargetEntity, "Run", 2.0, LoopType.Once)
+		// 计算冲击距离
+		// 射线检测前方障碍物
+		SingleRaycast(currPos, direction, skillRange, List<int>{}, false, out var hitEntities, out var hitPoint, out var hitDistances, out var hitNormals)
+		var finalTargetPos Vector3        //最终目标位置
+		var hitObstacle bool = false      //是否碰到障碍物
+		if hitEntities != nil && hitEntities != curTarget {        // 有障碍物，冲击到障碍物前一点
+			finalTargetPos = hitPoint - direction * 0.5 // 留一点距离
+			skillRange = Distance(currPos, finalTargetPos)
+			actualDuration = (skillRange / speed) * 1000 // 根据实际距离调整时间
+			hitObstacle = true
+			//LogInfo("检测到障碍物，调整冲击距离")
+		} else {        //没有障碍物，冲击到目标位置
+			finalTargetPos = currPos + direction * skillRange        
+		}
+		// 确保怪物面向最终目标位置
+		PVEUtilities.myLookAt(TargetEntity<Transform>, curTarget, finalTargetPos)
+		// 创建移动tween
+		CreateSkillMoveTween(finalTargetPos, actualDuration)
+		// 设置碰撞检测 - 使用start启动异步函数
+		start StartSkillCollisionCheck(curTarget, actualDuration, hitObstacle)
+		// 等待移动完成
+		WaitForMillisecond(Round(actualDuration))
+		// 移动结束后播放Idle动画
+		PlayAnimation(TargetEntity, "Idle", 1.0, LoopType.Once)
+		//LogInfo("剪刀僵尸冲击技能结束")
+	}
+
+	// 技能期间碰撞检测 - 需要是async函数
+	async func StartSkillCollisionCheck(target entity<Player>, skillDuration float, hitObstacle bool) {
+		var startTime int = globalEntity<Global>.GameTimeCount
+		var endTime int = startTime + Floor(skillDuration)
+		var hasHit bool = false
+		//LogInfo("开始碰撞检测，持续时间: " + skillDuration + "ms")
+		while globalEntity<Global>.GameTimeCount < endTime && !hasHit {
+			// 检测与目标的距离
+			var currentDistance = Distance(thisEntity<Transform>.Position, target<Player>.Position)
+			//LogInfo("检测距离: " + currentDistance)
+			if currentDistance <= 1.5 {
+				// 命中玩家，造成伤害和击退效果
+				if !hasHit {
+					//LogInfo("触发伤害，距离: " + currentDistance)
+					DealDamage(target as entity<Combatable>, nil, DamageType.Monster, GetDamage() * 2) // 技能双倍伤害
+					// 添加击退效果
+					hasHit = true
+					
+					// 碰撞到玩家后立即播放Idle动画
+					PlayAnimation(thisEntity as entity<AnimationControllerAttachable>, "Idle", 1.0, LoopType.Once)
+					//LogInfo("剪刀僵尸冲击命中玩家，播放Idle动画")
+					
+					// 停止移动tween
+					if moveTween != nil {
+						Destroy(moveTween)
+						moveTween = nil
+					}
+					break // 跳出循环
+				}
+			}
+			WaitForMillisecond(10) // 每10ms检测一次
+		}
+		
+		// 如果一开始就检测到障碍物，在技能开始时播放Idle动画
+		if hitObstacle && !hasHit {
+			PlayAnimation(thisEntity as entity<AnimationControllerAttachable>, "Idle", 1.0, LoopType.Once)
+			//LogInfo("碰撞到障碍物，播放Idle动画")
+			// 停止移动tween
+			if moveTween != nil {
+				Destroy(moveTween)
+				moveTween = nil
+			}
+		}
+		//LogInfo("碰撞检测结束，命中状态: " + hasHit)
+	}
+
+	// 创建技能移动tween
+	func CreateSkillMoveTween(targetPos Vector3, duration float) {    
+		if moveTween != nil {
+			Destroy(moveTween)
+		}
+		CreateTween(
+			thisEntity,
+			Transform.Position,
+			thisEntity<Transform>.Position,
+			targetPos,
+			TweenStyle.Once,
+			CreateCurve({0, 0, 1, 1}),
+			duration,
+			out var tweenEntity,
+			true,
+		)
+		moveTween = tweenEntity
+		moveTween<Tween>.OnTweenCompleted = func() {
+			// Tween完成后确保播放Idle动画
+			PlayAnimation(thisEntity as entity<AnimationControllerAttachable>, "Idle", 1.0, LoopType.Once)
+			//LogInfo("移动完成，播放Idle动画")
+		}
+	}
+
+	//eventID: 91//r;Zn+-uY8Ahq`0JH4Yr{ //animation
+	event MobAttackEvent_AC(attackName string) {
+		if (attackName == "NormalAttack1") {
+			////LogInfo("NormalAttack1")
+			var curTarget = thisEntity<Mob>.CurrTarget
+		//	//LogInfo("curTarget: " + curTarget as entity<Player><Player>.Position)
+			if (curTarget != nil && (Distance(curTarget as entity<Player><Player>.Position, thisEntity as entity<LevelObject><Transform>.Position) <= 1.5)) {		
+				
+				DealDamage(curTarget as entity<Combatable>, nil, DamageType.Monster, GetDamage())
+			}
+		} else if (attackName == "NormalAttack2") {
+			
+		} else {
+			//start globalEntity<global_process_eca>.DeleteThisZombie(thisEntity)
+			//Destroy(thisEntity)
+		}
+	}
+
+	event MobDeathEvent_AC() {
+		PVEMonsterManager.OnMonsterKilledAnimationFinished(thisEntity as entity<LevelObject>)
+	}
+
+	event OnDamageMob(mob entity<Entity>, part string, damage int, player entity<Player>) {
+		////LogInfo("OnDamageMob: " + part + " damage: " + damage + "HP: " + mob<Mob>.HP)
+		////LogInfo("mob: " + mob + "thisEntity: " + thisEntity)
+		//处理仇恨值
+		if mob<Mob>.HateGainTime > globalEntity<Global>.GameTimeCount - hateGainInterval {
+			mob<Mob>.HateTarget = player
+			mob<Mob>.HateGainTime = globalEntity<Global>.GameTimeCount
+		}
+		//处理血量，如果血量小于0，则死亡
+		mob<Mob>.HP = mob<Mob>.HP - damage
+		if (mob<Mob>.HP <= 0) {
+			mob<Mob>.HP = 0
+		}
+	}
+
+	//funcID: GetDamage
+	func GetDamage() int {
+		return Floor((thisEntity<Mob>.Damage))
+	}
+}

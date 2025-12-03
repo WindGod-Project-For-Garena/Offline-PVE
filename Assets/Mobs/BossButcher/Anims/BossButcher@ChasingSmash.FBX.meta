@@ -1,0 +1,88 @@
+{
+  "fileId": "08buk1gyynm8-m3i6rj04-pm40a8y58hi",
+  "globalscale": 1,
+  "properties": {
+    "Common": ""
+  },
+  "subDynamicResources": {},
+  "subLOD": {},
+  "version": "1.6.1",
+  "manifest": {
+    "Meshes": [],
+    "BoneInfos": [],
+    "Anims": [
+      {
+        "OrgExtName": ".Anim",
+        "Name": "BossButcher@ChasingSmash.Anim",
+        "Size": 79060,
+        "ClipData": {
+          "Name": "BossButcher@ChasingSmash",
+          "BakeStart": 0,
+          "BakeStop": 0.5333333611488342,
+          "SampleRate": 30
+        },
+        "magicNumber": {
+          "magicNumber1": 100,
+          "magicNumber2": 98,
+          "magicNumber3": 158,
+          "magicNumber4": 134,
+          "version": 1009715
+        }
+      }
+    ],
+    "ManifestJSON": {
+      "FBXName": "BossButcher@ChasingSmash",
+      "ImportSucceeded": true,
+      "MaterialCount": 0,
+      "MaterialDetail": [],
+      "MeshCount": 0,
+      "MeshDetail": []
+    }
+  },
+  "content": {
+    "BossButcher@ChasingSmash.anim": {
+      "_entityName": "AnimClipEntity",
+      "_entityId": "8Xg07W6Y",
+      "_preModel": {
+        "fileId": "9vel9h3f3ur-m3i6ro22-txsdy9gig4",
+        "filePath": "Assets\\ZombieAsset\\Boss01\\BossButcher.FBX",
+        "_tag": {
+          "type": "GFileRefer"
+        },
+        "fileType": "fbx"
+      },
+      "children": [
+        {
+          "_entityId": "UDaTu58A",
+          "EventFrameName": "事件帧",
+          "FrameIndex": 6,
+          "Time": 0.19999999999999998,
+          "EventList": [
+            {
+              "eventKeyValue": "AnimationControllerAble::signal_52120933",
+              "paramList": [
+                {
+                  "type": "String",
+                  "label": "eventName",
+                  "newValue": "Boss1ChaseSmash"
+                }
+              ],
+              "hideParam": false
+            },
+            {
+              "eventKeyValue": "AnimationControllerAble::signal_34643746",
+              "paramList": [
+                {
+                  "type": "String",
+                  "label": "eventName",
+                  "newValue": "Boss1OpenSmashEffect"
+                }
+              ],
+              "hideParam": false
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

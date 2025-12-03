@@ -158,6 +158,12 @@ enum EResPrefab {
     HitBox_ShieldZombie_Shield
     ElemationAsh
     SkillWaring_Square
+    BossButcher
+    HitBox_BossButcher_Head
+    HitBox_BossButcher_LeftArm
+    HitBox_BossButcher_Leg
+    HitBox_BossButcher_RightArm
+    HitBox_BossButcher_Body
 }
 [element ScriptID]
 enum EResFCG {
@@ -257,6 +263,12 @@ enum EResKeyPrefab {
     HitBox_ShieldZombie_Shield = "HitBox_ShieldZombie_Shield"
     ElemationAsh = "ElemationAsh"
     SkillWaring_Square = "SkillWaring_Square"
+    BossButcher = "BossButcher"
+    HitBox_BossButcher_Head = "HitBox_BossButcher_Head"
+    HitBox_BossButcher_LeftArm = "HitBox_BossButcher_LeftArm"
+    HitBox_BossButcher_Leg = "HitBox_BossButcher_Leg"
+    HitBox_BossButcher_RightArm = "HitBox_BossButcher_RightArm"
+    HitBox_BossButcher_Body = "HitBox_BossButcher_Body"
 }
 enum EResKeyFCG {
     C_HitBox = "C_HitBox"

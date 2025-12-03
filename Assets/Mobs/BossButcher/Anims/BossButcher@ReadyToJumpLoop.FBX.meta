@@ -1,0 +1,57 @@
+{
+  "fileId": "vpzdhjnd09-m3i6rlm0-iuog6lhc75",
+  "globalscale": 1,
+  "properties": {
+    "Common": ""
+  },
+  "subDynamicResources": {},
+  "subLOD": {},
+  "version": "1.6.1",
+  "manifest": {
+    "Meshes": [],
+    "BoneInfos": [],
+    "Anims": [
+      {
+        "OrgExtName": ".Anim",
+        "Name": "BossButcher@ReadyToJumpLoop.Anim",
+        "Size": 70530,
+        "ClipData": {
+          "Name": "BossButcher@ReadyToJumpLoop",
+          "BakeStart": 0,
+          "BakeStop": 1.3333333730697632,
+          "SampleRate": 30
+        },
+        "magicNumber": {
+          "magicNumber1": 100,
+          "magicNumber2": 98,
+          "magicNumber3": 158,
+          "magicNumber4": 134,
+          "version": 1009715
+        }
+      }
+    ],
+    "ManifestJSON": {
+      "FBXName": "BossButcher@ReadyToJumpLoop",
+      "ImportSucceeded": true,
+      "MaterialCount": 0,
+      "MaterialDetail": [],
+      "MeshCount": 0,
+      "MeshDetail": []
+    }
+  },
+  "content": {
+    "BossButcher@ReadyToJumpLoop.anim": {
+      "_entityName": "AnimClipEntity",
+      "_entityId": "JrRrqgBb",
+      "_preModel": {
+        "fileId": "9vel9h3f3ur-m3i6ro22-txsdy9gig4",
+        "filePath": "Assets\\ZombieAsset\\Boss01\\BossButcher.FBX",
+        "_tag": {
+          "type": "GFileRefer"
+        },
+        "fileType": "fbx"
+      },
+      "children": []
+    }
+  }
+}

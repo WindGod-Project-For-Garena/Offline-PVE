@@ -1,0 +1,2951 @@
+{
+  "_tag": {
+    "type": "ACEntity",
+    "resourceId": "ac.acEntity"
+  },
+  "_entityId": "vfYrJISM",
+  "children": [
+    {
+      "_tag": {
+        "type": "ACStateEntity",
+        "resourceId": ""
+      },
+      "_entityId": "GXvfWtmB",
+      "children": [
+        {
+          "_tag": {
+            "type": "ACLayerEntity",
+            "resourceId": ""
+          },
+          "_entityId": "EhySgHqY",
+          "children": [
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "CcrUr7Hc",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": true,
+              "clipRefer": {
+                "fileId": "1eg7qpivs1oj-m3i6rl1b-kyfk6ckrstf-BossButcher@Idle.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\Boss01\\Anims\\BossButcher@Idle.FBX\\BossButcher@Idle.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "Clip",
+              "fadeInTime": 0.1,
+              "enablefadeTime": true,
+              "startTime": 0,
+              "endTime": 2.3333332538604736,
+              "wrapMode": 2
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "isLoop": false,
+          "isBaseLayer": true,
+          "mute": false,
+          "bodypartId": null,
+          "DisableChanged": false,
+          "_entityName": "Base Layer"
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "isLoop": true,
+      "DisableChanged": true,
+      "_entityName": "Idle",
+      "eventFrameGroup": {
+        "_tag": {
+          "type": "ACLayerEntity",
+          "resourceId": ""
+        },
+        "_entityId": "dm2AUOZ8",
+        "children": [],
+        "prefabVariant": null,
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
+        "editorLockValue": false,
+        "editorVisibleValue": true,
+        "DisableChanged": false
+      },
+      "_eventFrameList": []
+    },
+    {
+      "_tag": {
+        "type": "ACStateEntity",
+        "resourceId": ""
+      },
+      "_entityId": "MmESXQKQ",
+      "children": [
+        {
+          "_tag": {
+            "type": "ACLayerEntity",
+            "resourceId": ""
+          },
+          "_entityId": "saDQ5kvV",
+          "children": [
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "rPzfsAnc",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": false,
+              "clipRefer": {
+                "fileId": "9zcgli495b-m3i6rib8-3gbpsuodve2-BossButcher@Attack02.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\Boss01\\Anims\\BossButcher@Attack01.FBX\\BossButcher@Attack02.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "Clip",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 0,
+              "endTime": 2.200000047683716,
+              "wrapMode": 0
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "isLoop": false,
+          "isBaseLayer": true,
+          "mute": false,
+          "bodypartId": null,
+          "DisableChanged": false,
+          "_entityName": "Base Layer"
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "isLoop": false,
+      "DisableChanged": false,
+      "_entityName": "Boss1_NormalAttack",
+      "eventFrameGroup": {
+        "_tag": {
+          "type": "ACLayerEntity",
+          "resourceId": ""
+        },
+        "_entityId": "DTwfwOOy",
+        "children": [
+          {
+            "_tag": {
+              "type": "EventFrameEntity",
+              "resourceId": ""
+            },
+            "_entityId": "Cs4eu5jC",
+            "children": [],
+            "prefabVariant": null,
+            "activeValue": {
+              "selfValue": true,
+              "valueTag": "activeValue"
+            },
+            "unlockedValue": {
+              "selfValue": true,
+              "valueTag": "unlockedValue"
+            },
+            "editorLockValue": false,
+            "editorVisibleValue": true,
+            "from": "ACState",
+            "FrameIndex": 0,
+            "EventFrameName": "事件帧 1",
+            "startTime": 0,
+            "EventList": [
+              {
+                "eventKeyValue": "AnimationControllerAble::signal_34643746",
+                "paramList": [
+                  {
+                    "type": "String",
+                    "label": "eventName",
+                    "newValue": "Boss1OpenNormalEffect"
+                  }
+                ],
+                "hideParam": false
+              }
+            ],
+            "dsada": "Sphere",
+            "enable": false
+          }
+        ],
+        "prefabVariant": null,
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
+        "editorLockValue": false,
+        "editorVisibleValue": true,
+        "DisableChanged": false
+      },
+      "_eventFrameList": []
+    },
+    {
+      "_tag": {
+        "type": "ACStateEntity",
+        "resourceId": ""
+      },
+      "_entityId": "9wSjBCWh",
+      "children": [
+        {
+          "_tag": {
+            "type": "ACLayerEntity",
+            "resourceId": ""
+          },
+          "_entityId": "MJhJgASf",
+          "children": [
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "kbb8iMwh",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": false,
+              "clipRefer": {
+                "fileId": "1lmuf93j5ti-m3i6rnqy-o27fhih8clp-BossButcher@StartChasing.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\Boss01\\Anims\\BossButcher@StartChasing.FBX\\BossButcher@StartChasing.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "Clip",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 0,
+              "endTime": 0.8333333134651184,
+              "wrapMode": 0
+            },
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "RsnbQcrJ",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": true,
+              "clipRefer": {
+                "fileId": "bucivyfszys-m3i6rivb-qlvmbli2frn-BossButcher@ChasingLoop_xiu.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\Boss01\\Anims\\BossButcher@ChasingLoop.FBX\\BossButcher@ChasingLoop_xiu.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "New Clip",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 0.8333333134651184,
+              "endTime": 1.5,
+              "wrapMode": 2
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "isLoop": false,
+          "isBaseLayer": true,
+          "mute": false,
+          "bodypartId": null,
+          "DisableChanged": false,
+          "_entityName": "Base Layer"
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "isLoop": false,
+      "DisableChanged": false,
+      "_entityName": "Boss1_Chase",
+      "eventFrameGroup": {
+        "_tag": {
+          "type": "ACLayerEntity",
+          "resourceId": ""
+        },
+        "_entityId": "wKqbAjrD",
+        "children": [
+          {
+            "_tag": {
+              "type": "EventFrameEntity",
+              "resourceId": ""
+            },
+            "_entityId": "JNVu85dV",
+            "children": [],
+            "prefabVariant": null,
+            "activeValue": {
+              "selfValue": true,
+              "valueTag": "activeValue"
+            },
+            "unlockedValue": {
+              "selfValue": true,
+              "valueTag": "unlockedValue"
+            },
+            "editorLockValue": false,
+            "editorVisibleValue": true,
+            "from": "ACState",
+            "FrameIndex": 18,
+            "EventFrameName": "事件帧 1",
+            "startTime": 0.6,
+            "EventList": [
+              {
+                "eventKeyValue": "AnimationControllerAble::signal_52120933",
+                "paramList": [
+                  {
+                    "type": "String",
+                    "label": "eventName",
+                    "newValue": "Boss1StartSkillMove"
+                  }
+                ],
+                "hideParam": false
+              }
+            ],
+            "dsada": "Sphere",
+            "enable": false
+          },
+          {
+            "_tag": {
+              "type": "EventFrameEntity",
+              "resourceId": ""
+            },
+            "_entityId": "feJE1MGS",
+            "children": [],
+            "prefabVariant": null,
+            "activeValue": {
+              "selfValue": true,
+              "valueTag": "activeValue"
+            },
+            "unlockedValue": {
+              "selfValue": true,
+              "valueTag": "unlockedValue"
+            },
+            "editorLockValue": false,
+            "editorVisibleValue": true,
+            "from": "ACState",
+            "FrameIndex": 20,
+            "EventFrameName": "事件帧 2",
+            "startTime": 0.6666666666666666,
+            "EventList": [
+              {
+                "eventKeyValue": "AnimationControllerAble::signal_34643746",
+                "paramList": [
+                  {
+                    "type": "String",
+                    "label": "eventName",
+                    "newValue": "Boss1OpenChaseEffect"
+                  }
+                ],
+                "hideParam": false
+              }
+            ],
+            "dsada": "Sphere",
+            "enable": false
+          }
+        ],
+        "prefabVariant": null,
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
+        "editorLockValue": false,
+        "editorVisibleValue": true,
+        "DisableChanged": false
+      },
+      "_eventFrameList": []
+    },
+    {
+      "_tag": {
+        "type": "ACStateEntity",
+        "resourceId": ""
+      },
+      "_entityId": "2Nlobwxn",
+      "children": [
+        {
+          "_tag": {
+            "type": "ACLayerEntity",
+            "resourceId": ""
+          },
+          "_entityId": "0DKNocIq",
+          "children": [
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "ftMktLNy",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": false,
+              "clipRefer": {
+                "fileId": "wc5slahqglb-m3i6rjfn-y5qrizpdelr-BossButcher@ChasingSmashStart_xiu.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\Boss01\\Anims\\BossButcher@ChasingSmashStart.FBX\\BossButcher@ChasingSmashStart_xiu.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "Clip",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 0,
+              "endTime": 0.8666666746139526,
+              "wrapMode": 0
+            },
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "jvgmqB1x",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": false,
+              "clipRefer": {
+                "fileId": "08buk1gyynm8-m3i6rj04-pm40a8y58hi-BossButcher@ChasingSmash.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\Boss01\\Anims\\BossButcher@ChasingSmash.FBX\\BossButcher@ChasingSmash.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "New Clip",
+              "fadeInTime": 0.01,
+              "enablefadeTime": true,
+              "startTime": 0.8666666746139526,
+              "endTime": 1.4000000357627869,
+              "wrapMode": 0
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "isLoop": false,
+          "isBaseLayer": true,
+          "mute": false,
+          "bodypartId": null,
+          "DisableChanged": false,
+          "_entityName": "Base Layer"
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "isLoop": false,
+      "DisableChanged": false,
+      "_entityName": "Boss1_ChaseAttack",
+      "eventFrameGroup": {
+        "_tag": {
+          "type": "ACLayerEntity",
+          "resourceId": ""
+        },
+        "_entityId": "eL8n3eVo",
+        "children": [],
+        "prefabVariant": null,
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
+        "editorLockValue": false,
+        "editorVisibleValue": true,
+        "DisableChanged": false
+      },
+      "_eventFrameList": []
+    },
+    {
+      "_tag": {
+        "type": "ACStateEntity",
+        "resourceId": ""
+      },
+      "_entityId": "uoziM6vc",
+      "children": [
+        {
+          "_tag": {
+            "type": "ACLayerEntity",
+            "resourceId": ""
+          },
+          "_entityId": "YXu4XJBx",
+          "children": [
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "aVsGzMd0",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": false,
+              "clipRefer": {
+                "fileId": "nw2sx2pg7vg-m3i6rngi-kpkvfwqdcx-BossButcher@SpinStart.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\Boss01\\Anims\\BossButcher@SpinStart.FBX\\BossButcher@SpinStart.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "Clip",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 0,
+              "endTime": 1.5,
+              "wrapMode": 0
+            },
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "PfwdUVSS",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": true,
+              "clipRefer": {
+                "fileId": "pk55p9w1ghd-m3i6rn6o-rzounuf28gf-BossButcher@SpinLoop.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\Boss01\\Anims\\BossButcher@SpinLoop.FBX\\BossButcher@SpinLoop.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "New Clip",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 1.5,
+              "endTime": 2.700000047683716,
+              "wrapMode": 2
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "isLoop": false,
+          "isBaseLayer": true,
+          "mute": false,
+          "bodypartId": null,
+          "DisableChanged": false,
+          "_entityName": "Base Layer"
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "isLoop": false,
+      "DisableChanged": false,
+      "_entityName": "Boss1_SpinAttack",
+      "eventFrameGroup": {
+        "_tag": {
+          "type": "ACLayerEntity",
+          "resourceId": ""
+        },
+        "_entityId": "ref3EY3h",
+        "children": [
+          {
+            "_tag": {
+              "type": "EventFrameEntity",
+              "resourceId": ""
+            },
+            "_entityId": "241sEflN",
+            "children": [],
+            "prefabVariant": null,
+            "activeValue": {
+              "selfValue": true,
+              "valueTag": "activeValue"
+            },
+            "unlockedValue": {
+              "selfValue": true,
+              "valueTag": "unlockedValue"
+            },
+            "editorLockValue": false,
+            "editorVisibleValue": true,
+            "from": "ACState",
+            "FrameIndex": 43,
+            "EventFrameName": "事件帧 1",
+            "startTime": 1.4333333333333333,
+            "EventList": [
+              {
+                "eventKeyValue": "AnimationControllerAble::signal_52120933",
+                "paramList": [
+                  {
+                    "type": "String",
+                    "label": "eventName",
+                    "newValue": "Boss1StartSkillMove"
+                  }
+                ],
+                "hideParam": false
+              }
+            ],
+            "dsada": "Sphere",
+            "enable": false
+          },
+          {
+            "_tag": {
+              "type": "EventFrameEntity",
+              "resourceId": ""
+            },
+            "_entityId": "I525Wnd4",
+            "children": [],
+            "prefabVariant": null,
+            "activeValue": {
+              "selfValue": true,
+              "valueTag": "activeValue"
+            },
+            "unlockedValue": {
+              "selfValue": true,
+              "valueTag": "unlockedValue"
+            },
+            "editorLockValue": false,
+            "editorVisibleValue": true,
+            "from": "ACState",
+            "FrameIndex": 44,
+            "EventFrameName": "事件帧 2",
+            "startTime": 1.4666666666666666,
+            "EventList": [
+              {
+                "eventKeyValue": "AnimationControllerAble::signal_34643746",
+                "paramList": [
+                  {
+                    "type": "String",
+                    "label": "eventName",
+                    "newValue": "Boss1OpenSpinEffect"
+                  }
+                ],
+                "hideParam": false
+              }
+            ],
+            "dsada": "Sphere",
+            "enable": false
+          }
+        ],
+        "prefabVariant": null,
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
+        "editorLockValue": false,
+        "editorVisibleValue": true,
+        "DisableChanged": false
+      },
+      "_eventFrameList": []
+    },
+    {
+      "_tag": {
+        "type": "ACStateEntity",
+        "resourceId": ""
+      },
+      "_entityId": "NK3KPqFS",
+      "children": [
+        {
+          "_tag": {
+            "type": "ACLayerEntity",
+            "resourceId": ""
+          },
+          "_entityId": "Qm6LkmbD",
+          "children": [
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "wsY0V7qP",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": false,
+              "clipRefer": {
+                "fileId": "7661onzriu-m3i6rn1x-0kgjjqdloask-BossButcher@SpinEnd_xiu2.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\Boss01\\Anims\\BossButcher@SpinEnd.FBX\\BossButcher@SpinEnd_xiu2.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "Clip",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 0,
+              "endTime": 0.6000000238418579,
+              "wrapMode": 0
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "isLoop": false,
+          "isBaseLayer": true,
+          "mute": false,
+          "bodypartId": null,
+          "DisableChanged": false,
+          "_entityName": "Base Layer"
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "isLoop": false,
+      "DisableChanged": false,
+      "_entityName": "Boss1_SpinAttackEnd",
+      "eventFrameGroup": {
+        "_tag": {
+          "type": "ACLayerEntity",
+          "resourceId": ""
+        },
+        "_entityId": "7DzZMvwy",
+        "children": [],
+        "prefabVariant": null,
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
+        "editorLockValue": false,
+        "editorVisibleValue": true,
+        "DisableChanged": false
+      },
+      "_eventFrameList": []
+    },
+    {
+      "_tag": {
+        "type": "ACStateEntity",
+        "resourceId": ""
+      },
+      "_entityId": "6tKDWCBJ",
+      "children": [
+        {
+          "_tag": {
+            "type": "ACLayerEntity",
+            "resourceId": ""
+          },
+          "_entityId": "Ep70dXRU",
+          "children": [
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "Lr94CKja",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": false,
+              "clipRefer": {
+                "fileId": "mi9ldfjio8-m3i6rmwd-0h47v6ievzfl-BossButcher@SlashStart.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\Boss01\\Anims\\BossButcher@SlashStart.FBX\\BossButcher@SlashStart.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "Clip",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 0,
+              "endTime": 1.5,
+              "wrapMode": 0
+            },
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "d8S4AOY6",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": false,
+              "clipRefer": {
+                "fileId": "4tgg37ta83p-m3i6rmme-3pey6lx9whu-BossButcher@Slash.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\Boss01\\Anims\\BossButcher@Slash.FBX\\BossButcher@Slash.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "New Clip",
+              "fadeInTime": 0,
+              "enablefadeTime": true,
+              "startTime": 1.5,
+              "endTime": 1.8,
+              "wrapMode": 0
+            },
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "DMY5iRas",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": false,
+              "clipRefer": {
+                "fileId": "trghyqwdo1i-m3i6rmra-lkflsq16uj-BossButcher@SlashEnd.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\Boss01\\Anims\\BossButcher@SlashEnd.FBX\\BossButcher@SlashEnd.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "New Clip (1)",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 1.8,
+              "endTime": 2.8,
+              "wrapMode": 0
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "isLoop": false,
+          "isBaseLayer": true,
+          "mute": false,
+          "bodypartId": null,
+          "DisableChanged": false,
+          "_entityName": "Base Layer"
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "isLoop": false,
+      "DisableChanged": false,
+      "_entityName": "Boss1_SlashAttack",
+      "eventFrameGroup": {
+        "_tag": {
+          "type": "ACLayerEntity",
+          "resourceId": ""
+        },
+        "_entityId": "tefrDYl2",
+        "children": [
+          {
+            "_tag": {
+              "type": "EventFrameEntity",
+              "resourceId": ""
+            },
+            "_entityId": "3Vn7CNKH",
+            "children": [],
+            "prefabVariant": null,
+            "activeValue": {
+              "selfValue": true,
+              "valueTag": "activeValue"
+            },
+            "unlockedValue": {
+              "selfValue": true,
+              "valueTag": "unlockedValue"
+            },
+            "editorLockValue": false,
+            "editorVisibleValue": true,
+            "from": "ACState",
+            "FrameIndex": 0,
+            "EventFrameName": "事件帧 2",
+            "startTime": 0,
+            "EventList": [
+              {
+                "eventKeyValue": "AnimationControllerAble::signal_34643746",
+                "paramList": [
+                  {
+                    "type": "String",
+                    "label": "eventName",
+                    "newValue": "Boss1OpenSlashEffect"
+                  }
+                ],
+                "hideParam": false
+              }
+            ],
+            "dsada": "Sphere",
+            "enable": false
+          },
+          {
+            "_tag": {
+              "type": "EventFrameEntity",
+              "resourceId": ""
+            },
+            "_entityId": "8GVRyu9q",
+            "children": [],
+            "prefabVariant": null,
+            "activeValue": {
+              "selfValue": true,
+              "valueTag": "activeValue"
+            },
+            "unlockedValue": {
+              "selfValue": true,
+              "valueTag": "unlockedValue"
+            },
+            "editorLockValue": false,
+            "editorVisibleValue": true,
+            "from": "ACState",
+            "FrameIndex": 48,
+            "EventFrameName": "事件帧 1",
+            "startTime": 1.6,
+            "EventList": [
+              {
+                "eventKeyValue": "AnimationControllerAble::signal_52120933",
+                "paramList": [
+                  {
+                    "type": "String",
+                    "label": "eventName",
+                    "newValue": "Boss1Slash"
+                  }
+                ],
+                "hideParam": false
+              }
+            ],
+            "dsada": "Sphere",
+            "enable": false
+          }
+        ],
+        "prefabVariant": null,
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
+        "editorLockValue": false,
+        "editorVisibleValue": true,
+        "DisableChanged": false
+      },
+      "_eventFrameList": []
+    },
+    {
+      "_tag": {
+        "type": "ACStateEntity",
+        "resourceId": ""
+      },
+      "_entityId": "qdTNoRdm",
+      "children": [
+        {
+          "_tag": {
+            "type": "ACLayerEntity",
+            "resourceId": ""
+          },
+          "_entityId": "UmJlcNne",
+          "children": [
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "4GdV4FQO",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": false,
+              "clipRefer": {
+                "fileId": "0ppnlcfa2ku-m3i6riqm-8biyh2fh3zm-Take 001.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\Boss01\\Anims\\BossButcher@CastStart.FBX\\Take 001.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "Clip",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 0,
+              "endTime": 0.4000000059604645,
+              "wrapMode": 0
+            },
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "pivucBZG",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": true,
+              "clipRefer": {
+                "fileId": "1wkvld6yja6-m3i6rilh-0ej5t1lvkkbo-Take 001.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\Boss01\\Anims\\BossButcher@CastLoop.FBX\\Take 001.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "New Clip",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 0.4000000059604645,
+              "endTime": 1.0000000298023224,
+              "wrapMode": 2
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "isLoop": false,
+          "isBaseLayer": true,
+          "mute": false,
+          "bodypartId": null,
+          "DisableChanged": false,
+          "_entityName": "Base Layer"
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "isLoop": false,
+      "DisableChanged": false,
+      "_entityName": "Boss1_CastAttack",
+      "eventFrameGroup": {
+        "_tag": {
+          "type": "ACLayerEntity",
+          "resourceId": ""
+        },
+        "_entityId": "H7AoR88w",
+        "children": [
+          {
+            "_tag": {
+              "type": "EventFrameEntity",
+              "resourceId": ""
+            },
+            "_entityId": "gG4zwubc",
+            "children": [],
+            "prefabVariant": null,
+            "activeValue": {
+              "selfValue": true,
+              "valueTag": "activeValue"
+            },
+            "unlockedValue": {
+              "selfValue": true,
+              "valueTag": "unlockedValue"
+            },
+            "editorLockValue": false,
+            "editorVisibleValue": true,
+            "from": "ACState",
+            "FrameIndex": 9,
+            "EventFrameName": "事件帧 1",
+            "startTime": 0.3,
+            "EventList": [
+              {
+                "eventKeyValue": "AnimationControllerAble::signal_34643746",
+                "paramList": [
+                  {
+                    "type": "String",
+                    "label": "eventName",
+                    "newValue": "Boss1OpenCastEffect"
+                  }
+                ],
+                "hideParam": false
+              }
+            ],
+            "dsada": "Sphere",
+            "enable": false
+          }
+        ],
+        "prefabVariant": null,
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
+        "editorLockValue": false,
+        "editorVisibleValue": true,
+        "DisableChanged": false
+      },
+      "_eventFrameList": []
+    },
+    {
+      "_tag": {
+        "type": "ACStateEntity",
+        "resourceId": ""
+      },
+      "_entityId": "KMEDRweB",
+      "children": [
+        {
+          "_tag": {
+            "type": "ACLayerEntity",
+            "resourceId": ""
+          },
+          "_entityId": "jXaSBOkf",
+          "children": [
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "loUHoyDW",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": false,
+              "clipRefer": {
+                "fileId": "fflkkpzd1r-m3i6rigp-v7v040rqmqe-Take 001.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\Boss01\\Anims\\BossButcher@CastEnd.FBX\\Take 001.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "Clip",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 0,
+              "endTime": 0.3333333432674408,
+              "wrapMode": 0
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "isLoop": false,
+          "isBaseLayer": true,
+          "mute": false,
+          "bodypartId": null,
+          "DisableChanged": false,
+          "_entityName": "Base Layer"
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "isLoop": false,
+      "DisableChanged": false,
+      "_entityName": "Boss1_CastEnd",
+      "eventFrameGroup": {
+        "_tag": {
+          "type": "ACLayerEntity",
+          "resourceId": ""
+        },
+        "_entityId": "IuEowlmt",
+        "children": [
+          {
+            "_tag": {
+              "type": "EventFrameEntity",
+              "resourceId": ""
+            },
+            "_entityId": "yq45Bczm",
+            "children": [],
+            "prefabVariant": null,
+            "activeValue": {
+              "selfValue": true,
+              "valueTag": "activeValue"
+            },
+            "unlockedValue": {
+              "selfValue": true,
+              "valueTag": "unlockedValue"
+            },
+            "editorLockValue": false,
+            "editorVisibleValue": true,
+            "from": "ACState",
+            "FrameIndex": 3,
+            "EventFrameName": "事件帧 1",
+            "startTime": 0.1,
+            "EventList": [
+              {
+                "eventKeyValue": "AnimationControllerAble::signal_34643746",
+                "paramList": [
+                  {
+                    "type": "String",
+                    "label": "eventName",
+                    "newValue": "Boss1CloseCastEffect"
+                  }
+                ],
+                "hideParam": false
+              }
+            ],
+            "dsada": "Sphere",
+            "enable": false
+          }
+        ],
+        "prefabVariant": null,
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
+        "editorLockValue": false,
+        "editorVisibleValue": true,
+        "DisableChanged": false
+      },
+      "_eventFrameList": []
+    },
+    {
+      "_tag": {
+        "type": "ACStateEntity",
+        "resourceId": ""
+      },
+      "_entityId": "PdAbTsW5",
+      "children": [
+        {
+          "_tag": {
+            "type": "ACLayerEntity",
+            "resourceId": ""
+          },
+          "_entityId": "heearU7T",
+          "children": [
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "QMv8jNY8",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": true,
+              "clipRefer": {
+                "fileId": "ld7wdlg0fq-m3i6rm1d-e5thzu4phgn-BossButcher@Run.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\Boss01\\Anims\\BossButcher@Run.FBX\\BossButcher@Run.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "Clip",
+              "fadeInTime": 0.1,
+              "enablefadeTime": true,
+              "startTime": 0,
+              "endTime": 1,
+              "wrapMode": 2
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "isLoop": false,
+          "isBaseLayer": true,
+          "mute": false,
+          "bodypartId": null,
+          "DisableChanged": false,
+          "_entityName": "Base Layer"
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "isLoop": false,
+      "DisableChanged": false,
+      "_entityName": "Boss1_Run",
+      "eventFrameGroup": {
+        "_tag": {
+          "type": "ACLayerEntity",
+          "resourceId": ""
+        },
+        "_entityId": "JSfpcHoa",
+        "children": [],
+        "prefabVariant": null,
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
+        "editorLockValue": false,
+        "editorVisibleValue": true,
+        "DisableChanged": false
+      },
+      "_eventFrameList": []
+    },
+    {
+      "_tag": {
+        "type": "ACStateEntity",
+        "resourceId": ""
+      },
+      "_entityId": "ejFBNAwN",
+      "children": [
+        {
+          "_tag": {
+            "type": "ACLayerEntity",
+            "resourceId": ""
+          },
+          "_entityId": "3edBoTJL",
+          "children": [
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "bnmC5Au4",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": true,
+              "clipRefer": {
+                "fileId": "jlh11kkr8e-m3i6rnw2-0m42jusdtu1-BossButcher@Walk01.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\Boss01\\Anims\\BossButcher@Walk.FBX\\BossButcher@Walk01.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "Clip",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 0,
+              "endTime": 1.3333333730697632,
+              "wrapMode": 2
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "isLoop": false,
+          "isBaseLayer": true,
+          "mute": false,
+          "bodypartId": null,
+          "DisableChanged": false,
+          "_entityName": "Base Layer"
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "isLoop": false,
+      "DisableChanged": false,
+      "_entityName": "Boss1_Walk",
+      "eventFrameGroup": {
+        "_tag": {
+          "type": "ACLayerEntity",
+          "resourceId": ""
+        },
+        "_entityId": "gVCreQvt",
+        "children": [],
+        "prefabVariant": null,
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
+        "editorLockValue": false,
+        "editorVisibleValue": true,
+        "DisableChanged": false
+      },
+      "_eventFrameList": []
+    },
+    {
+      "_tag": {
+        "type": "ACStateEntity",
+        "resourceId": ""
+      },
+      "_entityId": "PYi4GrrX",
+      "children": [
+        {
+          "_tag": {
+            "type": "ACLayerEntity",
+            "resourceId": ""
+          },
+          "_entityId": "x7P1I1CL",
+          "children": [
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "FwVAeNXp",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": true,
+              "clipRefer": {
+                "fileId": "jlh11kkr8e-m3i6rnw2-0m42jusdtu1-BossButcher@Walk01.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\Boss01\\Anims\\BossButcher@Walk.FBX\\BossButcher@Walk01.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "Clip",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 0,
+              "endTime": 1.3333333730697632,
+              "wrapMode": 2
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "isLoop": false,
+          "isBaseLayer": true,
+          "mute": false,
+          "bodypartId": null,
+          "DisableChanged": false,
+          "_entityName": "Base Layer"
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "isLoop": false,
+      "DisableChanged": false,
+      "_entityName": "Boss1_Wander",
+      "eventFrameGroup": {
+        "_tag": {
+          "type": "ACLayerEntity",
+          "resourceId": ""
+        },
+        "_entityId": "Zf3Poeuf",
+        "children": [],
+        "prefabVariant": null,
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
+        "editorLockValue": false,
+        "editorVisibleValue": true,
+        "DisableChanged": false
+      },
+      "_eventFrameList": []
+    },
+    {
+      "_tag": {
+        "type": "ACStateEntity",
+        "resourceId": ""
+      },
+      "_entityId": "SOJTv0Bv",
+      "children": [
+        {
+          "_tag": {
+            "type": "ACLayerEntity",
+            "resourceId": ""
+          },
+          "_entityId": "1mlKlFXe",
+          "children": [
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "JezW1jrd",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": false,
+              "clipRefer": {
+                "fileId": "xp72d41kqk-m3i6rk08-ayhb2f4btah-BossButcher@Death01.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\Boss01\\Anims\\BossButcher@Death01.FBX\\BossButcher@Death01.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "Clip",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 0,
+              "endTime": 2.6666667461395264,
+              "wrapMode": 0
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "isLoop": false,
+          "isBaseLayer": true,
+          "mute": false,
+          "bodypartId": null,
+          "DisableChanged": false,
+          "_entityName": "Base Layer"
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "isLoop": false,
+      "DisableChanged": false,
+      "_entityName": "Boss1_Dead",
+      "eventFrameGroup": {
+        "_tag": {
+          "type": "ACLayerEntity",
+          "resourceId": ""
+        },
+        "_entityId": "qxZzXJpp",
+        "children": [
+          {
+            "_tag": {
+              "type": "EventFrameEntity",
+              "resourceId": ""
+            },
+            "_entityId": "U8FQ4vkH",
+            "children": [],
+            "prefabVariant": null,
+            "activeValue": {
+              "selfValue": true,
+              "valueTag": "activeValue"
+            },
+            "unlockedValue": {
+              "selfValue": true,
+              "valueTag": "unlockedValue"
+            },
+            "editorLockValue": false,
+            "editorVisibleValue": true,
+            "from": "ACState",
+            "FrameIndex": 0,
+            "EventFrameName": "事件帧 1",
+            "startTime": 0,
+            "EventList": [
+              {
+                "eventKeyValue": "AnimationControllerAble::signal_34643746",
+                "paramList": [
+                  {
+                    "type": "String",
+                    "label": "eventName",
+                    "newValue": "Boss1DeadEffect"
+                  }
+                ],
+                "hideParam": false
+              }
+            ],
+            "dsada": "Sphere",
+            "enable": false
+          }
+        ],
+        "prefabVariant": null,
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
+        "editorLockValue": false,
+        "editorVisibleValue": true,
+        "DisableChanged": false
+      },
+      "_eventFrameList": []
+    },
+    {
+      "_tag": {
+        "type": "ACStateEntity",
+        "resourceId": ""
+      },
+      "_entityId": "l2ChYst3",
+      "children": [
+        {
+          "_tag": {
+            "type": "ACLayerEntity",
+            "resourceId": ""
+          },
+          "_entityId": "XBB8d6gZ",
+          "children": [
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "2Z3vDPa1",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": false,
+              "clipRefer": {
+                "fileId": "yxo96p99fo-m3i6rm6k-afrofu32vzk-BossButcher@Rush_End.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\Boss01\\Anims\\BossButcher@Rush_End.FBX\\BossButcher@Rush_End.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "Clip",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 0,
+              "endTime": 5,
+              "wrapMode": 0
+            },
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "866COFsu",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": false,
+              "clipRefer": {
+                "fileId": "gs30vt4lrtn-m3i6rlwa-2dxsyc6es1h-BossButcher@Revival_xiu.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\Boss01\\Anims\\BossButcher@Revival.FBX\\BossButcher@Revival_xiu.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "New Clip",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 5,
+              "endTime": 7,
+              "wrapMode": 0
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "isLoop": false,
+          "isBaseLayer": true,
+          "mute": false,
+          "bodypartId": null,
+          "DisableChanged": false,
+          "_entityName": "Base Layer"
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "isLoop": false,
+      "DisableChanged": false,
+      "_entityName": "Boss1_Show",
+      "eventFrameGroup": {
+        "_tag": {
+          "type": "ACLayerEntity",
+          "resourceId": ""
+        },
+        "_entityId": "p1PwYIx4",
+        "children": [],
+        "prefabVariant": null,
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
+        "editorLockValue": false,
+        "editorVisibleValue": true,
+        "DisableChanged": false
+      },
+      "_eventFrameList": []
+    },
+    {
+      "_tag": {
+        "type": "ACStateEntity",
+        "resourceId": ""
+      },
+      "_entityId": "xcDHMDD8",
+      "children": [
+        {
+          "_tag": {
+            "type": "ACLayerEntity",
+            "resourceId": ""
+          },
+          "_entityId": "8FndvCbN",
+          "children": [
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "vhfhc4Bn",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": false,
+              "clipRefer": {
+                "fileId": "qhl59wcvzz9-m3i6rkc9-6h1rtcav04g-BossButcher@DormancyStart.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\Boss01\\Anims\\BossButcher@DormancyStart.FBX\\BossButcher@DormancyStart.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "Clip",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 0,
+              "endTime": 2,
+              "wrapMode": 0
+            },
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "5BKxrP59",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": false,
+              "clipRefer": {
+                "fileId": "2g8yc2ydoum-m3i6rk73-ddcsevu3zm-BossButcher@DormancyEnd.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\Boss01\\Anims\\BossButcher@DormancyEnd.FBX\\BossButcher@DormancyEnd.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "New Clip",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 2,
+              "endTime": 3.333333373069763,
+              "wrapMode": 0
+            },
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "qmgydN5I",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": false,
+              "clipRefer": {
+                "fileId": "94mwxvskhtu-m3o502a6-i1tcik1ojqi-BossButcher@Revival_xiu.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\Boss01\\Anims\\BossButcher@Revival (1).FBX\\BossButcher@Revival_xiu.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "New Clip 2",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 3.333333373069763,
+              "endTime": 5.333333373069763,
+              "wrapMode": 0
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "isLoop": false,
+          "isBaseLayer": true,
+          "mute": false,
+          "bodypartId": null,
+          "DisableChanged": false,
+          "_entityName": "Base Layer"
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "isLoop": true,
+      "DisableChanged": false,
+      "_entityName": "Boss1_TurnStage",
+      "eventFrameGroup": {
+        "_tag": {
+          "type": "ACLayerEntity",
+          "resourceId": ""
+        },
+        "_entityId": "Dg6nuWtv",
+        "children": [],
+        "prefabVariant": null,
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
+        "editorLockValue": false,
+        "editorVisibleValue": true,
+        "DisableChanged": false
+      },
+      "_eventFrameList": []
+    },
+    {
+      "_tag": {
+        "type": "ACStateEntity",
+        "resourceId": ""
+      },
+      "_entityId": "EGoYXafi",
+      "children": [
+        {
+          "_tag": {
+            "type": "ACLayerEntity",
+            "resourceId": ""
+          },
+          "_entityId": "Qo9cEIKK",
+          "children": [
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "Sztot2wi",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": false,
+              "clipRefer": {
+                "fileId": "er98g5qhjz-m3i6rkwj-m4b3jiwdv5c-BossButcher@Flinch.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\Boss01\\Anims\\BossButcher@Hit_Front.FBX\\BossButcher@Flinch.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "Clip",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 0,
+              "endTime": 0.4333333373069763,
+              "wrapMode": 0
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "isLoop": false,
+          "isBaseLayer": true,
+          "mute": false,
+          "bodypartId": null,
+          "DisableChanged": false,
+          "_entityName": "Base Layer"
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "isLoop": false,
+      "DisableChanged": false,
+      "_entityName": "Boss1_Hit",
+      "eventFrameGroup": {
+        "_tag": {
+          "type": "ACLayerEntity",
+          "resourceId": ""
+        },
+        "_entityId": "bpesH2cl",
+        "children": [],
+        "prefabVariant": null,
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
+        "editorLockValue": false,
+        "editorVisibleValue": true,
+        "DisableChanged": false
+      },
+      "_eventFrameList": []
+    },
+    {
+      "_tag": {
+        "type": "ACStateEntity",
+        "resourceId": ""
+      },
+      "_entityId": "6yDRhkYF",
+      "children": [
+        {
+          "_tag": {
+            "type": "ACLayerEntity",
+            "resourceId": ""
+          },
+          "_entityId": "yzZbgLyH",
+          "children": [
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "9FcMFJKp",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": false,
+              "clipRefer": {
+                "fileId": "ym8uq429h6j-m00s974i-k8jobg1jlpf-Hit_Body_Forward_L.Anim",
+                "filePath": "fab://Assets\\ZombieAssist\\Zombie01\\Anims\\C_Zombie_01@Hit_Body_Forward_L.FBX\\Hit_Body_Forward_L.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "Clip",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 0,
+              "endTime": 0.6666666865348816,
+              "wrapMode": 0
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "isLoop": false,
+          "isBaseLayer": true,
+          "mute": false,
+          "bodypartId": null,
+          "DisableChanged": false,
+          "_entityName": "Base Layer"
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "isLoop": false,
+      "DisableChanged": false,
+      "_entityName": "Boss1_Hit_L",
+      "eventFrameGroup": {
+        "_tag": {
+          "type": "ACLayerEntity",
+          "resourceId": ""
+        },
+        "_entityId": "LCs1NEgE",
+        "children": [],
+        "prefabVariant": null,
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
+        "editorLockValue": false,
+        "editorVisibleValue": true,
+        "DisableChanged": false
+      },
+      "_eventFrameList": []
+    },
+    {
+      "_tag": {
+        "type": "ACStateEntity",
+        "resourceId": ""
+      },
+      "_entityId": "6hWcSMCY",
+      "children": [
+        {
+          "_tag": {
+            "type": "ACLayerEntity",
+            "resourceId": ""
+          },
+          "_entityId": "XgmP6gAX",
+          "children": [
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "KPmGrG99",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": false,
+              "clipRefer": {
+                "fileId": "k8eib5ugllh-m00s97dv-g67lxv3fn8c-Hit_Body_Forward_R.Anim",
+                "filePath": "fab://Assets\\ZombieAssist\\Zombie01\\Anims\\C_Zombie_01@Hit_Body_Forward_R.FBX\\Hit_Body_Forward_R.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "Clip",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 0,
+              "endTime": 0.6666666865348816,
+              "wrapMode": 0
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "isLoop": false,
+          "isBaseLayer": true,
+          "mute": false,
+          "bodypartId": null,
+          "DisableChanged": false,
+          "_entityName": "Base Layer"
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "isLoop": false,
+      "DisableChanged": false,
+      "_entityName": "Boss1_Hit_R",
+      "eventFrameGroup": {
+        "_tag": {
+          "type": "ACLayerEntity",
+          "resourceId": ""
+        },
+        "_entityId": "Q19nSYBj",
+        "children": [],
+        "prefabVariant": null,
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
+        "editorLockValue": false,
+        "editorVisibleValue": true,
+        "DisableChanged": false
+      },
+      "_eventFrameList": []
+    },
+    {
+      "_tag": {
+        "type": "ACStateEntity",
+        "resourceId": ""
+      },
+      "_entityId": "wzaaW2zm",
+      "children": [
+        {
+          "_tag": {
+            "type": "ACLayerEntity",
+            "resourceId": ""
+          },
+          "_entityId": "do0JvZnV",
+          "children": [
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "ocJ5tQjp",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": true,
+              "clipRefer": {
+                "fileId": "6o7vs2q9q15-m3i6rkmj-yn5w01g1fki-BossButcher@Falling.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\Boss01\\Anims\\BossButcher@Falling.FBX\\BossButcher@Falling.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "Clip",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 0,
+              "endTime": 0.6666666865348816,
+              "wrapMode": 2
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "isLoop": false,
+          "isBaseLayer": true,
+          "mute": false,
+          "bodypartId": null,
+          "DisableChanged": false,
+          "_entityName": "Base Layer"
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "isLoop": false,
+      "DisableChanged": false,
+      "_entityName": "Boss1_Fall",
+      "eventFrameGroup": {
+        "_tag": {
+          "type": "ACLayerEntity",
+          "resourceId": ""
+        },
+        "_entityId": "coAVo7wx",
+        "children": [],
+        "prefabVariant": null,
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
+        "editorLockValue": false,
+        "editorVisibleValue": true,
+        "DisableChanged": false
+      },
+      "_eventFrameList": []
+    },
+    {
+      "_tag": {
+        "type": "ACStateEntity",
+        "resourceId": ""
+      },
+      "_entityId": "t99C5TDt",
+      "children": [
+        {
+          "_tag": {
+            "type": "ACLayerEntity",
+            "resourceId": ""
+          },
+          "_entityId": "ar3FslpB",
+          "children": [
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "APNicRXP",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": false,
+              "clipRefer": {
+                "fileId": "ytlw6nd4hwm-m3i6rlbr-i9i4p1akcqq-BossButcher@LandingEnd.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\Boss01\\Anims\\BossButcher@LandingEnd.FBX\\BossButcher@LandingEnd.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "Clip",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 0,
+              "endTime": 1.4333332777023315,
+              "wrapMode": 0
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "isLoop": false,
+          "isBaseLayer": true,
+          "mute": false,
+          "bodypartId": null,
+          "DisableChanged": false,
+          "_entityName": "Base Layer"
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "isLoop": false,
+      "DisableChanged": false,
+      "_entityName": "Boss1_Land",
+      "eventFrameGroup": {
+        "_tag": {
+          "type": "ACLayerEntity",
+          "resourceId": ""
+        },
+        "_entityId": "ba2kylRD",
+        "children": [],
+        "prefabVariant": null,
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
+        "editorLockValue": false,
+        "editorVisibleValue": true,
+        "DisableChanged": false
+      },
+      "_eventFrameList": []
+    },
+    {
+      "_tag": {
+        "type": "ACStateEntity",
+        "resourceId": ""
+      },
+      "_entityId": "usdNsK8G",
+      "children": [
+        {
+          "_tag": {
+            "type": "ACLayerEntity",
+            "resourceId": ""
+          },
+          "_entityId": "tOnpjEYP",
+          "children": [
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "90odexxV",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": true,
+              "speed": 1,
+              "loop": false,
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "clipRefer": {
+                "fileId": "qhl59wcvzz9-m3i6rkc9-6h1rtcav04g-BossButcher@DormancyStart.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\Boss01\\Anims\\BossButcher@DormancyStart.FBX\\BossButcher@DormancyStart.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "wrapMode": 0,
+              "startTime": 0,
+              "endTime": 2,
+              "_entityName": "BossButcher@DormancyStart.anim"
+            },
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "0aeupBOp",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": true,
+              "speed": 1,
+              "loop": false,
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "clipRefer": {
+                "fileId": "2g8yc2ydoum-m3i6rk73-ddcsevu3zm-BossButcher@DormancyEnd.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\Boss01\\Anims\\BossButcher@DormancyEnd.FBX\\BossButcher@DormancyEnd.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "wrapMode": 0,
+              "startTime": 2,
+              "endTime": 3.333333373069763,
+              "_entityName": "BossButcher@DormancyEnd.anim"
+            },
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "wGc1uU8a",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": true,
+              "speed": 1,
+              "loop": false,
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "clipRefer": {
+                "fileId": "gs30vt4lrtn-m3i6rlwa-2dxsyc6es1h-BossButcher@Revival_xiu.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\Boss01\\Anims\\BossButcher@Revival.FBX\\BossButcher@Revival_xiu.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "wrapMode": 0,
+              "startTime": 3.3333333333333335,
+              "endTime": 5.333333333333333,
+              "_entityName": "BossButcher@Revival_xiu.anim"
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "isLoop": false,
+          "isBaseLayer": true,
+          "mute": false,
+          "bodypartId": null,
+          "DisableChanged": false,
+          "_entityName": "Base Layer"
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "isLoop": false,
+      "_eventFrameList": [],
+      "eventFrameGroup": {
+        "_tag": {
+          "type": "ACLayerEntity",
+          "resourceId": ""
+        },
+        "_entityId": "BaOWH2QB",
+        "children": [],
+        "prefabVariant": null,
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
+        "editorLockValue": false,
+        "editorVisibleValue": true,
+        "DisableChanged": false
+      },
+      "selectedBodyparts": [],
+      "DisableChanged": false,
+      "_entityName": "Boss1_Break"
+    }
+  ],
+  "prefabVariant": null,
+  "activeValue": {
+    "selfValue": true,
+    "valueTag": "activeValue"
+  },
+  "unlockedValue": {
+    "selfValue": true,
+    "valueTag": "unlockedValue"
+  },
+  "editorLockValue": false,
+  "editorVisibleValue": true,
+  "_entityName": "ACEntity",
+  "version": 2,
+  "preModel": {
+    "fileId": "9vel9h3f3ur-m3i6ro22-txsdy9gig4",
+    "filePath": "Assets\\ZombieAsset\\Boss01\\BossButcher.FBX",
+    "_tag": {
+      "type": "GFileRefer"
+    },
+    "fileType": "fbx"
+  }
+}
+//"{FE:{"v":"1.12.3559061","c":{"FF":4701},"s":100}

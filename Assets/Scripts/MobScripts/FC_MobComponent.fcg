@@ -13,11 +13,8 @@ graph FC_ZombieComponent {
     	//funcID: CreateMoveTween
 	func CreateMoveTween(velocity Vector3) {	
 	//	LogInfo("create move tween: " + velocity)
-		
 		if moveTween != nil{
-
 			var endPos Vector3 = thisEntity<Transform>.Position + velocity * tweenDuration/1000
-			
 			//LogInfo("create move tween: " + endPos + "currPostion" + thisEntity<Transform>.Position)
 			moveTween<Tween>.Duration = tweenDuration
 			moveTween<Tween>.EndValue = endPos
@@ -29,8 +26,6 @@ graph FC_ZombieComponent {
 				endPos,TweenStyle.Once,CreateCurve({0.25, 0.1, 0.25, 1}),tweenDuration,out var tweenEntity,true)
 			moveTween = tweenEntity
 		}
-		
-	
 	}
 
 	func StopMoveTween() {
