@@ -708,13 +708,13 @@ graph PlayerJionGame {
                 
             } else if attributeName == "WeaponBoomRange" {
                 // 榴弹爆炸范围 - 固定值
-                var finalBoomRange = 0.0
+                var finalBoomRange = 0
                 if IsNextThreeChoiceOne == 0 {
-                    var outerBoomRange = Skill1DataWithOuterBonus["WeaponBoomRange"] as float
-                    finalBoomRange = outerBoomRange + value
+                    var outerBoomRange = Skill1DataWithOuterBonus["WeaponBoomRange"] as int
+                    finalBoomRange = Round(outerBoomRange + value) as int
                 } else if IsNextThreeChoiceOne == 1 {
-                    var currentBoomRange = Skill1DataInGame["WeaponBoomRange"] as float
-                    finalBoomRange = currentBoomRange + value
+                    var currentBoomRange = Skill1DataInGame["WeaponBoomRange"] as int
+                    finalBoomRange =  Round(currentBoomRange + value) as int
                 }
                 Skill1DataInGame["WeaponBoomRange"] = finalBoomRange
                 LogInfo("榴弹爆炸范围: " + Convert.ToString(Skill1DataInGame["WeaponBoomRange"]))
