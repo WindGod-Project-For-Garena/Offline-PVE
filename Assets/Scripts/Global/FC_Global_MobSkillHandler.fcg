@@ -40,8 +40,6 @@ static graph FC_Global_MobSkillHandler {
         CreateTween(image_center,UIWidget.SizeDelta,Vector2{0,0},Vector2{Math.Ceil(scale*250),
             Math.Ceil(scale*250)},TweenStyle.Once,CreateCurve({0.25, 0.1, 0.25, 1}),duration,out var tweenEntity,true)
 
-
-
         if Map.ContainKey(entityEffectDic, mob) == false {
             entityEffectDic[mob] = List<entity<object>>{}
         }

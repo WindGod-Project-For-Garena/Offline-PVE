@@ -71,6 +71,9 @@ graph PlayerJionGame {
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     Money int = 999999
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+    // 结束波次后出现卡牌的标志位
+    IsNextThreeChoiceOne int = 0
+    //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     // 玩家基础属性数据
     PlayerData Map<string, object> = Map<string, object>{
         // 基础属性
@@ -226,6 +229,7 @@ graph PlayerJionGame {
             CopyToOuterBonusData()
             // 初始化局内数据（复制局外数据）
             CopyToInGameData()
+            IsNextThreeChoiceOne = 0
         }
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
@@ -312,6 +316,7 @@ graph PlayerJionGame {
         ability2Level = ability2Level
         ability3Level = ability3Level
         ChoiceThreeCardUI<CustomUI>.IsVisible = true
+        IsNextThreeChoiceOne = 0       //关闭标志位
         StartThree_choose_One(level, CurrentSkill, ability1Level, ability2Level, ability3Level)
         start ShowSecondDown(10000)
     }
@@ -560,37 +565,75 @@ graph PlayerJionGame {
         // 玩家基础属性（基于局外天赋加成数据再应用局内加成）
         if attributeName == "movespeed" {
             // 移动速度加成 - 百分比
-            var outerSpeed = PlayerDataWithOuterBonus["MoveSpeed"] as float
-            // 计算最终移速：局外移速 × (1 + 局内加成)
-            var finalSpeed = outerSpeed * (1.0 + value)
+            var finalSpeed = 0.0
+            if IsNextThreeChoiceOne == 0 {
+                // 第一次选择：局外移速 × (1 + 加成)
+                var outerSpeed = PlayerDataWithOuterBonus["MoveSpeed"] as float
+                finalSpeed = outerSpeed * (1.0 + value)
+            } else if IsNextThreeChoiceOne == 1 {
+                // 后续选择：当前移速 + (局外移速 × 加成)
+                var currentSpeed = PlayerDataInGame["MoveSpeed"] as float
+                var outerSpeed = PlayerDataWithOuterBonus["MoveSpeed"] as float
+                finalSpeed = currentSpeed + (outerSpeed * value)
+            }
             PlayerDataInGame["MoveSpeed"] = finalSpeed
-            LogInfo("  最终移速: " + Convert.ToString(PlayerDataInGame["MoveSpeed"]))
-
+            LogInfo("局内移速: " + Convert.ToString(PlayerDataInGame["MoveSpeed"]))
+            
         } else if attributeName == "WeaponDamage" {
             // 武器伤害加成 - 百分比
-            var outerDamage = PlayerDataWithOuterBonus["WeaponDamage"] as int
-            var finalDamage = Round(outerDamage * (1.0 + value)) as int
+            var finalDamage = 0
+            if IsNextThreeChoiceOne == 0 {
+                var outerDamage = PlayerDataWithOuterBonus["WeaponDamage"] as int
+                finalDamage = Round(outerDamage * (1.0 + value)) as int
+            } else if IsNextThreeChoiceOne == 1 {
+                var currentDamage = PlayerDataInGame["WeaponDamage"] as int
+                var outerDamage = PlayerDataWithOuterBonus["WeaponDamage"] as int
+                finalDamage = currentDamage + Round(outerDamage * value) as int
+            }
             PlayerDataInGame["WeaponDamage"] = finalDamage
-            LogInfo("  最终武器伤害: " + Convert.ToString(PlayerDataInGame["WeaponDamage"]))
+            LogInfo("局内武器伤害: " + Convert.ToString(PlayerDataInGame["WeaponDamage"]))
             
         } else if attributeName == "AttackSpeed" {
             // 攻击速度加成 - 百分比
-            var outerSpeed = PlayerDataWithOuterBonus["AttackSpeed"] as float
-            PlayerDataInGame["AttackSpeed"] = outerSpeed * (1.0 + value)
-            
+            var finalSpeed = 0.0
+            if IsNextThreeChoiceOne == 0 {
+                var outerSpeed = PlayerDataWithOuterBonus["AttackSpeed"] as float
+                finalSpeed = outerSpeed * (1.0 + value)
+            } else if IsNextThreeChoiceOne == 1 {
+                var currentSpeed = PlayerDataInGame["AttackSpeed"] as float
+                var outerSpeed = PlayerDataWithOuterBonus["AttackSpeed"] as float
+                finalSpeed = currentSpeed + (outerSpeed * value)
+            }
+            PlayerDataInGame["AttackSpeed"] = finalSpeed
             LogInfo("攻击速度: " + Convert.ToString(PlayerDataInGame["AttackSpeed"]))
+            
         } else if attributeName == "ReloadSpeed" {
             // 换弹速度加成（减少换弹时间）- 百分比
-            var outerSpeed = PlayerDataWithOuterBonus["ReloadSpeed"] as float
-            // 换弹时间是减少，所以是减value
-            PlayerDataInGame["ReloadSpeed"] = Math.Max(0.1, outerSpeed * (1.0 - value))
-            
+            var finalSpeed = 0.0
+            if IsNextThreeChoiceOne == 0 {
+                var outerSpeed = PlayerDataWithOuterBonus["ReloadSpeed"] as float
+                // 换弹时间是减少，所以是乘(1-value)
+                finalSpeed = Math.Max(0.1, outerSpeed * (1.0 - value)) as int
+            } else if IsNextThreeChoiceOne == 1 {
+                var currentSpeed = PlayerDataInGame["ReloadSpeed"] as float
+                var outerSpeed = PlayerDataWithOuterBonus["ReloadSpeed"] as float
+                // 换弹时间继续减少
+                finalSpeed = Math.Max(0.1, currentSpeed * (1.0 - value)) as int
+            }
+            PlayerDataInGame["ReloadSpeed"] = finalSpeed
             LogInfo("换弹速度: " + Convert.ToString(PlayerDataInGame["ReloadSpeed"]))
+            
         } else if attributeName == "WeaponMaxMagazine" {
             // 弹匣容量加成 - 固定值
-            var outerMagazine = PlayerDataWithOuterBonus["WeaponMaxMagazine"] as int
-            PlayerDataInGame["WeaponMaxMagazine"] = outerMagazine + Round(value) as int
-            
+            var finalMagazine = 0
+            if IsNextThreeChoiceOne == 0 {
+                var outerMagazine = PlayerDataWithOuterBonus["WeaponMaxMagazine"] as int
+                finalMagazine = outerMagazine + Round(value) as int
+            } else if IsNextThreeChoiceOne == 1 {
+                var currentMagazine = PlayerDataInGame["WeaponMaxMagazine"] as int
+                finalMagazine = currentMagazine + Round(value) as int
+            }
+            PlayerDataInGame["WeaponMaxMagazine"] = finalMagazine
             LogInfo("弹匣容量: " + Convert.ToString(PlayerDataInGame["WeaponMaxMagazine"]))
         }
         
@@ -598,59 +641,124 @@ graph PlayerJionGame {
         if skillNum == 1 {
             if attributeName == "SkillRange" {
                 // 爆裂轰炸范围 - 固定值
-                var outerRange = Skill1DataWithOuterBonus["SkillRange"] as float
-                Skill1DataInGame["SkillRange"] = outerRange + value
+                var finalRange = 0.0
+                if IsNextThreeChoiceOne == 0 {
+                    var outerRange = Skill1DataWithOuterBonus["SkillRange"] as float
+                    finalRange = outerRange + value
+                } else if IsNextThreeChoiceOne == 1 {
+                    var currentRange = Skill1DataInGame["SkillRange"] as float
+                    finalRange = currentRange + value
+                }
+                Skill1DataInGame["SkillRange"] = finalRange
                 LogInfo("技能1范围: " + Convert.ToString(Skill1DataInGame["SkillRange"]))
-
+                
             } else if attributeName == "SkillCD" {
                 // 爆裂轰炸冷却减少 - 百分比
-                var outerCD = Skill1DataWithOuterBonus["SkillCD"] as int
-                // 冷却减少，所以是乘(1-value)
-                Skill1DataInGame["SkillCD"] = Math.Max(0.5, outerCD * (1.0 - value)) as int
+                var finalCD = 0
+                if IsNextThreeChoiceOne == 0 {
+                    var outerCD = Skill1DataWithOuterBonus["SkillCD"] as int
+                    finalCD = Math.Max(0.5, outerCD * (1.0 - value)) as int
+                } else if IsNextThreeChoiceOne == 1 {
+                    var currentCD = Skill1DataInGame["SkillCD"] as int
+                    finalCD = Math.Max(0.5, currentCD * (1.0 - value)) as int
+                }
+                Skill1DataInGame["SkillCD"] = finalCD
                 LogInfo("技能1冷却: " + Convert.ToString(Skill1DataInGame["SkillCD"]))
-
+                
             } else if attributeName == "SkillDamage" {
                 // 爆裂轰炸伤害加成 - 百分比
-                var outerDamage = Skill1DataWithOuterBonus["SkillDamage"] as int
-                Skill1DataInGame["SkillDamage"] = Round(outerDamage * (1.0 + value)) as int
-                LogInfo("  最终技能伤害: " + Convert.ToString(Skill1DataInGame["SkillDamage"]))
-
+                var finalDamage = 0
+                if IsNextThreeChoiceOne == 0 {
+                    var outerDamage = Skill1DataWithOuterBonus["SkillDamage"] as int
+                    finalDamage = Round(outerDamage * (1.0 + value)) as int
+                } else if IsNextThreeChoiceOne == 1 {
+                    var currentDamage = Skill1DataInGame["SkillDamage"] as int
+                    var outerDamage = Skill1DataWithOuterBonus["SkillDamage"] as int
+                    finalDamage = currentDamage + Round(outerDamage * value) as int
+                }
+                Skill1DataInGame["SkillDamage"] = finalDamage
+                LogInfo("技能1伤害: " + Convert.ToString(Skill1DataInGame["SkillDamage"]))
+                
             } else if attributeName == "SkillAmount" {
                 // 爆裂轰炸连续释放次数 - 固定值
-                var outerAmount = Skill1DataWithOuterBonus["SkillAmount"] as int
-                Skill1DataInGame["SkillAmount"] = outerAmount + Round(value) as int
+                var finalAmount = 0
+                if IsNextThreeChoiceOne == 0 {
+                    var outerAmount = Skill1DataWithOuterBonus["SkillAmount"] as int
+                    finalAmount = outerAmount + Round(value) as int
+                } else if IsNextThreeChoiceOne == 1 {
+                    var currentAmount = Skill1DataInGame["SkillAmount"] as int
+                    finalAmount = currentAmount + Round(value) as int
+                }
+                Skill1DataInGame["SkillAmount"] = finalAmount
                 LogInfo("技能1释放次数: " + Convert.ToString(Skill1DataInGame["SkillAmount"]))
-
+                
             } else if attributeName == "SkillFireDamage" {
                 // 爆裂轰炸燃烧伤害 - 百分比
-                var outerFireDamage = Skill1DataWithOuterBonus["SkillFireDamage"] as int
-                Skill1DataInGame["SkillFireDamage"] = Round(outerFireDamage * (1.0 + value)) as int
+                var finalFireDamage = 0
+                if IsNextThreeChoiceOne == 0 {
+                    var outerFireDamage = Skill1DataWithOuterBonus["SkillFireDamage"] as int
+                    finalFireDamage = Round(outerFireDamage * (1.0 + value)) as int
+                } else if IsNextThreeChoiceOne == 1 {
+                    var currentFireDamage = Skill1DataInGame["SkillFireDamage"] as int
+                    var outerFireDamage = Skill1DataWithOuterBonus["SkillFireDamage"] as int
+                    finalFireDamage = currentFireDamage + Round(outerFireDamage * value) as int
+                }
+                Skill1DataInGame["SkillFireDamage"] = finalFireDamage
                 LogInfo("技能1燃烧伤害: " + Convert.ToString(Skill1DataInGame["SkillFireDamage"]))
-
+                
             } else if attributeName == "WeaponBoomRange" {
                 // 榴弹爆炸范围 - 固定值
-                var outerBoomRange = Skill1DataWithOuterBonus["WeaponBoomRange"] as float
-                Skill1DataInGame["WeaponBoomRange"] = outerBoomRange + value
+                var finalBoomRange = 0.0
+                if IsNextThreeChoiceOne == 0 {
+                    var outerBoomRange = Skill1DataWithOuterBonus["WeaponBoomRange"] as float
+                    finalBoomRange = outerBoomRange + value
+                } else if IsNextThreeChoiceOne == 1 {
+                    var currentBoomRange = Skill1DataInGame["WeaponBoomRange"] as float
+                    finalBoomRange = currentBoomRange + value
+                }
+                Skill1DataInGame["WeaponBoomRange"] = finalBoomRange
                 LogInfo("榴弹爆炸范围: " + Convert.ToString(Skill1DataInGame["WeaponBoomRange"]))
-
+                
             } else if attributeName == "WeaponBoomProbability" {
                 // 普攻触发榴弹概率 - 固定值（百分比）
-                var outerProbability = Skill1DataWithOuterBonus["WeaponBoomProbability"] as float
-                Skill1DataInGame["WeaponBoomProbability"] = Math.Min(1.0, outerProbability + value)
+                var finalProbability = 0.0
+                if IsNextThreeChoiceOne == 0 {
+                    var outerProbability = Skill1DataWithOuterBonus["WeaponBoomProbability"] as float
+                    finalProbability = Math.Min(1.0, outerProbability + value) as int
+                } else if IsNextThreeChoiceOne == 1 {
+                    var currentProbability = Skill1DataInGame["WeaponBoomProbability"] as float
+                    finalProbability = Math.Min(1.0, currentProbability + value) as int
+                }
+                Skill1DataInGame["WeaponBoomProbability"] = finalProbability
                 LogInfo("榴弹触发概率: " + Convert.ToString(Skill1DataInGame["WeaponBoomProbability"] as float * 100) + "%")
-
+                
             } else if attributeName == "WeaponDoubleBoom" {
                 // 榴弹二次爆炸 - 固定值
-                var outerDoubleBoom = Skill1DataWithOuterBonus["WeaponDoubleBoom"] as int
-                Skill1DataInGame["WeaponDoubleBoom"] = outerDoubleBoom + Round(value) as int
+                var finalDoubleBoom = 0
+                if IsNextThreeChoiceOne == 0 {
+                    var outerDoubleBoom = Skill1DataWithOuterBonus["WeaponDoubleBoom"] as int
+                    finalDoubleBoom = outerDoubleBoom + Round(value) as int
+                } else if IsNextThreeChoiceOne == 1 {
+                    var currentDoubleBoom = Skill1DataInGame["WeaponDoubleBoom"] as int
+                    finalDoubleBoom = currentDoubleBoom + Round(value) as int
+                }
+                Skill1DataInGame["WeaponDoubleBoom"] = finalDoubleBoom
                 LogInfo("榴弹二次爆炸: " + Convert.ToString(Skill1DataInGame["WeaponDoubleBoom"]))
-
+                
             } else if attributeName == "WeaponBoomDamage" {
                 // 榴弹伤害加成 - 百分比
-                var outerBoomDamage = Skill1DataWithOuterBonus["WeaponBoomDamage"] as int
-                Skill1DataInGame["WeaponBoomDamage"] = Round(outerBoomDamage * (1.0 + value)) as int
+                var finalBoomDamage = 0
+                if IsNextThreeChoiceOne == 0 {
+                    var outerBoomDamage = Skill1DataWithOuterBonus["WeaponBoomDamage"] as int
+                    finalBoomDamage = Round(outerBoomDamage * (1.0 + value)) as int
+                } else if IsNextThreeChoiceOne == 1 {
+                    var currentBoomDamage = Skill1DataInGame["WeaponBoomDamage"] as int
+                    var outerBoomDamage = Skill1DataWithOuterBonus["WeaponBoomDamage"] as int
+                    finalBoomDamage = currentBoomDamage + Round(outerBoomDamage * value) as int
+                }
+                Skill1DataInGame["WeaponBoomDamage"] = finalBoomDamage
                 LogInfo("榴弹伤害: " + Convert.ToString(Skill1DataInGame["WeaponBoomDamage"]))
-
+                
             } else if attributeName == "ReloadNow" {
                 // 技能后立即装弹 - 布尔值
                 Skill1DataInGame["ReloadNow"] = 1
@@ -662,32 +770,68 @@ graph PlayerJionGame {
         if skillNum == 2 {
             if attributeName == "LightningAmount" || attributeName == "SkillAmount" {
                 // 闪电数量 - 固定值
-                var outerAmount = Skill2DataWithOuterBonus["SkillAmount"] as int
-                Skill2DataInGame["SkillAmount"] = outerAmount + Round(value) as int
+                var finalAmount = 0
+                if IsNextThreeChoiceOne == 0 {
+                    var outerAmount = Skill2DataWithOuterBonus["SkillAmount"] as int
+                    finalAmount = outerAmount + Round(value) as int
+                } else if IsNextThreeChoiceOne == 1 {
+                    var currentAmount = Skill2DataInGame["SkillAmount"] as int
+                    finalAmount = currentAmount + Round(value) as int
+                }
+                Skill2DataInGame["SkillAmount"] = finalAmount
                 LogInfo("闪电数量: " + Convert.ToString(Skill2DataInGame["SkillAmount"]))
-
+                
             } else if attributeName == "SkillCD" {
                 // 闪电冷却减少 - 百分比
-                var outerCD = Skill2DataWithOuterBonus["SkillCD"] as int
-                Skill2DataInGame["SkillCD"] = Math.Max(0.5, outerCD * (1.0 - value)) as int
+                var finalCD = 0
+                if IsNextThreeChoiceOne == 0 {
+                    var outerCD = Skill2DataWithOuterBonus["SkillCD"] as int
+                    finalCD = Math.Max(0.5, outerCD * (1.0 - value)) as int
+                } else if IsNextThreeChoiceOne == 1 {
+                    var currentCD = Skill2DataInGame["SkillCD"] as int
+                    finalCD = Math.Max(0.5, currentCD * (1.0 - value)) as int
+                }
+                Skill2DataInGame["SkillCD"] = finalCD
                 LogInfo("闪电冷却: " + Convert.ToString(Skill2DataInGame["SkillCD"]))
-
+                
             } else if attributeName == "SkillDamage" {
                 // 闪电伤害加成 - 百分比
-                var outerDamage = Skill2DataWithOuterBonus["SkillDamage"] as int
-                Skill2DataInGame["SkillDamage"] = Round(outerDamage * (1.0 + value)) as int
+                var finalDamage = 0
+                if IsNextThreeChoiceOne == 0 {
+                    var outerDamage = Skill2DataWithOuterBonus["SkillDamage"] as int
+                    finalDamage = Round(outerDamage * (1.0 + value)) as int
+                } else if IsNextThreeChoiceOne == 1 {
+                    var currentDamage = Skill2DataInGame["SkillDamage"] as int
+                    var outerDamage = Skill2DataWithOuterBonus["SkillDamage"] as int
+                    finalDamage = currentDamage + Round(outerDamage * value) as int
+                }
+                Skill2DataInGame["SkillDamage"] = finalDamage
                 LogInfo("闪电伤害: " + Convert.ToString(Skill2DataInGame["SkillDamage"]))
-
+                
             } else if attributeName == "LightningRange" || attributeName == "SkillRange" {
                 // 闪电爆炸范围 - 固定值
-                var outerRange = Skill2DataWithOuterBonus["SkillRange"] as float
-                Skill2DataInGame["SkillRange"] = outerRange + value
+                var finalRange = 0.0
+                if IsNextThreeChoiceOne == 0 {
+                    var outerRange = Skill2DataWithOuterBonus["SkillRange"] as float
+                    finalRange = outerRange + value
+                } else if IsNextThreeChoiceOne == 1 {
+                    var currentRange = Skill2DataInGame["SkillRange"] as float
+                    finalRange = currentRange + value
+                }
+                Skill2DataInGame["SkillRange"] = finalRange
                 LogInfo("闪电爆炸范围: " + Convert.ToString(Skill2DataInGame["SkillRange"]))
-
+                
             } else if attributeName == "LightningExplosion" || attributeName == "SkillExplosion" {
                 // 闪电爆炸效果 - 固定值（百分比）
-                var outerExplosion = Skill2DataWithOuterBonus["SkillExplosion"] as int
-                Skill2DataInGame["SkillExplosion"] = outerExplosion + Round(value) as int
+                var finalExplosion = 0
+                if IsNextThreeChoiceOne == 0 {
+                    var outerExplosion = Skill2DataWithOuterBonus["SkillExplosion"] as int
+                    finalExplosion = outerExplosion + Round(value) as int
+                } else if IsNextThreeChoiceOne == 1 {
+                    var currentExplosion = Skill2DataInGame["SkillExplosion"] as int
+                    finalExplosion = currentExplosion + Round(value) as int
+                }
+                Skill2DataInGame["SkillExplosion"] = finalExplosion
                 if value == 1.0 {
                     LogInfo("获得闪电命中大范围爆炸效果，额外造成100%伤害")
                 } else if value == 0.5 {
@@ -695,38 +839,46 @@ graph PlayerJionGame {
                 } else {
                     LogInfo("闪电爆炸效果: " + Convert.ToString(Skill2DataInGame["SkillExplosion"]))
                 }
-
+                
             } else if attributeName == "WeaponLightningProb" {
                 // 武器闪电触发概率 - （百分比）
-                var outerProbability = Skill2DataWithOuterBonus["WeaponLightningProb"] as float
-                Skill2DataInGame["WeaponLightningProb"] = outerProbability + (value * 100) as float
-                LogInfo("武器闪电触发概率: " + Convert.ToString(Skill2DataInGame["WeaponLightningProb"] as float * 100) + "%")
-
+                var finalProbability = 0.0
+                if IsNextThreeChoiceOne == 0 {
+                    var outerProbability = Skill2DataWithOuterBonus["WeaponLightningProb"] as float
+                    finalProbability = outerProbability + (value * 100) as float
+                } else if IsNextThreeChoiceOne == 1 {
+                    var currentProbability = Skill2DataInGame["WeaponLightningProb"] as float
+                    finalProbability = currentProbability + (value * 100) as float
+                }
+                Skill2DataInGame["WeaponLightningProb"] = Math.Min(100.0, finalProbability) as float
+                LogInfo("武器闪电触发概率: " + Convert.ToString(Skill2DataInGame["WeaponLightningProb"]) + "%")
+                
             } else if attributeName == "ReloadBuff" {
                 // 换弹后射速提升 - 百分比
-                var outerBuff = Skill2DataWithOuterBonus["ReloadBuff"] as float
-                Skill2DataInGame["ReloadBuff"] = outerBuff + value
+                var finalBuff = 0.0
+                if IsNextThreeChoiceOne == 0 {
+                    var outerBuff = Skill2DataWithOuterBonus["ReloadBuff"] as float
+                    finalBuff = outerBuff + value
+                } else if IsNextThreeChoiceOne == 1 {
+                    var currentBuff = Skill2DataInGame["ReloadBuff"] as float
+                    finalBuff = currentBuff + value
+                }
+                Skill2DataInGame["ReloadBuff"] = finalBuff
                 LogInfo("换弹后射速提升: " + Convert.ToString(Skill2DataInGame["ReloadBuff"] as float * 100) + "%")
-
+                
             } else if attributeName == "ReloadNow" {
                 // 技能后立即装弹（技能2）
                 Skill2DataInGame["ReloadNow"] = 1
                 LogInfo("获得闪电释放后立即装弹效果")
             }
         }
-        // 发送属性到服务器     更新玩家当前属性（使用局内数据）
-        DispatchEventToEntity(OnPlayerAttributesUpdate, globalEntity, PlatformType.Server, List<object>{PlayerDataInGame,PlayerDataWithOuterBonus})
+        // 发送属性到服务器，更新玩家当前属性（使用局内数据）
+        DispatchEventToEntity(OnPlayerAttributesUpdate, globalEntity, PlatformType.Server, List<object>{PlayerDataInGame, PlayerDataWithOuterBonus})
+        IsNextThreeChoiceOne = 0
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
-    // 重置已选卡牌（开始新游戏时调用）
-    func ResetSelectedCards() {
-        List.Clear(SelectedCards_1)
-        List.Clear(SelectedCards_2)
-        LogInfo("已选卡牌列表已重置")
-    }
-
     // 获取剩余可用卡牌数量
     func GetAvailableCardCount(CurrentSkill int) int {
         var cardDataMap = Map<int, Map<string, object>>{}
@@ -1462,6 +1614,7 @@ graph PlayerJionGame {
 
     event ToClient_DisplaySkillThreeChoiceOne() {
         ChoiceThreeCardUI<CustomUI>.IsVisible = true
+        IsNextThreeChoiceOne = 1       //打开标志位
     }
 
     event ToClient_GameComplete() {
