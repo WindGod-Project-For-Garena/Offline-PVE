@@ -102,9 +102,10 @@ static graph FC_PVEController {
         var weaponDamage = Round(PlayerDataInGame["WeaponDamage"] as int)
         currentWeapon<Weapon>.Damage = weaponDamage
         currPlayer<Player>.IsDropOnEliminated = false
-        
+
         // 使用局内数据更新玩家属性
         if PlayerDataInGame["HP"] != nil {
+            LogInfo("玩家HP: " + PlayerDataInGame["HP"])
             currPlayer<Player>.MaxHP = PlayerDataInGame["HP"] as int
             currPlayer<Player>.HP = currPlayer<Player>.MaxHP
         }
