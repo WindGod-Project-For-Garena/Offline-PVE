@@ -35,13 +35,13 @@ graph ChoiceOneOfThreeCard {
          var CurrentRandomCards = GetLocalPlayer()<PlayerJionGame>.CurrentRandomCards[0]
          GetLocalPlayer()<PlayerJionGame>.SelectCard(CurrentRandomCards, CurrentskillIndex)
          GetLocalPlayer()<PlayerJionGame>.ApplyCardEffect(CurrentRandomCards, CurrentskillIndex)
-      }
-      if GetLocalPlayer()<PlayerJionGame>.NowChoiceCard == 2 {
+         
+      } else if GetLocalPlayer()<PlayerJionGame>.NowChoiceCard == 2 {
          var CurrentRandomCards = GetLocalPlayer()<PlayerJionGame>.CurrentRandomCards[1]
          GetLocalPlayer()<PlayerJionGame>.SelectCard(CurrentRandomCards, CurrentskillIndex)
          GetLocalPlayer()<PlayerJionGame>.ApplyCardEffect(CurrentRandomCards, CurrentskillIndex)
-      }
-      if GetLocalPlayer()<PlayerJionGame>.NowChoiceCard == 3 {
+
+      } else if GetLocalPlayer()<PlayerJionGame>.NowChoiceCard == 3 {
          var CurrentRandomCards = GetLocalPlayer()<PlayerJionGame>.CurrentRandomCards[2]
          GetLocalPlayer()<PlayerJionGame>.SelectCard(CurrentRandomCards, CurrentskillIndex)
          GetLocalPlayer()<PlayerJionGame>.ApplyCardEffect(CurrentRandomCards, CurrentskillIndex)
@@ -53,6 +53,9 @@ graph ChoiceOneOfThreeCard {
       }
       var SecondDownUI = GetLocalPlayer()<PlayerJionGame>.SecondDownUI
       SecondDownUI<CustomUI>.IsVisible = false
+
+      DispatchEventToEntity(ToServer_StartNextWave, globalEntity, PlatformType.Server, List<object>{})
+      thisEntity<CustomUI>.IsVisible = false
    }
    //开始卡牌数值等功能
    func Update(triggerPlayer entity<Player>) {

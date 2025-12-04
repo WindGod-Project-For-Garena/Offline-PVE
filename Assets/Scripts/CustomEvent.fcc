@@ -14,7 +14,7 @@ event OnGameStartClick(level int, skillIndex int, ability1Level int, ability2Lev
 [platform_client]
 [platform_server]
 //显示升级技能事件，显示升级技能时触发
-event ToClient_DisplaySkillLevelUpUI()
+event ToClient_DisplaySkillThreeChoiceOne()
 
 [platform_client]
 [platform_server]
@@ -51,4 +51,4 @@ event ToClient_ShowFinalStats(currTime int, GameStartTime int, IsGameSuccess boo
 [platform_client]
 [platform_server]
 //显示游戏调试UI事件，显示游戏调试UI时触发
-event OnPlayerAttributesUpdate(PlayerDataInGame Map<string, object>)
+event OnPlayerAttributesUpdate(PlayerDataInGame Map<string, object>, PlayerDataWithOuterBonus Map<string, object>)

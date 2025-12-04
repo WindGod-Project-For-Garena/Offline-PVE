@@ -39,8 +39,10 @@ static graph FC_PVEController {
     // 游戲成功或失敗
     IsGameSuccess bool = false
     
-    // 玩家个人属性
+    // 玩家局内个人属性
     PlayerDataInGame Map<string, object> = Map<string, object>{}
+    // 玩家局外个人数据
+    PlayerDataWithOuterBonus Map<string, object> = Map<string, object>{}
 
     event OnAwake() {
         LogInfo("PVE控制器初始化")
@@ -61,8 +63,10 @@ static graph FC_PVEController {
         currPlayer = player
     }
 
-    event OnPlayerAttributesUpdate(NewPlayerDataInGame Map<string, object>) {
+    event OnPlayerAttributesUpdate(NewPlayerDataInGame Map<string, object>,NewPlayerDataWithOuterBonus Map<string, object>) {
         PlayerDataInGame = NewPlayerDataInGame
+        PlayerDataWithOuterBonus = NewPlayerDataWithOuterBonus
+        UpdataPlayerDataInGame()
     }
 
     // 玩家复活删除武器
@@ -102,19 +106,15 @@ static graph FC_PVEController {
         var weaponDamage = Round(PlayerDataInGame["WeaponDamage"] as int)
         currentWeapon<Weapon>.Damage = weaponDamage
         currPlayer<Player>.IsDropOnEliminated = false
-
-        // 使用局内数据更新玩家属性
-        if PlayerDataInGame["HP"] != nil {
-            LogInfo("玩家HP: " + PlayerDataInGame["HP"])
-            currPlayer<Player>.MaxHP = PlayerDataInGame["HP"] as int
-            currPlayer<Player>.HP = currPlayer<Player>.MaxHP
-        }
-        if PlayerDataInGame["MoveSpeed"] != nil {
-            currPlayer<Player>.RunSpeedScale = PlayerDataInGame["MoveSpeed"] as float
-        }
-
+        
         LogInfo("游戏开始 - 关卡: " + level + "，技能: " + skillIndex)
         StartPVEGame(level)
+    }
+
+    func  UpdataPlayerDataInGame() {
+        currPlayer<Player>.MaxHP = PlayerDataInGame["HP"] as int
+        currPlayer<Player>.HP = PlayerDataInGame["HP"] as int
+        currPlayer<Player>.RunSpeedScale = PlayerDataInGame["MoveSpeed"] as int
     }
 
     event ToServer_StartNextWave() {
@@ -128,6 +128,12 @@ static graph FC_PVEController {
         DestroyItem(currPlayer,  ItemIDType.SGAmmo, 999)
         DestroyItem(currPlayer, ItemIDType.GoldMP5_III, 1)
         DestroyItem(currPlayer,  ItemIDType.SGAmmo, 999)
+        UpdataPlayerDataWithOuterBonus()
+    }
+
+    func  UpdataPlayerDataWithOuterBonus() {
+        currPlayer<Player>.HP = PlayerDataWithOuterBonus["HP"] as int
+        currPlayer<Player>.RunSpeedScale = PlayerDataWithOuterBonus["MoveSpeed"] as int
     }
     
     // 开始PVE游戏（指定关卡）
@@ -158,15 +164,12 @@ static graph FC_PVEController {
         monsterManager.LevelInitialize(level)
 
         //通知客户端显示升级技能UI(这里写法玩家硬写的)
-        DispatchEventToEntity(ToClient_DisplaySkillLevelUpUI,GetAllPlayers()[0], PlatformType.Client, List<object>{})
-        
+        // DispatchEventToEntity(ToClient_DisplaySkillThreeChoiceOne,GetAllPlayers()[0], PlatformType.Client, List<object>{})
         
         // 开始第一波
         //StartWave(1)
     }
     
-
-  
     // 开始指定波次
     func StartWave(wave int) {
         CurrentWave = wave
@@ -206,7 +209,7 @@ static graph FC_PVEController {
         if IsCountdownActive && MaxWaves > CurrentWave {
             IsCountdownActive = false
             monsterManager.ForceEndWave()
-            DispatchEventToEntity(ToClient_DisplaySkillLevelUpUI,GetAllPlayers()[0], PlatformType.Client, List<object>{})
+            DispatchEventToEntity(ToClient_DisplaySkillThreeChoiceOne,GetAllPlayers()[0], PlatformType.Client, List<object>{})
         }else{
             monsterManager.ForceEndWave()
             OnGameComplete()

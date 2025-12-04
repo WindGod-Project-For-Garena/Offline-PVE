@@ -108,11 +108,11 @@ graph PlayerJionGame {
         "SkillDamage": 25,        // 闪电伤害
         "SkillAmount": 3,         // 闪电数量
         "SkillRange": 3,          // 闪电爆炸范围
-        "SkillExplosion": 0,    // 闪电命中产生小爆炸伤害（百分比）
+        "SkillExplosion": 0,      // 闪电命中产生小爆炸伤害（百分比）
         "SkillCD": 1500,          // 闪电冷却时间
         
         // 技能2武器特效属性
-        "WeaponLightningProb": 0,     // 武器闪电触发概率
+        "WeaponLightningProb": 5,     // 武器闪电触发概率
         "ReloadBuff": 0,              // 换弹后射速提升（百分比）
     }
     // -----------------------局外天赋加成后数据-------------------------//
@@ -334,6 +334,7 @@ graph PlayerJionGame {
             time = time - 1000
             if time == 0 {
                 AutoChoiceBestOneCard()
+                DispatchEventToEntity(ToServer_StartNextWave, globalEntity, PlatformType.Server, List<object>{})
                 SecondDownUI<CustomUI>.IsVisible = false
             }
             if  SecondDownUI<CustomUI>.IsVisible == false{
@@ -556,8 +557,6 @@ graph PlayerJionGame {
     
     // 应用三选一卡牌效果
     func ApplySkillCardEffect(skillNum int, attributeName string, value float) {
-        var currentPlayer = GetLocalPlayer()
-
         // 玩家基础属性（基于局外天赋加成数据再应用局内加成）
         if attributeName == "movespeed" {
             // 移动速度加成 - 百分比
@@ -565,7 +564,6 @@ graph PlayerJionGame {
             // 计算最终移速：局外移速 × (1 + 局内加成)
             var finalSpeed = outerSpeed * (1.0 + value)
             PlayerDataInGame["MoveSpeed"] = finalSpeed
-            currentPlayer<Player>.RunSpeedScale = finalSpeed
             LogInfo("  最终移速: " + Convert.ToString(PlayerDataInGame["MoveSpeed"]))
 
         } else if attributeName == "WeaponDamage" {
@@ -701,7 +699,7 @@ graph PlayerJionGame {
             } else if attributeName == "WeaponLightningProb" {
                 // 武器闪电触发概率 - （百分比）
                 var outerProbability = Skill2DataWithOuterBonus["WeaponLightningProb"] as float
-                Skill2DataInGame["WeaponLightningProb"] = Round(outerProbability * (1.0 + value)) as float
+                Skill2DataInGame["WeaponLightningProb"] = outerProbability + (value * 100) as float
                 LogInfo("武器闪电触发概率: " + Convert.ToString(Skill2DataInGame["WeaponLightningProb"] as float * 100) + "%")
 
             } else if attributeName == "ReloadBuff" {
@@ -716,6 +714,8 @@ graph PlayerJionGame {
                 LogInfo("获得闪电释放后立即装弹效果")
             }
         }
+        // 发送属性到服务器     更新玩家当前属性（使用局内数据）
+        DispatchEventToEntity(OnPlayerAttributesUpdate, globalEntity, PlatformType.Server, List<object>{PlayerDataInGame,PlayerDataWithOuterBonus})
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
@@ -934,9 +934,9 @@ graph PlayerJionGame {
         var currentPrice = GetCurrentDrawPrice()
         var currentConfig = GetCurrentDrawConfig()
         
-        LogInfo("开始抽卡 - 总次数:" + Convert.ToString(TotalDrawCount) + 
-                " 价格:" + Convert.ToString(currentPrice) +
-                " 阶段:" + Convert.ToString(currentConfig["MinCount"]) + "+")
+        // LogInfo("开始抽卡 - 总次数:" + Convert.ToString(TotalDrawCount) + 
+        //         " 价格:" + Convert.ToString(currentPrice) +
+        //         " 阶段:" + Convert.ToString(currentConfig["MinCount"]) + "+")
         
         // 检查玩家是否有足够的货币
         if  Money < currentPrice {
@@ -1117,7 +1117,7 @@ graph PlayerJionGame {
         CopyToInGameData()
         
         // 发送属性到服务器     更新玩家当前属性（使用局内数据）
-        DispatchEventToEntity(OnPlayerAttributesUpdate, globalEntity, PlatformType.Server, List<object>{PlayerDataInGame})
+        DispatchEventToEntity(OnPlayerAttributesUpdate, globalEntity, PlatformType.Server, List<object>{PlayerDataInGame,PlayerDataWithOuterBonus})
     }
 
     // 显示当前所有属性
@@ -1460,8 +1460,8 @@ graph PlayerJionGame {
         Skill3_CDLevel = 0
     }
 
-    event ToClient_DisplaySkillLevelUpUI() {
-        SkillLevelUpUI<UI_C_SkillLevelUp>.displaySkillLevelupUI()
+    event ToClient_DisplaySkillThreeChoiceOne() {
+        ChoiceThreeCardUI<CustomUI>.IsVisible = true
     }
 
     event ToClient_GameComplete() {
