@@ -95,9 +95,7 @@ graph SkillUI {
         }
         
         // 获取技能1的范围等级
-        var rangeLevel = GetLocalPlayer()<PlayerJionGame>.GetCurrentSkillLevel(CurrentSkill, "Range")
-        var skillData = GetLocalPlayer()<PlayerJionGame>.GetSkillData("Skill1", rangeLevel)
-        var Size = skillData["size"] as int
+        var Size int = Round(GetLocalPlayer()<PlayerJionGame>.Skill1DataInGame["SkillRange"] as int)
         
         previewEffectEntity<Transform>.Scale = Vector3{Size, 0.1, Size}
         BoomColor(previewEffectEntity, Size)

@@ -1615,6 +1615,8 @@ graph PlayerJionGame {
     event ToClient_DisplaySkillThreeChoiceOne() {
         ChoiceThreeCardUI<CustomUI>.IsVisible = true
         IsNextThreeChoiceOne = 1       //打开标志位
+        RefeshCard(level, ability1Level, ability2Level, ability3Level)
+        start ShowSecondDown(10000)
     }
 
     event ToClient_GameComplete() {

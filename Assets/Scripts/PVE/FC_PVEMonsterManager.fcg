@@ -557,8 +557,6 @@ static graph FC_PVEMonsterManager {
         ClearAllMonsters()
     }
     
-    
-    
     func OnMonsterKilled(monster entity<LevelObject>) {
         if monster != nil {
             SetParent(PendingRemoveMonsterParentNode<Transform>, monster<Transform>, true)

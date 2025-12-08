@@ -91,6 +91,7 @@ static graph FC_PVEController {
             AddItem(currPlayer, ItemIDType.M1887X, 1, out var itemList)
             currentWeapon = itemList[0] as entity<Weapon>
 
+            DestroyItem(currPlayer,  ItemIDType.SMGAmmo, 999)
             DestroyItem(currPlayer,  ItemIDType.SGAmmo, 999)
             AddItem(currPlayer, ItemIDType.SGAmmo, 999, out var createdEntity)
         }
@@ -99,6 +100,7 @@ static graph FC_PVEController {
             AddItem(currPlayer, ItemIDType.GoldMP5_III, 1, out var itemList)
             currentWeapon = itemList[0] as entity<Weapon>
 
+            DestroyItem(currPlayer,  ItemIDType.SGAmmo, 999)
             DestroyItem(currPlayer,  ItemIDType.SMGAmmo, 999)
             AddItem(currPlayer, ItemIDType.SMGAmmo, 999, out var createdEntity)
         }
