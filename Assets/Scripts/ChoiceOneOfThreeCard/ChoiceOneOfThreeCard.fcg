@@ -15,14 +15,38 @@ graph ChoiceOneOfThreeCard {
    //选择卡牌1
    func Card_1(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
       GetLocalPlayer()<PlayerJionGame>.NowChoiceCard = 1
+      var  ChoiceThreeCardUI = GetLocalPlayer()<PlayerJionGame>.ChoiceThreeCardUI
+      // 设置卡牌1的图标
+      var card1BB = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/ChoiceThreeCardPanel/Card_1/IsChoice")
+      card1BB<UIWidget>.Active = true
+      var card2BB = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/ChoiceThreeCardPanel/Card_2/IsChoice")
+      card2BB<UIWidget>.Active = false
+      var card3BB = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/ChoiceThreeCardPanel/Card_3/IsChoice")
+      card3BB<UIWidget>.Active = false
    }
    //选择卡牌2
    func Card_2(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
       GetLocalPlayer()<PlayerJionGame>.NowChoiceCard = 2
+      var  ChoiceThreeCardUI = GetLocalPlayer()<PlayerJionGame>.ChoiceThreeCardUI
+      // 设置卡牌2的图标
+      var card1BB = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/ChoiceThreeCardPanel/Card_1/IsChoice")
+      card1BB<UIWidget>.Active = false
+      var card2BB = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/ChoiceThreeCardPanel/Card_2/IsChoice")
+      card2BB<UIWidget>.Active = true
+      var card3BB = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/ChoiceThreeCardPanel/Card_3/IsChoice")
+      card3BB<UIWidget>.Active = false
    }
    //选择卡牌3
    func Card_3(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
       GetLocalPlayer()<PlayerJionGame>.NowChoiceCard = 3
+      var  ChoiceThreeCardUI = GetLocalPlayer()<PlayerJionGame>.ChoiceThreeCardUI
+      // 设置卡牌3的图标
+      var card1BB = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/ChoiceThreeCardPanel/Card_1/IsChoice")
+      card1BB<UIWidget>.Active = false
+      var card2BB = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/ChoiceThreeCardPanel/Card_2/IsChoice")
+      card2BB<UIWidget>.Active = false
+      var card3BB = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/ChoiceThreeCardPanel/Card_3/IsChoice")
+      card3BB<UIWidget>.Active = true
    }
    //下一波开始
    func NextWave(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {

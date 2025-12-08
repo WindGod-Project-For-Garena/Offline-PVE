@@ -316,31 +316,51 @@ graph PlayerJionGame {
         ability2Level = ability2Level
         ability3Level = ability3Level
         ChoiceThreeCardUI<CustomUI>.IsVisible = true
+        //----------------------------------------------------------------------------------------------------------------//
+        var card1BB = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/ChoiceThreeCardPanel/Card_1/IsChoice")
+        card1BB<UIWidget>.Active = false
+        var card2BB = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/ChoiceThreeCardPanel/Card_2/IsChoice")
+        card2BB<UIWidget>.Active = false
+        var card3BB = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/ChoiceThreeCardPanel/Card_3/IsChoice")
+        card3BB<UIWidget>.Active = false
+        //----------------------------------------------------------------------------------------------------------------//
         IsNextThreeChoiceOne = 0       //关闭标志位
         StartThree_choose_One(level, CurrentSkill, ability1Level, ability2Level, ability3Level)
         start ShowSecondDown(10000)
     }
 
+    // 刷新卡牌
     func  RefeshCard(level int, ability1Level int, ability2Level int, ability3Level int) {
         level = level
         ability1Level = ability1Level
         ability2Level = ability2Level
         ability3Level = ability3Level
         ChoiceThreeCardUI<CustomUI>.IsVisible = true
+        //----------------------------------------------------------------------------------------------------------------//
+        var card1BB = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/ChoiceThreeCardPanel/Card_1/IsChoice")
+        card1BB<UIWidget>.Active = false
+        var card2BB = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/ChoiceThreeCardPanel/Card_2/IsChoice")
+        card2BB<UIWidget>.Active = false
+        var card3BB = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/ChoiceThreeCardPanel/Card_3/IsChoice")
+        card3BB<UIWidget>.Active = false
+        //----------------------------------------------------------------------------------------------------------------//
         StartThree_choose_One(level, CurrentSkill, ability1Level, ability2Level, ability3Level)
     }
     
     async func ShowSecondDown(time int) {
         SecondDownUI<CustomUI>.IsVisible = true
         var SecondDownText = GetWidgetByPath(GetLocalPlayer(), SecondDownUI, "/SecondDown/TextBackBoard/Text")
+        var NextButton = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/Next")
+        var RefreshCardsButton = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/RefreshCards")
         while time >= 0 {
             SecondDownText<UIWidgetLabel>.Content = (time / 1000)
             WaitForMillisecond(1000)
             time = time - 1000
             if time == 0 {
-                AutoChoiceBestOneCard()
-                DispatchEventToEntity(ToServer_StartNextWave, globalEntity, PlatformType.Server, List<object>{})
                 SecondDownUI<CustomUI>.IsVisible = false
+                NextButton<CustomUI>.IsVisible = false
+                RefreshCardsButton<CustomUI>.IsVisible = false
+                start AutoChoiceBestOneCard()
             }
             if  SecondDownUI<CustomUI>.IsVisible == false{
                 LogInfo("打断计时打断计时打断计时打断计时打断计时")
@@ -351,7 +371,7 @@ graph PlayerJionGame {
     }
 
     // 自动选择当前最好的一张牌
-    func AutoChoiceBestOneCard() {
+    async func AutoChoiceBestOneCard() {
         // 使用已经生成的卡牌信息
         var card1 = Skill_1_CardData[CurrentRandomCards[0]]
         var card2 = Skill_1_CardData[CurrentRandomCards[1]]
@@ -371,44 +391,48 @@ graph PlayerJionGame {
         var bestCardIndices = List<int>{}
         
         if rarity1 == highestRarity {
-            List.Append(bestCardIndices, 0)
+            List.Append(bestCardIndices, 1)  // 改为 1,2,3 表示第一、二、三张牌
         }
         if rarity2 == highestRarity {
-            List.Append(bestCardIndices, 1)
+            List.Append(bestCardIndices, 2)
         }
         if rarity3 == highestRarity {
-            List.Append(bestCardIndices, 2)
+            List.Append(bestCardIndices, 3)
         }
         
         // 选择最终卡牌
-        var selectedIndex = 0
+        var selectedIndex = 1  // 默认选择第一张
         
         if List.Length(bestCardIndices) == 1 {
             // 只有一张最高稀有度
             selectedIndex = bestCardIndices[0]
-            LogInfo("唯一最高稀有度，选择卡牌" + Convert.ToString(selectedIndex + 1))
+            LogInfo("唯一最高稀有度，选择卡牌" + Convert.ToString(selectedIndex))
         } else {
             // 多张相同最高稀有度，随机选一个
             var randomIndexInList = RandomInt(0, List.Length(bestCardIndices))
             selectedIndex = bestCardIndices[randomIndexInList]
-            LogInfo("多张相同最高稀有度，随机选择卡牌" + Convert.ToString(selectedIndex + 1))
+            LogInfo("多张相同最高稀有度，随机选择卡牌" + Convert.ToString(selectedIndex))
         }
         
-        var selectedCardId = CurrentRandomCards[selectedIndex]
-        LogInfo("最终选择 - 位置:" + Convert.ToString(selectedIndex + 1) + " ID:" + Convert.ToString(selectedCardId) + " 稀有度:" + Convert.ToString(highestRarity))
+        var selectedCardId = CurrentRandomCards[selectedIndex - 1]  // 减1因为数组从0开始
+        LogInfo("最终选择 - 位置:" + Convert.ToString(selectedIndex) + " ID:" + Convert.ToString(selectedCardId) + " 稀有度:" + Convert.ToString(highestRarity))
         
         // 选择逻辑
         SelectCard(selectedCardId, CurrentSkill)
         ApplyCardEffect(selectedCardId, CurrentSkill)
-        
+
+        // 触发选择效果，传递选择的牌位置
+        OnCardSelected(selectedIndex)  // 传递选择的牌位置
+
+        WaitForMillisecond(1000)
+
         // 隐藏选择界面
         ChoiceThreeCardUI<CustomUI>.IsVisible = false
         
-        // 触发选择效果
-        // OnCardSelected(selectedCardId, selectedIndex)
-
-        //开始下一波
+        // 给武器
         DispatchEventToEntity(OnGameStartClick, globalEntity, PlatformType.Server, List<object>{level, CurrentSkill,ability1Level,ability2Level,ability3Level})
+        // 开始下一波
+        DispatchEventToEntity(ToServer_StartNextWave, globalEntity, PlatformType.Server, List<object>{})
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     func StartThree_choose_One(level int, CurrentSkill int, ability1Level int, ability2Level int, ability3Level int){
@@ -875,6 +899,28 @@ graph PlayerJionGame {
         // 发送属性到服务器，更新玩家当前属性（使用局内数据）
         DispatchEventToEntity(OnPlayerAttributesUpdate, globalEntity, PlatformType.Server, List<object>{PlayerDataInGame, PlayerDataWithOuterBonus})
         IsNextThreeChoiceOne = 0
+    }
+
+    func OnCardSelected(selectedCardIndex int) {
+        LogInfo("选择了第 " + Convert.ToString(selectedCardIndex) + " 张牌")
+        
+        // 重置所有选择标记
+        var card1BB = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/ChoiceThreeCardPanel/Card_1/IsChoice")
+        var card2BB = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/ChoiceThreeCardPanel/Card_2/IsChoice")
+        var card3BB = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/ChoiceThreeCardPanel/Card_3/IsChoice")
+        
+        card1BB<UIWidget>.Active = false
+        card2BB<UIWidget>.Active = false
+        card3BB<UIWidget>.Active = false
+        
+        // 根据选择的牌位置激活对应的标记
+        if selectedCardIndex == 1 {
+            card1BB<UIWidget>.Active = true
+        } else if selectedCardIndex == 2 {
+            card2BB<UIWidget>.Active = true
+        } else if selectedCardIndex == 3 {
+            card3BB<UIWidget>.Active = true
+        }
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
