@@ -90,7 +90,7 @@ graph PlayerJionGame {
         // 技能1基础属性
         "SkillDamage": 50,          // 爆裂轰炸伤害
         "SkillRange": 5,            // 爆裂轰炸范围
-        "SkillCD": 1500,            // 爆裂轰炸冷却
+        "SkillCD": 5000,            // 爆裂轰炸冷却
         "SkillAmount": 1,           // 爆裂轰炸连续释放次数
         "SkillFireDamage": 5,       // 爆裂轰炸燃烧伤害
         
@@ -111,7 +111,7 @@ graph PlayerJionGame {
         "SkillAmount": 3,         // 闪电数量
         "SkillRange": 3,          // 闪电爆炸范围
         "SkillExplosion": 0,      // 闪电命中产生小爆炸伤害（百分比）
-        "SkillCD": 1500,          // 闪电冷却时间
+        "SkillCD": 5000,          // 闪电冷却时间
         
         // 技能2武器特效属性
         "WeaponLightningProb": 5,     // 武器闪电触发概率
@@ -695,14 +695,25 @@ graph PlayerJionGame {
                 var finalCD = 0
                 if IsNextThreeChoiceOne == 0 {
                     var outerCD = Skill1DataWithOuterBonus["SkillCD"] as int
-                    finalCD = Math.Max(0.5, outerCD * (1.0 - value)) as int
+                    finalCD = Round(outerCD * (1.0 - value)) as int
+                    // 记录当前总减少百分比
+                    Skill1DataInGame["SkillCD_Reduction"] = value
                 } else if IsNextThreeChoiceOne == 1 {
-                    var currentCD = Skill1DataInGame["SkillCD"] as int
-                    finalCD = Math.Max(0.5, currentCD * (1.0 - value)) as int
+                    var outerCD = Skill1DataWithOuterBonus["SkillCD"] as int
+                    // 获取当前总减少百分比
+                    var totalReduction = value  // 初始为本次减少值
+                    if Skill1DataInGame["SkillCD_Reduction"] != nil {
+                        // 累加之前的总减少百分比
+                        totalReduction = Skill1DataInGame["SkillCD_Reduction"] as float + value
+                    }
+                    // 从基础CD上计算最终CD
+                    finalCD = Round(outerCD * (1.0 - totalReduction)) as int
+                    // 更新总减少百分比记录
+                    Skill1DataInGame["SkillCD_Reduction"] = totalReduction
                 }
                 Skill1DataInGame["SkillCD"] = finalCD
                 LogInfo("技能1冷却: " + Convert.ToString(Skill1DataInGame["SkillCD"]))
-                
+
             } else if attributeName == "SkillDamage" {
                 // 爆裂轰炸伤害加成 - 百分比
                 var finalDamage = 0
@@ -822,13 +833,24 @@ graph PlayerJionGame {
                 var finalCD = 0
                 if IsNextThreeChoiceOne == 0 {
                     var outerCD = Skill2DataWithOuterBonus["SkillCD"] as int
-                    finalCD = Math.Max(0.5, outerCD * (1.0 - value)) as int
+                    finalCD = Round(outerCD * (1.0 - value)) as int
+                    // 记录当前总减少百分比
+                    Skill2DataInGame["SkillCD_Reduction"] = value
                 } else if IsNextThreeChoiceOne == 1 {
-                    var currentCD = Skill2DataInGame["SkillCD"] as int
-                    finalCD = Math.Max(0.5, currentCD * (1.0 - value)) as int
+                    var outerCD = Skill2DataWithOuterBonus["SkillCD"] as int
+                    // 获取当前总减少百分比
+                    var totalReduction = value  // 初始为本次减少值
+                    if Skill2DataInGame["SkillCD_Reduction"] != nil {
+                        // 累加之前的总减少百分比
+                        totalReduction = Skill2DataInGame["SkillCD_Reduction"] as float + value
+                    }
+                    // 从基础CD上计算最终CD
+                    finalCD = Round(outerCD * (1.0 - totalReduction)) as int
+                    // 更新总减少百分比记录
+                    Skill2DataInGame["SkillCD_Reduction"] = totalReduction
                 }
                 Skill2DataInGame["SkillCD"] = finalCD
-                LogInfo("闪电冷却: " + Convert.ToString(Skill2DataInGame["SkillCD"]))
+                LogInfo("技能2冷却: " + Convert.ToString(Skill2DataInGame["SkillCD"]))
                 
             } else if attributeName == "SkillDamage" {
                 // 闪电伤害加成 - 百分比
