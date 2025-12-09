@@ -115,7 +115,7 @@ graph PlayerJionGame {
         
         // 技能2武器特效属性
         "WeaponLightningProb": 5,     // 武器闪电触发概率
-        "ReloadBuff": 0,              // 换弹后射速提升（百分比）
+        "ReloadBuff": 1,              // 换弹后射速提升（百分比）
     }
     // -----------------------局外天赋加成后数据-------------------------//
     // 玩家基础天赋加成属性数据
@@ -931,14 +931,14 @@ graph PlayerJionGame {
                 Skill2DataInGame["ReloadBuff"] = finalBuff
                 LogInfo("换弹后射速提升: " + Convert.ToString(Skill2DataInGame["ReloadBuff"] as float * 100) + "%")
                 
-            } else if attributeName == "ReloadNow" {
+            } else if attributeName == "ReloadBuff" {
                 // 技能后立即装弹（技能2）
-                Skill2DataInGame["ReloadNow"] = 1
+                Skill2DataInGame["ReloadBuff"] = 1
                 LogInfo("获得闪电释放后立即装弹效果")
             }
         }
         // 发送属性到服务器，更新玩家当前属性（使用局内数据）
-        DispatchEventToEntity(OnPlayerAttributesUpdate, globalEntity, PlatformType.Server, List<object>{PlayerDataInGame, PlayerDataWithOuterBonus})
+        DispatchEventToEntity(OnPlayerAttributesUpdate, globalEntity, PlatformType.Server, List<object>{PlayerDataInGame,PlayerDataWithOuterBonus})
         IsNextThreeChoiceOne = 0
     }
 

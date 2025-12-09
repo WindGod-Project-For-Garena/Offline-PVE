@@ -41,6 +41,11 @@ static graph FC_PVEController {
     
     // 玩家局内个人属性
     PlayerDataInGame Map<string, object> = Map<string, object>{}
+    // 技能1（爆裂轰炸）数据
+    Skill1DataInGame Map<string, object> = Map<string, object>{}
+    // 技能2（闪电）数据
+    Skill2DataInGame Map<string, object> = Map<string, object>{}
+
     // 玩家局外个人数据
     PlayerDataWithOuterBonus Map<string, object> = Map<string, object>{}
 
@@ -126,6 +131,14 @@ static graph FC_PVEController {
         //设置武器换弹速度
         var ReloadSpeed = Round(PlayerDataInGame["ReloadSpeed"] as float)
         currentWeapon<Weapon>.ReloadSpeedFactor = ReloadSpeed
+    }
+
+    // 立刻换弹更新武器数据
+    event OnWeaponUpdate() {
+        LogInfo(currentWeapon<Weapon>.CurrentAmmo)
+        currentWeapon<Weapon>.CurrentAmmo = currentWeapon<Weapon>.AmmoMagSize
+        LogInfo(currentWeapon<Weapon>.CurrentAmmo)
+        LogInfo(currentWeapon<Weapon>.AmmoMagSize)
     }
 
     event ToServer_StartNextWave() {

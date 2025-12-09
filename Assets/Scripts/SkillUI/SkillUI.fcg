@@ -134,6 +134,8 @@ graph SkillUI {
             var SkillFireDamage int = Round(GetLocalPlayer()<PlayerJionGame>.Skill1DataInGame["SkillFireDamage"] as int)
             // 技能数量
             var SkillAmount int = Round(GetLocalPlayer()<PlayerJionGame>.Skill1DataInGame["SkillAmount"] as int)
+            // 技能释放立刻装弹
+            var ReloadNow int = Round(GetLocalPlayer()<PlayerJionGame>.Skill1DataInGame["ReloadNow"] as int)
             //————————————————————————————————————————————————//
             // 爆裂轰炸
             start Skill_1_Released(CurrentSkill)
@@ -145,6 +147,12 @@ graph SkillUI {
             // 燃烧伤害
             if SkillFireDamage > 5 {
                 Skill_1_FireReleased(SkillFireDamage)
+            }
+            // 立刻装弹
+            if ReloadNow == 1{
+                var Skill1DataInGame = GetLocalPlayer()<PlayerJionGame>.Skill1DataInGame
+                // 发送属性到服务器，更新玩家当前属性（使用局内数据）
+                DispatchEventToEntity(OnWeaponUpdate, globalEntity, PlatformType.Server, List<object>{})
             }
             //————————————————————————————————————————————————//
 

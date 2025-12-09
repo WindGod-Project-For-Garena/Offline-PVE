@@ -51,4 +51,9 @@ event ToClient_ShowFinalStats(currTime int, GameStartTime int, IsGameSuccess boo
 [platform_client]
 [platform_server]
 //显示游戏调试UI事件，显示游戏调试UI时触发
-event OnPlayerAttributesUpdate(PlayerDataInGame Map<string, object>, PlayerDataWithOuterBonus Map<string, object>)
+event OnPlayerAttributesUpdate(NewPlayerDataInGame Map<string, object>,NewPlayerDataWithOuterBonus Map<string, object>)
+
+[platform_client]
+[platform_server]
+//显示游戏调试UI事件，显示游戏调试UI时触发
+event OnWeaponUpdate()
