@@ -790,11 +790,9 @@ graph PlayerJionGame {
                 // 榴弹二次爆炸 - 固定值
                 var finalDoubleBoom = 0
                 if IsNextThreeChoiceOne == 0 {
-                    var outerDoubleBoom = Skill1DataWithOuterBonus["WeaponDoubleBoom"] as int
-                    finalDoubleBoom = outerDoubleBoom + Round(value) as int
+                    finalDoubleBoom = Round(value) as int
                 } else if IsNextThreeChoiceOne == 1 {
-                    var currentDoubleBoom = Skill1DataInGame["WeaponDoubleBoom"] as int
-                    finalDoubleBoom = currentDoubleBoom + Round(value) as int
+                    finalDoubleBoom = Round(value) as int
                 }
                 Skill1DataInGame["WeaponDoubleBoom"] = finalDoubleBoom
                 LogInfo("榴弹二次爆炸: " + Convert.ToString(Skill1DataInGame["WeaponDoubleBoom"]))

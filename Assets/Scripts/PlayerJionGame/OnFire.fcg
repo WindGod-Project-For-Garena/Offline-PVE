@@ -9,6 +9,7 @@ import "Playable.fcc" as Playable
 import "Animation.fcc" as Animation
 import "Camera.fcc" as Camera
 import "List.fcc" as List
+import "Strings.fcc" as Strings
 import "../CustomEvent.fcc" as CustomEvent
 
 [platform_client]
@@ -76,21 +77,22 @@ graph OnFire {
     }
 //————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     //榴弹发射
-    func  FireGrenade(SkillID int) {
+    func FireGrenade(SkillID int) {
         var TouchPoint Vector2 = Vector2{0,0}
         ScreenTouchRay(TouchPoint, out var startPosition, out var direction)
         var layerMask List<int> = List<int>{1}
         ScreenSingleRaycast(TouchPoint, 100, layerMask, true, out var hitEntity, out var hitPosition, out var hitDistance, out var hitNormal)
+        
         // 检查是否命中实体
-        if hitEntity != nil{
+        if hitEntity != nil {
             var hitEntityPosition = hitEntity<Transform>.Position
             ReleasedEffectPosition = hitEntityPosition
-            LogInfo("命中实体: " + hitEntity + ", 命中实体位置: " + ReleasedEffectPosition)
+            // LogInfo("命中实体: " + hitEntity + ", 命中实体位置: " + ReleasedEffectPosition)
         } else {
             var layerMask List<int> = List<int>{0}
             ScreenSingleRaycast(TouchPoint, 100, layerMask, true, out var hitEntity, out var hitPosition, out var hitDistance, out var hitNormal)
             ReleasedEffectPosition = hitPosition
-            LogInfo("未命中实体，使用射线终点: " + ReleasedEffectPosition)
+            // LogInfo("未命中实体，使用射线终点: " + ReleasedEffectPosition)
         }
 
         var Size = GetLocalPlayer()<PlayerJionGame>.Skill1DataInGame["WeaponBoomRange"] as int
@@ -102,29 +104,119 @@ graph OnFire {
         effectEntity<Transform>.Position = ReleasedEffectPosition
         effectEntity<Transform>.Scale = Vector3{Size, Size, Size}
         BoomColor(effectEntity, Size)
-    
+        
+        // 获取榴弹昫爆次数
+        var WeaponDoubleBoom = GetLocalPlayer()<PlayerJionGame>.Skill1DataInGame["WeaponDoubleBoom"] as int
+        
         // 造成伤害
         var monsters = getMonsterWithinDistance(Size)
+        var hitMonsters =  List<Map<string,object>>{}  // 记录被击中的怪物
+        
         for i = 0, List.Length(monsters), 1 {
             var monster = monsters[i]
+            var monsterHP = monster<Mob>.HP  // 记录原始HP
+            
             var skillMultiplier float = 1
             var damage int = Math.Ceil(CurrentDamage * skillMultiplier)
+            
+            // 发送伤害到服务器
             DispatchEventToEntity(OnDamageMob, monster, PlatformType.Server, List<object>{monster, nil, damage, GetLocalPlayer()})
             CreateDamageNum(damage, 10, #dde511, 800, monster as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
+            
+            // 记录被击中的怪物信息
+            var hitInfo = Map<string, object>{}
+            hitInfo["monster"] = monster
+            hitInfo["originalHP"] = monsterHP
+            hitInfo["damage"] = damage
+            hitInfo["position"] = monster<Transform>.Position  // 记录怪物的位置
+            
+            // 添加到被击中列表
+            List.Append(hitMonsters, hitInfo)
+        }
+        
+        // 榴弹昫爆 - 延迟检查是否有怪物被杀死
+        if WeaponDoubleBoom == 1 && List.Length(hitMonsters) > 0 {
+            start CheckAndTriggerDoubleBoom(hitMonsters)
         }
     }
 
-    // 获取范围内怪物
-    func getMonsterWithinDistance(distance int) List<entity<LevelObject>> {
+    // 检查并触发昫爆
+    async func CheckAndTriggerDoubleBoom(hitMonsters List<Map<string, object>>) {
+        // 等待一小段时间，让服务器处理伤害
+        WaitForMillisecond(200)
+        
+        // 检查每个被击中的怪物是否死亡
+        for i = 0, List.Length(hitMonsters), 1 {
+            var hitInfo = hitMonsters[i]
+            var monster = hitInfo["monster"] as entity<LevelObject>
+            var originalHP = hitInfo["originalHP"] as int
+            var damage = hitInfo["damage"] as int
+            var monsterPosition = hitInfo["position"] as Vector3
+            
+            // 获取当前HP
+            var currentHP = monster<Mob>.HP
+            
+            // 简化判断：如果当前HP <= 0，说明怪物死亡
+            if currentHP <= 0 {
+                TriggerDoubleBoom(monsterPosition)
+                return  // 只触发一次昫爆
+            }
+            
+            // 或者：如果HP减少量 >= 榴弹伤害，说明榴弹是最后一击
+            var hpReduced = originalHP - currentHP
+            if hpReduced >= damage && currentHP <= 0 {
+                TriggerDoubleBoom(monsterPosition)
+                return  // 只触发一次昫爆
+            }
+        }
+    }
+
+    // 触发昫爆（在被杀死怪物的位置）
+    func TriggerDoubleBoom(explosionPosition Vector3) {
+        
+        // 创建昫爆特效
+        CreateEffectClient(out var doubleBoomEffect, VFXType.CurseExplosion, LoopType.Once, true)
+        doubleBoomEffect<Transform>.Position = explosionPosition
+        doubleBoomEffect<Transform>.Scale = Vector3{2, 2, 2}  // 昫爆范围较小
+        BoomColor(doubleBoomEffect, 2)
+        
+        // 昫爆伤害（主爆炸的50%）
+        var mainDamage = GetLocalPlayer()<PlayerJionGame>.Skill1DataInGame["WeaponBoomDamage"] as int
+        var doubleBoomRange = GetLocalPlayer()<PlayerJionGame>.Skill1DataInGame["WeaponBoomRange"] as int
+        
+        // 获取昫爆范围内的怪物
+        var doubleBoomMonsters = getMonsterWithinDistanceAtPosition(explosionPosition, doubleBoomRange)
+        
+        // 对昫爆范围内的怪物造成伤害
+        for i = 0, List.Length(doubleBoomMonsters), 1 {
+            var monster = doubleBoomMonsters[i]
+            
+            // 只对活着的怪物造成伤害
+            if monster<Mob>.HP > 0 {
+                // 发送昫爆伤害到服务器
+                DispatchEventToEntity(OnDamageMob, monster, PlatformType.Server, List<object>{monster, nil, mainDamage, GetLocalPlayer()})
+                // 显示昫爆伤害数字（用不同颜色区分）
+                CreateDamageNum(mainDamage, 10, #FF4500, 800, monster as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
+            }
+        }
+    }
+
+    // 获取指定位置和距离内的怪物
+    func getMonsterWithinDistanceAtPosition(position Vector3, distance int) List<entity<LevelObject>> {
         var monsters List<entity<LevelObject>> = List<entity<LevelObject>>{}
         var activeMonsters List<entity<LevelObject>> = GetChildren(ActiveMonstersParentNode) as List<entity<LevelObject>>
         for i = 0, List.Length(activeMonsters), 1 {
             var monster = activeMonsters[i]
-            if Distance(monster<Transform>.Position, ReleasedEffectPosition) <= distance {
+            if Distance(monster<Transform>.Position, position) <= distance {
                 List.Append(monsters, monster)
             }
         }
         return monsters
+    }
+
+    // 获取范围内怪物（使用全局ReleasedEffectPosition）
+    func getMonsterWithinDistance(distance int) List<entity<LevelObject>> {
+        return getMonsterWithinDistanceAtPosition(ReleasedEffectPosition, distance)
     }
 //————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     //闪电触发

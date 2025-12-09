@@ -41,10 +41,6 @@ static graph FC_PVEController {
     
     // 玩家局内个人属性
     PlayerDataInGame Map<string, object> = Map<string, object>{}
-    // 技能1（爆裂轰炸）数据
-    Skill1DataInGame Map<string, object> = Map<string, object>{}
-    // 技能2（闪电）数据
-    Skill2DataInGame Map<string, object> = Map<string, object>{}
 
     // 玩家局外个人数据
     PlayerDataWithOuterBonus Map<string, object> = Map<string, object>{}
