@@ -39,10 +39,14 @@ static graph FC_PVEController {
     // 游戲成功或失敗
     IsGameSuccess bool = false
     
-    // 玩家局内个人属性
+    // 玩家基础天赋加成属性数据
     PlayerDataInGame Map<string, object> = Map<string, object>{}
+    // 技能1（爆裂轰炸）数据
+    Skill1DataInGame Map<string, object> = Map<string, object>{}
+    // 技能2（闪电）数据
+    Skill2DataInGame Map<string, object> = Map<string, object>{}
 
-    // 玩家局外个人数据
+    // 玩家基础天赋加成属性数据
     PlayerDataWithOuterBonus Map<string, object> = Map<string, object>{}
 
     event OnAwake() {
@@ -70,6 +74,49 @@ static graph FC_PVEController {
         UpdataPlayerDataInGame()
     }
 
+    event UpdateSkill1Data(NewSkill1DataInGame Map<string, object>) {
+        Skill1DataInGame = NewSkill1DataInGame
+        UpdataSkill1Data()
+    }
+
+    event UpdateSkill2Data(NewSkill2DataInGame Map<string, object>) {
+        Skill2DataInGame = NewSkill2DataInGame
+        UpdataSkill2Data()
+    }
+
+    // 更新玩家数据
+    func  UpdataPlayerDataInGame() {
+        currPlayer<Player>.MaxHP = PlayerDataInGame["HP"] as int
+        currPlayer<Player>.HP = PlayerDataInGame["HP"] as int
+        currPlayer<Player>.RunSpeedScale = PlayerDataInGame["MoveSpeed"] as int
+    }
+
+    // 更新技能1的数据
+    func  UpdataSkill1Data() {
+        //设置武器伤害
+        var weaponDamage = Round(Skill1DataInGame["WeaponDamage"] as int)
+        currentWeapon<Weapon>.Damage = weaponDamage
+        //设置武器换弹速度
+        var ReloadSpeed = Round(Skill1DataInGame["ReloadSpeed"] as float)
+        currentWeapon<Weapon>.ReloadSpeedFactor = ReloadSpeed
+        //设置武器攻击速度
+        var AttackSpeed = Round(Skill1DataInGame["AttackSpeed"] as float)
+        currentWeapon<Weapon>.AttackInterval = AttackSpeed
+    }
+
+    // 更新技能2的数据
+    func  UpdataSkill2Data() {
+        //设置武器伤害
+        var weaponDamage = Round(Skill2DataInGame["WeaponDamage"] as int)
+        currentWeapon<Weapon>.Damage = weaponDamage
+        //设置武器换弹速度
+        var ReloadSpeed = Round(Skill2DataInGame["ReloadSpeed"] as float)
+        currentWeapon<Weapon>.ReloadSpeedFactor = ReloadSpeed
+        //设置武器攻击速度
+        var AttackSpeed = Round(Skill2DataInGame["AttackSpeed"] as float)
+        currentWeapon<Weapon>.AttackInterval = AttackSpeed
+    }
+
     // 玩家复活删除武器
     event OnPlayerRevived(player entity<Player>, revivalSource PlayerReviveSourceType){
         DestroyItem(player, ItemIDType.M1887X, 1)
@@ -95,7 +142,19 @@ static graph FC_PVEController {
             DestroyItem(currPlayer,  ItemIDType.SMGAmmo, 999)
             DestroyItem(currPlayer,  ItemIDType.SGAmmo, 999)
             AddItem(currPlayer, ItemIDType.SGAmmo, 999, out var createdEntity)
+
+            //设置武器伤害
+            var weaponDamage = Round(Skill1DataInGame["WeaponDamage"] as int)
+            currentWeapon<Weapon>.Damage = weaponDamage
+            currPlayer<Player>.IsDropOnEliminated = false
+            //设置武器换弹速度
+            var ReloadSpeed = Round(Skill1DataInGame["ReloadSpeed"] as int)
+            currentWeapon<Weapon>.ReloadSpeedFactor = ReloadSpeed
+            //设置武器攻击速度
+            var AttackSpeed = Round(Skill1DataInGame["AttackSpeed"] as float)
+            currentWeapon<Weapon>.AttackInterval = AttackSpeed
         }
+
         if skillIndex == 2 {
             DestroyItem(currPlayer, ItemIDType.GoldMP5_III, 1)
             AddItem(currPlayer, ItemIDType.GoldMP5_III, 1, out var itemList)
@@ -104,37 +163,27 @@ static graph FC_PVEController {
             DestroyItem(currPlayer,  ItemIDType.SGAmmo, 999)
             DestroyItem(currPlayer,  ItemIDType.SMGAmmo, 999)
             AddItem(currPlayer, ItemIDType.SMGAmmo, 999, out var createdEntity)
+
+            //设置武器伤害
+            var weaponDamage = Round(Skill2DataInGame["WeaponDamage"] as int)
+            currentWeapon<Weapon>.Damage = weaponDamage
+            currPlayer<Player>.IsDropOnEliminated = false
+            //设置武器换弹速度
+            var ReloadSpeed = Round(Skill2DataInGame["ReloadSpeed"] as int)
+            currentWeapon<Weapon>.ReloadSpeedFactor = ReloadSpeed
+            //设置武器攻击速度
+            var AttackSpeed = Round(Skill2DataInGame["AttackSpeed"] as float)
+            currentWeapon<Weapon>.AttackInterval = AttackSpeed
         }
-        //设置武器伤害
-        var weaponDamage = Round(PlayerDataInGame["WeaponDamage"] as int)
-        currentWeapon<Weapon>.Damage = weaponDamage
-        currPlayer<Player>.IsDropOnEliminated = false
-        //设置武器换弹速度
-        var ReloadSpeed = Round(PlayerDataInGame["ReloadSpeed"] as int)
-        currentWeapon<Weapon>.ReloadSpeedFactor = ReloadSpeed
+        
         
         LogInfo("游戏开始 - 关卡: " + level + "，技能: " + skillIndex)
         StartPVEGame(level)
     }
 
-    func  UpdataPlayerDataInGame() {
-        currPlayer<Player>.MaxHP = PlayerDataInGame["HP"] as int
-        currPlayer<Player>.HP = PlayerDataInGame["HP"] as int
-        currPlayer<Player>.RunSpeedScale = PlayerDataInGame["MoveSpeed"] as int
-        //设置武器伤害
-        var weaponDamage = Round(PlayerDataInGame["WeaponDamage"] as int)
-        currentWeapon<Weapon>.Damage = weaponDamage
-        //设置武器换弹速度
-        var ReloadSpeed = Round(PlayerDataInGame["ReloadSpeed"] as float)
-        currentWeapon<Weapon>.ReloadSpeedFactor = ReloadSpeed
-    }
-
     // 立刻换弹更新武器数据
     event OnWeaponUpdate() {
-        LogInfo(currentWeapon<Weapon>.CurrentAmmo)
         currentWeapon<Weapon>.CurrentAmmo = currentWeapon<Weapon>.AmmoMagSize
-        LogInfo(currentWeapon<Weapon>.CurrentAmmo)
-        LogInfo(currentWeapon<Weapon>.AmmoMagSize)
     }
 
     event ToServer_StartNextWave() {

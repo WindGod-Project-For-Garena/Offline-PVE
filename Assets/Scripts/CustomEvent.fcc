@@ -56,4 +56,19 @@ event OnPlayerAttributesUpdate(NewPlayerDataInGame Map<string, object>,NewPlayer
 [platform_client]
 [platform_server]
 //显示游戏调试UI事件，显示游戏调试UI时触发
+event UpdateSkill1Data(Skill1DataInGame Map<string, object>)
+
+[platform_client]
+[platform_server]
+//显示游戏调试UI事件，显示游戏调试UI时触发
+event UpdateSkill2Data(Skill2DataInGame Map<string, object>)
+
+[platform_client]
+[platform_server]
+//显示游戏调试UI事件，显示游戏调试UI时触发
 event OnWeaponUpdate()
+
+[platform_client]
+[platform_server]
+//显示游戏调试UI事件，显示游戏调试UI时触发
+event UpdataReload(NewSkill2DataInGame Map<string, object>)

@@ -4,6 +4,7 @@ import "Items.fcc" as Items
 import "Player.fcc" as Player
 import "../PVE/FC_PVEController.fcg" as PVEController
 import "Workflow.fcc" as Workflow
+import "Convert.fcc" as Convert
 import "../CustomEvent.fcc" as CustomEvent
 
 [platform_server]
@@ -13,12 +14,21 @@ graph Reload {
         var SkillIndex = PVEController.skillId
         var currPlayer = PVEController.currPlayer
         var currentWeapon = PVEController.currentWeapon
+        DispatchEventToEntity(ReLoadAmmo, currentWeapon, PlatformType.Client, List<object>{})
+
         if (SkillIndex == 1) {
             AddItem(currPlayer, ItemIDType.SGAmmo, 999, out var createdEntity)
         }
+
         if (SkillIndex == 2) {
             AddItem(currPlayer, ItemIDType.SMGAmmo, 999, out var createdEntity)
+            var ReloadBuff = PVEController.Skill2DataInGame["ReloadBuff"] as float
+            if  ReloadBuff > 1 {
+                currentWeapon<Weapon>.AttackInterval = ReloadBuff
+                WaitForMillisecond(2000)
+                currentWeapon<Weapon>.AttackInterval = 1.0
+            }
         }
-        DispatchEventToEntity(ReLoadAmmo, currentWeapon, PlatformType.Client, List<object>{})
+
     }
 }
