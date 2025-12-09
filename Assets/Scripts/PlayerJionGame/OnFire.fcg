@@ -44,6 +44,13 @@ graph OnFire {
         var SkillID = GetLocalPlayer()<PlayerJionGame>.CurrentSkill
         //如果是1号角色武器
         if  SkillID == 1 {
+            // 普攻触发榴弹
+            var WeaponBoomProbability float = GetLocalPlayer()<PlayerJionGame>.Skill1DataInGame["WeaponBoomProbability"] as float
+            var Probability int = Math.Round(WeaponBoomProbability * 100)
+            if  RandomInt(0,100) < Probability {
+                //发射榴弹
+                FireGrenade(SkillID)
+            }
             //最后一颗子弹发射一颗榴弹，造成半径1m的20点技能伤害
             GetLocalPlayer()<PlayerJionGame>.AmmoJudgement += 1
             if GetLocalPlayer()<PlayerJionGame>.AmmoJudgement == 3 {

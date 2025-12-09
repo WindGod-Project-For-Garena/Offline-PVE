@@ -232,6 +232,21 @@ graph PlayerJionGame {
         }
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+    // 清空已选卡牌记录
+    func ClearSelectedCards() {
+        // 清空技能1已选卡牌
+        List.Clear(SelectedCards_1)
+        // 清空技能2已选卡牌
+        List.Clear(SelectedCards_2)
+        // 清空当前随机卡牌列表
+        List.Clear(CurrentRandomCards)
+        // 重置当前选择的卡牌
+        NowChoiceCard = 0
+        // 重置三选一标志位
+        IsNextThreeChoiceOne = 0
+        LogInfo("已清空所有已选卡牌记录")
+    }
+
     // 复制基础数据到局外加成数据
     func CopyToOuterBonusData() {
         // 复制玩家基础数据
@@ -1672,6 +1687,8 @@ graph PlayerJionGame {
         }
         // 重置数据
         ResetInGameData()
+        // 清空已选卡牌记录
+        ClearSelectedCards()
         // 恢复默认没有选择卡牌
         NowChoiceCard = 0
         // 重置子弹判定
