@@ -1,10 +1,10 @@
 {
  "OptionalResourceNames": [
   "UGC_T_34_LY_WS_VFX2",
-  "WS_VFX_TRAILING",
-  "WS_FF_VFX_SPAWNAREA",
   "UGC_T_37_WZY_WS_VFX3",
   "WS_VFX_THUNDER",
+  "WS_VFX_TRAILING",
+  "WS_FF_VFX_SPAWNAREA",
   "SceneEdit_Cube_Texture_Cement_01",
   "SceneEdit_Cube_frame_Texture_01",
   "UGC_Btn_02_Big_Normal",
@@ -20,11 +20,32 @@
   "FF_UI_Profile_Block_03",
   "FF_UI_Profile_Btn_bg",
   "T_34_M_WS_ICON_CIRCULAR",
+  "FF_UI_Profile_Tag_F_01",
+  "ui_icon_skill_richgirl",
+  "Icon_HUD_M1887",
+  "ui_icon_skill_ParkourGuy",
+  "Icon_HUD_MP5",
+  "UI_WeaponPower_BG_BR_01",
+  "FF_UI_Profile_Tag_F_03",
+  "UGC_Btn_02_Mid_Normal",
+  "T_34_M_WS_ICON_MONEY",
+  "FF_WS_Debug_01",
+  "UI_Icon_Rule",
+  "UI_WeaponPower_BG_BR_03",
+  "UI_WeaponPower_BG_CS_03",
+  "Icon_HUD_Grenade",
+  "Icon_HUD_Grenade_Countericewall",
+  "FF_UI_SmallWindow_Botton",
+  "UI_BG_Buff_yellow",
+  "T_34_M_WS_ICON_TROPHY",
+  "T_34_M_WS_ICON_WRONG",
   "BRMOBILEDIFFUSECOLOR_UGC",
   "UGC_T_34_LY_WS_VFX5",
   "UGC_T_37_WZY_WS_VFX4",
   "WS_VFX_FLOG",
-  "VFX_UGC_BOOM_01"
+  "VFX_UGC_BOOM_01",
+  "DIFFUSECOLORWITHEFFECT",
+  "SceneEdit_Cube_Texture_Stone_01"
  ],
  "MapIds": [],
  "LevelObjectIds": [
@@ -46,7 +67,10 @@
   10000
  ],
  "CSSharedItemID": [
-  121
+  119,
+  204,
+  121,
+  205
  ],
  "CustomLevelObjectUUIDs": [],
  "CustomLevelObjectPackageInfo": [],
@@ -61,24 +85,24 @@
     "PlatformSpecial": true
    },
    {
-    "Name": "Atlas-d7JXcoup.a-8ejaml9j7g8-mi2jj82u-ddvqlrt676d",
-    "UUID": "d7JXcoup.a-8ejaml9j7g8-mi2jj82u-ddvqlrt676d",
+    "Name": "Atlas-d7JXcoup.a-rredzw7hzls-miy0vpmc-au8e9os6i3l",
+    "UUID": "d7JXcoup.a-rredzw7hzls-miy0vpmc-au8e9os6i3l",
     "WhoRequire": 0,
-    "UseVersionMD5": "Mio+wLf+V7U4zbLmiGZxDHOS5dM=",
+    "UseVersionMD5": "WiTXQ6tTLSllivX6Jr9WbQJZMME=",
     "PlatformSpecial": true
    },
    {
     "Name": "d7JXcoup.AutoCommon_re6SjviS",
     "UUID": "d7JXcoup.AutoCommon_re6SjviS",
     "WhoRequire": 0,
-    "UseVersionMD5": "4xGkPQmwREwBD9JpNsQ+2fVhcXA=",
+    "UseVersionMD5": "UCUEsaBnpUtbK0HadDEw0ou5GPM=",
     "PlatformSpecial": false
    },
    {
     "Name": "d7JXcoup.ColliderCommon_P52xh7zk",
     "UUID": "d7JXcoup.ColliderCommon_P52xh7zk",
     "WhoRequire": 0,
-    "UseVersionMD5": "UiJ9XqOpbEo+wBKA/wJqhBnAnJI=",
+    "UseVersionMD5": "DLTy9yJezSjmewG+dqcFugT1du0=",
     "PlatformSpecial": false
    },
    {
@@ -113,14 +137,14 @@
     "Name": "d7JXcoup.AutoCommon_p5dt1C2B",
     "UUID": "d7JXcoup.AutoCommon_p5dt1C2B",
     "WhoRequire": 0,
-    "UseVersionMD5": "lG6xxJv/ZfeUb3bzcwGbhqNF8AY=",
+    "UseVersionMD5": "EoxKdOMLSp+cXE+PjsdVLjT20T4=",
     "PlatformSpecial": false
    },
    {
     "Name": "d7JXcoup.ColliderCommon_ZVbqXCtt",
     "UUID": "d7JXcoup.ColliderCommon_ZVbqXCtt",
     "WhoRequire": 0,
-    "UseVersionMD5": "Y48/zCJCODAMJLYstikErmoDC6c=",
+    "UseVersionMD5": "42diT4/I1GuW1Jn01XLo78kdI3w=",
     "PlatformSpecial": false
    },
    {
@@ -141,20 +165,155 @@
     "Name": "d7JXcoup.ColliderCommon_vVUqj7Ua",
     "UUID": "d7JXcoup.ColliderCommon_vVUqj7Ua",
     "WhoRequire": 0,
-    "UseVersionMD5": "RSpicbr5cP2QKJvZaTEOFgwszUo=",
+    "UseVersionMD5": "ccTMtUUnpU86QMDWzieQ4BO0a3c=",
+    "PlatformSpecial": false
+   },
+   {
+    "Name": "d7JXcoup.AutoCommon_oMV2OUBn",
+    "UUID": "d7JXcoup.AutoCommon_oMV2OUBn",
+    "WhoRequire": 0,
+    "UseVersionMD5": "X9pLweBbC40dFxx0wtjXxo+2Ji0=",
+    "PlatformSpecial": false
+   },
+   {
+    "Name": "d7JXcoup.AutoCommon_gnq3W9XB",
+    "UUID": "d7JXcoup.AutoCommon_gnq3W9XB",
+    "WhoRequire": 0,
+    "UseVersionMD5": "qYEBQNHjMVWuFQ5ndhXMd1tw+Tk=",
+    "PlatformSpecial": false
+   },
+   {
+    "Name": "d7JXcoup.AutoCommon_GWyy7sSd",
+    "UUID": "d7JXcoup.AutoCommon_GWyy7sSd",
+    "WhoRequire": 0,
+    "UseVersionMD5": "gehsQc7/NDb7WpL4uGjbUajmirM=",
+    "PlatformSpecial": false
+   },
+   {
+    "Name": "d7JXcoup.AutoCommon_K1cRfyp9",
+    "UUID": "d7JXcoup.AutoCommon_K1cRfyp9",
+    "WhoRequire": 0,
+    "UseVersionMD5": "pPC3/DyVK8mHP5HAFbTKuv7fuMg=",
+    "PlatformSpecial": false
+   },
+   {
+    "Name": "d7JXcoup.AutoCommon_uDdLy60t",
+    "UUID": "d7JXcoup.AutoCommon_uDdLy60t",
+    "WhoRequire": 0,
+    "UseVersionMD5": "0cqCdGfdmWvpmm0Zr48dZGiqOLU=",
+    "PlatformSpecial": false
+   },
+   {
+    "Name": "d7JXcoup.ColliderCommon_o1NXbEsQ",
+    "UUID": "d7JXcoup.ColliderCommon_o1NXbEsQ",
+    "WhoRequire": 0,
+    "UseVersionMD5": "4aX0WfuR3eArCr4RINJGxbzdeS0=",
+    "PlatformSpecial": false
+   },
+   {
+    "Name": "d7JXcoup.AutoClient_hOeJ14qO",
+    "UUID": "d7JXcoup.AutoClient_hOeJ14qO",
+    "WhoRequire": 0,
+    "UseVersionMD5": "a+GVTTxEYg/uLQLPOfDmPT+xWzs=",
+    "PlatformSpecial": false
+   },
+   {
+    "Name": "d7JXcoup.AutoPlatformed_ZG7ZxyjM",
+    "UUID": "d7JXcoup.AutoPlatformed_ZG7ZxyjM",
+    "WhoRequire": 0,
+    "UseVersionMD5": "wa9oFqkTR+r5O8ZRA4B0bfHtFE0=",
+    "PlatformSpecial": true
+   },
+   {
+    "Name": "d7JXcoup.AutoCommon_fR3J7nE8",
+    "UUID": "d7JXcoup.AutoCommon_fR3J7nE8",
+    "WhoRequire": 0,
+    "UseVersionMD5": "l/hzoT21DfDQNEF1IerqT0TcI6g=",
+    "PlatformSpecial": false
+   },
+   {
+    "Name": "d7JXcoup.AutoClient_c25e3Uxl",
+    "UUID": "d7JXcoup.AutoClient_c25e3Uxl",
+    "WhoRequire": 0,
+    "UseVersionMD5": "2Da3yQBV0rdY5RzGegU5JgGUatc=",
+    "PlatformSpecial": false
+   },
+   {
+    "Name": "d7JXcoup.ColliderCommon_QeR1mNVp",
+    "UUID": "d7JXcoup.ColliderCommon_QeR1mNVp",
+    "WhoRequire": 0,
+    "UseVersionMD5": "jHVM3Q8UlF2fAQ4jlGGb76DV49w=",
+    "PlatformSpecial": false
+   },
+   {
+    "Name": "d7JXcoup.ColliderCommon_PNV6FUcn",
+    "UUID": "d7JXcoup.ColliderCommon_PNV6FUcn",
+    "WhoRequire": 0,
+    "UseVersionMD5": "4GeoRohL8piPQAvR1ZwOpDDmvIY=",
+    "PlatformSpecial": false
+   },
+   {
+    "Name": "d7JXcoup.ColliderCommon_t4ZvxKvq",
+    "UUID": "d7JXcoup.ColliderCommon_t4ZvxKvq",
+    "WhoRequire": 0,
+    "UseVersionMD5": "jsVyq5ne6JR/KSFUbrOyX5TQyv8=",
     "PlatformSpecial": false
    },
    {
     "Name": "d7JXcoup.server",
     "UUID": "d7JXcoup.server",
     "WhoRequire": 1,
-    "UseVersionMD5": "cu0sB6+ygLviCOAsdkdz805eL5c=",
+    "UseVersionMD5": "MiorVoq7e9C7/0GuIyodF8koOFM=",
     "PlatformSpecial": false
    }
   ],
   "BuildinPackages": [
    {
-    "ResourceList": [],
+    "ResourceList": [
+     {
+      "UUID": "bi-SceneEdit_Cube_Texture_Stone_01",
+      "Path": "SceneEdit_Cube_Texture_Stone_01",
+      "Type": 29,
+      "Data": {
+       "type": "Buffer",
+       "data": [
+        10,
+        31,
+        83,
+        99,
+        101,
+        110,
+        101,
+        69,
+        100,
+        105,
+        116,
+        95,
+        67,
+        117,
+        98,
+        101,
+        95,
+        84,
+        101,
+        120,
+        116,
+        117,
+        114,
+        101,
+        95,
+        83,
+        116,
+        111,
+        110,
+        101,
+        95,
+        48,
+        49
+       ]
+      }
+     }
+    ],
     "Name": "BuiltIn",
     "UUID": "BuiltIn",
     "UseableType": 0,

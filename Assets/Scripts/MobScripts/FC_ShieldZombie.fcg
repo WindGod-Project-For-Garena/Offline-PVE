@@ -51,6 +51,7 @@ graph FC_NormalZombie {
 			"InHit": false, 	//是否在受击
 			"CanPatrol": true, //是否可以巡逻
 			"Walk": false, 		//是否在行走
+			"IfShield": true, //是否持有盾牌
 		}
 		thisEntity<Mob>.DetectRange = 15
         var nowTime int = globalEntity<Global>.GameTimeCount
