@@ -93,7 +93,6 @@ graph PlayerJionGame {
         "SkillCD": 1500,            // 爆裂轰炸冷却
         "SkillAmount": 1,           // 爆裂轰炸连续释放次数
         "SkillFireDamage": 5,       // 爆裂轰炸燃烧伤害
-        "SkillFireDuration": 3,     // 燃烧持续时间（秒）
         
         // 技能1武器特效属性
         "WeaponBoomRange": 2,           // 榴弹爆炸范围
@@ -707,11 +706,9 @@ graph PlayerJionGame {
                 // 爆裂轰炸连续释放次数 - 固定值
                 var finalAmount = 0
                 if IsNextThreeChoiceOne == 0 {
-                    var outerAmount = Skill1DataWithOuterBonus["SkillAmount"] as int
-                    finalAmount = outerAmount + Round(value) as int
+                    finalAmount = Round(value) as int
                 } else if IsNextThreeChoiceOne == 1 {
-                    var currentAmount = Skill1DataInGame["SkillAmount"] as int
-                    finalAmount = currentAmount + Round(value) as int
+                    finalAmount = Round(value) as int
                 }
                 Skill1DataInGame["SkillAmount"] = finalAmount
                 LogInfo("技能1释放次数: " + Convert.ToString(Skill1DataInGame["SkillAmount"]))
