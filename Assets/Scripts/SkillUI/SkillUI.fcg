@@ -130,7 +130,32 @@ graph SkillUI {
         
         var CurrentSkill = GetLocalPlayer()<PlayerJionGame>.CurrentSkill
         if CurrentSkill == 1 {     
+            // 燃烧伤害
+            var SkillFireDamage int = Round(GetLocalPlayer()<PlayerJionGame>.Skill1DataInGame["SkillFireDamage"] as int)
+            // 技能数量
+            var SkillAmount int = Round(GetLocalPlayer()<PlayerJionGame>.Skill1DataInGame["SkillAmount"] as int)
+            // 技能释放立刻装弹
+            var ReloadNow int = Round(GetLocalPlayer()<PlayerJionGame>.Skill1DataInGame["ReloadNow"] as int)
+            //————————————————————————————————————————————————//
+            // 爆裂轰炸
             start Skill_1_Released(CurrentSkill)
+            // 二次爆炸
+            if SkillAmount == 2 {
+                WaitForMillisecond(300)
+                Skill_1_Released(CurrentSkill)
+            }
+            // 燃烧伤害
+            if SkillFireDamage > 5 {
+                Skill_1_FireReleased(SkillFireDamage)
+            }
+            // 立刻装弹
+            if ReloadNow == 1{
+                var Skill1DataInGame = GetLocalPlayer()<PlayerJionGame>.Skill1DataInGame
+                // 发送属性到服务器，更新玩家当前属性（使用局内数据）
+                DispatchEventToEntity(OnWeaponUpdate, globalEntity, PlatformType.Server, List<object>{})
+            }
+            //————————————————————————————————————————————————//
+
         }
         if CurrentSkill == 2 {
             start Skill_2_Released(CurrentSkill)
@@ -139,29 +164,61 @@ graph SkillUI {
 
     // 技能1释放
     async func Skill_1_Released(CurrentSkill int){
-        // 获取技能1的各个属性等级
+        // 技能伤害
         var CurrentDamage int = Round(GetLocalPlayer()<PlayerJionGame>.Skill1DataInGame["SkillDamage"] as int)
+        // 技能范围
         var Size int = Round(GetLocalPlayer()<PlayerJionGame>.Skill1DataInGame["SkillRange"] as int)
+        // 冷却时间
         var CurrentcdTime int = Round(GetLocalPlayer()<PlayerJionGame>.Skill1DataInGame["SkillCD"] as int)
         
-        // 释放特效
+        // 设置CD
+        StartSkillCD(CurrentSkill, CurrentcdTime)
+
+        // 释放特效 
         CreateEffectClient(out var NewcreatedEntity, VFXType.CurseExplosion, LoopType.Once, true)
         effectEntity = NewcreatedEntity
         effectEntity<Transform>.Position = ReleasedEffectPosition
         effectEntity<Transform>.Scale = Vector3{Size, Size, Size}
         BoomColor(effectEntity, Size)
-       
+    
         // 造成伤害
         var monsters = getMonsterWithinDistance(Size)
-        for i = 0, List.Length(monsters), 1 {
-            var monster = monsters[i]
+        for j = 0, List.Length(monsters), 1 {
+            var monster = monsters[j]
             var damage int = Math.Ceil(CurrentDamage * skillMultiplier)
             DispatchEventToEntity(OnDamageMob, monster, PlatformType.Server, List<object>{monster, nil, damage, GetLocalPlayer()})
             CreateDamageNum(damage, 10, #dde511, 800, monster as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
         }
+    }
 
-        // 设置CD
-        StartSkillCD(CurrentSkill, CurrentcdTime)
+    func Skill_1_FireReleased(SkillFireDamage int){
+        // 技能范围
+        var Size int = Round(GetLocalPlayer()<PlayerJionGame>.Skill1DataInGame["SkillRange"] as int)
+        var monsters = getMonsterWithinDistance(Size)
+        // 应用燃烧效果到所有怪物
+        for j = 0, List.Length(monsters), 1 {
+            var monster = monsters[j]
+            // 启动燃烧
+            start ApplyBurnEffect(monster, SkillFireDamage)
+        }
+    }
+
+    // 燃烧效果函数
+    async func ApplyBurnEffect(monster entity<Entity>, SkillFireDamage int) {
+        // 3秒燃烧，每0.5秒一次，共6次
+        var tickInterval int = 500    // 500毫秒 = 0.5秒
+        var tickCount int = 6           // 6次
+        
+        // 计算每次的伤害
+        var damagePerTick = Math.Ceil(SkillFireDamage)
+        
+        for i = 0, tickCount, 1 {
+            // 造成燃烧伤害
+            DispatchEventToEntity(OnDamageMob, monster, PlatformType.Server, List<object>{monster, nil, damagePerTick, GetLocalPlayer()})
+            CreateDamageNum(damagePerTick, 10, #ff6600, 500, monster as entity<Entity>, Vector3{0,1.2,0}, Vector2{50, 50}, true)
+            // 等待0.5秒
+        WaitForMillisecond(tickInterval)
+        }
     }
     
     // 技能2释放

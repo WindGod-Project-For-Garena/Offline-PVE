@@ -106,5 +106,8 @@ graph UI_HomeUI {
         GetLocalPlayer()<PlayerJionGame>.displaySkillByIndex(GetLocalPlayer()<PlayerJionGame>.CurrentSkill)
         GetLocalPlayer()<PlayerJionGame>.resetSkillLevel()
         start GetLocalPlayer()<PlayerJionGame>.ShowChoiceThreeCardUI(level,ability1Level,ability2Level,ability3Level)
+
+        // 清空之前游戏的卡牌记录
+        GetLocalPlayer()<PlayerJionGame>.ClearSelectedCards()
     }
 }

@@ -78,10 +78,10 @@ graph PlayerJionGame {
     PlayerData Map<string, object> = Map<string, object>{
         // 基础属性
         "HP": 200,                  // 生命值
-        "MoveSpeed": 1,            // 移动速度
+        "MoveSpeed": 1,             // 移动速度
         "WeaponDamage": 20,         // 武器攻击伤害
-        "AttackSpeed": 1,         // 武器攻击速度
-        "ReloadSpeed": 2,         // 武器换弹速度
+        "AttackSpeed": 1,           // 武器攻击速度
+        "ReloadSpeed": 1,           // 武器换弹速度
         "WeaponMaxMagazine": 30,    // 最大弹匣容量
     }
     // -----------------------局外天赋-------------------------//
@@ -90,10 +90,9 @@ graph PlayerJionGame {
         // 技能1基础属性
         "SkillDamage": 50,          // 爆裂轰炸伤害
         "SkillRange": 5,            // 爆裂轰炸范围
-        "SkillCD": 1500,            // 爆裂轰炸冷却
+        "SkillCD": 5000,            // 爆裂轰炸冷却
         "SkillAmount": 1,           // 爆裂轰炸连续释放次数
         "SkillFireDamage": 5,       // 爆裂轰炸燃烧伤害
-        "SkillFireDuration": 3,     // 燃烧持续时间（秒）
         
         // 技能1武器特效属性
         "WeaponBoomRange": 2,           // 榴弹爆炸范围
@@ -112,11 +111,11 @@ graph PlayerJionGame {
         "SkillAmount": 3,         // 闪电数量
         "SkillRange": 3,          // 闪电爆炸范围
         "SkillExplosion": 0,      // 闪电命中产生小爆炸伤害（百分比）
-        "SkillCD": 1500,          // 闪电冷却时间
+        "SkillCD": 5000,          // 闪电冷却时间
         
         // 技能2武器特效属性
         "WeaponLightningProb": 5,     // 武器闪电触发概率
-        "ReloadBuff": 0,              // 换弹后射速提升（百分比）
+        "ReloadBuff": 1,              // 换弹后射速提升（百分比）
     }
     // -----------------------局外天赋加成后数据-------------------------//
     // 玩家基础天赋加成属性数据
@@ -233,6 +232,21 @@ graph PlayerJionGame {
         }
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+    // 清空已选卡牌记录
+    func ClearSelectedCards() {
+        // 清空技能1已选卡牌
+        List.Clear(SelectedCards_1)
+        // 清空技能2已选卡牌
+        List.Clear(SelectedCards_2)
+        // 清空当前随机卡牌列表
+        List.Clear(CurrentRandomCards)
+        // 重置当前选择的卡牌
+        NowChoiceCard = 0
+        // 重置三选一标志位
+        IsNextThreeChoiceOne = 0
+        LogInfo("已清空所有已选卡牌记录")
+    }
+
     // 复制基础数据到局外加成数据
     func CopyToOuterBonusData() {
         // 复制玩家基础数据
@@ -636,17 +650,24 @@ graph PlayerJionGame {
             var finalSpeed = 0.0
             if IsNextThreeChoiceOne == 0 {
                 var outerSpeed = PlayerDataWithOuterBonus["ReloadSpeed"] as float
-                // 换弹时间是减少，所以是乘(1-value)
-                finalSpeed = Math.Max(0.1, outerSpeed * (1.0 - value)) as int
+                // 换弹时间减少
+                finalSpeed = outerSpeed * (1.0 + value)
+                // 记录当前总减少百分比
+                PlayerDataInGame["ReloadSpeed_Reduction"] = value
             } else if IsNextThreeChoiceOne == 1 {
-                var currentSpeed = PlayerDataInGame["ReloadSpeed"] as float
                 var outerSpeed = PlayerDataWithOuterBonus["ReloadSpeed"] as float
-                // 换弹时间继续减少
-                finalSpeed = Math.Max(0.1, currentSpeed * (1.0 - value)) as int
+                // 获取当前总减少百分比
+                var totalReduction = value  // 初始为本次减少值
+                // 累加之前的总减少百分比
+                totalReduction = PlayerDataInGame["ReloadSpeed_Reduction"] as float + value
+                // 从基础速度上计算最终速度
+                finalSpeed = outerSpeed * (1.0 + totalReduction)
+                // 更新总减少百分比记录
+                PlayerDataInGame["ReloadSpeed_Reduction"] = totalReduction
             }
             PlayerDataInGame["ReloadSpeed"] = finalSpeed
             LogInfo("换弹速度: " + Convert.ToString(PlayerDataInGame["ReloadSpeed"]))
-            
+
         } else if attributeName == "WeaponMaxMagazine" {
             // 弹匣容量加成 - 固定值
             var finalMagazine = 0
@@ -681,14 +702,25 @@ graph PlayerJionGame {
                 var finalCD = 0
                 if IsNextThreeChoiceOne == 0 {
                     var outerCD = Skill1DataWithOuterBonus["SkillCD"] as int
-                    finalCD = Math.Max(0.5, outerCD * (1.0 - value)) as int
+                    finalCD = Round(outerCD * (1.0 - value)) as int
+                    // 记录当前总减少百分比
+                    Skill1DataInGame["SkillCD_Reduction"] = value
                 } else if IsNextThreeChoiceOne == 1 {
-                    var currentCD = Skill1DataInGame["SkillCD"] as int
-                    finalCD = Math.Max(0.5, currentCD * (1.0 - value)) as int
+                    var outerCD = Skill1DataWithOuterBonus["SkillCD"] as int
+                    // 获取当前总减少百分比
+                    var totalReduction = value  // 初始为本次减少值
+                    if Skill1DataInGame["SkillCD_Reduction"] != nil {
+                        // 累加之前的总减少百分比
+                        totalReduction = Skill1DataInGame["SkillCD_Reduction"] as float + value
+                    }
+                    // 从基础CD上计算最终CD
+                    finalCD = Round(outerCD * (1.0 - totalReduction)) as int
+                    // 更新总减少百分比记录
+                    Skill1DataInGame["SkillCD_Reduction"] = totalReduction
                 }
                 Skill1DataInGame["SkillCD"] = finalCD
                 LogInfo("技能1冷却: " + Convert.ToString(Skill1DataInGame["SkillCD"]))
-                
+
             } else if attributeName == "SkillDamage" {
                 // 爆裂轰炸伤害加成 - 百分比
                 var finalDamage = 0
@@ -707,11 +739,9 @@ graph PlayerJionGame {
                 // 爆裂轰炸连续释放次数 - 固定值
                 var finalAmount = 0
                 if IsNextThreeChoiceOne == 0 {
-                    var outerAmount = Skill1DataWithOuterBonus["SkillAmount"] as int
-                    finalAmount = outerAmount + Round(value) as int
+                    finalAmount = Round(value) as int
                 } else if IsNextThreeChoiceOne == 1 {
-                    var currentAmount = Skill1DataInGame["SkillAmount"] as int
-                    finalAmount = currentAmount + Round(value) as int
+                    finalAmount = Round(value) as int
                 }
                 Skill1DataInGame["SkillAmount"] = finalAmount
                 LogInfo("技能1释放次数: " + Convert.ToString(Skill1DataInGame["SkillAmount"]))
@@ -760,11 +790,9 @@ graph PlayerJionGame {
                 // 榴弹二次爆炸 - 固定值
                 var finalDoubleBoom = 0
                 if IsNextThreeChoiceOne == 0 {
-                    var outerDoubleBoom = Skill1DataWithOuterBonus["WeaponDoubleBoom"] as int
-                    finalDoubleBoom = outerDoubleBoom + Round(value) as int
+                    finalDoubleBoom = Round(value) as int
                 } else if IsNextThreeChoiceOne == 1 {
-                    var currentDoubleBoom = Skill1DataInGame["WeaponDoubleBoom"] as int
-                    finalDoubleBoom = currentDoubleBoom + Round(value) as int
+                    finalDoubleBoom = Round(value) as int
                 }
                 Skill1DataInGame["WeaponDoubleBoom"] = finalDoubleBoom
                 LogInfo("榴弹二次爆炸: " + Convert.ToString(Skill1DataInGame["WeaponDoubleBoom"]))
@@ -810,13 +838,24 @@ graph PlayerJionGame {
                 var finalCD = 0
                 if IsNextThreeChoiceOne == 0 {
                     var outerCD = Skill2DataWithOuterBonus["SkillCD"] as int
-                    finalCD = Math.Max(0.5, outerCD * (1.0 - value)) as int
+                    finalCD = Round(outerCD * (1.0 - value)) as int
+                    // 记录当前总减少百分比
+                    Skill2DataInGame["SkillCD_Reduction"] = value
                 } else if IsNextThreeChoiceOne == 1 {
-                    var currentCD = Skill2DataInGame["SkillCD"] as int
-                    finalCD = Math.Max(0.5, currentCD * (1.0 - value)) as int
+                    var outerCD = Skill2DataWithOuterBonus["SkillCD"] as int
+                    // 获取当前总减少百分比
+                    var totalReduction = value  // 初始为本次减少值
+                    if Skill2DataInGame["SkillCD_Reduction"] != nil {
+                        // 累加之前的总减少百分比
+                        totalReduction = Skill2DataInGame["SkillCD_Reduction"] as float + value
+                    }
+                    // 从基础CD上计算最终CD
+                    finalCD = Round(outerCD * (1.0 - totalReduction)) as int
+                    // 更新总减少百分比记录
+                    Skill2DataInGame["SkillCD_Reduction"] = totalReduction
                 }
                 Skill2DataInGame["SkillCD"] = finalCD
-                LogInfo("闪电冷却: " + Convert.ToString(Skill2DataInGame["SkillCD"]))
+                LogInfo("技能2冷却: " + Convert.ToString(Skill2DataInGame["SkillCD"]))
                 
             } else if attributeName == "SkillDamage" {
                 // 闪电伤害加成 - 百分比
@@ -890,14 +929,14 @@ graph PlayerJionGame {
                 Skill2DataInGame["ReloadBuff"] = finalBuff
                 LogInfo("换弹后射速提升: " + Convert.ToString(Skill2DataInGame["ReloadBuff"] as float * 100) + "%")
                 
-            } else if attributeName == "ReloadNow" {
+            } else if attributeName == "ReloadBuff" {
                 // 技能后立即装弹（技能2）
-                Skill2DataInGame["ReloadNow"] = 1
+                Skill2DataInGame["ReloadBuff"] = 1
                 LogInfo("获得闪电释放后立即装弹效果")
             }
         }
         // 发送属性到服务器，更新玩家当前属性（使用局内数据）
-        DispatchEventToEntity(OnPlayerAttributesUpdate, globalEntity, PlatformType.Server, List<object>{PlayerDataInGame, PlayerDataWithOuterBonus})
+        DispatchEventToEntity(OnPlayerAttributesUpdate, globalEntity, PlatformType.Server, List<object>{PlayerDataInGame,PlayerDataWithOuterBonus})
         IsNextThreeChoiceOne = 0
     }
 
@@ -1675,6 +1714,8 @@ graph PlayerJionGame {
         }
         // 重置数据
         ResetInGameData()
+        // 清空已选卡牌记录
+        ClearSelectedCards()
         // 恢复默认没有选择卡牌
         NowChoiceCard = 0
         // 重置子弹判定
