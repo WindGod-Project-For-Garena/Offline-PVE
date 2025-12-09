@@ -75,7 +75,7 @@ static graph FC_PVEController {
         DestroyItem(player,  ItemIDType.SGAmmo, 999)
         DestroyItem(player, ItemIDType.GoldMP5_III, 1)
         DestroyItem(player,  ItemIDType.SGAmmo, 999)
-    }
+    }    
 
     // 游戏开始
     event OnGameStartClick(level int, skillIndex int, ability1Level int, ability2Level int, ability3Level int) {
@@ -108,6 +108,9 @@ static graph FC_PVEController {
         var weaponDamage = Round(PlayerDataInGame["WeaponDamage"] as int)
         currentWeapon<Weapon>.Damage = weaponDamage
         currPlayer<Player>.IsDropOnEliminated = false
+        //设置武器换弹速度
+        var ReloadSpeed = Round(PlayerDataInGame["ReloadSpeed"] as int)
+        currentWeapon<Weapon>.ReloadSpeedFactor = ReloadSpeed
         
         LogInfo("游戏开始 - 关卡: " + level + "，技能: " + skillIndex)
         StartPVEGame(level)
@@ -117,6 +120,12 @@ static graph FC_PVEController {
         currPlayer<Player>.MaxHP = PlayerDataInGame["HP"] as int
         currPlayer<Player>.HP = PlayerDataInGame["HP"] as int
         currPlayer<Player>.RunSpeedScale = PlayerDataInGame["MoveSpeed"] as int
+        //设置武器伤害
+        var weaponDamage = Round(PlayerDataInGame["WeaponDamage"] as int)
+        currentWeapon<Weapon>.Damage = weaponDamage
+        //设置武器换弹速度
+        var ReloadSpeed = Round(PlayerDataInGame["ReloadSpeed"] as float)
+        currentWeapon<Weapon>.ReloadSpeedFactor = ReloadSpeed
     }
 
     event ToServer_StartNextWave() {
