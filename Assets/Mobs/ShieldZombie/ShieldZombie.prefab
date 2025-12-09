@@ -84,7 +84,7 @@
           "position": {
             "x": 0,
             "y": 0.5,
-            "z": 0
+            "z": -0.05
           },
           "rotation": {
             "x": 0,
@@ -96,8 +96,8 @@
             "y": 1,
             "z": 1
           },
-          "radius": 0.05,
-          "height": 0.8,
+          "radius": 0.13,
+          "height": 1.05,
           "isConvexIfMesh": false
         }
       ],
@@ -250,7 +250,7 @@
                 "editorVisibleValue": true,
                 "_mesh": {
                   "fileId": "zzyryupnhu-m1keubt9-dlget6digms-B_tank_12.~@FFSKIN",
-                  "filePath": "fab://Assets\\ZombieAsset\\ShieldZombie\\New\\Anims\\C_TankZombie03@Idle02.FBX\\B_tank_12.mesh",
+                  "filePath": "fab://Assets\\Mobs\\ShieldZombie\\New\\Anims\\C_TankZombie03@Idle02.FBX\\B_tank_12.mesh",
                   "_tag": {
                     "type": "GFileRefer"
                   },
@@ -264,6 +264,14 @@
                   {
                     "fileId": "enfw3mhyq35-m1keu9zg-b2wmxtkxvsd",
                     "filePath": "Assets\\ZombieAsset\\ShieldZombie\\Materials\\ShieldZombie.mat",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "material"
+                  },
+                  {
+                    "fileId": "enfw3mhyq35-m1keu9zg-b2wmxtkxvsd",
+                    "filePath": "Assets\\Mobs\\ShieldZombie\\Materials\\ShieldZombie.mat",
                     "_tag": {
                       "type": "GFileRefer"
                     },
@@ -301,7 +309,7 @@
             "editorLockValue": false,
             "editorVisibleValue": true,
             "groupId": "",
-            "enable": false,
+            "enable": true,
             "_entityName": "ShieldZombie"
           },
           {
@@ -380,8 +388,85 @@
             "editorLockValue": false,
             "editorVisibleValue": true,
             "groupId": "",
-            "enable": false,
+            "enable": true,
             "_entityName": "ShieldZombie_Iron"
+          },
+          {
+            "_entityName": "Appearance Group",
+            "_tag": {
+              "type": "BoneMeshGroupEntity"
+            },
+            "_entityId": "pOVBrbDd",
+            "children": [
+              {
+                "_tag": {
+                  "type": "BoneMeshEntity"
+                },
+                "_entityId": "OLdy185G",
+                "children": [],
+                "prefabVariant": null,
+                "activeValue": {
+                  "selfValue": true,
+                  "valueTag": "activeValue"
+                },
+                "unlockedValue": {
+                  "selfValue": true,
+                  "valueTag": "unlockedValue"
+                },
+                "_mesh": {
+                  "fileId": "zzyryupnhu-m1keubt9-dlget6digms-B_tank_12.~@FFSKIN",
+                  "filePath": "fab://Assets\\Mobs\\ShieldZombie\\New\\Anims\\C_TankZombie03@Idle02.FBX\\B_tank_12.mesh",
+                  "_tag": {
+                    "type": "GFileRefer"
+                  },
+                  "fileType": "mesh"
+                },
+                "_cloth": null,
+                "partType": 0,
+                "causeAnimationTypeChange": false,
+                "outwardType": 0,
+                "materials": [
+                  {
+                    "fileId": "enfw3mhyq35-m1keu9zg-b2wmxtkxvsd",
+                    "filePath": "Assets\\ZombieAsset\\ShieldZombie\\Materials\\ShieldZombie.mat",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "material"
+                  }
+                ],
+                "avatarPartInfo": {
+                  "bone": "B_tank_12",
+                  "bindType": 0
+                },
+                "position": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "scale": {
+                  "x": 1,
+                  "y": 1,
+                  "z": 1
+                },
+                "rotation": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "_entityName": "B_tank_12.mesh"
+              }
+            ],
+            "prefabVariant": null,
+            "activeValue": {
+              "selfValue": true,
+              "valueTag": "activeValue"
+            },
+            "unlockedValue": null,
+            "editorLockValue": false,
+            "editorVisibleValue": true,
+            "groupId": "",
+            "enable": true
           }
         ],
         "prefabVariant": null,
@@ -451,4 +536,4 @@
   "discriminator": "ISceneLike",
   "_entityName": "ShieldZombie"
 }
-//"{FE:{"v":"1.15.4020050","c":{"FF":5001},"s":100}
+//"{FE:{"v":"1.15.4049104","c":{"FF":5001},"s":100}

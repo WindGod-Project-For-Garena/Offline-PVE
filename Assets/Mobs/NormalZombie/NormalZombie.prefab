@@ -37,7 +37,7 @@
       "BTPath": [
         {
           "fileId": "deactam6hc-lzrvmj32-wft19y35a1h",
-          "filePath": "Assets\\ZombieAssist\\Zombie01\\Zombie01.xbt",
+          "filePath": "Assets\\Mobs\\NormalZombie\\NormalZombie.xbt",
           "_tag": {
             "type": "GFileRefer"
           },
@@ -83,8 +83,8 @@
           "isTrigger": false,
           "position": {
             "x": 0,
-            "y": 0.5,
-            "z": 0
+            "y": 0.4,
+            "z": -0.05
           },
           "rotation": {
             "x": 0,
@@ -96,8 +96,8 @@
             "y": 1,
             "z": 1
           },
-          "radius": 0.05,
-          "height": 0.8,
+          "radius": 0.11,
+          "height": 0.7,
           "isConvexIfMesh": false
         }
       ],
@@ -525,4 +525,4 @@
   "discriminator": "ISceneLike",
   "_entityName": "NormalZombie"
 }
-//"{FE:{"v":"1.15.4020050","c":{"FF":5001},"s":100}
+//"{FE:{"v":"1.15.4049104","c":{"FF":5001},"s":100}

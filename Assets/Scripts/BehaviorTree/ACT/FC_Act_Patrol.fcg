@@ -31,6 +31,7 @@ graph FC_Act_Patrol {
 	func PlayAction(owner entity<BevTreeAttachable>) BTreeNodeState {
 		var gameTime int = globalEntity<Global>.GameTimeCount
 		LastTickTime = gameTime
+		
 
 		if TargetPos == nil {
 			PlayAnimation(owner as entity<AnimationControllerAttachable>, "Idle", 1, LoopType.Loop)

@@ -26,11 +26,13 @@ static graph FC_PVEMonsterManager {
     IsWaveActive bool = false
     currSpawnerIndex int = 0
     
+    
     // 怪物追踪
     ActiveMonsters List<entity<LevelObject>> = List<entity<LevelObject>>{}
     ActivenNormalMonsters List<entity<LevelObject>> = List<entity<LevelObject>>{}
     MonsterDeathCount Map<int, int> = Map<int, int>{}  // 按类型统计死亡数量
     TotalKills int = 0
+    
     
     // CSV缓存（仅缓存当前Level行、按需缓存怪物行）
     LevelRowInfos Map<int, Map<string, object>> = Map<int, Map<string, object>>{} //LevelID -> LevelInfo
@@ -62,6 +64,7 @@ static graph FC_PVEMonsterManager {
     event OnAwake() {
         LogInfo("PVE怪物管理器初始化")
         InitializeManager()
+        
     }
     
     func InitializeManager() {
