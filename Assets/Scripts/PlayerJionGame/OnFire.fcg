@@ -64,8 +64,8 @@ graph OnFire {
         //如果是2号角色武器
         if  SkillID == 2 {
             //每发子弹最低有5%概率造成闪电
-            var Probability = GetLocalPlayer()<PlayerJionGame>.Skill2DataInGame["WeaponLightningProb"] as float
-            if  RandomFloat(0,100) < Probability{
+            var Probability = Math.Round(GetLocalPlayer()<PlayerJionGame>.Skill2DataInGame["WeaponLightningProb"] as int)
+            if  RandomInt(0,100) < Probability{
                 LightningTrigger(SkillID)
             }
         }

@@ -103,7 +103,7 @@ graph PlayerJionGame {
         "WeaponDamage": 20,         // 武器攻击伤害
         "AttackSpeed": 1,           // 武器攻击速度
         "ReloadSpeed": 1,           // 武器换弹速度
-        "WeaponMaxMagazine": 30,    // 最大弹匣容量
+        "WeaponMaxMagazine": 3,     // 最大弹匣容量
     }
 
     // 技能2（闪电）数据
@@ -453,8 +453,6 @@ graph PlayerJionGame {
         // 隐藏选择界面
         ChoiceThreeCardUI<CustomUI>.IsVisible = false
         
-        // 给武器
-        DispatchEventToEntity(OnGameStartClick, globalEntity, PlatformType.Server, List<object>{level, CurrentSkill,ability1Level,ability2Level,ability3Level})
         // 开始下一波
         DispatchEventToEntity(ToServer_StartNextWave, globalEntity, PlatformType.Server, List<object>{})
     }
@@ -594,6 +592,8 @@ graph PlayerJionGame {
         }
         
         var cardInfo = cardDataMap[cardId]
+        LogInfo(cardInfo)
+        LogInfo(cardDataMap[cardId])
         if cardInfo != nil {
             var nature = Convert.ToString(cardInfo["Nature"])
             var value = cardInfo["Value"] as float
@@ -626,7 +626,6 @@ graph PlayerJionGame {
             }
             PlayerDataInGame["MoveSpeed"] = finalSpeed
             LogInfo("局内移速: " + Convert.ToString(PlayerDataInGame["MoveSpeed"]))
-            
         }
         
         // 技能1专属属性
@@ -946,7 +945,7 @@ graph PlayerJionGame {
                 var finalBuff = 0.0
                 if IsNextThreeChoiceOne == 0 {
                     var outerBuff = Skill2DataWithOuterBonus["ReloadBuff"] as float
-                    finalBuff = outerBuff + value
+                    finalBuff = outerBuff - value
                 }
                 Skill2DataInGame["ReloadBuff"] = finalBuff
                 LogInfo("换弹后射速提升: " + Convert.ToString(Skill2DataInGame["ReloadBuff"] as float * 100) + "%")  
@@ -1396,6 +1395,7 @@ graph PlayerJionGame {
             }
             PlayerDataWithOuterBonus["HP"] = currentOuterHP + value as int
             LogInfo("局外HP: 基础" + Convert.ToString(baseHP) + " + " + Convert.ToString(value) + " = " + Convert.ToString(PlayerDataWithOuterBonus["HP"]))
+        
         } else if nature == "MoveSpeed" {
             // 移速：百分比加成
             var baseSpeed = PlayerData["MoveSpeed"] as float
@@ -1406,16 +1406,29 @@ graph PlayerJionGame {
             PlayerDataWithOuterBonus["MoveSpeed_Multiplier"] = currentMultiplier + value
             PlayerDataWithOuterBonus["MoveSpeed"] = baseSpeed * PlayerDataWithOuterBonus["MoveSpeed_Multiplier"] as float
             LogInfo("局外移速: 基础" + Convert.ToString(baseSpeed) + " × " + Convert.ToString(PlayerDataWithOuterBonus["MoveSpeed_Multiplier"]) + " = " + Convert.ToString(PlayerDataWithOuterBonus["MoveSpeed"]))
+
         } else if nature == "WeaponDamage" {
             // 武器伤害：百分比加成
-            var baseDamage = PlayerData["WeaponDamage"] as int
+            var baseDamage1 = Skill1Data["WeaponDamage"] as int
+            var baseDamage2 = Skill2Data["WeaponDamage"] as int
             var currentMultiplier = 1.0
-            if PlayerDataWithOuterBonus["WeaponDamage_Multiplier"] != nil {
-                currentMultiplier = PlayerDataWithOuterBonus["WeaponDamage_Multiplier"] as float
+
+            // 技能1
+            if Skill1DataWithOuterBonus["WeaponDamage_Multiplier"] != nil {
+                currentMultiplier = Skill1DataWithOuterBonus["WeaponDamage_Multiplier"] as float
             }
-            PlayerDataWithOuterBonus["WeaponDamage_Multiplier"] = currentMultiplier + value
-            PlayerDataWithOuterBonus["WeaponDamage"] = Round(baseDamage * PlayerDataWithOuterBonus["WeaponDamage_Multiplier"] as float) as int
-            LogInfo("局外武器伤害: 基础" + Convert.ToString(baseDamage) + " × " + Convert.ToString(PlayerDataWithOuterBonus["WeaponDamage_Multiplier"]) + " = " + Convert.ToString(PlayerDataWithOuterBonus["WeaponDamage"]))
+            Skill1DataWithOuterBonus["WeaponDamage_Multiplier"] = currentMultiplier + value
+            Skill1DataWithOuterBonus["WeaponDamage"] = Round(baseDamage1 * Skill1DataWithOuterBonus["WeaponDamage_Multiplier"] as float) as int
+            LogInfo("局外武器1伤害: 基础" + Convert.ToString(baseDamage1) + " × " + Convert.ToString(Skill1DataWithOuterBonus["WeaponDamage_Multiplier"]) + " = " + Convert.ToString(Skill1DataWithOuterBonus["WeaponDamage"]))
+
+            // 技能2
+            if Skill2DataWithOuterBonus["WeaponDamage_Multiplier"] != nil {
+                currentMultiplier = Skill2DataWithOuterBonus["WeaponDamage_Multiplier"] as float
+            }
+            Skill2DataWithOuterBonus["WeaponDamage_Multiplier"] = currentMultiplier + value
+            Skill2DataWithOuterBonus["WeaponDamage"] = Round(baseDamage2 * Skill2DataWithOuterBonus["WeaponDamage_Multiplier"] as float) as int
+            LogInfo("局外武器2伤害: 基础" + Convert.ToString(baseDamage2) + " × " + Convert.ToString(Skill2DataWithOuterBonus["WeaponDamage_Multiplier"]) + " = " + Convert.ToString(Skill2DataWithOuterBonus["WeaponDamage"]))
+
         } else if nature == "SkillDamage" {
             // 技能伤害：同时影响技能1和技能2
             var baseSkill1Damage = Skill1Data["SkillDamage"] as int
@@ -1428,6 +1441,7 @@ graph PlayerJionGame {
             }
             Skill1DataWithOuterBonus["SkillDamage_Multiplier"] = currentMultiplier1 + value
             Skill1DataWithOuterBonus["SkillDamage"] = Round(baseSkill1Damage * Skill1DataWithOuterBonus["SkillDamage_Multiplier"] as float) as int
+            LogInfo("局外技能伤害: 技能1 基础" + Convert.ToString(baseSkill1Damage) + " × " + Convert.ToString(Skill1DataWithOuterBonus["SkillDamage_Multiplier"]) + " = " + Convert.ToString(Skill1DataWithOuterBonus["SkillDamage"]))
             
             // 技能2
             var currentMultiplier2 = 1.0
@@ -1436,8 +1450,6 @@ graph PlayerJionGame {
             }
             Skill2DataWithOuterBonus["SkillDamage_Multiplier"] = currentMultiplier2 + value
             Skill2DataWithOuterBonus["SkillDamage"] = Round(baseSkill2Damage * Skill2DataWithOuterBonus["SkillDamage_Multiplier"] as float) as int
-            
-            LogInfo("局外技能伤害: 技能1 基础" + Convert.ToString(baseSkill1Damage) + " × " + Convert.ToString(Skill1DataWithOuterBonus["SkillDamage_Multiplier"]) + " = " + Convert.ToString(Skill1DataWithOuterBonus["SkillDamage"]))
             LogInfo("局外技能伤害: 技能2 基础" + Convert.ToString(baseSkill2Damage) + " × " + Convert.ToString(Skill2DataWithOuterBonus["SkillDamage_Multiplier"]) + " = " + Convert.ToString(Skill2DataWithOuterBonus["SkillDamage"]))
         }
         
@@ -1738,7 +1750,6 @@ graph PlayerJionGame {
 //—————————————————————————————————————————————————以下为結算統計相关方程——————————————————————————————————————————————————————//
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     event ToClient_ShowFinalStats(currTime int, GameStartTime int, IsGameSuccess bool, totalTime int, CurrentLevel int) {
-        LogInfo(CurrentSkill)
         GameOverFinalUI<CustomUI>.IsVisible = true
         var HeroEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/Hero/Name")                  //使用角色
         var StepEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/Step/Name")                  //當前關卡

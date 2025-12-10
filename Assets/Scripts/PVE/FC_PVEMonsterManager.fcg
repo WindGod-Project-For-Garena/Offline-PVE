@@ -91,7 +91,7 @@ static graph FC_PVEMonsterManager {
 
             if rowValue == level {
                 var rowInfo List<object> = ReadCSVRow(EResCSV.LevelConfig,i+1)
-                LogInfo(rowInfo)
+                // LogInfo(rowInfo)
                 var levelInfo Map<string, object> = Map<string, object>{}
                 levelInfo["WaveNumber"] = rowInfo[1]
                 
@@ -110,7 +110,7 @@ static graph FC_PVEMonsterManager {
                 LevelRowInfos[levelInfo["WaveNumber"] as int] = levelInfo
             }
         }
-        LogInfo("LevelRowInfos: " + LevelRowInfos)
+        // LogInfo("LevelRowInfos: " + LevelRowInfos)
     }
     
     
@@ -122,7 +122,7 @@ static graph FC_PVEMonsterManager {
 
         // 仅读取该Level的LevelConfig
         LoadCurrentLevelRows(level)
-        LogInfo("Level配置加载完成 (LevelID=" + level + ")")
+        // LogInfo("Level配置加载完成 (LevelID=" + level + ")")
         
         // 清理所有怪物
         ClearAllMonsters()
@@ -130,11 +130,12 @@ static graph FC_PVEMonsterManager {
     
     // 开始新的波次
     func StartWave(wave int) {
+        // LevelInitialize(CurrentLevel)
         CurrentWave = wave
         
         LogInfo("开始关卡 " + CurrentLevel + " 波次 " + wave)
         for key, value in LevelRowInfos {
-            LogInfo(key + ": " + value)
+            // LogInfo(key + ": " + value)
         }
         var waveRowInfo Map<string, object> = LevelRowInfos[wave]
         
@@ -428,12 +429,10 @@ static graph FC_PVEMonsterManager {
         return normalQueue[list.Length(normalQueue) - 1]
     }
     
-    
-    
     // 创建单个怪物
     async func CreateSingleMonster(monsterInfo Map<string, object>) {
         var name_key = monsterInfo["Name_key"] as string
-        LogInfo("name_key: " + name_key)
+        // LogInfo("name_key: " + name_key)
         var prefabID = Config.MobPrefabIDs[name_key]
         
         CreateFromPrefab(out var monsterEntity, prefabID)

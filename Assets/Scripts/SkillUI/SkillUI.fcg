@@ -132,6 +132,7 @@ graph SkillUI {
         if CurrentSkill == 1 {     
             // 燃烧伤害
             var SkillFireDamage int = Round(GetLocalPlayer()<PlayerJionGame>.Skill1DataInGame["SkillFireDamage"] as int)
+            LogInfo("燃烧伤害"+SkillFireDamage)
             // 技能数量
             var SkillAmount int = Round(GetLocalPlayer()<PlayerJionGame>.Skill1DataInGame["SkillAmount"] as int)
             // 技能释放立刻装弹
@@ -238,7 +239,7 @@ graph SkillUI {
         var CurrentDamage = GetLocalPlayer()<PlayerJionGame>.Skill2DataInGame["SkillDamage"] as int
         var LightningAmountCount = GetLocalPlayer()<PlayerJionGame>.Skill2DataInGame["LightningAmount"] as int
         var CurrentcdTime = GetLocalPlayer()<PlayerJionGame>.Skill2DataInGame["SkillCD"] as int
-        var LightningRange = GetLocalPlayer()<PlayerJionGame>.Skill2DataInGame["LightningRange"] as int
+        var LightningRange = Round(GetLocalPlayer()<PlayerJionGame>.Skill2DataInGame["LightningRange"] as int)
         var LightningExplosion = GetLocalPlayer()<PlayerJionGame>.Skill2DataInGame["LightningExplosion"] as float
         // 设置CD
         StartSkillCD(CurrentSkill, CurrentcdTime)

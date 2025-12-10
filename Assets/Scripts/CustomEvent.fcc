@@ -8,8 +8,13 @@ event OnDamageMob(mob entity<Entity>, part string, damage int, player entity<Pla
 
 [platform_client]
 [platform_server]
-//游戏开始事件，开始游戏被点击
-event OnGameStartClick(level int, skillIndex int, ability1Level int, ability2Level int, ability3Level int)
+//选择完角色
+event ChoiceHeroOver(level int, skillIndex int, ability1Level int, ability2Level int, ability3Level int)
+
+[platform_client]
+[platform_server]
+//游戏开始
+event OnGameStartNext(level int, skillIndex int, ability1Level int, ability2Level int, ability3Level int)
 
 [platform_client]
 [platform_server]
