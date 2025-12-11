@@ -106,8 +106,9 @@ graph UI_HomeUI {
         GetLocalPlayer()<PlayerJionGame>.displaySkillByIndex(GetLocalPlayer()<PlayerJionGame>.CurrentSkill)
         GetLocalPlayer()<PlayerJionGame>.resetSkillLevel()
         start GetLocalPlayer()<PlayerJionGame>.ShowChoiceThreeCardUI(level,ability1Level,ability2Level,ability3Level)
-
-        // 清空之前游戏的卡牌记录
-        GetLocalPlayer()<PlayerJionGame>.ClearSelectedCards()
+        
+        // 发送角色选择完毕事件
+        var CurrentSkill = GetLocalPlayer()<PlayerJionGame>.CurrentSkill
+        DispatchEventToEntity(ChoiceHeroOver, globalEntity, PlatformType.Server, List<object>{level, CurrentSkill,ability1Level,ability2Level,ability3Level})
     }
 }

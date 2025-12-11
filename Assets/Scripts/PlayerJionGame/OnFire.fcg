@@ -64,8 +64,8 @@ graph OnFire {
         //如果是2号角色武器
         if  SkillID == 2 {
             //每发子弹最低有5%概率造成闪电
-            var Probability = GetLocalPlayer()<PlayerJionGame>.Skill2DataInGame["WeaponLightningProb"] as float
-            if  RandomFloat(0,100) < Probability{
+            var Probability = Math.Round(GetLocalPlayer()<PlayerJionGame>.Skill2DataInGame["WeaponLightningProb"] as int)
+            if  RandomInt(0,100) < Probability{
                 LightningTrigger(SkillID)
             }
         }
@@ -235,25 +235,30 @@ graph OnFire {
         }
 
         // 获取技能2的各个属性等级
-        var count = GetLocalPlayer()<PlayerJionGame>.Skill2DataInGame["SkillAmount"] as int
+        var SkillAmount = GetLocalPlayer()<PlayerJionGame>.Skill2DataInGame["SkillAmount"] as int
         var CurrentDamage = GetLocalPlayer()<PlayerJionGame>.Skill2DataInGame["SkillDamage"] as int
 
         // 释放雷击
-        start PlayThunderEffects(CurrentDamage,hitEntity)
+        start PlayThunderEffects(SkillAmount,CurrentDamage,hitEntity)
     }
 
     // 播放雷击特效
-    async func PlayThunderEffects(damage int,hitEntity entity<Entity>) {
-        var thunderPosition = hitEntity<Transform>.Position
-        CreateEffectClient(out var thunderEffect, VFXType.Thunder, LoopType.Once, true)
-        thunderEffect<Transform>.Position = thunderPosition
-        thunderEffect<Transform>.Scale = Vector3{0.8,2,0.8}
-        SetParentClient(hitEntity as entity<LevelObject>, thunderEffect, true)
-        var CountLevel = 1
-        BoomColor(thunderEffect, CountLevel)
-        //造成伤害
-        var realDamage int = Math.Ceil(damage * skillMultiplier)
-        DispatchEventToEntity(OnDamageMob, hitEntity, PlatformType.Server, List<object>{hitEntity, nil, realDamage, GetLocalPlayer()})
-        CreateDamageNum(realDamage, 10, #dde511, 800, hitEntity as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
+    async func PlayThunderEffects(SkillAmount int,damage int,hitEntity entity<Entity>) {
+        for i = 0, SkillAmount, 1 {
+            var thunderPosition = hitEntity<Transform>.Position
+            CreateEffectClient(out var thunderEffect, VFXType.Thunder, LoopType.Once, true)
+            thunderEffect<Transform>.Position = thunderPosition
+            thunderEffect<Transform>.Scale = Vector3{0.8,2,0.8}
+            SetParentClient(hitEntity as entity<LevelObject>, thunderEffect, true)
+            var CountLevel = 1
+            BoomColor(thunderEffect, CountLevel)
+            //造成伤害
+            var realDamage int = Math.Ceil(damage * skillMultiplier)
+            DispatchEventToEntity(OnDamageMob, hitEntity, PlatformType.Server, List<object>{hitEntity, nil, realDamage, GetLocalPlayer()})
+            CreateDamageNum(realDamage, 10, #dde511, 800, hitEntity as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
+
+            WaitForMillisecond(200)
+
+        }
     }
 }

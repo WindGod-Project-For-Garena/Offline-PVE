@@ -132,6 +132,7 @@ graph SkillUI {
         if CurrentSkill == 1 {     
             // 燃烧伤害
             var SkillFireDamage int = Round(GetLocalPlayer()<PlayerJionGame>.Skill1DataInGame["SkillFireDamage"] as int)
+            LogInfo("燃烧伤害"+SkillFireDamage)
             // 技能数量
             var SkillAmount int = Round(GetLocalPlayer()<PlayerJionGame>.Skill1DataInGame["SkillAmount"] as int)
             // 技能释放立刻装弹
@@ -139,6 +140,7 @@ graph SkillUI {
             //————————————————————————————————————————————————//
             // 爆裂轰炸
             start Skill_1_Released(CurrentSkill)
+            //————————————————————————————————————————————————//
             // 二次爆炸
             if SkillAmount == 2 {
                 WaitForMillisecond(300)
@@ -150,7 +152,6 @@ graph SkillUI {
             }
             // 立刻装弹
             if ReloadNow == 1{
-                var Skill1DataInGame = GetLocalPlayer()<PlayerJionGame>.Skill1DataInGame
                 // 发送属性到服务器，更新玩家当前属性（使用局内数据）
                 DispatchEventToEntity(OnWeaponUpdate, globalEntity, PlatformType.Server, List<object>{})
             }
@@ -158,7 +159,18 @@ graph SkillUI {
 
         }
         if CurrentSkill == 2 {
+            // 技能释放立刻装弹
+            var ReloadNow int = Round(GetLocalPlayer()<PlayerJionGame>.Skill2DataInGame["ReloadNow"] as int)
+            //————————————————————————————————————————————————//
             start Skill_2_Released(CurrentSkill)
+            //————————————————————————————————————————————————//
+            // 立刻装弹
+            if ReloadNow == 1{
+                LogInfo("立刻装弹")
+                // 发送属性到服务器，更新玩家当前属性（使用局内数据）
+                DispatchEventToEntity(OnWeaponUpdate, globalEntity, PlatformType.Server, List<object>{})
+            }
+            //————————————————————————————————————————————————//
         }
     }
 
@@ -225,14 +237,15 @@ graph SkillUI {
     async func Skill_2_Released(CurrentSkill int){
         // 获取技能2的各个属性等级
         var CurrentDamage = GetLocalPlayer()<PlayerJionGame>.Skill2DataInGame["SkillDamage"] as int
-        var Count = GetLocalPlayer()<PlayerJionGame>.Skill2DataInGame["SkillAmount"] as int
+        var LightningAmountCount = GetLocalPlayer()<PlayerJionGame>.Skill2DataInGame["LightningAmount"] as int
         var CurrentcdTime = GetLocalPlayer()<PlayerJionGame>.Skill2DataInGame["SkillCD"] as int
-
+        var LightningRange = Round(GetLocalPlayer()<PlayerJionGame>.Skill2DataInGame["LightningRange"] as int)
+        var LightningExplosion = GetLocalPlayer()<PlayerJionGame>.Skill2DataInGame["LightningExplosion"] as float
         // 设置CD
         StartSkillCD(CurrentSkill, CurrentcdTime)
         
         // 释放雷击
-        start PlayThunderEffects(Count, CurrentDamage)
+        start PlayThunderEffects(LightningAmountCount, CurrentDamage,LightningRange,LightningExplosion)
     }
 
     // 启动技能CD
@@ -267,11 +280,14 @@ graph SkillUI {
     }
 
     // 播放雷击特效
-    async func PlayThunderEffects(Count int, damage int) {
-        for i = 0, Count, 1 {
+    async func PlayThunderEffects(LightningAmountCount int, damage int, LightningRange int,LightningExplosion float) {
+        for i = 0, LightningAmountCount, 1 {
             var randomMonster = GetRandomMonster()
             if randomMonster != nil {
                 start CreateThunder(i, randomMonster, damage)
+                if  LightningExplosion > 0 {
+                    start ThunderBoom(i, randomMonster, damage,LightningRange,LightningExplosion)
+                }
                 WaitForMillisecond(200)
             }
         }
@@ -298,6 +314,26 @@ graph SkillUI {
         //造成伤害
         DispatchEventToEntity(OnDamageMob, targetMonster, PlatformType.Server, List<object>{targetMonster, nil, realDamage, GetLocalPlayer()})
         CreateDamageNum(realDamage, 10, #dde511, 800, targetMonster as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
+    }
+
+    
+    // 创建闪电爆炸
+    async func ThunderBoom(index int, targetMonster entity<LevelObject>, damage int, LightningRange int ,LightningExplosion float) {
+        // 释放特效 
+        CreateEffectClient(out var NewcreatedEntity, VFXType.CurseExplosion, LoopType.Once, true)
+        effectEntity = NewcreatedEntity
+        var thunderPosition = targetMonster<Transform>.Position
+        effectEntity<Transform>.Position = thunderPosition
+        effectEntity<Transform>.Scale = Vector3{LightningRange, LightningRange, LightningRange}
+        BoomColor(effectEntity, LightningRange)
+        // 造成伤害
+        var monsters = getMonsterWithinDistance(LightningRange)
+        for j = 0, List.Length(monsters), 1 {
+            var monster = monsters[j]
+            var Boomdamage int = Math.Ceil(LightningExplosion * damage)
+            DispatchEventToEntity(OnDamageMob, monster, PlatformType.Server, List<object>{monster, nil, Boomdamage, GetLocalPlayer()})
+            CreateDamageNum(Boomdamage, 10, #dde511, 800, monster as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
+        }
     }
 
 
