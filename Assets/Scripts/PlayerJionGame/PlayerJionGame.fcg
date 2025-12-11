@@ -111,7 +111,7 @@ graph PlayerJionGame {
         // 技能2基础属性
         "SkillDamage": 25,                   // 闪电基础伤害
         "LightningAmount": 3,                // 闪电数量
-        "SkillAmount": 0,                    // 闪电连续释放次数
+        "SkillAmount": 1,                    // 闪电连续释放次数
         "LightningRange": 2,                 // 闪电爆炸范围(米)
         "LightningExplosion": 0,             // 闪电命中爆炸伤害(0=无爆炸，1=100%伤害爆炸)
         "SkillCD": 5000,                     // 闪电冷却时间(ms)
@@ -916,17 +916,13 @@ graph PlayerJionGame {
                 if IsNextThreeChoiceOne == 0 {
                     finalExplosion = Round(value) as float
                 } else if IsNextThreeChoiceOne == 1 {
-                    finalExplosion = Round(value) as float
+                    // 与当前值叠加
+                    var currentExplosion = Skill2DataInGame["LightningExplosion"] as float
+                    finalExplosion = currentExplosion + Round(value) as float
                 }
                 Skill2DataInGame["LightningExplosion"] = finalExplosion
-                if value == 1.0 {
-                    LogInfo("获得闪电命中大范围爆炸效果，额外造成100%伤害")
-                } else if value == 0.5 {
-                    LogInfo("获得闪电命中小范围爆炸效果，额外造成50%伤害")
-                } else {
-                    LogInfo("闪电爆炸效果: " + Convert.ToString(Skill2DataInGame["LightningExplosion"]))
-                }
-                
+                var explosionValue = Skill2DataInGame["LightningExplosion"] as float
+
             } else if attributeName == "WeaponLightningProb" {
                 // 武器闪电触发概率 - （百分比）
                 var finalProbability = 0.0

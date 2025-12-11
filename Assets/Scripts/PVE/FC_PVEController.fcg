@@ -117,6 +117,7 @@ static graph FC_PVEController {
             //设置武器弹匣容量
             var AmmoMagSize = Skill2DataInGame["WeaponMaxMagazine"] as int
             currentWeapon<Weapon>.AmmoMagSize = AmmoMagSize
+            currentWeapon<Weapon>.CurrentAmmo = currentWeapon<Weapon>.AmmoMagSize
         }
     }
 

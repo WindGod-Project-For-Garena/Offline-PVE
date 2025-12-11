@@ -142,7 +142,7 @@ graph ChoiceOneOfThreeCard {
       if Skill1DataInGame != nil {
          DispatchEventToEntity(UpdateSkill1Data, globalEntity, PlatformType.Server, List<object>{Skill1DataInGame})
       }
-      
+
       if Skill2DataInGame != nil {
          DispatchEventToEntity(UpdateSkill2Data, globalEntity, PlatformType.Server, List<object>{Skill2DataInGame})
       }
@@ -151,7 +151,7 @@ graph ChoiceOneOfThreeCard {
       DispatchEventToEntity(OnGameStartNext, globalEntity, PlatformType.Server, List<object>{level, CurrentSkill, ability1Level, ability2Level, ability3Level})
 
       // 清空之前游戏的卡牌记录
-      GetLocalPlayer()<PlayerJionGame>.ClearSelectedCards()
+      // GetLocalPlayer()<PlayerJionGame>.ClearSelectedCards()
    }
 
    //刷新卡牌

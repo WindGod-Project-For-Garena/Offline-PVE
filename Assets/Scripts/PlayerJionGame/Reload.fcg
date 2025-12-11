@@ -23,10 +23,12 @@ graph Reload {
         if (SkillIndex == 2) {
             AddItem(currPlayer, ItemIDType.SMGAmmo, 999, out var createdEntity)
             var ReloadBuff = PVEController.Skill2DataInGame["ReloadBuff"] as float
-            if  ReloadBuff > 1 {
-                currentWeapon<Weapon>.AttackInterval = ReloadBuff
-                WaitForMillisecond(2000)
-                currentWeapon<Weapon>.AttackInterval = 1.0
+            if  ReloadBuff < 1 {
+                var ReloadForward = 0.0648
+                currentWeapon<Weapon>.FiringInterval = ReloadBuff * currentWeapon<Weapon>.FiringInterval
+                LogInfo("武器攻击间隔已调整" + currentWeapon<Weapon>.FiringInterval)
+                WaitForMillisecond(1000)
+                currentWeapon<Weapon>.FiringInterval = ReloadForward
             }
         }
 

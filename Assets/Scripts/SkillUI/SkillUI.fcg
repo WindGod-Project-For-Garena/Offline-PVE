@@ -284,8 +284,11 @@ graph SkillUI {
         for i = 0, LightningAmountCount, 1 {
             var randomMonster = GetRandomMonster()
             if randomMonster != nil {
-                start CreateThunder(i, randomMonster, damage)
+                if  LightningExplosion == 0 {
+                    start CreateThunder(i, randomMonster, damage)
+                }
                 if  LightningExplosion > 0 {
+                    start CreateThunder(i, randomMonster, damage)
                     start ThunderBoom(i, randomMonster, damage,LightningRange,LightningExplosion)
                 }
                 WaitForMillisecond(200)
@@ -327,15 +330,15 @@ graph SkillUI {
         effectEntity<Transform>.Scale = Vector3{LightningRange, LightningRange, LightningRange}
         BoomColor(effectEntity, LightningRange)
         // 造成伤害
+        var Boomdamage int = Math.Ceil(LightningExplosion * damage)
+        // 造成伤害
         var monsters = getMonsterWithinDistance(LightningRange)
         for j = 0, List.Length(monsters), 1 {
             var monster = monsters[j]
-            var Boomdamage int = Math.Ceil(LightningExplosion * damage)
             DispatchEventToEntity(OnDamageMob, monster, PlatformType.Server, List<object>{monster, nil, Boomdamage, GetLocalPlayer()})
-            CreateDamageNum(Boomdamage, 10, #dde511, 800, monster as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
+            CreateDamageNum(Boomdamage, 10, #00FFF2FF, 800, monster as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
         }
     }
-
 
     // 获取范围内怪物
     func getMonsterWithinDistance(distance int) List<entity<LevelObject>> {
