@@ -38,6 +38,9 @@ component Mob {
     // HateGainTime
     HateGainTime int
 
+    // HateGainInterval
+    HateGainInterval int
+
     // LastHitPlayer
     LastHitPlayer entity<Player>
 
@@ -346,11 +349,6 @@ event C2SZBHurtEvent( Zombie entity<LevelObject>,  Part string,  Damage int,  Pl
 event C2SSkillEvent( UseSkillPlayer entity<Player>,  StartPos Vector3,  StartRot Vector3,  SkillTypeNum int,  TargetPos Vector3,  TargetRot Vector3)
 
 
-// Assets\New ECA.eca
-[platform_server]
-declare graph __AssetsA3New6ECAneca__ {
-}
-
 [platform_server]
 [platform_client]
 declare static graph Res {
@@ -408,4 +406,10 @@ enum EVisibilityLayer {
 
 }
 
+
+enum EDataTable {
+    // Normal Data Table1
+    __Normal6Data6Table1__ = "Normal Data Table1"
+
+}
 

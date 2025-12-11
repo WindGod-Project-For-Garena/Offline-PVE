@@ -17,8 +17,8 @@ graph Script_1_ {
         var attackScale float= 1
         GetNodeVariable(thisEntity<BevTreeCustomNode>,"Duration",out var duration)
         _Duration = Ceil(duration as int * attackScale)
-        GetBlackboardValue(owner<BevTreeAttachable>.AttachTarget,"CurTarget",out var curTarget)
-        globalEntity<Utilities>.myLookAt(owner<Transform>,curTarget as entity<Player>,Vector3{0,0,0})
+        var curTarget entity<Player> = owner<Mob>.CurrTarget
+        Utilities.myLookAt(owner<Transform>,curTarget as entity<Player>,Vector3{0,0,0})
         _AttackBeginTime = globalEntity<Global>.GameTimeCount
         SetBlackboardValue(owner<BevTreeAttachable>.AttachTarget,"LastAttackTime",_AttackBeginTime)
         var TargetEntity = owner<AnimationControllerAttachable>

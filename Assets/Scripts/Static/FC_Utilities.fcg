@@ -9,7 +9,7 @@ import "BehaviourTree.fcc" as BehaviourTree
 
 static graph FC_PVEUtilities {
     //Executed when entity is created
-    //funcID: LookAt
+    //funcID: LookAt player
 	func myLookAt(transform entity<Transform>, player entity<Entity>, pos Vector3) {
 		var curPos Vector3 = transform<Transform>.Position
 		var targetPos Vector3 = Vector3{0,0,0}

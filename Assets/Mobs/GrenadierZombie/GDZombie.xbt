@@ -2798,263 +2798,6 @@
       ],
       "_entityName": "XBTEntity"
     },
-    "xtp7DLue": {
-      "_tag": {
-        "type": "XBTEntity",
-        "resourceId": ""
-      },
-      "_entityId": "xtp7DLue",
-      "children": [
-        {
-          "_tag": {
-            "type": "XBTEntity",
-            "resourceId": ""
-          },
-          "_entityId": "oE5bvMbT",
-          "children": [],
-          "prefabVariant": null,
-          "activeValue": {
-            "selfValue": true,
-            "valueTag": "activeValue"
-          },
-          "unlockedValue": {
-            "selfValue": true,
-            "valueTag": "unlockedValue"
-          },
-          "editorLockValue": false,
-          "editorVisibleValue": true,
-          "ecaScripts": [
-            {
-              "fileId": "l30snnkwkra-mhaj1shs-cegyrixqay",
-              "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\FC_Cond_CanMove.fcg",
-              "_tag": {
-                "type": "GFileRefer"
-              },
-              "fileType": "ugcscript"
-            }
-          ],
-          "x": 1902.5625,
-          "y": 512,
-          "width": 180,
-          "height": 88,
-          "nodeInfo": {
-            "type": "condition",
-            "name": "Cond_CanMove",
-            "id": "oE5bvMbT",
-            "varArr": [
-              {
-                "name": "KeepDist",
-                "type": "Float",
-                "val": 1
-              }
-            ],
-            "ecaScript": null,
-            "iscustom": true,
-            "desc": "",
-            "icon": "General_Customize_20"
-          },
-          "readonlyScripts": [
-            null
-          ],
-          "_entityName": "XBTEntity"
-        },
-        {
-          "_tag": {
-            "type": "XBTEntity",
-            "resourceId": ""
-          },
-          "_entityId": "JuArdUux",
-          "children": [],
-          "prefabVariant": null,
-          "activeValue": {
-            "selfValue": true,
-            "valueTag": "activeValue"
-          },
-          "unlockedValue": {
-            "selfValue": true,
-            "valueTag": "unlockedValue"
-          },
-          "editorLockValue": false,
-          "editorVisibleValue": true,
-          "ecaScripts": [
-            {
-              "fileId": "x6a1ep3jlpa-mhajefl4-nuekon6ddrn",
-              "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\FC_Act_Move2Target.fcg",
-              "_tag": {
-                "type": "GFileRefer"
-              },
-              "fileType": "ugcscript"
-            }
-          ],
-          "x": 1918.5625,
-          "y": 636,
-          "width": 180,
-          "height": 88,
-          "nodeInfo": {
-            "type": "action",
-            "name": "Move2Target",
-            "id": "JuArdUux",
-            "varArr": [
-              {
-                "name": "KeepDist",
-                "type": "Float",
-                "val": 1
-              }
-            ],
-            "ecaScript": null,
-            "iscustom": true,
-            "desc": "",
-            "icon": "General_Customize_20"
-          },
-          "readonlyScripts": [
-            null
-          ],
-          "_entityName": "XBTEntity"
-        }
-      ],
-      "prefabVariant": null,
-      "activeValue": {
-        "selfValue": true,
-        "valueTag": "activeValue"
-      },
-      "unlockedValue": {
-        "selfValue": true,
-        "valueTag": "unlockedValue"
-      },
-      "editorLockValue": false,
-      "editorVisibleValue": true,
-      "ecaScripts": [
-        null
-      ],
-      "x": 1536.5625,
-      "y": 557,
-      "width": 180,
-      "height": 88,
-      "nodeInfo": {
-        "type": "composite",
-        "name": "MemSequence",
-        "id": "xtp7DLue",
-        "keyName": "MemSequence",
-        "desc": "FE_42_JH_WS_MENSEQUENCE",
-        "varArr": [],
-        "in": null,
-        "icon": "General_MemSequence_20",
-        "out": [
-          "oE5bvMbT",
-          "JuArdUux"
-        ]
-      },
-      "readonlyScripts": [
-        null
-      ],
-      "_entityName": "XBTEntity"
-    },
-    "oE5bvMbT": {
-      "_tag": {
-        "type": "XBTEntity",
-        "resourceId": ""
-      },
-      "_entityId": "oE5bvMbT",
-      "children": [],
-      "prefabVariant": null,
-      "activeValue": {
-        "selfValue": true,
-        "valueTag": "activeValue"
-      },
-      "unlockedValue": {
-        "selfValue": true,
-        "valueTag": "unlockedValue"
-      },
-      "editorLockValue": false,
-      "editorVisibleValue": true,
-      "ecaScripts": [
-        {
-          "fileId": "l30snnkwkra-mhaj1shs-cegyrixqay",
-          "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\FC_Cond_CanMove.fcg",
-          "_tag": {
-            "type": "GFileRefer"
-          },
-          "fileType": "ugcscript"
-        }
-      ],
-      "x": 1902.5625,
-      "y": 512,
-      "width": 180,
-      "height": 88,
-      "nodeInfo": {
-        "type": "condition",
-        "name": "Cond_CanMove",
-        "id": "oE5bvMbT",
-        "varArr": [
-          {
-            "name": "KeepDist",
-            "type": "Float",
-            "val": 1
-          }
-        ],
-        "ecaScript": null,
-        "iscustom": true,
-        "desc": "",
-        "icon": "General_Customize_20"
-      },
-      "readonlyScripts": [
-        null
-      ],
-      "_entityName": "XBTEntity"
-    },
-    "JuArdUux": {
-      "_tag": {
-        "type": "XBTEntity",
-        "resourceId": ""
-      },
-      "_entityId": "JuArdUux",
-      "children": [],
-      "prefabVariant": null,
-      "activeValue": {
-        "selfValue": true,
-        "valueTag": "activeValue"
-      },
-      "unlockedValue": {
-        "selfValue": true,
-        "valueTag": "unlockedValue"
-      },
-      "editorLockValue": false,
-      "editorVisibleValue": true,
-      "ecaScripts": [
-        {
-          "fileId": "x6a1ep3jlpa-mhajefl4-nuekon6ddrn",
-          "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\FC_Act_Move2Target.fcg",
-          "_tag": {
-            "type": "GFileRefer"
-          },
-          "fileType": "ugcscript"
-        }
-      ],
-      "x": 1918.5625,
-      "y": 636,
-      "width": 180,
-      "height": 88,
-      "nodeInfo": {
-        "type": "action",
-        "name": "Move2Target",
-        "id": "JuArdUux",
-        "varArr": [
-          {
-            "name": "KeepDist",
-            "type": "Float",
-            "val": 1
-          }
-        ],
-        "ecaScript": null,
-        "iscustom": true,
-        "desc": "",
-        "icon": "General_Customize_20"
-      },
-      "readonlyScripts": [
-        null
-      ],
-      "_entityName": "XBTEntity"
-    },
     "Sp3qgfvs": {
       "_tag": {
         "type": "XBTEntity",
@@ -3571,6 +3314,263 @@
         "desc": "",
         "icon": "General_Customize_20",
         "fileId": "uhp3n0tl69r-lzs0w7am-y85ws5dvtfi"
+      },
+      "readonlyScripts": [
+        null
+      ],
+      "_entityName": "XBTEntity"
+    },
+    "xtp7DLue": {
+      "_tag": {
+        "type": "XBTEntity",
+        "resourceId": ""
+      },
+      "_entityId": "xtp7DLue",
+      "children": [
+        {
+          "_tag": {
+            "type": "XBTEntity",
+            "resourceId": ""
+          },
+          "_entityId": "oE5bvMbT",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "ecaScripts": [
+            {
+              "fileId": "l30snnkwkra-mhaj1shs-cegyrixqay",
+              "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\FC_Cond_CanMove.fcg",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "ugcscript"
+            }
+          ],
+          "x": 1902.5625,
+          "y": 512,
+          "width": 180,
+          "height": 88,
+          "nodeInfo": {
+            "type": "condition",
+            "name": "Cond_CanMove",
+            "id": "oE5bvMbT",
+            "varArr": [
+              {
+                "name": "KeepDist",
+                "type": "Float",
+                "val": 1
+              }
+            ],
+            "ecaScript": null,
+            "iscustom": true,
+            "desc": "",
+            "icon": "General_Customize_20"
+          },
+          "readonlyScripts": [
+            null
+          ],
+          "_entityName": "XBTEntity"
+        },
+        {
+          "_tag": {
+            "type": "XBTEntity",
+            "resourceId": ""
+          },
+          "_entityId": "JuArdUux",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "ecaScripts": [
+            {
+              "fileId": "x6a1ep3jlpa-mhajefl4-nuekon6ddrn",
+              "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\FC_Act_Move2Target.fcg",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "ugcscript"
+            }
+          ],
+          "x": 1918.5625,
+          "y": 636,
+          "width": 180,
+          "height": 88,
+          "nodeInfo": {
+            "type": "action",
+            "name": "Move2Target",
+            "id": "JuArdUux",
+            "varArr": [
+              {
+                "name": "KeepDist",
+                "type": "Float",
+                "val": 1
+              }
+            ],
+            "ecaScript": null,
+            "iscustom": true,
+            "desc": "",
+            "icon": "General_Customize_20"
+          },
+          "readonlyScripts": [
+            null
+          ],
+          "_entityName": "XBTEntity"
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        null
+      ],
+      "x": 1536.5625,
+      "y": 557,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "composite",
+        "name": "MemSequence",
+        "id": "xtp7DLue",
+        "keyName": "MemSequence",
+        "desc": "FE_42_JH_WS_MENSEQUENCE",
+        "varArr": [],
+        "in": null,
+        "icon": "General_MemSequence_20",
+        "out": [
+          "oE5bvMbT",
+          "JuArdUux"
+        ]
+      },
+      "readonlyScripts": [
+        null
+      ],
+      "_entityName": "XBTEntity"
+    },
+    "oE5bvMbT": {
+      "_tag": {
+        "type": "XBTEntity",
+        "resourceId": ""
+      },
+      "_entityId": "oE5bvMbT",
+      "children": [],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        {
+          "fileId": "l30snnkwkra-mhaj1shs-cegyrixqay",
+          "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\FC_Cond_CanMove.fcg",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "ugcscript"
+        }
+      ],
+      "x": 1902.5625,
+      "y": 512,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "condition",
+        "name": "Cond_CanMove",
+        "id": "oE5bvMbT",
+        "varArr": [
+          {
+            "name": "KeepDist",
+            "type": "Float",
+            "val": 1
+          }
+        ],
+        "ecaScript": null,
+        "iscustom": true,
+        "desc": "",
+        "icon": "General_Customize_20"
+      },
+      "readonlyScripts": [
+        null
+      ],
+      "_entityName": "XBTEntity"
+    },
+    "JuArdUux": {
+      "_tag": {
+        "type": "XBTEntity",
+        "resourceId": ""
+      },
+      "_entityId": "JuArdUux",
+      "children": [],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        {
+          "fileId": "x6a1ep3jlpa-mhajefl4-nuekon6ddrn",
+          "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\FC_Act_Move2Target.fcg",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "ugcscript"
+        }
+      ],
+      "x": 1918.5625,
+      "y": 636,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "action",
+        "name": "Move2Target",
+        "id": "JuArdUux",
+        "varArr": [
+          {
+            "name": "KeepDist",
+            "type": "Float",
+            "val": 1
+          }
+        ],
+        "ecaScript": null,
+        "iscustom": true,
+        "desc": "",
+        "icon": "General_Customize_20"
       },
       "readonlyScripts": [
         null
@@ -8728,4 +8728,4 @@
     ]
   }
 }
-//"{FE:{"v":"1.15.4008519","c":{"FF":5001},"s":100}
+//"{FE:{"v":"1.15.4049104","c":{"FF":5001},"s":100}

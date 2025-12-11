@@ -17,9 +17,9 @@ graph Script_1_ {
 
 
         //如果有仇恨目标，则返回true
-        if (owner<Mob>.HateTarget != nil && owner<Mob>.HateGainTime > globalEntity<Global>.GameTimeCount - 5000) {
+        if (owner<Mob>.HateTarget != nil && owner<Mob>.HateGainTime > globalEntity<Global>.GameTimeCount - owner<Mob>.HateGainInterval) {
             owner<Mob>.CurrTarget = owner<Mob>.HateTarget
-            LogInfo("find hate target: " + owner<Mob>.HateTarget)
+            //LogInfo("find hate target: " + owner<Mob>.HateTarget)
             return true
         }
         

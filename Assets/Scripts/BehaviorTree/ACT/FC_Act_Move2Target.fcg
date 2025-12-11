@@ -24,7 +24,9 @@ graph FC_Act_Move2Target {
 	LastTickTime int = 0
 	//CurNodeIndex int = 0
 	inAnimation bool = false
-	targetFindingInterval int = 1000  //ms
+	basicTargetFindingInterval int = 1000  //ms
+	currTargetFindingInterval int = 1000  //ms
+	
 	moveTween entity<Tween> = nil
 	
 	hateAvailableInterval int = 5000//仇恨值可以持续5秒
@@ -32,12 +34,8 @@ graph FC_Act_Move2Target {
 
 
 	//funcID: PlayAction
-	func PlayAction(owner entity<BevTreeAttachable>) BTreeNodeState {
-	//	LogInfo("PlayAction:" + inAnimation)
-    	
+	func PlayAction(owner entity<BevTreeAttachable>) BTreeNodeState {	
 	   //如果正在寻路，则返回Running
-	//LogInfo("IsPathFinding: " + IsPathFinding + "PathList: " + PathList + "CurNodeIndex: " + CurNodeIndex)
-
         var curTarget entity<Player> = owner<Mob>.CurrTarget
 		//LogInfo("curTarget: " + curTarget)
 		if (curTarget == nil) {
@@ -46,49 +44,39 @@ graph FC_Act_Move2Target {
 			owner<mobComponent>.StopMoveTween()
 			LogInfo("finish walk animation: no target")
 			return BevTreeNodeStatus.Finish
-
 		}
 		
-
-		
-		var currPos Vector3 = owner<Transform>.Position
-
 		//判断和玩家的距离，如果距离小于KeepDist，则返回Finish
+		var currPos Vector3 = owner<Transform>.Position
 		var playerPos = curTarget<Player>.Position
 		var sub Vector3 = playerPos - currPos
 		var normalizeDir Vector3 = Normalize(sub)
 		Dist = Magnitude(sub)
 		if (Dist <= KeepDist) {
 			PlayAnimation(owner as entity<AnimationControllerAttachable>, "Idle", 1, LoopType.Once)
-			//LogInfo("finish walk animation: close to player")
 			return BevTreeNodeStatus.Finish
 		}
 		
 		
 		//超过追击范围，则返回Finish
 		//如果仇恨值大于0，则追击
-		// if (owner<Mob>.HateTarget != nil && owner<Mob>.HateGainTime > globalEntity<Global>.GameTimeCount - hateAvailableInterval) {
-		// 	LogInfo("chasing hate target")
-		// }else{
-			//如果没有仇恨值，则按照检测范围追击
-			var detectRange float = owner<Mob>.DetectRange
-			var chasingRange float = detectRange + 2.0
-			if (Dist > chasingRange) {
-				LogInfo("finish chase: out of chasing range")
-				//PlayAnimation(owner as entity<AnimationControllerAttachable>, "Idle", 1, LoopType.Once)
-				return BevTreeNodeStatus.Finish
-			}
+		//如果没有仇恨值，则按照检测范围追击
+		var detectRange float = owner<Mob>.DetectRange
+		var chasingRange float = detectRange + 2.0
+		if (Dist > chasingRange) {
+			LogInfo("finish chase: out of chasing range")
+			PlayAnimation(owner as entity<AnimationControllerAttachable>, "Idle", 1, LoopType.Once)
+			return BevTreeNodeStatus.Finish
+		}
 		//}
 		
 
 		var gameTime int = globalEntity<Global>.GameTimeCount
-		
-		//LogInfo("gameTime: " + gameTime + " LastFindPathTime: " + LastFindPathTime)
 		//间隔更新寻路,放了一点随机数
-		if ((gameTime - LastFindPathTime) > targetFindingInterval * Math.RandomFloat(0.5, 1.5)) {
+		if ((gameTime - LastFindPathTime) > currTargetFindingInterval) {
 			//----这里检测没有排除玩家---//---场景的基础块也不可以更改层级---//
-			//LogInfo("find path to player - 间隔寻路")
 			LastFindPathTime = gameTime
+			currTargetFindingInterval = Ceil(basicTargetFindingInterval * Math.RandomFloat(0.75, 1.25))
 			var offset Vector3 = Vector3{Math.RandomFloat(-0.8,0.8),0.5,Math.RandomFloat(-0.8,0.8)}
 			SingleRaycast((curTarget<Player>.Position + offset), Vector3{0,-3,0}, 5, List<int>{}, false, out var hitEntities, out var hitPoint, out var hitDistances, out var hitNormals)
 			TargetPos = hitPoint
@@ -99,39 +87,33 @@ graph FC_Act_Move2Target {
 			Dist = Magnitude(sub)
 			if (Dist <= KeepDist) {
 				//LogInfo("finish walk animation: close to targetPos")
-				
 				return BevTreeNodeStatus.Finish
 			}
 
 			PVEUtilities.myLookAt(owner<Transform>, curTarget, TargetPos)
 			//移动到下一个寻路点
-		//	LogInfo("move to normailzeDir: " + normalizeDir)
 			owner<mobComponent>.CreateMoveTween(velocity)
 			
 		}
-		//可能跳出来了，就没有Finish了
-	//	LogInfo("Running")
 		return BevTreeNodeStatus.Running
-		
-		
-		
-		
+
 	}
 
 	//eventID: 18//s8004_dup_block //先nodeenter,再playaction，再nodeexit
 	event OnNodeEnter(nodeName string, owner entity<BevTreeAttachable>) {
-		//LogInfo("OnNodeEnter: " + nodeName)
 		var Speed float = owner<Mob>.WalkSpeed
+		currTargetFindingInterval = Ceil(basicTargetFindingInterval * Math.RandomFloat(0.75, 1.25))
 		//LogInfo("Speed: " + Speed)
 		LastTickTime = globalEntity<Global>.GameTimeCount
 		GetNodeVariable(thisEntity as entity<BevTreeCustomNode>, "KeepDist", out var keepDist)
 		KeepDist = keepDist as float
 		if (!inAnimation) {
 			inAnimation = true
-		//	LogInfo("play walk animation")
 			if Speed <= 1.5 {
+				LogInfo("play walk animation")
 				PlayAnimation(owner as entity<AnimationControllerAttachable>, "Walk", 1, LoopType.Loop)
 			} else {
+				LogInfo("play run animation")
 				PlayAnimation(owner as entity<AnimationControllerAttachable>, "Run", 1, LoopType.Loop)
 			}
 		}

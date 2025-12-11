@@ -89,8 +89,8 @@
                   "editorVisibleValue": true,
                   "ecaScripts": [
                     {
-                      "fileId": "im6ricrdhag-mh8szdp1-94d6526b60v",
-                      "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\FC_Act_Death.fcg",
+                      "fileId": "d9rt7t6szul-miyjmud9-5r5mar9k7iw",
+                      "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\FC_Act_Death_ShieldZombie.fcg",
                       "_tag": {
                         "type": "GFileRefer"
                       },
@@ -1118,8 +1118,8 @@
               "editorVisibleValue": true,
               "ecaScripts": [
                 {
-                  "fileId": "im6ricrdhag-mh8szdp1-94d6526b60v",
-                  "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\FC_Act_Death.fcg",
+                  "fileId": "d9rt7t6szul-miyjmud9-5r5mar9k7iw",
+                  "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\FC_Act_Death_ShieldZombie.fcg",
                   "_tag": {
                     "type": "GFileRefer"
                   },
@@ -2113,8 +2113,8 @@
           "editorVisibleValue": true,
           "ecaScripts": [
             {
-              "fileId": "im6ricrdhag-mh8szdp1-94d6526b60v",
-              "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\FC_Act_Death.fcg",
+              "fileId": "d9rt7t6szul-miyjmud9-5r5mar9k7iw",
+              "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\FC_Act_Death_ShieldZombie.fcg",
               "_tag": {
                 "type": "GFileRefer"
               },
@@ -2245,8 +2245,8 @@
       "editorVisibleValue": true,
       "ecaScripts": [
         {
-          "fileId": "im6ricrdhag-mh8szdp1-94d6526b60v",
-          "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\FC_Act_Death.fcg",
+          "fileId": "d9rt7t6szul-miyjmud9-5r5mar9k7iw",
+          "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\FC_Act_Death_ShieldZombie.fcg",
           "_tag": {
             "type": "GFileRefer"
           },
@@ -3986,19 +3986,19 @@
       ],
       "_entityName": "XBTEntity"
     },
-    "A5PflPme": {
+    "XLARMTH0": {
       "_tag": {
         "type": "XBTEntity",
         "resourceId": ""
       },
-      "_entityId": "A5PflPme",
+      "_entityId": "XLARMTH0",
       "children": [
         {
           "_tag": {
             "type": "XBTEntity",
             "resourceId": ""
           },
-          "_entityId": "0AlTbEaX",
+          "_entityId": "RhOyC6vF",
           "children": [],
           "prefabVariant": null,
           "activeValue": {
@@ -4021,24 +4021,24 @@
               "fileType": "ugcscript"
             }
           ],
-          "x": 2492.5625,
-          "y": 9,
+          "x": 2501.5625,
+          "y": 284,
           "width": 180,
           "height": 88,
           "nodeInfo": {
             "type": "condition",
-            "name": "CanAttack1",
-            "id": "0AlTbEaX",
+            "name": "CanAttack2",
+            "id": "RhOyC6vF",
             "varArr": [
               {
                 "name": "CD",
                 "type": "Int",
-                "val": 3000
+                "val": 5000
               },
               {
                 "name": "Range",
                 "type": "Float",
-                "val": 1.2
+                "val": 30
               }
             ],
             "ecaScript": null,
@@ -4056,7 +4056,7 @@
             "type": "XBTEntity",
             "resourceId": ""
           },
-          "_entityId": "JuScedS2",
+          "_entityId": "O2AAbyfs",
           "children": [],
           "prefabVariant": null,
           "activeValue": {
@@ -4071,27 +4071,27 @@
           "editorVisibleValue": true,
           "ecaScripts": [
             {
-              "fileId": "m4kysfo17-mhblumlp-ooqnjq9gw7",
-              "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\FC_Act_Attack.fcg",
+              "fileId": "1yo0cb6x9w1-mhxcx653-ch59cqj8i8m",
+              "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\FC_Act_Attack_Shield.fcg",
               "_tag": {
                 "type": "GFileRefer"
               },
               "fileType": "ugcscript"
             }
           ],
-          "x": 2505.5625,
-          "y": 126,
+          "x": 2569.5625,
+          "y": 420,
           "width": 180,
           "height": 88,
           "nodeInfo": {
             "type": "action",
-            "name": "Attack1",
-            "id": "JuScedS2",
+            "name": "Attack2",
+            "id": "O2AAbyfs",
             "varArr": [
               {
                 "name": "Duration",
                 "type": "Int",
-                "val": 1500
+                "val": 3000
               }
             ],
             "ecaScript": null,
@@ -4119,22 +4119,22 @@
       "ecaScripts": [
         null
       ],
-      "x": 2157.5625,
-      "y": 97,
+      "x": 2181.5625,
+      "y": 320,
       "width": 180,
       "height": 88,
       "nodeInfo": {
         "type": "composite",
         "name": "MemSequence",
-        "id": "A5PflPme",
+        "id": "XLARMTH0",
         "keyName": "MemSequence",
         "desc": "FE_42_JH_WS_MENSEQUENCE",
         "varArr": [],
         "in": null,
         "icon": "General_MemSequence_20",
         "out": [
-          "0AlTbEaX",
-          "JuScedS2"
+          "RhOyC6vF",
+          "O2AAbyfs"
         ]
       },
       "readonlyScripts": [
@@ -4142,12 +4142,12 @@
       ],
       "_entityName": "XBTEntity"
     },
-    "0AlTbEaX": {
+    "RhOyC6vF": {
       "_tag": {
         "type": "XBTEntity",
         "resourceId": ""
       },
-      "_entityId": "0AlTbEaX",
+      "_entityId": "RhOyC6vF",
       "children": [],
       "prefabVariant": null,
       "activeValue": {
@@ -4170,24 +4170,24 @@
           "fileType": "ugcscript"
         }
       ],
-      "x": 2492.5625,
-      "y": 9,
+      "x": 2501.5625,
+      "y": 284,
       "width": 180,
       "height": 88,
       "nodeInfo": {
         "type": "condition",
-        "name": "CanAttack1",
-        "id": "0AlTbEaX",
+        "name": "CanAttack2",
+        "id": "RhOyC6vF",
         "varArr": [
           {
             "name": "CD",
             "type": "Int",
-            "val": 3000
+            "val": 5000
           },
           {
             "name": "Range",
             "type": "Float",
-            "val": 1.2
+            "val": 30
           }
         ],
         "ecaScript": null,
@@ -4200,12 +4200,12 @@
       ],
       "_entityName": "XBTEntity"
     },
-    "JuScedS2": {
+    "O2AAbyfs": {
       "_tag": {
         "type": "XBTEntity",
         "resourceId": ""
       },
-      "_entityId": "JuScedS2",
+      "_entityId": "O2AAbyfs",
       "children": [],
       "prefabVariant": null,
       "activeValue": {
@@ -4220,27 +4220,27 @@
       "editorVisibleValue": true,
       "ecaScripts": [
         {
-          "fileId": "m4kysfo17-mhblumlp-ooqnjq9gw7",
-          "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\FC_Act_Attack.fcg",
+          "fileId": "1yo0cb6x9w1-mhxcx653-ch59cqj8i8m",
+          "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\FC_Act_Attack_Shield.fcg",
           "_tag": {
             "type": "GFileRefer"
           },
           "fileType": "ugcscript"
         }
       ],
-      "x": 2505.5625,
-      "y": 126,
+      "x": 2569.5625,
+      "y": 420,
       "width": 180,
       "height": 88,
       "nodeInfo": {
         "type": "action",
-        "name": "Attack1",
-        "id": "JuScedS2",
+        "name": "Attack2",
+        "id": "O2AAbyfs",
         "varArr": [
           {
             "name": "Duration",
             "type": "Int",
-            "val": 1500
+            "val": 3000
           }
         ],
         "ecaScript": null,
@@ -5468,6 +5468,273 @@
       ],
       "_entityName": "XBTEntity"
     },
+    "A5PflPme": {
+      "_tag": {
+        "type": "XBTEntity",
+        "resourceId": ""
+      },
+      "_entityId": "A5PflPme",
+      "children": [
+        {
+          "_tag": {
+            "type": "XBTEntity",
+            "resourceId": ""
+          },
+          "_entityId": "0AlTbEaX",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "ecaScripts": [
+            {
+              "fileId": "cjyb66bk25t-mhblrmum-j8p5kivhzp",
+              "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\FC_Cond_CanAttack.fcg",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "ugcscript"
+            }
+          ],
+          "x": 2492.5625,
+          "y": 9,
+          "width": 180,
+          "height": 88,
+          "nodeInfo": {
+            "type": "condition",
+            "name": "CanAttack1",
+            "id": "0AlTbEaX",
+            "varArr": [
+              {
+                "name": "CD",
+                "type": "Int",
+                "val": 3000
+              },
+              {
+                "name": "Range",
+                "type": "Float",
+                "val": 1.2
+              }
+            ],
+            "ecaScript": null,
+            "iscustom": true,
+            "desc": "",
+            "icon": "General_Customize_20"
+          },
+          "readonlyScripts": [
+            null
+          ],
+          "_entityName": "XBTEntity"
+        },
+        {
+          "_tag": {
+            "type": "XBTEntity",
+            "resourceId": ""
+          },
+          "_entityId": "JuScedS2",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "ecaScripts": [
+            {
+              "fileId": "m4kysfo17-mhblumlp-ooqnjq9gw7",
+              "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\FC_Act_Attack.fcg",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "ugcscript"
+            }
+          ],
+          "x": 2505.5625,
+          "y": 126,
+          "width": 180,
+          "height": 88,
+          "nodeInfo": {
+            "type": "action",
+            "name": "Attack1",
+            "id": "JuScedS2",
+            "varArr": [
+              {
+                "name": "Duration",
+                "type": "Int",
+                "val": 1500
+              }
+            ],
+            "ecaScript": null,
+            "iscustom": true,
+            "desc": "",
+            "icon": "General_Customize_20"
+          },
+          "readonlyScripts": [
+            null
+          ],
+          "_entityName": "XBTEntity"
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        null
+      ],
+      "x": 2157.5625,
+      "y": 97,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "composite",
+        "name": "MemSequence",
+        "id": "A5PflPme",
+        "keyName": "MemSequence",
+        "desc": "FE_42_JH_WS_MENSEQUENCE",
+        "varArr": [],
+        "in": null,
+        "icon": "General_MemSequence_20",
+        "out": [
+          "0AlTbEaX",
+          "JuScedS2"
+        ]
+      },
+      "readonlyScripts": [
+        null
+      ],
+      "_entityName": "XBTEntity"
+    },
+    "0AlTbEaX": {
+      "_tag": {
+        "type": "XBTEntity",
+        "resourceId": ""
+      },
+      "_entityId": "0AlTbEaX",
+      "children": [],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        {
+          "fileId": "cjyb66bk25t-mhblrmum-j8p5kivhzp",
+          "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\FC_Cond_CanAttack.fcg",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "ugcscript"
+        }
+      ],
+      "x": 2492.5625,
+      "y": 9,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "condition",
+        "name": "CanAttack1",
+        "id": "0AlTbEaX",
+        "varArr": [
+          {
+            "name": "CD",
+            "type": "Int",
+            "val": 3000
+          },
+          {
+            "name": "Range",
+            "type": "Float",
+            "val": 1.2
+          }
+        ],
+        "ecaScript": null,
+        "iscustom": true,
+        "desc": "",
+        "icon": "General_Customize_20"
+      },
+      "readonlyScripts": [
+        null
+      ],
+      "_entityName": "XBTEntity"
+    },
+    "JuScedS2": {
+      "_tag": {
+        "type": "XBTEntity",
+        "resourceId": ""
+      },
+      "_entityId": "JuScedS2",
+      "children": [],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        {
+          "fileId": "m4kysfo17-mhblumlp-ooqnjq9gw7",
+          "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\FC_Act_Attack.fcg",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "ugcscript"
+        }
+      ],
+      "x": 2505.5625,
+      "y": 126,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "action",
+        "name": "Attack1",
+        "id": "JuScedS2",
+        "varArr": [
+          {
+            "name": "Duration",
+            "type": "Int",
+            "val": 1500
+          }
+        ],
+        "ecaScript": null,
+        "iscustom": true,
+        "desc": "",
+        "icon": "General_Customize_20"
+      },
+      "readonlyScripts": [
+        null
+      ],
+      "_entityName": "XBTEntity"
+    },
     "vyqEWsHb": {
       "_tag": {
         "type": "XBTEntity",
@@ -5938,273 +6205,6 @@
             "name": "Duration",
             "type": "Int",
             "val": 700
-          }
-        ],
-        "ecaScript": null,
-        "iscustom": true,
-        "desc": "",
-        "icon": "General_Customize_20"
-      },
-      "readonlyScripts": [
-        null
-      ],
-      "_entityName": "XBTEntity"
-    },
-    "XLARMTH0": {
-      "_tag": {
-        "type": "XBTEntity",
-        "resourceId": ""
-      },
-      "_entityId": "XLARMTH0",
-      "children": [
-        {
-          "_tag": {
-            "type": "XBTEntity",
-            "resourceId": ""
-          },
-          "_entityId": "RhOyC6vF",
-          "children": [],
-          "prefabVariant": null,
-          "activeValue": {
-            "selfValue": true,
-            "valueTag": "activeValue"
-          },
-          "unlockedValue": {
-            "selfValue": true,
-            "valueTag": "unlockedValue"
-          },
-          "editorLockValue": false,
-          "editorVisibleValue": true,
-          "ecaScripts": [
-            {
-              "fileId": "cjyb66bk25t-mhblrmum-j8p5kivhzp",
-              "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\FC_Cond_CanAttack.fcg",
-              "_tag": {
-                "type": "GFileRefer"
-              },
-              "fileType": "ugcscript"
-            }
-          ],
-          "x": 2501.5625,
-          "y": 284,
-          "width": 180,
-          "height": 88,
-          "nodeInfo": {
-            "type": "condition",
-            "name": "CanAttack2",
-            "id": "RhOyC6vF",
-            "varArr": [
-              {
-                "name": "CD",
-                "type": "Int",
-                "val": 5000
-              },
-              {
-                "name": "Range",
-                "type": "Float",
-                "val": 30
-              }
-            ],
-            "ecaScript": null,
-            "iscustom": true,
-            "desc": "",
-            "icon": "General_Customize_20"
-          },
-          "readonlyScripts": [
-            null
-          ],
-          "_entityName": "XBTEntity"
-        },
-        {
-          "_tag": {
-            "type": "XBTEntity",
-            "resourceId": ""
-          },
-          "_entityId": "O2AAbyfs",
-          "children": [],
-          "prefabVariant": null,
-          "activeValue": {
-            "selfValue": true,
-            "valueTag": "activeValue"
-          },
-          "unlockedValue": {
-            "selfValue": true,
-            "valueTag": "unlockedValue"
-          },
-          "editorLockValue": false,
-          "editorVisibleValue": true,
-          "ecaScripts": [
-            {
-              "fileId": "1yo0cb6x9w1-mhxcx653-ch59cqj8i8m",
-              "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\FC_Act_Attack_Shield.fcg",
-              "_tag": {
-                "type": "GFileRefer"
-              },
-              "fileType": "ugcscript"
-            }
-          ],
-          "x": 2569.5625,
-          "y": 420,
-          "width": 180,
-          "height": 88,
-          "nodeInfo": {
-            "type": "action",
-            "name": "Attack2",
-            "id": "O2AAbyfs",
-            "varArr": [
-              {
-                "name": "Duration",
-                "type": "Int",
-                "val": 3000
-              }
-            ],
-            "ecaScript": null,
-            "iscustom": true,
-            "desc": "",
-            "icon": "General_Customize_20"
-          },
-          "readonlyScripts": [
-            null
-          ],
-          "_entityName": "XBTEntity"
-        }
-      ],
-      "prefabVariant": null,
-      "activeValue": {
-        "selfValue": true,
-        "valueTag": "activeValue"
-      },
-      "unlockedValue": {
-        "selfValue": true,
-        "valueTag": "unlockedValue"
-      },
-      "editorLockValue": false,
-      "editorVisibleValue": true,
-      "ecaScripts": [
-        null
-      ],
-      "x": 2181.5625,
-      "y": 320,
-      "width": 180,
-      "height": 88,
-      "nodeInfo": {
-        "type": "composite",
-        "name": "MemSequence",
-        "id": "XLARMTH0",
-        "keyName": "MemSequence",
-        "desc": "FE_42_JH_WS_MENSEQUENCE",
-        "varArr": [],
-        "in": null,
-        "icon": "General_MemSequence_20",
-        "out": [
-          "RhOyC6vF",
-          "O2AAbyfs"
-        ]
-      },
-      "readonlyScripts": [
-        null
-      ],
-      "_entityName": "XBTEntity"
-    },
-    "RhOyC6vF": {
-      "_tag": {
-        "type": "XBTEntity",
-        "resourceId": ""
-      },
-      "_entityId": "RhOyC6vF",
-      "children": [],
-      "prefabVariant": null,
-      "activeValue": {
-        "selfValue": true,
-        "valueTag": "activeValue"
-      },
-      "unlockedValue": {
-        "selfValue": true,
-        "valueTag": "unlockedValue"
-      },
-      "editorLockValue": false,
-      "editorVisibleValue": true,
-      "ecaScripts": [
-        {
-          "fileId": "cjyb66bk25t-mhblrmum-j8p5kivhzp",
-          "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\FC_Cond_CanAttack.fcg",
-          "_tag": {
-            "type": "GFileRefer"
-          },
-          "fileType": "ugcscript"
-        }
-      ],
-      "x": 2501.5625,
-      "y": 284,
-      "width": 180,
-      "height": 88,
-      "nodeInfo": {
-        "type": "condition",
-        "name": "CanAttack2",
-        "id": "RhOyC6vF",
-        "varArr": [
-          {
-            "name": "CD",
-            "type": "Int",
-            "val": 5000
-          },
-          {
-            "name": "Range",
-            "type": "Float",
-            "val": 30
-          }
-        ],
-        "ecaScript": null,
-        "iscustom": true,
-        "desc": "",
-        "icon": "General_Customize_20"
-      },
-      "readonlyScripts": [
-        null
-      ],
-      "_entityName": "XBTEntity"
-    },
-    "O2AAbyfs": {
-      "_tag": {
-        "type": "XBTEntity",
-        "resourceId": ""
-      },
-      "_entityId": "O2AAbyfs",
-      "children": [],
-      "prefabVariant": null,
-      "activeValue": {
-        "selfValue": true,
-        "valueTag": "activeValue"
-      },
-      "unlockedValue": {
-        "selfValue": true,
-        "valueTag": "unlockedValue"
-      },
-      "editorLockValue": false,
-      "editorVisibleValue": true,
-      "ecaScripts": [
-        {
-          "fileId": "1yo0cb6x9w1-mhxcx653-ch59cqj8i8m",
-          "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\FC_Act_Attack_Shield.fcg",
-          "_tag": {
-            "type": "GFileRefer"
-          },
-          "fileType": "ugcscript"
-        }
-      ],
-      "x": 2569.5625,
-      "y": 420,
-      "width": 180,
-      "height": 88,
-      "nodeInfo": {
-        "type": "action",
-        "name": "Attack2",
-        "id": "O2AAbyfs",
-        "varArr": [
-          {
-            "name": "Duration",
-            "type": "Int",
-            "val": 3000
           }
         ],
         "ecaScript": null,
@@ -12558,4 +12558,4 @@
     ]
   }
 }
-//"{FE:{"v":"1.15.4008519","c":{"FF":5001},"s":100}
+//"{FE:{"v":"1.15.4049104","c":{"FF":5001},"s":100}

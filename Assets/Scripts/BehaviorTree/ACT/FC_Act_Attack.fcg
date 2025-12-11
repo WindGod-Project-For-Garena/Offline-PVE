@@ -4,6 +4,7 @@ import "EditorGenLib.fcc" as EditorLib
 import "BehaviourTree.fcc" as BehaviourTree
 import "Math.fcc" as Math
 import "../../Static/FC_Utilities.fcg" as Utilities
+import "Convert.fcc" as Convert
 
 graph Script_1_ {
     _Duration int
@@ -12,21 +13,27 @@ graph Script_1_ {
  
     event OnNodeEnter(nodeName string, owner entity<BevTreeAttachable>) {
         //var attackScale = owner<ZombieCom>.ZombieInfo["LeftAttackSPDScale"] as float
-        //LogInfo("OnNodeEnter: Attack")
+        LogInfo("Action OnNodeEnter: Attack")
         var attackScale float= 0.5
         GetNodeVariable(thisEntity<BevTreeCustomNode>,"Duration",out var duration)
         _Duration = Ceil(duration as int * attackScale)
-        GetBlackboardValue(owner<BevTreeAttachable>.AttachTarget,"CurTarget",out var curTarget)
-        globalEntity<Utilities>.myLookAt(owner<Transform>,curTarget as entity<Player>,Vector3{0,0,0})
+        var curTarget entity<Player> = owner<Mob>.CurrTarget
+
         _AttackBeginTime = globalEntity<Global>.GameTimeCount
         SetBlackboardValue(owner<BevTreeAttachable>.AttachTarget,"LastAttackTime",_AttackBeginTime)
         var attackspeed float = 1.0/attackScale
+        //LogInfo("OnNodeEnter: Attack curTarget: " + curTarget)
+        Utilities.myLookAt(owner<Transform>,curTarget as entity<Player>,Vector3{0, 0, 0})
+
         PlayAnimation(owner<AnimationControllerAttachable>,"Attack",attackspeed,LoopType.Once)
     }
     func PlayAction(owner entity<BevTreeAttachable>) BevTreeNodeStatus{
+
         if(globalEntity<Global>.GameTimeCount >= _AttackBeginTime+_Duration){
+            //LogInfo("Action Finish")
             return BevTreeNodeStatus.Finish
         }else{
+            //LogInfo("Action Running")
             return BevTreeNodeStatus.Running
         }
     }

@@ -484,10 +484,10 @@ graph PlayerJionGame {
             List.Append(CurrentRandomCards, card2["CardID"] as int)
             List.Append(CurrentRandomCards, card3["CardID"] as int)
             
-            LogInfo("=== 三选一卡牌生成完成 ===")
-            LogInfo("卡牌1 - ID:" + Convert.ToString(card1["CardID"]) + "属性:" + Convert.ToString(card1["Nature"]))
-            LogInfo("卡牌2 - ID:" + Convert.ToString(card2["CardID"]) + "属性:" + Convert.ToString(card2["Nature"]))
-            LogInfo("卡牌3 - ID:" + Convert.ToString(card3["CardID"]) + "属性:" + Convert.ToString(card3["Nature"]))
+           // LogInfo("=== 三选一卡牌生成完成 ===")
+            //LogInfo("卡牌1 - ID:" + Convert.ToString(card1["CardID"]) + "属性:" + Convert.ToString(card1["Nature"]))
+            //LogInfo("卡牌2 - ID:" + Convert.ToString(card2["CardID"]) + "属性:" + Convert.ToString(card2["Nature"]))
+            //LogInfo("卡牌3 - ID:" + Convert.ToString(card3["CardID"]) + "属性:" + Convert.ToString(card3["Nature"]))
             
             // 卡牌数据显示到UI
             UpdateCardUI(card1, card2, card3)

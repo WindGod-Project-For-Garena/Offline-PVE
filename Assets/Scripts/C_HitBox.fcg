@@ -19,8 +19,8 @@ graph C_HitBox {
 	//eventID: 173//KAm7{g?Aok9G6x*XJfGl
 	event OnHitByBullet(weapon entity<Weapon>, hitPoint Vector3) {
 		//LogInfo("OnHitByBullet")
-		LogInfo("Part: " + Part)
-		LogInfo("Owner: " + Owner<Entity>.Name)
+		//LogInfo("Part: " + Part)
+		//LogInfo("Owner: " + Owner<Entity>.Name)
 		MobHandler.TakeDamage(weapon, Part, Owner)
 		//for testing purpose
 	}

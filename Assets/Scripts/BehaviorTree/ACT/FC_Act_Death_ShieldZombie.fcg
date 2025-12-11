@@ -17,11 +17,14 @@ graph FC_Act_Death {
 
 	//eventID: 42//s8004_dup_block
 	event OnNodeEnter(NodeName string, Owner entity<BevTreeAttachable>) {
-		//NodeName<Mob>.StatusDic["CanPatrol"]
+		var isShield bool= Owner<Mob>.StatusDic["IfShield"] as bool
+		if (isShield) {
+			PlayAnimation(Owner as entity<AnimationControllerAttachable>, "Dead", 1, LoopType.Once)
+		} else {
+			PlayAnimation(Owner as entity<AnimationControllerAttachable>, "Dead_noShield", 1, LoopType.Once)
+		}
 
-
-
-		PlayAnimation(Owner as entity<AnimationControllerAttachable>, "Dead", 1, LoopType.Once)
+		
 		PVEMonsterManager.OnMonsterKilled(Owner as entity<LevelObject>)
 
 	}

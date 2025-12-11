@@ -20,7 +20,6 @@ graph FC_NormalZombie {
     tickInterval int = 1
 	
 	counter int = 0
-	hateGainInterval int = 3000
 	
 	preDisplayEffect entity<Effect> = nil
 
@@ -41,15 +40,10 @@ graph FC_NormalZombie {
         thisEntity<Mob>.HP = 600
         thisEntity<Mob>.WalkSpeed = 1.5
         thisEntity<Mob>.Damage = 10
+		thisEntity<Mob>.HateGainInterval = 3000
 		thisEntity<Mob>.StatusDic = Map<string, object>{
-			"HeadShot": false, 	//是否被爆头
-			"InFall": false, 	//是否在摔倒
-			"Hit": false, 		//是否受击
-			"InHit": false, 	//是否在受击
-			"CanPatrol": true, //是否可以巡逻
-			"Walk": false, 		//是否在行走
 		}
-		thisEntity<Mob>.DetectRange = 15
+		thisEntity<Mob>.DetectRange = 30
         var nowTime int = globalEntity<Global>.GameTimeCount
 		SetBlackboardValue(thisEntity<BevTreeAttachable>.AttachTarget, "LastAttackTime", nowTime)
 		SetBlackboardValue(thisEntity<BevTreeAttachable>.AttachTarget, "Curstate", 0)
@@ -94,7 +88,7 @@ graph FC_NormalZombie {
 		//LogInfo("mob: " + mob + "thisEntity: " + thisEntity)
 
 		//处理仇恨值
-		if mob<Mob>.HateGainTime > globalEntity<Global>.GameTimeCount - hateGainInterval {
+		if mob<Mob>.HateGainTime > globalEntity<Global>.GameTimeCount - thisEntity<Mob>.HateGainInterval {
 			mob<Mob>.HateTarget = player
 			mob<Mob>.HateGainTime = globalEntity<Global>.GameTimeCount
 		}

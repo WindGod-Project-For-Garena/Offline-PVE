@@ -21,7 +21,7 @@ graph FC_NormalZombie {
     tickInterval int = 1
 	tweenDuration float = 1000
 	counter int = 0
-	hateGainInterval int = 3000
+	
 
 	hitPos Vector3 = Vector3{0,0,0}
 	preDisplayEffect entity<Effect> = nil
@@ -44,16 +44,15 @@ graph FC_NormalZombie {
         thisEntity<Mob>.HP = 600
         thisEntity<Mob>.WalkSpeed = 1.5
         thisEntity<Mob>.Damage = 10
+		thisEntity<Mob>.HateGainInterval = 3000
 		thisEntity<Mob>.StatusDic = Map<string, object>{
-			"HeadShot": false, 	//是否被爆头
-			"InFall": false, 	//是否在摔倒
-			"Hit": false, 		//是否受击
-			"InHit": false, 	//是否在受击
-			"CanPatrol": true, //是否可以巡逻
-			"Walk": false, 		//是否在行走
+			
 			"IfShield": true, //是否持有盾牌
+			"ShieldHP": 1000, //盾牌血量
+			"ShieldMaxHP": 1000, //盾牌最大血量
 		}
-		thisEntity<Mob>.DetectRange = 15
+
+		thisEntity<Mob>.DetectRange = 30
         var nowTime int = globalEntity<Global>.GameTimeCount
 		SetBlackboardValue(thisEntity<BevTreeAttachable>.AttachTarget, "LastAttackTime", nowTime)
 		SetBlackboardValue(thisEntity<BevTreeAttachable>.AttachTarget, "Curstate", 0)
@@ -213,15 +212,25 @@ graph FC_NormalZombie {
 		////LogInfo("OnDamageMob: " + part + " damage: " + damage + "HP: " + mob<Mob>.HP)
 		////LogInfo("mob: " + mob + "thisEntity: " + thisEntity)
 		//处理仇恨值
-		if mob<Mob>.HateGainTime > globalEntity<Global>.GameTimeCount - hateGainInterval {
+		if mob<Mob>.HateGainTime > globalEntity<Global>.GameTimeCount - thisEntity<Mob>.HateGainInterval {
 			mob<Mob>.HateTarget = player
 			mob<Mob>.HateGainTime = globalEntity<Global>.GameTimeCount
 		}
-		//处理血量，如果血量小于0，则死亡
-		mob<Mob>.HP = mob<Mob>.HP - damage
-		if (mob<Mob>.HP <= 0) {
-			mob<Mob>.HP = 0
+
+		if (part == "Zombie_Shield") {
+			mob<Mob>.StatusDic["ShieldHP"] = mob<Mob>.StatusDic["ShieldHP"] as int - damage
+			if (mob<Mob>.StatusDic["ShieldHP"] as int <= 0) {
+				mob<Mob>.StatusDic["ShieldHP"] = 0
+			}
+		}else{
+			//处理血量，如果血量小于0，则死亡
+			mob<Mob>.HP = mob<Mob>.HP - damage
+			if (mob<Mob>.HP <= 0) {
+				mob<Mob>.HP = 0
+			}
 		}
+		
+
 	}
 
 	//funcID: GetDamage
