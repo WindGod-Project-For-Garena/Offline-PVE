@@ -13,6 +13,8 @@ import "Strings.fcc" as strings
 import "../PVE/UI_C_SkillLevelUp.fcg" as UI_C_SkillLevelUp
 import "../CustomEvent.fcc" as CustomEvent
 
+// 这里是RCT最新代码，WindGod & Holy巨献
+
 [platform_client]
 graph PlayerJionGame {
     SkillUI entity<CustomHud>
