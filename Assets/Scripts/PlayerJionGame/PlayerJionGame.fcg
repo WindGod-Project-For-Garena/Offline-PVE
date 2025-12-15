@@ -1502,7 +1502,7 @@ graph PlayerJionGame {
         // 更新玩家当前属性（使用局内数据）
         currPlayer<Player>.MaxHP = PlayerDataInGame["HP"] as int
         currPlayer<Player>.HP = PlayerDataInGame["HP"] as int
-        currPlayer<Player>.RunSpeedScale = PlayerDataInGame["MoveSpeed"] as int
+        currPlayer<Player>.RunSpeedScale = PlayerDataInGame["MoveSpeed"] as float
     }
 
     // 更新技能1数据
@@ -1564,8 +1564,9 @@ graph PlayerJionGame {
         // DestroyItem(currPlayer,  ItemIDType.SGAmmo, 999)
         // DestroyItem(currPlayer, ItemIDType.GoldMP5_III, 1)
         // DestroyItem(currPlayer,  ItemIDType.SGAmmo, 999)
-        currPlayer<Player>.HP = PlayerDataWithOuterBonus["HP"] as int
-        currPlayer<Player>.RunSpeedScale = PlayerDataWithOuterBonus["MoveSpeed"] as int
+        currPlayer<Player>.MaxHP = Round(PlayerDataWithOuterBonus["HP"] as int)
+        currPlayer<Player>.HP = Round(PlayerDataWithOuterBonus["HP"] as int)
+        currPlayer<Player>.RunSpeedScale = PlayerDataWithOuterBonus["MoveSpeed"] as float
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     // 显示当前所有属性
