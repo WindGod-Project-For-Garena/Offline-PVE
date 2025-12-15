@@ -29,7 +29,7 @@ graph FC_NormalZombie {
 	//funcID: Init
 	async func Init() {
 		//CreateMoveTween(Vector3{0,0,0})
-		thisEntity<BevTreeAttachable>.AttachTarget<BevTree>.TickInterval = tickInterval
+		thisEntity<BevTreeAttachableForClient>.AttachTarget<BevTree>.TickInterval = tickInterval
 		thisEntity<Mob>.MobName = "NormalZombie"
         thisEntity<Mob>.MaxHP = 600
         thisEntity<Mob>.HP = 600
@@ -41,8 +41,8 @@ graph FC_NormalZombie {
 		}
 		thisEntity<Mob>.DetectRange = 30
         var nowTime int = globalEntity<Global>.GameTimeCount
-		SetBlackboardValue(thisEntity<BevTreeAttachable>.AttachTarget, "LastAttackTime", nowTime)
-		SetBlackboardValue(thisEntity<BevTreeAttachable>.AttachTarget, "Curstate", 0)
+		SetBlackboardValue(thisEntity<BevTreeAttachableForClient>.AttachTarget, "LastAttackTime", nowTime)
+		SetBlackboardValue(thisEntity<BevTreeAttachableForClient>.AttachTarget, "Curstate", 0)
 		WaitForMillisecond(2000)
 		//DispatchEventWithPlatform_Deprecated(100002, thisEntity, true, List<object>{thisEntity<CustomComponent31897461>.ZombieInfo["InitSpeed"]})
 		

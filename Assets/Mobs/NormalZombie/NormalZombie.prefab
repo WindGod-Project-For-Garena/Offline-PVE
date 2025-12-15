@@ -35,22 +35,14 @@
         "z": 0
       },
       "BTPath": [
-        {
-          "fileId": "deactam6hc-lzrvmj32-wft19y35a1h",
-          "filePath": "Assets\\Mobs\\NormalZombie\\NormalZombie.xbt",
-          "_tag": {
-            "type": "GFileRefer"
-          },
-          "fileType": "xbt"
-        }
+        null
       ],
       "visible": true,
       "VisibilityLayer": 0,
       "modelOptimization": 0,
       "streamingLayer": "",
       "attributes": [
-        2,
-        4
+        2
       ],
       "isTrigger": false,
       "collidable": true,
@@ -64,8 +56,8 @@
         "Collider",
         "AimableEntity",
         "AimAssistEntity",
-        "BehaviourTreeAttachable",
-        "CustomComponent59601760"
+        "CustomComponent59601760",
+        "BehaviourTreeAttachableForClient"
       ],
       "_filters": [
         "node.withscript"
@@ -210,7 +202,18 @@
           "PROP_84519962": 10,
           "PROP_90540570": null,
           "PROP_42420456": 0,
-          "PROP_26191266": null
+          "PROP_26191266": null,
+          "PROP_56442283": 0
+        },
+        "BehaviourTreeAttachableForClient": {
+          "BTreeID": {
+            "fileId": "pg9oczv55ot-mj7375l1-djeokrz617i",
+            "filePath": "Assets\\Mobs\\NormalZombie\\N_NormalZombie.xbt",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "xbt"
+          }
         }
       },
       "entityVersion": 3,
@@ -525,4 +528,4 @@
   "discriminator": "ISceneLike",
   "_entityName": "NormalZombie"
 }
-//"{FE:{"v":"1.15.4049104","c":{"FF":5001},"s":100}
+//"{FE:{"v":"0.2.4081265","c":{"FF":5001},"s":100}

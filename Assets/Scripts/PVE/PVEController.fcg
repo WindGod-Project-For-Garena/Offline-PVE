@@ -12,7 +12,7 @@ import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
 import "../MobScripts/C_BossButcher.fcg" as C_BossButcher
 
 [platform_client]
-static graph FC_PVEController {
+static graph PVEController {
     // 控制器状态
     IsGameActive bool = false
     CurrentLevel int = 1
@@ -35,43 +35,19 @@ static graph FC_PVEController {
 
     // 游戲成功或失敗
     IsGameSuccess bool = false
-    
-    event OnAwake() {
-        LogInfo("PVE控制器初始化")
-        InitializeController()
-    }
-    
-    func InitializeController() {
-        // 初始化游戏状态
-        IsGameActive = false
-        CurrentLevel = 1  // 初始化为0，表示未开始
-        CurrentWave = 0
-        IsCountdownActive = false
-        LogInfo("PVE控制器初始化完成")
-    }
 
     event OnPlayerJoin(player entity<Player>) {
         currPlayer = player
     }
 
-    // 游戏开始
-    func OnGameStartNext(level int, skillIndex int, ability1Level int, ability2Level int, ability3Level int) {
-        LogInfo("游戏开始 - 关卡: " + level + "，技能: " + skillIndex)
-        StartPVEGame(level)
-    }
-
-    func ToServer_StartNextWave() {
+    //开始下一波事件
+    func StartNextWave() {
         CurrentWave = CurrentWave + 1
         StartWave(CurrentWave)
     }
 
-    //DEbug的临时初始化
-    func S_Debug_NextWave() {
-        IsCountdownActive = false
-    }
-
     // 开始PVE游戏（指定关卡）
-    func StartPVEGame(level int) {
+    func PVELevelStartInitialization(level int) {
         if IsGameActive {
             LogWarning("游戏已在进行中")
             return
@@ -93,12 +69,6 @@ static graph FC_PVEController {
 
         // 通知怪物管理器开始关卡
         monsterManager.LevelInitialize(level)
-
-        //通知客户端显示升级技能UI(这里写法玩家硬写的)
-        // DispatchEventToEntity(ToClient_DisplaySkillThreeChoiceOne,GetAllPlayers()[0], PlatformType.Client, List<object>{})
-        
-        // 开始第一波
-        // StartWave(1)
     }
     
     // 开始指定波次
@@ -115,6 +85,11 @@ static graph FC_PVEController {
         
         // 开始倒计时
         start WaveCountdownTimer()
+    }
+
+      //DEbug的临时初始化
+    func S_Debug_NextWave() {
+        IsCountdownActive = false
     }
     
     // 波次倒计时器

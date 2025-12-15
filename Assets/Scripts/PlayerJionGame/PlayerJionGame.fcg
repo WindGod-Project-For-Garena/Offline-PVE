@@ -13,7 +13,7 @@ import "../PVE/UI_C_SkillLevelUp.fcg" as UI_C_SkillLevelUp
 import "Offline.fcc" as Offline
 import "Items.fcc" as Items
 import "../CustomEvent.fcc" as CustomEvent
-import "../PVE/FC_PVEController.fcg" as FC_PVEController
+import "../PVE/PVEController.fcg" as PVEController
 
 // 这里是RCT最新代码，WindGod & Holy巨献
 
@@ -431,7 +431,7 @@ graph PlayerJionGame {
                 start AutoChoiceBestOneCard()
             }
             if  SecondDownUI<CustomUI>.IsVisible == false{
-                LogInfo("打断计时打断计时打断计时打断计时打断计时")
+                //LogInfo("打断计时打断计时打断计时打断计时打断计时")
                 time = -1
                 break
             }
@@ -498,7 +498,7 @@ graph PlayerJionGame {
         ChoiceThreeCardUI<CustomUI>.IsVisible = false
         
         // 开始下一波
-        FC_PVEController.ToServer_StartNextWave()
+        PVEController.StartNextWave()
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     func StartThree_choose_One(level int, CurrentSkill int, ability1Level int, ability2Level int, ability3Level int){

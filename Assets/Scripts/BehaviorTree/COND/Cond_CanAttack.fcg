@@ -3,8 +3,8 @@ import "EditorGenLib.fcc" as EditorLib
 import "BehaviourTree.fcc" as BehaviourTree
 import "Math.fcc" as Math
 
+[platform_client]
 graph Script_1_ {
-    nextTime int = 0
     //Executed when entity is created
     event OnAwake() {
 
@@ -18,23 +18,19 @@ graph Script_1_ {
             return false
         }
     }
-    func playCondition(owner entity<BevTreeAttachable>) bool{
+    func playCondition(owner entity<BevTreeAttachableForClient>) bool{
         //LogInfo("playCondition: CanAttack")
         GetNodeVariable(thisEntity<BevTreeCustomNode>,"CD",out var cd)
-        GetBlackboardValue(owner<BevTreeAttachable>.AttachTarget,"LastAttackTime",out var LastAttackTime)
+        GetBlackboardValue(owner<BevTreeAttachableForClient>.AttachTarget,"LastAttackTime",out var LastAttackTime)
         if (LastAttackTime == nil){
-            var realCD = cd as int
-            nextTime = Math.Ceil(globalEntity<Global>.GameTimeCount + RandomFloat(1,2) * realCD)
             return true
         }
         //var realCD = Ceil(Floor(cd as int) * owner<ZombieCom>.ZombieInfo["LeftAttackSPDScale"] as float)
-        
+        var realCD = cd as int
+        var nextTime = LastAttackTime as int + realCD
         if (globalEntity<Global>.GameTimeCount < nextTime){
             return false
         }
-        
-        var realCD = cd as int
-        nextTime = Math.Ceil(globalEntity<Global>.GameTimeCount + RandomFloat(1,2) * realCD)
         var curTarget entity<Player> = owner<Mob>.CurrTarget
         if (curTarget == nil){
             return false

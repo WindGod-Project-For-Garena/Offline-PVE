@@ -1,0 +1,6435 @@
+{
+  "rootEntity": "behaviorRoot",
+  "graphJson": {
+    "cells": [
+      {
+        "position": {
+          "x": 10,
+          "y": -10
+        },
+        "size": {
+          "width": 180,
+          "height": 88
+        },
+        "view": "vue-shape-view",
+        "shape": "vue-shape",
+        "id": "behaviorRoot",
+        "component": "xbt-base-node",
+        "data": {},
+        "zIndex": 1,
+        "ports": {
+          "groups": {
+            "in": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "inVal": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "out": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "outVal": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            }
+          },
+          "items": [
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 69
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "36fe5838-cf22-4a60-9c47-b1932c976a0e"
+            }
+          ]
+        }
+      },
+      {
+        "position": {
+          "x": 240,
+          "y": 10
+        },
+        "size": {
+          "width": 180,
+          "height": 130
+        },
+        "view": "vue-shape-view",
+        "shape": "vue-shape",
+        "id": "OGKL54xM",
+        "component": "xbt-base-node",
+        "data": {},
+        "zIndex": 2,
+        "ports": {
+          "groups": {
+            "in": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "inVal": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "out": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "outVal": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            }
+          },
+          "items": [
+            {
+              "group": "in",
+              "args": {
+                "dx": 8,
+                "dy": 25
+              },
+              "attrs": {
+                "text": {
+                  "text": "in"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "45c3918c-1887-41f6-b6c4-45c78c01b108"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 69
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "0be61ace-370f-4f2e-aeb4-381ee8871e39"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 83
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "a4486594-7b22-4753-b39d-491dad7f5e6a"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 97
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "7561850e-cb8e-44fe-a647-d23a3c2e2dc0"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 111
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                }
+              },
+              "id": "81f7fd49-c464-401e-b0cd-366aed8c3578"
+            }
+          ]
+        }
+      },
+      {
+        "shape": "edge",
+        "attrs": {
+          "line": {
+            "stroke": "var(--t11)",
+            "strokeWidth": 1
+          }
+        },
+        "id": "4c4c50a2-40cf-489a-9cae-0c173953855f",
+        "zIndex": 3,
+        "source": {
+          "cell": "behaviorRoot",
+          "port": "36fe5838-cf22-4a60-9c47-b1932c976a0e"
+        },
+        "target": {
+          "cell": "OGKL54xM",
+          "port": "45c3918c-1887-41f6-b6c4-45c78c01b108"
+        }
+      },
+      {
+        "position": {
+          "x": 530,
+          "y": -130
+        },
+        "size": {
+          "width": 180,
+          "height": 116
+        },
+        "view": "vue-shape-view",
+        "shape": "vue-shape",
+        "id": "gE96KDHw",
+        "component": "xbt-base-node",
+        "data": {},
+        "zIndex": 4,
+        "ports": {
+          "groups": {
+            "in": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "inVal": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "out": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "outVal": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            }
+          },
+          "items": [
+            {
+              "group": "in",
+              "args": {
+                "dx": 8,
+                "dy": 25
+              },
+              "attrs": {
+                "text": {
+                  "text": "in"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "3fce3bca-6363-41cb-82a5-068dd7478454"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 69
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "78d1da97-5d52-4da6-b1ed-b04bd898ae76"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 83
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "d0cd749b-faaa-4d80-bc47-a8e206b236df"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 97
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                }
+              },
+              "id": "4e9dd693-7fb6-410b-a808-1b97b477d409"
+            }
+          ]
+        }
+      },
+      {
+        "shape": "edge",
+        "attrs": {
+          "line": {
+            "stroke": "var(--t11)",
+            "strokeWidth": 1
+          }
+        },
+        "id": "5f838144-14ee-457a-acc8-768fbf2155a4",
+        "zIndex": 5,
+        "source": {
+          "cell": "OGKL54xM",
+          "port": "0be61ace-370f-4f2e-aeb4-381ee8871e39"
+        },
+        "target": {
+          "cell": "gE96KDHw",
+          "port": "3fce3bca-6363-41cb-82a5-068dd7478454"
+        }
+      },
+      {
+        "position": {
+          "x": 800,
+          "y": -210
+        },
+        "size": {
+          "width": 180,
+          "height": 88
+        },
+        "view": "vue-shape-view",
+        "shape": "vue-shape",
+        "id": "KUy16uDh",
+        "component": "xbt-base-node",
+        "data": {},
+        "zIndex": 6,
+        "ports": {
+          "groups": {
+            "in": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "inVal": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "out": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "outVal": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            }
+          },
+          "items": [
+            {
+              "group": "in",
+              "args": {
+                "dx": 8,
+                "dy": 25
+              },
+              "attrs": {
+                "text": {
+                  "text": "in"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "58d37f98-3d00-4799-8e6c-c17492efec5c"
+            }
+          ]
+        }
+      },
+      {
+        "position": {
+          "x": 810,
+          "y": -70
+        },
+        "size": {
+          "width": 180,
+          "height": 88
+        },
+        "view": "vue-shape-view",
+        "shape": "vue-shape",
+        "id": "CAIvcf9s",
+        "component": "xbt-base-node",
+        "data": {},
+        "zIndex": 7,
+        "ports": {
+          "groups": {
+            "in": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "inVal": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "out": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "outVal": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            }
+          },
+          "items": [
+            {
+              "group": "in",
+              "args": {
+                "dx": 8,
+                "dy": 25
+              },
+              "attrs": {
+                "text": {
+                  "text": "in"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "f6fa9d19-09af-466a-bed3-47063614a0ea"
+            }
+          ]
+        }
+      },
+      {
+        "shape": "edge",
+        "attrs": {
+          "line": {
+            "stroke": "var(--t11)",
+            "strokeWidth": 1
+          }
+        },
+        "id": "a31f0f13-b426-4803-a96d-657f51990762",
+        "zIndex": 8,
+        "source": {
+          "cell": "gE96KDHw",
+          "port": "78d1da97-5d52-4da6-b1ed-b04bd898ae76"
+        },
+        "target": {
+          "cell": "KUy16uDh",
+          "port": "58d37f98-3d00-4799-8e6c-c17492efec5c"
+        }
+      },
+      {
+        "shape": "edge",
+        "attrs": {
+          "line": {
+            "stroke": "var(--t11)",
+            "strokeWidth": 1
+          }
+        },
+        "id": "5445bad1-f92c-4477-9224-493ad9868d8a",
+        "zIndex": 9,
+        "source": {
+          "cell": "gE96KDHw",
+          "port": "d0cd749b-faaa-4d80-bc47-a8e206b236df"
+        },
+        "target": {
+          "cell": "CAIvcf9s",
+          "port": "f6fa9d19-09af-466a-bed3-47063614a0ea"
+        }
+      },
+      {
+        "position": {
+          "x": 560,
+          "y": 100
+        },
+        "size": {
+          "width": 180,
+          "height": 102
+        },
+        "view": "vue-shape-view",
+        "shape": "vue-shape",
+        "id": "C5KuCy44",
+        "component": "xbt-base-node",
+        "data": {},
+        "zIndex": 10,
+        "ports": {
+          "groups": {
+            "in": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "inVal": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "out": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "outVal": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            }
+          },
+          "items": [
+            {
+              "group": "in",
+              "args": {
+                "dx": 8,
+                "dy": 25
+              },
+              "attrs": {
+                "text": {
+                  "text": "in"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "9860e99f-bc0d-4853-8519-eb522959a939"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 69
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "137e34eb-f0d1-4436-bb33-f4059cb7d4f7"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 83
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                }
+              },
+              "id": "ca585520-6fca-4017-937e-bf2d7632a503"
+            }
+          ]
+        }
+      },
+      {
+        "shape": "edge",
+        "attrs": {
+          "line": {
+            "stroke": "var(--t11)",
+            "strokeWidth": 1
+          }
+        },
+        "id": "c4081576-4b56-4d34-ab8a-41d299986a70",
+        "zIndex": 11,
+        "source": {
+          "cell": "OGKL54xM",
+          "port": "a4486594-7b22-4753-b39d-491dad7f5e6a"
+        },
+        "target": {
+          "cell": "C5KuCy44",
+          "port": "9860e99f-bc0d-4853-8519-eb522959a939"
+        }
+      },
+      {
+        "position": {
+          "x": 830,
+          "y": 100
+        },
+        "size": {
+          "width": 180,
+          "height": 116
+        },
+        "view": "vue-shape-view",
+        "shape": "vue-shape",
+        "id": "hSS5P1gW",
+        "component": "xbt-base-node",
+        "data": {},
+        "zIndex": 12,
+        "ports": {
+          "groups": {
+            "in": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "inVal": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "out": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "outVal": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            }
+          },
+          "items": [
+            {
+              "group": "in",
+              "args": {
+                "dx": 8,
+                "dy": 25
+              },
+              "attrs": {
+                "text": {
+                  "text": "in"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "f5f2aa31-d244-4ca5-94d6-040c67fc3d7f"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 69
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "8012171a-3948-4603-b375-1329660f5d68"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 83
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "4f56fa53-4ca8-4db5-bd16-d82ea59eca94"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 97
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                }
+              },
+              "id": "c0041400-1515-4380-9a80-122e7300cacd"
+            }
+          ]
+        }
+      },
+      {
+        "shape": "edge",
+        "attrs": {
+          "line": {
+            "stroke": "var(--t11)",
+            "strokeWidth": 1
+          }
+        },
+        "id": "b1fd25a6-716c-48c8-ba94-7c15914bb850",
+        "zIndex": 13,
+        "source": {
+          "cell": "C5KuCy44",
+          "port": "137e34eb-f0d1-4436-bb33-f4059cb7d4f7"
+        },
+        "target": {
+          "cell": "hSS5P1gW",
+          "port": "f5f2aa31-d244-4ca5-94d6-040c67fc3d7f"
+        }
+      },
+      {
+        "position": {
+          "x": 1120,
+          "y": 50
+        },
+        "size": {
+          "width": 180,
+          "height": 88
+        },
+        "view": "vue-shape-view",
+        "shape": "vue-shape",
+        "id": "RS5zCP4o",
+        "component": "xbt-base-node",
+        "data": {},
+        "zIndex": 14,
+        "ports": {
+          "groups": {
+            "in": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "inVal": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "out": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "outVal": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            }
+          },
+          "items": [
+            {
+              "group": "in",
+              "args": {
+                "dx": 8,
+                "dy": 25
+              },
+              "attrs": {
+                "text": {
+                  "text": "in"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "9f73288e-3c21-480e-8112-9da9ac9b11dc"
+            }
+          ]
+        }
+      },
+      {
+        "shape": "edge",
+        "attrs": {
+          "line": {
+            "stroke": "var(--t11)",
+            "strokeWidth": 1
+          }
+        },
+        "id": "3d630e23-efbd-42a6-a222-900eadd15322",
+        "zIndex": 15,
+        "source": {
+          "cell": "hSS5P1gW",
+          "port": "8012171a-3948-4603-b375-1329660f5d68"
+        },
+        "target": {
+          "cell": "RS5zCP4o",
+          "port": "9f73288e-3c21-480e-8112-9da9ac9b11dc"
+        }
+      },
+      {
+        "position": {
+          "x": 1130,
+          "y": 180
+        },
+        "size": {
+          "width": 180,
+          "height": 116
+        },
+        "view": "vue-shape-view",
+        "shape": "vue-shape",
+        "id": "m3ArLs1x",
+        "component": "xbt-base-node",
+        "data": {},
+        "zIndex": 16,
+        "ports": {
+          "groups": {
+            "in": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "inVal": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "out": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "outVal": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            }
+          },
+          "items": [
+            {
+              "group": "in",
+              "args": {
+                "dx": 8,
+                "dy": 25
+              },
+              "attrs": {
+                "text": {
+                  "text": "in"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "2d9376df-da1d-400e-82da-72c1e03b20f2"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 69
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "55b89349-bfd3-4349-9627-187832c6c56b"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 83
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "8d1a66fd-7a2b-48ed-be52-ab384fb9f54f"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 97
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                }
+              },
+              "id": "7c41dd70-7d1b-4f70-bc86-4fe6bdb74b7a"
+            }
+          ]
+        }
+      },
+      {
+        "shape": "edge",
+        "attrs": {
+          "line": {
+            "stroke": "var(--t11)",
+            "strokeWidth": 1
+          }
+        },
+        "id": "a1fda298-e705-44d4-aad9-e7d9aa0740b9",
+        "zIndex": 17,
+        "source": {
+          "cell": "hSS5P1gW",
+          "port": "4f56fa53-4ca8-4db5-bd16-d82ea59eca94"
+        },
+        "target": {
+          "cell": "m3ArLs1x",
+          "port": "2d9376df-da1d-400e-82da-72c1e03b20f2"
+        }
+      },
+      {
+        "position": {
+          "x": 1430,
+          "y": 230
+        },
+        "size": {
+          "width": 180,
+          "height": 88
+        },
+        "view": "vue-shape-view",
+        "shape": "vue-shape",
+        "id": "mum3LlpR",
+        "component": "xbt-base-node",
+        "data": {},
+        "zIndex": 18,
+        "ports": {
+          "groups": {
+            "in": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "inVal": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "out": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "outVal": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            }
+          },
+          "items": [
+            {
+              "group": "in",
+              "args": {
+                "dx": 8,
+                "dy": 25
+              },
+              "attrs": {
+                "text": {
+                  "text": "in"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "de3b8101-af47-4fe0-b885-b23a7f1a3f26"
+            }
+          ]
+        }
+      },
+      {
+        "position": {
+          "x": 1400,
+          "y": 90
+        },
+        "size": {
+          "width": 180,
+          "height": 88
+        },
+        "view": "vue-shape-view",
+        "shape": "vue-shape",
+        "id": "FlFhiXxJ",
+        "component": "xbt-base-node",
+        "data": {},
+        "zIndex": 19,
+        "ports": {
+          "groups": {
+            "in": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "inVal": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "out": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "outVal": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            }
+          },
+          "items": [
+            {
+              "group": "in",
+              "args": {
+                "dx": 8,
+                "dy": 25
+              },
+              "attrs": {
+                "text": {
+                  "text": "in"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "bb7fed5d-b2a0-47fc-9252-2364a1c655c4"
+            }
+          ]
+        }
+      },
+      {
+        "shape": "edge",
+        "attrs": {
+          "line": {
+            "stroke": "var(--t11)",
+            "strokeWidth": 1
+          }
+        },
+        "id": "9d3284cd-5d09-464f-84db-815f888396df",
+        "zIndex": 20,
+        "source": {
+          "cell": "m3ArLs1x",
+          "port": "55b89349-bfd3-4349-9627-187832c6c56b"
+        },
+        "target": {
+          "cell": "FlFhiXxJ",
+          "port": "bb7fed5d-b2a0-47fc-9252-2364a1c655c4"
+        }
+      },
+      {
+        "shape": "edge",
+        "attrs": {
+          "line": {
+            "stroke": "var(--t11)",
+            "strokeWidth": 1
+          }
+        },
+        "id": "70975eb3-b347-4bbd-ac07-3dd6f8a305ab",
+        "zIndex": 21,
+        "source": {
+          "cell": "m3ArLs1x",
+          "port": "8d1a66fd-7a2b-48ed-be52-ab384fb9f54f"
+        },
+        "target": {
+          "cell": "mum3LlpR",
+          "port": "de3b8101-af47-4fe0-b885-b23a7f1a3f26"
+        }
+      },
+      {
+        "position": {
+          "x": 600,
+          "y": 470
+        },
+        "size": {
+          "width": 180,
+          "height": 116
+        },
+        "view": "vue-shape-view",
+        "shape": "vue-shape",
+        "id": "mTc4pqCB",
+        "component": "xbt-base-node",
+        "data": {},
+        "zIndex": 22,
+        "ports": {
+          "groups": {
+            "in": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "inVal": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "out": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "outVal": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            }
+          },
+          "items": [
+            {
+              "group": "in",
+              "args": {
+                "dx": 8,
+                "dy": 25
+              },
+              "attrs": {
+                "text": {
+                  "text": "in"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "b4c51284-f80e-4d98-8c5e-517c6ea6ccc2"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 69
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "f38f91b5-a867-4027-beb0-45a30133e7e8"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 83
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "d9682e8f-9535-4d8b-83ea-8dd0f5fdcd92"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 97
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                }
+              },
+              "id": "5df70d7b-482f-44a7-82f8-7a997444f2ff"
+            }
+          ]
+        }
+      },
+      {
+        "shape": "edge",
+        "attrs": {
+          "line": {
+            "stroke": "var(--t11)",
+            "strokeWidth": 1
+          }
+        },
+        "id": "994cc86c-6b45-4c70-89f8-2938a336f312",
+        "zIndex": 23,
+        "source": {
+          "cell": "OGKL54xM",
+          "port": "7561850e-cb8e-44fe-a647-d23a3c2e2dc0"
+        },
+        "target": {
+          "cell": "mTc4pqCB",
+          "port": "b4c51284-f80e-4d98-8c5e-517c6ea6ccc2"
+        }
+      },
+      {
+        "position": {
+          "x": 960,
+          "y": 440
+        },
+        "size": {
+          "width": 180,
+          "height": 116
+        },
+        "view": "vue-shape-view",
+        "shape": "vue-shape",
+        "id": "t0uOJFKv",
+        "component": "xbt-base-node",
+        "data": {},
+        "zIndex": 24,
+        "ports": {
+          "groups": {
+            "in": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "inVal": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "out": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "outVal": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            }
+          },
+          "items": [
+            {
+              "group": "in",
+              "args": {
+                "dx": 8,
+                "dy": 25
+              },
+              "attrs": {
+                "text": {
+                  "text": "in"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "482f417c-3c09-46dc-97bd-7537fed54862"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 69
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "52c487c8-1bc5-411f-91fb-c4dc6d19d5dc"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 83
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "03ef54b2-1943-4854-affa-f18756d881ae"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 97
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                }
+              },
+              "id": "96bc0471-5acb-4d93-8ca1-e1bf044b918b"
+            }
+          ]
+        }
+      },
+      {
+        "shape": "edge",
+        "attrs": {
+          "line": {
+            "stroke": "var(--t11)",
+            "strokeWidth": 1
+          }
+        },
+        "id": "b18604dd-0cf1-4e93-aff2-6e35bf17644f",
+        "zIndex": 25,
+        "source": {
+          "cell": "mTc4pqCB",
+          "port": "f38f91b5-a867-4027-beb0-45a30133e7e8"
+        },
+        "target": {
+          "cell": "t0uOJFKv",
+          "port": "482f417c-3c09-46dc-97bd-7537fed54862"
+        }
+      },
+      {
+        "position": {
+          "x": 950,
+          "y": 650
+        },
+        "size": {
+          "width": 180,
+          "height": 116
+        },
+        "view": "vue-shape-view",
+        "shape": "vue-shape",
+        "id": "qEJ7mu8V",
+        "component": "xbt-base-node",
+        "data": {},
+        "zIndex": 26,
+        "ports": {
+          "groups": {
+            "in": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "inVal": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "out": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "outVal": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            }
+          },
+          "items": [
+            {
+              "group": "in",
+              "args": {
+                "dx": 8,
+                "dy": 25
+              },
+              "attrs": {
+                "text": {
+                  "text": "in"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "a0a849a1-2dc8-49fa-baa1-963ca1f4a708"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 69
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "fe06636d-28b2-4a83-bf92-ceabf2b1aa14"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 83
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "2c39e22b-6986-4276-8e49-55e0fb828036"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 97
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                }
+              },
+              "id": "870d11cb-ced8-47bf-b05b-ec7c6a47de70"
+            }
+          ]
+        }
+      },
+      {
+        "shape": "edge",
+        "attrs": {
+          "line": {
+            "stroke": "var(--t11)",
+            "strokeWidth": 1
+          }
+        },
+        "id": "a7cce575-8113-4f42-826d-1c599fbaacf6",
+        "zIndex": 27,
+        "source": {
+          "cell": "mTc4pqCB",
+          "port": "d9682e8f-9535-4d8b-83ea-8dd0f5fdcd92"
+        },
+        "target": {
+          "cell": "qEJ7mu8V",
+          "port": "a0a849a1-2dc8-49fa-baa1-963ca1f4a708"
+        }
+      },
+      {
+        "position": {
+          "x": 1320,
+          "y": 680
+        },
+        "size": {
+          "width": 180,
+          "height": 116
+        },
+        "view": "vue-shape-view",
+        "shape": "vue-shape",
+        "id": "PnVLfm3C",
+        "component": "xbt-base-node",
+        "data": {},
+        "zIndex": 28,
+        "ports": {
+          "groups": {
+            "in": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "inVal": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "out": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "outVal": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            }
+          },
+          "items": [
+            {
+              "group": "in",
+              "args": {
+                "dx": 8,
+                "dy": 25
+              },
+              "attrs": {
+                "text": {
+                  "text": "in"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "9419c314-9691-4b1b-9ee7-3c449106d644"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 69
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "398f0bfa-d1a1-4884-82c1-99c3aeea423a"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 83
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "af6d702d-d8f0-4140-bf09-f76f0abc821f"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 97
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                }
+              },
+              "id": "80c7b0b7-d968-4e57-a582-6624cec985c0"
+            }
+          ]
+        }
+      },
+      {
+        "shape": "edge",
+        "attrs": {
+          "line": {
+            "stroke": "var(--t13)",
+            "strokeWidth": 1
+          }
+        },
+        "id": "9148b9c9-8861-4279-84e2-2f106995c9b5",
+        "zIndex": 29,
+        "source": {
+          "cell": "qEJ7mu8V",
+          "port": "fe06636d-28b2-4a83-bf92-ceabf2b1aa14"
+        },
+        "target": {
+          "cell": "PnVLfm3C",
+          "port": "9419c314-9691-4b1b-9ee7-3c449106d644"
+        }
+      },
+      {
+        "position": {
+          "x": 1320,
+          "y": 510
+        },
+        "size": {
+          "width": 180,
+          "height": 88
+        },
+        "view": "vue-shape-view",
+        "shape": "vue-shape",
+        "id": "zZK0oYBm",
+        "component": "xbt-base-node",
+        "data": {},
+        "zIndex": 30,
+        "ports": {
+          "groups": {
+            "in": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "inVal": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "out": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "outVal": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            }
+          },
+          "items": [
+            {
+              "group": "in",
+              "args": {
+                "dx": 8,
+                "dy": 25
+              },
+              "attrs": {
+                "text": {
+                  "text": "in"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "fabc6bf8-1749-493c-bacc-3fc20cadb189"
+            }
+          ]
+        }
+      },
+      {
+        "position": {
+          "x": 1290,
+          "y": 380
+        },
+        "size": {
+          "width": 180,
+          "height": 88
+        },
+        "view": "vue-shape-view",
+        "shape": "vue-shape",
+        "id": "aTFGtbCW",
+        "component": "xbt-base-node",
+        "data": {},
+        "zIndex": 31,
+        "ports": {
+          "groups": {
+            "in": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "inVal": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "out": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "outVal": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            }
+          },
+          "items": [
+            {
+              "group": "in",
+              "args": {
+                "dx": 8,
+                "dy": 25
+              },
+              "attrs": {
+                "text": {
+                  "text": "in"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "40395f3a-1f46-469a-a7f7-562bc1d75758"
+            }
+          ]
+        }
+      },
+      {
+        "shape": "edge",
+        "attrs": {
+          "line": {
+            "stroke": "var(--t11)",
+            "strokeWidth": 1
+          }
+        },
+        "id": "72ecb39b-7ac0-4847-a6bc-f186ef88a8c3",
+        "zIndex": 32,
+        "source": {
+          "cell": "t0uOJFKv",
+          "port": "52c487c8-1bc5-411f-91fb-c4dc6d19d5dc"
+        },
+        "target": {
+          "cell": "aTFGtbCW",
+          "port": "40395f3a-1f46-469a-a7f7-562bc1d75758"
+        }
+      },
+      {
+        "shape": "edge",
+        "attrs": {
+          "line": {
+            "stroke": "var(--t11)",
+            "strokeWidth": 1
+          }
+        },
+        "id": "76c953ce-d8d9-4809-928f-fccc60a91cab",
+        "zIndex": 33,
+        "source": {
+          "cell": "t0uOJFKv",
+          "port": "03ef54b2-1943-4854-affa-f18756d881ae"
+        },
+        "target": {
+          "cell": "zZK0oYBm",
+          "port": "fabc6bf8-1749-493c-bacc-3fc20cadb189"
+        }
+      },
+      {
+        "position": {
+          "x": 1670,
+          "y": 760
+        },
+        "size": {
+          "width": 180,
+          "height": 88
+        },
+        "view": "vue-shape-view",
+        "shape": "vue-shape",
+        "id": "FQGr7pg8",
+        "component": "xbt-base-node",
+        "data": {},
+        "zIndex": 34,
+        "ports": {
+          "groups": {
+            "in": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "inVal": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "out": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "outVal": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            }
+          },
+          "items": [
+            {
+              "group": "in",
+              "args": {
+                "dx": 8,
+                "dy": 25
+              },
+              "attrs": {
+                "text": {
+                  "text": "in"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "345839cb-1d0d-4264-aaa3-cf98154b8fef"
+            }
+          ]
+        }
+      },
+      {
+        "position": {
+          "x": 1680,
+          "y": 580
+        },
+        "size": {
+          "width": 180,
+          "height": 88
+        },
+        "view": "vue-shape-view",
+        "shape": "vue-shape",
+        "id": "ojjqKSyp",
+        "component": "xbt-base-node",
+        "data": {},
+        "zIndex": 35,
+        "ports": {
+          "groups": {
+            "in": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "inVal": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "out": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "outVal": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            }
+          },
+          "items": [
+            {
+              "group": "in",
+              "args": {
+                "dx": 8,
+                "dy": 25
+              },
+              "attrs": {
+                "text": {
+                  "text": "in"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "ccd39f6d-0d2f-4827-b16f-7bfb9319c931"
+            }
+          ]
+        }
+      },
+      {
+        "shape": "edge",
+        "attrs": {
+          "line": {
+            "stroke": "var(--t11)",
+            "strokeWidth": 1
+          }
+        },
+        "id": "5386864d-aa31-46d7-a5aa-0c8ad724267e",
+        "zIndex": 36,
+        "source": {
+          "cell": "PnVLfm3C",
+          "port": "398f0bfa-d1a1-4884-82c1-99c3aeea423a"
+        },
+        "target": {
+          "cell": "ojjqKSyp",
+          "port": "ccd39f6d-0d2f-4827-b16f-7bfb9319c931"
+        }
+      },
+      {
+        "shape": "edge",
+        "attrs": {
+          "line": {
+            "stroke": "var(--t11)",
+            "strokeWidth": 1
+          }
+        },
+        "id": "e6f5db45-431a-4a36-ac00-cef84a2eb7b5",
+        "zIndex": 37,
+        "source": {
+          "cell": "PnVLfm3C",
+          "port": "af6d702d-d8f0-4140-bf09-f76f0abc821f"
+        },
+        "target": {
+          "cell": "FQGr7pg8",
+          "port": "345839cb-1d0d-4264-aaa3-cf98154b8fef"
+        }
+      },
+      {
+        "position": {
+          "x": 1390,
+          "y": 940
+        },
+        "size": {
+          "width": 180,
+          "height": 88
+        },
+        "view": "vue-shape-view",
+        "shape": "vue-shape",
+        "id": "P3RgpMIi",
+        "component": "xbt-base-node",
+        "data": {},
+        "zIndex": 38,
+        "ports": {
+          "groups": {
+            "in": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "inVal": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "out": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "outVal": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            }
+          },
+          "items": [
+            {
+              "group": "in",
+              "args": {
+                "dx": 8,
+                "dy": 25
+              },
+              "attrs": {
+                "text": {
+                  "text": "in"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "4d261376-0042-44cf-896e-1a6bb6f0c820"
+            }
+          ]
+        }
+      },
+      {
+        "shape": "edge",
+        "attrs": {
+          "line": {
+            "stroke": "var(--t11)",
+            "strokeWidth": 1
+          }
+        },
+        "id": "e140ce5b-21ed-47f6-8680-9eca5c42077e",
+        "zIndex": 39,
+        "source": {
+          "cell": "qEJ7mu8V",
+          "port": "2c39e22b-6986-4276-8e49-55e0fb828036"
+        },
+        "target": {
+          "cell": "P3RgpMIi",
+          "port": "4d261376-0042-44cf-896e-1a6bb6f0c820"
+        }
+      }
+    ]
+  },
+  "apiTarget": 1,
+  "entityMap": {
+    "behaviorRoot": {
+      "_entityName": "XBTRootEntity",
+      "_tag": {
+        "type": "XBTRootEntity"
+      },
+      "_entityId": "behaviorRoot",
+      "children": [
+        {
+          "_entityName": "XBTEntity",
+          "_tag": {
+            "type": "XBTEntity"
+          },
+          "_entityId": "OGKL54xM",
+          "children": [
+            {
+              "_entityName": "XBTEntity",
+              "_tag": {
+                "type": "XBTEntity"
+              },
+              "_entityId": "gE96KDHw",
+              "children": [
+                {
+                  "_entityName": "XBTEntity",
+                  "_tag": {
+                    "type": "XBTEntity"
+                  },
+                  "_entityId": "KUy16uDh",
+                  "children": [],
+                  "prefabVariant": null,
+                  "activeValue": null,
+                  "unlockedValue": null,
+                  "editorLockValue": false,
+                  "editorVisibleValue": true,
+                  "ecaScripts": [
+                    {
+                      "fileId": "2aram375hfw-mh8t0ric-oau8a5cu8c",
+                      "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_IsDead.fcg",
+                      "_tag": {
+                        "type": "GFileRefer"
+                      },
+                      "fileType": "ugcscript"
+                    }
+                  ],
+                  "x": 1031.675048828125,
+                  "y": -45.600006103515625,
+                  "width": 180,
+                  "height": 88,
+                  "nodeInfo": {
+                    "type": "condition",
+                    "name": "IsDead",
+                    "id": "KUy16uDh",
+                    "varArr": [],
+                    "ecaScript": null,
+                    "iscustom": true,
+                    "desc": "",
+                    "icon": "General_Customize_20"
+                  }
+                },
+                {
+                  "_entityName": "XBTEntity",
+                  "_tag": {
+                    "type": "XBTEntity"
+                  },
+                  "_entityId": "CAIvcf9s",
+                  "children": [],
+                  "prefabVariant": null,
+                  "activeValue": null,
+                  "unlockedValue": null,
+                  "editorLockValue": false,
+                  "editorVisibleValue": true,
+                  "ecaScripts": [
+                    {
+                      "fileId": "im6ricrdhag-mh8szdp1-94d6526b60v",
+                      "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Death.fcg",
+                      "_tag": {
+                        "type": "GFileRefer"
+                      },
+                      "fileType": "ugcscript"
+                    }
+                  ],
+                  "x": 1065.675048828125,
+                  "y": 20.399993896484375,
+                  "width": 180,
+                  "height": 88,
+                  "nodeInfo": {
+                    "type": "action",
+                    "name": "Death",
+                    "id": "CAIvcf9s",
+                    "varArr": [],
+                    "ecaScript": null,
+                    "iscustom": true,
+                    "desc": "",
+                    "icon": "General_Customize_20"
+                  }
+                }
+              ],
+              "prefabVariant": null,
+              "activeValue": null,
+              "unlockedValue": null,
+              "editorLockValue": false,
+              "editorVisibleValue": true,
+              "ecaScripts": [
+                null
+              ],
+              "x": 548.6749877929688,
+              "y": -15.599998474121094,
+              "width": 180,
+              "height": 88,
+              "nodeInfo": {
+                "type": "composite",
+                "name": "Sequence",
+                "id": "gE96KDHw",
+                "keyName": "Sequence",
+                "desc": "FE_42_JH_WS_EXSEQUENCE",
+                "varArr": [],
+                "in": null,
+                "icon": "General_Sequence_20",
+                "out": [
+                  "KUy16uDh",
+                  "CAIvcf9s"
+                ]
+              }
+            },
+            {
+              "_entityName": "XBTEntity",
+              "_tag": {
+                "type": "XBTEntity"
+              },
+              "_entityId": "C5KuCy44",
+              "children": [
+                {
+                  "_entityName": "XBTEntity",
+                  "_tag": {
+                    "type": "XBTEntity"
+                  },
+                  "_entityId": "hSS5P1gW",
+                  "children": [
+                    {
+                      "_entityName": "XBTEntity",
+                      "_tag": {
+                        "type": "XBTEntity"
+                      },
+                      "_entityId": "RS5zCP4o",
+                      "children": [],
+                      "prefabVariant": null,
+                      "activeValue": null,
+                      "unlockedValue": null,
+                      "editorLockValue": false,
+                      "editorVisibleValue": true,
+                      "ecaScripts": [
+                        {
+                          "fileId": "l9pkm6gopfm-mhag2twh-ojlewrvztl",
+                          "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_FindTarget.fcg",
+                          "_tag": {
+                            "type": "GFileRefer"
+                          },
+                          "fileType": "ugcscript"
+                        }
+                      ],
+                      "x": 1149.675048828125,
+                      "y": 86.39999389648438,
+                      "width": 180,
+                      "height": 88,
+                      "nodeInfo": {
+                        "type": "condition",
+                        "name": "CanFindTarget",
+                        "id": "RS5zCP4o",
+                        "varArr": [
+                          {
+                            "name": "SeekRange",
+                            "type": "Float",
+                            "val": 30
+                          }
+                        ],
+                        "ecaScript": null,
+                        "iscustom": true,
+                        "desc": "",
+                        "icon": "General_Customize_20",
+                        "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+                      }
+                    },
+                    {
+                      "_entityName": "XBTEntity",
+                      "_tag": {
+                        "type": "XBTEntity"
+                      },
+                      "_entityId": "m3ArLs1x",
+                      "children": [
+                        {
+                          "_entityName": "XBTEntity",
+                          "_tag": {
+                            "type": "XBTEntity"
+                          },
+                          "_entityId": "FlFhiXxJ",
+                          "children": [],
+                          "prefabVariant": null,
+                          "activeValue": null,
+                          "unlockedValue": null,
+                          "editorLockValue": false,
+                          "editorVisibleValue": true,
+                          "ecaScripts": [
+                            {
+                              "fileId": "cjyb66bk25t-mhblrmum-j8p5kivhzp",
+                              "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanAttack.fcg",
+                              "_tag": {
+                                "type": "GFileRefer"
+                              },
+                              "fileType": "ugcscript"
+                            }
+                          ],
+                          "x": 1544.675048828125,
+                          "y": 138.39999389648438,
+                          "width": 180,
+                          "height": 88,
+                          "nodeInfo": {
+                            "type": "condition",
+                            "name": "CanAttack1",
+                            "id": "FlFhiXxJ",
+                            "varArr": [
+                              {
+                                "name": "CD",
+                                "type": "String",
+                                "val": "3000"
+                              },
+                              {
+                                "name": "Range",
+                                "type": "Float",
+                                "val": 1.2
+                              }
+                            ],
+                            "ecaScript": null,
+                            "iscustom": true,
+                            "desc": "",
+                            "icon": "General_Customize_20",
+                            "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+                          }
+                        },
+                        {
+                          "_entityName": "XBTEntity",
+                          "_tag": {
+                            "type": "XBTEntity"
+                          },
+                          "_entityId": "mum3LlpR",
+                          "children": [],
+                          "prefabVariant": null,
+                          "activeValue": null,
+                          "unlockedValue": null,
+                          "editorLockValue": false,
+                          "editorVisibleValue": true,
+                          "ecaScripts": [
+                            {
+                              "fileId": "m4kysfo17-mhblumlp-ooqnjq9gw7",
+                              "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack.fcg",
+                              "_tag": {
+                                "type": "GFileRefer"
+                              },
+                              "fileType": "ugcscript"
+                            }
+                          ],
+                          "x": 1474.675048828125,
+                          "y": 228.39999389648438,
+                          "width": 180,
+                          "height": 88,
+                          "nodeInfo": {
+                            "type": "action",
+                            "name": "Attack1",
+                            "id": "mum3LlpR",
+                            "varArr": [
+                              {
+                                "name": "Duration",
+                                "type": "Int",
+                                "val": 1350
+                              }
+                            ],
+                            "ecaScript": null,
+                            "iscustom": true,
+                            "desc": "",
+                            "icon": "General_Customize_20",
+                            "fileId": "tbdwluazbo-mj73d2uh-9j2rdg9gy89"
+                          }
+                        }
+                      ],
+                      "prefabVariant": null,
+                      "activeValue": null,
+                      "unlockedValue": null,
+                      "editorLockValue": false,
+                      "editorVisibleValue": true,
+                      "ecaScripts": [
+                        null
+                      ],
+                      "x": 1237.675048828125,
+                      "y": 193.39999389648438,
+                      "width": 180,
+                      "height": 88,
+                      "nodeInfo": {
+                        "type": "composite",
+                        "name": "MemSequence",
+                        "id": "m3ArLs1x",
+                        "keyName": "MemSequence",
+                        "desc": "FE_42_JH_WS_MENSEQUENCE",
+                        "varArr": [],
+                        "in": null,
+                        "icon": "General_MemSequence_20",
+                        "out": [
+                          "FlFhiXxJ",
+                          "mum3LlpR"
+                        ]
+                      }
+                    }
+                  ],
+                  "prefabVariant": null,
+                  "activeValue": null,
+                  "unlockedValue": null,
+                  "editorLockValue": false,
+                  "editorVisibleValue": true,
+                  "ecaScripts": [
+                    null
+                  ],
+                  "x": 866.6749877929688,
+                  "y": 141.39999389648438,
+                  "width": 180,
+                  "height": 88,
+                  "nodeInfo": {
+                    "type": "composite",
+                    "name": "Sequence",
+                    "id": "hSS5P1gW",
+                    "keyName": "Sequence",
+                    "desc": "FE_42_JH_WS_EXSEQUENCE",
+                    "varArr": [],
+                    "in": null,
+                    "icon": "General_Sequence_20",
+                    "out": [
+                      "RS5zCP4o",
+                      "m3ArLs1x"
+                    ]
+                  }
+                }
+              ],
+              "prefabVariant": null,
+              "activeValue": null,
+              "unlockedValue": null,
+              "editorLockValue": false,
+              "editorVisibleValue": true,
+              "ecaScripts": [
+                null
+              ],
+              "x": 754.6749877929688,
+              "y": 113.39999389648438,
+              "width": 180,
+              "height": 88,
+              "nodeInfo": {
+                "type": "composite",
+                "name": "MemSequence",
+                "id": "C5KuCy44",
+                "keyName": "MemSequence",
+                "desc": "FE_42_JH_WS_MENSEQUENCE",
+                "varArr": [],
+                "in": null,
+                "icon": "General_MemSequence_20",
+                "out": [
+                  "hSS5P1gW"
+                ]
+              }
+            },
+            {
+              "_entityName": "XBTEntity",
+              "_tag": {
+                "type": "XBTEntity"
+              },
+              "_entityId": "mTc4pqCB",
+              "children": [
+                {
+                  "_entityName": "XBTEntity",
+                  "_tag": {
+                    "type": "XBTEntity"
+                  },
+                  "_entityId": "t0uOJFKv",
+                  "children": [
+                    {
+                      "_entityName": "XBTEntity",
+                      "_tag": {
+                        "type": "XBTEntity"
+                      },
+                      "_entityId": "aTFGtbCW",
+                      "children": [],
+                      "prefabVariant": null,
+                      "activeValue": null,
+                      "unlockedValue": null,
+                      "editorLockValue": false,
+                      "editorVisibleValue": true,
+                      "ecaScripts": [
+                        {
+                          "fileId": "l30snnkwkra-mhaj1shs-cegyrixqay",
+                          "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanMove.fcg",
+                          "_tag": {
+                            "type": "GFileRefer"
+                          },
+                          "fileType": "ugcscript"
+                        }
+                      ],
+                      "x": 1324.675048828125,
+                      "y": 377.3999938964844,
+                      "width": 180,
+                      "height": 88,
+                      "nodeInfo": {
+                        "type": "condition",
+                        "name": "CanMove",
+                        "id": "aTFGtbCW",
+                        "varArr": [
+                          {
+                            "name": "KeepDist",
+                            "type": "Int",
+                            "val": 1
+                          }
+                        ],
+                        "ecaScript": null,
+                        "iscustom": true,
+                        "desc": "",
+                        "icon": "General_Customize_20",
+                        "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+                      }
+                    },
+                    {
+                      "_entityName": "XBTEntity",
+                      "_tag": {
+                        "type": "XBTEntity"
+                      },
+                      "_entityId": "zZK0oYBm",
+                      "children": [],
+                      "prefabVariant": null,
+                      "activeValue": null,
+                      "unlockedValue": null,
+                      "editorLockValue": false,
+                      "editorVisibleValue": true,
+                      "ecaScripts": [
+                        {
+                          "fileId": "x6a1ep3jlpa-mhajefl4-nuekon6ddrn",
+                          "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Move2Target.fcg",
+                          "_tag": {
+                            "type": "GFileRefer"
+                          },
+                          "fileType": "ugcscript"
+                        }
+                      ],
+                      "x": 1394.675048828125,
+                      "y": 438.82855224609375,
+                      "width": 180,
+                      "height": 88,
+                      "nodeInfo": {
+                        "type": "action",
+                        "name": "Action",
+                        "id": "zZK0oYBm",
+                        "varArr": [
+                          {
+                            "name": "KeepDist",
+                            "type": "Float",
+                            "val": 1
+                          }
+                        ],
+                        "ecaScript": null,
+                        "iscustom": true,
+                        "desc": "",
+                        "icon": "General_Customize_20",
+                        "fileId": "tbdwluazbo-mj73d2uh-9j2rdg9gy89"
+                      }
+                    }
+                  ],
+                  "prefabVariant": null,
+                  "activeValue": null,
+                  "unlockedValue": null,
+                  "editorLockValue": false,
+                  "editorVisibleValue": true,
+                  "ecaScripts": [
+                    null
+                  ],
+                  "x": 957.6749877929688,
+                  "y": 366.3999938964844,
+                  "width": 180,
+                  "height": 88,
+                  "nodeInfo": {
+                    "type": "composite",
+                    "name": "MemSequence",
+                    "id": "t0uOJFKv",
+                    "keyName": "MemSequence",
+                    "desc": "FE_42_JH_WS_MENSEQUENCE",
+                    "varArr": [],
+                    "in": null,
+                    "icon": "General_MemSequence_20",
+                    "out": [
+                      "aTFGtbCW",
+                      "zZK0oYBm"
+                    ]
+                  }
+                },
+                {
+                  "_entityName": "XBTEntity",
+                  "_tag": {
+                    "type": "XBTEntity"
+                  },
+                  "_entityId": "qEJ7mu8V",
+                  "children": [
+                    {
+                      "_entityName": "XBTEntity",
+                      "_tag": {
+                        "type": "XBTEntity"
+                      },
+                      "_entityId": "PnVLfm3C",
+                      "children": [
+                        {
+                          "_entityName": "XBTEntity",
+                          "_tag": {
+                            "type": "XBTEntity"
+                          },
+                          "_entityId": "ojjqKSyp",
+                          "children": [],
+                          "prefabVariant": null,
+                          "activeValue": null,
+                          "unlockedValue": null,
+                          "editorLockValue": false,
+                          "editorVisibleValue": true,
+                          "ecaScripts": [
+                            {
+                              "fileId": "7tvz6uu2p7u-mhaj3wb6-6qm1hl3o27s",
+                              "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanPatrol.fcg",
+                              "_tag": {
+                                "type": "GFileRefer"
+                              },
+                              "fileType": "ugcscript"
+                            }
+                          ],
+                          "x": 1954.675048828125,
+                          "y": 610.2571411132812,
+                          "width": 180,
+                          "height": 88,
+                          "nodeInfo": {
+                            "type": "condition",
+                            "name": "CanPatrol",
+                            "id": "ojjqKSyp",
+                            "varArr": [
+                              {
+                                "name": "CD",
+                                "type": "Int",
+                                "val": 5000
+                              }
+                            ],
+                            "ecaScript": null,
+                            "iscustom": true,
+                            "desc": "",
+                            "icon": "General_Customize_20",
+                            "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+                          }
+                        },
+                        {
+                          "_entityName": "XBTEntity",
+                          "_tag": {
+                            "type": "XBTEntity"
+                          },
+                          "_entityId": "FQGr7pg8",
+                          "children": [],
+                          "prefabVariant": null,
+                          "activeValue": null,
+                          "unlockedValue": null,
+                          "editorLockValue": false,
+                          "editorVisibleValue": true,
+                          "ecaScripts": [
+                            {
+                              "fileId": "lw18md2pdb-mheopoc4-tte18avbs6g",
+                              "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Patrol.fcg",
+                              "_tag": {
+                                "type": "GFileRefer"
+                              },
+                              "fileType": "ugcscript"
+                            }
+                          ],
+                          "x": 1884.675048828125,
+                          "y": 798.8285522460938,
+                          "width": 180,
+                          "height": 88,
+                          "nodeInfo": {
+                            "type": "action",
+                            "name": "Patrol",
+                            "id": "FQGr7pg8",
+                            "varArr": [
+                              {
+                                "name": "KeepDist",
+                                "type": "Float",
+                                "val": 0.5
+                              }
+                            ],
+                            "ecaScript": null,
+                            "iscustom": true,
+                            "desc": "",
+                            "icon": "General_Customize_20",
+                            "fileId": "tbdwluazbo-mj73d2uh-9j2rdg9gy89"
+                          }
+                        }
+                      ],
+                      "prefabVariant": null,
+                      "activeValue": null,
+                      "unlockedValue": null,
+                      "editorLockValue": false,
+                      "editorVisibleValue": true,
+                      "ecaScripts": [
+                        null
+                      ],
+                      "x": 1328.960693359375,
+                      "y": 531.6857299804688,
+                      "width": 180,
+                      "height": 88,
+                      "nodeInfo": {
+                        "type": "composite",
+                        "name": "MemSequence",
+                        "id": "PnVLfm3C",
+                        "keyName": "MemSequence",
+                        "desc": "FE_42_JH_WS_MENSEQUENCE",
+                        "varArr": [],
+                        "in": null,
+                        "icon": "General_MemSequence_20",
+                        "out": [
+                          "ojjqKSyp",
+                          "FQGr7pg8"
+                        ]
+                      }
+                    },
+                    {
+                      "_entityName": "XBTEntity",
+                      "_tag": {
+                        "type": "XBTEntity"
+                      },
+                      "_entityId": "P3RgpMIi",
+                      "children": [],
+                      "prefabVariant": null,
+                      "activeValue": null,
+                      "unlockedValue": null,
+                      "editorLockValue": false,
+                      "editorVisibleValue": true,
+                      "ecaScripts": [
+                        null
+                      ],
+                      "x": 1441.81787109375,
+                      "y": 965.971435546875,
+                      "width": 180,
+                      "height": 88,
+                      "nodeInfo": {
+                        "type": "action",
+                        "name": "Idle",
+                        "id": "P3RgpMIi",
+                        "varArr": [],
+                        "ecaScript": null,
+                        "iscustom": true,
+                        "desc": "",
+                        "icon": "General_Customize_20",
+                        "fileId": "tbdwluazbo-mj73d2uh-9j2rdg9gy89"
+                      }
+                    }
+                  ],
+                  "prefabVariant": null,
+                  "activeValue": null,
+                  "unlockedValue": null,
+                  "editorLockValue": false,
+                  "editorVisibleValue": true,
+                  "ecaScripts": [
+                    null
+                  ],
+                  "x": 1097.5321044921875,
+                  "y": 501.6856994628906,
+                  "width": 180,
+                  "height": 88,
+                  "nodeInfo": {
+                    "type": "composite",
+                    "name": "Priority",
+                    "id": "qEJ7mu8V",
+                    "keyName": "Priority",
+                    "desc": "FE_42_JH_WS_PRIORITY",
+                    "varArr": [],
+                    "in": null,
+                    "icon": "General_Selector_20",
+                    "out": [
+                      "PnVLfm3C",
+                      "P3RgpMIi"
+                    ]
+                  }
+                }
+              ],
+              "prefabVariant": null,
+              "activeValue": null,
+              "unlockedValue": null,
+              "editorLockValue": false,
+              "editorVisibleValue": true,
+              "ecaScripts": [
+                null
+              ],
+              "x": 881.6749877929688,
+              "y": 442.3999938964844,
+              "width": 180,
+              "height": 88,
+              "nodeInfo": {
+                "type": "composite",
+                "name": "Priority",
+                "id": "mTc4pqCB",
+                "keyName": "Priority",
+                "desc": "FE_42_JH_WS_PRIORITY",
+                "varArr": [],
+                "in": null,
+                "icon": "General_Selector_20",
+                "out": [
+                  "t0uOJFKv",
+                  "qEJ7mu8V"
+                ]
+              }
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": null,
+          "unlockedValue": null,
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "ecaScripts": [
+            null
+          ],
+          "x": 328.67498779296875,
+          "y": 129.39999389648438,
+          "width": 180,
+          "height": 88,
+          "nodeInfo": {
+            "type": "composite",
+            "name": "Priority",
+            "id": "OGKL54xM",
+            "keyName": "Priority",
+            "desc": "FE_42_JH_WS_PRIORITY",
+            "varArr": [],
+            "in": null,
+            "icon": "General_Selector_20",
+            "out": [
+              "gE96KDHw",
+              "C5KuCy44",
+              "mTc4pqCB"
+            ]
+          }
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": null,
+      "unlockedValue": null,
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [],
+      "x": 0,
+      "y": 0,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "root",
+        "name": "Root",
+        "id": "behaviorRoot",
+        "varArr": [],
+        "out": "OGKL54xM",
+        "icon": "General_Root_20"
+      }
+    },
+    "OGKL54xM": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "OGKL54xM",
+      "children": [
+        {
+          "_entityName": "XBTEntity",
+          "_tag": {
+            "type": "XBTEntity"
+          },
+          "_entityId": "gE96KDHw",
+          "children": [
+            {
+              "_entityName": "XBTEntity",
+              "_tag": {
+                "type": "XBTEntity"
+              },
+              "_entityId": "KUy16uDh",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": null,
+              "unlockedValue": null,
+              "editorLockValue": false,
+              "editorVisibleValue": true,
+              "ecaScripts": [
+                {
+                  "fileId": "2aram375hfw-mh8t0ric-oau8a5cu8c",
+                  "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_IsDead.fcg",
+                  "_tag": {
+                    "type": "GFileRefer"
+                  },
+                  "fileType": "ugcscript"
+                }
+              ],
+              "x": 1031.675048828125,
+              "y": -45.600006103515625,
+              "width": 180,
+              "height": 88,
+              "nodeInfo": {
+                "type": "condition",
+                "name": "IsDead",
+                "id": "KUy16uDh",
+                "varArr": [],
+                "ecaScript": null,
+                "iscustom": true,
+                "desc": "",
+                "icon": "General_Customize_20"
+              }
+            },
+            {
+              "_entityName": "XBTEntity",
+              "_tag": {
+                "type": "XBTEntity"
+              },
+              "_entityId": "CAIvcf9s",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": null,
+              "unlockedValue": null,
+              "editorLockValue": false,
+              "editorVisibleValue": true,
+              "ecaScripts": [
+                {
+                  "fileId": "im6ricrdhag-mh8szdp1-94d6526b60v",
+                  "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Death.fcg",
+                  "_tag": {
+                    "type": "GFileRefer"
+                  },
+                  "fileType": "ugcscript"
+                }
+              ],
+              "x": 1065.675048828125,
+              "y": 20.399993896484375,
+              "width": 180,
+              "height": 88,
+              "nodeInfo": {
+                "type": "action",
+                "name": "Death",
+                "id": "CAIvcf9s",
+                "varArr": [],
+                "ecaScript": null,
+                "iscustom": true,
+                "desc": "",
+                "icon": "General_Customize_20"
+              }
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": null,
+          "unlockedValue": null,
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "ecaScripts": [
+            null
+          ],
+          "x": 548.6749877929688,
+          "y": -15.599998474121094,
+          "width": 180,
+          "height": 88,
+          "nodeInfo": {
+            "type": "composite",
+            "name": "Sequence",
+            "id": "gE96KDHw",
+            "keyName": "Sequence",
+            "desc": "FE_42_JH_WS_EXSEQUENCE",
+            "varArr": [],
+            "in": null,
+            "icon": "General_Sequence_20",
+            "out": [
+              "KUy16uDh",
+              "CAIvcf9s"
+            ]
+          }
+        },
+        {
+          "_entityName": "XBTEntity",
+          "_tag": {
+            "type": "XBTEntity"
+          },
+          "_entityId": "C5KuCy44",
+          "children": [
+            {
+              "_entityName": "XBTEntity",
+              "_tag": {
+                "type": "XBTEntity"
+              },
+              "_entityId": "hSS5P1gW",
+              "children": [
+                {
+                  "_entityName": "XBTEntity",
+                  "_tag": {
+                    "type": "XBTEntity"
+                  },
+                  "_entityId": "RS5zCP4o",
+                  "children": [],
+                  "prefabVariant": null,
+                  "activeValue": null,
+                  "unlockedValue": null,
+                  "editorLockValue": false,
+                  "editorVisibleValue": true,
+                  "ecaScripts": [
+                    {
+                      "fileId": "l9pkm6gopfm-mhag2twh-ojlewrvztl",
+                      "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_FindTarget.fcg",
+                      "_tag": {
+                        "type": "GFileRefer"
+                      },
+                      "fileType": "ugcscript"
+                    }
+                  ],
+                  "x": 1149.675048828125,
+                  "y": 86.39999389648438,
+                  "width": 180,
+                  "height": 88,
+                  "nodeInfo": {
+                    "type": "condition",
+                    "name": "CanFindTarget",
+                    "id": "RS5zCP4o",
+                    "varArr": [
+                      {
+                        "name": "SeekRange",
+                        "type": "Float",
+                        "val": 30
+                      }
+                    ],
+                    "ecaScript": null,
+                    "iscustom": true,
+                    "desc": "",
+                    "icon": "General_Customize_20",
+                    "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+                  }
+                },
+                {
+                  "_entityName": "XBTEntity",
+                  "_tag": {
+                    "type": "XBTEntity"
+                  },
+                  "_entityId": "m3ArLs1x",
+                  "children": [
+                    {
+                      "_entityName": "XBTEntity",
+                      "_tag": {
+                        "type": "XBTEntity"
+                      },
+                      "_entityId": "FlFhiXxJ",
+                      "children": [],
+                      "prefabVariant": null,
+                      "activeValue": null,
+                      "unlockedValue": null,
+                      "editorLockValue": false,
+                      "editorVisibleValue": true,
+                      "ecaScripts": [
+                        {
+                          "fileId": "cjyb66bk25t-mhblrmum-j8p5kivhzp",
+                          "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanAttack.fcg",
+                          "_tag": {
+                            "type": "GFileRefer"
+                          },
+                          "fileType": "ugcscript"
+                        }
+                      ],
+                      "x": 1544.675048828125,
+                      "y": 138.39999389648438,
+                      "width": 180,
+                      "height": 88,
+                      "nodeInfo": {
+                        "type": "condition",
+                        "name": "CanAttack1",
+                        "id": "FlFhiXxJ",
+                        "varArr": [
+                          {
+                            "name": "CD",
+                            "type": "String",
+                            "val": "3000"
+                          },
+                          {
+                            "name": "Range",
+                            "type": "Float",
+                            "val": 1.2
+                          }
+                        ],
+                        "ecaScript": null,
+                        "iscustom": true,
+                        "desc": "",
+                        "icon": "General_Customize_20",
+                        "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+                      }
+                    },
+                    {
+                      "_entityName": "XBTEntity",
+                      "_tag": {
+                        "type": "XBTEntity"
+                      },
+                      "_entityId": "mum3LlpR",
+                      "children": [],
+                      "prefabVariant": null,
+                      "activeValue": null,
+                      "unlockedValue": null,
+                      "editorLockValue": false,
+                      "editorVisibleValue": true,
+                      "ecaScripts": [
+                        {
+                          "fileId": "m4kysfo17-mhblumlp-ooqnjq9gw7",
+                          "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack.fcg",
+                          "_tag": {
+                            "type": "GFileRefer"
+                          },
+                          "fileType": "ugcscript"
+                        }
+                      ],
+                      "x": 1474.675048828125,
+                      "y": 228.39999389648438,
+                      "width": 180,
+                      "height": 88,
+                      "nodeInfo": {
+                        "type": "action",
+                        "name": "Attack1",
+                        "id": "mum3LlpR",
+                        "varArr": [
+                          {
+                            "name": "Duration",
+                            "type": "Int",
+                            "val": 1350
+                          }
+                        ],
+                        "ecaScript": null,
+                        "iscustom": true,
+                        "desc": "",
+                        "icon": "General_Customize_20",
+                        "fileId": "tbdwluazbo-mj73d2uh-9j2rdg9gy89"
+                      }
+                    }
+                  ],
+                  "prefabVariant": null,
+                  "activeValue": null,
+                  "unlockedValue": null,
+                  "editorLockValue": false,
+                  "editorVisibleValue": true,
+                  "ecaScripts": [
+                    null
+                  ],
+                  "x": 1237.675048828125,
+                  "y": 193.39999389648438,
+                  "width": 180,
+                  "height": 88,
+                  "nodeInfo": {
+                    "type": "composite",
+                    "name": "MemSequence",
+                    "id": "m3ArLs1x",
+                    "keyName": "MemSequence",
+                    "desc": "FE_42_JH_WS_MENSEQUENCE",
+                    "varArr": [],
+                    "in": null,
+                    "icon": "General_MemSequence_20",
+                    "out": [
+                      "FlFhiXxJ",
+                      "mum3LlpR"
+                    ]
+                  }
+                }
+              ],
+              "prefabVariant": null,
+              "activeValue": null,
+              "unlockedValue": null,
+              "editorLockValue": false,
+              "editorVisibleValue": true,
+              "ecaScripts": [
+                null
+              ],
+              "x": 866.6749877929688,
+              "y": 141.39999389648438,
+              "width": 180,
+              "height": 88,
+              "nodeInfo": {
+                "type": "composite",
+                "name": "Sequence",
+                "id": "hSS5P1gW",
+                "keyName": "Sequence",
+                "desc": "FE_42_JH_WS_EXSEQUENCE",
+                "varArr": [],
+                "in": null,
+                "icon": "General_Sequence_20",
+                "out": [
+                  "RS5zCP4o",
+                  "m3ArLs1x"
+                ]
+              }
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": null,
+          "unlockedValue": null,
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "ecaScripts": [
+            null
+          ],
+          "x": 754.6749877929688,
+          "y": 113.39999389648438,
+          "width": 180,
+          "height": 88,
+          "nodeInfo": {
+            "type": "composite",
+            "name": "MemSequence",
+            "id": "C5KuCy44",
+            "keyName": "MemSequence",
+            "desc": "FE_42_JH_WS_MENSEQUENCE",
+            "varArr": [],
+            "in": null,
+            "icon": "General_MemSequence_20",
+            "out": [
+              "hSS5P1gW"
+            ]
+          }
+        },
+        {
+          "_entityName": "XBTEntity",
+          "_tag": {
+            "type": "XBTEntity"
+          },
+          "_entityId": "mTc4pqCB",
+          "children": [
+            {
+              "_entityName": "XBTEntity",
+              "_tag": {
+                "type": "XBTEntity"
+              },
+              "_entityId": "t0uOJFKv",
+              "children": [
+                {
+                  "_entityName": "XBTEntity",
+                  "_tag": {
+                    "type": "XBTEntity"
+                  },
+                  "_entityId": "aTFGtbCW",
+                  "children": [],
+                  "prefabVariant": null,
+                  "activeValue": null,
+                  "unlockedValue": null,
+                  "editorLockValue": false,
+                  "editorVisibleValue": true,
+                  "ecaScripts": [
+                    {
+                      "fileId": "l30snnkwkra-mhaj1shs-cegyrixqay",
+                      "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanMove.fcg",
+                      "_tag": {
+                        "type": "GFileRefer"
+                      },
+                      "fileType": "ugcscript"
+                    }
+                  ],
+                  "x": 1324.675048828125,
+                  "y": 377.3999938964844,
+                  "width": 180,
+                  "height": 88,
+                  "nodeInfo": {
+                    "type": "condition",
+                    "name": "CanMove",
+                    "id": "aTFGtbCW",
+                    "varArr": [
+                      {
+                        "name": "KeepDist",
+                        "type": "Int",
+                        "val": 1
+                      }
+                    ],
+                    "ecaScript": null,
+                    "iscustom": true,
+                    "desc": "",
+                    "icon": "General_Customize_20",
+                    "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+                  }
+                },
+                {
+                  "_entityName": "XBTEntity",
+                  "_tag": {
+                    "type": "XBTEntity"
+                  },
+                  "_entityId": "zZK0oYBm",
+                  "children": [],
+                  "prefabVariant": null,
+                  "activeValue": null,
+                  "unlockedValue": null,
+                  "editorLockValue": false,
+                  "editorVisibleValue": true,
+                  "ecaScripts": [
+                    {
+                      "fileId": "x6a1ep3jlpa-mhajefl4-nuekon6ddrn",
+                      "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Move2Target.fcg",
+                      "_tag": {
+                        "type": "GFileRefer"
+                      },
+                      "fileType": "ugcscript"
+                    }
+                  ],
+                  "x": 1394.675048828125,
+                  "y": 438.82855224609375,
+                  "width": 180,
+                  "height": 88,
+                  "nodeInfo": {
+                    "type": "action",
+                    "name": "Action",
+                    "id": "zZK0oYBm",
+                    "varArr": [
+                      {
+                        "name": "KeepDist",
+                        "type": "Float",
+                        "val": 1
+                      }
+                    ],
+                    "ecaScript": null,
+                    "iscustom": true,
+                    "desc": "",
+                    "icon": "General_Customize_20",
+                    "fileId": "tbdwluazbo-mj73d2uh-9j2rdg9gy89"
+                  }
+                }
+              ],
+              "prefabVariant": null,
+              "activeValue": null,
+              "unlockedValue": null,
+              "editorLockValue": false,
+              "editorVisibleValue": true,
+              "ecaScripts": [
+                null
+              ],
+              "x": 957.6749877929688,
+              "y": 366.3999938964844,
+              "width": 180,
+              "height": 88,
+              "nodeInfo": {
+                "type": "composite",
+                "name": "MemSequence",
+                "id": "t0uOJFKv",
+                "keyName": "MemSequence",
+                "desc": "FE_42_JH_WS_MENSEQUENCE",
+                "varArr": [],
+                "in": null,
+                "icon": "General_MemSequence_20",
+                "out": [
+                  "aTFGtbCW",
+                  "zZK0oYBm"
+                ]
+              }
+            },
+            {
+              "_entityName": "XBTEntity",
+              "_tag": {
+                "type": "XBTEntity"
+              },
+              "_entityId": "qEJ7mu8V",
+              "children": [
+                {
+                  "_entityName": "XBTEntity",
+                  "_tag": {
+                    "type": "XBTEntity"
+                  },
+                  "_entityId": "PnVLfm3C",
+                  "children": [
+                    {
+                      "_entityName": "XBTEntity",
+                      "_tag": {
+                        "type": "XBTEntity"
+                      },
+                      "_entityId": "ojjqKSyp",
+                      "children": [],
+                      "prefabVariant": null,
+                      "activeValue": null,
+                      "unlockedValue": null,
+                      "editorLockValue": false,
+                      "editorVisibleValue": true,
+                      "ecaScripts": [
+                        {
+                          "fileId": "7tvz6uu2p7u-mhaj3wb6-6qm1hl3o27s",
+                          "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanPatrol.fcg",
+                          "_tag": {
+                            "type": "GFileRefer"
+                          },
+                          "fileType": "ugcscript"
+                        }
+                      ],
+                      "x": 1954.675048828125,
+                      "y": 610.2571411132812,
+                      "width": 180,
+                      "height": 88,
+                      "nodeInfo": {
+                        "type": "condition",
+                        "name": "CanPatrol",
+                        "id": "ojjqKSyp",
+                        "varArr": [
+                          {
+                            "name": "CD",
+                            "type": "Int",
+                            "val": 5000
+                          }
+                        ],
+                        "ecaScript": null,
+                        "iscustom": true,
+                        "desc": "",
+                        "icon": "General_Customize_20",
+                        "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+                      }
+                    },
+                    {
+                      "_entityName": "XBTEntity",
+                      "_tag": {
+                        "type": "XBTEntity"
+                      },
+                      "_entityId": "FQGr7pg8",
+                      "children": [],
+                      "prefabVariant": null,
+                      "activeValue": null,
+                      "unlockedValue": null,
+                      "editorLockValue": false,
+                      "editorVisibleValue": true,
+                      "ecaScripts": [
+                        {
+                          "fileId": "lw18md2pdb-mheopoc4-tte18avbs6g",
+                          "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Patrol.fcg",
+                          "_tag": {
+                            "type": "GFileRefer"
+                          },
+                          "fileType": "ugcscript"
+                        }
+                      ],
+                      "x": 1884.675048828125,
+                      "y": 798.8285522460938,
+                      "width": 180,
+                      "height": 88,
+                      "nodeInfo": {
+                        "type": "action",
+                        "name": "Patrol",
+                        "id": "FQGr7pg8",
+                        "varArr": [
+                          {
+                            "name": "KeepDist",
+                            "type": "Float",
+                            "val": 0.5
+                          }
+                        ],
+                        "ecaScript": null,
+                        "iscustom": true,
+                        "desc": "",
+                        "icon": "General_Customize_20",
+                        "fileId": "tbdwluazbo-mj73d2uh-9j2rdg9gy89"
+                      }
+                    }
+                  ],
+                  "prefabVariant": null,
+                  "activeValue": null,
+                  "unlockedValue": null,
+                  "editorLockValue": false,
+                  "editorVisibleValue": true,
+                  "ecaScripts": [
+                    null
+                  ],
+                  "x": 1328.960693359375,
+                  "y": 531.6857299804688,
+                  "width": 180,
+                  "height": 88,
+                  "nodeInfo": {
+                    "type": "composite",
+                    "name": "MemSequence",
+                    "id": "PnVLfm3C",
+                    "keyName": "MemSequence",
+                    "desc": "FE_42_JH_WS_MENSEQUENCE",
+                    "varArr": [],
+                    "in": null,
+                    "icon": "General_MemSequence_20",
+                    "out": [
+                      "ojjqKSyp",
+                      "FQGr7pg8"
+                    ]
+                  }
+                },
+                {
+                  "_entityName": "XBTEntity",
+                  "_tag": {
+                    "type": "XBTEntity"
+                  },
+                  "_entityId": "P3RgpMIi",
+                  "children": [],
+                  "prefabVariant": null,
+                  "activeValue": null,
+                  "unlockedValue": null,
+                  "editorLockValue": false,
+                  "editorVisibleValue": true,
+                  "ecaScripts": [
+                    null
+                  ],
+                  "x": 1441.81787109375,
+                  "y": 965.971435546875,
+                  "width": 180,
+                  "height": 88,
+                  "nodeInfo": {
+                    "type": "action",
+                    "name": "Idle",
+                    "id": "P3RgpMIi",
+                    "varArr": [],
+                    "ecaScript": null,
+                    "iscustom": true,
+                    "desc": "",
+                    "icon": "General_Customize_20",
+                    "fileId": "tbdwluazbo-mj73d2uh-9j2rdg9gy89"
+                  }
+                }
+              ],
+              "prefabVariant": null,
+              "activeValue": null,
+              "unlockedValue": null,
+              "editorLockValue": false,
+              "editorVisibleValue": true,
+              "ecaScripts": [
+                null
+              ],
+              "x": 1097.5321044921875,
+              "y": 501.6856994628906,
+              "width": 180,
+              "height": 88,
+              "nodeInfo": {
+                "type": "composite",
+                "name": "Priority",
+                "id": "qEJ7mu8V",
+                "keyName": "Priority",
+                "desc": "FE_42_JH_WS_PRIORITY",
+                "varArr": [],
+                "in": null,
+                "icon": "General_Selector_20",
+                "out": [
+                  "PnVLfm3C",
+                  "P3RgpMIi"
+                ]
+              }
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": null,
+          "unlockedValue": null,
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "ecaScripts": [
+            null
+          ],
+          "x": 881.6749877929688,
+          "y": 442.3999938964844,
+          "width": 180,
+          "height": 88,
+          "nodeInfo": {
+            "type": "composite",
+            "name": "Priority",
+            "id": "mTc4pqCB",
+            "keyName": "Priority",
+            "desc": "FE_42_JH_WS_PRIORITY",
+            "varArr": [],
+            "in": null,
+            "icon": "General_Selector_20",
+            "out": [
+              "t0uOJFKv",
+              "qEJ7mu8V"
+            ]
+          }
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": null,
+      "unlockedValue": null,
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        null
+      ],
+      "x": 328.67498779296875,
+      "y": 129.39999389648438,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "composite",
+        "name": "Priority",
+        "id": "OGKL54xM",
+        "keyName": "Priority",
+        "desc": "FE_42_JH_WS_PRIORITY",
+        "varArr": [],
+        "in": null,
+        "icon": "General_Selector_20",
+        "out": [
+          "gE96KDHw",
+          "C5KuCy44",
+          "mTc4pqCB"
+        ]
+      }
+    },
+    "gE96KDHw": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "gE96KDHw",
+      "children": [
+        {
+          "_entityName": "XBTEntity",
+          "_tag": {
+            "type": "XBTEntity"
+          },
+          "_entityId": "KUy16uDh",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": null,
+          "unlockedValue": null,
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "ecaScripts": [
+            {
+              "fileId": "2aram375hfw-mh8t0ric-oau8a5cu8c",
+              "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_IsDead.fcg",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "ugcscript"
+            }
+          ],
+          "x": 1031.675048828125,
+          "y": -45.600006103515625,
+          "width": 180,
+          "height": 88,
+          "nodeInfo": {
+            "type": "condition",
+            "name": "IsDead",
+            "id": "KUy16uDh",
+            "varArr": [],
+            "ecaScript": null,
+            "iscustom": true,
+            "desc": "",
+            "icon": "General_Customize_20"
+          }
+        },
+        {
+          "_entityName": "XBTEntity",
+          "_tag": {
+            "type": "XBTEntity"
+          },
+          "_entityId": "CAIvcf9s",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": null,
+          "unlockedValue": null,
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "ecaScripts": [
+            {
+              "fileId": "im6ricrdhag-mh8szdp1-94d6526b60v",
+              "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Death.fcg",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "ugcscript"
+            }
+          ],
+          "x": 1065.675048828125,
+          "y": 20.399993896484375,
+          "width": 180,
+          "height": 88,
+          "nodeInfo": {
+            "type": "action",
+            "name": "Death",
+            "id": "CAIvcf9s",
+            "varArr": [],
+            "ecaScript": null,
+            "iscustom": true,
+            "desc": "",
+            "icon": "General_Customize_20"
+          }
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": null,
+      "unlockedValue": null,
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        null
+      ],
+      "x": 548.6749877929688,
+      "y": -15.599998474121094,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "composite",
+        "name": "Sequence",
+        "id": "gE96KDHw",
+        "keyName": "Sequence",
+        "desc": "FE_42_JH_WS_EXSEQUENCE",
+        "varArr": [],
+        "in": null,
+        "icon": "General_Sequence_20",
+        "out": [
+          "KUy16uDh",
+          "CAIvcf9s"
+        ]
+      }
+    },
+    "KUy16uDh": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "KUy16uDh",
+      "children": [],
+      "prefabVariant": null,
+      "activeValue": null,
+      "unlockedValue": null,
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        {
+          "fileId": "2aram375hfw-mh8t0ric-oau8a5cu8c",
+          "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_IsDead.fcg",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "ugcscript"
+        }
+      ],
+      "x": 1031.675048828125,
+      "y": -45.600006103515625,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "condition",
+        "name": "IsDead",
+        "id": "KUy16uDh",
+        "varArr": [],
+        "ecaScript": null,
+        "iscustom": true,
+        "desc": "",
+        "icon": "General_Customize_20"
+      }
+    },
+    "CAIvcf9s": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "CAIvcf9s",
+      "children": [],
+      "prefabVariant": null,
+      "activeValue": null,
+      "unlockedValue": null,
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        {
+          "fileId": "im6ricrdhag-mh8szdp1-94d6526b60v",
+          "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Death.fcg",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "ugcscript"
+        }
+      ],
+      "x": 1065.675048828125,
+      "y": 20.399993896484375,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "action",
+        "name": "Death",
+        "id": "CAIvcf9s",
+        "varArr": [],
+        "ecaScript": null,
+        "iscustom": true,
+        "desc": "",
+        "icon": "General_Customize_20"
+      }
+    },
+    "C5KuCy44": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "C5KuCy44",
+      "children": [
+        {
+          "_entityName": "XBTEntity",
+          "_tag": {
+            "type": "XBTEntity"
+          },
+          "_entityId": "hSS5P1gW",
+          "children": [
+            {
+              "_entityName": "XBTEntity",
+              "_tag": {
+                "type": "XBTEntity"
+              },
+              "_entityId": "RS5zCP4o",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": null,
+              "unlockedValue": null,
+              "editorLockValue": false,
+              "editorVisibleValue": true,
+              "ecaScripts": [
+                {
+                  "fileId": "l9pkm6gopfm-mhag2twh-ojlewrvztl",
+                  "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_FindTarget.fcg",
+                  "_tag": {
+                    "type": "GFileRefer"
+                  },
+                  "fileType": "ugcscript"
+                }
+              ],
+              "x": 1149.675048828125,
+              "y": 86.39999389648438,
+              "width": 180,
+              "height": 88,
+              "nodeInfo": {
+                "type": "condition",
+                "name": "CanFindTarget",
+                "id": "RS5zCP4o",
+                "varArr": [
+                  {
+                    "name": "SeekRange",
+                    "type": "Float",
+                    "val": 30
+                  }
+                ],
+                "ecaScript": null,
+                "iscustom": true,
+                "desc": "",
+                "icon": "General_Customize_20",
+                "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+              }
+            },
+            {
+              "_entityName": "XBTEntity",
+              "_tag": {
+                "type": "XBTEntity"
+              },
+              "_entityId": "m3ArLs1x",
+              "children": [
+                {
+                  "_entityName": "XBTEntity",
+                  "_tag": {
+                    "type": "XBTEntity"
+                  },
+                  "_entityId": "FlFhiXxJ",
+                  "children": [],
+                  "prefabVariant": null,
+                  "activeValue": null,
+                  "unlockedValue": null,
+                  "editorLockValue": false,
+                  "editorVisibleValue": true,
+                  "ecaScripts": [
+                    {
+                      "fileId": "cjyb66bk25t-mhblrmum-j8p5kivhzp",
+                      "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanAttack.fcg",
+                      "_tag": {
+                        "type": "GFileRefer"
+                      },
+                      "fileType": "ugcscript"
+                    }
+                  ],
+                  "x": 1544.675048828125,
+                  "y": 138.39999389648438,
+                  "width": 180,
+                  "height": 88,
+                  "nodeInfo": {
+                    "type": "condition",
+                    "name": "CanAttack1",
+                    "id": "FlFhiXxJ",
+                    "varArr": [
+                      {
+                        "name": "CD",
+                        "type": "String",
+                        "val": "3000"
+                      },
+                      {
+                        "name": "Range",
+                        "type": "Float",
+                        "val": 1.2
+                      }
+                    ],
+                    "ecaScript": null,
+                    "iscustom": true,
+                    "desc": "",
+                    "icon": "General_Customize_20",
+                    "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+                  }
+                },
+                {
+                  "_entityName": "XBTEntity",
+                  "_tag": {
+                    "type": "XBTEntity"
+                  },
+                  "_entityId": "mum3LlpR",
+                  "children": [],
+                  "prefabVariant": null,
+                  "activeValue": null,
+                  "unlockedValue": null,
+                  "editorLockValue": false,
+                  "editorVisibleValue": true,
+                  "ecaScripts": [
+                    {
+                      "fileId": "m4kysfo17-mhblumlp-ooqnjq9gw7",
+                      "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack.fcg",
+                      "_tag": {
+                        "type": "GFileRefer"
+                      },
+                      "fileType": "ugcscript"
+                    }
+                  ],
+                  "x": 1474.675048828125,
+                  "y": 228.39999389648438,
+                  "width": 180,
+                  "height": 88,
+                  "nodeInfo": {
+                    "type": "action",
+                    "name": "Attack1",
+                    "id": "mum3LlpR",
+                    "varArr": [
+                      {
+                        "name": "Duration",
+                        "type": "Int",
+                        "val": 1350
+                      }
+                    ],
+                    "ecaScript": null,
+                    "iscustom": true,
+                    "desc": "",
+                    "icon": "General_Customize_20",
+                    "fileId": "tbdwluazbo-mj73d2uh-9j2rdg9gy89"
+                  }
+                }
+              ],
+              "prefabVariant": null,
+              "activeValue": null,
+              "unlockedValue": null,
+              "editorLockValue": false,
+              "editorVisibleValue": true,
+              "ecaScripts": [
+                null
+              ],
+              "x": 1237.675048828125,
+              "y": 193.39999389648438,
+              "width": 180,
+              "height": 88,
+              "nodeInfo": {
+                "type": "composite",
+                "name": "MemSequence",
+                "id": "m3ArLs1x",
+                "keyName": "MemSequence",
+                "desc": "FE_42_JH_WS_MENSEQUENCE",
+                "varArr": [],
+                "in": null,
+                "icon": "General_MemSequence_20",
+                "out": [
+                  "FlFhiXxJ",
+                  "mum3LlpR"
+                ]
+              }
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": null,
+          "unlockedValue": null,
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "ecaScripts": [
+            null
+          ],
+          "x": 866.6749877929688,
+          "y": 141.39999389648438,
+          "width": 180,
+          "height": 88,
+          "nodeInfo": {
+            "type": "composite",
+            "name": "Sequence",
+            "id": "hSS5P1gW",
+            "keyName": "Sequence",
+            "desc": "FE_42_JH_WS_EXSEQUENCE",
+            "varArr": [],
+            "in": null,
+            "icon": "General_Sequence_20",
+            "out": [
+              "RS5zCP4o",
+              "m3ArLs1x"
+            ]
+          }
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": null,
+      "unlockedValue": null,
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        null
+      ],
+      "x": 754.6749877929688,
+      "y": 113.39999389648438,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "composite",
+        "name": "MemSequence",
+        "id": "C5KuCy44",
+        "keyName": "MemSequence",
+        "desc": "FE_42_JH_WS_MENSEQUENCE",
+        "varArr": [],
+        "in": null,
+        "icon": "General_MemSequence_20",
+        "out": [
+          "hSS5P1gW"
+        ]
+      }
+    },
+    "hSS5P1gW": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "hSS5P1gW",
+      "children": [
+        {
+          "_entityName": "XBTEntity",
+          "_tag": {
+            "type": "XBTEntity"
+          },
+          "_entityId": "RS5zCP4o",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": null,
+          "unlockedValue": null,
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "ecaScripts": [
+            {
+              "fileId": "l9pkm6gopfm-mhag2twh-ojlewrvztl",
+              "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_FindTarget.fcg",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "ugcscript"
+            }
+          ],
+          "x": 1149.675048828125,
+          "y": 86.39999389648438,
+          "width": 180,
+          "height": 88,
+          "nodeInfo": {
+            "type": "condition",
+            "name": "CanFindTarget",
+            "id": "RS5zCP4o",
+            "varArr": [
+              {
+                "name": "SeekRange",
+                "type": "Float",
+                "val": 30
+              }
+            ],
+            "ecaScript": null,
+            "iscustom": true,
+            "desc": "",
+            "icon": "General_Customize_20",
+            "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+          }
+        },
+        {
+          "_entityName": "XBTEntity",
+          "_tag": {
+            "type": "XBTEntity"
+          },
+          "_entityId": "m3ArLs1x",
+          "children": [
+            {
+              "_entityName": "XBTEntity",
+              "_tag": {
+                "type": "XBTEntity"
+              },
+              "_entityId": "FlFhiXxJ",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": null,
+              "unlockedValue": null,
+              "editorLockValue": false,
+              "editorVisibleValue": true,
+              "ecaScripts": [
+                {
+                  "fileId": "cjyb66bk25t-mhblrmum-j8p5kivhzp",
+                  "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanAttack.fcg",
+                  "_tag": {
+                    "type": "GFileRefer"
+                  },
+                  "fileType": "ugcscript"
+                }
+              ],
+              "x": 1544.675048828125,
+              "y": 138.39999389648438,
+              "width": 180,
+              "height": 88,
+              "nodeInfo": {
+                "type": "condition",
+                "name": "CanAttack1",
+                "id": "FlFhiXxJ",
+                "varArr": [
+                  {
+                    "name": "CD",
+                    "type": "String",
+                    "val": "3000"
+                  },
+                  {
+                    "name": "Range",
+                    "type": "Float",
+                    "val": 1.2
+                  }
+                ],
+                "ecaScript": null,
+                "iscustom": true,
+                "desc": "",
+                "icon": "General_Customize_20",
+                "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+              }
+            },
+            {
+              "_entityName": "XBTEntity",
+              "_tag": {
+                "type": "XBTEntity"
+              },
+              "_entityId": "mum3LlpR",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": null,
+              "unlockedValue": null,
+              "editorLockValue": false,
+              "editorVisibleValue": true,
+              "ecaScripts": [
+                {
+                  "fileId": "m4kysfo17-mhblumlp-ooqnjq9gw7",
+                  "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack.fcg",
+                  "_tag": {
+                    "type": "GFileRefer"
+                  },
+                  "fileType": "ugcscript"
+                }
+              ],
+              "x": 1474.675048828125,
+              "y": 228.39999389648438,
+              "width": 180,
+              "height": 88,
+              "nodeInfo": {
+                "type": "action",
+                "name": "Attack1",
+                "id": "mum3LlpR",
+                "varArr": [
+                  {
+                    "name": "Duration",
+                    "type": "Int",
+                    "val": 1350
+                  }
+                ],
+                "ecaScript": null,
+                "iscustom": true,
+                "desc": "",
+                "icon": "General_Customize_20",
+                "fileId": "tbdwluazbo-mj73d2uh-9j2rdg9gy89"
+              }
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": null,
+          "unlockedValue": null,
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "ecaScripts": [
+            null
+          ],
+          "x": 1237.675048828125,
+          "y": 193.39999389648438,
+          "width": 180,
+          "height": 88,
+          "nodeInfo": {
+            "type": "composite",
+            "name": "MemSequence",
+            "id": "m3ArLs1x",
+            "keyName": "MemSequence",
+            "desc": "FE_42_JH_WS_MENSEQUENCE",
+            "varArr": [],
+            "in": null,
+            "icon": "General_MemSequence_20",
+            "out": [
+              "FlFhiXxJ",
+              "mum3LlpR"
+            ]
+          }
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": null,
+      "unlockedValue": null,
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        null
+      ],
+      "x": 866.6749877929688,
+      "y": 141.39999389648438,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "composite",
+        "name": "Sequence",
+        "id": "hSS5P1gW",
+        "keyName": "Sequence",
+        "desc": "FE_42_JH_WS_EXSEQUENCE",
+        "varArr": [],
+        "in": null,
+        "icon": "General_Sequence_20",
+        "out": [
+          "RS5zCP4o",
+          "m3ArLs1x"
+        ]
+      }
+    },
+    "RS5zCP4o": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "RS5zCP4o",
+      "children": [],
+      "prefabVariant": null,
+      "activeValue": null,
+      "unlockedValue": null,
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        {
+          "fileId": "l9pkm6gopfm-mhag2twh-ojlewrvztl",
+          "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_FindTarget.fcg",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "ugcscript"
+        }
+      ],
+      "x": 1149.675048828125,
+      "y": 86.39999389648438,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "condition",
+        "name": "CanFindTarget",
+        "id": "RS5zCP4o",
+        "varArr": [
+          {
+            "name": "SeekRange",
+            "type": "Float",
+            "val": 30
+          }
+        ],
+        "ecaScript": null,
+        "iscustom": true,
+        "desc": "",
+        "icon": "General_Customize_20",
+        "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+      }
+    },
+    "m3ArLs1x": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "m3ArLs1x",
+      "children": [
+        {
+          "_entityName": "XBTEntity",
+          "_tag": {
+            "type": "XBTEntity"
+          },
+          "_entityId": "FlFhiXxJ",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": null,
+          "unlockedValue": null,
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "ecaScripts": [
+            {
+              "fileId": "cjyb66bk25t-mhblrmum-j8p5kivhzp",
+              "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanAttack.fcg",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "ugcscript"
+            }
+          ],
+          "x": 1544.675048828125,
+          "y": 138.39999389648438,
+          "width": 180,
+          "height": 88,
+          "nodeInfo": {
+            "type": "condition",
+            "name": "CanAttack1",
+            "id": "FlFhiXxJ",
+            "varArr": [
+              {
+                "name": "CD",
+                "type": "String",
+                "val": "3000"
+              },
+              {
+                "name": "Range",
+                "type": "Float",
+                "val": 1.2
+              }
+            ],
+            "ecaScript": null,
+            "iscustom": true,
+            "desc": "",
+            "icon": "General_Customize_20",
+            "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+          }
+        },
+        {
+          "_entityName": "XBTEntity",
+          "_tag": {
+            "type": "XBTEntity"
+          },
+          "_entityId": "mum3LlpR",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": null,
+          "unlockedValue": null,
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "ecaScripts": [
+            {
+              "fileId": "m4kysfo17-mhblumlp-ooqnjq9gw7",
+              "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack.fcg",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "ugcscript"
+            }
+          ],
+          "x": 1474.675048828125,
+          "y": 228.39999389648438,
+          "width": 180,
+          "height": 88,
+          "nodeInfo": {
+            "type": "action",
+            "name": "Attack1",
+            "id": "mum3LlpR",
+            "varArr": [
+              {
+                "name": "Duration",
+                "type": "Int",
+                "val": 1350
+              }
+            ],
+            "ecaScript": null,
+            "iscustom": true,
+            "desc": "",
+            "icon": "General_Customize_20",
+            "fileId": "tbdwluazbo-mj73d2uh-9j2rdg9gy89"
+          }
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": null,
+      "unlockedValue": null,
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        null
+      ],
+      "x": 1237.675048828125,
+      "y": 193.39999389648438,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "composite",
+        "name": "MemSequence",
+        "id": "m3ArLs1x",
+        "keyName": "MemSequence",
+        "desc": "FE_42_JH_WS_MENSEQUENCE",
+        "varArr": [],
+        "in": null,
+        "icon": "General_MemSequence_20",
+        "out": [
+          "FlFhiXxJ",
+          "mum3LlpR"
+        ]
+      }
+    },
+    "mum3LlpR": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "mum3LlpR",
+      "children": [],
+      "prefabVariant": null,
+      "activeValue": null,
+      "unlockedValue": null,
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        {
+          "fileId": "m4kysfo17-mhblumlp-ooqnjq9gw7",
+          "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack.fcg",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "ugcscript"
+        }
+      ],
+      "x": 1474.675048828125,
+      "y": 228.39999389648438,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "action",
+        "name": "Attack1",
+        "id": "mum3LlpR",
+        "varArr": [
+          {
+            "name": "Duration",
+            "type": "Int",
+            "val": 1350
+          }
+        ],
+        "ecaScript": null,
+        "iscustom": true,
+        "desc": "",
+        "icon": "General_Customize_20",
+        "fileId": "tbdwluazbo-mj73d2uh-9j2rdg9gy89"
+      }
+    },
+    "FlFhiXxJ": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "FlFhiXxJ",
+      "children": [],
+      "prefabVariant": null,
+      "activeValue": null,
+      "unlockedValue": null,
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        {
+          "fileId": "cjyb66bk25t-mhblrmum-j8p5kivhzp",
+          "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanAttack.fcg",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "ugcscript"
+        }
+      ],
+      "x": 1544.675048828125,
+      "y": 138.39999389648438,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "condition",
+        "name": "CanAttack1",
+        "id": "FlFhiXxJ",
+        "varArr": [
+          {
+            "name": "CD",
+            "type": "String",
+            "val": "3000"
+          },
+          {
+            "name": "Range",
+            "type": "Float",
+            "val": 1.2
+          }
+        ],
+        "ecaScript": null,
+        "iscustom": true,
+        "desc": "",
+        "icon": "General_Customize_20",
+        "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+      }
+    },
+    "mTc4pqCB": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "mTc4pqCB",
+      "children": [
+        {
+          "_entityName": "XBTEntity",
+          "_tag": {
+            "type": "XBTEntity"
+          },
+          "_entityId": "t0uOJFKv",
+          "children": [
+            {
+              "_entityName": "XBTEntity",
+              "_tag": {
+                "type": "XBTEntity"
+              },
+              "_entityId": "aTFGtbCW",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": null,
+              "unlockedValue": null,
+              "editorLockValue": false,
+              "editorVisibleValue": true,
+              "ecaScripts": [
+                {
+                  "fileId": "l30snnkwkra-mhaj1shs-cegyrixqay",
+                  "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanMove.fcg",
+                  "_tag": {
+                    "type": "GFileRefer"
+                  },
+                  "fileType": "ugcscript"
+                }
+              ],
+              "x": 1324.675048828125,
+              "y": 377.3999938964844,
+              "width": 180,
+              "height": 88,
+              "nodeInfo": {
+                "type": "condition",
+                "name": "CanMove",
+                "id": "aTFGtbCW",
+                "varArr": [
+                  {
+                    "name": "KeepDist",
+                    "type": "Int",
+                    "val": 1
+                  }
+                ],
+                "ecaScript": null,
+                "iscustom": true,
+                "desc": "",
+                "icon": "General_Customize_20",
+                "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+              }
+            },
+            {
+              "_entityName": "XBTEntity",
+              "_tag": {
+                "type": "XBTEntity"
+              },
+              "_entityId": "zZK0oYBm",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": null,
+              "unlockedValue": null,
+              "editorLockValue": false,
+              "editorVisibleValue": true,
+              "ecaScripts": [
+                {
+                  "fileId": "x6a1ep3jlpa-mhajefl4-nuekon6ddrn",
+                  "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Move2Target.fcg",
+                  "_tag": {
+                    "type": "GFileRefer"
+                  },
+                  "fileType": "ugcscript"
+                }
+              ],
+              "x": 1394.675048828125,
+              "y": 438.82855224609375,
+              "width": 180,
+              "height": 88,
+              "nodeInfo": {
+                "type": "action",
+                "name": "Action",
+                "id": "zZK0oYBm",
+                "varArr": [
+                  {
+                    "name": "KeepDist",
+                    "type": "Float",
+                    "val": 1
+                  }
+                ],
+                "ecaScript": null,
+                "iscustom": true,
+                "desc": "",
+                "icon": "General_Customize_20",
+                "fileId": "tbdwluazbo-mj73d2uh-9j2rdg9gy89"
+              }
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": null,
+          "unlockedValue": null,
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "ecaScripts": [
+            null
+          ],
+          "x": 957.6749877929688,
+          "y": 366.3999938964844,
+          "width": 180,
+          "height": 88,
+          "nodeInfo": {
+            "type": "composite",
+            "name": "MemSequence",
+            "id": "t0uOJFKv",
+            "keyName": "MemSequence",
+            "desc": "FE_42_JH_WS_MENSEQUENCE",
+            "varArr": [],
+            "in": null,
+            "icon": "General_MemSequence_20",
+            "out": [
+              "aTFGtbCW",
+              "zZK0oYBm"
+            ]
+          }
+        },
+        {
+          "_entityName": "XBTEntity",
+          "_tag": {
+            "type": "XBTEntity"
+          },
+          "_entityId": "qEJ7mu8V",
+          "children": [
+            {
+              "_entityName": "XBTEntity",
+              "_tag": {
+                "type": "XBTEntity"
+              },
+              "_entityId": "PnVLfm3C",
+              "children": [
+                {
+                  "_entityName": "XBTEntity",
+                  "_tag": {
+                    "type": "XBTEntity"
+                  },
+                  "_entityId": "ojjqKSyp",
+                  "children": [],
+                  "prefabVariant": null,
+                  "activeValue": null,
+                  "unlockedValue": null,
+                  "editorLockValue": false,
+                  "editorVisibleValue": true,
+                  "ecaScripts": [
+                    {
+                      "fileId": "7tvz6uu2p7u-mhaj3wb6-6qm1hl3o27s",
+                      "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanPatrol.fcg",
+                      "_tag": {
+                        "type": "GFileRefer"
+                      },
+                      "fileType": "ugcscript"
+                    }
+                  ],
+                  "x": 1954.675048828125,
+                  "y": 610.2571411132812,
+                  "width": 180,
+                  "height": 88,
+                  "nodeInfo": {
+                    "type": "condition",
+                    "name": "CanPatrol",
+                    "id": "ojjqKSyp",
+                    "varArr": [
+                      {
+                        "name": "CD",
+                        "type": "Int",
+                        "val": 5000
+                      }
+                    ],
+                    "ecaScript": null,
+                    "iscustom": true,
+                    "desc": "",
+                    "icon": "General_Customize_20",
+                    "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+                  }
+                },
+                {
+                  "_entityName": "XBTEntity",
+                  "_tag": {
+                    "type": "XBTEntity"
+                  },
+                  "_entityId": "FQGr7pg8",
+                  "children": [],
+                  "prefabVariant": null,
+                  "activeValue": null,
+                  "unlockedValue": null,
+                  "editorLockValue": false,
+                  "editorVisibleValue": true,
+                  "ecaScripts": [
+                    {
+                      "fileId": "lw18md2pdb-mheopoc4-tte18avbs6g",
+                      "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Patrol.fcg",
+                      "_tag": {
+                        "type": "GFileRefer"
+                      },
+                      "fileType": "ugcscript"
+                    }
+                  ],
+                  "x": 1884.675048828125,
+                  "y": 798.8285522460938,
+                  "width": 180,
+                  "height": 88,
+                  "nodeInfo": {
+                    "type": "action",
+                    "name": "Patrol",
+                    "id": "FQGr7pg8",
+                    "varArr": [
+                      {
+                        "name": "KeepDist",
+                        "type": "Float",
+                        "val": 0.5
+                      }
+                    ],
+                    "ecaScript": null,
+                    "iscustom": true,
+                    "desc": "",
+                    "icon": "General_Customize_20",
+                    "fileId": "tbdwluazbo-mj73d2uh-9j2rdg9gy89"
+                  }
+                }
+              ],
+              "prefabVariant": null,
+              "activeValue": null,
+              "unlockedValue": null,
+              "editorLockValue": false,
+              "editorVisibleValue": true,
+              "ecaScripts": [
+                null
+              ],
+              "x": 1328.960693359375,
+              "y": 531.6857299804688,
+              "width": 180,
+              "height": 88,
+              "nodeInfo": {
+                "type": "composite",
+                "name": "MemSequence",
+                "id": "PnVLfm3C",
+                "keyName": "MemSequence",
+                "desc": "FE_42_JH_WS_MENSEQUENCE",
+                "varArr": [],
+                "in": null,
+                "icon": "General_MemSequence_20",
+                "out": [
+                  "ojjqKSyp",
+                  "FQGr7pg8"
+                ]
+              }
+            },
+            {
+              "_entityName": "XBTEntity",
+              "_tag": {
+                "type": "XBTEntity"
+              },
+              "_entityId": "P3RgpMIi",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": null,
+              "unlockedValue": null,
+              "editorLockValue": false,
+              "editorVisibleValue": true,
+              "ecaScripts": [
+                null
+              ],
+              "x": 1441.81787109375,
+              "y": 965.971435546875,
+              "width": 180,
+              "height": 88,
+              "nodeInfo": {
+                "type": "action",
+                "name": "Idle",
+                "id": "P3RgpMIi",
+                "varArr": [],
+                "ecaScript": null,
+                "iscustom": true,
+                "desc": "",
+                "icon": "General_Customize_20",
+                "fileId": "tbdwluazbo-mj73d2uh-9j2rdg9gy89"
+              }
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": null,
+          "unlockedValue": null,
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "ecaScripts": [
+            null
+          ],
+          "x": 1097.5321044921875,
+          "y": 501.6856994628906,
+          "width": 180,
+          "height": 88,
+          "nodeInfo": {
+            "type": "composite",
+            "name": "Priority",
+            "id": "qEJ7mu8V",
+            "keyName": "Priority",
+            "desc": "FE_42_JH_WS_PRIORITY",
+            "varArr": [],
+            "in": null,
+            "icon": "General_Selector_20",
+            "out": [
+              "PnVLfm3C",
+              "P3RgpMIi"
+            ]
+          }
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": null,
+      "unlockedValue": null,
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        null
+      ],
+      "x": 881.6749877929688,
+      "y": 442.3999938964844,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "composite",
+        "name": "Priority",
+        "id": "mTc4pqCB",
+        "keyName": "Priority",
+        "desc": "FE_42_JH_WS_PRIORITY",
+        "varArr": [],
+        "in": null,
+        "icon": "General_Selector_20",
+        "out": [
+          "t0uOJFKv",
+          "qEJ7mu8V"
+        ]
+      }
+    },
+    "t0uOJFKv": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "t0uOJFKv",
+      "children": [
+        {
+          "_entityName": "XBTEntity",
+          "_tag": {
+            "type": "XBTEntity"
+          },
+          "_entityId": "aTFGtbCW",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": null,
+          "unlockedValue": null,
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "ecaScripts": [
+            {
+              "fileId": "l30snnkwkra-mhaj1shs-cegyrixqay",
+              "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanMove.fcg",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "ugcscript"
+            }
+          ],
+          "x": 1324.675048828125,
+          "y": 377.3999938964844,
+          "width": 180,
+          "height": 88,
+          "nodeInfo": {
+            "type": "condition",
+            "name": "CanMove",
+            "id": "aTFGtbCW",
+            "varArr": [
+              {
+                "name": "KeepDist",
+                "type": "Int",
+                "val": 1
+              }
+            ],
+            "ecaScript": null,
+            "iscustom": true,
+            "desc": "",
+            "icon": "General_Customize_20",
+            "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+          }
+        },
+        {
+          "_entityName": "XBTEntity",
+          "_tag": {
+            "type": "XBTEntity"
+          },
+          "_entityId": "zZK0oYBm",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": null,
+          "unlockedValue": null,
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "ecaScripts": [
+            {
+              "fileId": "x6a1ep3jlpa-mhajefl4-nuekon6ddrn",
+              "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Move2Target.fcg",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "ugcscript"
+            }
+          ],
+          "x": 1394.675048828125,
+          "y": 438.82855224609375,
+          "width": 180,
+          "height": 88,
+          "nodeInfo": {
+            "type": "action",
+            "name": "Action",
+            "id": "zZK0oYBm",
+            "varArr": [
+              {
+                "name": "KeepDist",
+                "type": "Float",
+                "val": 1
+              }
+            ],
+            "ecaScript": null,
+            "iscustom": true,
+            "desc": "",
+            "icon": "General_Customize_20",
+            "fileId": "tbdwluazbo-mj73d2uh-9j2rdg9gy89"
+          }
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": null,
+      "unlockedValue": null,
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        null
+      ],
+      "x": 957.6749877929688,
+      "y": 366.3999938964844,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "composite",
+        "name": "MemSequence",
+        "id": "t0uOJFKv",
+        "keyName": "MemSequence",
+        "desc": "FE_42_JH_WS_MENSEQUENCE",
+        "varArr": [],
+        "in": null,
+        "icon": "General_MemSequence_20",
+        "out": [
+          "aTFGtbCW",
+          "zZK0oYBm"
+        ]
+      }
+    },
+    "qEJ7mu8V": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "qEJ7mu8V",
+      "children": [
+        {
+          "_entityName": "XBTEntity",
+          "_tag": {
+            "type": "XBTEntity"
+          },
+          "_entityId": "PnVLfm3C",
+          "children": [
+            {
+              "_entityName": "XBTEntity",
+              "_tag": {
+                "type": "XBTEntity"
+              },
+              "_entityId": "ojjqKSyp",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": null,
+              "unlockedValue": null,
+              "editorLockValue": false,
+              "editorVisibleValue": true,
+              "ecaScripts": [
+                {
+                  "fileId": "7tvz6uu2p7u-mhaj3wb6-6qm1hl3o27s",
+                  "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanPatrol.fcg",
+                  "_tag": {
+                    "type": "GFileRefer"
+                  },
+                  "fileType": "ugcscript"
+                }
+              ],
+              "x": 1954.675048828125,
+              "y": 610.2571411132812,
+              "width": 180,
+              "height": 88,
+              "nodeInfo": {
+                "type": "condition",
+                "name": "CanPatrol",
+                "id": "ojjqKSyp",
+                "varArr": [
+                  {
+                    "name": "CD",
+                    "type": "Int",
+                    "val": 5000
+                  }
+                ],
+                "ecaScript": null,
+                "iscustom": true,
+                "desc": "",
+                "icon": "General_Customize_20",
+                "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+              }
+            },
+            {
+              "_entityName": "XBTEntity",
+              "_tag": {
+                "type": "XBTEntity"
+              },
+              "_entityId": "FQGr7pg8",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": null,
+              "unlockedValue": null,
+              "editorLockValue": false,
+              "editorVisibleValue": true,
+              "ecaScripts": [
+                {
+                  "fileId": "lw18md2pdb-mheopoc4-tte18avbs6g",
+                  "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Patrol.fcg",
+                  "_tag": {
+                    "type": "GFileRefer"
+                  },
+                  "fileType": "ugcscript"
+                }
+              ],
+              "x": 1884.675048828125,
+              "y": 798.8285522460938,
+              "width": 180,
+              "height": 88,
+              "nodeInfo": {
+                "type": "action",
+                "name": "Patrol",
+                "id": "FQGr7pg8",
+                "varArr": [
+                  {
+                    "name": "KeepDist",
+                    "type": "Float",
+                    "val": 0.5
+                  }
+                ],
+                "ecaScript": null,
+                "iscustom": true,
+                "desc": "",
+                "icon": "General_Customize_20",
+                "fileId": "tbdwluazbo-mj73d2uh-9j2rdg9gy89"
+              }
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": null,
+          "unlockedValue": null,
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "ecaScripts": [
+            null
+          ],
+          "x": 1328.960693359375,
+          "y": 531.6857299804688,
+          "width": 180,
+          "height": 88,
+          "nodeInfo": {
+            "type": "composite",
+            "name": "MemSequence",
+            "id": "PnVLfm3C",
+            "keyName": "MemSequence",
+            "desc": "FE_42_JH_WS_MENSEQUENCE",
+            "varArr": [],
+            "in": null,
+            "icon": "General_MemSequence_20",
+            "out": [
+              "ojjqKSyp",
+              "FQGr7pg8"
+            ]
+          }
+        },
+        {
+          "_entityName": "XBTEntity",
+          "_tag": {
+            "type": "XBTEntity"
+          },
+          "_entityId": "P3RgpMIi",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": null,
+          "unlockedValue": null,
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "ecaScripts": [
+            null
+          ],
+          "x": 1441.81787109375,
+          "y": 965.971435546875,
+          "width": 180,
+          "height": 88,
+          "nodeInfo": {
+            "type": "action",
+            "name": "Idle",
+            "id": "P3RgpMIi",
+            "varArr": [],
+            "ecaScript": null,
+            "iscustom": true,
+            "desc": "",
+            "icon": "General_Customize_20",
+            "fileId": "tbdwluazbo-mj73d2uh-9j2rdg9gy89"
+          }
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": null,
+      "unlockedValue": null,
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        null
+      ],
+      "x": 1097.5321044921875,
+      "y": 501.6856994628906,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "composite",
+        "name": "Priority",
+        "id": "qEJ7mu8V",
+        "keyName": "Priority",
+        "desc": "FE_42_JH_WS_PRIORITY",
+        "varArr": [],
+        "in": null,
+        "icon": "General_Selector_20",
+        "out": [
+          "PnVLfm3C",
+          "P3RgpMIi"
+        ]
+      }
+    },
+    "PnVLfm3C": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "PnVLfm3C",
+      "children": [
+        {
+          "_entityName": "XBTEntity",
+          "_tag": {
+            "type": "XBTEntity"
+          },
+          "_entityId": "ojjqKSyp",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": null,
+          "unlockedValue": null,
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "ecaScripts": [
+            {
+              "fileId": "7tvz6uu2p7u-mhaj3wb6-6qm1hl3o27s",
+              "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanPatrol.fcg",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "ugcscript"
+            }
+          ],
+          "x": 1954.675048828125,
+          "y": 610.2571411132812,
+          "width": 180,
+          "height": 88,
+          "nodeInfo": {
+            "type": "condition",
+            "name": "CanPatrol",
+            "id": "ojjqKSyp",
+            "varArr": [
+              {
+                "name": "CD",
+                "type": "Int",
+                "val": 5000
+              }
+            ],
+            "ecaScript": null,
+            "iscustom": true,
+            "desc": "",
+            "icon": "General_Customize_20",
+            "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+          }
+        },
+        {
+          "_entityName": "XBTEntity",
+          "_tag": {
+            "type": "XBTEntity"
+          },
+          "_entityId": "FQGr7pg8",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": null,
+          "unlockedValue": null,
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "ecaScripts": [
+            {
+              "fileId": "lw18md2pdb-mheopoc4-tte18avbs6g",
+              "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Patrol.fcg",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "ugcscript"
+            }
+          ],
+          "x": 1884.675048828125,
+          "y": 798.8285522460938,
+          "width": 180,
+          "height": 88,
+          "nodeInfo": {
+            "type": "action",
+            "name": "Patrol",
+            "id": "FQGr7pg8",
+            "varArr": [
+              {
+                "name": "KeepDist",
+                "type": "Float",
+                "val": 0.5
+              }
+            ],
+            "ecaScript": null,
+            "iscustom": true,
+            "desc": "",
+            "icon": "General_Customize_20",
+            "fileId": "tbdwluazbo-mj73d2uh-9j2rdg9gy89"
+          }
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": null,
+      "unlockedValue": null,
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        null
+      ],
+      "x": 1328.960693359375,
+      "y": 531.6857299804688,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "composite",
+        "name": "MemSequence",
+        "id": "PnVLfm3C",
+        "keyName": "MemSequence",
+        "desc": "FE_42_JH_WS_MENSEQUENCE",
+        "varArr": [],
+        "in": null,
+        "icon": "General_MemSequence_20",
+        "out": [
+          "ojjqKSyp",
+          "FQGr7pg8"
+        ]
+      }
+    },
+    "zZK0oYBm": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "zZK0oYBm",
+      "children": [],
+      "prefabVariant": null,
+      "activeValue": null,
+      "unlockedValue": null,
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        {
+          "fileId": "x6a1ep3jlpa-mhajefl4-nuekon6ddrn",
+          "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Move2Target.fcg",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "ugcscript"
+        }
+      ],
+      "x": 1394.675048828125,
+      "y": 438.82855224609375,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "action",
+        "name": "Action",
+        "id": "zZK0oYBm",
+        "varArr": [
+          {
+            "name": "KeepDist",
+            "type": "Float",
+            "val": 1
+          }
+        ],
+        "ecaScript": null,
+        "iscustom": true,
+        "desc": "",
+        "icon": "General_Customize_20",
+        "fileId": "tbdwluazbo-mj73d2uh-9j2rdg9gy89"
+      }
+    },
+    "aTFGtbCW": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "aTFGtbCW",
+      "children": [],
+      "prefabVariant": null,
+      "activeValue": null,
+      "unlockedValue": null,
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        {
+          "fileId": "l30snnkwkra-mhaj1shs-cegyrixqay",
+          "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanMove.fcg",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "ugcscript"
+        }
+      ],
+      "x": 1324.675048828125,
+      "y": 377.3999938964844,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "condition",
+        "name": "CanMove",
+        "id": "aTFGtbCW",
+        "varArr": [
+          {
+            "name": "KeepDist",
+            "type": "Int",
+            "val": 1
+          }
+        ],
+        "ecaScript": null,
+        "iscustom": true,
+        "desc": "",
+        "icon": "General_Customize_20",
+        "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+      }
+    },
+    "FQGr7pg8": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "FQGr7pg8",
+      "children": [],
+      "prefabVariant": null,
+      "activeValue": null,
+      "unlockedValue": null,
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        {
+          "fileId": "lw18md2pdb-mheopoc4-tte18avbs6g",
+          "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Patrol.fcg",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "ugcscript"
+        }
+      ],
+      "x": 1884.675048828125,
+      "y": 798.8285522460938,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "action",
+        "name": "Patrol",
+        "id": "FQGr7pg8",
+        "varArr": [
+          {
+            "name": "KeepDist",
+            "type": "Float",
+            "val": 0.5
+          }
+        ],
+        "ecaScript": null,
+        "iscustom": true,
+        "desc": "",
+        "icon": "General_Customize_20",
+        "fileId": "tbdwluazbo-mj73d2uh-9j2rdg9gy89"
+      }
+    },
+    "ojjqKSyp": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "ojjqKSyp",
+      "children": [],
+      "prefabVariant": null,
+      "activeValue": null,
+      "unlockedValue": null,
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        {
+          "fileId": "7tvz6uu2p7u-mhaj3wb6-6qm1hl3o27s",
+          "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanPatrol.fcg",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "ugcscript"
+        }
+      ],
+      "x": 1954.675048828125,
+      "y": 610.2571411132812,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "condition",
+        "name": "CanPatrol",
+        "id": "ojjqKSyp",
+        "varArr": [
+          {
+            "name": "CD",
+            "type": "Int",
+            "val": 5000
+          }
+        ],
+        "ecaScript": null,
+        "iscustom": true,
+        "desc": "",
+        "icon": "General_Customize_20",
+        "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+      }
+    },
+    "P3RgpMIi": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "P3RgpMIi",
+      "children": [],
+      "prefabVariant": null,
+      "activeValue": null,
+      "unlockedValue": null,
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        null
+      ],
+      "x": 1441.81787109375,
+      "y": 965.971435546875,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "action",
+        "name": "Idle",
+        "id": "P3RgpMIi",
+        "varArr": [],
+        "ecaScript": null,
+        "iscustom": true,
+        "desc": "",
+        "icon": "General_Customize_20",
+        "fileId": "tbdwluazbo-mj73d2uh-9j2rdg9gy89"
+      }
+    }
+  }
+}
+//"{FE:{"v":"0.2.4081265","c":{"FF":5001},"s":100}

@@ -5,10 +5,11 @@ import "Playable.fcc" as Playable
 import "Strings.fcc" as Strings
 import "Math.fcc" as Math
 
+[platform_client]
 graph Script_1_ {
     //Executed when entity is created
    
-    func PlayCondition(owner entity<BevTreeAttachable>) bool{
+    func PlayCondition(owner entity<BevTreeAttachableForClient>) bool{
         
         var target entity<Player> = owner<Mob>.CurrTarget
        

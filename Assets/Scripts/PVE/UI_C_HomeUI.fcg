@@ -6,6 +6,7 @@ import "Math.fcc" as Math
 import "../CustomEvent.fcc" as CustomEvent
 import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
 import "../SkillUI/SkillUI.fcg" as SkillUI
+import "../PVE/PVEController.fcg" as PVEController
 
 
 [platform_client]
@@ -99,6 +100,7 @@ graph UI_HomeUI {
 
     func OnStartButtonClick(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
         //临时处理，因为客户端服务端不互通
+        LogInfo("OnStartButtonClick")
         var skillMultiplier float = 1.0 * ability3Level + 1
         GetLocalPlayer()<PlayerJionGame>.SkillUI<SkillUI>.skillMultiplier = skillMultiplier
         thisEntity<CustomUI>.IsVisible = false
@@ -110,5 +112,9 @@ graph UI_HomeUI {
         // 发送角色选择完毕事件
         var CurrentSkill = GetLocalPlayer()<PlayerJionGame>.CurrentSkill
         GetLocalPlayer()<PlayerJionGame>.ChoiceHeroOver(level, CurrentSkill, ability1Level, ability2Level, ability3Level)
+
+        PVEController.PVELevelStartInitialization(level)
+
+
     }
 }

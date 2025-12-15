@@ -40,7 +40,7 @@ graph FC_NormalZombie {
 	//funcID: Init
 	async func Init() {
 		//CreateMoveTween(Vector3{0,0,0})
-		thisEntity<BevTreeAttachable>.AttachTarget<BevTree>.TickInterval = tickInterval
+		thisEntity<BevTreeAttachableForClient>.AttachTarget<BevTree>.TickInterval = tickInterval
 		thisEntity<Mob>.MobName = "NormalZombie"
         thisEntity<Mob>.MaxHP = 600
         thisEntity<Mob>.HP = 600
@@ -56,8 +56,8 @@ graph FC_NormalZombie {
 
 		thisEntity<Mob>.DetectRange = 30
         var nowTime int = globalEntity<Global>.GameTimeCount
-		SetBlackboardValue(thisEntity<BevTreeAttachable>.AttachTarget, "LastAttackTime", nowTime)
-		SetBlackboardValue(thisEntity<BevTreeAttachable>.AttachTarget, "Curstate", 0)
+		SetBlackboardValue(thisEntity<BevTreeAttachableForClient>.AttachTarget, "LastAttackTime", nowTime)
+		SetBlackboardValue(thisEntity<BevTreeAttachableForClient>.AttachTarget, "Curstate", 0)
 		WaitForMillisecond(2000)
 		//DispatchEventWithPlatform_Deprecated(100002, thisEntity, true, List<object>{thisEntity<CustomComponent31897461>.ZombieInfo["InitSpeed"]})
 		
@@ -75,7 +75,7 @@ graph FC_NormalZombie {
 		//LogInfo("盾牌僵尸开始冲击技能")
 		var curTarget = thisEntity<Mob>.CurrTarget
 		// 重置碰撞检测状态
-		SetBlackboardValue(thisEntity<BevTreeAttachable>.AttachTarget, "HasHitTarget", false)
+		SetBlackboardValue(thisEntity<BevTreeAttachableForClient>.AttachTarget, "HasHitTarget", false)
 		// 计算冲击方向
 		var currPos Vector3 = TargetEntity<Transform>.Position
 		var targetOffset Vector3 = Vector3{Math.RandomFloat(-0.8, 0.8), 0, Math.RandomFloat(-0.8, 0.8)}
