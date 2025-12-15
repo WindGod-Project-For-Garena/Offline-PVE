@@ -12,6 +12,7 @@ import "../Global/FC_Global_MobSkillHandler.fcg" as MobSkillHandler
 import "Animation.fcc" as Animation
 import "../Static/FC_Utilities.fcg" as PVEUtilities
 import "../PVE/FC_PVEController.fcg" as PVEController
+import "Offline.fcc" as Offline
 
 [platform_client]
 graph FC_NormalZombie {
@@ -127,7 +128,7 @@ graph FC_NormalZombie {
 				// 命中玩家，造成伤害和击退效果
 				if !hasHit {
 					//LogInfo("触发伤害，距离: " + currentDistance)
-					DealDamage(target as entity<Combatable>, nil, DamageType.Monster, GetDamage() * 2) // 技能双倍伤害
+					TakeDamage(target as entity<Combatable>, nil, DamageType.Monster, GetDamage() * 2) // 技能双倍伤害
 					// 添加击退效果
 					hasHit = true
 					
@@ -191,7 +192,7 @@ graph FC_NormalZombie {
 		//	//LogInfo("curTarget: " + curTarget as entity<Player><Player>.Position)
 			if (curTarget != nil && (Distance(curTarget as entity<Player><Player>.Position, thisEntity as entity<LevelObject><Transform>.Position) <= 1.5)) {		
 				
-				DealDamage(curTarget as entity<Combatable>, nil, DamageType.Monster, GetDamage())
+				TakeDamage(curTarget as entity<Combatable>, nil, DamageType.Monster, GetDamage())
 			}
 		} else if (attackName == "NormalAttack2") {
 			

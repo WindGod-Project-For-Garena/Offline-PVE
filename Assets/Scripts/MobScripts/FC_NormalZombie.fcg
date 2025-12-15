@@ -7,6 +7,7 @@ import "Math.fcc" as Math
 import "Combat.fcc" as Combat
 import "../CustomEvent.fcc" as CustomEvent
 import "../PVE/FC_PVEMonsterManager.fcg" as PVEMonsterManager
+import "Offline.fcc" as Offline
 
 [platform_client]
 graph FC_NormalZombie {
@@ -60,7 +61,7 @@ graph FC_NormalZombie {
 		//	LogInfo("curTarget: " + curTarget as entity<Player><Player>.Position)
 			if (curTarget != nil && (Distance(curTarget as entity<Player><Player>.Position, thisEntity as entity<LevelObject><Transform>.Position) <= 1.5)) {		
 				
-				DealDamage(curTarget as entity<Combatable>, nil, DamageType.Monster, GetDamage())
+				TakeDamage(curTarget as entity<Combatable>, nil, DamageType.Monster, GetDamage())
 			}
 		} else if (attackName == "NormalAttack2") {
 			

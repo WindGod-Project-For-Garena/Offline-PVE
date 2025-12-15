@@ -7,6 +7,7 @@ import "Animation.fcc" as Animation
 import "Math.fcc" as Math
 import "Combat.fcc" as Combat
 import "Hud.fcc" as Hud
+import "Offline.fcc" as Offline
 
 [platform_client]
 static graph FC_Global_MobSkillHandler {
@@ -106,7 +107,7 @@ static graph FC_Global_MobSkillHandler {
         //检测技能特效是否命中目标
         for i, player in GetAllPlayers() {
             if (Math.Distance(player<Player>.Position, position) <= scale) {
-                DealDamage(player as entity<Combatable>, nil, DamageType.Monster, skillDamage)
+                TakeDamage(player as entity<Combatable>, nil, DamageType.Monster, skillDamage)
             }
         }
         
@@ -189,7 +190,7 @@ static graph FC_Global_MobSkillHandler {
         //检测技能特效是否命中目标
         for i, player in GetAllPlayers() {
             if (Math.Distance(player<Player>.Position, position) <= scale) {
-                DealDamage(player as entity<Combatable>, nil, DamageType.Monster, skillDamage)
+                TakeDamage(player as entity<Combatable>, nil, DamageType.Monster, skillDamage)
             }
         }
 
@@ -197,13 +198,13 @@ static graph FC_Global_MobSkillHandler {
         WaitForMillisecond(1000)
         for i, player in GetAllPlayers() {
             if (Math.Distance(player<Player>.Position, position) <= scale) {
-                DealDamage(player as entity<Combatable>, nil, DamageType.Monster, Floor(1.0*skillDamage*dotDamageScale))
+                TakeDamage(player as entity<Combatable>, nil, DamageType.Monster, Floor(1.0*skillDamage*dotDamageScale))
             }
         }   
         WaitForMillisecond(1000)
         for i, player in GetAllPlayers() {
             if (Math.Distance(player<Player>.Position, position) <= scale) {
-                DealDamage(player as entity<Combatable>, nil, DamageType.Monster, Floor(1.0*skillDamage*dotDamageScale))
+                TakeDamage(player as entity<Combatable>, nil, DamageType.Monster, Floor(1.0*skillDamage*dotDamageScale))
             }
         }   
 
