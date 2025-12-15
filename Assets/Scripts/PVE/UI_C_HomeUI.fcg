@@ -109,6 +109,6 @@ graph UI_HomeUI {
         
         // 发送角色选择完毕事件
         var CurrentSkill = GetLocalPlayer()<PlayerJionGame>.CurrentSkill
-        DispatchEventToEntity(ChoiceHeroOver, globalEntity, PlatformType.Server, List<object>{level, CurrentSkill,ability1Level,ability2Level,ability3Level})
+        GetLocalPlayer()<PlayerJionGame>.ChoiceHeroOver(level, CurrentSkill, ability1Level, ability2Level, ability3Level)
     }
 }

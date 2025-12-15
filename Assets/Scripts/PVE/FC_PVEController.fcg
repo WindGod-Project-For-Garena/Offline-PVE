@@ -8,7 +8,10 @@ import "Convert.fcc" as Convert
 import "Items.fcc" as Items
 import "../CustomEvent.fcc" as CustomEvent
 import "Math.fcc" as Math
+import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
 
+
+[platform_client]
 static graph FC_PVEController {
     // 控制器状态
     IsGameActive bool = false
@@ -16,15 +19,9 @@ static graph FC_PVEController {
     CurrentWave int = 0
     MaxLevels int = 10
     MaxWaves int = 4
-    weaponMultiplier float = 1.0
-    healthMultiplier float = 1.0
-    skillMultiplier float = 1.0
 
     currPlayer entity<Player> = nil
-    currentWeapon entity<Weapon> = nil
     
-    skillId int = 0
-
     // 游戏配置
     WaveTimeLimit int = 30000  // 每波次时间限制（ms）
     
@@ -39,16 +36,6 @@ static graph FC_PVEController {
     // 游戲成功或失敗
     IsGameSuccess bool = false
     
-    // 玩家基础天赋加成属性数据
-    PlayerDataInGame Map<string, object> = Map<string, object>{}
-    // 技能1（爆裂轰炸）数据
-    Skill1DataInGame Map<string, object> = Map<string, object>{}
-    // 技能2（闪电）数据
-    Skill2DataInGame Map<string, object> = Map<string, object>{}
-
-    // 玩家基础天赋加成属性数据
-    PlayerDataWithOuterBonus Map<string, object> = Map<string, object>{}
-
     event OnAwake() {
         LogInfo("PVE控制器初始化")
         InitializeController()
@@ -60,7 +47,6 @@ static graph FC_PVEController {
         CurrentLevel = 1  // 初始化为0，表示未开始
         CurrentWave = 0
         IsCountdownActive = false
-        
         LogInfo("PVE控制器初始化完成")
     }
 
@@ -68,127 +54,22 @@ static graph FC_PVEController {
         currPlayer = player
     }
 
-    // 更新玩家属性
-    event OnPlayerAttributesUpdate(NewPlayerDataInGame Map<string, object>,NewPlayerDataWithOuterBonus Map<string, object>) {
-        PlayerDataInGame = NewPlayerDataInGame
-        PlayerDataWithOuterBonus = NewPlayerDataWithOuterBonus
-        WaitForNextFrame()
-        currPlayer<Player>.MaxHP = PlayerDataInGame["HP"] as int
-        currPlayer<Player>.HP = PlayerDataInGame["HP"] as int
-        currPlayer<Player>.RunSpeedScale = PlayerDataInGame["MoveSpeed"] as int
-    }
-
-    // 更新技能1数据
-    event UpdateSkill1Data(NewSkill1DataInGame Map<string, object>) {
-        Skill1DataInGame = NewSkill1DataInGame
-        WaitForNextFrame()
-        if skillId == 1 {
-            LogInfo(currentWeapon)
-            //设置武器伤害
-            var weaponDamage = Round(Skill1DataInGame["WeaponDamage"] as int)
-            currentWeapon<Weapon>.Damage = weaponDamage
-            //设置武器换弹速度
-            var ReloadSpeed = Skill1DataInGame["ReloadSpeed"] as float
-            currentWeapon<Weapon>.ReloadSpeedFactor = ReloadSpeed
-            //设置武器攻击速度
-            var AttackSpeed = Skill1DataInGame["AttackSpeed"] as float
-            currentWeapon<Weapon>.AttackInterval = AttackSpeed
-            //设置武器弹匣容量
-            var AmmoMagSize = Skill1DataInGame["WeaponMaxMagazine"] as int
-            currentWeapon<Weapon>.AmmoMagSize = AmmoMagSize
-        }
-    }
-
-    // 更新技能2数据
-    event UpdateSkill2Data(NewSkill2DataInGame Map<string, object>) {
-        Skill2DataInGame = NewSkill2DataInGame
-        WaitForNextFrame()
-        if skillId == 2 {
-            LogInfo(currentWeapon)
-            //设置武器伤害
-            var weaponDamage = Round(Skill2DataInGame["WeaponDamage"] as int)
-            currentWeapon<Weapon>.Damage = weaponDamage
-            //设置武器换弹速度
-            var ReloadSpeed = Skill2DataInGame["ReloadSpeed"] as float
-            currentWeapon<Weapon>.ReloadSpeedFactor = ReloadSpeed
-            //设置武器攻击速度
-            var AttackSpeed = Skill2DataInGame["AttackSpeed"] as float
-            currentWeapon<Weapon>.AttackInterval = AttackSpeed
-            //设置武器弹匣容量
-            var AmmoMagSize = Skill2DataInGame["WeaponMaxMagazine"] as int
-            currentWeapon<Weapon>.AmmoMagSize = AmmoMagSize
-            currentWeapon<Weapon>.CurrentAmmo = currentWeapon<Weapon>.AmmoMagSize
-        }
-    }
-
-    // 玩家复活删除武器
-    event OnPlayerRevived(player entity<Player>, revivalSource PlayerReviveSourceType){
-        DestroyItem(player, ItemIDType.M1887X, 1)
-        DestroyItem(player,  ItemIDType.SGAmmo, 999)
-        DestroyItem(player, ItemIDType.GoldMP5_III, 1)
-        DestroyItem(player,  ItemIDType.SGAmmo, 999)
-    }    
-
-    // 选择完角色
-    event ChoiceHeroOver(level int, skillIndex int, ability1Level int, ability2Level int, ability3Level int) {
-        weaponMultiplier = 1.0 * ability1Level + 1
-        healthMultiplier = 1.0 * ability2Level + 1
-        skillMultiplier = 1.0 * ability3Level + 1
-        skillId = skillIndex
-        //删除武器
-        Destroy(currentWeapon)
-        //发放武器
-        if  skillIndex == 1 {
-            DestroyItem(currPlayer, ItemIDType.M1887X, 1)
-            AddItem(currPlayer, ItemIDType.M1887X, 1, out var itemList)
-            currentWeapon = itemList[0] as entity<Weapon>
-
-            DestroyItem(currPlayer,  ItemIDType.SMGAmmo, 999)
-            DestroyItem(currPlayer,  ItemIDType.SGAmmo, 999)
-            AddItem(currPlayer, ItemIDType.SGAmmo, 999, out var createdEntity)
-        }
-
-        if skillIndex == 2 {
-            DestroyItem(currPlayer, ItemIDType.GoldMP5_III, 1)
-            AddItem(currPlayer, ItemIDType.GoldMP5_III, 1, out var itemList)
-            currentWeapon = itemList[0] as entity<Weapon>
-
-            DestroyItem(currPlayer,  ItemIDType.SGAmmo, 999)
-            DestroyItem(currPlayer,  ItemIDType.SMGAmmo, 999)
-            AddItem(currPlayer, ItemIDType.SMGAmmo, 999, out var createdEntity)
-        }
-    }
-
     // 游戏开始
-    event OnGameStartNext(level int, skillIndex int, ability1Level int, ability2Level int, ability3Level int) {
+    func OnGameStartNext(level int, skillIndex int, ability1Level int, ability2Level int, ability3Level int) {
         LogInfo("游戏开始 - 关卡: " + level + "，技能: " + skillIndex)
         StartPVEGame(level)
     }
 
-    // 立刻换弹更新武器数据
-    event OnWeaponUpdate() {
-        currentWeapon<Weapon>.CurrentAmmo = currentWeapon<Weapon>.AmmoMagSize
-    }
-
-    event ToServer_StartNextWave() {
+    func ToServer_StartNextWave() {
         CurrentWave = CurrentWave + 1
         StartWave(CurrentWave)
     }
 
-    event S_Debug_NextWave() {
+    //DEbug的临时初始化
+    func S_Debug_NextWave() {
         IsCountdownActive = false
-        DestroyItem(currPlayer, ItemIDType.M1887X, 1)
-        DestroyItem(currPlayer,  ItemIDType.SGAmmo, 999)
-        DestroyItem(currPlayer, ItemIDType.GoldMP5_III, 1)
-        DestroyItem(currPlayer,  ItemIDType.SGAmmo, 999)
-        UpdataPlayerDataWithOuterBonus()
     }
 
-    func  UpdataPlayerDataWithOuterBonus() {
-        currPlayer<Player>.HP = PlayerDataWithOuterBonus["HP"] as int
-        currPlayer<Player>.RunSpeedScale = PlayerDataWithOuterBonus["MoveSpeed"] as int
-    }
-    
     // 开始PVE游戏（指定关卡）
     func StartPVEGame(level int) {
         if IsGameActive {
@@ -210,9 +91,6 @@ static graph FC_PVEController {
         // 通知所有玩家
         Utilities.NotifyAllPlayers("PVE游戏开始！关卡: " + level, #00FF00FF, 5000)
 
-        //显示升级技能
-
-        
         // 通知怪物管理器开始关卡
         monsterManager.LevelInitialize(level)
 
@@ -262,7 +140,7 @@ static graph FC_PVEController {
         if IsCountdownActive && MaxWaves > CurrentWave {
             IsCountdownActive = false
             monsterManager.ForceEndWave()
-            DispatchEventToEntity(ToClient_DisplaySkillThreeChoiceOne,GetAllPlayers()[0], PlatformType.Client, List<object>{})
+            GetLocalPlayer()<PlayerJionGame>.ToClient_DisplaySkillThreeChoiceOne()
         }else{
             monsterManager.ForceEndWave()
             OnGameComplete()
@@ -285,7 +163,7 @@ static graph FC_PVEController {
     func ShowFinalStats() {        
         var currTime int = globalEntity<Global>.GameTimeCount as int
         var totalTime int = (currTime - GameStartTime) / 1000
-        DispatchEventToEntity(ToClient_ShowFinalStats,GetAllPlayers()[0], PlatformType.Client, List<object>{currTime, GameStartTime, IsGameSuccess, totalTime, CurrentLevel})
+        GetLocalPlayer()<PlayerJionGame>.ToClient_ShowFinalStats(currTime, GameStartTime, IsGameSuccess, totalTime, CurrentLevel)
     }
     
     // 获取游戏状态
@@ -354,11 +232,6 @@ static graph FC_PVEController {
         var localPlayer entity<Player> = GetAllPlayers()[0]
         localPlayer<Player>.Invincible = false
 
-        DispatchEventToEntity(ToClient_GameComplete,GetAllPlayers()[0], PlatformType.Client, List<object>{})
+        GetLocalPlayer()<PlayerJionGame>.ToClient_GameComplete()
     }
-
-    
-    
-    
-   
 }

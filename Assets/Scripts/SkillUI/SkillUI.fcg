@@ -13,6 +13,7 @@ import "../DeBug/cdlevelup.fcg" as cdlevelup
 import "../DeBug/ChoiceSkill.fcg" as ChoiceSkill
 import "../SuperFcc/TransferList.fcc" as TransferList
 import "List.fcc" as List
+import "Items.fcc" as Items
 import "../CustomEvent.fcc" as CustomEvent
 
 [platform_client]
@@ -152,8 +153,10 @@ graph SkillUI {
             }
             // 立刻装弹
             if ReloadNow == 1{
-                // 发送属性到服务器，更新玩家当前属性（使用局内数据）
-                DispatchEventToEntity(OnWeaponUpdate, globalEntity, PlatformType.Server, List<object>{})
+                var currentWeapon = GetLocalPlayer()<PlayerJionGame>.currentWeapon
+                currentWeapon<Weapon>.CurrentAmmo = currentWeapon<Weapon>.AmmoMagSize
+                // 更新玩家当前武器属性（使用局内数据）
+                GetLocalPlayer()<PlayerJionGame>.OnWeaponUpdate()
             }
             //————————————————————————————————————————————————//
 
@@ -167,8 +170,8 @@ graph SkillUI {
             // 立刻装弹
             if ReloadNow == 1{
                 LogInfo("立刻装弹")
-                // 发送属性到服务器，更新玩家当前属性（使用局内数据）
-                DispatchEventToEntity(OnWeaponUpdate, globalEntity, PlatformType.Server, List<object>{})
+                // 更新玩家当前武器属性（使用局内数据）
+                GetLocalPlayer()<PlayerJionGame>.OnWeaponUpdate()
             }
             //————————————————————————————————————————————————//
         }
@@ -253,7 +256,7 @@ graph SkillUI {
         var SkillUI entity<CustomUI> = GetLocalPlayer()<PlayerJionGame>.SkillUI
         var buttonPath = "/Skill_" + skillNum + "/JoyStickFillAmount"
         JoyStickButton = GetWidgetByPath(GetLocalPlayer(), SkillUI, buttonPath)
-        JoyStickButton<UIWidget>.Active = true
+        JoyStickButton<UIWidget>.IsVisible = true
         JoyStickButton<UIWidgetButton>.FillAmount = 0
         
         if FillAmountTween == nil{
@@ -276,7 +279,7 @@ graph SkillUI {
     async func HandleSkillCD(cdTime int) {
         WaitForMillisecond(cdTime)
         Destroy(FillAmountTween)
-        JoyStickButton<UIWidget>.Active = false
+        JoyStickButton<UIWidget>.IsVisible = false
     }
 
     // 播放雷击特效

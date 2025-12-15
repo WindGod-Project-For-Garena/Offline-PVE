@@ -71,10 +71,6 @@ graph OnFire {
         }
     }
 
-    //重置子弹判定（重新装弹）
-    event ReLoadAmmo(){
-        GetLocalPlayer()<PlayerJionGame>.AmmoJudgement = 0
-    }
 //————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     //榴弹发射
     func FireGrenade(SkillID int) {

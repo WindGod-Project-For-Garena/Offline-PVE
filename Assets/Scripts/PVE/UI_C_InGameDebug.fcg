@@ -4,10 +4,11 @@ import "Hud.fcc" as Hud
 import "../CustomEvent.fcc" as CustomEvent
 import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
 import "../PlayerJionGame/OnFire.fcg" as OnFire
+import "../PVE/FC_PVEController.fcg" as FC_PVEController
 
 [platform_client]
 graph UI_HomeUI {
     func onNextWaveButtonClick(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
-        DispatchEventToEntity(S_Debug_NextWave,globalEntity, PlatformType.Server, List<object>{})
+        GetLocalPlayer()<PlayerJionGame>.S_Debug_NextWave()
     }
 }

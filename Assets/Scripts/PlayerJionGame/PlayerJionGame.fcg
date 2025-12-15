@@ -1,7 +1,6 @@
 import "StdLibrary.fcc" as StdLib
 import "EditorGenLib.fcc" as EditorLib
 import "Player.fcc" as Player
-import "Items.fcc" as Items
 import "Hud.fcc" as Hud
 import "../SkillUI/SkillUI.fcg" as SkillUI
 import "Math.fcc" as Math
@@ -11,7 +10,10 @@ import "List.fcc" as List
 import "Convert.fcc" as Convert
 import "Strings.fcc" as strings
 import "../PVE/UI_C_SkillLevelUp.fcg" as UI_C_SkillLevelUp
+import "Offline.fcc" as Offline
+import "Items.fcc" as Items
 import "../CustomEvent.fcc" as CustomEvent
+import "../PVE/FC_PVEController.fcg" as FC_PVEController
 
 // 这里是RCT最新代码，WindGod & Holy巨献
 
@@ -22,6 +24,8 @@ graph PlayerJionGame {
     HomeUI entity<CustomHud>
     inGameDebugUI entity<CustomHud>
     SkillLevelUpUI entity<CustomHud>
+    currPlayer entity<Player>
+    currentWeapon entity<Weapon> = nil
     //主页面
     NewHomeUI entity<CustomHud>     //主页面
     ChoiceHeroUI entity<CustomHud>   //开始游戏选择英雄页面
@@ -168,10 +172,18 @@ graph PlayerJionGame {
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     AmmoJudgement int = 0
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+    weaponMultiplier float = 1.0
+    healthMultiplier float = 1.0
+    skillMultiplier float = 1.0
+    //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+    IsCountdownActive bool = false
+    //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     event OnPlayerJoin(player entity<Player>) {
         if GetLocalPlayer() == player {
             // CreateCustomUIClient(out var ui, EResUI.HomeUI)
             // HomeUI = ui
+
+            currPlayer = player
 
             CreateCustomUIClient(out var inGameDebugUIEntity, EResUI.InGameDebug)
             inGameDebugUI = inGameDebugUIEntity
@@ -217,19 +229,19 @@ graph PlayerJionGame {
             GameOverFinalUIEntity<CustomUI>.IsVisible = false
 
             var Skill_1Panel = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_1")
-            Skill_1Panel<UIWidget>.Active = false
+            Skill_1Panel<UIWidget>.IsVisible = false
             var JoyStickButton_1 = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_1/JoyStickFillAmount")
-            JoyStickButton_1<UIWidget>.Active = false
+            JoyStickButton_1<UIWidget>.IsVisible = false
 
             var Skill_2Panel = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_2")
-            Skill_2Panel<UIWidget>.Active = false
+            Skill_2Panel<UIWidget>.IsVisible = false
             var JoyStickButton_2 = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_2/JoyStickFillAmount")
-            JoyStickButton_2<UIWidget>.Active = false
+            JoyStickButton_2<UIWidget>.IsVisible = false
 
             var Skill_3Panel = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_3")
-            Skill_3Panel<UIWidget>.Active = false
+            Skill_3Panel<UIWidget>.IsVisible = false
             var JoyStickButton_3 = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_3/JoyStickFillAmount")
-            JoyStickButton_3<UIWidget>.Active = false
+            JoyStickButton_3<UIWidget>.IsVisible = false
 
             InjectSkill_1_CardData()
             InjectSkill_2_CardData()
@@ -241,6 +253,36 @@ graph PlayerJionGame {
             // 初始化局内数据（复制局外数据）
             CopyToInGameData()
             IsNextThreeChoiceOne = 0
+        }
+    }
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+// 选择完角色
+    func ChoiceHeroOver(level int, skillIndex int, ability1Level int, ability2Level int, ability3Level int) {
+        weaponMultiplier = 1.0 * ability1Level + 1
+        healthMultiplier = 1.0 * ability2Level + 1
+        skillMultiplier = 1.0 * ability3Level + 1
+        CurrentSkill = skillIndex
+        //删除武器
+        Destroy(currentWeapon)
+        //发放武器
+        if  skillIndex == 1 {
+            DestroyItem(currPlayer, ItemIDType.M1887X, 1)
+            AddItem(ItemIDType.M1887X, 1, out var itemList)
+            currentWeapon = itemList[0] as entity<Weapon>
+
+            DestroyItem(currPlayer,  ItemIDType.SMGAmmo, 999)
+            DestroyItem(currPlayer,  ItemIDType.SGAmmo, 999)
+            AddItem(ItemIDType.SGAmmo, 999, out var createdEntity)
+        }
+
+        if skillIndex == 2 {
+            DestroyItem(currPlayer, ItemIDType.GoldMP5_III, 1)
+            AddItem(ItemIDType.GoldMP5_III, 1, out var itemList)
+            currentWeapon = itemList[0] as entity<Weapon>
+
+            DestroyItem(currPlayer,  ItemIDType.SGAmmo, 999)
+            DestroyItem(currPlayer,  ItemIDType.SMGAmmo, 999)
+            AddItem(ItemIDType.SMGAmmo, 999, out var createdEntity)
         }
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
@@ -344,11 +386,11 @@ graph PlayerJionGame {
         ChoiceThreeCardUI<CustomUI>.IsVisible = true
         //----------------------------------------------------------------------------------------------------------------//
         var card1BB = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/ChoiceThreeCardPanel/Card_1/IsChoice")
-        card1BB<UIWidget>.Active = false
+        card1BB<UIWidget>.IsVisible = false
         var card2BB = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/ChoiceThreeCardPanel/Card_2/IsChoice")
-        card2BB<UIWidget>.Active = false
+        card2BB<UIWidget>.IsVisible = false
         var card3BB = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/ChoiceThreeCardPanel/Card_3/IsChoice")
-        card3BB<UIWidget>.Active = false
+        card3BB<UIWidget>.IsVisible = false
         //----------------------------------------------------------------------------------------------------------------//
         IsNextThreeChoiceOne = 0       //关闭标志位
         StartThree_choose_One(level, CurrentSkill, ability1Level, ability2Level, ability3Level)
@@ -364,11 +406,11 @@ graph PlayerJionGame {
         ChoiceThreeCardUI<CustomUI>.IsVisible = true
         //----------------------------------------------------------------------------------------------------------------//
         var card1BB = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/ChoiceThreeCardPanel/Card_1/IsChoice")
-        card1BB<UIWidget>.Active = false
+        card1BB<UIWidget>.IsVisible = false
         var card2BB = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/ChoiceThreeCardPanel/Card_2/IsChoice")
-        card2BB<UIWidget>.Active = false
+        card2BB<UIWidget>.IsVisible = false
         var card3BB = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/ChoiceThreeCardPanel/Card_3/IsChoice")
-        card3BB<UIWidget>.Active = false
+        card3BB<UIWidget>.IsVisible = false
         //----------------------------------------------------------------------------------------------------------------//
         StartThree_choose_One(level, CurrentSkill, ability1Level, ability2Level, ability3Level)
     }
@@ -456,7 +498,7 @@ graph PlayerJionGame {
         ChoiceThreeCardUI<CustomUI>.IsVisible = false
         
         // 开始下一波
-        DispatchEventToEntity(ToServer_StartNextWave, globalEntity, PlatformType.Server, List<object>{})
+        FC_PVEController.ToServer_StartNextWave()
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     func StartThree_choose_One(level int, CurrentSkill int, ability1Level int, ability2Level int, ability3Level int){
@@ -829,8 +871,8 @@ graph PlayerJionGame {
                 Skill1DataInGame["WeaponMaxMagazine"] = finalMagazine
                 LogInfo("弹匣容量: " + Convert.ToString(Skill1DataInGame["WeaponMaxMagazine"]))
             }
-            // 发送属性到服务端，更新玩家技能一属性（使用局内数据）
-            DispatchEventToEntity(UpdateSkill1Data, globalEntity, PlatformType.Server, List<object>{Skill1DataInGame})
+            // 更新玩家技能一属性（使用局内数据）
+            UpdateSkill1Data()
         }
         //=========================================================================================================//
         // 技能2专属属性
@@ -947,8 +989,6 @@ graph PlayerJionGame {
                 }
                 Skill2DataInGame["ReloadBuff"] = finalBuff
                 LogInfo("换弹后射速提升: " + Convert.ToString(Skill2DataInGame["ReloadBuff"] as float * 100) + "%")  
-                // 发送属性到服务端，更新玩家当前属性（使用局内数据）
-                DispatchEventToEntity(UpdataReload, globalEntity, PlatformType.Server, List<object>{Skill2DataInGame}) 
 
             } else if attributeName == "ReloadNow" {
                 // 技能后立即装弹
@@ -1020,11 +1060,11 @@ graph PlayerJionGame {
                 Skill2DataInGame["WeaponMaxMagazine"] = finalMagazine
                 LogInfo("弹匣容量: " + Convert.ToString(Skill2DataInGame["WeaponMaxMagazine"]))
             }
-            // 发送属性到服务端，更新玩家技能一属性（使用局内数据）
-            DispatchEventToEntity(UpdateSkill2Data, globalEntity, PlatformType.Server, List<object>{Skill2DataInGame})
+            // 更新玩家技能二属性（使用局内数据）
+            UpdateSkill2Data()
         }
-        // 发送属性到服务端，更新玩家当前属性（使用局内数据）
-        DispatchEventToEntity(OnPlayerAttributesUpdate, globalEntity, PlatformType.Server, List<object>{PlayerDataInGame,PlayerDataWithOuterBonus})
+        // 更新玩家当前属性（使用局内数据）
+        UpdatePlayerAttributes()
         IsNextThreeChoiceOne = 0
     }
 
@@ -1036,17 +1076,17 @@ graph PlayerJionGame {
         var card2BB = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/ChoiceThreeCardPanel/Card_2/IsChoice")
         var card3BB = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/ChoiceThreeCardPanel/Card_3/IsChoice")
         
-        card1BB<UIWidget>.Active = false
-        card2BB<UIWidget>.Active = false
-        card3BB<UIWidget>.Active = false
+        card1BB<UIWidget>.IsVisible = false
+        card2BB<UIWidget>.IsVisible = false
+        card3BB<UIWidget>.IsVisible = false
         
         // 根据选择的牌位置激活对应的标记
         if selectedCardIndex == 1 {
-            card1BB<UIWidget>.Active = true
+            card1BB<UIWidget>.IsVisible = true
         } else if selectedCardIndex == 2 {
-            card2BB<UIWidget>.Active = true
+            card2BB<UIWidget>.IsVisible = true
         } else if selectedCardIndex == 3 {
-            card3BB<UIWidget>.Active = true
+            card3BB<UIWidget>.IsVisible = true
         }
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
@@ -1453,11 +1493,81 @@ graph PlayerJionGame {
         
         // 将局外数据复制到局内数据（开始游戏时）
         CopyToInGameData()
-        
-        // 发送属性到服务器     更新玩家当前属性（使用局内数据）
-        DispatchEventToEntity(OnPlayerAttributesUpdate, globalEntity, PlatformType.Server, List<object>{PlayerDataInGame,PlayerDataWithOuterBonus})
+        // 更新玩家当前属性（使用局内数据）
+        UpdatePlayerAttributes()
     }
 
+    // 更新玩家当前属性（使用局内数据）
+    func UpdatePlayerAttributes() {
+        // 更新玩家当前属性（使用局内数据）
+        currPlayer<Player>.MaxHP = PlayerDataInGame["HP"] as int
+        currPlayer<Player>.HP = PlayerDataInGame["HP"] as int
+        currPlayer<Player>.RunSpeedScale = PlayerDataInGame["MoveSpeed"] as int
+    }
+
+    // 更新技能1数据
+    func UpdateSkill1Data() {
+        if CurrentSkill == 1 {
+            LogInfo(currentWeapon)
+            //设置武器伤害
+            var weaponDamage = Round(Skill1DataInGame["WeaponDamage"] as int)
+            currentWeapon<Weapon>.Damage = weaponDamage
+            //设置武器换弹速度
+            var ReloadSpeed = Skill1DataInGame["ReloadSpeed"] as float
+            currentWeapon<Weapon>.ReloadSpeedFactor = ReloadSpeed
+            //设置武器攻击速度
+            var AttackSpeed = Skill1DataInGame["AttackSpeed"] as float
+            currentWeapon<Weapon>.AttackInterval = AttackSpeed
+            //设置武器弹匣容量
+            var AmmoMagSize = Skill1DataInGame["WeaponMaxMagazine"] as int
+            currentWeapon<Weapon>.AmmoMagSize = AmmoMagSize
+        }
+    }
+
+    // 更新技能2数据
+    func UpdateSkill2Data() {
+        if CurrentSkill == 2 {
+            LogInfo(currentWeapon)
+            //设置武器伤害
+            var weaponDamage = Round(Skill2DataInGame["WeaponDamage"] as int)
+            currentWeapon<Weapon>.Damage = weaponDamage
+            //设置武器换弹速度
+            var ReloadSpeed = Skill2DataInGame["ReloadSpeed"] as float
+            currentWeapon<Weapon>.ReloadSpeedFactor = ReloadSpeed
+            //设置武器攻击速度
+            var AttackSpeed = Skill2DataInGame["AttackSpeed"] as float
+            currentWeapon<Weapon>.AttackInterval = AttackSpeed
+            //设置武器弹匣容量
+            var AmmoMagSize = Skill2DataInGame["WeaponMaxMagazine"] as int
+            currentWeapon<Weapon>.AmmoMagSize = AmmoMagSize
+            currentWeapon<Weapon>.CurrentAmmo = currentWeapon<Weapon>.AmmoMagSize
+        }
+    }
+
+    // 立刻换弹更新武器数据
+    func OnWeaponUpdate() {
+        currentWeapon<Weapon>.CurrentAmmo = currentWeapon<Weapon>.AmmoMagSize
+    }
+
+    // 玩家复活删除武器
+    event OnPlayerRevived(player entity<Player>, revivalSource PlayerReviveSourceType){
+        DestroyItem(player, ItemIDType.M1887X, 1)
+        DestroyItem(player,  ItemIDType.SGAmmo, 999)
+        DestroyItem(player, ItemIDType.GoldMP5_III, 1)
+        DestroyItem(player,  ItemIDType.SGAmmo, 999)
+    }    
+
+    // DEbug的临时初始化
+    func S_Debug_NextWave() {
+        IsCountdownActive = false
+        DestroyItem(currPlayer, ItemIDType.M1887X, 1)
+        DestroyItem(currPlayer,  ItemIDType.SGAmmo, 999)
+        DestroyItem(currPlayer, ItemIDType.GoldMP5_III, 1)
+        DestroyItem(currPlayer,  ItemIDType.SGAmmo, 999)
+        currPlayer<Player>.HP = PlayerDataWithOuterBonus["HP"] as int
+        currPlayer<Player>.RunSpeedScale = PlayerDataWithOuterBonus["MoveSpeed"] as int
+    }
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     // 显示当前所有属性
     func ShowAllAttributes() {
         LogInfo("=== 当前所有属性 ===")
@@ -1532,7 +1642,7 @@ graph PlayerJionGame {
             // 已抽满的情况
             var maxImageEntity = GetChildByName(cardEntity, "MaxImage")
             if maxImageEntity != nil {
-                maxImageEntity<UIWidget>.Active = true
+                maxImageEntity<UIWidget>.IsVisible = true
             }
             var MaxTextEntity = GetChildByName(cardEntity, "MaxImage")
             var maxTextEntity = GetChildByName(MaxTextEntity, "MaxText")
@@ -1543,18 +1653,18 @@ graph PlayerJionGame {
             // 未抽满的情况
             var maxImageEntity = GetChildByName(cardEntity, "MaxImage")
             if maxImageEntity != nil {
-                maxImageEntity<UIWidget>.Active = false
+                maxImageEntity<UIWidget>.IsVisible = false
             }
         }
         
         // 点亮卡牌：隐藏IconImage，显示HasCardPanel
         var iconImageEntity = GetChildByName(cardEntity, "IconImage")
         if iconImageEntity != nil {
-            iconImageEntity<UIWidget>.Active = false  // 隐藏未点亮状态
+            iconImageEntity<UIWidget>.IsVisible = false  // 隐藏未点亮状态
         }
         var hasCardPanelEntity = GetChildByName(cardEntity, "HasCardPanel")
         if hasCardPanelEntity != nil {
-            hasCardPanelEntity<UIWidget>.Active = true  // 显示已点亮状态
+            hasCardPanelEntity<UIWidget>.IsVisible = true  // 显示已点亮状态
         }
         // 显示天赋界面
         GiftedUI<CustomUI>.IsVisible = true
@@ -1594,11 +1704,11 @@ graph PlayerJionGame {
             // 已点亮的状态
             var iconImageEntity = GetChildByName(cardEntity, "IconImage")
             if iconImageEntity != nil {
-                iconImageEntity<UIWidget>.Active = false
+                iconImageEntity<UIWidget>.IsVisible = false
             }
             var hasCardPanelEntity = GetChildByName(cardEntity, "HasCardPanel")
             if hasCardPanelEntity != nil {
-                hasCardPanelEntity<UIWidget>.Active = true
+                hasCardPanelEntity<UIWidget>.IsVisible = true
             }
             // 检查是否需要显示MAX
             var nature = Convert.ToString(cardInfo["Nature"])
@@ -1606,27 +1716,27 @@ graph PlayerJionGame {
             if currentCount >= maxCount && maxCount != 9999 {
                 var maxImageEntity = GetChildByName(cardEntity, "MaxImage")
                 if maxImageEntity != nil {
-                    maxImageEntity<UIWidget>.Active = true
+                    maxImageEntity<UIWidget>.IsVisible = true
                 }
             } else {
                 var maxImageEntity = GetChildByName(cardEntity, "MaxImage")
                 if maxImageEntity != nil {
-                    maxImageEntity<UIWidget>.Active = false
+                    maxImageEntity<UIWidget>.IsVisible = false
                 }
             }
         } else {
             // 未点亮的状态
             var iconImageEntity = GetChildByName(cardEntity, "IconImage")
             if iconImageEntity != nil {
-                iconImageEntity<UIWidget>.Active = true
+                iconImageEntity<UIWidget>.IsVisible = true
             }
             var hasCardPanelEntity = GetChildByName(cardEntity, "HasCardPanel")
             if hasCardPanelEntity != nil {
-                hasCardPanelEntity<UIWidget>.Active = false
+                hasCardPanelEntity<UIWidget>.IsVisible = false
             }
             var maxImageEntity = GetChildByName(cardEntity, "MaxImage")
             if maxImageEntity != nil {
-                maxImageEntity<UIWidget>.Active = false
+                maxImageEntity<UIWidget>.IsVisible = false
             }
         }
     }
@@ -1660,7 +1770,7 @@ graph PlayerJionGame {
             for cardId = 33, 40, 1 {
                 var cardEntity = GetChildByName(listParent, "Card (" + Convert.ToString(cardId) + ")")
                 if cardEntity != nil {
-                    cardEntity<UIWidget>.Active = false
+                    cardEntity<UIWidget>.IsVisible = false
                 }
             }
         }
@@ -1677,7 +1787,7 @@ graph PlayerJionGame {
             for cardId = 31, 40, 1 {
                 var cardEntity = GetChildByName(listParent, "Card (" + Convert.ToString(cardId) + ")")
                 if cardEntity != nil {
-                    cardEntity<UIWidget>.Active = false
+                    cardEntity<UIWidget>.IsVisible = false
                 }
             }
         }
@@ -1691,7 +1801,7 @@ graph PlayerJionGame {
             return
         }
         // 确保卡牌显示
-        cardEntity<UIWidget>.Active = true
+        cardEntity<UIWidget>.IsVisible = true
         if cardInfo == nil {
             LogWarning("卡牌数据不存在，ID:" + Convert.ToString(cardId))
             return
@@ -1699,19 +1809,19 @@ graph PlayerJionGame {
         // 显示面板
         var hasCardPanelEntity = GetChildByName(cardEntity, "HasCardPanel")
         if hasCardPanelEntity != nil {
-            hasCardPanelEntity<UIWidget>.Active = true
+            hasCardPanelEntity<UIWidget>.IsVisible = true
         }
         //——————————————————————————————————————————————————————————————————————————————————————————————//
         // 显示图标
         var iconImageEntity = GetChildByName(cardEntity, "IconImage")
         if iconImageEntity != nil {
-            iconImageEntity<UIWidget>.Active = false
+            iconImageEntity<UIWidget>.IsVisible = false
         }
         var hasCardIconEntity = GetChildByName(hasCardPanelEntity, "icon")
         if hasCardIconEntity != nil {
             // 设置卡牌图标
             // hasCardIconEntity<UIWidgetImage>.SetImage("CardIcon_" + Convert.ToString(cardId))
-            hasCardIconEntity<UIWidget>.Active = true
+            hasCardIconEntity<UIWidget>.IsVisible = true
         }
         //——————————————————————————————————————————————————————————————————————————————————————————————//
         // 显示详细信息
@@ -1719,7 +1829,7 @@ graph PlayerJionGame {
         if IFMTextEntity != nil {
             var description = GenerateCardDescription(cardInfo)
             IFMTextEntity<UIWidgetLabel>.Content = description
-            IFMTextEntity<UIWidget>.Active = true
+            IFMTextEntity<UIWidget>.IsVisible = true
         }
         //——————————————————————————————————————————————————————————————————————————————————————————————//
         // 设置稀有度显示
@@ -1747,7 +1857,7 @@ graph PlayerJionGame {
 //—————————————————————————————————————————————————以下为結算統計相关方程——————————————————————————————————————————————————————//
 //—————————————————————————————————————————————————以下为結算統計相关方程——————————————————————————————————————————————————————//
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
-    event ToClient_ShowFinalStats(currTime int, GameStartTime int, IsGameSuccess bool, totalTime int, CurrentLevel int) {
+    func ToClient_ShowFinalStats(currTime int, GameStartTime int, IsGameSuccess bool, totalTime int, CurrentLevel int) {
         GameOverFinalUI<CustomUI>.IsVisible = true
         var HeroEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/Hero/Name")                  //使用角色
         var StepEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/Step/Name")                  //當前關卡
@@ -1769,12 +1879,12 @@ graph PlayerJionGame {
         GetMoneyEntity<UIWidgetLabel>.Content = 1000
         //  通關顯示
         if  IsGameSuccess == true {
-            PassYesEntity<UIWidget>.Active = true
-            PassNoEntity<UIWidget>.Active = false
+            PassYesEntity<UIWidget>.IsVisible = true
+            PassNoEntity<UIWidget>.IsVisible = false
             IsPassOrNoEntity<UIWidgetLabel>.Content = "通关成功"
         } else {
-            PassYesEntity<UIWidget>.Active = false
-            PassNoEntity<UIWidget>.Active = true
+            PassYesEntity<UIWidget>.IsVisible = false
+            PassNoEntity<UIWidget>.IsVisible = true
             IsPassOrNoEntity<UIWidgetLabel>.Content = "通关失败"
         }
 
@@ -1797,20 +1907,20 @@ graph PlayerJionGame {
         Skill3_CDLevel = 0
     }
 
-    event ToClient_DisplaySkillThreeChoiceOne() {
+    func ToClient_DisplaySkillThreeChoiceOne() {
         ChoiceThreeCardUI<CustomUI>.IsVisible = true
         IsNextThreeChoiceOne = 1       //打开标志位
         RefeshCard(level, ability1Level, ability2Level, ability3Level)
         start ShowSecondDown(10000)
     }
 
-    event ToClient_GameComplete() {
+    func ToClient_GameComplete() {
         // 隐藏所有技能面板
         for i = 1, 3,1{
             var skillPanel = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_" + i)
             var joyStickAmount = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_" + i + "/JoyStickFillAmount")
-            skillPanel<UIWidget>.Active = false
-            joyStickAmount<UIWidget>.Active = false
+            skillPanel<UIWidget>.IsVisible = false
+            joyStickAmount<UIWidget>.IsVisible = false
         }
         // 重置数据
         ResetInGameData()
@@ -1836,15 +1946,15 @@ graph PlayerJionGame {
         for i = 1, 3,1{
             var skillPanel = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_" + i)
             var joyStickAmount = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_" + i + "/JoyStickFillAmount")
-            skillPanel<UIWidget>.Active = false
-            joyStickAmount<UIWidget>.Active = false
+            skillPanel<UIWidget>.IsVisible = false
+            joyStickAmount<UIWidget>.IsVisible = false
         }
         
         // 显示当前选中的技能
         var currentSkillPanel = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_" + index)
         var currentJoyStick = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_" + index + "/JoyStickFillAmount")
-        currentSkillPanel<UIWidget>.Active = true
-        currentJoyStick<UIWidget>.Active = false
+        currentSkillPanel<UIWidget>.IsVisible = true
+        currentJoyStick<UIWidget>.IsVisible = false
     }
     
     //————————————————————————————————————————————————//
