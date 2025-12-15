@@ -10,7 +10,7 @@ import "../../Static/FC_Utilities.fcg" as PVEUtilities
 import "../../MobScripts/FC_MobComponent.fcg" as mobComponent
 import "List.fcc" as List
 
-
+[platform_client]
 //graphID: 3Y2qYTtj.37ilwxb4lqo-m21izyhk-qm9mkctbtz8
 graph FC_Act_Patrol { 
 	TargetPos Vector3 = Vector3{0,0,0}
@@ -28,7 +28,7 @@ graph FC_Act_Patrol {
 
 
 	//funcID: PlayAction
-	func PlayAction(owner entity<BevTreeAttachable>) BTreeNodeState {
+	func PlayAction(owner entity<BevTreeAttachableForClient>) BTreeNodeState {
 		var gameTime int = globalEntity<Global>.GameTimeCount
 		LastTickTime = gameTime
 		
@@ -67,7 +67,7 @@ graph FC_Act_Patrol {
 	}
 
 	//eventID: 39//s8004_dup_block
-	event OnNodeEnter(nodeName string, owner entity<BevTreeAttachable>) {
+	event OnNodeEnterForClient(nodeName string, owner entity<BevTreeAttachableForClient>) {
 	//	LogInfo("OnNodeEnter: " + nodeName)
 		LastTickTime = globalEntity<Global>.GameTimeCount
 		GetNodeVariable(thisEntity as entity<BevTreeCustomNode>, "KeepDist", out var keepDist)
@@ -88,14 +88,14 @@ graph FC_Act_Patrol {
 	
 	}
 
-	event OnNodeExit(nodeName string, owner entity<BevTreeAttachable>) {
+	event OnNodeExitForClient(nodeName string, owner entity<BevTreeAttachableForClient>) {
 		owner<mobComponent>.StopMoveTween()
 		inAnimation = false
 		PlayAnimation(owner as entity<AnimationControllerAttachable>, "Idle", 1, LoopType.Loop)
 		//LogInfo("stop walk animation")
 	}
 
-	func GetTargetPos(owner entity<BevTreeAttachable>) Vector3 {
+	func GetTargetPos(owner entity<BevTreeAttachableForClient>) Vector3 {
 		var myPos Vector3 = owner<Transform>.Position
 		
 		// 边界范围：-15 到 15

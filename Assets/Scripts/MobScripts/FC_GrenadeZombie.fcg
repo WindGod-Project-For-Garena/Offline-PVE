@@ -11,6 +11,7 @@ import "Animation.fcc" as Animation
 import "Physics.fcc" as Physics
 import "../Global/FC_Global_MobSkillHandler.fcg" as MobSkillHandler
 
+[platform_client]
 graph FC_NormalZombie {
     //Executed when entity is created
     HeadShoted bool = false
@@ -98,12 +99,7 @@ graph FC_NormalZombie {
 		if (mob<Mob>.HP <= 0) {
 			mob<Mob>.HP = 0
 		}
-
-
-		
 	}
-
-
 
 	//funcID: GetDamage
 	func GetDamage() int {

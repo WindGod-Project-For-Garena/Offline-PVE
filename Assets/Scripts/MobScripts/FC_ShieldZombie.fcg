@@ -12,6 +12,7 @@ import "../Global/FC_Global_MobSkillHandler.fcg" as MobSkillHandler
 import "Animation.fcc" as Animation
 import "../Static/FC_Utilities.fcg" as PVEUtilities
 
+[platform_client]
 graph FC_NormalZombie {
     //Executed when entity is created
     HeadShoted bool = false
@@ -229,8 +230,6 @@ graph FC_NormalZombie {
 				mob<Mob>.HP = 0
 			}
 		}
-		
-
 	}
 
 	//funcID: GetDamage

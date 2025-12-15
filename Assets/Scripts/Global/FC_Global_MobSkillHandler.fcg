@@ -8,6 +8,7 @@ import "Math.fcc" as Math
 import "Combat.fcc" as Combat
 import "Hud.fcc" as Hud
 
+[platform_client]
 static graph FC_Global_MobSkillHandler {
     //Executed when entity is created
     entityEffectDic Map<entity<Entity>, List<entity<object>>> = Map<entity<Entity>, List<entity<object>>>{}
@@ -31,7 +32,7 @@ static graph FC_Global_MobSkillHandler {
     //这个方程只给某个玩家创建
     async func displayWarningEffect_New(mob entity<Mob>,position Vector3,scale float,duration int)  {
         LogInfo("displayWarningEffect scale: " + scale)
-        CreateCustomUI(out var warningEffect,nil,EResUI.WarningEffect)
+        CreateCustomUIClient(out var warningEffect,EResUI.WarningEffect)
         warningEffect<CustomUI>.InScene = true
         warningEffect<CustomUI>.WorldPosition = position
         warningEffect<CustomUI>.Rotation = Vector3{90,0,0}
@@ -63,7 +64,7 @@ static graph FC_Global_MobSkillHandler {
         //var hitPlayerList List<entity<Player>> = List<entity<Player>>{}
 
         
-		CreateEffect(out var effect2, nil,VFXType.Trailing, LoopType.Once, false)
+		CreateEffectClient(out var effect2, VFXType.Trailing, LoopType.Once, false)
 		projectileEffect = effect2 as entity<Effect>
 		projectileEffect<Visibility>.IsVisible = false
 
@@ -109,8 +110,6 @@ static graph FC_Global_MobSkillHandler {
             }
         }
         
-       
-
         WaitForMillisecond(1000)
         //隐藏技能特效
         skillAlphaTween<Tween>.StartValue = 100
@@ -141,7 +140,7 @@ static graph FC_Global_MobSkillHandler {
         //var hitPlayerList List<entity<Player>> = List<entity<Player>>{}
 
         
-		CreateEffect(out var effect2, nil,VFXType.Trailing, LoopType.Once, false)
+		CreateEffectClient(out var effect2, VFXType.Trailing, LoopType.Once, false)
 		projectileEffect = effect2 as entity<Effect>
 		projectileEffect<Visibility>.IsVisible = false
 
@@ -224,7 +223,7 @@ static graph FC_Global_MobSkillHandler {
     //————————————————————————————————————————————————————————————————————————————————//
     //盾牌僵尸特效处理程序
     async func GroundWrringEffect(TargetEntity entity) {
-        CreateEffect(out var WarningEffect, nil, VFXType.Spawnpoint, LoopType.Once, false)
+        CreateEffectClient(out var WarningEffect, VFXType.Spawnpoint, LoopType.Once, false)
 		// 设置特效位置（怪物前面6米的位置）
 		var effectOffset float = 6 // 特效在怪物前方的偏移距离
 		var effectPos = TargetEntity<Transform>.Position + TargetEntity<Transform>.Forward * effectOffset

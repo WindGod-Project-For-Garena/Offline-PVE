@@ -11,6 +11,7 @@ import "../../MobScripts/FC_MobComponent.fcg" as mobComponent
 import "../../Static/FC_Utilities.fcg" as PVEUtilities
 import "Player.fcc" as Player
 
+[platform_client]
 graph FC_Act_Move2Target {
     //Executed when entity is created
     Dist float = 0
@@ -34,7 +35,7 @@ graph FC_Act_Move2Target {
 
 
 	//funcID: PlayAction
-	func PlayAction(owner entity<BevTreeAttachable>) BTreeNodeState {	
+	func PlayAction(owner entity<BevTreeAttachableForClient>) BTreeNodeState {	
 	   //如果正在寻路，则返回Running
         var curTarget entity<Player> = owner<Mob>.CurrTarget
 		//LogInfo("curTarget: " + curTarget)
@@ -100,7 +101,7 @@ graph FC_Act_Move2Target {
 	}
 
 	//eventID: 18//s8004_dup_block //先nodeenter,再playaction，再nodeexit
-	event OnNodeEnter(nodeName string, owner entity<BevTreeAttachable>) {
+	event OnNodeEnterForClient(nodeName string, owner entity<BevTreeAttachableForClient>) {
 		var Speed float = owner<Mob>.WalkSpeed
 		currTargetFindingInterval = Ceil(basicTargetFindingInterval * Math.RandomFloat(0.75, 1.25))
 		//LogInfo("Speed: " + Speed)
@@ -120,7 +121,7 @@ graph FC_Act_Move2Target {
 			
 	}
 
-	event OnNodeExit(nodeName string, owner entity<BevTreeAttachable>) {
+	event OnNodeExitForClient(nodeName string, owner entity<BevTreeAttachableForClient>) {
 		owner<mobComponent>.StopMoveTween()
 		inAnimation = false
 		PlayAnimation(owner as entity<AnimationControllerAttachable>, "Idle", 1, LoopType.Loop)

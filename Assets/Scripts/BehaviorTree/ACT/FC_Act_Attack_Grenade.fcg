@@ -6,12 +6,13 @@ import "Math.fcc" as Math
 import "../../MobScripts/FC_GrenadeZombie.fcg" as garenadeZombie
 import "../../Static/FC_Utilities.fcg" as Utilities
 
+[platform_client]
 graph Script_1_ {
     _Duration int
     _AttackBeginTime int
     //Executed when entity is created
  
-    event OnNodeEnter(nodeName string, owner entity<BevTreeAttachable>) {
+    event OnNodeEnterForClient(nodeName string, owner entity<BevTreeAttachableForClient>) {
         //var attackScale = owner<ZombieCom>.ZombieInfo["LeftAttackSPDScale"] as float
         //LogInfo("OnNodeEnter: Attack")
         var attackScale float= 1
@@ -20,12 +21,12 @@ graph Script_1_ {
         var curTarget entity<Player> = owner<Mob>.CurrTarget
         Utilities.myLookAt(owner<Transform>,curTarget as entity<Player>,Vector3{0,0,0})
         _AttackBeginTime = globalEntity<Global>.GameTimeCount
-        SetBlackboardValue(owner<BevTreeAttachable>.AttachTarget,"LastAttackTime",_AttackBeginTime)
+        SetBlackboardValue(owner<BevTreeAttachableForClient>.AttachTarget,"LastAttackTime",_AttackBeginTime)
         var attackspeed float = 1.0/attackScale
         PlayAnimation(owner<AnimationControllerAttachable>,"Attack",attackspeed,LoopType.Once)
         owner<garenadeZombie>.startGarenadeSkill()
     }
-    func PlayAction(owner entity<BevTreeAttachable>) BevTreeNodeStatus{
+    func PlayAction(owner entity<BevTreeAttachableForClient>) BevTreeNodeStatus{
         LogInfo("PlayAction: Attack2")
         if(globalEntity<Global>.GameTimeCount >= _AttackBeginTime+_Duration){
             return BevTreeNodeStatus.Finish
@@ -43,7 +44,7 @@ graph Script_1_ {
             return false
         }
     }
-    event OnNodeExit(nodeName string, owner entity<BevTreeAttachable>) {
+    event OnNodeExitForClient(nodeName string, owner entity<BevTreeAttachableForClient>) {
         //LogInfo("OnNodeExit: Attack")
     }
 }

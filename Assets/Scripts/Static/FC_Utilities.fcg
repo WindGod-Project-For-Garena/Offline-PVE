@@ -7,6 +7,7 @@ import "Convert.fcc" as Convert
 import "Strings.fcc" as strings
 import "BehaviourTree.fcc" as BehaviourTree
 
+[platform_client]
 static graph FC_PVEUtilities {
     //Executed when entity is created
     //funcID: LookAt player
@@ -25,7 +26,7 @@ static graph FC_PVEUtilities {
 		var sub Vector3 = targetPos - curPos
 		var angle float = ATan2(sub.X, sub.Z)
 		var mobName string = transform<Mob>.MobName
-		SetPropertySmoothly(transform, Transform.LocalRotation, Vector3{0, angle, 0})
+		// SetPropertySmoothly(transform, Transform.LocalRotation, Vector3{0, angle, 0})
 	}
 
 	// 通知所有玩家

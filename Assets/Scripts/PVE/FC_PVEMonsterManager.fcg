@@ -13,7 +13,7 @@ import "Playable.fcc" as Playable
 import "Animation.fcc" as Animation
 import "LevelObject.fcc" as LevelObject
 
-
+[platform_client]
 static graph FC_PVEMonsterManager {
     // 配置参数
     MaxMonstersOnField int = 20
@@ -441,7 +441,7 @@ static graph FC_PVEMonsterManager {
         var monster = monsterEntity as entity<LevelObject>
         LastSpawnedMonster = monster
         
-        SetParent(ActiveMonsterParentNode<Transform>, monsterEntity<Transform>, true) 
+        SetParentClient(ActiveMonsterParentNode<Transform>, monsterEntity<Transform>, true) 
         WaitForNextFrame()
         //对应怪物外观组
         ShowAppearanceGroup(monsterEntity as entity<Appearance>,name_key)
@@ -561,7 +561,7 @@ static graph FC_PVEMonsterManager {
     
     func OnMonsterKilled(monster entity<LevelObject>) {
         if monster != nil {
-            SetParent(PendingRemoveMonsterParentNode<Transform>, monster<Transform>, true)
+            SetParentClient(PendingRemoveMonsterParentNode<Transform>, monster<Transform>, true)
             list.Remove(ActiveMonsters, monster)
             list.Remove(ActivenNormalMonsters, monster)
             

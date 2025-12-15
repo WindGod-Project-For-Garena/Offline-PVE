@@ -266,23 +266,23 @@ graph PlayerJionGame {
         Destroy(currentWeapon)
         //发放武器
         if  skillIndex == 1 {
-            DestroyItem(currPlayer, ItemIDType.M1887X, 1)
-            AddItem(ItemIDType.M1887X, 1, out var itemList)
+            // DestroyItem(currPlayer, ItemIDType.M1887X, 1)
+            Offline.AddItem(ItemIDType.M1887X, 1, out var itemList)
             currentWeapon = itemList[0] as entity<Weapon>
 
-            DestroyItem(currPlayer,  ItemIDType.SMGAmmo, 999)
-            DestroyItem(currPlayer,  ItemIDType.SGAmmo, 999)
-            AddItem(ItemIDType.SGAmmo, 999, out var createdEntity)
+            // DestroyItem(currPlayer,  ItemIDType.SMGAmmo, 999)
+            // DestroyItem(currPlayer,  ItemIDType.SGAmmo, 999)
+            Offline.AddItem(ItemIDType.SGAmmo, 999, out var createdEntity)
         }
 
         if skillIndex == 2 {
-            DestroyItem(currPlayer, ItemIDType.GoldMP5_III, 1)
-            AddItem(ItemIDType.GoldMP5_III, 1, out var itemList)
+            // DestroyItem(currPlayer, ItemIDType.GoldMP5_III, 1)
+            Offline.AddItem(ItemIDType.GoldMP5_III, 1, out var itemList)
             currentWeapon = itemList[0] as entity<Weapon>
 
-            DestroyItem(currPlayer,  ItemIDType.SGAmmo, 999)
-            DestroyItem(currPlayer,  ItemIDType.SMGAmmo, 999)
-            AddItem(ItemIDType.SMGAmmo, 999, out var createdEntity)
+            // DestroyItem(currPlayer,  ItemIDType.SGAmmo, 999)
+            // DestroyItem(currPlayer,  ItemIDType.SMGAmmo, 999)
+            Offline.AddItem(ItemIDType.SMGAmmo, 999, out var createdEntity)
         }
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
@@ -1551,19 +1551,19 @@ graph PlayerJionGame {
 
     // 玩家复活删除武器
     event OnPlayerRevived(player entity<Player>, revivalSource PlayerReviveSourceType){
-        DestroyItem(player, ItemIDType.M1887X, 1)
-        DestroyItem(player,  ItemIDType.SGAmmo, 999)
-        DestroyItem(player, ItemIDType.GoldMP5_III, 1)
-        DestroyItem(player,  ItemIDType.SGAmmo, 999)
+        // DestroyItem(player, ItemIDType.M1887X, 1)
+        // DestroyItem(player,  ItemIDType.SGAmmo, 999)
+        // DestroyItem(player, ItemIDType.GoldMP5_III, 1)
+        // DestroyItem(player,  ItemIDType.SGAmmo, 999)
     }    
 
     // DEbug的临时初始化
     func S_Debug_NextWave() {
         IsCountdownActive = false
-        DestroyItem(currPlayer, ItemIDType.M1887X, 1)
-        DestroyItem(currPlayer,  ItemIDType.SGAmmo, 999)
-        DestroyItem(currPlayer, ItemIDType.GoldMP5_III, 1)
-        DestroyItem(currPlayer,  ItemIDType.SGAmmo, 999)
+        // DestroyItem(currPlayer, ItemIDType.M1887X, 1)
+        // DestroyItem(currPlayer,  ItemIDType.SGAmmo, 999)
+        // DestroyItem(currPlayer, ItemIDType.GoldMP5_III, 1)
+        // DestroyItem(currPlayer,  ItemIDType.SGAmmo, 999)
         currPlayer<Player>.HP = PlayerDataWithOuterBonus["HP"] as int
         currPlayer<Player>.RunSpeedScale = PlayerDataWithOuterBonus["MoveSpeed"] as int
     }

@@ -9,7 +9,7 @@ import "Items.fcc" as Items
 import "../CustomEvent.fcc" as CustomEvent
 import "Math.fcc" as Math
 import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
-
+import "../MobScripts/C_BossButcher.fcg" as C_BossButcher
 
 [platform_client]
 static graph FC_PVEController {

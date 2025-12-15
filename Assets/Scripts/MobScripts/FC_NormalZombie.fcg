@@ -8,6 +8,7 @@ import "Combat.fcc" as Combat
 import "../CustomEvent.fcc" as CustomEvent
 import "../PVE/FC_PVEMonsterManager.fcg" as PVEMonsterManager
 
+[platform_client]
 graph FC_NormalZombie {
     //Executed when entity is created
     HeadShoted bool = false
@@ -88,12 +89,7 @@ graph FC_NormalZombie {
 		if (mob<Mob>.HP <= 0) {
 			mob<Mob>.HP = 0
 		}
-
-
-		
 	}
-
-
 
 	//funcID: GetDamage
 	func GetDamage() int {

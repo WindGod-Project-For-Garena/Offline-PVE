@@ -4,6 +4,7 @@ import "Playable.fcc" as Playable
 import "Physics.fcc" as Physics
 import "Camera.fcc" as Camera
 
+[platform_client]
 graph FC_ZombieComponent {
     //Executed when entity is created
     moveTween entity<Tween> = nil
