@@ -371,22 +371,22 @@ declare static graph Res {
 
 
 enum EPhase {
-    // Start
+    // 游戏开始
     Start = 1315
 
-    // Preparation
+    // 游戏准备
     Preparation = 1513
 
-    // Rounds
+    // 游戏回合
     Rounds = 3022
 
-    // Rounds / Stages
+    // 游戏回合 / 游戏阶段
     Stages = 3756
 
-    // Rounds / Stages
+    // 游戏回合 / 游戏阶段
     Stages_1 = 4045
 
-    // End
+    // 游戏结束
     End = 4309
 
 }
@@ -394,7 +394,7 @@ enum EPhase {
 
 
 enum EPhysicalLayer {
-    // 0:Default
+    // 0:默认
     Default = 0
 
     // 1:Zombie
@@ -404,7 +404,7 @@ enum EPhysicalLayer {
 
 
 enum EVisibilityLayer {
-    // 0:Default
+    // 0:默认
     Default = 0
 
 }

@@ -184,13 +184,13 @@ graph PlayerJionGame {
             // HomeUI = ui
 
             currPlayer = player
- 
+   
             CreateCustomUIClient(out var ChoiceHeroUIEntity, EResUI.ChoiceHero)
-            ChoiceHeroUI = ChoiceHeroUIEntity
+            ChoiceHeroUI = ChoiceHeroUIEntity 
             ChoiceHeroUIEntity<CustomUI>.IsVisible = true
             var skill1 entity<UIWidgetButton> = GetWidgetFromCustomUI(GetLocalPlayer(),ChoiceHeroUIEntity , EResUIChoiceHero.Hero_1) as entity<UIWidgetButton>
             var skill2 entity<UIWidgetButton> = GetWidgetFromCustomUI(GetLocalPlayer(),ChoiceHeroUIEntity , EResUIChoiceHero.Hero_2) as entity<UIWidgetButton>
-            var skill3 = GetWidgetFromCustomUI(GetLocalPlayer(),thisEntity as entity<CustomUI> , EResUIChoiceHero.Hero_3) as entity<UIWidgetButton>
+            var skill3 entity<UIWidgetButton> = GetWidgetFromCustomUI(GetLocalPlayer(),ChoiceHeroUIEntity , EResUIChoiceHero.Hero_3) as entity<UIWidgetButton>
             skill1<UIWidgetButton>.Color = #FF8900
             skill2<UIWidgetButton>.Color = #F2A245
             skill3<UIWidgetButton>.Color = #F2A245
