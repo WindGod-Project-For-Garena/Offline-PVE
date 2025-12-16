@@ -185,7 +185,7 @@ graph PlayerJionGame {
             currPlayer = player
    
             CreateCustomUIClient(out var ChoiceHeroUIEntity, EResUI.ChoiceHero)
-            ChoiceHeroUI = ChoiceHeroUIEntity
+            ChoiceHeroUI = ChoiceHeroUIEntity 
             ChoiceHeroUIEntity<CustomUI>.IsVisible = true
             var skill1 entity<UIWidgetButton> = GetWidgetFromCustomUI(GetLocalPlayer(),ChoiceHeroUIEntity , EResUIChoiceHero.Hero_1) as entity<UIWidgetButton>
             var skill2 entity<UIWidgetButton> = GetWidgetFromCustomUI(GetLocalPlayer(),ChoiceHeroUIEntity , EResUIChoiceHero.Hero_2) as entity<UIWidgetButton>
