@@ -183,7 +183,7 @@ graph PlayerJionGame {
             // HomeUI = ui
 
             currPlayer = player
-
+ 
             CreateCustomUIClient(out var ChoiceHeroUIEntity, EResUI.ChoiceHero)
             ChoiceHeroUI = ChoiceHeroUIEntity
             ChoiceHeroUIEntity<CustomUI>.IsVisible = true
