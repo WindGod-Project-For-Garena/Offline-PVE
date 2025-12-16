@@ -26,6 +26,7 @@ graph PlayerJionGame {
     SkillLevelUpUI entity<CustomHud>
     currPlayer entity<Player>
     currentWeapon entity<Weapon> = nil
+      
     //主页面
     ChoiceHeroUI entity<CustomHud>   //开始游戏选择英雄页面
     ChoiceThreeCardUI entity<CustomHud>   //三选一卡牌界面
