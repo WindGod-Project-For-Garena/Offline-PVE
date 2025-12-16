@@ -1,0 +1,24 @@
+import "StdLibrary.fcc" as StdLib
+import "EditorGenLib.fcc" as EditorLib
+import "BehaviourTree.fcc" as BehaviourTree
+import "Animation.fcc" as Animation
+
+[platform_client]
+graph FC_Act_Idle {
+    //Executed when entity is created
+    event OnAwake() {
+
+    }
+
+    event OnNodeEnterForClient(nodeName string, owner entity<BevTreeAttachableForClient>) {
+        if owner<Mob>.StatusDic["IsShield"] as bool {
+            PlayAnimation(owner<AnimationControllerAttachable>,"Idle_Shield",1,LoopType.Loop)
+        } else {
+            PlayAnimation(owner<AnimationControllerAttachable>,"Idle",1,LoopType.Loop)
+        }
+        PlayAnimation(owner<AnimationControllerAttachable>,"Idle",1,LoopType.Loop)
+    }
+    func PlayAction(owner entity<BevTreeAttachableForClient>) BevTreeNodeStatus{
+        return BevTreeNodeStatus.Running
+    }
+}

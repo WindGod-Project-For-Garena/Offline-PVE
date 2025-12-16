@@ -3,3 +3,11 @@ import "StdLibrary.fcc" as StdLib
 [platform_client]
 //退出游戏事件，当玩家退出游戏时触发
 event OnDamageMob(mob entity<Entity>, part string, damage int, player entity<Player>)
+
+
+[platform_client]
+//当怪物激活时触发
+event OnMobActived()
+
+
+

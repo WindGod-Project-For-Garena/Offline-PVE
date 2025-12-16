@@ -1504,9 +1504,10 @@ graph PlayerJionGame {
     // 更新玩家当前属性（使用局内数据）
     func UpdatePlayerAttributes() {
         // 更新玩家当前属性（使用局内数据）
+        LogInfo("UpdatePlayerAttributes: " )
         currPlayer<Player>.MaxHP = PlayerDataInGame["HP"] as int
         currPlayer<Player>.HP = PlayerDataInGame["HP"] as int
-        currPlayer<Player>.RunSpeedScale = PlayerDataInGame["MoveSpeed"] as float
+        //currPlayer<Player>.RunSpeedScale = PlayerDataInGame["MoveSpeed"] as float
     }
 
     // 更新技能1数据

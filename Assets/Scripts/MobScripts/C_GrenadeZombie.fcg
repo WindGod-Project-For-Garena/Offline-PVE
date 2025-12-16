@@ -20,17 +20,26 @@ graph C_NormalZombie {
 
 
     //eventID: 176//85*!fZV_I.Gt8f?E6:$4
-	event OnAwake() {
-		WaitForMillisecond(1000)
-		//LogInfo("添加受击盒")
-		
-        CreateFromPrefab(out var headHitbox, EResPrefab.HitBox_GrenadeZombie_Head)
+	event OnMobActived() {
+		CreateFromPrefab(out var headHitbox, EResPrefab.HitBox_GrenadeZombie_Head)
 		AddScript(headHitbox, EResFCG.C_HitBox)
         SetParentClient(GetSkeletonPartByName(thisEntity, "bone_Head"), headHitbox<Transform>, false)
 		headHitbox<HitBox>.SetOwner(thisEntity, "Head")
 
 		AddScript(thisEntity, EResFCG.C_HitBox)
 		thisEntity<HitBox>.SetOwner(thisEntity, "Body")
+	}
+	event OnAwake() {
+		// WaitForMillisecond(1000)
+		// //LogInfo("添加受击盒")
+		
+        // CreateFromPrefab(out var headHitbox, EResPrefab.HitBox_GrenadeZombie_Head)
+		// AddScript(headHitbox, EResFCG.C_HitBox)
+        // SetParentClient(GetSkeletonPartByName(thisEntity, "bone_Head"), headHitbox<Transform>, false)
+		// headHitbox<HitBox>.SetOwner(thisEntity, "Head")
+
+		// AddScript(thisEntity, EResFCG.C_HitBox)
+		// thisEntity<HitBox>.SetOwner(thisEntity, "Body")
         
 		// CreateFromPrefab(out var bodyHitbox, EResPrefab.HitBox_GrenadeZombie_Body)
         // AddScript(bodyHitbox, EResFCG.C_HitBox)

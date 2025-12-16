@@ -1,0 +1,4182 @@
+{
+  "rootEntity": "behaviorRoot",
+  "graphJson": {
+    "cells": [
+      {
+        "position": {
+          "x": -100,
+          "y": -50
+        },
+        "size": {
+          "width": 180,
+          "height": 88
+        },
+        "view": "vue-shape-view",
+        "shape": "vue-shape",
+        "id": "behaviorRoot",
+        "component": "xbt-base-node",
+        "data": {},
+        "zIndex": 1,
+        "ports": {
+          "groups": {
+            "in": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "inVal": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "out": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "outVal": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            }
+          },
+          "items": [
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 69
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "36fe5838-cf22-4a60-9c47-b1932c976a0e"
+            }
+          ]
+        }
+      },
+      {
+        "position": {
+          "x": 240,
+          "y": -110
+        },
+        "size": {
+          "width": 180,
+          "height": 130
+        },
+        "view": "vue-shape-view",
+        "shape": "vue-shape",
+        "id": "OGKL54xM",
+        "component": "xbt-base-node",
+        "data": {},
+        "zIndex": 2,
+        "ports": {
+          "groups": {
+            "in": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "inVal": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "out": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "outVal": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            }
+          },
+          "items": [
+            {
+              "group": "in",
+              "args": {
+                "dx": 8,
+                "dy": 25
+              },
+              "attrs": {
+                "text": {
+                  "text": "in"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "45c3918c-1887-41f6-b6c4-45c78c01b108"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 69
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "0be61ace-370f-4f2e-aeb4-381ee8871e39"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 83
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "a4486594-7b22-4753-b39d-491dad7f5e6a"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 97
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "81f7fd49-c464-401e-b0cd-366aed8c3578"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 111
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                }
+              },
+              "id": "96cf3f74-224b-46e2-a339-0b453ce38ff7"
+            }
+          ]
+        }
+      },
+      {
+        "shape": "edge",
+        "attrs": {
+          "line": {
+            "stroke": "var(--t11)",
+            "strokeWidth": 1
+          }
+        },
+        "id": "4c4c50a2-40cf-489a-9cae-0c173953855f",
+        "zIndex": 3,
+        "source": {
+          "cell": "behaviorRoot",
+          "port": "36fe5838-cf22-4a60-9c47-b1932c976a0e"
+        },
+        "target": {
+          "cell": "OGKL54xM",
+          "port": "45c3918c-1887-41f6-b6c4-45c78c01b108"
+        }
+      },
+      {
+        "position": {
+          "x": 530,
+          "y": -130
+        },
+        "size": {
+          "width": 180,
+          "height": 116
+        },
+        "view": "vue-shape-view",
+        "shape": "vue-shape",
+        "id": "gE96KDHw",
+        "component": "xbt-base-node",
+        "data": {},
+        "zIndex": 4,
+        "ports": {
+          "groups": {
+            "in": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "inVal": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "out": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "outVal": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            }
+          },
+          "items": [
+            {
+              "group": "in",
+              "args": {
+                "dx": 8,
+                "dy": 25
+              },
+              "attrs": {
+                "text": {
+                  "text": "in"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "3fce3bca-6363-41cb-82a5-068dd7478454"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 69
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "78d1da97-5d52-4da6-b1ed-b04bd898ae76"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 83
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "d0cd749b-faaa-4d80-bc47-a8e206b236df"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 97
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                }
+              },
+              "id": "4e9dd693-7fb6-410b-a808-1b97b477d409"
+            }
+          ]
+        }
+      },
+      {
+        "position": {
+          "x": 800,
+          "y": -210
+        },
+        "size": {
+          "width": 180,
+          "height": 88
+        },
+        "view": "vue-shape-view",
+        "shape": "vue-shape",
+        "id": "KUy16uDh",
+        "component": "xbt-base-node",
+        "data": {},
+        "zIndex": 6,
+        "ports": {
+          "groups": {
+            "in": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "inVal": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "out": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "outVal": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            }
+          },
+          "items": [
+            {
+              "group": "in",
+              "args": {
+                "dx": 8,
+                "dy": 25
+              },
+              "attrs": {
+                "text": {
+                  "text": "in"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "58d37f98-3d00-4799-8e6c-c17492efec5c"
+            }
+          ]
+        }
+      },
+      {
+        "position": {
+          "x": 810,
+          "y": -70
+        },
+        "size": {
+          "width": 180,
+          "height": 88
+        },
+        "view": "vue-shape-view",
+        "shape": "vue-shape",
+        "id": "CAIvcf9s",
+        "component": "xbt-base-node",
+        "data": {},
+        "zIndex": 7,
+        "ports": {
+          "groups": {
+            "in": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "inVal": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "out": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "outVal": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            }
+          },
+          "items": [
+            {
+              "group": "in",
+              "args": {
+                "dx": 8,
+                "dy": 25
+              },
+              "attrs": {
+                "text": {
+                  "text": "in"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "f6fa9d19-09af-466a-bed3-47063614a0ea"
+            }
+          ]
+        }
+      },
+      {
+        "shape": "edge",
+        "attrs": {
+          "line": {
+            "stroke": "var(--t11)",
+            "strokeWidth": 1
+          }
+        },
+        "id": "a31f0f13-b426-4803-a96d-657f51990762",
+        "zIndex": 8,
+        "source": {
+          "cell": "gE96KDHw",
+          "port": "78d1da97-5d52-4da6-b1ed-b04bd898ae76"
+        },
+        "target": {
+          "cell": "KUy16uDh",
+          "port": "58d37f98-3d00-4799-8e6c-c17492efec5c"
+        }
+      },
+      {
+        "shape": "edge",
+        "attrs": {
+          "line": {
+            "stroke": "var(--t11)",
+            "strokeWidth": 1
+          }
+        },
+        "id": "5445bad1-f92c-4477-9224-493ad9868d8a",
+        "zIndex": 9,
+        "source": {
+          "cell": "gE96KDHw",
+          "port": "d0cd749b-faaa-4d80-bc47-a8e206b236df"
+        },
+        "target": {
+          "cell": "CAIvcf9s",
+          "port": "f6fa9d19-09af-466a-bed3-47063614a0ea"
+        }
+      },
+      {
+        "position": {
+          "x": 560,
+          "y": 100
+        },
+        "size": {
+          "width": 180,
+          "height": 102
+        },
+        "view": "vue-shape-view",
+        "shape": "vue-shape",
+        "id": "C5KuCy44",
+        "component": "xbt-base-node",
+        "data": {},
+        "zIndex": 10,
+        "ports": {
+          "groups": {
+            "in": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "inVal": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "out": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "outVal": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            }
+          },
+          "items": [
+            {
+              "group": "in",
+              "args": {
+                "dx": 8,
+                "dy": 25
+              },
+              "attrs": {
+                "text": {
+                  "text": "in"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "9860e99f-bc0d-4853-8519-eb522959a939"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 69
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "137e34eb-f0d1-4436-bb33-f4059cb7d4f7"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 83
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                }
+              },
+              "id": "ca585520-6fca-4017-937e-bf2d7632a503"
+            }
+          ]
+        }
+      },
+      {
+        "position": {
+          "x": 830,
+          "y": 100
+        },
+        "size": {
+          "width": 180,
+          "height": 116
+        },
+        "view": "vue-shape-view",
+        "shape": "vue-shape",
+        "id": "hSS5P1gW",
+        "component": "xbt-base-node",
+        "data": {},
+        "zIndex": 12,
+        "ports": {
+          "groups": {
+            "in": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "inVal": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "out": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "outVal": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            }
+          },
+          "items": [
+            {
+              "group": "in",
+              "args": {
+                "dx": 8,
+                "dy": 25
+              },
+              "attrs": {
+                "text": {
+                  "text": "in"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "f5f2aa31-d244-4ca5-94d6-040c67fc3d7f"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 69
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "8012171a-3948-4603-b375-1329660f5d68"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 83
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "4f56fa53-4ca8-4db5-bd16-d82ea59eca94"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 97
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                }
+              },
+              "id": "c0041400-1515-4380-9a80-122e7300cacd"
+            }
+          ]
+        }
+      },
+      {
+        "shape": "edge",
+        "attrs": {
+          "line": {
+            "stroke": "var(--t11)",
+            "strokeWidth": 1
+          }
+        },
+        "id": "b1fd25a6-716c-48c8-ba94-7c15914bb850",
+        "zIndex": 13,
+        "source": {
+          "cell": "C5KuCy44",
+          "port": "137e34eb-f0d1-4436-bb33-f4059cb7d4f7"
+        },
+        "target": {
+          "cell": "hSS5P1gW",
+          "port": "f5f2aa31-d244-4ca5-94d6-040c67fc3d7f"
+        }
+      },
+      {
+        "position": {
+          "x": 1120,
+          "y": 50
+        },
+        "size": {
+          "width": 180,
+          "height": 88
+        },
+        "view": "vue-shape-view",
+        "shape": "vue-shape",
+        "id": "RS5zCP4o",
+        "component": "xbt-base-node",
+        "data": {},
+        "zIndex": 14,
+        "ports": {
+          "groups": {
+            "in": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "inVal": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "out": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "outVal": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            }
+          },
+          "items": [
+            {
+              "group": "in",
+              "args": {
+                "dx": 8,
+                "dy": 25
+              },
+              "attrs": {
+                "text": {
+                  "text": "in"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "9f73288e-3c21-480e-8112-9da9ac9b11dc"
+            }
+          ]
+        }
+      },
+      {
+        "shape": "edge",
+        "attrs": {
+          "line": {
+            "stroke": "var(--t11)",
+            "strokeWidth": 1
+          }
+        },
+        "id": "3d630e23-efbd-42a6-a222-900eadd15322",
+        "zIndex": 15,
+        "source": {
+          "cell": "hSS5P1gW",
+          "port": "8012171a-3948-4603-b375-1329660f5d68"
+        },
+        "target": {
+          "cell": "RS5zCP4o",
+          "port": "9f73288e-3c21-480e-8112-9da9ac9b11dc"
+        }
+      },
+      {
+        "position": {
+          "x": 1130,
+          "y": 180
+        },
+        "size": {
+          "width": 180,
+          "height": 116
+        },
+        "view": "vue-shape-view",
+        "shape": "vue-shape",
+        "id": "m3ArLs1x",
+        "component": "xbt-base-node",
+        "data": {},
+        "zIndex": 16,
+        "ports": {
+          "groups": {
+            "in": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "inVal": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "out": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "outVal": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            }
+          },
+          "items": [
+            {
+              "group": "in",
+              "args": {
+                "dx": 8,
+                "dy": 25
+              },
+              "attrs": {
+                "text": {
+                  "text": "in"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "2d9376df-da1d-400e-82da-72c1e03b20f2"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 69
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "55b89349-bfd3-4349-9627-187832c6c56b"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 83
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "8d1a66fd-7a2b-48ed-be52-ab384fb9f54f"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 97
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                }
+              },
+              "id": "7c41dd70-7d1b-4f70-bc86-4fe6bdb74b7a"
+            }
+          ]
+        }
+      },
+      {
+        "shape": "edge",
+        "attrs": {
+          "line": {
+            "stroke": "var(--t11)",
+            "strokeWidth": 1
+          }
+        },
+        "id": "a1fda298-e705-44d4-aad9-e7d9aa0740b9",
+        "zIndex": 17,
+        "source": {
+          "cell": "hSS5P1gW",
+          "port": "4f56fa53-4ca8-4db5-bd16-d82ea59eca94"
+        },
+        "target": {
+          "cell": "m3ArLs1x",
+          "port": "2d9376df-da1d-400e-82da-72c1e03b20f2"
+        }
+      },
+      {
+        "position": {
+          "x": 1430,
+          "y": 230
+        },
+        "size": {
+          "width": 180,
+          "height": 88
+        },
+        "view": "vue-shape-view",
+        "shape": "vue-shape",
+        "id": "mum3LlpR",
+        "component": "xbt-base-node",
+        "data": {},
+        "zIndex": 18,
+        "ports": {
+          "groups": {
+            "in": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "inVal": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "out": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "outVal": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            }
+          },
+          "items": [
+            {
+              "group": "in",
+              "args": {
+                "dx": 8,
+                "dy": 25
+              },
+              "attrs": {
+                "text": {
+                  "text": "in"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "de3b8101-af47-4fe0-b885-b23a7f1a3f26"
+            }
+          ]
+        }
+      },
+      {
+        "position": {
+          "x": 1410,
+          "y": 90
+        },
+        "size": {
+          "width": 180,
+          "height": 88
+        },
+        "view": "vue-shape-view",
+        "shape": "vue-shape",
+        "id": "FlFhiXxJ",
+        "component": "xbt-base-node",
+        "data": {},
+        "zIndex": 19,
+        "ports": {
+          "groups": {
+            "in": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "inVal": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "out": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "outVal": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            }
+          },
+          "items": [
+            {
+              "group": "in",
+              "args": {
+                "dx": 8,
+                "dy": 25
+              },
+              "attrs": {
+                "text": {
+                  "text": "in"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "bb7fed5d-b2a0-47fc-9252-2364a1c655c4"
+            }
+          ]
+        }
+      },
+      {
+        "shape": "edge",
+        "attrs": {
+          "line": {
+            "stroke": "var(--t11)",
+            "strokeWidth": 1
+          }
+        },
+        "id": "9d3284cd-5d09-464f-84db-815f888396df",
+        "zIndex": 20,
+        "source": {
+          "cell": "m3ArLs1x",
+          "port": "55b89349-bfd3-4349-9627-187832c6c56b"
+        },
+        "target": {
+          "cell": "FlFhiXxJ",
+          "port": "bb7fed5d-b2a0-47fc-9252-2364a1c655c4"
+        }
+      },
+      {
+        "shape": "edge",
+        "attrs": {
+          "line": {
+            "stroke": "var(--t11)",
+            "strokeWidth": 1
+          }
+        },
+        "id": "70975eb3-b347-4bbd-ac07-3dd6f8a305ab",
+        "zIndex": 21,
+        "source": {
+          "cell": "m3ArLs1x",
+          "port": "8d1a66fd-7a2b-48ed-be52-ab384fb9f54f"
+        },
+        "target": {
+          "cell": "mum3LlpR",
+          "port": "de3b8101-af47-4fe0-b885-b23a7f1a3f26"
+        }
+      },
+      {
+        "position": {
+          "x": 550,
+          "y": -350
+        },
+        "size": {
+          "width": 180,
+          "height": 102
+        },
+        "view": "vue-shape-view",
+        "shape": "vue-shape",
+        "id": "sSS0OsMf",
+        "component": "xbt-base-node",
+        "data": {},
+        "ports": {
+          "groups": {
+            "in": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "inVal": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "out": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "outVal": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            }
+          },
+          "items": [
+            {
+              "group": "in",
+              "args": {
+                "dx": 8,
+                "dy": 25
+              },
+              "attrs": {
+                "text": {
+                  "text": "in"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "de6e19e4-6c71-41f6-b209-4aa811a87e59"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 69
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "e589f4f4-4ffb-459e-9606-ee1ca5eb21af"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 83
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                }
+              },
+              "id": "7483ffc5-2492-4c49-8378-928b50b1dd2d"
+            }
+          ]
+        },
+        "zIndex": 22
+      },
+      {
+        "position": {
+          "x": 937.0363159179688,
+          "y": -344.146240234375
+        },
+        "size": {
+          "width": 180,
+          "height": 88
+        },
+        "view": "vue-shape-view",
+        "shape": "vue-shape",
+        "id": "P7VbTB6R",
+        "component": "xbt-base-node",
+        "data": {},
+        "ports": {
+          "groups": {
+            "in": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "inVal": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "out": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "outVal": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            }
+          },
+          "items": [
+            {
+              "group": "in",
+              "args": {
+                "dx": 8,
+                "dy": 25
+              },
+              "attrs": {
+                "text": {
+                  "text": "in"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "cbc20031-235d-4e71-b3e6-78d18bfda595"
+            }
+          ]
+        },
+        "zIndex": 23
+      },
+      {
+        "shape": "edge",
+        "attrs": {
+          "line": {
+            "stroke": "var(--t11)",
+            "strokeWidth": 1
+          }
+        },
+        "id": "42043a07-da4c-4d33-b0ac-ba775fc285b6",
+        "source": {
+          "cell": "OGKL54xM",
+          "port": "0be61ace-370f-4f2e-aeb4-381ee8871e39"
+        },
+        "target": {
+          "cell": "sSS0OsMf",
+          "port": "de6e19e4-6c71-41f6-b209-4aa811a87e59"
+        },
+        "zIndex": 24
+      },
+      {
+        "shape": "edge",
+        "attrs": {
+          "line": {
+            "stroke": "var(--t11)",
+            "strokeWidth": 1
+          }
+        },
+        "id": "e7fc334e-986d-405c-af9d-57444db80f53",
+        "source": {
+          "cell": "sSS0OsMf",
+          "port": "e589f4f4-4ffb-459e-9606-ee1ca5eb21af"
+        },
+        "target": {
+          "cell": "P7VbTB6R",
+          "port": "cbc20031-235d-4e71-b3e6-78d18bfda595"
+        },
+        "zIndex": 25
+      },
+      {
+        "shape": "edge",
+        "attrs": {
+          "line": {
+            "stroke": "var(--t13)",
+            "strokeWidth": 1
+          }
+        },
+        "id": "4d34d56c-97b2-442e-b39e-5dfcc8c36d7e",
+        "source": {
+          "cell": "OGKL54xM",
+          "port": "a4486594-7b22-4753-b39d-491dad7f5e6a"
+        },
+        "target": {
+          "cell": "gE96KDHw",
+          "port": "3fce3bca-6363-41cb-82a5-068dd7478454"
+        },
+        "zIndex": 26
+      },
+      {
+        "shape": "edge",
+        "attrs": {
+          "line": {
+            "stroke": "var(--t11)",
+            "strokeWidth": 1
+          }
+        },
+        "id": "25c2e9ca-586b-4d40-b082-a238aa8d700c",
+        "source": {
+          "cell": "OGKL54xM",
+          "port": "81f7fd49-c464-401e-b0cd-366aed8c3578"
+        },
+        "target": {
+          "cell": "C5KuCy44",
+          "port": "9860e99f-bc0d-4853-8519-eb522959a939"
+        },
+        "zIndex": 27
+      }
+    ]
+  },
+  "apiTarget": 1,
+  "entityMap": {
+    "behaviorRoot": {
+      "_entityName": "XBTRootEntity",
+      "_tag": {
+        "type": "XBTRootEntity"
+      },
+      "_entityId": "behaviorRoot",
+      "children": [
+        {
+          "_entityName": "XBTEntity",
+          "_tag": {
+            "type": "XBTEntity"
+          },
+          "_entityId": "OGKL54xM",
+          "children": [
+            {
+              "_entityName": "XBTEntity",
+              "_tag": {
+                "type": "XBTEntity"
+              },
+              "_entityId": "sSS0OsMf",
+              "children": [
+                {
+                  "_entityName": "XBTEntity",
+                  "_tag": {
+                    "type": "XBTEntity"
+                  },
+                  "_entityId": "P7VbTB6R",
+                  "children": [],
+                  "prefabVariant": null,
+                  "activeValue": null,
+                  "unlockedValue": null,
+                  "editorLockValue": false,
+                  "editorVisibleValue": true,
+                  "ecaScripts": [
+                    {
+                      "fileId": "h6iwem40a3-mj8cyk4e-ml748g7h5o",
+                      "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_IsActive.fcg",
+                      "_tag": {
+                        "type": "GFileRefer"
+                      },
+                      "fileType": "ugcscript"
+                    }
+                  ],
+                  "x": 937.0363159179688,
+                  "y": -344.146240234375,
+                  "width": 180,
+                  "height": 88,
+                  "nodeInfo": {
+                    "type": "condition",
+                    "name": "IsActive",
+                    "id": "P7VbTB6R",
+                    "varArr": [],
+                    "ecaScript": null,
+                    "iscustom": true,
+                    "desc": "",
+                    "icon": "General_Customize_20",
+                    "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+                  }
+                }
+              ],
+              "prefabVariant": null,
+              "activeValue": null,
+              "unlockedValue": null,
+              "editorLockValue": false,
+              "editorVisibleValue": true,
+              "ecaScripts": [
+                null
+              ],
+              "x": 584.17919921875,
+              "y": -361.2890930175781,
+              "width": 180,
+              "height": 88,
+              "nodeInfo": {
+                "type": "composite",
+                "name": "Sequence",
+                "id": "sSS0OsMf",
+                "keyName": "Sequence",
+                "desc": "FE_42_JH_WS_EXSEQUENCE",
+                "varArr": [],
+                "in": null,
+                "icon": "General_Sequence_20",
+                "out": [
+                  "P7VbTB6R"
+                ]
+              }
+            },
+            {
+              "_entityName": "XBTEntity",
+              "_tag": {
+                "type": "XBTEntity"
+              },
+              "_entityId": "gE96KDHw",
+              "children": [
+                {
+                  "_entityName": "XBTEntity",
+                  "_tag": {
+                    "type": "XBTEntity"
+                  },
+                  "_entityId": "KUy16uDh",
+                  "children": [],
+                  "prefabVariant": null,
+                  "activeValue": {
+                    "selfValue": true,
+                    "valueTag": "activeValue"
+                  },
+                  "unlockedValue": {
+                    "selfValue": true,
+                    "valueTag": "unlockedValue"
+                  },
+                  "editorLockValue": false,
+                  "editorVisibleValue": true,
+                  "ecaScripts": [
+                    {
+                      "fileId": "2aram375hfw-mh8t0ric-oau8a5cu8c",
+                      "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_IsDead.fcg",
+                      "_tag": {
+                        "type": "GFileRefer"
+                      },
+                      "fileType": "ugcscript"
+                    }
+                  ],
+                  "x": 1031.675048828125,
+                  "y": -45.600006103515625,
+                  "width": 180,
+                  "height": 88,
+                  "nodeInfo": {
+                    "type": "condition",
+                    "name": "IsDead",
+                    "id": "KUy16uDh",
+                    "varArr": [],
+                    "ecaScript": null,
+                    "iscustom": true,
+                    "desc": "",
+                    "icon": "General_Customize_20"
+                  }
+                },
+                {
+                  "_entityName": "XBTEntity",
+                  "_tag": {
+                    "type": "XBTEntity"
+                  },
+                  "_entityId": "CAIvcf9s",
+                  "children": [],
+                  "prefabVariant": null,
+                  "activeValue": {
+                    "selfValue": true,
+                    "valueTag": "activeValue"
+                  },
+                  "unlockedValue": {
+                    "selfValue": true,
+                    "valueTag": "unlockedValue"
+                  },
+                  "editorLockValue": false,
+                  "editorVisibleValue": true,
+                  "ecaScripts": [
+                    {
+                      "fileId": "im6ricrdhag-mh8szdp1-94d6526b60v",
+                      "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Death.fcg",
+                      "_tag": {
+                        "type": "GFileRefer"
+                      },
+                      "fileType": "ugcscript"
+                    }
+                  ],
+                  "x": 1065.675048828125,
+                  "y": 20.399993896484375,
+                  "width": 180,
+                  "height": 88,
+                  "nodeInfo": {
+                    "type": "action",
+                    "name": "Death",
+                    "id": "CAIvcf9s",
+                    "varArr": [],
+                    "ecaScript": null,
+                    "iscustom": true,
+                    "desc": "",
+                    "icon": "General_Customize_20"
+                  }
+                }
+              ],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": true,
+              "ecaScripts": [
+                null
+              ],
+              "x": 548.6749877929688,
+              "y": -15.599998474121094,
+              "width": 180,
+              "height": 88,
+              "nodeInfo": {
+                "type": "composite",
+                "name": "Sequence",
+                "id": "gE96KDHw",
+                "keyName": "Sequence",
+                "desc": "FE_42_JH_WS_EXSEQUENCE",
+                "varArr": [],
+                "in": null,
+                "icon": "General_Sequence_20",
+                "out": [
+                  "KUy16uDh",
+                  "CAIvcf9s"
+                ]
+              }
+            },
+            {
+              "_entityName": "XBTEntity",
+              "_tag": {
+                "type": "XBTEntity"
+              },
+              "_entityId": "C5KuCy44",
+              "children": [
+                {
+                  "_entityName": "XBTEntity",
+                  "_tag": {
+                    "type": "XBTEntity"
+                  },
+                  "_entityId": "hSS5P1gW",
+                  "children": [
+                    {
+                      "_entityName": "XBTEntity",
+                      "_tag": {
+                        "type": "XBTEntity"
+                      },
+                      "_entityId": "RS5zCP4o",
+                      "children": [],
+                      "prefabVariant": null,
+                      "activeValue": {
+                        "selfValue": true,
+                        "valueTag": "activeValue"
+                      },
+                      "unlockedValue": {
+                        "selfValue": true,
+                        "valueTag": "unlockedValue"
+                      },
+                      "editorLockValue": false,
+                      "editorVisibleValue": true,
+                      "ecaScripts": [
+                        {
+                          "fileId": "l9pkm6gopfm-mhag2twh-ojlewrvztl",
+                          "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_FindTarget.fcg",
+                          "_tag": {
+                            "type": "GFileRefer"
+                          },
+                          "fileType": "ugcscript"
+                        }
+                      ],
+                      "x": 1149.675048828125,
+                      "y": 86.39999389648438,
+                      "width": 180,
+                      "height": 88,
+                      "nodeInfo": {
+                        "type": "condition",
+                        "name": "CanFindTarget",
+                        "id": "RS5zCP4o",
+                        "varArr": [
+                          {
+                            "name": "SeekRange",
+                            "type": "Float",
+                            "val": 30
+                          }
+                        ],
+                        "ecaScript": null,
+                        "iscustom": true,
+                        "desc": "",
+                        "icon": "General_Customize_20",
+                        "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+                      }
+                    },
+                    {
+                      "_entityName": "XBTEntity",
+                      "_tag": {
+                        "type": "XBTEntity"
+                      },
+                      "_entityId": "m3ArLs1x",
+                      "children": [
+                        {
+                          "_entityName": "XBTEntity",
+                          "_tag": {
+                            "type": "XBTEntity"
+                          },
+                          "_entityId": "FlFhiXxJ",
+                          "children": [],
+                          "prefabVariant": null,
+                          "activeValue": {
+                            "selfValue": true,
+                            "valueTag": "activeValue"
+                          },
+                          "unlockedValue": {
+                            "selfValue": true,
+                            "valueTag": "unlockedValue"
+                          },
+                          "editorLockValue": false,
+                          "editorVisibleValue": true,
+                          "ecaScripts": [
+                            {
+                              "fileId": "bnmhk44jdq6-mhykgm9n-hw6gs8anxhv",
+                              "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanAttack_RandAttackCD.fcg",
+                              "_tag": {
+                                "type": "GFileRefer"
+                              },
+                              "fileType": "ugcscript"
+                            }
+                          ],
+                          "x": 1544.675048828125,
+                          "y": 138.39999389648438,
+                          "width": 180,
+                          "height": 88,
+                          "nodeInfo": {
+                            "type": "condition",
+                            "name": "CanAttack1",
+                            "id": "FlFhiXxJ",
+                            "varArr": [
+                              {
+                                "name": "CD",
+                                "type": "String",
+                                "val": "5000"
+                              },
+                              {
+                                "name": "Range",
+                                "type": "Float",
+                                "val": 1.2
+                              }
+                            ],
+                            "ecaScript": null,
+                            "iscustom": true,
+                            "desc": "",
+                            "icon": "General_Customize_20",
+                            "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+                          }
+                        },
+                        {
+                          "_entityName": "XBTEntity",
+                          "_tag": {
+                            "type": "XBTEntity"
+                          },
+                          "_entityId": "mum3LlpR",
+                          "children": [],
+                          "prefabVariant": null,
+                          "activeValue": {
+                            "selfValue": true,
+                            "valueTag": "activeValue"
+                          },
+                          "unlockedValue": {
+                            "selfValue": true,
+                            "valueTag": "unlockedValue"
+                          },
+                          "editorLockValue": false,
+                          "editorVisibleValue": true,
+                          "ecaScripts": [
+                            {
+                              "fileId": "nwa799fsda-mhul6cp6-md7t6cukf2",
+                              "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_Grenade.fcg",
+                              "_tag": {
+                                "type": "GFileRefer"
+                              },
+                              "fileType": "ugcscript"
+                            }
+                          ],
+                          "x": 1474.675048828125,
+                          "y": 228.39999389648438,
+                          "width": 180,
+                          "height": 88,
+                          "nodeInfo": {
+                            "type": "action",
+                            "name": "Attack1",
+                            "id": "mum3LlpR",
+                            "varArr": [
+                              {
+                                "name": "Duration",
+                                "type": "Int",
+                                "val": 1500
+                              }
+                            ],
+                            "ecaScript": null,
+                            "iscustom": true,
+                            "desc": "",
+                            "icon": "General_Customize_20",
+                            "fileId": "tbdwluazbo-mj73d2uh-9j2rdg9gy89"
+                          }
+                        }
+                      ],
+                      "prefabVariant": null,
+                      "activeValue": {
+                        "selfValue": true,
+                        "valueTag": "activeValue"
+                      },
+                      "unlockedValue": {
+                        "selfValue": true,
+                        "valueTag": "unlockedValue"
+                      },
+                      "editorLockValue": false,
+                      "editorVisibleValue": true,
+                      "ecaScripts": [
+                        null
+                      ],
+                      "x": 1237.675048828125,
+                      "y": 193.39999389648438,
+                      "width": 180,
+                      "height": 88,
+                      "nodeInfo": {
+                        "type": "composite",
+                        "name": "MemSequence",
+                        "id": "m3ArLs1x",
+                        "keyName": "MemSequence",
+                        "desc": "FE_42_JH_WS_MENSEQUENCE",
+                        "varArr": [],
+                        "in": null,
+                        "icon": "General_MemSequence_20",
+                        "out": [
+                          "FlFhiXxJ",
+                          "mum3LlpR"
+                        ]
+                      }
+                    }
+                  ],
+                  "prefabVariant": null,
+                  "activeValue": {
+                    "selfValue": true,
+                    "valueTag": "activeValue"
+                  },
+                  "unlockedValue": {
+                    "selfValue": true,
+                    "valueTag": "unlockedValue"
+                  },
+                  "editorLockValue": false,
+                  "editorVisibleValue": true,
+                  "ecaScripts": [
+                    null
+                  ],
+                  "x": 866.6749877929688,
+                  "y": 141.39999389648438,
+                  "width": 180,
+                  "height": 88,
+                  "nodeInfo": {
+                    "type": "composite",
+                    "name": "Sequence",
+                    "id": "hSS5P1gW",
+                    "keyName": "Sequence",
+                    "desc": "FE_42_JH_WS_EXSEQUENCE",
+                    "varArr": [],
+                    "in": null,
+                    "icon": "General_Sequence_20",
+                    "out": [
+                      "RS5zCP4o",
+                      "m3ArLs1x"
+                    ]
+                  }
+                }
+              ],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": true,
+              "ecaScripts": [
+                null
+              ],
+              "x": 754.6749877929688,
+              "y": 113.39999389648438,
+              "width": 180,
+              "height": 88,
+              "nodeInfo": {
+                "type": "composite",
+                "name": "MemSequence",
+                "id": "C5KuCy44",
+                "keyName": "MemSequence",
+                "desc": "FE_42_JH_WS_MENSEQUENCE",
+                "varArr": [],
+                "in": null,
+                "icon": "General_MemSequence_20",
+                "out": [
+                  "hSS5P1gW"
+                ]
+              }
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "ecaScripts": [
+            null
+          ],
+          "x": 328.67498779296875,
+          "y": 129.39999389648438,
+          "width": 180,
+          "height": 88,
+          "nodeInfo": {
+            "type": "composite",
+            "name": "Priority",
+            "id": "OGKL54xM",
+            "keyName": "Priority",
+            "desc": "FE_42_JH_WS_PRIORITY",
+            "varArr": [],
+            "in": null,
+            "icon": "General_Selector_20",
+            "out": [
+              "sSS0OsMf",
+              "gE96KDHw",
+              "C5KuCy44"
+            ]
+          }
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [],
+      "x": 0,
+      "y": 0,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "root",
+        "name": "Root",
+        "id": "behaviorRoot",
+        "varArr": [],
+        "out": "OGKL54xM",
+        "icon": "General_Root_20"
+      }
+    },
+    "OGKL54xM": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "OGKL54xM",
+      "children": [
+        {
+          "_entityName": "XBTEntity",
+          "_tag": {
+            "type": "XBTEntity"
+          },
+          "_entityId": "sSS0OsMf",
+          "children": [
+            {
+              "_entityName": "XBTEntity",
+              "_tag": {
+                "type": "XBTEntity"
+              },
+              "_entityId": "P7VbTB6R",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": null,
+              "unlockedValue": null,
+              "editorLockValue": false,
+              "editorVisibleValue": true,
+              "ecaScripts": [
+                {
+                  "fileId": "h6iwem40a3-mj8cyk4e-ml748g7h5o",
+                  "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_IsActive.fcg",
+                  "_tag": {
+                    "type": "GFileRefer"
+                  },
+                  "fileType": "ugcscript"
+                }
+              ],
+              "x": 937.0363159179688,
+              "y": -344.146240234375,
+              "width": 180,
+              "height": 88,
+              "nodeInfo": {
+                "type": "condition",
+                "name": "IsActive",
+                "id": "P7VbTB6R",
+                "varArr": [],
+                "ecaScript": null,
+                "iscustom": true,
+                "desc": "",
+                "icon": "General_Customize_20",
+                "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+              }
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": null,
+          "unlockedValue": null,
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "ecaScripts": [
+            null
+          ],
+          "x": 584.17919921875,
+          "y": -361.2890930175781,
+          "width": 180,
+          "height": 88,
+          "nodeInfo": {
+            "type": "composite",
+            "name": "Sequence",
+            "id": "sSS0OsMf",
+            "keyName": "Sequence",
+            "desc": "FE_42_JH_WS_EXSEQUENCE",
+            "varArr": [],
+            "in": null,
+            "icon": "General_Sequence_20",
+            "out": [
+              "P7VbTB6R"
+            ]
+          }
+        },
+        {
+          "_entityName": "XBTEntity",
+          "_tag": {
+            "type": "XBTEntity"
+          },
+          "_entityId": "gE96KDHw",
+          "children": [
+            {
+              "_entityName": "XBTEntity",
+              "_tag": {
+                "type": "XBTEntity"
+              },
+              "_entityId": "KUy16uDh",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": true,
+              "ecaScripts": [
+                {
+                  "fileId": "2aram375hfw-mh8t0ric-oau8a5cu8c",
+                  "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_IsDead.fcg",
+                  "_tag": {
+                    "type": "GFileRefer"
+                  },
+                  "fileType": "ugcscript"
+                }
+              ],
+              "x": 1031.675048828125,
+              "y": -45.600006103515625,
+              "width": 180,
+              "height": 88,
+              "nodeInfo": {
+                "type": "condition",
+                "name": "IsDead",
+                "id": "KUy16uDh",
+                "varArr": [],
+                "ecaScript": null,
+                "iscustom": true,
+                "desc": "",
+                "icon": "General_Customize_20"
+              }
+            },
+            {
+              "_entityName": "XBTEntity",
+              "_tag": {
+                "type": "XBTEntity"
+              },
+              "_entityId": "CAIvcf9s",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": true,
+              "ecaScripts": [
+                {
+                  "fileId": "im6ricrdhag-mh8szdp1-94d6526b60v",
+                  "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Death.fcg",
+                  "_tag": {
+                    "type": "GFileRefer"
+                  },
+                  "fileType": "ugcscript"
+                }
+              ],
+              "x": 1065.675048828125,
+              "y": 20.399993896484375,
+              "width": 180,
+              "height": 88,
+              "nodeInfo": {
+                "type": "action",
+                "name": "Death",
+                "id": "CAIvcf9s",
+                "varArr": [],
+                "ecaScript": null,
+                "iscustom": true,
+                "desc": "",
+                "icon": "General_Customize_20"
+              }
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "ecaScripts": [
+            null
+          ],
+          "x": 548.6749877929688,
+          "y": -15.599998474121094,
+          "width": 180,
+          "height": 88,
+          "nodeInfo": {
+            "type": "composite",
+            "name": "Sequence",
+            "id": "gE96KDHw",
+            "keyName": "Sequence",
+            "desc": "FE_42_JH_WS_EXSEQUENCE",
+            "varArr": [],
+            "in": null,
+            "icon": "General_Sequence_20",
+            "out": [
+              "KUy16uDh",
+              "CAIvcf9s"
+            ]
+          }
+        },
+        {
+          "_entityName": "XBTEntity",
+          "_tag": {
+            "type": "XBTEntity"
+          },
+          "_entityId": "C5KuCy44",
+          "children": [
+            {
+              "_entityName": "XBTEntity",
+              "_tag": {
+                "type": "XBTEntity"
+              },
+              "_entityId": "hSS5P1gW",
+              "children": [
+                {
+                  "_entityName": "XBTEntity",
+                  "_tag": {
+                    "type": "XBTEntity"
+                  },
+                  "_entityId": "RS5zCP4o",
+                  "children": [],
+                  "prefabVariant": null,
+                  "activeValue": {
+                    "selfValue": true,
+                    "valueTag": "activeValue"
+                  },
+                  "unlockedValue": {
+                    "selfValue": true,
+                    "valueTag": "unlockedValue"
+                  },
+                  "editorLockValue": false,
+                  "editorVisibleValue": true,
+                  "ecaScripts": [
+                    {
+                      "fileId": "l9pkm6gopfm-mhag2twh-ojlewrvztl",
+                      "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_FindTarget.fcg",
+                      "_tag": {
+                        "type": "GFileRefer"
+                      },
+                      "fileType": "ugcscript"
+                    }
+                  ],
+                  "x": 1149.675048828125,
+                  "y": 86.39999389648438,
+                  "width": 180,
+                  "height": 88,
+                  "nodeInfo": {
+                    "type": "condition",
+                    "name": "CanFindTarget",
+                    "id": "RS5zCP4o",
+                    "varArr": [
+                      {
+                        "name": "SeekRange",
+                        "type": "Float",
+                        "val": 30
+                      }
+                    ],
+                    "ecaScript": null,
+                    "iscustom": true,
+                    "desc": "",
+                    "icon": "General_Customize_20",
+                    "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+                  }
+                },
+                {
+                  "_entityName": "XBTEntity",
+                  "_tag": {
+                    "type": "XBTEntity"
+                  },
+                  "_entityId": "m3ArLs1x",
+                  "children": [
+                    {
+                      "_entityName": "XBTEntity",
+                      "_tag": {
+                        "type": "XBTEntity"
+                      },
+                      "_entityId": "FlFhiXxJ",
+                      "children": [],
+                      "prefabVariant": null,
+                      "activeValue": {
+                        "selfValue": true,
+                        "valueTag": "activeValue"
+                      },
+                      "unlockedValue": {
+                        "selfValue": true,
+                        "valueTag": "unlockedValue"
+                      },
+                      "editorLockValue": false,
+                      "editorVisibleValue": true,
+                      "ecaScripts": [
+                        {
+                          "fileId": "bnmhk44jdq6-mhykgm9n-hw6gs8anxhv",
+                          "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanAttack_RandAttackCD.fcg",
+                          "_tag": {
+                            "type": "GFileRefer"
+                          },
+                          "fileType": "ugcscript"
+                        }
+                      ],
+                      "x": 1544.675048828125,
+                      "y": 138.39999389648438,
+                      "width": 180,
+                      "height": 88,
+                      "nodeInfo": {
+                        "type": "condition",
+                        "name": "CanAttack1",
+                        "id": "FlFhiXxJ",
+                        "varArr": [
+                          {
+                            "name": "CD",
+                            "type": "String",
+                            "val": "5000"
+                          },
+                          {
+                            "name": "Range",
+                            "type": "Float",
+                            "val": 1.2
+                          }
+                        ],
+                        "ecaScript": null,
+                        "iscustom": true,
+                        "desc": "",
+                        "icon": "General_Customize_20",
+                        "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+                      }
+                    },
+                    {
+                      "_entityName": "XBTEntity",
+                      "_tag": {
+                        "type": "XBTEntity"
+                      },
+                      "_entityId": "mum3LlpR",
+                      "children": [],
+                      "prefabVariant": null,
+                      "activeValue": {
+                        "selfValue": true,
+                        "valueTag": "activeValue"
+                      },
+                      "unlockedValue": {
+                        "selfValue": true,
+                        "valueTag": "unlockedValue"
+                      },
+                      "editorLockValue": false,
+                      "editorVisibleValue": true,
+                      "ecaScripts": [
+                        {
+                          "fileId": "nwa799fsda-mhul6cp6-md7t6cukf2",
+                          "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_Grenade.fcg",
+                          "_tag": {
+                            "type": "GFileRefer"
+                          },
+                          "fileType": "ugcscript"
+                        }
+                      ],
+                      "x": 1474.675048828125,
+                      "y": 228.39999389648438,
+                      "width": 180,
+                      "height": 88,
+                      "nodeInfo": {
+                        "type": "action",
+                        "name": "Attack1",
+                        "id": "mum3LlpR",
+                        "varArr": [
+                          {
+                            "name": "Duration",
+                            "type": "Int",
+                            "val": 1500
+                          }
+                        ],
+                        "ecaScript": null,
+                        "iscustom": true,
+                        "desc": "",
+                        "icon": "General_Customize_20",
+                        "fileId": "tbdwluazbo-mj73d2uh-9j2rdg9gy89"
+                      }
+                    }
+                  ],
+                  "prefabVariant": null,
+                  "activeValue": {
+                    "selfValue": true,
+                    "valueTag": "activeValue"
+                  },
+                  "unlockedValue": {
+                    "selfValue": true,
+                    "valueTag": "unlockedValue"
+                  },
+                  "editorLockValue": false,
+                  "editorVisibleValue": true,
+                  "ecaScripts": [
+                    null
+                  ],
+                  "x": 1237.675048828125,
+                  "y": 193.39999389648438,
+                  "width": 180,
+                  "height": 88,
+                  "nodeInfo": {
+                    "type": "composite",
+                    "name": "MemSequence",
+                    "id": "m3ArLs1x",
+                    "keyName": "MemSequence",
+                    "desc": "FE_42_JH_WS_MENSEQUENCE",
+                    "varArr": [],
+                    "in": null,
+                    "icon": "General_MemSequence_20",
+                    "out": [
+                      "FlFhiXxJ",
+                      "mum3LlpR"
+                    ]
+                  }
+                }
+              ],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": true,
+              "ecaScripts": [
+                null
+              ],
+              "x": 866.6749877929688,
+              "y": 141.39999389648438,
+              "width": 180,
+              "height": 88,
+              "nodeInfo": {
+                "type": "composite",
+                "name": "Sequence",
+                "id": "hSS5P1gW",
+                "keyName": "Sequence",
+                "desc": "FE_42_JH_WS_EXSEQUENCE",
+                "varArr": [],
+                "in": null,
+                "icon": "General_Sequence_20",
+                "out": [
+                  "RS5zCP4o",
+                  "m3ArLs1x"
+                ]
+              }
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "ecaScripts": [
+            null
+          ],
+          "x": 754.6749877929688,
+          "y": 113.39999389648438,
+          "width": 180,
+          "height": 88,
+          "nodeInfo": {
+            "type": "composite",
+            "name": "MemSequence",
+            "id": "C5KuCy44",
+            "keyName": "MemSequence",
+            "desc": "FE_42_JH_WS_MENSEQUENCE",
+            "varArr": [],
+            "in": null,
+            "icon": "General_MemSequence_20",
+            "out": [
+              "hSS5P1gW"
+            ]
+          }
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        null
+      ],
+      "x": 328.67498779296875,
+      "y": 129.39999389648438,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "composite",
+        "name": "Priority",
+        "id": "OGKL54xM",
+        "keyName": "Priority",
+        "desc": "FE_42_JH_WS_PRIORITY",
+        "varArr": [],
+        "in": null,
+        "icon": "General_Selector_20",
+        "out": [
+          "sSS0OsMf",
+          "gE96KDHw",
+          "C5KuCy44"
+        ]
+      }
+    },
+    "gE96KDHw": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "gE96KDHw",
+      "children": [
+        {
+          "_entityName": "XBTEntity",
+          "_tag": {
+            "type": "XBTEntity"
+          },
+          "_entityId": "KUy16uDh",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "ecaScripts": [
+            {
+              "fileId": "2aram375hfw-mh8t0ric-oau8a5cu8c",
+              "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_IsDead.fcg",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "ugcscript"
+            }
+          ],
+          "x": 1031.675048828125,
+          "y": -45.600006103515625,
+          "width": 180,
+          "height": 88,
+          "nodeInfo": {
+            "type": "condition",
+            "name": "IsDead",
+            "id": "KUy16uDh",
+            "varArr": [],
+            "ecaScript": null,
+            "iscustom": true,
+            "desc": "",
+            "icon": "General_Customize_20"
+          }
+        },
+        {
+          "_entityName": "XBTEntity",
+          "_tag": {
+            "type": "XBTEntity"
+          },
+          "_entityId": "CAIvcf9s",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "ecaScripts": [
+            {
+              "fileId": "im6ricrdhag-mh8szdp1-94d6526b60v",
+              "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Death.fcg",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "ugcscript"
+            }
+          ],
+          "x": 1065.675048828125,
+          "y": 20.399993896484375,
+          "width": 180,
+          "height": 88,
+          "nodeInfo": {
+            "type": "action",
+            "name": "Death",
+            "id": "CAIvcf9s",
+            "varArr": [],
+            "ecaScript": null,
+            "iscustom": true,
+            "desc": "",
+            "icon": "General_Customize_20"
+          }
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        null
+      ],
+      "x": 548.6749877929688,
+      "y": -15.599998474121094,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "composite",
+        "name": "Sequence",
+        "id": "gE96KDHw",
+        "keyName": "Sequence",
+        "desc": "FE_42_JH_WS_EXSEQUENCE",
+        "varArr": [],
+        "in": null,
+        "icon": "General_Sequence_20",
+        "out": [
+          "KUy16uDh",
+          "CAIvcf9s"
+        ]
+      }
+    },
+    "KUy16uDh": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "KUy16uDh",
+      "children": [],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        {
+          "fileId": "2aram375hfw-mh8t0ric-oau8a5cu8c",
+          "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_IsDead.fcg",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "ugcscript"
+        }
+      ],
+      "x": 1031.675048828125,
+      "y": -45.600006103515625,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "condition",
+        "name": "IsDead",
+        "id": "KUy16uDh",
+        "varArr": [],
+        "ecaScript": null,
+        "iscustom": true,
+        "desc": "",
+        "icon": "General_Customize_20"
+      }
+    },
+    "CAIvcf9s": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "CAIvcf9s",
+      "children": [],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        {
+          "fileId": "im6ricrdhag-mh8szdp1-94d6526b60v",
+          "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Death.fcg",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "ugcscript"
+        }
+      ],
+      "x": 1065.675048828125,
+      "y": 20.399993896484375,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "action",
+        "name": "Death",
+        "id": "CAIvcf9s",
+        "varArr": [],
+        "ecaScript": null,
+        "iscustom": true,
+        "desc": "",
+        "icon": "General_Customize_20"
+      }
+    },
+    "C5KuCy44": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "C5KuCy44",
+      "children": [
+        {
+          "_entityName": "XBTEntity",
+          "_tag": {
+            "type": "XBTEntity"
+          },
+          "_entityId": "hSS5P1gW",
+          "children": [
+            {
+              "_entityName": "XBTEntity",
+              "_tag": {
+                "type": "XBTEntity"
+              },
+              "_entityId": "RS5zCP4o",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": true,
+              "ecaScripts": [
+                {
+                  "fileId": "l9pkm6gopfm-mhag2twh-ojlewrvztl",
+                  "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_FindTarget.fcg",
+                  "_tag": {
+                    "type": "GFileRefer"
+                  },
+                  "fileType": "ugcscript"
+                }
+              ],
+              "x": 1149.675048828125,
+              "y": 86.39999389648438,
+              "width": 180,
+              "height": 88,
+              "nodeInfo": {
+                "type": "condition",
+                "name": "CanFindTarget",
+                "id": "RS5zCP4o",
+                "varArr": [
+                  {
+                    "name": "SeekRange",
+                    "type": "Float",
+                    "val": 30
+                  }
+                ],
+                "ecaScript": null,
+                "iscustom": true,
+                "desc": "",
+                "icon": "General_Customize_20",
+                "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+              }
+            },
+            {
+              "_entityName": "XBTEntity",
+              "_tag": {
+                "type": "XBTEntity"
+              },
+              "_entityId": "m3ArLs1x",
+              "children": [
+                {
+                  "_entityName": "XBTEntity",
+                  "_tag": {
+                    "type": "XBTEntity"
+                  },
+                  "_entityId": "FlFhiXxJ",
+                  "children": [],
+                  "prefabVariant": null,
+                  "activeValue": {
+                    "selfValue": true,
+                    "valueTag": "activeValue"
+                  },
+                  "unlockedValue": {
+                    "selfValue": true,
+                    "valueTag": "unlockedValue"
+                  },
+                  "editorLockValue": false,
+                  "editorVisibleValue": true,
+                  "ecaScripts": [
+                    {
+                      "fileId": "bnmhk44jdq6-mhykgm9n-hw6gs8anxhv",
+                      "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanAttack_RandAttackCD.fcg",
+                      "_tag": {
+                        "type": "GFileRefer"
+                      },
+                      "fileType": "ugcscript"
+                    }
+                  ],
+                  "x": 1544.675048828125,
+                  "y": 138.39999389648438,
+                  "width": 180,
+                  "height": 88,
+                  "nodeInfo": {
+                    "type": "condition",
+                    "name": "CanAttack1",
+                    "id": "FlFhiXxJ",
+                    "varArr": [
+                      {
+                        "name": "CD",
+                        "type": "String",
+                        "val": "5000"
+                      },
+                      {
+                        "name": "Range",
+                        "type": "Float",
+                        "val": 1.2
+                      }
+                    ],
+                    "ecaScript": null,
+                    "iscustom": true,
+                    "desc": "",
+                    "icon": "General_Customize_20",
+                    "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+                  }
+                },
+                {
+                  "_entityName": "XBTEntity",
+                  "_tag": {
+                    "type": "XBTEntity"
+                  },
+                  "_entityId": "mum3LlpR",
+                  "children": [],
+                  "prefabVariant": null,
+                  "activeValue": {
+                    "selfValue": true,
+                    "valueTag": "activeValue"
+                  },
+                  "unlockedValue": {
+                    "selfValue": true,
+                    "valueTag": "unlockedValue"
+                  },
+                  "editorLockValue": false,
+                  "editorVisibleValue": true,
+                  "ecaScripts": [
+                    {
+                      "fileId": "nwa799fsda-mhul6cp6-md7t6cukf2",
+                      "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_Grenade.fcg",
+                      "_tag": {
+                        "type": "GFileRefer"
+                      },
+                      "fileType": "ugcscript"
+                    }
+                  ],
+                  "x": 1474.675048828125,
+                  "y": 228.39999389648438,
+                  "width": 180,
+                  "height": 88,
+                  "nodeInfo": {
+                    "type": "action",
+                    "name": "Attack1",
+                    "id": "mum3LlpR",
+                    "varArr": [
+                      {
+                        "name": "Duration",
+                        "type": "Int",
+                        "val": 1500
+                      }
+                    ],
+                    "ecaScript": null,
+                    "iscustom": true,
+                    "desc": "",
+                    "icon": "General_Customize_20",
+                    "fileId": "tbdwluazbo-mj73d2uh-9j2rdg9gy89"
+                  }
+                }
+              ],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": true,
+              "ecaScripts": [
+                null
+              ],
+              "x": 1237.675048828125,
+              "y": 193.39999389648438,
+              "width": 180,
+              "height": 88,
+              "nodeInfo": {
+                "type": "composite",
+                "name": "MemSequence",
+                "id": "m3ArLs1x",
+                "keyName": "MemSequence",
+                "desc": "FE_42_JH_WS_MENSEQUENCE",
+                "varArr": [],
+                "in": null,
+                "icon": "General_MemSequence_20",
+                "out": [
+                  "FlFhiXxJ",
+                  "mum3LlpR"
+                ]
+              }
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "ecaScripts": [
+            null
+          ],
+          "x": 866.6749877929688,
+          "y": 141.39999389648438,
+          "width": 180,
+          "height": 88,
+          "nodeInfo": {
+            "type": "composite",
+            "name": "Sequence",
+            "id": "hSS5P1gW",
+            "keyName": "Sequence",
+            "desc": "FE_42_JH_WS_EXSEQUENCE",
+            "varArr": [],
+            "in": null,
+            "icon": "General_Sequence_20",
+            "out": [
+              "RS5zCP4o",
+              "m3ArLs1x"
+            ]
+          }
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        null
+      ],
+      "x": 754.6749877929688,
+      "y": 113.39999389648438,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "composite",
+        "name": "MemSequence",
+        "id": "C5KuCy44",
+        "keyName": "MemSequence",
+        "desc": "FE_42_JH_WS_MENSEQUENCE",
+        "varArr": [],
+        "in": null,
+        "icon": "General_MemSequence_20",
+        "out": [
+          "hSS5P1gW"
+        ]
+      }
+    },
+    "hSS5P1gW": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "hSS5P1gW",
+      "children": [
+        {
+          "_entityName": "XBTEntity",
+          "_tag": {
+            "type": "XBTEntity"
+          },
+          "_entityId": "RS5zCP4o",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "ecaScripts": [
+            {
+              "fileId": "l9pkm6gopfm-mhag2twh-ojlewrvztl",
+              "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_FindTarget.fcg",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "ugcscript"
+            }
+          ],
+          "x": 1149.675048828125,
+          "y": 86.39999389648438,
+          "width": 180,
+          "height": 88,
+          "nodeInfo": {
+            "type": "condition",
+            "name": "CanFindTarget",
+            "id": "RS5zCP4o",
+            "varArr": [
+              {
+                "name": "SeekRange",
+                "type": "Float",
+                "val": 30
+              }
+            ],
+            "ecaScript": null,
+            "iscustom": true,
+            "desc": "",
+            "icon": "General_Customize_20",
+            "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+          }
+        },
+        {
+          "_entityName": "XBTEntity",
+          "_tag": {
+            "type": "XBTEntity"
+          },
+          "_entityId": "m3ArLs1x",
+          "children": [
+            {
+              "_entityName": "XBTEntity",
+              "_tag": {
+                "type": "XBTEntity"
+              },
+              "_entityId": "FlFhiXxJ",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": true,
+              "ecaScripts": [
+                {
+                  "fileId": "bnmhk44jdq6-mhykgm9n-hw6gs8anxhv",
+                  "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanAttack_RandAttackCD.fcg",
+                  "_tag": {
+                    "type": "GFileRefer"
+                  },
+                  "fileType": "ugcscript"
+                }
+              ],
+              "x": 1544.675048828125,
+              "y": 138.39999389648438,
+              "width": 180,
+              "height": 88,
+              "nodeInfo": {
+                "type": "condition",
+                "name": "CanAttack1",
+                "id": "FlFhiXxJ",
+                "varArr": [
+                  {
+                    "name": "CD",
+                    "type": "String",
+                    "val": "5000"
+                  },
+                  {
+                    "name": "Range",
+                    "type": "Float",
+                    "val": 1.2
+                  }
+                ],
+                "ecaScript": null,
+                "iscustom": true,
+                "desc": "",
+                "icon": "General_Customize_20",
+                "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+              }
+            },
+            {
+              "_entityName": "XBTEntity",
+              "_tag": {
+                "type": "XBTEntity"
+              },
+              "_entityId": "mum3LlpR",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": true,
+              "ecaScripts": [
+                {
+                  "fileId": "nwa799fsda-mhul6cp6-md7t6cukf2",
+                  "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_Grenade.fcg",
+                  "_tag": {
+                    "type": "GFileRefer"
+                  },
+                  "fileType": "ugcscript"
+                }
+              ],
+              "x": 1474.675048828125,
+              "y": 228.39999389648438,
+              "width": 180,
+              "height": 88,
+              "nodeInfo": {
+                "type": "action",
+                "name": "Attack1",
+                "id": "mum3LlpR",
+                "varArr": [
+                  {
+                    "name": "Duration",
+                    "type": "Int",
+                    "val": 1500
+                  }
+                ],
+                "ecaScript": null,
+                "iscustom": true,
+                "desc": "",
+                "icon": "General_Customize_20",
+                "fileId": "tbdwluazbo-mj73d2uh-9j2rdg9gy89"
+              }
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "ecaScripts": [
+            null
+          ],
+          "x": 1237.675048828125,
+          "y": 193.39999389648438,
+          "width": 180,
+          "height": 88,
+          "nodeInfo": {
+            "type": "composite",
+            "name": "MemSequence",
+            "id": "m3ArLs1x",
+            "keyName": "MemSequence",
+            "desc": "FE_42_JH_WS_MENSEQUENCE",
+            "varArr": [],
+            "in": null,
+            "icon": "General_MemSequence_20",
+            "out": [
+              "FlFhiXxJ",
+              "mum3LlpR"
+            ]
+          }
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        null
+      ],
+      "x": 866.6749877929688,
+      "y": 141.39999389648438,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "composite",
+        "name": "Sequence",
+        "id": "hSS5P1gW",
+        "keyName": "Sequence",
+        "desc": "FE_42_JH_WS_EXSEQUENCE",
+        "varArr": [],
+        "in": null,
+        "icon": "General_Sequence_20",
+        "out": [
+          "RS5zCP4o",
+          "m3ArLs1x"
+        ]
+      }
+    },
+    "RS5zCP4o": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "RS5zCP4o",
+      "children": [],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        {
+          "fileId": "l9pkm6gopfm-mhag2twh-ojlewrvztl",
+          "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_FindTarget.fcg",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "ugcscript"
+        }
+      ],
+      "x": 1149.675048828125,
+      "y": 86.39999389648438,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "condition",
+        "name": "CanFindTarget",
+        "id": "RS5zCP4o",
+        "varArr": [
+          {
+            "name": "SeekRange",
+            "type": "Float",
+            "val": 30
+          }
+        ],
+        "ecaScript": null,
+        "iscustom": true,
+        "desc": "",
+        "icon": "General_Customize_20",
+        "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+      }
+    },
+    "m3ArLs1x": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "m3ArLs1x",
+      "children": [
+        {
+          "_entityName": "XBTEntity",
+          "_tag": {
+            "type": "XBTEntity"
+          },
+          "_entityId": "FlFhiXxJ",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "ecaScripts": [
+            {
+              "fileId": "bnmhk44jdq6-mhykgm9n-hw6gs8anxhv",
+              "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanAttack_RandAttackCD.fcg",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "ugcscript"
+            }
+          ],
+          "x": 1544.675048828125,
+          "y": 138.39999389648438,
+          "width": 180,
+          "height": 88,
+          "nodeInfo": {
+            "type": "condition",
+            "name": "CanAttack1",
+            "id": "FlFhiXxJ",
+            "varArr": [
+              {
+                "name": "CD",
+                "type": "String",
+                "val": "5000"
+              },
+              {
+                "name": "Range",
+                "type": "Float",
+                "val": 1.2
+              }
+            ],
+            "ecaScript": null,
+            "iscustom": true,
+            "desc": "",
+            "icon": "General_Customize_20",
+            "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+          }
+        },
+        {
+          "_entityName": "XBTEntity",
+          "_tag": {
+            "type": "XBTEntity"
+          },
+          "_entityId": "mum3LlpR",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "ecaScripts": [
+            {
+              "fileId": "nwa799fsda-mhul6cp6-md7t6cukf2",
+              "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_Grenade.fcg",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "ugcscript"
+            }
+          ],
+          "x": 1474.675048828125,
+          "y": 228.39999389648438,
+          "width": 180,
+          "height": 88,
+          "nodeInfo": {
+            "type": "action",
+            "name": "Attack1",
+            "id": "mum3LlpR",
+            "varArr": [
+              {
+                "name": "Duration",
+                "type": "Int",
+                "val": 1500
+              }
+            ],
+            "ecaScript": null,
+            "iscustom": true,
+            "desc": "",
+            "icon": "General_Customize_20",
+            "fileId": "tbdwluazbo-mj73d2uh-9j2rdg9gy89"
+          }
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        null
+      ],
+      "x": 1237.675048828125,
+      "y": 193.39999389648438,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "composite",
+        "name": "MemSequence",
+        "id": "m3ArLs1x",
+        "keyName": "MemSequence",
+        "desc": "FE_42_JH_WS_MENSEQUENCE",
+        "varArr": [],
+        "in": null,
+        "icon": "General_MemSequence_20",
+        "out": [
+          "FlFhiXxJ",
+          "mum3LlpR"
+        ]
+      }
+    },
+    "FlFhiXxJ": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "FlFhiXxJ",
+      "children": [],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        {
+          "fileId": "bnmhk44jdq6-mhykgm9n-hw6gs8anxhv",
+          "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanAttack_RandAttackCD.fcg",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "ugcscript"
+        }
+      ],
+      "x": 1544.675048828125,
+      "y": 138.39999389648438,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "condition",
+        "name": "CanAttack1",
+        "id": "FlFhiXxJ",
+        "varArr": [
+          {
+            "name": "CD",
+            "type": "String",
+            "val": "5000"
+          },
+          {
+            "name": "Range",
+            "type": "Float",
+            "val": 1.2
+          }
+        ],
+        "ecaScript": null,
+        "iscustom": true,
+        "desc": "",
+        "icon": "General_Customize_20",
+        "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+      }
+    },
+    "mum3LlpR": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "mum3LlpR",
+      "children": [],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        {
+          "fileId": "nwa799fsda-mhul6cp6-md7t6cukf2",
+          "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_Grenade.fcg",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "ugcscript"
+        }
+      ],
+      "x": 1474.675048828125,
+      "y": 228.39999389648438,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "action",
+        "name": "Attack1",
+        "id": "mum3LlpR",
+        "varArr": [
+          {
+            "name": "Duration",
+            "type": "Int",
+            "val": 1500
+          }
+        ],
+        "ecaScript": null,
+        "iscustom": true,
+        "desc": "",
+        "icon": "General_Customize_20",
+        "fileId": "tbdwluazbo-mj73d2uh-9j2rdg9gy89"
+      }
+    },
+    "sSS0OsMf": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "sSS0OsMf",
+      "children": [
+        {
+          "_entityName": "XBTEntity",
+          "_tag": {
+            "type": "XBTEntity"
+          },
+          "_entityId": "P7VbTB6R",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": null,
+          "unlockedValue": null,
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "ecaScripts": [
+            {
+              "fileId": "h6iwem40a3-mj8cyk4e-ml748g7h5o",
+              "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_IsActive.fcg",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "ugcscript"
+            }
+          ],
+          "x": 937.0363159179688,
+          "y": -344.146240234375,
+          "width": 180,
+          "height": 88,
+          "nodeInfo": {
+            "type": "condition",
+            "name": "IsActive",
+            "id": "P7VbTB6R",
+            "varArr": [],
+            "ecaScript": null,
+            "iscustom": true,
+            "desc": "",
+            "icon": "General_Customize_20",
+            "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+          }
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": null,
+      "unlockedValue": null,
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        null
+      ],
+      "x": 584.17919921875,
+      "y": -361.2890930175781,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "composite",
+        "name": "Sequence",
+        "id": "sSS0OsMf",
+        "keyName": "Sequence",
+        "desc": "FE_42_JH_WS_EXSEQUENCE",
+        "varArr": [],
+        "in": null,
+        "icon": "General_Sequence_20",
+        "out": [
+          "P7VbTB6R"
+        ]
+      }
+    },
+    "P7VbTB6R": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "P7VbTB6R",
+      "children": [],
+      "prefabVariant": null,
+      "activeValue": null,
+      "unlockedValue": null,
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        {
+          "fileId": "h6iwem40a3-mj8cyk4e-ml748g7h5o",
+          "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_IsActive.fcg",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "ugcscript"
+        }
+      ],
+      "x": 937.0363159179688,
+      "y": -344.146240234375,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "condition",
+        "name": "IsActive",
+        "id": "P7VbTB6R",
+        "varArr": [],
+        "ecaScript": null,
+        "iscustom": true,
+        "desc": "",
+        "icon": "General_Customize_20",
+        "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+      }
+    }
+  }
+}
+//"{FE:{"v":"0.2.4086894","c":{"FF":5001},"s":100}

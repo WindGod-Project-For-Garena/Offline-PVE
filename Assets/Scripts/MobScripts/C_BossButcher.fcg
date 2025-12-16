@@ -20,11 +20,8 @@ graph C_NormalZombie {
 
 
     //eventID: 176//85*!fZV_I.Gt8f?E6:$4
-	event OnAwake() {
-		WaitForMillisecond(1000)
-		//LogInfo("添加受击盒")
-		
-        CreateFromPrefab(out var headHitbox, EResPrefab.HitBox_BossButcher_Head)
+	event OnMobActived() {
+		CreateFromPrefab(out var headHitbox, EResPrefab.HitBox_BossButcher_Head)
 		AddScript(headHitbox, EResFCG.C_HitBox)
         SetParentClient(GetSkeletonPartByName(thisEntity, "Bip001 Head"), headHitbox<Transform>, false)
 		headHitbox<HitBox>.SetOwner(thisEntity, "Head")
@@ -53,6 +50,42 @@ graph C_NormalZombie {
 		AddScript(rightLegHitbox, EResFCG.C_HitBox)
         SetParentClient(GetSkeletonPartByName(thisEntity, "Bip001 R Calf"), rightLegHitbox<Transform>, false)
         rightLegHitbox<HitBox>.SetOwner(thisEntity, "RightLeg")
+
+
+	}
+	event OnAwake() {
+		// WaitForMillisecond(1000)
+		// //LogInfo("添加受击盒")
+		
+        // CreateFromPrefab(out var headHitbox, EResPrefab.HitBox_BossButcher_Head)
+		// AddScript(headHitbox, EResFCG.C_HitBox)
+        // SetParentClient(GetSkeletonPartByName(thisEntity, "Bip001 Head"), headHitbox<Transform>, false)
+		// headHitbox<HitBox>.SetOwner(thisEntity, "Head")
+        
+		// CreateFromPrefab(out var bodyHitbox, EResPrefab.HitBox_BossButcher_Body)
+        // AddScript(bodyHitbox, EResFCG.C_HitBox)
+        // SetParentClient(GetSkeletonPartByName(thisEntity, "Bip001 Spine"), bodyHitbox<Transform>, false)
+        // bodyHitbox<HitBox>.SetOwner(thisEntity, "Body")
+
+		// CreateFromPrefab(out var leftArmHitbox, EResPrefab.HitBox_BossButcher_LeftArm)
+		// AddScript(leftArmHitbox, EResFCG.C_HitBox)
+        // SetParentClient(GetSkeletonPartByName(thisEntity, "Bip001 L Forearm"), leftArmHitbox<Transform>, false)
+        // leftArmHitbox<HitBox>.SetOwner(thisEntity, "LeftArm")
+
+		// CreateFromPrefab(out var rightArmHitbox, EResPrefab.HitBox_BossButcher_RightArm)
+		// AddScript(rightArmHitbox, EResFCG.C_HitBox)
+        // SetParentClient(GetSkeletonPartByName(thisEntity, "Bip001 R Forearm"), rightArmHitbox<Transform>, false)
+		// rightArmHitbox<HitBox>.SetOwner(thisEntity, "RightArm")
+        
+		// CreateFromPrefab(out var leftLegHitbox, EResPrefab.HitBox_BossButcher_Leg)
+		// AddScript(leftLegHitbox, EResFCG.C_HitBox)
+        // SetParentClient(GetSkeletonPartByName(thisEntity, "Bip001 L Calf"), leftLegHitbox<Transform>, false)
+        // leftLegHitbox<HitBox>.SetOwner(thisEntity, "LeftLeg")
+
+		// CreateFromPrefab(out var rightLegHitbox, EResPrefab.HitBox_BossButcher_Leg)
+		// AddScript(rightLegHitbox, EResFCG.C_HitBox)
+        // SetParentClient(GetSkeletonPartByName(thisEntity, "Bip001 R Calf"), rightLegHitbox<Transform>, false)
+        // rightLegHitbox<HitBox>.SetOwner(thisEntity, "RightLeg")
 
 		//PartNameDic = Map<string, string>{"Head":"bone_Head", "Body":"bone_Spine", "LeftArm":"bone_L_Forearm", "RightArm":"bone_R_Forearm", "LeftLeg":"bone_L_Claf", "RightLeg":"bone_R_Claf"}
 

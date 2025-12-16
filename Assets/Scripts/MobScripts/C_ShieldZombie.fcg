@@ -19,8 +19,7 @@ graph C_NormalZombie {
 	PartNameDic Map<object, object> = nil
 
 
-    //eventID: 176//85*!fZV_I.Gt8f?E6:$4
-	event OnAwake() {
+	event OnMobActived() {
 		WaitForMillisecond(1000)
 		//LogInfo("添加受击盒")
 		
@@ -31,6 +30,19 @@ graph C_NormalZombie {
 
 		AddScript(thisEntity, EResFCG.C_HitBox)
 		thisEntity<HitBox>.SetOwner(thisEntity, "Body")
+	}
+    //eventID: 176//85*!fZV_I.Gt8f?E6:$4
+	event OnAwake() {
+		// WaitForMillisecond(1000)
+		// //LogInfo("添加受击盒")
+		
+        // CreateFromPrefab(out var headHitbox, EResPrefab.HitBox_ShieldZombie_Head)
+		// AddScript(headHitbox, EResFCG.C_HitBox)
+        // SetParentClient(GetSkeletonPartByName(thisEntity, "Bip001 Head"), headHitbox<Transform>, false)
+		// headHitbox<HitBox>.SetOwner(thisEntity, "Head")
+
+		// AddScript(thisEntity, EResFCG.C_HitBox)
+		// thisEntity<HitBox>.SetOwner(thisEntity, "Body")
         
 		// CreateFromPrefab(out var bodyHitbox, EResPrefab.HitBox_ShieldZombie_Body)
         // AddScript(bodyHitbox, EResFCG.C_HitBox)

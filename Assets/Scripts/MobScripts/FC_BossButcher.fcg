@@ -49,6 +49,7 @@ graph FC_NormalZombie {
         thisEntity<Mob>.Damage = 10
 		thisEntity<Mob>.HateGainInterval = 3000
 		thisEntity<Mob>.StatusDic = Map<string, object>{
+		
 		}
 		thisEntity<Mob>.DetectRange = 30
         var nowTime int = globalEntity<Global>.GameTimeCount

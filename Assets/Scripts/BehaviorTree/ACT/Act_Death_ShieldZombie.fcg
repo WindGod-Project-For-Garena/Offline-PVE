@@ -17,7 +17,7 @@ graph FC_Act_Death {
 
 	//eventID: 42//s8004_dup_block
 	event OnNodeEnterForClient(NodeName string, Owner entity<BevTreeAttachableForClient>) {
-		var isShield bool= Owner<Mob>.StatusDic["IfShield"] as bool
+		var isShield bool= Owner<Mob>.StatusDic["IsShield"] as bool
 		if (isShield) {
 			PlayAnimation(Owner as entity<AnimationControllerAttachable>, "Dead", 1, LoopType.Once)
 		} else {

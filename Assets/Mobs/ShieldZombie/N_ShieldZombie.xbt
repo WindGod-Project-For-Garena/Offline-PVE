@@ -3021,6 +3021,7 @@
         "id": "bn00eJ6f",
         "component": "xbt-base-node",
         "data": {},
+        "zIndex": 42,
         "ports": {
           "groups": {
             "in": {
@@ -3147,8 +3148,7 @@
               "id": "ccb5788e-e764-47d4-b832-04cf241636e2"
             }
           ]
-        },
-        "zIndex": 42
+        }
       },
       {
         "position": {
@@ -3164,6 +3164,7 @@
         "id": "xoBpEQD8",
         "component": "xbt-base-node",
         "data": {},
+        "zIndex": 43,
         "ports": {
           "groups": {
             "in": {
@@ -3261,8 +3262,7 @@
               "id": "f05cef97-e2f5-4f29-9ca8-ad1630cd362a"
             }
           ]
-        },
-        "zIndex": 43
+        }
       },
       {
         "shape": "edge",
@@ -3273,6 +3273,7 @@
           }
         },
         "id": "fdfebc3f-fb83-467e-b3e4-018d8675c212",
+        "zIndex": 44,
         "source": {
           "cell": "bn00eJ6f",
           "port": "189a6dde-87db-462c-9329-ec92f689ef33"
@@ -3280,8 +3281,7 @@
         "target": {
           "cell": "xoBpEQD8",
           "port": "f05cef97-e2f5-4f29-9ca8-ad1630cd362a"
-        },
-        "zIndex": 44
+        }
       },
       {
         "shape": "edge",
@@ -3292,6 +3292,7 @@
           }
         },
         "id": "9f4b6b32-3c3d-4bcf-819d-73d9b0924486",
+        "zIndex": 45,
         "source": {
           "cell": "OGKL54xM",
           "port": "0be61ace-370f-4f2e-aeb4-381ee8871e39"
@@ -3299,8 +3300,7 @@
         "target": {
           "cell": "bn00eJ6f",
           "port": "3771581b-c560-4de2-b229-6f1290928667"
-        },
-        "zIndex": 45
+        }
       },
       {
         "shape": "edge",
@@ -3311,6 +3311,7 @@
           }
         },
         "id": "6d8e2737-a3df-4c5e-b57c-1564705ac32a",
+        "zIndex": 46,
         "source": {
           "cell": "OGKL54xM",
           "port": "81f7fd49-c464-401e-b0cd-366aed8c3578"
@@ -3318,8 +3319,7 @@
         "target": {
           "cell": "gE96KDHw",
           "port": "3fce3bca-6363-41cb-82a5-068dd7478454"
-        },
-        "zIndex": 46
+        }
       },
       {
         "shape": "edge",
@@ -3330,6 +3330,7 @@
           }
         },
         "id": "eca04f53-48c0-4340-9362-4783ba11cb3e",
+        "zIndex": 47,
         "source": {
           "cell": "OGKL54xM",
           "port": "405a0b51-87cd-4413-8568-ff8a68809545"
@@ -3337,8 +3338,7 @@
         "target": {
           "cell": "C5KuCy44",
           "port": "9860e99f-bc0d-4853-8519-eb522959a939"
-        },
-        "zIndex": 47
+        }
       },
       {
         "shape": "edge",
@@ -3349,6 +3349,7 @@
           }
         },
         "id": "513a3f21-e179-42f5-8ab7-aaa2cc0870d2",
+        "zIndex": 48,
         "source": {
           "cell": "OGKL54xM",
           "port": "0955d5ca-44a2-48ea-ad76-198192f52ac1"
@@ -3356,8 +3357,7 @@
         "target": {
           "cell": "mTc4pqCB",
           "port": "b4c51284-f80e-4d98-8c5e-517c6ea6ccc2"
-        },
-        "zIndex": 48
+        }
       }
     ]
   },
@@ -3392,8 +3392,14 @@
                   "_entityId": "xoBpEQD8",
                   "children": [],
                   "prefabVariant": null,
-                  "activeValue": null,
-                  "unlockedValue": null,
+                  "activeValue": {
+                    "selfValue": true,
+                    "valueTag": "activeValue"
+                  },
+                  "unlockedValue": {
+                    "selfValue": true,
+                    "valueTag": "unlockedValue"
+                  },
                   "editorLockValue": false,
                   "editorVisibleValue": true,
                   "ecaScripts": [
@@ -3424,8 +3430,14 @@
                 }
               ],
               "prefabVariant": null,
-              "activeValue": null,
-              "unlockedValue": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
               "editorLockValue": false,
               "editorVisibleValue": true,
               "ecaScripts": [
@@ -3722,8 +3734,8 @@
                           "editorVisibleValue": true,
                           "ecaScripts": [
                             {
-                              "fileId": "m4kysfo17-mhblumlp-ooqnjq9gw7",
-                              "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack.fcg",
+                              "fileId": "1yo0cb6x9w1-mhxcx653-ch59cqj8i8m",
+                              "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_Shield.fcg",
                               "_tag": {
                                 "type": "GFileRefer"
                               },
@@ -4345,8 +4357,14 @@
               "_entityId": "xoBpEQD8",
               "children": [],
               "prefabVariant": null,
-              "activeValue": null,
-              "unlockedValue": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
               "editorLockValue": false,
               "editorVisibleValue": true,
               "ecaScripts": [
@@ -4377,8 +4395,14 @@
             }
           ],
           "prefabVariant": null,
-          "activeValue": null,
-          "unlockedValue": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
           "editorLockValue": false,
           "editorVisibleValue": true,
           "ecaScripts": [
@@ -4675,8 +4699,8 @@
                       "editorVisibleValue": true,
                       "ecaScripts": [
                         {
-                          "fileId": "m4kysfo17-mhblumlp-ooqnjq9gw7",
-                          "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack.fcg",
+                          "fileId": "1yo0cb6x9w1-mhxcx653-ch59cqj8i8m",
+                          "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_Shield.fcg",
                           "_tag": {
                             "type": "GFileRefer"
                           },
@@ -5250,6 +5274,134 @@
         ]
       }
     },
+    "bn00eJ6f": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "bn00eJ6f",
+      "children": [
+        {
+          "_entityName": "XBTEntity",
+          "_tag": {
+            "type": "XBTEntity"
+          },
+          "_entityId": "xoBpEQD8",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "ecaScripts": [
+            {
+              "fileId": "h6iwem40a3-mj8cyk4e-ml748g7h5o",
+              "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_IsActive.fcg",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "ugcscript"
+            }
+          ],
+          "x": 841.1035766601562,
+          "y": -402.8857116699219,
+          "width": 180,
+          "height": 88,
+          "nodeInfo": {
+            "type": "condition",
+            "name": "IsActive",
+            "id": "xoBpEQD8",
+            "varArr": [],
+            "ecaScript": null,
+            "iscustom": true,
+            "desc": "",
+            "icon": "General_Customize_20",
+            "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+          }
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        null
+      ],
+      "x": 628.2464599609375,
+      "y": -288.6000061035156,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "composite",
+        "name": "Sequence",
+        "id": "bn00eJ6f",
+        "keyName": "Sequence",
+        "desc": "FE_42_JH_WS_EXSEQUENCE",
+        "varArr": [],
+        "in": null,
+        "icon": "General_Sequence_20",
+        "out": [
+          "xoBpEQD8"
+        ]
+      }
+    },
+    "xoBpEQD8": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "xoBpEQD8",
+      "children": [],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        {
+          "fileId": "h6iwem40a3-mj8cyk4e-ml748g7h5o",
+          "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_IsActive.fcg",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "ugcscript"
+        }
+      ],
+      "x": 841.1035766601562,
+      "y": -402.8857116699219,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "condition",
+        "name": "IsActive",
+        "id": "xoBpEQD8",
+        "varArr": [],
+        "ecaScript": null,
+        "iscustom": true,
+        "desc": "",
+        "icon": "General_Customize_20",
+        "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+      }
+    },
     "gE96KDHw": {
       "_entityName": "XBTEntity",
       "_tag": {
@@ -5609,8 +5761,8 @@
                   "editorVisibleValue": true,
                   "ecaScripts": [
                     {
-                      "fileId": "m4kysfo17-mhblumlp-ooqnjq9gw7",
-                      "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack.fcg",
+                      "fileId": "1yo0cb6x9w1-mhxcx653-ch59cqj8i8m",
+                      "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_Shield.fcg",
                       "_tag": {
                         "type": "GFileRefer"
                       },
@@ -5879,8 +6031,8 @@
               "editorVisibleValue": true,
               "ecaScripts": [
                 {
-                  "fileId": "m4kysfo17-mhblumlp-ooqnjq9gw7",
-                  "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack.fcg",
+                  "fileId": "1yo0cb6x9w1-mhxcx653-ch59cqj8i8m",
+                  "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_Shield.fcg",
                   "_tag": {
                     "type": "GFileRefer"
                   },
@@ -6109,8 +6261,8 @@
           "editorVisibleValue": true,
           "ecaScripts": [
             {
-              "fileId": "m4kysfo17-mhblumlp-ooqnjq9gw7",
-              "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack.fcg",
+              "fileId": "1yo0cb6x9w1-mhxcx653-ch59cqj8i8m",
+              "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_Shield.fcg",
               "_tag": {
                 "type": "GFileRefer"
               },
@@ -6248,8 +6400,8 @@
       "editorVisibleValue": true,
       "ecaScripts": [
         {
-          "fileId": "m4kysfo17-mhblumlp-ooqnjq9gw7",
-          "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack.fcg",
+          "fileId": "1yo0cb6x9w1-mhxcx653-ch59cqj8i8m",
+          "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_Shield.fcg",
           "_tag": {
             "type": "GFileRefer"
           },
@@ -7436,116 +7588,6 @@
         "desc": "",
         "icon": "General_Customize_20",
         "fileId": "tbdwluazbo-mj73d2uh-9j2rdg9gy89"
-      }
-    },
-    "bn00eJ6f": {
-      "_entityName": "XBTEntity",
-      "_tag": {
-        "type": "XBTEntity"
-      },
-      "_entityId": "bn00eJ6f",
-      "children": [
-        {
-          "_entityName": "XBTEntity",
-          "_tag": {
-            "type": "XBTEntity"
-          },
-          "_entityId": "xoBpEQD8",
-          "children": [],
-          "prefabVariant": null,
-          "activeValue": null,
-          "unlockedValue": null,
-          "editorLockValue": false,
-          "editorVisibleValue": true,
-          "ecaScripts": [
-            {
-              "fileId": "h6iwem40a3-mj8cyk4e-ml748g7h5o",
-              "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_IsActive.fcg",
-              "_tag": {
-                "type": "GFileRefer"
-              },
-              "fileType": "ugcscript"
-            }
-          ],
-          "x": 841.1035766601562,
-          "y": -402.8857116699219,
-          "width": 180,
-          "height": 88,
-          "nodeInfo": {
-            "type": "condition",
-            "name": "IsActive",
-            "id": "xoBpEQD8",
-            "varArr": [],
-            "ecaScript": null,
-            "iscustom": true,
-            "desc": "",
-            "icon": "General_Customize_20",
-            "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
-          }
-        }
-      ],
-      "prefabVariant": null,
-      "activeValue": null,
-      "unlockedValue": null,
-      "editorLockValue": false,
-      "editorVisibleValue": true,
-      "ecaScripts": [
-        null
-      ],
-      "x": 628.2464599609375,
-      "y": -288.6000061035156,
-      "width": 180,
-      "height": 88,
-      "nodeInfo": {
-        "type": "composite",
-        "name": "Sequence",
-        "id": "bn00eJ6f",
-        "keyName": "Sequence",
-        "desc": "FE_42_JH_WS_EXSEQUENCE",
-        "varArr": [],
-        "in": null,
-        "icon": "General_Sequence_20",
-        "out": [
-          "xoBpEQD8"
-        ]
-      }
-    },
-    "xoBpEQD8": {
-      "_entityName": "XBTEntity",
-      "_tag": {
-        "type": "XBTEntity"
-      },
-      "_entityId": "xoBpEQD8",
-      "children": [],
-      "prefabVariant": null,
-      "activeValue": null,
-      "unlockedValue": null,
-      "editorLockValue": false,
-      "editorVisibleValue": true,
-      "ecaScripts": [
-        {
-          "fileId": "h6iwem40a3-mj8cyk4e-ml748g7h5o",
-          "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_IsActive.fcg",
-          "_tag": {
-            "type": "GFileRefer"
-          },
-          "fileType": "ugcscript"
-        }
-      ],
-      "x": 841.1035766601562,
-      "y": -402.8857116699219,
-      "width": 180,
-      "height": 88,
-      "nodeInfo": {
-        "type": "condition",
-        "name": "IsActive",
-        "id": "xoBpEQD8",
-        "varArr": [],
-        "ecaScript": null,
-        "iscustom": true,
-        "desc": "",
-        "icon": "General_Customize_20",
-        "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
       }
     }
   }

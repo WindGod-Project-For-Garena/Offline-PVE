@@ -8,9 +8,6 @@ graph FC_Cond_IsDead {
     //Executed when entity is created
 
     func PlayConditon(Owner entity<BevTreeAttachableForClient>) bool {
-		//LogInfo("playCondition: IsDead")
-		// LogInfo("Owner: " + Owner)
-		// LogInfo("Owner: " + Owner<Mob>.HP)
-		return (Owner<Mob>.HP <= 0)
+		return (Owner<Mob>.IsActive)
 	}
 }

@@ -13,6 +13,7 @@ import "Playable.fcc" as Playable
 import "Animation.fcc" as Animation
 import "LevelObject.fcc" as LevelObject
 import "Convert.fcc" as Convert
+import "../CustomEvent.fcc" as CustomEvent
 
 [platform_client]
 static graph FC_PVEMonsterManager {
@@ -54,13 +55,17 @@ static graph FC_PVEMonsterManager {
     NormalSpawnCD int = 5000  // 毫秒
     NormalSpawnBatchSize int = 3  // 每次生成的普通怪物数量
     NormalLastSpawnTime int = 0  // 普通怪物最后生成时间（全局CD）
-    
-    // 获取最后生成的怪物（用于Elite追踪）
-    LastSpawnedMonster entity<LevelObject> = nil
+
 
     // 怪物父节点
     ActiveMonsterParentNode entity<Entity> = nil
     PendingRemoveMonsterParentNode entity<Entity> = nil
+
+
+    //出生相关的对象池
+    spawnEffectPool List<entity<Effect>> = List<entity<Effect>>{}
+    spawnTweenPool List<entity<Tween>> = List<entity<Tween>>{}
+
   
     event OnAwake() {
         LogInfo("PVE怪物管理器初始化")
@@ -219,7 +224,7 @@ static graph FC_PVEMonsterManager {
         currSpawnerIndex = currSpawnerIndex + 1
         //start SpawnBossLoop(bossQueue,currSpawnerIndex)
         start SpawnEliteLoop(eliteQueue,currSpawnerIndex)
-        //start SpawnNormalLoop(normalQueue,currSpawnerIndex)
+        start SpawnNormalLoop(normalQueue,currSpawnerIndex)
         
         LogInfo("波次怪物生成循环已启动")
     }
@@ -442,20 +447,53 @@ static graph FC_PVEMonsterManager {
     
     // 创建单个怪物
     async func CreateSingleMonster(monsterInfo Map<string, object>) {
+        //出生相关特效和Tween对象池取对象
+        var spawnEffect entity<Effect> = nil
+        var spawnTween entity<Tween> = nil
+        if list.Length(spawnEffectPool) > 0 {
+            spawnEffect = spawnEffectPool[0]
+            list.Remove(spawnEffectPool, spawnEffect)
+        }else{
+            CreateEffectClient(out var effect,VFXType.PoisonGas,LoopType.Once,true)       
+            spawnEffect = effect
+            spawnEffect<Transform>.Scale = Vector3{1.5,1,1.5}
+        }
+
+        if list.Length(spawnTweenPool) > 0 {
+            spawnTween = spawnTweenPool[0]
+            list.Remove(spawnTweenPool, spawnTween)
+        }else{
+            var monster entity<LevelObject> = thisEntity as entity<LevelObject>
+            CreateTween(monster,Transform.Position,Vector3{0,0,0},Vector3{0,0,0},TweenStyle.Once,CreateCurve({0.25, 0.1, 0.25, 1}),1000,out var tweenEntity,true)
+            spawnTween = tweenEntity
+        }
+
+        //创建怪物
         var name_key = monsterInfo["Name_key"] as string
         LogInfo("create single monster : " + name_key)
         var prefabID = Config.MobPrefabIDs[name_key]
         
         CreateFromPrefab(out var monsterEntity, prefabID)
-        WaitForNextFrame()
-
         var monster = monsterEntity as entity<LevelObject>
-        LastSpawnedMonster = monster
-        
+
+        //初始化到指定位置
+        monster<Transform>.Position = Vector3{30, 0, 0}
+
+        // 注册怪物
+        if monster != nil {
+            list.Append(ActiveMonsters, monster)
+        }
+        if monsterInfo["IsElite"] as bool {
+            list.Append(EliteTracker, monster)
+        }
         SetParentClient(ActiveMonsterParentNode<Transform>, monsterEntity<Transform>, true) 
-        WaitForNextFrame()
+
         //对应怪物外观组
+        WaitForNextFrame()        
         ShowAppearanceGroup(monsterEntity as entity<Appearance>,name_key)
+
+
+        //这里设置怪物的活动性
       
         // 设置怪物属性
         if HasComponent(monster, typeof(Mob)) {
@@ -473,19 +511,30 @@ static graph FC_PVEMonsterManager {
             monster<Mob>.Damage = calculatedDamage
             monster<Mob>.WalkSpeed = calculatedSpeed
         }
-        monster<Transform>.Position = GetRandomSpawnPosition(monster as entity<Mob>)
-        //start test(w as entity<Mob>)
 
-        // 注册怪物
-        if monster != nil {
-            list.Append(ActiveMonsters, monster)
-        }
-        if monsterInfo["IsElite"] as bool {
-            list.Append(EliteTracker, monster)
-        }
-        
-       // LogInfo("生成怪物: " + monster<Mob>.MobName + " 在位置 " + monster<Transform>.Position)
-       // LogInfo("ActiveMonsters: " + list.Length(ActiveMonsters))
+        //设置怪物位置
+        var spawnPosition = GetRandomSpawnPosition(monster as entity<Mob>)
+        var offSetPosition Vector3 = Vector3{0,-1,0}
+
+        spawnTween<Tween>.StartValue = spawnPosition + offSetPosition
+        spawnTween<Tween>.EndValue = spawnPosition
+        spawnTween<Tween>.Target = monster
+        Play(spawnTween,true)
+ 
+        spawnEffect<Transform>.Position = spawnPosition - Vector3{0,0.3,0}
+        Pause(spawnEffect)
+        Play(spawnEffect,true)
+
+        WaitForMillisecond(1100)
+
+        //激活怪物
+        monster<Mob>.IsActive = true
+
+        DispatchEventToEntity(OnMobActived, monster, PlatformType.Client, List<object>{})
+        //对象池回收对象
+        list.Append(spawnEffectPool, spawnEffect)
+        list.Append(spawnTweenPool, spawnTween)
+
     }
 
 
@@ -501,7 +550,7 @@ static graph FC_PVEMonsterManager {
         }else {
             var x = RandomFloat(-8, 8)
             var z = RandomFloat(-8, 8)
-            return Vector3{x, 0, z}
+            return Vector3{x, -0.3, z}
         }
     }
   
@@ -547,7 +596,6 @@ static graph FC_PVEMonsterManager {
         
         // 重置状态
         TotalKills = 0
-        LastSpawnedMonster = nil
         
         LogInfo("所有怪物已清理，状态已重置")
     }

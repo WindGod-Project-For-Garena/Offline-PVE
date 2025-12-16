@@ -44,6 +44,9 @@ component Mob {
     // LastHitPlayer
     LastHitPlayer entity<Player>
 
+    // IsActive
+    IsActive bool
+
 }
 
 // 动画实体
@@ -368,22 +371,22 @@ declare static graph Res {
 
 
 enum EPhase {
-    // 游戏开始
+    // Start
     Start = 1315
 
-    // 游戏准备
+    // Preparation
     Preparation = 1513
 
-    // 游戏回合
+    // Rounds
     Rounds = 3022
 
-    // 游戏回合 / 游戏阶段
+    // Rounds / Stages
     Stages = 3756
 
-    // 游戏回合 / 游戏阶段
+    // Rounds / Stages
     Stages_1 = 4045
 
-    // 游戏结束
+    // End
     End = 4309
 
 }
@@ -391,7 +394,7 @@ enum EPhase {
 
 
 enum EPhysicalLayer {
-    // 0:默认
+    // 0:Default
     Default = 0
 
     // 1:Zombie
@@ -401,7 +404,7 @@ enum EPhysicalLayer {
 
 
 enum EVisibilityLayer {
-    // 0:默认
+    // 0:Default
     Default = 0
 
 }
