@@ -11,14 +11,15 @@ import "../PVE/PVEController.fcg" as PVEController
 
 [platform_client]
 graph UI_HomeUI {
-    //Executed when entity is created
 
     buttonLeft entity<UIWidgetButton> = nil
     buttonRight entity<UIWidgetButton> = nil
     levelNum entity<UIWidgetLabel> = nil
+
     skill1 entity<UIWidgetButton> = nil
     skill2 entity<UIWidgetButton> = nil
-    // skill3 entity<UIWidgetButton> = nil
+    skill3 entity<UIWidgetButton> = nil
+
     ability1Text entity<UIWidgetLabel> = nil
     ability2Text entity<UIWidgetLabel> = nil
     ability3Text entity<UIWidgetLabel> = nil
@@ -35,7 +36,7 @@ graph UI_HomeUI {
 
         skill1 = GetWidgetFromCustomUI(GetLocalPlayer(),thisEntity as entity<CustomUI> , EResUIChoiceHero.Hero_1) as entity<UIWidgetButton>
         skill2 = GetWidgetFromCustomUI(GetLocalPlayer(),thisEntity as entity<CustomUI> , EResUIChoiceHero.Hero_2) as entity<UIWidgetButton>
-        // skill3 = GetWidgetFromCustomUI(GetLocalPlayer(),thisEntity as entity<CustomUI> , EResUIChoiceHero.Hero_3) as entity<UIWidgetButton>
+        skill3 = GetWidgetFromCustomUI(GetLocalPlayer(),thisEntity as entity<CustomUI> , EResUIChoiceHero.Hero_3) as entity<UIWidgetButton>
 
         ability1Text = GetWidgetFromCustomUI(GetLocalPlayer(),thisEntity as entity<CustomUI> , EResUIHomeUI.AbilityLevel1) as entity<UIWidgetLabel>
         ability2Text = GetWidgetFromCustomUI(GetLocalPlayer(),thisEntity as entity<CustomUI> , EResUIHomeUI.AbilityLevel2) as entity<UIWidgetLabel>
@@ -43,24 +44,22 @@ graph UI_HomeUI {
     }
 
     func onLeftButtonClick(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
-        StringToInt(levelNum<UIWidgetLabel>.Content,out var levelText,out var error)
-        level = levelText - 1
+        level = level - 1
         
         if level < 1 {
             level = 1
         }
-        levelNum<UIWidgetLabel>.Content = level
+        levelNum<UIWidgetLabel>.Content = "第 " + level + " 关"
         GetLocalPlayer()<PlayerJionGame>.level = level
     }
 
     func onRightButtonClick(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
-        StringToInt(levelNum<UIWidgetLabel>.Content,out var levelText,out var error)
-        level = levelText + 1
+        level = level + 1
         
         if level > 10 {
             level = 10
         }
-        levelNum<UIWidgetLabel>.Content = level
+        levelNum<UIWidgetLabel>.Content = "第 " + level + " 关"
         GetLocalPlayer()<PlayerJionGame>.level = level
     }
 
@@ -68,21 +67,21 @@ graph UI_HomeUI {
         GetLocalPlayer()<PlayerJionGame>.CurrentSkill = 1
         skill1<UIWidgetButton>.Color = #FF8900
         skill2<UIWidgetButton>.Color = #F2A245
-        // skill3<UIWidgetButton>.Color = #F2A245
+        skill3<UIWidgetButton>.Color = #F2A245
     }
 
     func OnSkill2Click(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
         GetLocalPlayer()<PlayerJionGame>.CurrentSkill = 2
         skill1<UIWidgetButton>.Color = #F2A245
         skill2<UIWidgetButton>.Color = #FF8900
-        // skill3<UIWidgetButton>.Color = #F2A245
+        skill3<UIWidgetButton>.Color = #F2A245
     }
 
     func OnSkill3Click(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
         GetLocalPlayer()<PlayerJionGame>.CurrentSkill = 3
         skill1<UIWidgetButton>.Color = #F2A245
         skill2<UIWidgetButton>.Color = #F2A245
-        // skill3<UIWidgetButton>.Color = #FF8900
+        skill3<UIWidgetButton>.Color = #FF8900
     }
 
     func OnAbility1Click(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
@@ -114,7 +113,30 @@ graph UI_HomeUI {
         GetLocalPlayer()<PlayerJionGame>.ChoiceHeroOver(level, CurrentSkill, ability1Level, ability2Level, ability3Level)
 
         PVEController.PVELevelStartInitialization(level)
+    }
 
+    //前往天赋面板
+    func ToGiftedPanel(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        var GiftedUIEntity = GetLocalPlayer()<PlayerJionGame>.GiftedUI
+        GiftedUIEntity<CustomUI>.IsVisible = true
+        var ChoiceHeroUIEntity = GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI
+        ChoiceHeroUIEntity<CustomUI>.IsVisible = false
+        //初始化天赋面板
+        GetLocalPlayer()<PlayerJionGame>.InitAllGiftedCardUI()
+    }
 
+    //前往角色面板
+    func ToHeroPanel(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        var HeroUIEntity = GetLocalPlayer()<PlayerJionGame>.HeroUI
+        HeroUIEntity<CustomUI>.IsVisible = true
+        var ChoiceHeroUIEntity = GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI
+        ChoiceHeroUIEntity<CustomUI>.IsVisible = false
+        var hero int = 1
+        GetLocalPlayer()<PlayerJionGame>.InitAllCardBookUI(hero)
+    }
+
+    //前往排行榜面板
+    func ToRankingPanel(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+       LogInfo("忙死了没做，别点劳资了")
     }
 }

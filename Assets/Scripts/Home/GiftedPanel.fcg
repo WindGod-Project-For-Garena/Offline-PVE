@@ -13,8 +13,8 @@ import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
 graph GiftedPanel {
      //前往选择角色开始游戏面板
      func ToNewHome(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
-          var NewHomeUIEntity = GetLocalPlayer()<PlayerJionGame>.NewHomeUI
-          NewHomeUIEntity<CustomUI>.IsVisible = true
+          var ChoiceHeroUIEntity = GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI
+          ChoiceHeroUIEntity<CustomUI>.IsVisible = true
           var GiftedUIEntity = GetLocalPlayer()<PlayerJionGame>.GiftedUI
           GiftedUIEntity<CustomUI>.IsVisible = false
      }

@@ -124,13 +124,13 @@ enum EResUI {
     SkillLevelUp
     InGameDebug
     WarningEffect
-    NewHome
     ChoiceHero
     GiftedPanel
     HeroPanel
     ChoiceThreeCard
     SecondDown
     GameOverFinal
+    Key
 }
 [element string]
 enum EResScene {
@@ -223,6 +223,7 @@ enum EResUIChoiceHero {
     LevelNum
     Hero_1
     Hero_2
+    Hero_3
 }
 enum EResKeyUI {
     DeBug = "DeBug"
@@ -231,13 +232,13 @@ enum EResKeyUI {
     SkillLevelUp = "SkillLevelUp"
     InGameDebug = "InGameDebug"
     WarningEffect = "WarningEffect"
-    NewHome = "NewHome"
     ChoiceHero = "ChoiceHero"
     GiftedPanel = "GiftedPanel"
     HeroPanel = "HeroPanel"
     ChoiceThreeCard = "ChoiceThreeCard"
     SecondDown = "SecondDown"
     GameOverFinal = "GameOverFinal"
+    Key = "Key"
 }
 enum EResKeyScene {
     IsleLand = "IsleLand"
@@ -320,6 +321,7 @@ enum EResKeyChoiceHero {
     LevelNum = "LevelNum"
     Hero_1 = "Hero_1"
     Hero_2 = "Hero_2"
+    Hero_3 = "Hero_3"
 }
 // MobAttackEvent_AC(attackName String)
 [platform_client]

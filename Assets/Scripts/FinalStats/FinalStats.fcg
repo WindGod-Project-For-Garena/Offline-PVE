@@ -17,8 +17,8 @@ graph FinalStats {
     func BackNewHome(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
         var GameOverFinalUI = GetLocalPlayer()<PlayerJionGame>.GameOverFinalUI
         GameOverFinalUI<CustomUI>.IsVisible = false
-        var NewHomeUI = GetLocalPlayer()<PlayerJionGame>.NewHomeUI
-        NewHomeUI<CustomUI>.IsVisible = true
+        var ChoiceHeroUI = GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI
+        ChoiceHeroUI<CustomUI>.IsVisible = true
     }
     
     func ContinueGame(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
@@ -36,8 +36,5 @@ graph FinalStats {
         //默认选择第一个技能
         var skillIndex int = 1
         GetLocalPlayer()<PlayerJionGame>.displaySkillByIndex(skillIndex)
-
-        var NewHomeUIEntity = GetLocalPlayer()<PlayerJionGame>.NewHomeUI
-        NewHomeUIEntity<CustomUI>.IsVisible = false
     }
 }

@@ -11,11 +11,8 @@ import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
 
 [platform_client]
 graph ChoiceHero {
-    //前往选择角色开始游戏面板
+    //退出游戏
    func ToNewHome(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
-          var NewHomeUIEntity = GetLocalPlayer()<PlayerJionGame>.NewHomeUI
-          NewHomeUIEntity<CustomUI>.IsVisible = true
-          var ChoiceHeroUIEntity = GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI
-          ChoiceHeroUIEntity<CustomUI>.IsVisible = false
+       QuitGameClient(true)
    }
 }
