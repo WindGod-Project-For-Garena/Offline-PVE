@@ -394,7 +394,7 @@ graph PlayerJionGame {
         //----------------------------------------------------------------------------------------------------------------//
         IsNextThreeChoiceOne = 0       //关闭标志位
         StartThree_choose_One(level, CurrentSkill, ability1Level, ability2Level, ability3Level)
-        start ShowSecondDown(10000)
+        // start ShowSecondDown(10000)
     }
 
     // 刷新卡牌
@@ -415,28 +415,28 @@ graph PlayerJionGame {
         StartThree_choose_One(level, CurrentSkill, ability1Level, ability2Level, ability3Level)
     }
     
-    async func ShowSecondDown(time int) {
-        SecondDownUI<CustomUI>.IsVisible = true
-        var SecondDownText = GetWidgetByPath(GetLocalPlayer(), SecondDownUI, "/SecondDown/TextBackBoard/Text")
-        var NextButton = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/Next")
-        var RefreshCardsButton = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/RefreshCards")
-        while time >= 0 {
-            SecondDownText<UIWidgetLabel>.Content = (time / 1000)
-            WaitForMillisecond(1000)
-            time = time - 1000
-            if time == 0 {
-                SecondDownUI<CustomUI>.IsVisible = false
-                NextButton<CustomUI>.IsVisible = false
-                RefreshCardsButton<CustomUI>.IsVisible = false
-                start AutoChoiceBestOneCard()
-            }
-            if  SecondDownUI<CustomUI>.IsVisible == false{
-                //LogInfo("打断计时打断计时打断计时打断计时打断计时")
-                time = -1
-                break
-            }
-        }
-    }
+    // async func ShowSecondDown(time int) {
+    //     SecondDownUI<CustomUI>.IsVisible = true
+    //     var SecondDownText = GetWidgetByPath(GetLocalPlayer(), SecondDownUI, "/SecondDown/TextBackBoard/Text")
+    //     var NextButton = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/Next")
+    //     var RefreshCardsButton = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/RefreshCards")
+    //     while time >= 0 {
+    //         SecondDownText<UIWidgetLabel>.Content = (time / 1000)
+    //         WaitForMillisecond(1000)
+    //         time = time - 1000
+    //         if time == 0 {
+    //             SecondDownUI<CustomUI>.IsVisible = false
+    //             NextButton<CustomUI>.IsVisible = false
+    //             RefreshCardsButton<CustomUI>.IsVisible = false
+    //             start AutoChoiceBestOneCard()
+    //         }
+    //         if  SecondDownUI<CustomUI>.IsVisible == false{
+    //             LogInfo("打断计时打断计时打断计时打断计时打断计时")
+    //             time = -1
+    //             break
+    //         }
+    //     }
+    // }
 
     // 自动选择当前最好的一张牌
     async func AutoChoiceBestOneCard() {
@@ -1912,7 +1912,7 @@ graph PlayerJionGame {
         ChoiceThreeCardUI<CustomUI>.IsVisible = true
         IsNextThreeChoiceOne = 1       //打开标志位
         RefeshCard(level, ability1Level, ability2Level, ability3Level)
-        start ShowSecondDown(10000)
+        // start ShowSecondDown(10000)
     }
 
     func ToClient_GameComplete() {
