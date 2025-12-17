@@ -7,10 +7,14 @@ import "Camera.fcc" as Camera
 import "Playable.fcc" as Playable
 import "Animation.fcc" as Animation
 import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
+import "Convert.fcc" as Convert
 
 
 [platform_client]
 graph GiftedPanel {
+     // 存储当前选中的卡牌ID
+     currentSelectedCardId int = 0
+     
      //前往选择角色开始游戏面板
      func ToNewHome(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
           var ChoiceHeroUIEntity = GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI
@@ -19,47 +23,182 @@ graph GiftedPanel {
           GiftedUIEntity<CustomUI>.IsVisible = false
      }
 
+     // 抽卡功能
      func DrawCard(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
           GetLocalPlayer()<PlayerJionGame>.DrawCard()
      }
 
+     // 显示卡牌1详情
      func Card1(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
-          LogInfo("卡片1")
+          ShowCardDetails(1)
      }
 
+     // 显示卡牌2详情
      func Card2(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
-          LogInfo("卡片2")
+          ShowCardDetails(2)
      }
 
+     // 显示卡牌3详情
      func Card3(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
-          LogInfo("卡片3")
+          ShowCardDetails(3)
      }
 
+     // 显示卡牌4详情
      func Card4(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
-          LogInfo("卡片4")
+          ShowCardDetails(4)
      }
 
+     // 显示卡牌5详情
      func Card5(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
-          LogInfo("卡片5")
+          ShowCardDetails(5)
      }
 
+     // 显示卡牌6详情
      func Card6(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
-          LogInfo("卡片6")
+          ShowCardDetails(6)
      }
 
+     // 显示卡牌7详情
      func Card7(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
-          LogInfo("卡片7")
+          ShowCardDetails(7)
      }
 
+     // 显示卡牌8详情
      func Card8(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
-          LogInfo("卡片8")
+          ShowCardDetails(8)
      }
 
+     // 显示卡牌9详情
      func Card9(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
-          LogInfo("卡片9")
+          ShowCardDetails(9)
      }
 
+     // 显示卡牌10详情
      func Card10(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
-          LogInfo("卡片10")
+          ShowCardDetails(10)
+     }
+
+          // 显示卡牌详情的统一函数
+     func ShowCardDetails(cardId int) {
+          // 更新当前选中的卡牌ID
+          currentSelectedCardId = cardId
+          // 从PlayerJionGame获取卡牌数据
+          var giftedCardData = GetLocalPlayer()<PlayerJionGame>.Gifted_CardData
+          var cardInfo = giftedCardData[cardId]
+          if cardInfo == nil {
+               LogWarning("卡牌" + Convert.ToString(cardId) + "的数据不存在")
+               return
+          }
+          // 获取卡牌信息
+          var giftedNameText = Convert.ToString(cardInfo["GiftedName"])
+          var translationText = Convert.ToString(cardInfo["TranslationText"])
+          var nature = Convert.ToString(cardInfo["Nature"])
+          var rarity = cardInfo["Rarity"] as int
+          // 获取当前卡牌已抽取次数
+          var giftedCardCount = GetLocalPlayer()<PlayerJionGame>.Gifted_Card_Count
+          var currentCount = 0
+          if giftedCardCount[cardId] != nil {
+               currentCount = giftedCardCount[cardId]
+          }
+          // 判断卡牌是否已抽到过
+          var isCardCollected = (currentCount > 0)  // 这个变量可以以后用于控制是否显示文字
+          // 构建技能名称文本
+          var skillNameText = giftedNameText
+          // 构建技能描述文本
+          var skillDescText = ""
+          if isCardCollected {
+               // 已抽到过的情况
+               skillDescText = translationText
+               // 获取最大抽取次数
+               var maxCount = GetLocalPlayer()<PlayerJionGame>.GetMaxDrawCount(nature)
+               // 添加持有数量信息
+               if maxCount != 99999999 {
+                    // 有最大限制的情况
+                    skillDescText = skillDescText + "，持有数量" + Convert.ToString(currentCount)
+                    if currentCount >= maxCount {
+                         skillDescText = skillDescText + "(已达上限)"
+                    } else {
+                         skillDescText = skillDescText + "/" + Convert.ToString(maxCount)
+                    }
+               } else {
+                    // 无限制的情况
+                    skillDescText = skillDescText + "，持有数量" + Convert.ToString(currentCount)
+               }
+          } else {
+               // 没有抽到过的情况
+               skillNameText = ""
+               skillDescText = ""
+          }
+          // 显示到UI
+          UpdateCardDetailUI(skillNameText, skillDescText, rarity)
+          
+          // 高亮显示当前选中的卡牌
+          // HighlightSelectedCard(cardId)
+     }
+    
+    // 更新卡牌详情UI显示
+     func UpdateCardDetailUI(skillNameText string, skillDescText string, rarity int) {
+          // 技能名称文本控件
+          var skillNameWidget = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.GiftedUI, "/Panel/GiftIFMPanel/GiftIFMTitle")
+          if skillNameWidget != nil {
+               skillNameWidget<UIWidgetLabel>.Content = skillNameText
+          }
+          
+          // 技能描述文本控件
+          var skillDescWidget = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.GiftedUI, "/Panel/GiftIFMPanel/GiftIFMTitle/GiftIFMSubtitle")
+          if skillDescWidget != nil {
+               skillDescWidget<UIWidgetLabel>.Content = skillDescText
+          }
+          
+          // 显示详情面板
+          var detailPanel = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.GiftedUI, "/Panel/GiftIFMPanel/GiftIFMTitle/GiftIFMSubtitle")
+          if detailPanel != nil {
+               detailPanel<UIWidget>.IsVisible = true
+          }
+     }
+    
+     // 高亮显示当前选中的卡牌
+     func HighlightSelectedCard(cardId int) {
+          // 重置所有卡牌的高亮状态
+          for i = 1, 11, 1 {
+               var cardWidget = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.GiftedUI, 
+                    "/Panel/List/Card (" + Convert.ToString(i) + ")")
+               if cardWidget != nil {
+                    // 移除高亮边框或效果
+                    var highlightWidget = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.GiftedUI, 
+                         "/Panel/List/Card (" + Convert.ToString(i) + ")/Highlight")
+                    if highlightWidget != nil {
+                         highlightWidget<UIWidget>.IsVisible = false
+                    }
+               }
+          }
+          
+          // 高亮当前选中的卡牌
+          var selectedCardWidget = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.GiftedUI, 
+               "/Panel/List/Card (" + Convert.ToString(cardId) + ")")
+          if selectedCardWidget != nil {
+               var highlightWidget = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.GiftedUI, 
+                    "/Panel/List/Card (" + Convert.ToString(cardId) + ")/Highlight")
+               if highlightWidget != nil {
+                    highlightWidget<UIWidget>.IsVisible = true
+               }
+          }
+     }
+    
+     // 关闭详情面板
+     func CloseDetailPanel(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+          var detailPanelWidget = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.GiftedUI, "/Panel/GiftIFMPanel/GiftIFMTitle/GiftIFMSubtitle")
+          if detailPanelWidget != nil {
+               detailPanelWidget<UIWidget>.IsVisible = false
+          }
+          // 清除高亮
+          // if currentSelectedCardId > 0 {
+          //      var highlightWidget = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.GiftedUI, 
+          //           "/Panel/List/Card (" + Convert.ToString(currentSelectedCardId) + ")/Highlight")
+          //      if highlightWidget != nil {
+          //           highlightWidget<UIWidget>.IsVisible = false
+          //      }
+          // }
+          currentSelectedCardId = 0
      }
 }

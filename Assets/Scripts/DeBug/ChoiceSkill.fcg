@@ -108,9 +108,6 @@ graph ChoiceSkill {
             
             var DeBugUI_CD = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/cdlevelup/文本_level")
             DeBugUI_CD<UIWidgetLabel>.Content = cdLevel + "级"
-            
-            // 显示技能3的特效
-            Skill_3(rangeLevel)
         }
     }
 //————————————————————————————————————————————————————————————————————————————————————————————————————————//
@@ -150,20 +147,5 @@ graph ChoiceSkill {
                 true)
             tween = RotTweenEntity
         }
-    }
-
-    // 技能3(被动技能)
-    func Skill_3(rangeLevel int){
-        CreateEffectClient(out var NewcreatedEntity, VFXType.LightBeamPreDiscarded, LoopType.Once, true)
-        createdEntity = NewcreatedEntity
-        SetParentClient(GetLocalPlayer(), createdEntity, false)
-        
-        // 技能3使用技能1的数据结构，但使用技能3自己的等级
-        var skillData = GetLocalPlayer()<PlayerJionGame>.GetSkillData("Skill1", rangeLevel) 
-        var Size = skillData["size"] as int
-        
-        createdEntity<Transform>.Scale = Vector3{Size, 0.1, Size}
-        BoomColor(createdEntity, Size)
-        StartRotTween(createdEntity)
     }
 }

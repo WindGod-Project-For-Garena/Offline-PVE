@@ -34,26 +34,7 @@ graph PlayerJionGame {
     GiftedUI entity<CustomHud>      //天赋页面
     SecondDownUI entity<CustomHud>      //倒计时页面
     GameOverFinalUI entity<CustomHud>      //結算页面
-    // 技能数据
-    SkillData = Map<string, Map<string, Map<string, object>>>{
-        "Skill1":{
-            "Level_0":{"Range": 2.0, "Damage": 100, "CD": 8000, "size": 1},
-            "Level_1":{"Range": 2.5, "Damage": 200, "CD": 7000, "size": 2},
-            "Level_2":{"Range": 3.0, "Damage": 300, "CD": 6000, "size": 3},
-            "Level_3":{"Range": 3.5, "Damage": 400, "CD": 5000, "size": 4},
-            "Level_4":{"Range": 4.0, "Damage": 500, "CD": 4000, "size": 5},
-            "Level_5":{"Range": 6.0, "Damage": 750, "CD": 3000, "size": 6},
-        },
-        "Skill2":{
-            "Level_0":{"Count": 3, "Damage": 80, "CD": 8000},
-            "Level_1":{"Count": 4, "Damage": 160, "CD": 7000},
-            "Level_2":{"Count": 5, "Damage": 240, "CD": 6000},
-            "Level_3":{"Count": 6, "Damage": 320, "CD": 5000},
-            "Level_4":{"Count": 7, "Damage": 400, "CD": 4000},
-            "Level_5":{"Count": 8, "Damage": 500, "CD": 3000},
-        },
-    }
-    //当前技能
+    
     CurrentSkill int = 1
     //当前选择的卡牌第几张1-3
     NowChoiceCard int = 0
@@ -271,22 +252,22 @@ graph PlayerJionGame {
         Destroy(currentWeapon)
         //发放武器
         if  skillIndex == 1 {
-            // DestroyItem(currPlayer, ItemIDType.M1887X, 1)
+            Offline.DestroyItem(ItemIDType.M1887X, 1)
             Offline.AddItem(ItemIDType.M1887X, 1, out var itemList)
             currentWeapon = itemList[0] as entity<Weapon>
 
-            // DestroyItem(currPlayer,  ItemIDType.SMGAmmo, 999)
-            // DestroyItem(currPlayer,  ItemIDType.SGAmmo, 999)
+            Offline.DestroyItem(ItemIDType.SMGAmmo, 999)
+            Offline.DestroyItem(ItemIDType.SGAmmo, 999)
             Offline.AddItem(ItemIDType.SGAmmo, 999, out var createdEntity)
         }
 
         if skillIndex == 2 {
-            // DestroyItem(currPlayer, ItemIDType.GoldMP5_III, 1)
+            Offline.DestroyItem(ItemIDType.GoldMP5_III, 1)
             Offline.AddItem(ItemIDType.GoldMP5_III, 1, out var itemList)
             currentWeapon = itemList[0] as entity<Weapon>
 
-            // DestroyItem(currPlayer,  ItemIDType.SGAmmo, 999)
-            // DestroyItem(currPlayer,  ItemIDType.SMGAmmo, 999)
+            Offline.DestroyItem(ItemIDType.SGAmmo, 999)
+            Offline.DestroyItem(ItemIDType.SMGAmmo, 999)
             Offline.AddItem(ItemIDType.SMGAmmo, 999, out var createdEntity)
         }
     }
@@ -1206,6 +1187,7 @@ graph PlayerJionGame {
             cardInfo["Rarity"] = cardRow[3] as List<int>
             cardInfo["TranslationText"] = cardRow[4]
             cardInfo["Sktchtext"] = cardRow[5]
+            cardInfo["GiftedName"] = cardRow[6]
             Gifted_CardData[cardId] = cardInfo
             // 在显示时格式化浮点数，保留两位小数
             // LogInfo(Gifted_CardData[cardId])
@@ -1297,16 +1279,14 @@ graph PlayerJionGame {
         
         return availableCardIds
     }
-
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     // 抽卡
     func DrawCard() {
         // 获取当前抽卡价格
         var currentPrice = GetCurrentDrawPrice()
         var currentConfig = GetCurrentDrawConfig()
-        
-        // LogInfo("开始抽卡 - 总次数:" + Convert.ToString(TotalDrawCount) + 
-        //         " 价格:" + Convert.ToString(currentPrice) +
-        //         " 阶段:" + Convert.ToString(currentConfig["MinCount"]) + "+")
         
         // 检查玩家是否有足够的货币
         if  Money < currentPrice {
@@ -1379,6 +1359,12 @@ graph PlayerJionGame {
         
         // 更新抽卡UI显示（价格、概率等）
         UpdateDrawCardUI()
+
+        // 更新天赋加成百分比显示
+        DisplayGiftedCardBonusesInUI()
+
+        // 弹出弹框显示抽到的卡牌
+        // ShowDrawCardPopup(selectedCard)
     }
 
     // 扣除玩家货币
@@ -1394,15 +1380,108 @@ graph PlayerJionGame {
         var rareProb = currentConfig["RareProb"] as float * 100
         var epicProb = currentConfig["EpicProb"] as float * 100
         // 更新剩余价格显示
-        var NowMoneyText = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/Panel/MoneyPanel/Text/MoneyText")
+        var NowMoneyText = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/Func/MoneyPanel/Money/text")
         if NowMoneyText != nil {
             NowMoneyText<UIWidgetLabel>.Content = Convert.ToString(Money)
         }
         // 更新当前阶段价格显示
-        var priceText = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/Panel/DrawCard/Image/Money")
+        var priceText = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/DrawBadgePanel/Image/Money")
         if priceText != nil {
             priceText<UIWidgetLabel>.Content = Convert.ToString(currentPrice)
         }
+    }
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+    // 计算天赋卡牌总加成百分比
+    func CalculateGiftedCardBonusPercentages() Map<string, float> {
+        var totalBonuses = Map<string, float>{}
+        // 初始化所有天赋类型
+        var bonusTypes = List<string>{"HP", "MoveSpeed", "WeaponDamage", "SkillDamage"}
+        for i, type in bonusTypes {
+            totalBonuses[type] = 0.0
+        }
+        // 遍历所有已抽取的天赋卡牌
+        for cardId, count in Gifted_Card_Count {
+            if count > 0 {
+                var cardInfo = Gifted_CardData[cardId]
+                if cardInfo != nil {
+                    var nature = Convert.ToString(cardInfo["Nature"])
+                    var value = cardInfo["Value"] as float
+                    var currentCount = count
+                    // 累加该天赋类型的总加成
+                    if totalBonuses[nature] != nil {
+                        totalBonuses[nature] = totalBonuses[nature] + (value * currentCount)
+                    } else {
+                        totalBonuses[nature] = value * currentCount
+                    }
+                }
+            }
+        }
+        // 计算百分比（有些是固定值，有些是百分比）
+        var result = Map<string, float>{}
+        for bonusType, totalValue in totalBonuses {
+            if bonusType == "HP" {
+                // HP显示为固定值
+                result["HP"] = totalValue
+            } else if bonusType == "MoveSpeed" {
+                // 移动速度是百分比加成，直接显示
+                result["MoveSpeed"] = totalValue * 100.0
+            } else if bonusType == "WeaponDamage" {
+                // 武器伤害是百分比加成
+                result["WeaponDamage"] = totalValue * 100.0
+            } else if bonusType == "SkillDamage" {
+                // 技能伤害是百分比加成
+                result["SkillDamage"] = totalValue * 100.0
+            } else {
+                // 其他类型保持原值
+                result[bonusType] = totalValue * 100.0
+            }
+        }
+        return result
+    }
+
+    // 在UI中显示天赋卡牌加成百分比
+    func DisplayGiftedCardBonusesInUI() {
+        // 计算所有天赋的加成百分比
+        var bonuses = CalculateGiftedCardBonusPercentages()
+        // HP加成显示
+        var hpBonusWidget = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/AllPanel/IFMLang/HP/HPLogo/Name/Num")
+        if hpBonusWidget != nil {
+            var hpBonus = 0.0
+            if bonuses["HP"] != nil {
+                hpBonus = bonuses["HP"]
+            }
+            hpBonusWidget<UIWidgetLabel>.Content = "+"+Convert.ToString(Math.Round(hpBonus))
+        }
+        // 移动速度加成显示
+        var moveSpeedBonusWidget = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/AllPanel/IFMLang/MoveSpeed/MoveSpeedLogo/Name/Num")
+        if moveSpeedBonusWidget != nil {
+            var moveSpeedBonus = 0.0
+            if bonuses["MoveSpeed"] != nil {
+                moveSpeedBonus = bonuses["MoveSpeed"]
+            }
+            moveSpeedBonusWidget<UIWidgetLabel>.Content = "+"+Convert.ToString(Math.Round(moveSpeedBonus)) + "%"
+        }
+        // 武器伤害加成显示
+        var weaponDamageBonusWidget = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/AllPanel/IFMLang/WeaponDamage/WeaponDamageLogo/Name/Num")
+        if weaponDamageBonusWidget != nil {
+            var weaponDamageBonus = 0.0
+            if bonuses["WeaponDamage"] != nil {
+                weaponDamageBonus = bonuses["WeaponDamage"]
+            }
+            weaponDamageBonusWidget<UIWidgetLabel>.Content = "+"+Convert.ToString(Math.Round(weaponDamageBonus)) + "%"
+        }
+        // 技能伤害加成显示
+        var skillDamageBonusWidget = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/AllPanel/IFMLang/SKillDamage/SkillLogo/Name/Num")
+        if skillDamageBonusWidget != nil {
+            var skillDamageBonus = 0.0
+            if bonuses["SkillDamage"] != nil {
+                skillDamageBonus = bonuses["SkillDamage"]
+            }
+            skillDamageBonusWidget<UIWidgetLabel>.Content = "+"+Convert.ToString(Math.Round(skillDamageBonus)) + "%"
+        }
+        LogInfo("天赋卡牌加成百分比已更新到UI")
     }
 
     // 获取卡牌最大抽取次数
@@ -1414,7 +1493,9 @@ graph PlayerJionGame {
         // 其他属性无限制
         return 99999999
     }
-
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     // 应用卡牌效果
     func ApplyGiftedCardEffect(cardId int) {
         var cardInfo = Gifted_CardData[cardId]
@@ -1505,10 +1586,9 @@ graph PlayerJionGame {
     // 更新玩家当前属性（使用局内数据）
     func UpdatePlayerAttributes() {
         // 更新玩家当前属性（使用局内数据）
-        LogInfo("UpdatePlayerAttributes: " )
-        currPlayer<Player>.MaxHP = PlayerDataInGame["HP"] as int
-        currPlayer<Player>.HP = PlayerDataInGame["HP"] as int
-        //currPlayer<Player>.RunSpeedScale = PlayerDataInGame["MoveSpeed"] as float
+        // currPlayer<Player>.MaxHP = PlayerDataInGame["HP"] as int
+        // currPlayer<Player>.HP = PlayerDataInGame["HP"] as int
+        // currPlayer<Player>.RunSpeedScale = PlayerDataInGame["MoveSpeed"] as float
     }
 
     // 更新技能1数据
@@ -1549,7 +1629,9 @@ graph PlayerJionGame {
             currentWeapon<Weapon>.CurrentAmmo = currentWeapon<Weapon>.AmmoMagSize
         }
     }
-
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     // 立刻换弹更新武器数据
     func OnWeaponUpdate() {
         currentWeapon<Weapon>.CurrentAmmo = currentWeapon<Weapon>.AmmoMagSize
@@ -1557,19 +1639,19 @@ graph PlayerJionGame {
 
     // 玩家复活删除武器
     event OnPlayerRevived(player entity<Player>, revivalSource PlayerReviveSourceType){
-        // DestroyItem(player, ItemIDType.M1887X, 1)
-        // DestroyItem(player,  ItemIDType.SGAmmo, 999)
-        // DestroyItem(player, ItemIDType.GoldMP5_III, 1)
-        // DestroyItem(player,  ItemIDType.SGAmmo, 999)
-    }    
+        Offline.DestroyItem(ItemIDType.M1887X, 1)
+        Offline.DestroyItem(ItemIDType.SGAmmo, 999)
+        Offline.DestroyItem(ItemIDType.GoldMP5_III, 1)
+        Offline.DestroyItem(ItemIDType.SGAmmo, 999)
+    }
 
     // DEbug的临时初始化
     func S_Debug_NextWave() {
         IsCountdownActive = false
-        // DestroyItem(currPlayer, ItemIDType.M1887X, 1)
-        // DestroyItem(currPlayer,  ItemIDType.SGAmmo, 999)
-        // DestroyItem(currPlayer, ItemIDType.GoldMP5_III, 1)
-        // DestroyItem(currPlayer,  ItemIDType.SGAmmo, 999)
+        Offline.DestroyItem(ItemIDType.M1887X, 1)
+        Offline.DestroyItem( ItemIDType.SGAmmo, 999)
+        Offline.DestroyItem(ItemIDType.GoldMP5_III, 1)
+        Offline.DestroyItem( ItemIDType.SGAmmo, 999)
         currPlayer<Player>.MaxHP = Round(PlayerDataWithOuterBonus["HP"] as int)
         currPlayer<Player>.HP = Round(PlayerDataWithOuterBonus["HP"] as int)
         currPlayer<Player>.RunSpeedScale = PlayerDataWithOuterBonus["MoveSpeed"] as float
@@ -1601,13 +1683,14 @@ graph PlayerJionGame {
         var nature = Convert.ToString(cardInfo["Nature"])
         var value = cardInfo["Value"] as float
         var translationText = Convert.ToString(cardInfo["TranslationText"])
+        var GiftedNameText = Convert.ToString(cardInfo["GiftedName"])
         var rarity = cardInfo["Rarity"] as int
         var currentCount = Gifted_Card_Count[cardId]
         var maxCount = GetMaxDrawCount(nature)
         // 获取列表父节点
         var listParent = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/Panel/List")
         // 获取对应的卡牌实体 (Card1到Card10)
-        var cardIndex = Convert.ToString("Card" + cardId)
+        var cardIndex = Convert.ToString("Card (" + cardId + ")")
         var cardEntity = GetChildByName(listParent, cardIndex)
 
         // 更新卡牌图标
@@ -1620,14 +1703,14 @@ graph PlayerJionGame {
         // 更新天赋卡牌说明
         var textEntity = GetChildByName(HasCardPanelEntity, "IFMText")
         if textEntity != nil {
-            textEntity<UIWidgetLabel>.Content = translationText
+            textEntity<UIWidgetLabel>.Content = GiftedNameText
         }
         
         // 更新抽中次数显示
-        var NumTextEntity = GetChildByName(cardEntity, "NumImage")
-        var numTextEntity = GetChildByName(NumTextEntity, "NumText")
-        if numTextEntity != nil {
-            numTextEntity<UIWidgetLabel>.Content = Convert.ToString(currentCount)
+        var NumTextEntity = GetChildByName(cardEntity, "NumText")
+        if NumTextEntity != nil {
+            NumTextEntity<UIWidget>.IsVisible = true
+            NumTextEntity<UIWidgetLabel>.Content = "x" + Convert.ToString(currentCount)
         }
         
         // 根据稀有度设置卡牌颜色
@@ -1647,18 +1730,14 @@ graph PlayerJionGame {
         // 处理卡牌状态显示
         if currentCount >= maxCount && maxCount != 9999 {
             // 已抽满的情况
-            var maxImageEntity = GetChildByName(cardEntity, "MaxImage")
+            var maxImageEntity = GetChildByName(cardEntity, "MaxText")
             if maxImageEntity != nil {
                 maxImageEntity<UIWidget>.IsVisible = true
-            }
-            var MaxTextEntity = GetChildByName(cardEntity, "MaxImage")
-            var maxTextEntity = GetChildByName(MaxTextEntity, "MaxText")
-            if maxTextEntity != nil {
-                maxTextEntity<UIWidgetLabel>.Content = "MAX"
+                maxImageEntity<UIWidgetLabel>.Content = "MAX"
             }
         } else {
             // 未抽满的情况
-            var maxImageEntity = GetChildByName(cardEntity, "MaxImage")
+            var maxImageEntity = GetChildByName(cardEntity, "MaxText")
             if maxImageEntity != nil {
                 maxImageEntity<UIWidget>.IsVisible = false
             }
@@ -1691,22 +1770,35 @@ graph PlayerJionGame {
         var currentConfig = GetCurrentDrawConfig()
         var currentPrice = currentConfig["Price"] as int
         // 更新剩余价格显示
-        var NowMoneyText = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/Panel/MoneyPanel/Text/MoneyText")
+        var NowMoneyText = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/Func/MoneyPanel/Money/text")
         if NowMoneyText != nil {
             NowMoneyText<UIWidgetLabel>.Content = Convert.ToString(Money)
         }
         // 更新当前阶段价格显示
-        var priceText = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/Panel/DrawCard/Image/Money")
+        var priceText = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/DrawBadgePanel/Image/Money")
         if priceText != nil {
             priceText<UIWidgetLabel>.Content = Convert.ToString(currentPrice)
         }
+        // 技能名称文本控件
+        var skillNameWidget = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/Panel/GiftIFMPanel/GiftIFMTitle")
+        if skillNameWidget != nil {
+            skillNameWidget<UIWidgetLabel>.Content = ""
+        }
+        // 技能描述文本控件
+        var skillDescWidget = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/Panel/GiftIFMPanel/GiftIFMTitle/GiftIFMSubtitle")
+        if skillDescWidget != nil {
+            skillDescWidget<UIWidgetLabel>.Content = ""
+        }
+        // 初始化时显示天赋加成百分比
+        DisplayGiftedCardBonusesInUI()
     }
 
     // 更新单个卡牌的UI状态
     func UpdateSingleGiftedCardUI(cardId int, listParent entity<Entity>) {
         var cardInfo = Gifted_CardData[cardId]
         var currentCount = GetCardDrawCount(cardId)
-        var cardEntity = GetChildByName(listParent, "Card" + Convert.ToString(cardId))
+        var cardIndex = Convert.ToString("Card (" + cardId + ")")
+        var cardEntity = GetChildByName(listParent, cardIndex)
         if currentCount > 0 {
             // 已点亮的状态
             var iconImageEntity = GetChildByName(cardEntity, "IconImage")
@@ -1717,16 +1809,21 @@ graph PlayerJionGame {
             if hasCardPanelEntity != nil {
                 hasCardPanelEntity<UIWidget>.IsVisible = true
             }
+            var NumTextEntity = GetChildByName(cardEntity, "NumText")
+            if NumTextEntity != nil {
+                NumTextEntity<UIWidget>.IsVisible = true
+            }
             // 检查是否需要显示MAX
             var nature = Convert.ToString(cardInfo["Nature"])
             var maxCount = GetMaxDrawCount(nature)
             if currentCount >= maxCount && maxCount != 9999 {
-                var maxImageEntity = GetChildByName(cardEntity, "MaxImage")
+                var maxImageEntity = GetChildByName(cardEntity, "MaxText")
                 if maxImageEntity != nil {
                     maxImageEntity<UIWidget>.IsVisible = true
+                    maxImageEntity<UIWidgetLabel>.Content = "MAX"
                 }
             } else {
-                var maxImageEntity = GetChildByName(cardEntity, "MaxImage")
+                var maxImageEntity = GetChildByName(cardEntity, "MaxText")
                 if maxImageEntity != nil {
                     maxImageEntity<UIWidget>.IsVisible = false
                 }
@@ -1741,9 +1838,13 @@ graph PlayerJionGame {
             if hasCardPanelEntity != nil {
                 hasCardPanelEntity<UIWidget>.IsVisible = false
             }
-            var maxImageEntity = GetChildByName(cardEntity, "MaxImage")
+            var maxImageEntity = GetChildByName(cardEntity, "MaxText")
             if maxImageEntity != nil {
                 maxImageEntity<UIWidget>.IsVisible = false
+            }
+            var NumTextEntity = GetChildByName(cardEntity, "NumText")
+            if NumTextEntity != nil {
+                NumTextEntity<UIWidget>.IsVisible = false
             }
         }
     }
@@ -1937,7 +2038,6 @@ graph PlayerJionGame {
         NowChoiceCard = 0
         // 重置子弹判定
         AmmoJudgement = 0
-
     }
 
     // 重置数据
@@ -1947,8 +2047,6 @@ graph PlayerJionGame {
     }
 
     func displaySkillByIndex(index int) {
-        // 动态切换技能按钮
-
         // 隐藏所有技能面板
         for i = 1, 3,1{
             var skillPanel = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_" + i)
@@ -1965,14 +2063,6 @@ graph PlayerJionGame {
     }
     
     //————————————————————————————————————————————————//
-    // 获取技能数据的函数
-    func GetSkillData(skillType string, level int) Map<string, object> {
-        if SkillData[skillType] != nil && SkillData[skillType]["Level_" + level] != nil {
-            return SkillData[skillType]["Level_" + level]
-        }
-        return Map<string, object>{}
-    }
-    
     // 获取当前技能某个属性的等级
     func GetCurrentSkillLevel(skillNum int, attributeType string) int {
         if skillNum == 1 {

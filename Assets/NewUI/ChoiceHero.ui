@@ -7,6 +7,110 @@
   "_entityId": "YtVqvxb3",
   "children": [
     {
+      "_entityName": "BackBoard",
+      "_tag": {
+        "type": "UIImageEntity",
+        "resourceId": ""
+      },
+      "_entityId": "N33rup95",
+      "children": [],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "propsData": {
+        "activeSelf": true,
+        "transform": {
+          "rotate": 0,
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 0
+          },
+          "sizeDelta": {
+            "x": 2000,
+            "y": 1000
+          }
+        },
+        "alpha": 100,
+        "priority": 0,
+        "image": {
+          "source": {
+            "fileId": "9b1791765d835cdbfebae22ff81e83f7",
+            "filePath": "lib://fftextures/WorkshopIconLibrary/UI_BG_Buff_yellow.png",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "texture"
+          },
+          "color": "#FFFFFF",
+          "reverse": {
+            "x": false,
+            "y": false
+          },
+          "fillType": 1,
+          "slicedBorder": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "tiledBorder": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "centerInvisible": false,
+          "fillDir": 0,
+          "fillAmount": 0,
+          "invertFill": false,
+          "flip": 0,
+          "gradient": 1,
+          "gradientTop": {
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 1
+          },
+          "gradientBottom": {
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 1
+          }
+        }
+      },
+      "ecaScripts": [],
+      "ecaProps": {
+        "HudImageWidget": {},
+        "HudWidget": {},
+        "Entity": {}
+      },
+      "componentList": [],
+      "entityTagData": {
+        "tagPointers": []
+      }
+    },
+    {
       "_entityName": "Title",
       "_tag": {
         "type": "UITextEntity",
@@ -19,7 +123,10 @@
         "selfValue": true,
         "valueTag": "activeValue"
       },
-      "unlockedValue": null,
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
       "editorLockValue": false,
       "editorVisibleValue": true,
       "propsData": {
@@ -94,107 +201,6 @@
       }
     },
     {
-      "_entityName": "BackBoard",
-      "_tag": {
-        "type": "UIImageEntity",
-        "resourceId": ""
-      },
-      "_entityId": "N33rup95",
-      "children": [],
-      "prefabVariant": null,
-      "activeValue": {
-        "selfValue": true,
-        "valueTag": "activeValue"
-      },
-      "unlockedValue": null,
-      "editorLockValue": false,
-      "editorVisibleValue": true,
-      "propsData": {
-        "activeSelf": true,
-        "transform": {
-          "rotate": 0,
-          "anchorMin": {
-            "x": 0.5,
-            "y": 0.5
-          },
-          "anchorMax": {
-            "x": 0.5,
-            "y": 0.5
-          },
-          "pivot": {
-            "x": 0.5,
-            "y": 0.5
-          },
-          "anchoredPosition": {
-            "x": 0,
-            "y": 0
-          },
-          "sizeDelta": {
-            "x": 2000,
-            "y": 1000
-          }
-        },
-        "alpha": 100,
-        "priority": 0,
-        "image": {
-          "source": {
-            "fileId": "b063b0439839b3d97a8fd2aa6a57ef8b",
-            "filePath": "lib://fftextures/WorkshopIconLibrary/T_34_M_WS_ICON_SQUARE.png",
-            "_tag": {
-              "type": "GFileRefer"
-            },
-            "fileType": "texture"
-          },
-          "color": "#00A8FF",
-          "reverse": {
-            "x": false,
-            "y": false
-          },
-          "fillType": 1,
-          "slicedBorder": {
-            "left": 0,
-            "right": 0,
-            "top": 0,
-            "bottom": 0
-          },
-          "tiledBorder": {
-            "left": 0,
-            "right": 0,
-            "top": 0,
-            "bottom": 0
-          },
-          "centerInvisible": false,
-          "fillDir": 0,
-          "fillAmount": 0,
-          "invertFill": false,
-          "flip": 0,
-          "gradient": 1,
-          "gradientTop": {
-            "r": 255,
-            "g": 255,
-            "b": 255,
-            "a": 1
-          },
-          "gradientBottom": {
-            "r": 255,
-            "g": 255,
-            "b": 255,
-            "a": 1
-          }
-        }
-      },
-      "ecaScripts": [],
-      "ecaProps": {
-        "HudImageWidget": {},
-        "HudWidget": {},
-        "Entity": {}
-      },
-      "componentList": [],
-      "entityTagData": {
-        "tagPointers": []
-      }
-    },
-    {
       "_entityName": "Money",
       "_tag": {
         "type": "UIPanelEntityV3",
@@ -223,7 +229,10 @@
                 "selfValue": true,
                 "valueTag": "activeValue"
               },
-              "unlockedValue": null,
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
               "editorLockValue": false,
               "editorVisibleValue": true,
               "propsData": {
@@ -303,7 +312,10 @@
             "selfValue": true,
             "valueTag": "activeValue"
           },
-          "unlockedValue": null,
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
           "editorLockValue": false,
           "editorVisibleValue": true,
           "propsData": {
@@ -397,7 +409,10 @@
         "selfValue": true,
         "valueTag": "activeValue"
       },
-      "unlockedValue": null,
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
       "editorLockValue": false,
       "editorVisibleValue": true,
       "propsData": {
@@ -1469,7 +1484,10 @@
         "selfValue": true,
         "valueTag": "activeValue"
       },
-      "unlockedValue": null,
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
       "editorLockValue": false,
       "editorVisibleValue": true,
       "propsData": {
@@ -3138,4 +3156,4 @@
   "discriminator": "ISceneLike",
   "version": 3
 }
-//"{FE:{"v":"0.2.4086894","c":{"FF":5001},"s":100}
+//"{FE:{"v":"0.2.4090069","c":{"FF":5001},"s":100}

@@ -10,27 +10,27 @@ import "Items.fcc" as Items
 
 [platform_client]
 graph Reload {
-    // event OnReload(){
-    //     LogInfo("武器已重装")
-    //     var SkillIndex = GetLocalPlayer()<PlayerJionGame>.CurrentSkill
-    //     var currPlayer =  GetLocalPlayer()<PlayerJionGame>.currPlayer
-    //     var currentWeapon =  GetLocalPlayer()<PlayerJionGame>.currentWeapon
-    //     GetLocalPlayer()<PlayerJionGame>.AmmoJudgement = 0
+    event OnReload(){
+        LogInfo("武器已重装")
+        var SkillIndex = GetLocalPlayer()<PlayerJionGame>.CurrentSkill
+        var currPlayer =  GetLocalPlayer()<PlayerJionGame>.currPlayer
+        var currentWeapon =  GetLocalPlayer()<PlayerJionGame>.currentWeapon
+        GetLocalPlayer()<PlayerJionGame>.AmmoJudgement = 0
 
-    //     if (SkillIndex == 1) {
-    //         AddItem(ItemIDType.SGAmmo, 999, out var createdEntity)
-    //     }
+        if (SkillIndex == 1) {
+            Offline.AddItem(ItemIDType.SGAmmo, 999, out var createdEntity)
+        }
 
-    //     if (SkillIndex == 2) {
-    //         AddItem(ItemIDType.SMGAmmo, 999, out var createdEntity)
-    //         var ReloadBuff = PlayerJionGame.Skill2DataInGame["ReloadBuff"] as float
-    //         if  ReloadBuff < 1 {
-    //             var ReloadForward = 0.0648
-    //             currentWeapon<Weapon>.FiringInterval = ReloadBuff * currentWeapon<Weapon>.FiringInterval
-    //             LogInfo("武器攻击间隔已调整" + currentWeapon<Weapon>.FiringInterval)
-    //             WaitForMillisecond(1000)
-    //             currentWeapon<Weapon>.FiringInterval = ReloadForward
-    //         }
-    //     }
-    // }
+        if (SkillIndex == 2) {
+            Offline.AddItem(ItemIDType.SMGAmmo, 999, out var createdEntity)
+            var ReloadBuff = GetLocalPlayer()<PlayerJionGame>.Skill2DataInGame["ReloadBuff"] as float
+            if  ReloadBuff < 1 {
+                var ReloadForward = 0.0648
+                currentWeapon<Weapon>.FiringInterval = ReloadBuff * currentWeapon<Weapon>.FiringInterval
+                LogInfo("武器攻击间隔已调整" + currentWeapon<Weapon>.FiringInterval)
+                WaitForMillisecond(1000)
+                currentWeapon<Weapon>.FiringInterval = ReloadForward
+            }
+        }
+    }
 }
