@@ -9,7 +9,6 @@ import "CSVData.fcc" as CSVData
 import "List.fcc" as List
 import "Convert.fcc" as Convert
 import "Strings.fcc" as strings
-import "../PVE/UI_C_SkillLevelUp.fcg" as UI_C_SkillLevelUp
 import "Offline.fcc" as Offline
 import "Items.fcc" as Items
 import "../CustomEvent.fcc" as CustomEvent
@@ -20,10 +19,8 @@ import "../PVE/PVEController.fcg" as PVEController
 [platform_client]
 graph PlayerJionGame {
     SkillUI entity<CustomHud>
-    DeBugUI entity<CustomHud>
     HomeUI entity<CustomHud>
     inGameDebugUI entity<CustomHud>
-    SkillLevelUpUI entity<CustomHud>
     currPlayer entity<Player>
     currentWeapon entity<Weapon> = nil
       
@@ -182,17 +179,9 @@ graph PlayerJionGame {
             CreateCustomUIClient(out var inGameDebugUIEntity, EResUI.InGameDebug)
             inGameDebugUI = inGameDebugUIEntity
 
-            CreateCustomUIClient(out var SkillLevelUpUIEntity, EResUI.SkillLevelUp)
-            SkillLevelUpUI = SkillLevelUpUIEntity
-            SkillLevelUpUIEntity<CustomUI>.IsVisible = false
-
             CreateCustomUIClient(out var SkillUIEntity, EResUI.SkillUI)
             SkillUI = SkillUIEntity
             SkillUIEntity<CustomUI>.IsVisible = true
-
-            CreateCustomUIClient(out var DeBugUIEntity, EResUI.DeBug)
-            DeBugUI = DeBugUIEntity
-            DeBugUIEntity<CustomUI>.IsVisible = false
 
             CreateCustomUIClient(out var HeroPanelUIEntity, EResUI.HeroPanel)
             HeroUI = HeroPanelUIEntity
@@ -2000,21 +1989,6 @@ graph PlayerJionGame {
         CurrentSkill = 1
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
-    //显示技能和升级技能使用
-    func resetSkillLevel(){
-        Skill1_RangeLevel = 0
-        Skill1_DamageLevel = 0
-        Skill1_CDLevel = 0
-        
-        Skill2_RangeLevel = 0
-        Skill2_DamageLevel = 0
-        Skill2_CDLevel = 0
-        
-        Skill3_RangeLevel = 0
-        Skill3_DamageLevel = 0
-        Skill3_CDLevel = 0
-    }
-
     func ToClient_DisplaySkillThreeChoiceOne() {
         ChoiceThreeCardUI<CustomUI>.IsVisible = true
         IsNextThreeChoiceOne = 1       //打开标志位
@@ -2061,100 +2035,5 @@ graph PlayerJionGame {
         currentSkillPanel<UIWidget>.IsVisible = true
         currentJoyStick<UIWidget>.IsVisible = false
     }
-    
     //————————————————————————————————————————————————//
-    // 获取当前技能某个属性的等级
-    func GetCurrentSkillLevel(skillNum int, attributeType string) int {
-        if skillNum == 1 {
-            if attributeType == "Range" { return Skill1_RangeLevel }
-            if attributeType == "Damage" { return Skill1_DamageLevel }
-            if attributeType == "CD" { return Skill1_CDLevel }
-        } 
-        if skillNum == 2 {
-            if attributeType == "Range" { return Skill2_RangeLevel }
-            if attributeType == "Damage" { return Skill2_DamageLevel }
-            if attributeType == "CD" { return Skill2_CDLevel }
-        } 
-        if skillNum == 3 {
-            if attributeType == "Range" { return Skill3_RangeLevel }
-            if attributeType == "Damage" { return Skill3_DamageLevel }
-            if attributeType == "CD" { return Skill3_CDLevel }
-        }
-        return 0
-    }
-    
-    // 更新当前技能
-    func UpdatecdSkill(x int) {
-        CurrentSkill = x
-        UpdateDebugUI()
-    }
-    
-    //————————————————————————————————————————————————//
-    // 范围更新函数 - 只更新范围等级
-    func UpdateRange_1() {
-        Skill1_RangeLevel = (Skill1_RangeLevel + 1) % 6
-        UpdateDebugUI()
-    }
-    
-    func UpdateRange_2() {
-        Skill2_RangeLevel = (Skill2_RangeLevel + 1) % 6
-        UpdateDebugUI()
-    }
-
-    func UpdateRange_3() {
-        Skill3_RangeLevel = (Skill3_RangeLevel + 1) % 6
-        UpdateDebugUI()
-    }
-    
-    // 伤害更新函数 - 只更新伤害等级
-    func UpdateDamage_1() {
-        Skill1_DamageLevel = (Skill1_DamageLevel + 1) % 6
-        UpdateDebugUI()
-    }
-    
-    func UpdateDamage_2() {
-        Skill2_DamageLevel = (Skill2_DamageLevel + 1) % 6
-        UpdateDebugUI()
-    }
-
-    func UpdateDamage_3() {
-        Skill3_DamageLevel = (Skill3_DamageLevel + 1) % 6
-        UpdateDebugUI()
-    }
-    
-    // CD更新函数 - 只更新CD等级
-    func UpdateCD_1() {
-        Skill1_CDLevel = (Skill1_CDLevel + 1) % 6
-        UpdateDebugUI()
-    }
-    
-    func UpdateCD_2() {
-        Skill2_CDLevel = (Skill2_CDLevel + 1) % 6
-        UpdateDebugUI()
-    }
-
-    func UpdateCD_3() {
-        Skill3_CDLevel = (Skill3_CDLevel + 1) % 6
-        UpdateDebugUI()
-    }
-    
-    // 更新Debug UI
-    func UpdateDebugUI() {
-        var currentSkill = CurrentSkill
-        
-        // 更新范围UI - 显示当前技能的范围等级
-        var rangeLevel = GetCurrentSkillLevel(currentSkill, "Range")
-        var DeBugUI_Range = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/Range/文本_level")
-        DeBugUI_Range<UIWidgetLabel>.Content = rangeLevel + "级"
-        
-        // 更新伤害UI - 显示当前技能的伤害等级
-        var damageLevel = GetCurrentSkillLevel(currentSkill, "Damage")
-        var DeBugUI_Damage = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/Damage/文本_level")
-        DeBugUI_Damage<UIWidgetLabel>.Content = damageLevel + "级"
-        
-        // 更新CD UI - 显示当前技能的CD等级
-        var cdLevel = GetCurrentSkillLevel(currentSkill, "CD")
-        var DeBugUI_CD = GetWidgetByPath(GetLocalPlayer(), DeBugUI, "/cdlevelup/文本_level")
-        DeBugUI_CD<UIWidgetLabel>.Content = cdLevel + "级"
-    }
 }

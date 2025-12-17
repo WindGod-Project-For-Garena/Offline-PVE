@@ -121,10 +121,7 @@ enum SkillFireWidgetType {
 
 [element CustomUIAssetID]
 enum EResUI {
-    DeBug
     SkillUI
-    HomeUI
-    SkillLevelUp
     InGameDebug
     WarningEffect
     ChoiceHero
@@ -194,29 +191,6 @@ enum EResSceneIsleLand {
     ActiveMobs
 }
 [element CustomUIWidgetID]
-enum EResUIHomeUI {
-    Button_right
-    Button_left
-    LevelNum
-    Skill_1
-    Skill_2
-    Skill_3
-    StartButton
-    AbilityLevel1
-    AbilityLevel2
-    AbilityLevel3
-}
-[element CustomUIWidgetID]
-enum EResUISkillLevelUp {
-    AttributeName1
-    AttributeLevel1
-    AttributeName2
-    AttributeLevel2
-    AttributeName3
-    AttributeLevel3
-    SkillPoint
-}
-[element CustomUIWidgetID]
 enum EResUIWarningEffect {
     Image_center
 }
@@ -228,10 +202,7 @@ enum EResUIChoiceHero {
     Hero_3
 }
 enum EResKeyUI {
-    DeBug = "DeBug"
     SkillUI = "SkillUI"
-    HomeUI = "HomeUI"
-    SkillLevelUp = "SkillLevelUp"
     InGameDebug = "InGameDebug"
     WarningEffect = "WarningEffect"
     ChoiceHero = "ChoiceHero"
@@ -294,27 +265,6 @@ enum EResKeyIsleLand {
     PendingRemoveMobs = "PendingRemoveMobs"
     ActiveMobs = "ActiveMobs"
 }
-enum EResKeyHomeUI {
-    Button_right = "Button_right"
-    Button_left = "Button_left"
-    LevelNum = "LevelNum"
-    Skill_1 = "Skill_1"
-    Skill_2 = "Skill_2"
-    Skill_3 = "Skill_3"
-    StartButton = "StartButton"
-    AbilityLevel1 = "AbilityLevel1"
-    AbilityLevel2 = "AbilityLevel2"
-    AbilityLevel3 = "AbilityLevel3"
-}
-enum EResKeySkillLevelUp {
-    AttributeName1 = "AttributeName1"
-    AttributeLevel1 = "AttributeLevel1"
-    AttributeName2 = "AttributeName2"
-    AttributeLevel2 = "AttributeLevel2"
-    AttributeName3 = "AttributeName3"
-    AttributeLevel3 = "AttributeLevel3"
-    SkillPoint = "SkillPoint"
-}
 enum EResKeyWarningEffect {
     Image_center = "Image_center"
 }
@@ -360,8 +310,6 @@ declare static graph Res {
     Item Map<EResKeyItem, ItemID>
     CSV Map<EResKeyCSV, CsvID>
     IsleLand Map<EResKeyIsleLand, entity>
-    HomeUI Map<EResKeyHomeUI, CustomUIWidgetID>
-    SkillLevelUp Map<EResKeySkillLevelUp, CustomUIWidgetID>
     WarningEffect Map<EResKeyWarningEffect, CustomUIWidgetID>
     ChoiceHero Map<EResKeyChoiceHero, CustomUIWidgetID>
 }

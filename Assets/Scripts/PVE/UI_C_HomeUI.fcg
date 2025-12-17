@@ -30,17 +30,10 @@ graph UI_HomeUI {
     ability3Level int = 0
     
     event OnAwake() {
-        buttonLeft = GetWidgetFromCustomUI(GetLocalPlayer(),thisEntity as entity<CustomUI> , EResUIHomeUI.Button_left) as entity<UIWidgetButton>
-        buttonRight = GetWidgetFromCustomUI(GetLocalPlayer(),thisEntity as entity<CustomUI> , EResUIHomeUI.Button_right) as entity<UIWidgetButton>
         levelNum = GetWidgetFromCustomUI(GetLocalPlayer(),thisEntity as entity<CustomUI> , EResUIChoiceHero.LevelNum) as entity<UIWidgetLabel>
-
         skill1 = GetWidgetFromCustomUI(GetLocalPlayer(),thisEntity as entity<CustomUI> , EResUIChoiceHero.Hero_1) as entity<UIWidgetButton>
         skill2 = GetWidgetFromCustomUI(GetLocalPlayer(),thisEntity as entity<CustomUI> , EResUIChoiceHero.Hero_2) as entity<UIWidgetButton>
         skill3 = GetWidgetFromCustomUI(GetLocalPlayer(),thisEntity as entity<CustomUI> , EResUIChoiceHero.Hero_3) as entity<UIWidgetButton>
-
-        ability1Text = GetWidgetFromCustomUI(GetLocalPlayer(),thisEntity as entity<CustomUI> , EResUIHomeUI.AbilityLevel1) as entity<UIWidgetLabel>
-        ability2Text = GetWidgetFromCustomUI(GetLocalPlayer(),thisEntity as entity<CustomUI> , EResUIHomeUI.AbilityLevel2) as entity<UIWidgetLabel>
-        ability3Text = GetWidgetFromCustomUI(GetLocalPlayer(),thisEntity as entity<CustomUI> , EResUIHomeUI.AbilityLevel3) as entity<UIWidgetLabel>
     }
 
     func onLeftButtonClick(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
@@ -105,7 +98,6 @@ graph UI_HomeUI {
         thisEntity<CustomUI>.IsVisible = false
 
         GetLocalPlayer()<PlayerJionGame>.displaySkillByIndex(GetLocalPlayer()<PlayerJionGame>.CurrentSkill)
-        GetLocalPlayer()<PlayerJionGame>.resetSkillLevel()
         start GetLocalPlayer()<PlayerJionGame>.ShowChoiceThreeCardUI(level,ability1Level,ability2Level,ability3Level)
         
         // 发送角色选择完毕事件
