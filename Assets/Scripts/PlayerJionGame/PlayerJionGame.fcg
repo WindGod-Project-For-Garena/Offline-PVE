@@ -223,11 +223,27 @@ graph PlayerJionGame {
             InjectGifted_CardData()
             InjectGiftCardProbabilityData()
             InitAllGiftedCardUI()
+            // 初始化已选卡牌展示面板
+            InitNowChoicePanelIcons()
             // 初始化局外天赋加成后数据（复制基础数据）
             CopyToOuterBonusData()
             // 初始化局内数据（复制局外数据）
             CopyToInGameData()
             IsNextThreeChoiceOne = 0
+        }
+    }
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+// 初始化已选卡牌展示面板图标
+    func InitNowChoicePanelIcons() {
+        // 隐藏所有已选卡牌位置的图标
+        for i = 1, 6, 1 {
+            var iconPath = "/NowChoicePanel/List/Card (" + Convert.ToString(i) + ")/ICON"
+            var iconWidget = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, iconPath)
+            if iconWidget != nil {
+                iconWidget<UIWidget>.IsVisible = false
+            } else {
+                LogWarning("找不到图标控件: " + iconPath)
+            }
         }
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
@@ -273,6 +289,8 @@ graph PlayerJionGame {
         NowChoiceCard = 0
         // 重置三选一标志位
         IsNextThreeChoiceOne = 0
+         // 隐藏所有已选卡牌图标
+        InitNowChoicePanelIcons()
         LogInfo("已清空所有已选卡牌记录")
     }
 
@@ -324,6 +342,7 @@ graph PlayerJionGame {
             cardInfo["Rarity"] = cardRow[3] as List<int>
             cardInfo["TranslationText"] = cardRow[4]
             cardInfo["Sktchtext"] = cardRow[5]
+            cardInfo["Typetext"] = cardRow[6]
             Skill_1_CardData[cardId] = cardInfo
             // 在显示时格式化浮点数，保留两位小数
             // LogInfo(Skill_1_CardData[cardId])
@@ -345,6 +364,7 @@ graph PlayerJionGame {
             cardInfo["Rarity"] = cardRow[3] as List<int>
             cardInfo["TranslationText"] = cardRow[4]
             cardInfo["Sktchtext"] = cardRow[5]
+            cardInfo["Typetext"] = cardRow[6]
             Skill_2_CardData[cardId] = cardInfo
             // 在显示时格式化浮点数，保留两位小数
             // LogInfo(Skill_2_CardData[cardId])
@@ -511,16 +531,14 @@ graph PlayerJionGame {
             List.Append(CurrentRandomCards, card2["CardID"] as int)
             List.Append(CurrentRandomCards, card3["CardID"] as int)
             
-           // LogInfo("=== 三选一卡牌生成完成 ===")
-            //LogInfo("卡牌1 - ID:" + Convert.ToString(card1["CardID"]) + "属性:" + Convert.ToString(card1["Nature"]))
-            //LogInfo("卡牌2 - ID:" + Convert.ToString(card2["CardID"]) + "属性:" + Convert.ToString(card2["Nature"]))
-            //LogInfo("卡牌3 - ID:" + Convert.ToString(card3["CardID"]) + "属性:" + Convert.ToString(card3["Nature"]))
-            
             // 卡牌数据显示到UI
             UpdateCardUI(card1, card2, card3)
         } else {
             LogError("卡牌生成数量不足，只有" + Convert.ToString(List.Length(cards)) + "张")
         }
+
+        // 重置已经选择的卡牌
+        NowChoiceCard = 0
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     // 生成随机卡牌（不允许重复选择）
@@ -1093,6 +1111,10 @@ graph PlayerJionGame {
             var card1Text = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/ChoiceThreeCardPanel/Card_1/IFMText")
             var description = GenerateCardDescription(card1)
             card1Text<UIWidgetLabel>.Content = description
+            // 设置卡牌1的类型显示
+            var card1TypeText = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/ChoiceThreeCardPanel/Card_1/TYPE")
+            var TypeText = GenerateCardTypeText(card1)
+            card1TypeText<UIWidgetLabel>.Content = "[" + TypeText + "]"
             //——————————————————————————————————————————————————————————————————————————————————————————————//
             // 设置卡牌1的稀有度显示
             var rarity1 = card1["Rarity"] as int
@@ -1109,6 +1131,11 @@ graph PlayerJionGame {
             var card2Text = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/ChoiceThreeCardPanel/Card_2/IFMText")
             var description = GenerateCardDescription(card2)
             card2Text<UIWidgetLabel>.Content = description
+            // 设置卡牌2的类型显示
+            var card2TypeText = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/ChoiceThreeCardPanel/Card_2/TYPE")
+            var TypeText = GenerateCardTypeText(card2)
+            card2TypeText<UIWidgetLabel>.Content = "[" + TypeText + "]"
+            //——————————————————————————————————————————————————————————————————————————————————————————————//
             //——————————————————————————————————————————————————————————————————————————————————————————————//
             // 设置卡牌2的稀有度显示
             var rarity2 = card2["Rarity"] as int
@@ -1125,13 +1152,24 @@ graph PlayerJionGame {
             var card3Text = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/ChoiceThreeCardPanel/Card_3/IFMText")
             var description = GenerateCardDescription(card3)
             card3Text<UIWidgetLabel>.Content = description
+            // 设置卡牌3的类型显示
+            var card3TypeText = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/ChoiceThreeCardPanel/Card_3/TYPE")
+            var TypeText = GenerateCardTypeText(card3)
+            card3TypeText<UIWidgetLabel>.Content = "[" + TypeText + "]"
             //——————————————————————————————————————————————————————————————————————————————————————————————//
-            // 设置卡牌2的稀有度显示
+            //——————————————————————————————————————————————————————————————————————————————————————————————//
+            // 设置卡牌3的稀有度显示
             var rarity3 = card3["Rarity"] as int
             UpdateCardRarityUI(3, rarity3)
         }
+        // 设置没选择时按钮的颜色
+        var Next = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/Next")
+        Next<UIWidgetButton>.Color = #575757FF
+        var NextText = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/Next/Text")
+        NextText<UIWidgetLabel>.Color = #FFFFFF
         LogInfo("卡牌UI更新完成")
     }
+
     // 生成卡牌描述文本
     func GenerateCardDescription(card Map<string, object>) string {
         var translationText = Convert.ToString(card["TranslationText"])
@@ -1140,6 +1178,16 @@ graph PlayerJionGame {
             return translationText
         }
     }
+
+    // 生成卡牌类型文本
+    func GenerateCardTypeText(card Map<string, object>) string {
+        var translationText = Convert.ToString(card["Typetext"])
+        // 如果有翻译文本，直接使用
+        if translationText != "" && translationText != "None" {
+            return translationText
+        }
+    }
+
     // 更新卡牌稀有度显示（根据稀有度显示不同的边框颜色）
     func UpdateCardRarityUI(cardIndex int, rarity int) {
         var rarityPath = "/ChoiceThreeCardPanel/Card_" + Convert.ToString(cardIndex)
@@ -1157,6 +1205,74 @@ graph PlayerJionGame {
                 rarityWidget<UIWidgetButton>.Color = #FFD700
             }
         }
+    }
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+    // 更新已选卡牌列表数据等操作
+    func OnNowChoiceCardClicked(cardIndex int) {
+        LogInfo("点击位置: 第 " + Convert.ToString(cardIndex) + " 张卡牌")
+        
+        // 根据当前技能获取对应的已选卡牌列表
+        var selectedCards = List<int>{}
+        if CurrentSkill == 1 {
+            selectedCards = SelectedCards_1
+        } else if CurrentSkill == 2 {
+            selectedCards = SelectedCards_2
+        } else {
+            LogInfo("当前技能: 未知技能")
+            return
+        }
+        
+        // 计算显示数量
+        var totalCards = List.Length(selectedCards)
+        var displayCount int = Round(Math.Min(totalCards, 5) as int)
+        
+        LogInfo("已选卡牌总数: " + Convert.ToString(totalCards))
+        LogInfo("显示数量: " + Convert.ToString(displayCount))
+        
+        // 检查点击的位置是否有卡牌
+        if cardIndex <= displayCount && cardIndex > 0 {
+            // 计算实际在列表中的索引（显示最近选择的卡牌）
+            var actualIndex = totalCards - displayCount + (cardIndex - 1)
+            var cardId = selectedCards[actualIndex]
+            // 获取卡牌信息
+            var cardInfo = GetCardInfoById(cardId, CurrentSkill)
+            if cardInfo != nil {
+                // 打印卡牌详细信息
+                var translationText = Convert.ToString(cardInfo["TranslationText"])
+                var nature = Convert.ToString(cardInfo["Nature"])
+                var value = cardInfo["Value"] as float
+                var rarity = cardInfo["Rarity"] as int
+                var typeText = Convert.ToString(cardInfo["Typetext"])
+                var sktchtext = Convert.ToString(cardInfo["Sktchtext"])
+                
+                LogInfo("属性文本: " + translationText)
+                LogInfo("稀有度: " + Convert.ToString(rarity))
+                LogInfo("类型文本: " + typeText)
+                
+                // 根据不同技能显示技能说明
+                if CurrentSkill == 1 {
+                    LogInfo("=== 技能1说明 ===")
+                } else if CurrentSkill == 2 {
+                    LogInfo("=== 技能2说明 ===")
+                }
+            } else {
+                LogInfo("未找到卡牌ID " + Convert.ToString(cardId) + " 的数据")
+            }
+        } else {
+            LogInfo("该位置没有卡牌（位置 " + Convert.ToString(cardIndex) + "）")
+        }
+    }
+    
+    // 根据ID和技能获取卡牌信息
+    func GetCardInfoById(cardId int, skill int) Map<string, object> {
+        if skill == 1 {
+            return Skill_1_CardData[cardId]
+        } else if skill == 2 {
+            return Skill_2_CardData[cardId]
+        }
+        return nil
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
 //—————————————————————————————————————————————————以下为天赋卡片的数据————————————————————————————————————————————————————————//
@@ -2008,7 +2124,7 @@ graph PlayerJionGame {
         ResetInGameData()
         // 清空已选卡牌记录
         ClearSelectedCards()
-        // 恢复默认没有选择卡牌
+        // 恢复默认没有选择卡牌 
         NowChoiceCard = 0
         // 重置子弹判定
         AmmoJudgement = 0
