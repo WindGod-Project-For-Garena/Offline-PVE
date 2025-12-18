@@ -125,6 +125,10 @@ graph UI_HomeUI {
         ChoiceHeroUIEntity<CustomUI>.IsVisible = false
         var hero int = 1
         GetLocalPlayer()<PlayerJionGame>.InitAllCardBookUI(hero)
+        var HeroEntity1 = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.HeroUI, "/HeroIFMPanel/HeroIFMPanel_1")
+        var HeroEntity2 = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.HeroUI, "/HeroIFMPanel/HeroIFMPanel_2")
+        HeroEntity1<UIWidget>.IsVisible = true
+        HeroEntity2<UIWidget>.IsVisible = false
     }
 
     //前往排行榜面板
