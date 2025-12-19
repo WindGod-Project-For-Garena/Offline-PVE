@@ -23,11 +23,39 @@ graph HeroPanel {
      func ToHero1(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
           var hero int = 1
           GetLocalPlayer()<PlayerJionGame>.InitAllCardBookUI(hero)
+          var HeroEntity1 = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.HeroUI, "/HeroIFMPanel/HeroIFMPanel_1")
+          var HeroEntity2 = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.HeroUI, "/HeroIFMPanel/HeroIFMPanel_2")
+          HeroEntity1<UIWidget>.IsVisible = true
+          HeroEntity2<UIWidget>.IsVisible = false
+          // 按钮颜色
+          var HeroButtonEntity1 = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.HeroUI, "/Hero1")
+          var HeroButtonEntity2 = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.HeroUI, "/Hero2")
+          HeroButtonEntity1<UIWidgetButton>.Color = #F8BC27
+          HeroButtonEntity2<UIWidgetButton>.Color = #000000
+          // 按钮文字颜色
+          var HeroTextEntity1 = GetChildByName(HeroButtonEntity1, "Text")
+          var HeroTextEntity2 = GetChildByName(HeroButtonEntity2, "Text")
+          HeroTextEntity1<UIWidgetLabel>.Color = #000000
+          HeroTextEntity2<UIWidgetLabel>.Color = #FFFFFFFF
      }
 
      //选择角色2
      func ToHero2(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
           var hero int = 2
           GetLocalPlayer()<PlayerJionGame>.InitAllCardBookUI(hero)
+          var HeroEntity1 = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.HeroUI, "/HeroIFMPanel/HeroIFMPanel_1")
+          var HeroEntity2 = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.HeroUI, "/HeroIFMPanel/HeroIFMPanel_2")
+          HeroEntity1<UIWidget>.IsVisible = false
+          HeroEntity2<UIWidget>.IsVisible = true
+          // 按钮颜色
+          var HeroButtonEntity1 = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.HeroUI, "/Hero1")
+          var HeroButtonEntity2 = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.HeroUI, "/Hero2")
+          HeroButtonEntity1<UIWidgetButton>.Color = #000000
+          HeroButtonEntity2<UIWidgetButton>.Color = #F8BC27
+          // 按钮文字颜色
+          var HeroTextEntity1 = GetChildByName(HeroButtonEntity1, "Text")
+          var HeroTextEntity2 = GetChildByName(HeroButtonEntity2, "Text")
+          HeroTextEntity1<UIWidgetLabel>.Color = #FFFFFFFF
+          HeroTextEntity2<UIWidgetLabel>.Color = #000000
      }
 }
