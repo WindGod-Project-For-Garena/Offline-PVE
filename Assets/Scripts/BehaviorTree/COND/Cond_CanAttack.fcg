@@ -12,6 +12,7 @@ graph Script_1_ {
     func IsInRange(mob entity<Transform>,player1 entity<Player>,range1 float) bool{
         var zombiePos = mob<Transform>.Position
         var playerPos = player1<Player>.Position
+        LogInfo(Distance(zombiePos,playerPos))
         if (Distance(zombiePos,playerPos) <= range1) {
             return true
         }else{
@@ -19,9 +20,8 @@ graph Script_1_ {
         }
     }
     func playCondition(owner entity<BevTreeAttachableForClient>) bool{
-        //LogInfo("playCondition: CanAttack")
         GetNodeVariable(thisEntity<BevTreeCustomNode>,"CD",out var cd)
-        GetBlackboardValue(owner<BevTreeAttachableForClient>.AttachTarget,"LastAttackTime",out var LastAttackTime)
+        var LastAttackTime int = owner<Mob>.StatusDic["LastAttackTime"] as int
         if (LastAttackTime == nil){
             return true
         }
@@ -31,12 +31,14 @@ graph Script_1_ {
         if (globalEntity<Global>.GameTimeCount < nextTime){
             return false
         }
+        
         var curTarget entity<Player> = owner<Mob>.CurrTarget
         if (curTarget == nil){
             return false
         }
         GetNodeVariable(thisEntity<BevTreeCustomNode>,"Range",out var RangeX)
         var TempPlayer = curTarget as entity<Player>
-        return IsInRange(owner<Transform>,TempPlayer<Player>,RangeX as float)
+        var result = IsInRange(owner<Transform>,TempPlayer<Player>,RangeX as float)
+        return result
     }
 }

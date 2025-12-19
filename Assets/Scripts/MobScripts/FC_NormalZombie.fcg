@@ -37,11 +37,14 @@ graph FC_NormalZombie {
         thisEntity<Mob>.Damage = 10
 		thisEntity<Mob>.HateGainInterval = 3000
 		thisEntity<Mob>.StatusDic = Map<string, object>{
-			
+			"LastAttackTime": globalEntity<Global>.GameTimeCount,
 		}
 		thisEntity<Mob>.DetectRange = 30
-        var nowTime int = globalEntity<Global>.GameTimeCount
-		SetBlackboardValue(thisEntity<BevTreeAttachableForClient>.AttachTarget, "LastAttackTime", nowTime)
+        // var nowTime int = globalEntity<Global>.GameTimeCount
+		// LogInfo("set LastAttackTime: " + nowTime)
+		// SetBlackboardValue(thisEntity<BevTreeAttachableForClient>.AttachTarget, "LastAttackTime", nowTime)
+		// GetBlackboardValue(thisEntity<BevTreeAttachableForClient>.AttachTarget, "LastAttackTime",out var LastAttackTime)
+		// LogInfo("get LastAttackTime: " + LastAttackTime)
 		SetBlackboardValue(thisEntity<BevTreeAttachableForClient>.AttachTarget, "Curstate", 0)
 		WaitForMillisecond(2000)
 		//DispatchEventWithPlatform_Deprecated(100002, thisEntity, true, List<object>{thisEntity<CustomComponent31897461>.ZombieInfo["InitSpeed"]})
@@ -61,7 +64,7 @@ graph FC_NormalZombie {
 		//	LogInfo("curTarget: " + curTarget as entity<Player><Player>.Position)
 			if (curTarget != nil && (Distance(curTarget as entity<Player><Player>.Position, thisEntity as entity<LevelObject><Transform>.Position) <= 1.5)) {		
 				
-				TakeDamage(curTarget as entity<Combatable>, nil, DamageType.Monster, GetDamage())
+				Offline.DealDamage(curTarget as entity<Combatable>, nil, DamageType.Monster, GetDamage())
 			}
 		} else if (attackName == "NormalAttack2") {
 			
@@ -72,6 +75,7 @@ graph FC_NormalZombie {
 	}
 
 	event MobDeathEvent_AC() {
+		LogInfo("-------------------------MobDeathEvent_AC-------------------------")
 		PVEMonsterManager.OnMonsterKilledAnimationFinished(thisEntity as entity<LevelObject>)
 	}
 

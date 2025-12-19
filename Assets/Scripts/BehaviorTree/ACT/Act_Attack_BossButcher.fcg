@@ -21,7 +21,8 @@ graph Script_1_ {
         var curTarget entity<Player> = owner<Mob>.CurrTarget
         Utilities.myLookAt(owner<Transform>,curTarget as entity<Player>,Vector3{0,0,0})
         _AttackBeginTime = globalEntity<Global>.GameTimeCount
-        SetBlackboardValue(owner<BevTreeAttachableForClient>.AttachTarget,"LastAttackTime",_AttackBeginTime)
+        owner<Mob>.StatusDic["LastAttackTime"] = _AttackBeginTime
+        //SetBlackboardValue(owner<BevTreeAttachableForClient>.AttachTarget,"LastAttackTime",_AttackBeginTime)
         var TargetEntity = owner<AnimationControllerAttachable>
         owner<BossButcher>.startBossButcherSkill(TargetEntity)
     }

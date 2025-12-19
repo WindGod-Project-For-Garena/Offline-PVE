@@ -107,7 +107,7 @@ static graph FC_Global_MobSkillHandler {
         //检测技能特效是否命中目标
         for i, player in GetAllPlayers() {
             if (Math.Distance(player<Player>.Position, position) <= scale) {
-                TakeDamage(player as entity<Combatable>, nil, DamageType.Monster, skillDamage)
+                Offline.DealDamage(player as entity<Combatable>, nil, DamageType.Monster, skillDamage)
             }
         }
         
@@ -190,7 +190,7 @@ static graph FC_Global_MobSkillHandler {
         //检测技能特效是否命中目标
         for i, player in GetAllPlayers() {
             if (Math.Distance(player<Player>.Position, position) <= scale) {
-                TakeDamage(player as entity<Combatable>, nil, DamageType.Monster, skillDamage)
+                Offline.DealDamage(player as entity<Combatable>, nil, DamageType.Monster, skillDamage)
             }
         }
 
@@ -198,13 +198,13 @@ static graph FC_Global_MobSkillHandler {
         WaitForMillisecond(1000)
         for i, player in GetAllPlayers() {
             if (Math.Distance(player<Player>.Position, position) <= scale) {
-                TakeDamage(player as entity<Combatable>, nil, DamageType.Monster, Floor(1.0*skillDamage*dotDamageScale))
+                Offline.DealDamage(player as entity<Combatable>, nil, DamageType.Monster, Floor(1.0*skillDamage*dotDamageScale))
             }
         }   
         WaitForMillisecond(1000)
         for i, player in GetAllPlayers() {
             if (Math.Distance(player<Player>.Position, position) <= scale) {
-                TakeDamage(player as entity<Combatable>, nil, DamageType.Monster, Floor(1.0*skillDamage*dotDamageScale))
+                Offline.DealDamage(player as entity<Combatable>, nil, DamageType.Monster, Floor(1.0*skillDamage*dotDamageScale))
             }
         }   
 

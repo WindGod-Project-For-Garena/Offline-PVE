@@ -1647,6 +1647,7 @@
         "id": "sSS0OsMf",
         "component": "xbt-base-node",
         "data": {},
+        "zIndex": 22,
         "ports": {
           "groups": {
             "in": {
@@ -1773,8 +1774,7 @@
               "id": "7483ffc5-2492-4c49-8378-928b50b1dd2d"
             }
           ]
-        },
-        "zIndex": 22
+        }
       },
       {
         "position": {
@@ -1790,6 +1790,7 @@
         "id": "P7VbTB6R",
         "component": "xbt-base-node",
         "data": {},
+        "zIndex": 23,
         "ports": {
           "groups": {
             "in": {
@@ -1887,8 +1888,7 @@
               "id": "cbc20031-235d-4e71-b3e6-78d18bfda595"
             }
           ]
-        },
-        "zIndex": 23
+        }
       },
       {
         "shape": "edge",
@@ -1899,6 +1899,7 @@
           }
         },
         "id": "42043a07-da4c-4d33-b0ac-ba775fc285b6",
+        "zIndex": 24,
         "source": {
           "cell": "OGKL54xM",
           "port": "0be61ace-370f-4f2e-aeb4-381ee8871e39"
@@ -1906,8 +1907,7 @@
         "target": {
           "cell": "sSS0OsMf",
           "port": "de6e19e4-6c71-41f6-b209-4aa811a87e59"
-        },
-        "zIndex": 24
+        }
       },
       {
         "shape": "edge",
@@ -1918,6 +1918,7 @@
           }
         },
         "id": "e7fc334e-986d-405c-af9d-57444db80f53",
+        "zIndex": 25,
         "source": {
           "cell": "sSS0OsMf",
           "port": "e589f4f4-4ffb-459e-9606-ee1ca5eb21af"
@@ -1925,8 +1926,7 @@
         "target": {
           "cell": "P7VbTB6R",
           "port": "cbc20031-235d-4e71-b3e6-78d18bfda595"
-        },
-        "zIndex": 25
+        }
       },
       {
         "shape": "edge",
@@ -1937,6 +1937,7 @@
           }
         },
         "id": "4d34d56c-97b2-442e-b39e-5dfcc8c36d7e",
+        "zIndex": 26,
         "source": {
           "cell": "OGKL54xM",
           "port": "a4486594-7b22-4753-b39d-491dad7f5e6a"
@@ -1944,8 +1945,7 @@
         "target": {
           "cell": "gE96KDHw",
           "port": "3fce3bca-6363-41cb-82a5-068dd7478454"
-        },
-        "zIndex": 26
+        }
       },
       {
         "shape": "edge",
@@ -1956,6 +1956,7 @@
           }
         },
         "id": "25c2e9ca-586b-4d40-b082-a238aa8d700c",
+        "zIndex": 27,
         "source": {
           "cell": "OGKL54xM",
           "port": "81f7fd49-c464-401e-b0cd-366aed8c3578"
@@ -1963,8 +1964,7 @@
         "target": {
           "cell": "C5KuCy44",
           "port": "9860e99f-bc0d-4853-8519-eb522959a939"
-        },
-        "zIndex": 27
+        }
       }
     ]
   },
@@ -1999,8 +1999,14 @@
                   "_entityId": "P7VbTB6R",
                   "children": [],
                   "prefabVariant": null,
-                  "activeValue": null,
-                  "unlockedValue": null,
+                  "activeValue": {
+                    "selfValue": true,
+                    "valueTag": "activeValue"
+                  },
+                  "unlockedValue": {
+                    "selfValue": true,
+                    "valueTag": "unlockedValue"
+                  },
                   "editorLockValue": false,
                   "editorVisibleValue": true,
                   "ecaScripts": [
@@ -2031,8 +2037,14 @@
                 }
               ],
               "prefabVariant": null,
-              "activeValue": null,
-              "unlockedValue": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
               "editorLockValue": false,
               "editorVisibleValue": true,
               "ecaScripts": [
@@ -2293,8 +2305,8 @@
                             "varArr": [
                               {
                                 "name": "CD",
-                                "type": "String",
-                                "val": "5000"
+                                "type": "Int",
+                                "val": 5000
                               },
                               {
                                 "name": "Range",
@@ -2543,8 +2555,14 @@
               "_entityId": "P7VbTB6R",
               "children": [],
               "prefabVariant": null,
-              "activeValue": null,
-              "unlockedValue": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
               "editorLockValue": false,
               "editorVisibleValue": true,
               "ecaScripts": [
@@ -2575,8 +2593,14 @@
             }
           ],
           "prefabVariant": null,
-          "activeValue": null,
-          "unlockedValue": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
           "editorLockValue": false,
           "editorVisibleValue": true,
           "ecaScripts": [
@@ -2837,8 +2861,8 @@
                         "varArr": [
                           {
                             "name": "CD",
-                            "type": "String",
-                            "val": "5000"
+                            "type": "Int",
+                            "val": 5000
                           },
                           {
                             "name": "Range",
@@ -3037,6 +3061,134 @@
           "gE96KDHw",
           "C5KuCy44"
         ]
+      }
+    },
+    "sSS0OsMf": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "sSS0OsMf",
+      "children": [
+        {
+          "_entityName": "XBTEntity",
+          "_tag": {
+            "type": "XBTEntity"
+          },
+          "_entityId": "P7VbTB6R",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "ecaScripts": [
+            {
+              "fileId": "h6iwem40a3-mj8cyk4e-ml748g7h5o",
+              "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_IsActive.fcg",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "ugcscript"
+            }
+          ],
+          "x": 937.0363159179688,
+          "y": -344.146240234375,
+          "width": 180,
+          "height": 88,
+          "nodeInfo": {
+            "type": "condition",
+            "name": "IsActive",
+            "id": "P7VbTB6R",
+            "varArr": [],
+            "ecaScript": null,
+            "iscustom": true,
+            "desc": "",
+            "icon": "General_Customize_20",
+            "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+          }
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        null
+      ],
+      "x": 584.17919921875,
+      "y": -361.2890930175781,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "composite",
+        "name": "Sequence",
+        "id": "sSS0OsMf",
+        "keyName": "Sequence",
+        "desc": "FE_42_JH_WS_EXSEQUENCE",
+        "varArr": [],
+        "in": null,
+        "icon": "General_Sequence_20",
+        "out": [
+          "P7VbTB6R"
+        ]
+      }
+    },
+    "P7VbTB6R": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "P7VbTB6R",
+      "children": [],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        {
+          "fileId": "h6iwem40a3-mj8cyk4e-ml748g7h5o",
+          "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_IsActive.fcg",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "ugcscript"
+        }
+      ],
+      "x": 937.0363159179688,
+      "y": -344.146240234375,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "condition",
+        "name": "IsActive",
+        "id": "P7VbTB6R",
+        "varArr": [],
+        "ecaScript": null,
+        "iscustom": true,
+        "desc": "",
+        "icon": "General_Customize_20",
+        "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
       }
     },
     "gE96KDHw": {
@@ -3362,8 +3514,8 @@
                     "varArr": [
                       {
                         "name": "CD",
-                        "type": "String",
-                        "val": "5000"
+                        "type": "Int",
+                        "val": 5000
                       },
                       {
                         "name": "Range",
@@ -3632,8 +3784,8 @@
                 "varArr": [
                   {
                     "name": "CD",
-                    "type": "String",
-                    "val": "5000"
+                    "type": "Int",
+                    "val": 5000
                   },
                   {
                     "name": "Range",
@@ -3862,8 +4014,8 @@
             "varArr": [
               {
                 "name": "CD",
-                "type": "String",
-                "val": "5000"
+                "type": "Int",
+                "val": 5000
               },
               {
                 "name": "Range",
@@ -4001,8 +4153,8 @@
         "varArr": [
           {
             "name": "CD",
-            "type": "String",
-            "val": "5000"
+            "type": "Int",
+            "val": 5000
           },
           {
             "name": "Range",
@@ -4066,117 +4218,7 @@
         "icon": "General_Customize_20",
         "fileId": "tbdwluazbo-mj73d2uh-9j2rdg9gy89"
       }
-    },
-    "sSS0OsMf": {
-      "_entityName": "XBTEntity",
-      "_tag": {
-        "type": "XBTEntity"
-      },
-      "_entityId": "sSS0OsMf",
-      "children": [
-        {
-          "_entityName": "XBTEntity",
-          "_tag": {
-            "type": "XBTEntity"
-          },
-          "_entityId": "P7VbTB6R",
-          "children": [],
-          "prefabVariant": null,
-          "activeValue": null,
-          "unlockedValue": null,
-          "editorLockValue": false,
-          "editorVisibleValue": true,
-          "ecaScripts": [
-            {
-              "fileId": "h6iwem40a3-mj8cyk4e-ml748g7h5o",
-              "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_IsActive.fcg",
-              "_tag": {
-                "type": "GFileRefer"
-              },
-              "fileType": "ugcscript"
-            }
-          ],
-          "x": 937.0363159179688,
-          "y": -344.146240234375,
-          "width": 180,
-          "height": 88,
-          "nodeInfo": {
-            "type": "condition",
-            "name": "IsActive",
-            "id": "P7VbTB6R",
-            "varArr": [],
-            "ecaScript": null,
-            "iscustom": true,
-            "desc": "",
-            "icon": "General_Customize_20",
-            "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
-          }
-        }
-      ],
-      "prefabVariant": null,
-      "activeValue": null,
-      "unlockedValue": null,
-      "editorLockValue": false,
-      "editorVisibleValue": true,
-      "ecaScripts": [
-        null
-      ],
-      "x": 584.17919921875,
-      "y": -361.2890930175781,
-      "width": 180,
-      "height": 88,
-      "nodeInfo": {
-        "type": "composite",
-        "name": "Sequence",
-        "id": "sSS0OsMf",
-        "keyName": "Sequence",
-        "desc": "FE_42_JH_WS_EXSEQUENCE",
-        "varArr": [],
-        "in": null,
-        "icon": "General_Sequence_20",
-        "out": [
-          "P7VbTB6R"
-        ]
-      }
-    },
-    "P7VbTB6R": {
-      "_entityName": "XBTEntity",
-      "_tag": {
-        "type": "XBTEntity"
-      },
-      "_entityId": "P7VbTB6R",
-      "children": [],
-      "prefabVariant": null,
-      "activeValue": null,
-      "unlockedValue": null,
-      "editorLockValue": false,
-      "editorVisibleValue": true,
-      "ecaScripts": [
-        {
-          "fileId": "h6iwem40a3-mj8cyk4e-ml748g7h5o",
-          "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_IsActive.fcg",
-          "_tag": {
-            "type": "GFileRefer"
-          },
-          "fileType": "ugcscript"
-        }
-      ],
-      "x": 937.0363159179688,
-      "y": -344.146240234375,
-      "width": 180,
-      "height": 88,
-      "nodeInfo": {
-        "type": "condition",
-        "name": "IsActive",
-        "id": "P7VbTB6R",
-        "varArr": [],
-        "ecaScript": null,
-        "iscustom": true,
-        "desc": "",
-        "icon": "General_Customize_20",
-        "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
-      }
     }
   }
 }
-//"{FE:{"v":"0.2.4086894","c":{"FF":5001},"s":100}
+//"{FE:{"v":"0.2.4097690","c":{"FF":5001},"s":100}

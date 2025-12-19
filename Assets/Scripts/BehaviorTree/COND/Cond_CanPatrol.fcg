@@ -14,9 +14,10 @@ graph Script_1_ {
         
 
         GetNodeVariable(thisEntity<BevTreeCustomNode>,"CD",out var cd)
-        GetBlackboardValue(owner<BevTreeAttachableForClient>.AttachTarget,"LastPatrolTime",out var lastpatrolTime)
+        var lastpatrolTime int = owner<Mob>.StatusDic["LastPatrolTime"] as int
         if (lastpatrolTime == nil){
-            SetBlackboardValue(owner<BevTreeAttachableForClient>.AttachTarget,"LastPatrolTime",globalEntity<Global>.GameTimeCount)
+            owner<Mob>.StatusDic["LastPatrolTime"] = globalEntity<Global>.GameTimeCount
+            //SetBlackboardValue(owner<BevTreeAttachableForClient>.AttachTarget,"LastPatrolTime",globalEntity<Global>.GameTimeCount)
             //LogInfo("can patrol: first time")
             return true
         }
@@ -26,7 +27,8 @@ graph Script_1_ {
             //LogInfo("can patrol: not time to patrol")
             return false
         }else {
-            SetBlackboardValue(owner<BevTreeAttachableForClient>.AttachTarget,"LastPatrolTime",globalEntity<Global>.GameTimeCount)
+            owner<Mob>.StatusDic["LastPatrolTime"] = globalEntity<Global>.GameTimeCount
+            //SetBlackboardValue(owner<BevTreeAttachableForClient>.AttachTarget,"LastPatrolTime",globalEntity<Global>.GameTimeCount)
             //LogInfo("can patrol: time to patrol")
             return true
         }

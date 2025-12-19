@@ -52,12 +52,13 @@ graph FC_NormalZombie {
 			"IsShield": true, //是否持有盾牌
 			"ShieldHP": 1000, //盾牌血量
 			"ShieldMaxHP": 1000, //盾牌最大血量
+			"LastAttackTime": globalEntity<Global>.GameTimeCount,
 		}
 
 		thisEntity<Mob>.DetectRange = 30
         var nowTime int = globalEntity<Global>.GameTimeCount
-		SetBlackboardValue(thisEntity<BevTreeAttachableForClient>.AttachTarget, "LastAttackTime", nowTime)
-		SetBlackboardValue(thisEntity<BevTreeAttachableForClient>.AttachTarget, "Curstate", 0)
+		LogInfo("set LastAttackTime: " + nowTime)
+		//SetBlackboardValue(thisEntity<BevTreeAttachableForClient>.AttachTarget, "Curstate", 0)
 		WaitForMillisecond(2000)
 		//DispatchEventWithPlatform_Deprecated(100002, thisEntity, true, List<object>{thisEntity<CustomComponent31897461>.ZombieInfo["InitSpeed"]})
 		
@@ -75,7 +76,7 @@ graph FC_NormalZombie {
 		//LogInfo("盾牌僵尸开始冲击技能")
 		var curTarget = thisEntity<Mob>.CurrTarget
 		// 重置碰撞检测状态
-		SetBlackboardValue(thisEntity<BevTreeAttachableForClient>.AttachTarget, "HasHitTarget", false)
+		//SetBlackboardValue(thisEntity<BevTreeAttachableForClient>.AttachTarget, "HasHitTarget", false)
 		// 计算冲击方向
 		var currPos Vector3 = TargetEntity<Transform>.Position
 		var targetOffset Vector3 = Vector3{Math.RandomFloat(-0.8, 0.8), 0, Math.RandomFloat(-0.8, 0.8)}
@@ -132,7 +133,7 @@ graph FC_NormalZombie {
 				// 命中玩家，造成伤害和击退效果
 				if !hasHit {
 					//LogInfo("触发伤害，距离: " + currentDistance)
-					TakeDamage(target as entity<Combatable>, nil, DamageType.Monster, GetDamage() * 2) // 技能双倍伤害
+					Offline.DealDamage(target as entity<Combatable>, nil, DamageType.Monster, GetDamage() * 2) // 技能双倍伤害
 					// 添加击退效果
 					hasHit = true
 					
@@ -196,7 +197,7 @@ graph FC_NormalZombie {
 		//	//LogInfo("curTarget: " + curTarget as entity<Player><Player>.Position)
 			if (curTarget != nil && (Distance(curTarget as entity<Player><Player>.Position, thisEntity as entity<LevelObject><Transform>.Position) <= 1.5)) {		
 				
-				TakeDamage(curTarget as entity<Combatable>, nil, DamageType.Monster, GetDamage())
+				Offline.DealDamage(curTarget as entity<Combatable>, nil, DamageType.Monster, GetDamage())
 			}
 		} else if (attackName == "NormalAttack2") {
 			

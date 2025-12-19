@@ -10,7 +10,7 @@ graph Script_1_ {
     //Executed when entity is created
    
     func PlayCondition(owner entity<BevTreeAttachableForClient>) bool{
-        
+        //LogInfo("playCondition: CanMove")
         var target entity<Player> = owner<Mob>.CurrTarget
        
         if (target == nil){

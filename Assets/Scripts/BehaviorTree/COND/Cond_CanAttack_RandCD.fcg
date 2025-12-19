@@ -22,7 +22,7 @@ graph Script_1_ {
     func playCondition(owner entity<BevTreeAttachableForClient>) bool{
         //LogInfo("playCondition: CanAttack")
         GetNodeVariable(thisEntity<BevTreeCustomNode>,"CD",out var cd)
-        GetBlackboardValue(owner<BevTreeAttachableForClient>.AttachTarget,"LastAttackTime",out var LastAttackTime)
+        var LastAttackTime int = owner<Mob>.StatusDic["LastAttackTime"] as int
         if (LastAttackTime == nil){
             var realCD = cd as int
             nextTime = Math.Ceil(globalEntity<Global>.GameTimeCount + RandomFloat(1,2) * realCD)

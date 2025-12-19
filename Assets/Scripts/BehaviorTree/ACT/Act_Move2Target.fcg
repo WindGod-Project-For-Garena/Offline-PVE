@@ -43,7 +43,7 @@ graph FC_Act_Move2Target {
 			PlayAnimation(owner as entity<AnimationControllerAttachable>, "Idle", 1, LoopType.Once)
 			inAnimation = false
 			owner<mobComponent>.StopMoveTween()
-			LogInfo("finish walk animation: no target")
+			//LogInfo("finish walk animation: no target")
 			return BevTreeNodeStatus.Finish
 		}
 		
@@ -55,6 +55,7 @@ graph FC_Act_Move2Target {
 		Dist = Magnitude(sub)
 		if (Dist <= KeepDist) {
 			PlayAnimation(owner as entity<AnimationControllerAttachable>, "Idle", 1, LoopType.Once)
+			//LogInfo("Move2Target Finish: close to target")
 			return BevTreeNodeStatus.Finish
 		}
 		
@@ -65,7 +66,7 @@ graph FC_Act_Move2Target {
 		var detectRange float = owner<Mob>.DetectRange
 		var chasingRange float = detectRange + 2.0
 		if (Dist > chasingRange) {
-			LogInfo("finish chase: out of chasing range")
+			//LogInfo("finish chase: out of chasing range")
 			PlayAnimation(owner as entity<AnimationControllerAttachable>, "Idle", 1, LoopType.Once)
 			return BevTreeNodeStatus.Finish
 		}
@@ -76,32 +77,45 @@ graph FC_Act_Move2Target {
 		//间隔更新寻路,放了一点随机数
 		if ((gameTime - LastFindPathTime) > currTargetFindingInterval) {
 			//----这里检测没有排除玩家---//---场景的基础块也不可以更改层级---//
+			//LogInfo("update target pos")
 			LastFindPathTime = gameTime
 			currTargetFindingInterval = Ceil(basicTargetFindingInterval * Math.RandomFloat(0.75, 1.25))
 			var offset Vector3 = Vector3{Math.RandomFloat(-0.8,0.8),0.5,Math.RandomFloat(-0.8,0.8)}
-			SingleRaycast((curTarget<Player>.Position + offset), Vector3{0,-3,0}, 5, List<int>{}, false, out var hitEntities, out var hitPoint, out var hitDistances, out var hitNormals)
+			SingleRaycast((curTarget<Player>.Position + offset), Vector3{0,-3,0}, 5, List<int>{0}, false, out var hitEntities, out var hitPoint, out var hitDistances, out var hitNormals)
+			
 			TargetPos = hitPoint
 			sub = TargetPos - currPos
 			normalizeDir = Normalize(sub)
 			var Speed float = owner<Mob>.WalkSpeed
 			var velocity Vector3 = normalizeDir * Speed
 			Dist = Magnitude(sub)
+			// LogInfo("hitentities: " + hitEntities)
+			// LogInfo("currPos: " + currPos)
+			// LogInfo("hitpoint: " + hitPoint)
+			// LogInfo("KeepDist: " + KeepDist)
+			// LogInfo("Dist: " + Dist)
+			
+			// LogInfo("---------------------------------")
 			if (Dist <= KeepDist) {
 				//LogInfo("finish walk animation: close to targetPos")
+				//LogInfo("Move2Target Finish: close to target")
 				return BevTreeNodeStatus.Finish
 			}
 
 			PVEUtilities.myLookAt(owner<Transform>, curTarget, TargetPos)
 			//移动到下一个寻路点
+			//LogInfo("create move tween: " + velocity)
 			owner<mobComponent>.CreateMoveTween(velocity)
 			
 		}
+		//LogInfo("gameTime - LastFindPathTime: " + (gameTime - LastFindPathTime))
 		return BevTreeNodeStatus.Running
 
 	}
 
 	//eventID: 18//s8004_dup_block //先nodeenter,再playaction，再nodeexit
 	event OnNodeEnterForClient(nodeName string, owner entity<BevTreeAttachableForClient>) {
+		LogInfo("OnNodeEnter: Move2Target")
 		var Speed float = owner<Mob>.WalkSpeed
 		currTargetFindingInterval = Ceil(basicTargetFindingInterval * Math.RandomFloat(0.75, 1.25))
 		//LogInfo("Speed: " + Speed)
@@ -111,10 +125,10 @@ graph FC_Act_Move2Target {
 		if (!inAnimation) {
 			inAnimation = true
 			if Speed <= 1.5 {
-				LogInfo("play walk animation")
+				//LogInfo("play walk animation")
 				PlayAnimation(owner as entity<AnimationControllerAttachable>, "Walk", 1, LoopType.Loop)
 			} else {
-				LogInfo("play run animation")
+				//LogInfo("play run animation")
 				PlayAnimation(owner as entity<AnimationControllerAttachable>, "Run", 1, LoopType.Loop)
 			}
 		}
@@ -122,6 +136,7 @@ graph FC_Act_Move2Target {
 	}
 
 	event OnNodeExitForClient(nodeName string, owner entity<BevTreeAttachableForClient>) {
+		//LogInfo("OnNodeExit: Move2Target")
 		owner<mobComponent>.StopMoveTween()
 		inAnimation = false
 		PlayAnimation(owner as entity<AnimationControllerAttachable>, "Idle", 1, LoopType.Loop)

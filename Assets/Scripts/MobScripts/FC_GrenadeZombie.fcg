@@ -43,11 +43,11 @@ graph FC_NormalZombie {
         thisEntity<Mob>.Damage = 10
 		thisEntity<Mob>.HateGainInterval = 3000
 		thisEntity<Mob>.StatusDic = Map<string, object>{
+			"LastAttackTime": globalEntity<Global>.GameTimeCount,
 		}
 		thisEntity<Mob>.DetectRange = 30
         var nowTime int = globalEntity<Global>.GameTimeCount
-		SetBlackboardValue(thisEntity<BevTreeAttachableForClient>.AttachTarget, "LastAttackTime", nowTime)
-		SetBlackboardValue(thisEntity<BevTreeAttachableForClient>.AttachTarget, "Curstate", 0)
+		//SetBlackboardValue(thisEntity<BevTreeAttachableForClient>.AttachTarget, "Curstate", 0)
 
 		//WaitForMillisecond(2000)
 		

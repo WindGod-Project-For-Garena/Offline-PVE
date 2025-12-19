@@ -4,7 +4,7 @@
     "cells": [
       {
         "position": {
-          "x": -70,
+          "x": -110,
           "y": -40
         },
         "size": {
@@ -118,7 +118,7 @@
       },
       {
         "position": {
-          "x": 170,
+          "x": 150,
           "y": -80
         },
         "size": {
@@ -241,7 +241,7 @@
                   "fill": "var(--t15)"
                 }
               },
-              "id": "0be61ace-370f-4f2e-aeb4-381ee8871e39"
+              "id": "ea5f8e9c-5e91-4ef1-8d08-9b8ad450708b"
             },
             {
               "group": "out",
@@ -257,7 +257,7 @@
                   "fill": "var(--t15)"
                 }
               },
-              "id": "81f7fd49-c464-401e-b0cd-366aed8c3578"
+              "id": "9a16e906-66b2-428a-ac3a-8a7c970d7c48"
             },
             {
               "group": "out",
@@ -273,7 +273,7 @@
                   "fill": "var(--t15)"
                 }
               },
-              "id": "405a0b51-87cd-4413-8568-ff8a68809545"
+              "id": "3d165226-dcde-4f24-88b5-0b6b42ad109f"
             },
             {
               "group": "out",
@@ -289,7 +289,7 @@
                   "fill": "var(--t15)"
                 }
               },
-              "id": "0955d5ca-44a2-48ea-ad76-198192f52ac1"
+              "id": "6d97c851-6bb1-406e-b821-14104fddeaff"
             },
             {
               "group": "out",
@@ -302,7 +302,7 @@
                   "text": "out"
                 }
               },
-              "id": "7e8f3f43-1909-4c7f-bf01-bf06efd94518"
+              "id": "565e87f3-1093-4f6a-ba67-fea71133a623"
             }
           ]
         }
@@ -2327,7 +2327,7 @@
         "shape": "edge",
         "attrs": {
           "line": {
-            "stroke": "var(--t13)",
+            "stroke": "var(--t11)",
             "strokeWidth": 1
           }
         },
@@ -2610,8 +2610,8 @@
       },
       {
         "position": {
-          "x": 1670,
-          "y": 760
+          "x": 1680,
+          "y": 770
         },
         "size": {
           "width": 180,
@@ -3009,8 +3009,8 @@
       },
       {
         "position": {
-          "x": 510,
-          "y": -330
+          "x": 540,
+          "y": -380
         },
         "size": {
           "width": 180,
@@ -3021,6 +3021,7 @@
         "id": "bn00eJ6f",
         "component": "xbt-base-node",
         "data": {},
+        "zIndex": 42,
         "ports": {
           "groups": {
             "in": {
@@ -3147,13 +3148,12 @@
               "id": "ccb5788e-e764-47d4-b832-04cf241636e2"
             }
           ]
-        },
-        "zIndex": 42
+        }
       },
       {
         "position": {
-          "x": 841.1035766601562,
-          "y": -402.8857116699219
+          "x": 1020,
+          "y": -490
         },
         "size": {
           "width": 180,
@@ -3164,6 +3164,7 @@
         "id": "xoBpEQD8",
         "component": "xbt-base-node",
         "data": {},
+        "zIndex": 43,
         "ports": {
           "groups": {
             "in": {
@@ -3261,8 +3262,7 @@
               "id": "f05cef97-e2f5-4f29-9ca8-ad1630cd362a"
             }
           ]
-        },
-        "zIndex": 43
+        }
       },
       {
         "shape": "edge",
@@ -3272,35 +3272,16 @@
             "strokeWidth": 1
           }
         },
-        "id": "fdfebc3f-fb83-467e-b3e4-018d8675c212",
-        "source": {
-          "cell": "bn00eJ6f",
-          "port": "189a6dde-87db-462c-9329-ec92f689ef33"
-        },
-        "target": {
-          "cell": "xoBpEQD8",
-          "port": "f05cef97-e2f5-4f29-9ca8-ad1630cd362a"
-        },
-        "zIndex": 44
-      },
-      {
-        "shape": "edge",
-        "attrs": {
-          "line": {
-            "stroke": "var(--t11)",
-            "strokeWidth": 1
-          }
-        },
-        "id": "9f4b6b32-3c3d-4bcf-819d-73d9b0924486",
+        "id": "73e908a3-f927-4f6b-8644-c7b1a31952de",
         "source": {
           "cell": "OGKL54xM",
-          "port": "0be61ace-370f-4f2e-aeb4-381ee8871e39"
+          "port": "ea5f8e9c-5e91-4ef1-8d08-9b8ad450708b"
         },
         "target": {
           "cell": "bn00eJ6f",
           "port": "3771581b-c560-4de2-b229-6f1290928667"
         },
-        "zIndex": 45
+        "zIndex": 49
       },
       {
         "shape": "edge",
@@ -3310,16 +3291,16 @@
             "strokeWidth": 1
           }
         },
-        "id": "6d8e2737-a3df-4c5e-b57c-1564705ac32a",
+        "id": "f9a9e058-3db4-4b8d-a95c-1bb467f2a3bb",
         "source": {
           "cell": "OGKL54xM",
-          "port": "81f7fd49-c464-401e-b0cd-366aed8c3578"
+          "port": "9a16e906-66b2-428a-ac3a-8a7c970d7c48"
         },
         "target": {
           "cell": "gE96KDHw",
           "port": "3fce3bca-6363-41cb-82a5-068dd7478454"
         },
-        "zIndex": 46
+        "zIndex": 50
       },
       {
         "shape": "edge",
@@ -3329,16 +3310,16 @@
             "strokeWidth": 1
           }
         },
-        "id": "eca04f53-48c0-4340-9362-4783ba11cb3e",
+        "id": "f80637b7-e3c5-49f2-b546-ef3a56cfd489",
         "source": {
           "cell": "OGKL54xM",
-          "port": "405a0b51-87cd-4413-8568-ff8a68809545"
+          "port": "3d165226-dcde-4f24-88b5-0b6b42ad109f"
         },
         "target": {
           "cell": "C5KuCy44",
           "port": "9860e99f-bc0d-4853-8519-eb522959a939"
         },
-        "zIndex": 47
+        "zIndex": 51
       },
       {
         "shape": "edge",
@@ -3348,16 +3329,184 @@
             "strokeWidth": 1
           }
         },
-        "id": "513a3f21-e179-42f5-8ab7-aaa2cc0870d2",
+        "id": "7d056b6e-6574-4d48-85f1-6e681a8d4c81",
         "source": {
           "cell": "OGKL54xM",
-          "port": "0955d5ca-44a2-48ea-ad76-198192f52ac1"
+          "port": "6d97c851-6bb1-406e-b821-14104fddeaff"
         },
         "target": {
           "cell": "mTc4pqCB",
           "port": "b4c51284-f80e-4d98-8c5e-517c6ea6ccc2"
         },
-        "zIndex": 48
+        "zIndex": 52
+      },
+      {
+        "position": {
+          "x": 740,
+          "y": -480
+        },
+        "size": {
+          "width": 180,
+          "height": 88
+        },
+        "view": "vue-shape-view",
+        "shape": "vue-shape",
+        "id": "y2e7zZBA",
+        "component": "xbt-base-node",
+        "data": {},
+        "ports": {
+          "groups": {
+            "in": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "inVal": {
+              "position": "left",
+              "label": {
+                "position": "right"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "out": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--bg5)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            },
+            "outVal": {
+              "position": "absolute",
+              "label": {
+                "position": "left"
+              },
+              "attrs": {
+                "circle": {
+                  "r": 4,
+                  "magnet": true,
+                  "stroke": "var(--t15)",
+                  "strokeWidth": 1,
+                  "fill": "var(--t15)"
+                },
+                "text": {
+                  "fill": "var(--t15)",
+                  "fontSize": 12
+                }
+              }
+            }
+          },
+          "items": [
+            {
+              "group": "in",
+              "args": {
+                "dx": 8,
+                "dy": 25
+              },
+              "attrs": {
+                "text": {
+                  "text": "in"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "56921b0d-0b55-40ce-b979-3db22b75daef"
+            },
+            {
+              "group": "out",
+              "args": {
+                "x": 172,
+                "y": 69
+              },
+              "attrs": {
+                "text": {
+                  "text": "out"
+                },
+                "circle": {
+                  "fill": "var(--t15)"
+                }
+              },
+              "id": "2488fb44-a9cc-46aa-a0f6-7915a571fe8a"
+            }
+          ]
+        },
+        "zIndex": 53
+      },
+      {
+        "shape": "edge",
+        "attrs": {
+          "line": {
+            "stroke": "var(--t11)",
+            "strokeWidth": 1
+          }
+        },
+        "id": "efeeb75c-2e1e-4ab3-bc3d-105c5e201174",
+        "source": {
+          "cell": "bn00eJ6f",
+          "port": "189a6dde-87db-462c-9329-ec92f689ef33"
+        },
+        "target": {
+          "cell": "y2e7zZBA",
+          "port": "56921b0d-0b55-40ce-b979-3db22b75daef"
+        },
+        "zIndex": 54
+      },
+      {
+        "shape": "edge",
+        "attrs": {
+          "line": {
+            "stroke": "var(--t11)",
+            "strokeWidth": 1
+          }
+        },
+        "id": "b815b1fd-215e-44db-bbb8-e5b3feda936c",
+        "source": {
+          "cell": "y2e7zZBA",
+          "port": "2488fb44-a9cc-46aa-a0f6-7915a571fe8a"
+        },
+        "target": {
+          "cell": "xoBpEQD8",
+          "port": "f05cef97-e2f5-4f29-9ca8-ad1630cd362a"
+        },
+        "zIndex": 55
       }
     ]
   },
@@ -3389,43 +3538,87 @@
                   "_tag": {
                     "type": "XBTEntity"
                   },
-                  "_entityId": "xoBpEQD8",
-                  "children": [],
+                  "_entityId": "y2e7zZBA",
+                  "children": [
+                    {
+                      "_entityName": "XBTEntity",
+                      "_tag": {
+                        "type": "XBTEntity"
+                      },
+                      "_entityId": "xoBpEQD8",
+                      "children": [],
+                      "prefabVariant": null,
+                      "activeValue": {
+                        "selfValue": true,
+                        "valueTag": "activeValue"
+                      },
+                      "unlockedValue": {
+                        "selfValue": true,
+                        "valueTag": "unlockedValue"
+                      },
+                      "editorLockValue": false,
+                      "editorVisibleValue": true,
+                      "ecaScripts": [
+                        {
+                          "fileId": "h6iwem40a3-mj8cyk4e-ml748g7h5o",
+                          "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_IsActive.fcg",
+                          "_tag": {
+                            "type": "GFileRefer"
+                          },
+                          "fileType": "ugcscript"
+                        }
+                      ],
+                      "x": 841.1035766601562,
+                      "y": -402.8857116699219,
+                      "width": 180,
+                      "height": 88,
+                      "nodeInfo": {
+                        "type": "condition",
+                        "name": "IsActive",
+                        "id": "xoBpEQD8",
+                        "varArr": [],
+                        "ecaScript": null,
+                        "iscustom": true,
+                        "desc": "",
+                        "icon": "General_Customize_20",
+                        "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+                      }
+                    }
+                  ],
                   "prefabVariant": null,
                   "activeValue": null,
                   "unlockedValue": null,
                   "editorLockValue": false,
                   "editorVisibleValue": true,
                   "ecaScripts": [
-                    {
-                      "fileId": "h6iwem40a3-mj8cyk4e-ml748g7h5o",
-                      "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_IsActive.fcg",
-                      "_tag": {
-                        "type": "GFileRefer"
-                      },
-                      "fileType": "ugcscript"
-                    }
+                    null
                   ],
-                  "x": 841.1035766601562,
-                  "y": -402.8857116699219,
+                  "x": 687.0111694335938,
+                  "y": -449.0971984863281,
                   "width": 180,
                   "height": 88,
                   "nodeInfo": {
-                    "type": "condition",
-                    "name": "IsActive",
-                    "id": "xoBpEQD8",
+                    "type": "decorator",
+                    "name": "Inverter",
+                    "id": "y2e7zZBA",
+                    "keyName": "Inverter",
+                    "desc": "FE_42_JH_WS_INVERTER",
                     "varArr": [],
-                    "ecaScript": null,
-                    "iscustom": true,
-                    "desc": "",
-                    "icon": "General_Customize_20",
-                    "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+                    "in": null,
+                    "icon": "General_Inverter_20",
+                    "out": "xoBpEQD8"
                   }
                 }
               ],
               "prefabVariant": null,
-              "activeValue": null,
-              "unlockedValue": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
               "editorLockValue": false,
               "editorVisibleValue": true,
               "ecaScripts": [
@@ -3445,7 +3638,7 @@
                 "in": null,
                 "icon": "General_Sequence_20",
                 "out": [
-                  "xoBpEQD8"
+                  "y2e7zZBA"
                 ]
               }
             },
@@ -3686,8 +3879,8 @@
                             "varArr": [
                               {
                                 "name": "CD",
-                                "type": "String",
-                                "val": "3000"
+                                "type": "Int",
+                                "val": 3000
                               },
                               {
                                 "name": "Range",
@@ -3906,7 +4099,7 @@
                         "varArr": [
                           {
                             "name": "KeepDist",
-                            "type": "Int",
+                            "type": "Float",
                             "val": 1
                           }
                         ],
@@ -4342,43 +4535,87 @@
               "_tag": {
                 "type": "XBTEntity"
               },
-              "_entityId": "xoBpEQD8",
-              "children": [],
+              "_entityId": "y2e7zZBA",
+              "children": [
+                {
+                  "_entityName": "XBTEntity",
+                  "_tag": {
+                    "type": "XBTEntity"
+                  },
+                  "_entityId": "xoBpEQD8",
+                  "children": [],
+                  "prefabVariant": null,
+                  "activeValue": {
+                    "selfValue": true,
+                    "valueTag": "activeValue"
+                  },
+                  "unlockedValue": {
+                    "selfValue": true,
+                    "valueTag": "unlockedValue"
+                  },
+                  "editorLockValue": false,
+                  "editorVisibleValue": true,
+                  "ecaScripts": [
+                    {
+                      "fileId": "h6iwem40a3-mj8cyk4e-ml748g7h5o",
+                      "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_IsActive.fcg",
+                      "_tag": {
+                        "type": "GFileRefer"
+                      },
+                      "fileType": "ugcscript"
+                    }
+                  ],
+                  "x": 841.1035766601562,
+                  "y": -402.8857116699219,
+                  "width": 180,
+                  "height": 88,
+                  "nodeInfo": {
+                    "type": "condition",
+                    "name": "IsActive",
+                    "id": "xoBpEQD8",
+                    "varArr": [],
+                    "ecaScript": null,
+                    "iscustom": true,
+                    "desc": "",
+                    "icon": "General_Customize_20",
+                    "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+                  }
+                }
+              ],
               "prefabVariant": null,
               "activeValue": null,
               "unlockedValue": null,
               "editorLockValue": false,
               "editorVisibleValue": true,
               "ecaScripts": [
-                {
-                  "fileId": "h6iwem40a3-mj8cyk4e-ml748g7h5o",
-                  "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_IsActive.fcg",
-                  "_tag": {
-                    "type": "GFileRefer"
-                  },
-                  "fileType": "ugcscript"
-                }
+                null
               ],
-              "x": 841.1035766601562,
-              "y": -402.8857116699219,
+              "x": 687.0111694335938,
+              "y": -449.0971984863281,
               "width": 180,
               "height": 88,
               "nodeInfo": {
-                "type": "condition",
-                "name": "IsActive",
-                "id": "xoBpEQD8",
+                "type": "decorator",
+                "name": "Inverter",
+                "id": "y2e7zZBA",
+                "keyName": "Inverter",
+                "desc": "FE_42_JH_WS_INVERTER",
                 "varArr": [],
-                "ecaScript": null,
-                "iscustom": true,
-                "desc": "",
-                "icon": "General_Customize_20",
-                "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+                "in": null,
+                "icon": "General_Inverter_20",
+                "out": "xoBpEQD8"
               }
             }
           ],
           "prefabVariant": null,
-          "activeValue": null,
-          "unlockedValue": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
           "editorLockValue": false,
           "editorVisibleValue": true,
           "ecaScripts": [
@@ -4398,7 +4635,7 @@
             "in": null,
             "icon": "General_Sequence_20",
             "out": [
-              "xoBpEQD8"
+              "y2e7zZBA"
             ]
           }
         },
@@ -4639,8 +4876,8 @@
                         "varArr": [
                           {
                             "name": "CD",
-                            "type": "String",
-                            "val": "3000"
+                            "type": "Int",
+                            "val": 3000
                           },
                           {
                             "name": "Range",
@@ -4859,7 +5096,7 @@
                     "varArr": [
                       {
                         "name": "KeepDist",
-                        "type": "Int",
+                        "type": "Float",
                         "val": 1
                       }
                     ],
@@ -5573,8 +5810,8 @@
                     "varArr": [
                       {
                         "name": "CD",
-                        "type": "String",
-                        "val": "3000"
+                        "type": "Int",
+                        "val": 3000
                       },
                       {
                         "name": "Range",
@@ -5843,8 +6080,8 @@
                 "varArr": [
                   {
                     "name": "CD",
-                    "type": "String",
-                    "val": "3000"
+                    "type": "Int",
+                    "val": 3000
                   },
                   {
                     "name": "Range",
@@ -6073,8 +6310,8 @@
             "varArr": [
               {
                 "name": "CD",
-                "type": "String",
-                "val": "3000"
+                "type": "Int",
+                "val": 3000
               },
               {
                 "name": "Range",
@@ -6212,8 +6449,8 @@
         "varArr": [
           {
             "name": "CD",
-            "type": "String",
-            "val": "3000"
+            "type": "Int",
+            "val": 3000
           },
           {
             "name": "Range",
@@ -6331,7 +6568,7 @@
                 "varArr": [
                   {
                     "name": "KeepDist",
-                    "type": "Int",
+                    "type": "Float",
                     "val": 1
                   }
                 ],
@@ -6732,7 +6969,7 @@
             "varArr": [
               {
                 "name": "KeepDist",
-                "type": "Int",
+                "type": "Float",
                 "val": 1
               }
             ],
@@ -6866,7 +7103,7 @@
         "varArr": [
           {
             "name": "KeepDist",
-            "type": "Int",
+            "type": "Float",
             "val": 1
           }
         ],
@@ -7450,11 +7687,177 @@
           "_tag": {
             "type": "XBTEntity"
           },
-          "_entityId": "xoBpEQD8",
-          "children": [],
+          "_entityId": "y2e7zZBA",
+          "children": [
+            {
+              "_entityName": "XBTEntity",
+              "_tag": {
+                "type": "XBTEntity"
+              },
+              "_entityId": "xoBpEQD8",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": true,
+              "ecaScripts": [
+                {
+                  "fileId": "h6iwem40a3-mj8cyk4e-ml748g7h5o",
+                  "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_IsActive.fcg",
+                  "_tag": {
+                    "type": "GFileRefer"
+                  },
+                  "fileType": "ugcscript"
+                }
+              ],
+              "x": 841.1035766601562,
+              "y": -402.8857116699219,
+              "width": 180,
+              "height": 88,
+              "nodeInfo": {
+                "type": "condition",
+                "name": "IsActive",
+                "id": "xoBpEQD8",
+                "varArr": [],
+                "ecaScript": null,
+                "iscustom": true,
+                "desc": "",
+                "icon": "General_Customize_20",
+                "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+              }
+            }
+          ],
           "prefabVariant": null,
           "activeValue": null,
           "unlockedValue": null,
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "ecaScripts": [
+            null
+          ],
+          "x": 687.0111694335938,
+          "y": -449.0971984863281,
+          "width": 180,
+          "height": 88,
+          "nodeInfo": {
+            "type": "decorator",
+            "name": "Inverter",
+            "id": "y2e7zZBA",
+            "keyName": "Inverter",
+            "desc": "FE_42_JH_WS_INVERTER",
+            "varArr": [],
+            "in": null,
+            "icon": "General_Inverter_20",
+            "out": "xoBpEQD8"
+          }
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        null
+      ],
+      "x": 628.2464599609375,
+      "y": -288.6000061035156,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "composite",
+        "name": "Sequence",
+        "id": "bn00eJ6f",
+        "keyName": "Sequence",
+        "desc": "FE_42_JH_WS_EXSEQUENCE",
+        "varArr": [],
+        "in": null,
+        "icon": "General_Sequence_20",
+        "out": [
+          "y2e7zZBA"
+        ]
+      }
+    },
+    "xoBpEQD8": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "xoBpEQD8",
+      "children": [],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        {
+          "fileId": "h6iwem40a3-mj8cyk4e-ml748g7h5o",
+          "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_IsActive.fcg",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "ugcscript"
+        }
+      ],
+      "x": 841.1035766601562,
+      "y": -402.8857116699219,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "condition",
+        "name": "IsActive",
+        "id": "xoBpEQD8",
+        "varArr": [],
+        "ecaScript": null,
+        "iscustom": true,
+        "desc": "",
+        "icon": "General_Customize_20",
+        "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+      }
+    },
+    "y2e7zZBA": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "y2e7zZBA",
+      "children": [
+        {
+          "_entityName": "XBTEntity",
+          "_tag": {
+            "type": "XBTEntity"
+          },
+          "_entityId": "xoBpEQD8",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
           "editorLockValue": false,
           "editorVisibleValue": true,
           "ecaScripts": [
@@ -7492,62 +7895,22 @@
       "ecaScripts": [
         null
       ],
-      "x": 628.2464599609375,
-      "y": -288.6000061035156,
+      "x": 687.0111694335938,
+      "y": -449.0971984863281,
       "width": 180,
       "height": 88,
       "nodeInfo": {
-        "type": "composite",
-        "name": "Sequence",
-        "id": "bn00eJ6f",
-        "keyName": "Sequence",
-        "desc": "FE_42_JH_WS_EXSEQUENCE",
+        "type": "decorator",
+        "name": "Inverter",
+        "id": "y2e7zZBA",
+        "keyName": "Inverter",
+        "desc": "FE_42_JH_WS_INVERTER",
         "varArr": [],
         "in": null,
-        "icon": "General_Sequence_20",
-        "out": [
-          "xoBpEQD8"
-        ]
-      }
-    },
-    "xoBpEQD8": {
-      "_entityName": "XBTEntity",
-      "_tag": {
-        "type": "XBTEntity"
-      },
-      "_entityId": "xoBpEQD8",
-      "children": [],
-      "prefabVariant": null,
-      "activeValue": null,
-      "unlockedValue": null,
-      "editorLockValue": false,
-      "editorVisibleValue": true,
-      "ecaScripts": [
-        {
-          "fileId": "h6iwem40a3-mj8cyk4e-ml748g7h5o",
-          "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_IsActive.fcg",
-          "_tag": {
-            "type": "GFileRefer"
-          },
-          "fileType": "ugcscript"
-        }
-      ],
-      "x": 841.1035766601562,
-      "y": -402.8857116699219,
-      "width": 180,
-      "height": 88,
-      "nodeInfo": {
-        "type": "condition",
-        "name": "IsActive",
-        "id": "xoBpEQD8",
-        "varArr": [],
-        "ecaScript": null,
-        "iscustom": true,
-        "desc": "",
-        "icon": "General_Customize_20",
-        "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+        "icon": "General_Inverter_20",
+        "out": "xoBpEQD8"
       }
     }
   }
 }
-//"{FE:{"v":"0.2.4086894","c":{"FF":5001},"s":100}
+//"{FE:{"v":"0.2.4106985","c":{"FF":5001},"s":100}

@@ -103,14 +103,6 @@ static graph FC_PVEMonsterManager {
                 rowValue = rowV as int
             }
             
-           // LogInfo("rowValue: " + rowValue)
-            //LogInfo(GetType(rowValue))
-            // LogInfo(math.Round(level))
-            // LogInfo(math.Round(rowValue as int))
-
-            //LogInfo(rowValue == level) 
-
-
             if level == rowValue {
      
                 var rowInfo List<object> = ReadCSVRow(EResCSV.LevelConfig,i+1)
@@ -224,7 +216,7 @@ static graph FC_PVEMonsterManager {
         currSpawnerIndex = currSpawnerIndex + 1
         //start SpawnBossLoop(bossQueue,currSpawnerIndex)
         start SpawnEliteLoop(eliteQueue,currSpawnerIndex)
-        start SpawnNormalLoop(normalQueue,currSpawnerIndex)
+        //start SpawnNormalLoop(normalQueue,currSpawnerIndex)
         
         LogInfo("波次怪物生成循环已启动")
     }
@@ -620,6 +612,7 @@ static graph FC_PVEMonsterManager {
     
     func OnMonsterKilled(monster entity<LevelObject>) {
         if monster != nil {
+            LogInfo("-------------------------OnMonsterKilled-------------------------")
             SetParentClient(PendingRemoveMonsterParentNode<Transform>, monster<Transform>, true)
             list.Remove(ActiveMonsters, monster)
             list.Remove(ActivenNormalMonsters, monster)
@@ -662,7 +655,9 @@ static graph FC_PVEMonsterManager {
     }
 
     func OnMonsterKilledAnimationFinished(monster entity<LevelObject>) {
+        LogInfo("-------------------------Destroy Monster 1-------------------------")
         if monster != nil {
+            LogInfo("-------------------------Destroy Monster 2-------------------------")
             start myDestroyMonster(monster)
         }
     }
@@ -675,7 +670,10 @@ static graph FC_PVEMonsterManager {
 
 
     async func myDestroyMonster(monster entity<LevelObject>) {
+        
+        LogInfo("monster: " + monster)
         if monster != nil {
+            LogInfo("-------------------------Destroy Monster 3-------------------------")
             CreateFromPrefab(out var effect, EResPrefab.ElemationAsh)
             effect<Transform>.Position = monster<Transform>.Position - Vector3{0,0.3,0}
           

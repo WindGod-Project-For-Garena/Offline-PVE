@@ -7,7 +7,8 @@ import "BehaviourTree.fcc" as BehaviourTree
 graph FC_Cond_IsDead {
     //Executed when entity is created
 
-    func PlayConditon(Owner entity<BevTreeAttachableForClient>) bool {
-		return (Owner<Mob>.IsActive)
+  func PlayConditon(Owner entity<BevTreeAttachableForClient>) bool {
+     // LogInfo("PlayConditon: IsActive:" + Owner<Mob>.IsActive)
+      return (Owner<Mob>.IsActive)
 	}
 }
