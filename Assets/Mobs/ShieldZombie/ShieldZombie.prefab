@@ -56,8 +56,8 @@
         "Collider",
         "AimableEntity",
         "AimAssistEntity",
-        "BehaviourTreeAttachable",
-        "CustomComponent59601760"
+        "CustomComponent59601760",
+        "BehaviourTreeAttachableForClient"
       ],
       "_filters": [
         "node.withscript"
@@ -113,14 +113,6 @@
       },
       "isCreateAsEmpty": false,
       "ecaScripts": [
-        {
-          "fileId": "rdz6enlxwg-mhx0f7w7-uosx5i7m1dq",
-          "filePath": "Assets\\Scripts\\MobScripts\\C_ShieldZombie.fcg",
-          "_tag": {
-            "type": "GFileRefer"
-          },
-          "fileType": "ugcscript"
-        },
         {
           "fileId": "td52wdweqp-mhx0owvz-zo0etcr6638",
           "filePath": "Assets\\Scripts\\MobScripts\\FC_ShieldZombie.fcg",
@@ -199,7 +191,18 @@
           "PROP_90540570": null,
           "PROP_42420456": 0,
           "PROP_26191266": null,
-          "PROP_56442283": 0
+          "PROP_56442283": 0,
+          "PROP_36359999": false
+        },
+        "BehaviourTreeAttachableForClient": {
+          "BTreeID": {
+            "fileId": "b94ktsgyrxo-mj8ej3sl-61ebgmd8jvq",
+            "filePath": "Assets\\Mobs\\ShieldZombie\\N_ShieldZombie.xbt",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "xbt"
+          }
         }
       },
       "entityVersion": 3,
@@ -302,7 +305,7 @@
             "editorLockValue": false,
             "editorVisibleValue": true,
             "groupId": "",
-            "enable": true,
+            "enable": false,
             "_entityName": "ShieldZombie"
           },
           {
@@ -381,11 +384,11 @@
             "editorLockValue": false,
             "editorVisibleValue": true,
             "groupId": "",
-            "enable": true,
-            "_entityName": "ShieldZombie_Iron"
+            "enable": false,
+            "_entityName": "Shield"
           },
           {
-            "_entityName": "Appearance Group",
+            "_entityName": "ShieldZombie_Gold",
             "_tag": {
               "type": "BoneMeshGroupEntity"
             },
@@ -420,8 +423,16 @@
                 "outwardType": 0,
                 "materials": [
                   {
-                    "fileId": "enfw3mhyq35-m1keu9zg-b2wmxtkxvsd",
-                    "filePath": "Assets\\ZombieAsset\\ShieldZombie\\Materials\\ShieldZombie.mat",
+                    "fileId": "cf6org3ajah-mjgs3uka-9ivgvn18dzj",
+                    "filePath": "Assets\\Mobs\\ShieldZombie\\Materials\\ShieldZombie (1).mat",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "material"
+                  },
+                  {
+                    "fileId": "cf6org3ajah-mjgs3uka-9ivgvn18dzj",
+                    "filePath": "Assets\\Mobs\\ShieldZombie\\Materials\\ShieldZombie (1).mat",
                     "_tag": {
                       "type": "GFileRefer"
                     },
@@ -459,7 +470,7 @@
             "editorLockValue": false,
             "editorVisibleValue": true,
             "groupId": "",
-            "enable": true
+            "enable": false
           }
         ],
         "prefabVariant": null,
@@ -529,4 +540,4 @@
   "discriminator": "ISceneLike",
   "_entityName": "ShieldZombie"
 }
-//"{FE:{"v":"0.2.4081265","c":{"FF":5001},"s":100}
+//"{FE:{"v":"0.2.4113096","c":{"FF":5001},"s":100}

@@ -188,7 +188,7 @@
       },
       "isLoop": true,
       "DisableChanged": false,
-      "_entityName": "Idle_noShield",
+      "_entityName": "Idle_NoShield",
       "eventFrameGroup": {
         "_tag": {
           "type": "ACLayerEntity",
@@ -435,14 +435,47 @@
       "editorVisibleValue": true,
       "isLoop": false,
       "DisableChanged": false,
-      "_entityName": "ShieldZombie_Attack2",
+      "_entityName": "NormalAttack_NoShield",
       "eventFrameGroup": {
         "_tag": {
           "type": "ACLayerEntity",
           "resourceId": ""
         },
         "_entityId": "R6gkdd9z",
-        "children": [],
+        "children": [
+          {
+            "_entityName": "",
+            "_tag": {
+              "type": "EventFrameEntity"
+            },
+            "_entityId": "aqzypYBt",
+            "children": [],
+            "prefabVariant": null,
+            "activeValue": null,
+            "unlockedValue": null,
+            "editorLockValue": false,
+            "editorVisibleValue": true,
+            "from": "ACState",
+            "FrameIndex": 22,
+            "EventFrameName": "Event Frame 1",
+            "startTime": 0.733,
+            "EventList": [
+              {
+                "eventKeyValue": "AnimationControllerAble::signal_40948046",
+                "paramList": [
+                  {
+                    "type": "String",
+                    "label": "attackName",
+                    "newValue": "NormalAttack_NoShield"
+                  }
+                ],
+                "hideParam": false
+              }
+            ],
+            "dsada": "Sphere",
+            "enable": false
+          }
+        ],
         "prefabVariant": null,
         "activeValue": {
           "selfValue": true,
@@ -915,7 +948,7 @@
       },
       "isLoop": false,
       "DisableChanged": false,
-      "_entityName": "Run_noShield",
+      "_entityName": "Run_NoShield",
       "eventFrameGroup": {
         "_tag": {
           "type": "ACLayerEntity",
@@ -1121,7 +1154,7 @@
       },
       "isLoop": false,
       "DisableChanged": false,
-      "_entityName": "Walk_noShield",
+      "_entityName": "Walk_NoShield",
       "eventFrameGroup": {
         "_tag": {
           "type": "ACLayerEntity",
@@ -1706,7 +1739,7 @@
       "editorVisibleValue": true,
       "isLoop": false,
       "DisableChanged": false,
-      "_entityName": "Dead_noShield",
+      "_entityName": "Dead_NoShield",
       "eventFrameGroup": {
         "_tag": {
           "type": "ACLayerEntity",
@@ -1936,6 +1969,60 @@
         "DisableChanged": false
       },
       "_eventFrameList": []
+    },
+    {
+      "_entityName": "test",
+      "_tag": {
+        "type": "ACStateEntity"
+      },
+      "_entityId": "ufcQlJG2",
+      "children": [
+        {
+          "_entityName": "Base Layer",
+          "_tag": {
+            "type": "ACLayerEntity"
+          },
+          "_entityId": "BjU234SI",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": null,
+          "unlockedValue": null,
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "isLoop": false,
+          "isBaseLayer": true,
+          "mute": false,
+          "bodypartId": null,
+          "DisableChanged": false
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": null,
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "isLoop": false,
+      "_eventFrameList": [],
+      "eventFrameGroup": {
+        "_entityName": "",
+        "_tag": {
+          "type": "ACEventFrameGroup"
+        },
+        "_entityId": "eSRBnzf9",
+        "children": [],
+        "prefabVariant": null,
+        "activeValue": null,
+        "unlockedValue": null,
+        "editorLockValue": false,
+        "editorVisibleValue": true,
+        "DisableChanged": false
+      },
+      "selectedBodyparts": [],
+      "muteEvent": false,
+      "DisableChanged": false
     }
   ],
   "prefabVariant": null,
@@ -1960,4 +2047,4 @@
     "fileType": "fbx"
   }
 }
-//"{FE:{"v":"1.15.4049104","c":{"FF":5001},"s":100}
+//"{FE:{"v":"0.2.4113096","c":{"FF":5001},"s":100}

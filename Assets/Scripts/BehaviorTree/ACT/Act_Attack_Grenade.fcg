@@ -3,7 +3,7 @@ import "StdLibrary.fcc" as StdLib
 import "EditorGenLib.fcc" as EditorLib
 import "BehaviourTree.fcc" as BehaviourTree
 import "Math.fcc" as Math
-import "../../MobScripts/FC_GrenadeZombie.fcg" as garenadeZombie
+import "../../MobScripts/GrenadeZombie.fcg" as garenadeZombie
 import "../../Static/FC_Utilities.fcg" as Utilities
 
 [platform_client]
@@ -14,38 +14,32 @@ graph Script_1_ {
  
     event OnNodeEnterForClient(nodeName string, owner entity<BevTreeAttachableForClient>) {
         //var attackScale = owner<ZombieCom>.ZombieInfo["LeftAttackSPDScale"] as float
-        //LogInfo("OnNodeEnter: Attack")
+        LogInfo("OnNodeEnter: Attack")
+        owner<Mob>.StatusDic["InAttack"] = true
+        GetNodeVariable(thisEntity<BevTreeCustomNode>,"AttackName",out var attackName)
         var attackScale float= 1
-        GetNodeVariable(thisEntity<BevTreeCustomNode>,"Duration",out var duration)
+        var duration int = owner<Mob>.StatusDic["Duration_" + attackName] as int
         _Duration = Ceil(duration as int * attackScale)
+
         var curTarget entity<Player> = owner<Mob>.CurrTarget
         Utilities.myLookAt(owner<Transform>,curTarget as entity<Player>,Vector3{0,0,0})
         _AttackBeginTime = globalEntity<Global>.GameTimeCount
-        owner<Mob>.StatusDic["LastAttackTime"] = _AttackBeginTime
+        owner<Mob>.StatusDic["LastAttackTime_" + attackName] = _AttackBeginTime
         //SetBlackboardValue(owner<BevTreeAttachableForClient>.AttachTarget,"LastAttackTime",_AttackBeginTime)
         var attackspeed float = 1.0/attackScale
-        PlayAnimation(owner<AnimationControllerAttachable>,"Attack",attackspeed,LoopType.Once)
+        PlayAnimation(owner<AnimationControllerAttachable>,attackName,attackspeed,LoopType.Once)
         owner<garenadeZombie>.startGarenadeSkill()
     }
     func PlayAction(owner entity<BevTreeAttachableForClient>) BevTreeNodeStatus{
-        LogInfo("PlayAction: Attack2")
+        //LogInfo("PlayAction: Attack2")
         if(globalEntity<Global>.GameTimeCount >= _AttackBeginTime+_Duration){
             return BevTreeNodeStatus.Finish
         }else{
             return BevTreeNodeStatus.Running
         }
     }
-    func IsInRange(mob entity<Transform>,player1 entity<Player>,range1 float) bool{
-        var zombiePos = mob<Transform>.Position
-        var playerPos = player1<Player>.Position
-   
-        if (Distance(zombiePos,playerPos) <= range1) {
-            return true
-        }else{
-            return false
-        }
-    }
     event OnNodeExitForClient(nodeName string, owner entity<BevTreeAttachableForClient>) {
         //LogInfo("OnNodeExit: Attack")
+        owner<Mob>.StatusDic["InAttack"] = false
     }
 }

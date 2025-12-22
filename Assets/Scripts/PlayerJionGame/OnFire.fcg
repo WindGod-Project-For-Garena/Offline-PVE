@@ -225,7 +225,7 @@ graph OnFire {
         if hitEntity != nil{
             var hitEntityPosition = hitEntity<Transform>.Position
             ReleasedEffectPosition = hitEntityPosition
-            LogInfo("命中实体: " + hitEntity + ", 命中实体位置: " + ReleasedEffectPosition)
+           // LogInfo("命中实体: " + hitEntity + ", 命中实体位置: " + ReleasedEffectPosition)
         } else {
             return
         }

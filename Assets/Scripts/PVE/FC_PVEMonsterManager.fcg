@@ -612,7 +612,7 @@ static graph FC_PVEMonsterManager {
     
     func OnMonsterKilled(monster entity<LevelObject>) {
         if monster != nil {
-            LogInfo("-------------------------OnMonsterKilled-------------------------")
+            //LogInfo("-------------------------OnMonsterKilled-------------------------")
             SetParentClient(PendingRemoveMonsterParentNode<Transform>, monster<Transform>, true)
             list.Remove(ActiveMonsters, monster)
             list.Remove(ActivenNormalMonsters, monster)
@@ -655,9 +655,9 @@ static graph FC_PVEMonsterManager {
     }
 
     func OnMonsterKilledAnimationFinished(monster entity<LevelObject>) {
-        LogInfo("-------------------------Destroy Monster 1-------------------------")
+        //LogInfo("-------------------------Destroy Monster 1-------------------------")
         if monster != nil {
-            LogInfo("-------------------------Destroy Monster 2-------------------------")
+            //LogInfo("-------------------------Destroy Monster 2-------------------------")
             start myDestroyMonster(monster)
         }
     }
@@ -671,9 +671,9 @@ static graph FC_PVEMonsterManager {
 
     async func myDestroyMonster(monster entity<LevelObject>) {
         
-        LogInfo("monster: " + monster)
+       // LogInfo("monster: " + monster)
         if monster != nil {
-            LogInfo("-------------------------Destroy Monster 3-------------------------")
+            //LogInfo("-------------------------Destroy Monster 3-------------------------")
             CreateFromPrefab(out var effect, EResPrefab.ElemationAsh)
             effect<Transform>.Position = monster<Transform>.Position - Vector3{0,0.3,0}
           

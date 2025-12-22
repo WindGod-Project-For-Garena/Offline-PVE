@@ -22,25 +22,14 @@ graph FC_ZombieComponent {
 
 		var endPos Vector3 = thisEntity<Transform>.Position + vectorToTarget
 		//如果射綫打到更近，则换endPos和duration -- 后续制作，需要配合场景的层级更好实现
-		//SingleRaycast(thisEntity<Transform>.Position + verticalOffset, velocity, 5, List<int>{}, false, out var hitEntities, out var hitPoint, out var hitDistances, out var hitNormals)
-		
-		
-		// if hitPoint != nil && hitDistances[0] < Magnitude(endPos - thisEntity<Transform>.Position) {
-		// 	endPos = hitPoint
-		// 	tweenDuration = hitDistances[0] * 1000
-		// }
+
 
 		if moveTween != nil{
 			//LogInfo("create move tween: " + endPos + "currPostion" + thisEntity<Transform>.Position)
 			moveTween<Tween>.Duration = tweenDuration
 			moveTween<Tween>.EndValue = endPos
 			moveTween<Tween>.StartValue = thisEntity<Transform>.Position
-			// CreateFromPrefab(out var ballEntity,EResPrefab.trackBall)
-			// ballEntity<Transform>.Position = endPos
-			// CreateFromPrefab(out var ballentity2,EResPrefab.trackBall)
-			// ballentity2<Transform>.Position = thisEntity<Transform>.Position
-			// start destroyTrackBall(ballEntity as entity<LevelObject>)
-			// start destroyTrackBall(ballentity2 as entity<LevelObject>)
+
 
 
 			Play(moveTween,true)
@@ -49,12 +38,6 @@ graph FC_ZombieComponent {
 			CreateTween(thisEntity,Transform.Position,thisEntity<Transform>.Position,
 				endPos,TweenStyle.Once,CreateCurve({0.25, 0.1, 0.25, 1}),tweenDuration,out var tweenEntity,true)
 			moveTween = tweenEntity
-			// CreateFromPrefab(out var ballEntity,EResPrefab.trackBall)
-			// ballEntity<Transform>.Position = endPos
-			// CreateFromPrefab(out var ballentity2,EResPrefab.trackBall)
-			// ballentity2<Transform>.Position = thisEntity<Transform>.Position
-			// start destroyTrackBall(ballEntity as entity<LevelObject>)
-			// start destroyTrackBall(ballentity2 as entity<LevelObject>)
 		
 		}
 	}

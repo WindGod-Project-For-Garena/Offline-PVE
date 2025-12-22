@@ -12,11 +12,10 @@ graph FC_Act_Idle {
 
     event OnNodeEnterForClient(nodeName string, owner entity<BevTreeAttachableForClient>) {
         if owner<Mob>.StatusDic["IsShield"] as bool {
-            PlayAnimation(owner<AnimationControllerAttachable>,"Idle_Shield",1,LoopType.Loop)
-        } else {
             PlayAnimation(owner<AnimationControllerAttachable>,"Idle",1,LoopType.Loop)
+        } else {
+            PlayAnimation(owner<AnimationControllerAttachable>,"Idle_NoShield",1,LoopType.Loop)
         }
-        PlayAnimation(owner<AnimationControllerAttachable>,"Idle",1,LoopType.Loop)
     }
     func PlayAction(owner entity<BevTreeAttachableForClient>) BevTreeNodeStatus{
         return BevTreeNodeStatus.Running

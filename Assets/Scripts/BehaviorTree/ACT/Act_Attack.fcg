@@ -15,20 +15,22 @@ graph Script_1_ {
     event OnNodeEnterForClient(nodeName string, owner entity<BevTreeAttachableForClient>) {
         //var attackScale = owner<ZombieCom>.ZombieInfo["LeftAttackSPDScale"] as float
         // LogInfo("Action OnNodeEnter: Attack")
-        var attackScale float= 0.5
-        GetNodeVariable(thisEntity<BevTreeCustomNode>,"Duration",out var duration)
+        owner<Mob>.StatusDic["InAttack"] = true
+        GetNodeVariable(thisEntity<BevTreeCustomNode>,"AttackName",out var attackName) 
+
+        var duration = owner<Mob>.StatusDic["Duration_" + attackName] as int
+        var attackScale float= 1
         _Duration = Ceil(duration as int * attackScale)
         var curTarget entity<Player> = owner<Mob>.CurrTarget
 
         _AttackBeginTime = globalEntity<Global>.GameTimeCount
 
-        owner<Mob>.StatusDic["LastAttackTime"] = _AttackBeginTime
+        owner<Mob>.StatusDic["LastAttackTime_" + attackName] = _AttackBeginTime
         //SetBlackboardValue(owner<BevTreeAttachableForClient>.AttachTarget,"LastAttackTime",_AttackBeginTime)
         var attackspeed float = 1.0/attackScale
         //LogInfo("OnNodeEnter: Attack curTarget: " + curTarget)
         Utilities.myLookAt(owner<Transform>,curTarget as entity<Player>,Vector3{0, 0, 0})
-
-        PlayAnimation(owner<AnimationControllerAttachable>,"Attack",attackspeed,LoopType.Once)
+        PlayAnimation(owner<AnimationControllerAttachable>,attackName,attackspeed,LoopType.Once)
     }
     func PlayAction(owner entity<BevTreeAttachableForClient>) BevTreeNodeStatus{
 
@@ -40,16 +42,8 @@ graph Script_1_ {
             return BevTreeNodeStatus.Running
         }
     }
-    func IsInRange(mob entity<Transform>,player1 entity<Player>,range1 float) bool{
-        var zombiePos = mob<Transform>.Position
-        var playerPos = player1<Player>.Position
-        if (Distance(zombiePos,playerPos) <= range1) {
-            return true
-        }else{
-            return false
-        }
-    }
     event OnNodeExitForClient(nodeName string, owner entity<BevTreeAttachableForClient>) {
         //LogInfo("OnNodeExit: Attack")
+        owner<Mob>.StatusDic["InAttack"] = false
     }
 }
