@@ -15,9 +15,10 @@ import "Convert.fcc" as Convert
 
 [platform_client]
 graph ChoiceOneOfThreeCard {
-
+   IsOver bool = false
    //选择卡牌1
    func Card_1(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+      if  IsOver == true { return }
       GetLocalPlayer()<PlayerJionGame>.NowChoiceCard = 1
       var ChoiceThreeCardUI = GetLocalPlayer()<PlayerJionGame>.ChoiceThreeCardUI
       // 设置卡牌1的图标
@@ -32,6 +33,7 @@ graph ChoiceOneOfThreeCard {
    
    //选择卡牌2
    func Card_2(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+      if  IsOver == true { return }
       GetLocalPlayer()<PlayerJionGame>.NowChoiceCard = 2
       var ChoiceThreeCardUI = GetLocalPlayer()<PlayerJionGame>.ChoiceThreeCardUI
       // 设置卡牌2的图标
@@ -46,6 +48,7 @@ graph ChoiceOneOfThreeCard {
 
    //选择卡牌3
    func Card_3(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+      if  IsOver == true { return }
       GetLocalPlayer()<PlayerJionGame>.NowChoiceCard = 3
       var ChoiceThreeCardUI = GetLocalPlayer()<PlayerJionGame>.ChoiceThreeCardUI
       // 设置卡牌3的图标
@@ -96,6 +99,8 @@ graph ChoiceOneOfThreeCard {
 //————————————————————————————————————————————————————————————————————————————————————————————————//
    //下一波开始
    async func NextWave(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+      if  IsOver == true { return }
+      IsOver = true
       var nowChoice = GetLocalPlayer()<PlayerJionGame>.NowChoiceCard
       if nowChoice == 0 {
          LogInfo("没有选择卡牌，无法开始下一波")
@@ -166,6 +171,8 @@ graph ChoiceOneOfThreeCard {
       
       // 调用Close函数更新技能数据
       CloseChooseCardUI(triggerPlayer)
+
+      IsOver = false
    }
 //————————————————————————————————————————————————————————————————————————————————————————————————//
 //————————————————————————————————————————————————————————————————————————————————————————————————//
