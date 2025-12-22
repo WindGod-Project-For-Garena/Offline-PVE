@@ -100,6 +100,7 @@ graph ChoiceOneOfThreeCard {
    //下一波开始
    async func NextWave(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
       if  IsOver == true { return }
+      WaitForNextFrame()
       IsOver = true
       var nowChoice = GetLocalPlayer()<PlayerJionGame>.NowChoiceCard
       if nowChoice == 0 {
@@ -169,8 +170,6 @@ graph ChoiceOneOfThreeCard {
       // 调用Close函数更新技能数据
       CloseChooseCardUI(triggerPlayer)
 
-      IsOver = false
-
       CreateBuiltInUIClient(out var createdEntity3, BuiltInUIType.OpeningBannerHud)
 		createdEntity3<UIOpeningBanner>.IsVisible = true
 		// createdEntity3<UIOpeningBanner>.Icon = "Assets/Textures/Icon/Icon_1.png"
@@ -182,6 +181,8 @@ graph ChoiceOneOfThreeCard {
 
       // 开始下一波事件
       PVEController.StartNextWave()
+
+      IsOver = false
    }
 //————————————————————————————————————————————————————————————————————————————————————————————————//
 //————————————————————————————————————————————————————————————————————————————————————————————————//

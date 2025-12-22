@@ -7,6 +7,7 @@ import "../CustomEvent.fcc" as CustomEvent
 import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
 import "Offline.fcc" as Offline
 import "Items.fcc" as Items
+import "Combat.fcc" as Combat
 
 [platform_client]
 graph Reload {
@@ -18,6 +19,9 @@ graph Reload {
         GetLocalPlayer()<PlayerJionGame>.AmmoJudgement = 0
         if (SkillIndex == 1) {
             Offline.AddItem(ItemIDType.SGAmmo, 5, out var createdEntity)
+            LogInfo(currPlayer)
+            LogInfo(currPlayer<Player>.Backpack)
+            LogInfo(currPlayer<Player>.MainWeapon)
         }
 
         if (SkillIndex == 2) {

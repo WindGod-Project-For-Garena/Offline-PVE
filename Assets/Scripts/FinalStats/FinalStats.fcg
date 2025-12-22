@@ -10,6 +10,7 @@ import "CSVData.fcc" as CSVData
 import "List.fcc" as List
 import "Convert.fcc" as Convert
 import "Strings.fcc" as strings
+import "Offline.fcc" as Offline
 import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
 
 [platform_client]
@@ -19,6 +20,7 @@ graph FinalStats {
         GameOverFinalUI<CustomUI>.IsVisible = false
         var ChoiceHeroUI = GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI
         ChoiceHeroUI<CustomUI>.IsVisible = true
+        Offline.Revive()
     }
     
     func ContinueGame(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
