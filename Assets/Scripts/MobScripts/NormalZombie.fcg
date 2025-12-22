@@ -8,17 +8,16 @@ import "Combat.fcc" as Combat
 import "../CustomEvent.fcc" as CustomEvent
 import "../PVE/FC_PVEMonsterManager.fcg" as PVEMonsterManager
 import "Offline.fcc" as Offline
+import "../C_HitBox.fcg" as HitBox
+import "Avatar.fcc" as Avatar
 
 [platform_client]
 graph FC_NormalZombie {
     //Executed when entity is created
     HeadShoted bool = false
 	LastHitPlayer entity<Player> = nil
-	moveTween entity<Tween> = nil
 	LastPos Vector3 = Vector3{0,0,0}
     tickInterval int = 1
-	tweenDuration float = 2000
-	counter int = 0
 	
 
 	event OnAwake() {
@@ -26,39 +25,43 @@ graph FC_NormalZombie {
         Init()
     }
 
+	event OnMobActived() {
+		WaitForMillisecond(1200)
+		//LogInfo("添加受击盒")
+		
+        CreateFromPrefab(out var headHitbox, EResPrefab.HitBox_Zombie_Head)
+		AddScript(headHitbox, EResFCG.C_HitBox)
+        SetParentClient(GetSkeletonPartByName(thisEntity, "bone_Head"), headHitbox<Transform>, false)
+		headHitbox<HitBox>.SetOwner(thisEntity, "Head")
+
+		AddScript(thisEntity, EResFCG.C_HitBox)
+		thisEntity<HitBox>.SetOwner(thisEntity, "Body")
+	}
+
 	//funcID: Init
 	async func Init() {
-		//CreateMoveTween(Vector3{0,0,0})
 		thisEntity<BevTreeAttachableForClient>.AttachTarget<BevTree>.TickInterval = tickInterval
-		thisEntity<Mob>.MobName = "NormalZombie"
-        thisEntity<Mob>.MaxHP = 600
-        thisEntity<Mob>.HP = 600
-        thisEntity<Mob>.WalkSpeed = 1.5
-        thisEntity<Mob>.Damage = 10
 		thisEntity<Mob>.HateGainInterval = 3000
-		thisEntity<Mob>.StatusDic = Map<string, object>{
-			"LastAttackTime": globalEntity<Global>.GameTimeCount,
-		}
 		thisEntity<Mob>.DetectRange = 30
-        // var nowTime int = globalEntity<Global>.GameTimeCount
-		// LogInfo("set LastAttackTime: " + nowTime)
-		// SetBlackboardValue(thisEntity<BevTreeAttachableForClient>.AttachTarget, "LastAttackTime", nowTime)
-		// GetBlackboardValue(thisEntity<BevTreeAttachableForClient>.AttachTarget, "LastAttackTime",out var LastAttackTime)
-		// LogInfo("get LastAttackTime: " + LastAttackTime)
-		SetBlackboardValue(thisEntity<BevTreeAttachableForClient>.AttachTarget, "Curstate", 0)
-		WaitForMillisecond(2000)
-		//DispatchEventWithPlatform_Deprecated(100002, thisEntity, true, List<object>{thisEntity<CustomComponent31897461>.ZombieInfo["InitSpeed"]})
+		thisEntity<Mob>.StatusDic = Map<string, object>{
+			"InAttack": false as bool,
+			"LastAttackTime_NormalAttack": globalEntity<Global>.GameTimeCount as int,
+			"CD_NormalAttack": 1500 as int,
+			"Duration_NormalAttack": 1350 as int,
+			"Range_NormalAttack": 1.2 as float,
+		}
 		
-        // for index3, element4 in GetAllPlayers() {
-        //     SetAttackableEntity(element4, thisEntity, 1)
-        // }
+
+
 	}
+	
+	
 
 
 
 	//eventID: 91//r;Zn+-uY8Ahq`0JH4Yr{ //animation
 	event MobAttackEvent_AC(attackName string) {
-		if (attackName == "NormalAttack1") {
+		if (attackName == "NormalAttack") {
 			//LogInfo("NormalAttack1")
 			var curTarget = thisEntity<Mob>.CurrTarget
 		//	LogInfo("curTarget: " + curTarget as entity<Player><Player>.Position)

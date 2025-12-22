@@ -22,8 +22,6 @@ graph FC_NormalZombie {
 	moveTween entity<Tween> = nil
 	LastPos Vector3 = Vector3{0,0,0}
     tickInterval int = 1
-	tweenDuration float = 1000
-	counter int = 0
 
 
 	hitPos Vector3 = Vector3{0,0,0}
@@ -42,18 +40,13 @@ graph FC_NormalZombie {
 	async func Init() {
 		//CreateMoveTween(Vector3{0,0,0})
 		thisEntity<BevTreeAttachableForClient>.AttachTarget<BevTree>.TickInterval = tickInterval
-		thisEntity<Mob>.MobName = "NormalZombie"
-        thisEntity<Mob>.MaxHP = 600
-        thisEntity<Mob>.HP = 600
-        thisEntity<Mob>.WalkSpeed = 1.5
-        thisEntity<Mob>.Damage = 10
 		thisEntity<Mob>.HateGainInterval = 3000
+		thisEntity<Mob>.DetectRange = 30
 		thisEntity<Mob>.StatusDic = Map<string, object>{
 			"LastAttackTime": globalEntity<Global>.GameTimeCount,
 		}
-		thisEntity<Mob>.DetectRange = 30
+		
         // var nowTime int = globalEntity<Global>.GameTimeCount
-		//SetBlackboardValue(thisEntity<BevTreeAttachableForClient>.AttachTarget, "Curstate", 0)
 		WaitForMillisecond(2000)
 		//DispatchEventWithPlatform_Deprecated(100002, thisEntity, true, List<object>{thisEntity<CustomComponent31897461>.ZombieInfo["InitSpeed"]})
 		
@@ -76,19 +69,19 @@ graph FC_NormalZombie {
 		var targetOffset Vector3 = Vector3{Math.RandomFloat(-0.8, 0.8), 0, Math.RandomFloat(-0.8, 0.8)}
 		var targetPosWithOffset = curTarget<Transform>.Position + targetOffset
 		// 射线检测确保目标位置有效
-		SingleRaycast(curTarget<Player>.Position + Vector3{0, 5, 0}, Vector3{0, -10, 0}, 10, List<int>{}, false, out var groundHitEntities, out var groundHitPoint, out var groundHitDistances, out var groundHitNormals)
+		SingleRaycast(curTarget<Player>.Position + Vector3{0, 5, 0}, Vector3{0, -10, 0}, 10, List<int>{0}, false, out var groundHitEntities, out var groundHitPoint, out var groundHitDistances, out var groundHitNormals)
 		TargetPos = groundHitPoint
 		var direction = Normalize(TargetPos - currPos)
 		direction.Y = 0 // 保持水平移动
 		// 先让怪物面向目标方向
 		PVEUtilities.myLookAt(TargetEntity<Transform>, curTarget, TargetPos)
 		// 地面播放开始时的预警特效
-		wait MobSkillHandler.GroundWrringEffect(TargetEntity)
+		wait MobSkillHandler.GroundWarningEffect(TargetEntity, 1000)
 		// 播放冲击动画
 		PlayAnimation(TargetEntity, "Run", 2.0, LoopType.Once)
 		// 计算冲击距离
 		// 射线检测前方障碍物
-		SingleRaycast(currPos, direction, skillRange, List<int>{}, false, out var hitEntities, out var hitPoint, out var hitDistances, out var hitNormals)
+		SingleRaycast(currPos, direction, skillRange,List<int>{0}, false, out var hitEntities, out var hitPoint, out var hitDistances, out var hitNormals)
 		var finalTargetPos Vector3        //最终目标位置
 		var hitObstacle bool = false      //是否碰到障碍物
 		if hitEntities != nil && hitEntities != curTarget {        // 有障碍物，冲击到障碍物前一点

@@ -10,18 +10,16 @@ import "../PVE/FC_PVEMonsterManager.fcg" as PVEMonsterManager
 import "Animation.fcc" as Animation
 import "Physics.fcc" as Physics
 import "../Global/FC_Global_MobSkillHandler.fcg" as MobSkillHandler
+import "../C_HitBox.fcg" as HitBox
+import "Avatar.fcc" as Avatar
 
 [platform_client]
 graph FC_NormalZombie {
     //Executed when entity is created
     HeadShoted bool = false
 	LastHitPlayer entity<Player> = nil
-	
 	hitPos Vector3 = Vector3{0,0,0}
     tickInterval int = 1
-	
-	counter int = 0
-	
 	preDisplayEffect entity<Effect> = nil
 
 
@@ -32,22 +30,28 @@ graph FC_NormalZombie {
         Init()
     }
 
+	event OnMobActived() {
+		CreateFromPrefab(out var headHitbox, EResPrefab.HitBox_GrenadeZombie_Head)
+		AddScript(headHitbox, EResFCG.C_HitBox)
+        SetParentClient(GetSkeletonPartByName(thisEntity, "bone_Head"), headHitbox<Transform>, false)
+		headHitbox<HitBox>.SetOwner(thisEntity, "Head")
+
+		AddScript(thisEntity, EResFCG.C_HitBox)
+		thisEntity<HitBox>.SetOwner(thisEntity, "Body")
+	}
+
 	//funcID: Init
 	async func Init() {
-		//CreateMoveTween(Vector3{0,0,0})
 		thisEntity<BevTreeAttachableForClient>.AttachTarget<BevTree>.TickInterval = tickInterval
-		thisEntity<Mob>.MobName = "NormalZombie"
-        thisEntity<Mob>.MaxHP = 600
-        thisEntity<Mob>.HP = 600
-        thisEntity<Mob>.WalkSpeed = 1.5
-        thisEntity<Mob>.Damage = 10
 		thisEntity<Mob>.HateGainInterval = 3000
-		thisEntity<Mob>.StatusDic = Map<string, object>{
-			"LastAttackTime": globalEntity<Global>.GameTimeCount,
-		}
 		thisEntity<Mob>.DetectRange = 30
-        var nowTime int = globalEntity<Global>.GameTimeCount
-		//SetBlackboardValue(thisEntity<BevTreeAttachableForClient>.AttachTarget, "Curstate", 0)
+		thisEntity<Mob>.StatusDic = Map<string, object>{
+			"InAttack": false as bool,
+			"LastAttackTime_NormalAttack": globalEntity<Global>.GameTimeCount as int,
+			"CD_NormalAttack": 3000 as int,
+			"Duration_NormalAttack": 1350 as int,
+			"Range_NormalAttack": 30.0 as float,//这里必须加小数点
+		}
 
 		//WaitForMillisecond(2000)
 		
@@ -59,8 +63,11 @@ graph FC_NormalZombie {
 	}
 	func startGarenadeSkill() {
 		var curTarget = thisEntity<Mob>.CurrTarget
-		SingleRaycast(curTarget<Player>.Position + Vector3{0,0.5,0}, Vector3{0,-3,0}, 5, List<int>{}, false, out var hitEntities, out var hitPoint, out var hitDistances, out var hitNormals)
+	//	LogInfo("startGarenadeSkill: curTarget: " + curTarget)
+		SingleRaycast(curTarget<Player>.Position + Vector3{0,0.5,0}, Vector3{0,-3,0}, 5, List<int>{0}, false, out var hitEntities, out var hitPoint, out var hitDistances, out var hitNormals)
 		hitPos = hitPoint+Vector3{0,0.05,0}
+	//	LogInfo("hitpoint:"+hitPos)
+		
 		start MobSkillHandler.displayWarningEffect_New(thisEntity as entity<Mob>,hitPos,1.5,1300)
 		//preDisplayEffect = MobSkillHandler.displayWarningEffect_New(thisEntity as entity<Mob>,hitPos,1.5,1300) as entity<Effect>
 	}
@@ -70,7 +77,7 @@ graph FC_NormalZombie {
 	event MobAttackEvent_AC(attackName string) {
 		var curTarget = thisEntity<Mob>.CurrTarget
 		var zombieName string = thisEntity<Mob>.MobName
-
+		LogInfo("MobAttackEvent_AC: attackName: " + attackName)
 		if (attackName == "NormalAttack") {
 			if (zombieName == "GrenadeZombie") {
 				start MobSkillHandler.releaseSkill_GrenadeZombieNormalAttack(thisEntity as entity<Mob>,hitPos,1.5)

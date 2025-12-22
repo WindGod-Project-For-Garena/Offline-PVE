@@ -6,13 +6,22 @@ import "Math.fcc" as Math
 [platform_client]
 graph Script_1_ {
     //Executed when entity is created
-    event OnAwake() {
+    /*ATTACK属性说明
+    AttackName:攻击的名称
 
+    存在StatusDic的属性：
+    CD_AttackName:攻击的CD
+    Range_AttackName:攻击的范围
+    Duration_AttackName:攻击的持续时间
+    LastAttackTime_AttackName:攻击的最后一次时间
+    */
+    event OnAwake() {
+        
     }
     func IsInRange(mob entity<Transform>,player1 entity<Player>,range1 float) bool{
         var zombiePos = mob<Transform>.Position
         var playerPos = player1<Player>.Position
-        LogInfo(Distance(zombiePos,playerPos))
+       // LogInfo(Distance(zombiePos,playerPos))
         if (Distance(zombiePos,playerPos) <= range1) {
             return true
         }else{
@@ -20,25 +29,39 @@ graph Script_1_ {
         }
     }
     func playCondition(owner entity<BevTreeAttachableForClient>) bool{
-        GetNodeVariable(thisEntity<BevTreeCustomNode>,"CD",out var cd)
-        var LastAttackTime int = owner<Mob>.StatusDic["LastAttackTime"] as int
-        if (LastAttackTime == nil){
+        if (owner<Mob>.StatusDic["InAttack"] as bool){
+            return false
+        }
+        GetNodeVariable(thisEntity<BevTreeCustomNode>,"AttackName",out var attackName)
+        var cd int = owner<Mob>.StatusDic["CD_" + attackName] as int
+        var range float = owner<Mob>.StatusDic["Range_" + attackName] as float
+        //LogInfo("playCondition: CanAttack range: " + range)
+        //var duration = owner<Mob>.StatusDic["Duration_" + attackName] as int
+        var lastAttackTime = owner<Mob>.StatusDic["LastAttackTime_" + attackName] as int
+        if (lastAttackTime == nil){
             return true
         }
-        //var realCD = Ceil(Floor(cd as int) * owner<ZombieCom>.ZombieInfo["LeftAttackSPDScale"] as float)
-        var realCD = cd as int
-        var nextTime = LastAttackTime as int + realCD
+
+        var nextTime = lastAttackTime as int + cd
         if (globalEntity<Global>.GameTimeCount < nextTime){
+            //LogInfo("playCondition: CanAttack globalEntity<Global>.GameTimeCount < nextTime")
             return false
         }
         
         var curTarget entity<Player> = owner<Mob>.CurrTarget
         if (curTarget == nil){
+            //LogInfo("playCondition: CanAttack curTarget == nil")
             return false
         }
-        GetNodeVariable(thisEntity<BevTreeCustomNode>,"Range",out var RangeX)
         var TempPlayer = curTarget as entity<Player>
-        var result = IsInRange(owner<Transform>,TempPlayer<Player>,RangeX as float)
+        var result = IsInRange(owner<Transform>,TempPlayer<Player>,range as float)
+        //LogInfo("playCondition: CanAttack result: " + result)
         return result
     }
+
+
+
+
+    
+    
 }

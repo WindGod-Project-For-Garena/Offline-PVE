@@ -12,53 +12,69 @@ import "../Global/FC_Global_MobSkillHandler.fcg" as MobSkillHandler
 import "Animation.fcc" as Animation
 import "../Static/FC_Utilities.fcg" as PVEUtilities
 import "Offline.fcc" as Offline
+import "../C_HitBox.fcg" as HitBox
+import "Avatar.fcc" as Avatar
 
 [platform_client]
 graph FC_NormalZombie {
     //Executed when entity is created
     HeadShoted bool = false
 	LastHitPlayer entity<Player> = nil
-	moveTween entity<Tween> = nil
+	dashingMoveTween entity<Tween> = nil
 	LastPos Vector3 = Vector3{0,0,0}
     tickInterval int = 1
-	tweenDuration float = 1000
-	counter int = 0
 	
-
 	hitPos Vector3 = Vector3{0,0,0}
 	preDisplayEffect entity<Effect> = nil
 
-    Dist float = 0
-	KeepDist float = 0
 	TargetPos Vector3 = Vector3{0,0,0}
 
 	event OnAwake() {
         WaitForNextFrame()
         Init()
     }
+	event OnMobActived() {
+		WaitForMillisecond(1000)
+		//LogInfo("添加受击盒")
+		
+        CreateFromPrefab(out var headHitbox, EResPrefab.HitBox_ShieldZombie_Head)
+		AddScript(headHitbox, EResFCG.C_HitBox)
+        SetParentClient(GetSkeletonPartByName(thisEntity, "Bip001 Head"), headHitbox<Transform>, false)
+		headHitbox<HitBox>.SetOwner(thisEntity, "Head")
+
+		AddScript(thisEntity, EResFCG.C_HitBox)
+		thisEntity<HitBox>.SetOwner(thisEntity, "Body")
+	}
 
 	//funcID: Init
 	async func Init() {
 		//CreateMoveTween(Vector3{0,0,0})
 		thisEntity<BevTreeAttachableForClient>.AttachTarget<BevTree>.TickInterval = tickInterval
-		thisEntity<Mob>.MobName = "NormalZombie"
-        thisEntity<Mob>.MaxHP = 600
-        thisEntity<Mob>.HP = 600
-        thisEntity<Mob>.WalkSpeed = 1.5
-        thisEntity<Mob>.Damage = 10
 		thisEntity<Mob>.HateGainInterval = 3000
+		thisEntity<Mob>.DetectRange = 30
 		thisEntity<Mob>.StatusDic = Map<string, object>{
-			
-			"IsShield": true, //是否持有盾牌
-			"ShieldHP": 1000, //盾牌血量
-			"ShieldMaxHP": 1000, //盾牌最大血量
-			"LastAttackTime": globalEntity<Global>.GameTimeCount,
+			"InAttack": false as bool,
+
+			"IsShield": false as bool, //是否持有盾牌
+			"ShieldHP": 1000 as int, //盾牌血量
+			"ShieldMaxHP": 1000 as int, //盾牌最大血量
+
+			//不带盾普通攻击
+			"LastAttackTime_NormalAttack_NoShield": globalEntity<Global>.GameTimeCount as int,
+			"CD_NormalAttack_NoShield": 1800 as int,
+			"Duration_NormalAttack_NoShield": 1500 as int,
+			"Range_NormalAttack_NoShield": 1.5 as float,
+
+			//不带盾冲击波攻击
+			"LastAttackTime_DashAttack_NoShield": globalEntity<Global>.GameTimeCount as int,
+			"CD_DashAttack_NoShield": 3000 as int,
+			"Duration_DashAttack_NoShield": 2500 as int,
+			"Range_DashAttack_NoShield": 30.0 as float,
+
 		}
 
-		thisEntity<Mob>.DetectRange = 30
         var nowTime int = globalEntity<Global>.GameTimeCount
 		LogInfo("set LastAttackTime: " + nowTime)
-		//SetBlackboardValue(thisEntity<BevTreeAttachableForClient>.AttachTarget, "Curstate", 0)
 		WaitForMillisecond(2000)
 		//DispatchEventWithPlatform_Deprecated(100002, thisEntity, true, List<object>{thisEntity<CustomComponent31897461>.ZombieInfo["InitSpeed"]})
 		
@@ -68,33 +84,37 @@ graph FC_NormalZombie {
 	}
 
 	// 盾牌僵尸技能，当玩家进入一定范围时，触发冲击技能
-	async func startShieldZombieSkill(TargetEntity entity<AnimationControllerAttachable>) {
+	async func startShieldZombieDashAttack(TargetEntity entity<AnimationControllerAttachable>) {
 		var skillRange float = 10.0        //冲击距离
 		var speed float = 15.0            //冲击速度
 		var actualDuration float = 800  // 毫秒
 
 		//LogInfo("盾牌僵尸开始冲击技能")
 		var curTarget = thisEntity<Mob>.CurrTarget
-		// 重置碰撞检测状态
-		//SetBlackboardValue(thisEntity<BevTreeAttachableForClient>.AttachTarget, "HasHitTarget", false)
 		// 计算冲击方向
 		var currPos Vector3 = TargetEntity<Transform>.Position
-		var targetOffset Vector3 = Vector3{Math.RandomFloat(-0.8, 0.8), 0, Math.RandomFloat(-0.8, 0.8)}
-		//var targetPosWithOffset = curTarget<Transform>.Position + targetOffset
 		// 射线检测确保目标位置有效
-		SingleRaycast(curTarget<Player>.Position + Vector3{0, 5, 0}, Vector3{0, -10, 0}, 10, List<int>{}, false, out var groundHitEntities, out var groundHitPoint, out var groundHitDistances, out var groundHitNormals)
+		SingleRaycast(curTarget<Player>.Position + Vector3{0, 0.5, 0}, Vector3{0, -10, 0}, 5, List<int>{0}, false, out var groundHitEntities, out var groundHitPoint, out var groundHitDistances, out var groundHitNormals)
+			
 		TargetPos = groundHitPoint
+		LogInfo("TargetPos: " + TargetPos)
 		var direction = Normalize(TargetPos - currPos)
 		direction.Y = 0 // 保持水平移动
 		// 先让怪物面向目标方向
 		PVEUtilities.myLookAt(TargetEntity<Transform>, curTarget, TargetPos)
 		// 地面播放开始时的预警特效
-		wait MobSkillHandler.GroundWrringEffect(TargetEntity)
+		start MobSkillHandler.GroundWarningEffect(TargetEntity, 1000)
+
+		WaitForMillisecond(1000)
 		// 播放冲击动画
-		PlayAnimation(TargetEntity, "Run", 2.0, LoopType.Once)
+		if thisEntity<Mob>.StatusDic["IsShield"] as bool {
+			PlayAnimation(TargetEntity, "Run", 2.0, LoopType.Once)
+		} else {
+			PlayAnimation(TargetEntity, "Run_NoShield", 2.0, LoopType.Once)
+		}
 		// 计算冲击距离
 		// 射线检测前方障碍物
-		SingleRaycast(currPos, direction, skillRange, List<int>{}, false, out var hitEntities, out var hitPoint, out var hitDistances, out var hitNormals)
+		SingleRaycast(currPos, direction, skillRange, List<int>{0}, false, out var hitEntities, out var hitPoint, out var hitDistances, out var hitNormals)
 		var finalTargetPos Vector3        //最终目标位置
 		var hitObstacle bool = false      //是否碰到障碍物
 		if hitEntities != nil && hitEntities != curTarget {        // 有障碍物，冲击到障碍物前一点
@@ -109,18 +129,18 @@ graph FC_NormalZombie {
 		// 确保怪物面向最终目标位置
 		PVEUtilities.myLookAt(TargetEntity<Transform>, curTarget, finalTargetPos)
 		// 创建移动tween
-		CreateSkillMoveTween(finalTargetPos, actualDuration)
+		createDashingMoveTween(finalTargetPos, actualDuration)
 		// 设置碰撞检测 - 使用start启动异步函数
-		start StartSkillCollisionCheck(curTarget, actualDuration, hitObstacle)
+		start startDashingCollisionCheck(curTarget, actualDuration, hitObstacle)
 		// 等待移动完成
-		WaitForMillisecond(Round(actualDuration))
+		WaitForMillisecond(Round(actualDuration+100))
 		// 移动结束后播放Idle动画
-		PlayAnimation(TargetEntity, "Idle", 1.0, LoopType.Once)
+		myPlayIdleAnimation()
 		//LogInfo("盾牌僵尸冲击技能结束")
 	}
 
 	// 技能期间碰撞检测 - 需要是async函数
-	async func StartSkillCollisionCheck(target entity<Player>, skillDuration float, hitObstacle bool) {
+	async func startDashingCollisionCheck(target entity<Player>, skillDuration float, hitObstacle bool) {
 		var startTime int = globalEntity<Global>.GameTimeCount
 		var endTime int = startTime + Floor(skillDuration)
 		var hasHit bool = false
@@ -138,65 +158,70 @@ graph FC_NormalZombie {
 					hasHit = true
 					
 					// 碰撞到玩家后立即播放Idle动画
-					PlayAnimation(thisEntity as entity<AnimationControllerAttachable>, "Idle", 1.0, LoopType.Once)
+					myPlayIdleAnimation()
 					//LogInfo("盾牌僵尸冲击命中玩家，播放Idle动画")
 					
 					// 停止移动tween
-					if moveTween != nil {
-						Destroy(moveTween)
-						moveTween = nil
+					if dashingMoveTween != nil {
+						Destroy(dashingMoveTween)
+						dashingMoveTween = nil
 					}
 					break // 跳出循环
 				}
 			}
-			WaitForMillisecond(10) // 每10ms检测一次
+			WaitForMillisecond(50) // 每10ms检测一次
 		}
 		
 		// 如果一开始就检测到障碍物，在技能开始时播放Idle动画
 		if hitObstacle && !hasHit {
-			PlayAnimation(thisEntity as entity<AnimationControllerAttachable>, "Idle", 1.0, LoopType.Once)
+			myPlayIdleAnimation()
 			//LogInfo("碰撞到障碍物，播放Idle动画")
 			// 停止移动tween
-			if moveTween != nil {
-				Destroy(moveTween)
-				moveTween = nil
+			if dashingMoveTween != nil {
+				Destroy(dashingMoveTween)
+				dashingMoveTween = nil
 			}
 		}
 		//LogInfo("碰撞检测结束，命中状态: " + hasHit)
 	}
 
 	// 创建技能移动tween
-	func CreateSkillMoveTween(targetPos Vector3, duration float) {    
-		if moveTween != nil {
-			Destroy(moveTween)
+	func createDashingMoveTween(targetPos Vector3, duration float) {    
+		if dashingMoveTween == nil {
+			CreateTween(
+				thisEntity,
+				Transform.Position,
+				thisEntity<Transform>.Position,
+				targetPos,
+				TweenStyle.Once,
+				CreateCurve({0, 0, 1, 1}),
+				duration,
+				out var tweenEntity,
+				true,
+			)
+			dashingMoveTween = tweenEntity
+		}else{
+			dashingMoveTween<Tween>.StartValue = thisEntity<Transform>.Position
+			dashingMoveTween<Tween>.EndValue = targetPos
+			dashingMoveTween<Tween>.Duration = duration
+			Pause(dashingMoveTween)
+			Play(dashingMoveTween,true)
 		}
-		CreateTween(
-			thisEntity,
-			Transform.Position,
-			thisEntity<Transform>.Position,
-			targetPos,
-			TweenStyle.Once,
-			CreateCurve({0, 0, 1, 1}),
-			duration,
-			out var tweenEntity,
-			true,
-		)
-		moveTween = tweenEntity
-		moveTween<Tween>.OnTweenCompleted = func() {
-			// Tween完成后确保播放Idle动画
+	}
+	func myPlayIdleAnimation() {
+		if thisEntity<Mob>.StatusDic["IsShield"] as bool {
 			PlayAnimation(thisEntity as entity<AnimationControllerAttachable>, "Idle", 1.0, LoopType.Once)
-			//LogInfo("移动完成，播放Idle动画")
+		} else {
+			PlayAnimation(thisEntity as entity<AnimationControllerAttachable>, "Idle_NoShield", 1.0, LoopType.Once)
 		}
 	}
 
+	
 	//eventID: 91//r;Zn+-uY8Ahq`0JH4Yr{ //animation
 	event MobAttackEvent_AC(attackName string) {
-		if (attackName == "NormalAttack1") {
-			////LogInfo("NormalAttack1")
+		if (attackName == "NormalAttack_NoShield") {
 			var curTarget = thisEntity<Mob>.CurrTarget
-		//	//LogInfo("curTarget: " + curTarget as entity<Player><Player>.Position)
-			if (curTarget != nil && (Distance(curTarget as entity<Player><Player>.Position, thisEntity as entity<LevelObject><Transform>.Position) <= 1.5)) {		
-				
+			if (curTarget != nil && (Distance(curTarget as entity<Player><Player>.Position, thisEntity as entity<LevelObject><Transform>.Position) <= 3.0)) {					
 				Offline.DealDamage(curTarget as entity<Combatable>, nil, DamageType.Monster, GetDamage())
 			}
 		} else if (attackName == "NormalAttack2") {
@@ -206,7 +231,6 @@ graph FC_NormalZombie {
 			//Destroy(thisEntity)
 		}
 	}
-
 	event MobDeathEvent_AC() {
 		PVEMonsterManager.OnMonsterKilledAnimationFinished(thisEntity as entity<LevelObject>)
 	}
@@ -233,6 +257,8 @@ graph FC_NormalZombie {
 			}
 		}
 	}
+
+	
 
 	//funcID: GetDamage
 	func GetDamage() int {

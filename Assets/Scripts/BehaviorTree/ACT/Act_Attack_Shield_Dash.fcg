@@ -3,7 +3,7 @@ import "StdLibrary.fcc" as StdLib
 import "EditorGenLib.fcc" as EditorLib
 import "BehaviourTree.fcc" as BehaviourTree
 import "Math.fcc" as Math
-import "../../MobScripts/FC_ShieldZombie.fcg" as ShieldZombie
+import "../../MobScripts/ShieldZombie.fcg" as ShieldZombie
 import "../../Static/FC_Utilities.fcg" as Utilities
 
 [platform_client]
@@ -15,16 +15,20 @@ graph Script_1_ {
     event OnNodeEnterForClient(nodeName string, owner entity<BevTreeAttachableForClient>) {
         //var attackScale = owner<ZombieCom>.ZombieInfo["LeftAttackSPDScale"] as float
         //LogInfo("OnNodeEnter: Attack")
+        owner<Mob>.StatusDic["InAttack"] = true
+        GetNodeVariable(thisEntity<BevTreeCustomNode>,"AttackName",out var attackName)
+        var duration = owner<Mob>.StatusDic["Duration_" + attackName] as int
         var attackScale float= 1
-        GetNodeVariable(thisEntity<BevTreeCustomNode>,"Duration",out var duration)
+
         _Duration = Ceil(duration as int * attackScale)
         var curTarget entity<Player> = owner<Mob>.CurrTarget
+
         globalEntity<Utilities>.myLookAt(owner<Transform>,curTarget as entity<Player>,Vector3{0,0,0})
         _AttackBeginTime = globalEntity<Global>.GameTimeCount
-        owner<Mob>.StatusDic["LastAttackTime"] = _AttackBeginTime
+        owner<Mob>.StatusDic["LastAttackTime_" + attackName] = _AttackBeginTime
         //SetBlackboardValue(owner<BevTreeAttachableForClient>.AttachTarget,"LastAttackTime",_AttackBeginTime)
         var TargetEntity = owner<AnimationControllerAttachable>
-        owner<ShieldZombie>.startShieldZombieSkill(TargetEntity)
+        owner<ShieldZombie>.startShieldZombieDashAttack(TargetEntity)
     }
     func PlayAction(owner entity<BevTreeAttachableForClient>) BevTreeNodeStatus{
         if(globalEntity<Global>.GameTimeCount >= _AttackBeginTime+_Duration){
@@ -33,17 +37,9 @@ graph Script_1_ {
             return BevTreeNodeStatus.Running
         }
     }
-    func IsInRange(mob entity<Transform>,player1 entity<Player>,range1 float) bool{
-        var zombiePos = mob<Transform>.Position
-        var playerPos = player1<Player>.Position
    
-        if (Distance(zombiePos,playerPos) <= range1) {
-            return true
-        }else{
-            return false
-        }
-    }
     event OnNodeExitForClient(nodeName string, owner entity<BevTreeAttachableForClient>) {
         //LogInfo("OnNodeExit: Attack")
+        owner<Mob>.StatusDic["InAttack"] = false
     }
 }

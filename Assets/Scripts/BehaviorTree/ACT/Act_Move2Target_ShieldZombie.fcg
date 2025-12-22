@@ -40,7 +40,7 @@ graph FC_Act_Move2Target {
         var curTarget entity<Player> = owner<Mob>.CurrTarget
 		//LogInfo("curTarget: " + curTarget)
 		if (curTarget == nil) {
-			PlayAnimation(owner as entity<AnimationControllerAttachable>, "Idle", 1, LoopType.Once)
+			myPlayIdleAnimation(owner)
 			inAnimation = false
 			owner<mobComponent>.StopMoveTween()
 			//LogInfo("finish walk animation: no target")
@@ -54,7 +54,7 @@ graph FC_Act_Move2Target {
 		var normalizeDir Vector3 = Normalize(sub)
 		Dist = Magnitude(sub)
 		if (Dist <= KeepDist) {
-			PlayAnimation(owner as entity<AnimationControllerAttachable>, "Idle", 1, LoopType.Once)
+			myPlayIdleAnimation(owner)
 			//LogInfo("Move2Target Finish: close to target")
 			return BevTreeNodeStatus.Finish
 		}
@@ -67,7 +67,7 @@ graph FC_Act_Move2Target {
 		var chasingRange float = detectRange + 2.0
 		if (Dist > chasingRange) {
 			//LogInfo("finish chase: out of chasing range")
-			PlayAnimation(owner as entity<AnimationControllerAttachable>, "Idle", 1, LoopType.Once)
+			myPlayIdleAnimation(owner)
 			return BevTreeNodeStatus.Finish
 		}
 		//}
@@ -125,11 +125,19 @@ graph FC_Act_Move2Target {
 		if (!inAnimation) {
 			inAnimation = true
 			if Speed <= 1.5 {
-				//LogInfo("play walk animation")
-				PlayAnimation(owner as entity<AnimationControllerAttachable>, "Walk", 1, LoopType.Loop)
+				if owner<Mob>.StatusDic["IsShield"] as bool {
+					PlayAnimation(owner<AnimationControllerAttachable>,"Walk",1,LoopType.Loop)
+				} else {
+					PlayAnimation(owner<AnimationControllerAttachable>,"Walk_NoShield",1,LoopType.Loop)
+				}
 			} else {
 				//LogInfo("play run animation")
-				PlayAnimation(owner as entity<AnimationControllerAttachable>, "Run", 1, LoopType.Loop)
+				if owner<Mob>.StatusDic["IsShield"] as bool {
+					PlayAnimation(owner<AnimationControllerAttachable>,"Run",1,LoopType.Loop)
+				} else {
+					PlayAnimation(owner<AnimationControllerAttachable>,"Run_NoShield",1,LoopType.Loop)
+				}
+				
 			}
 		}
 			
@@ -139,7 +147,15 @@ graph FC_Act_Move2Target {
 		//LogInfo("OnNodeExit: Move2Target")
 		owner<mobComponent>.StopMoveTween()
 		inAnimation = false
-		PlayAnimation(owner as entity<AnimationControllerAttachable>, "Idle", 1, LoopType.Loop)
+		myPlayIdleAnimation(owner)
+
 		//LogInfo("stop move2Target")
+	}
+	func myPlayIdleAnimation(owner entity<BevTreeAttachableForClient>) {
+		if owner<Mob>.StatusDic["IsShield"] as bool {
+			PlayAnimation(owner<AnimationControllerAttachable>,"Idle",1,LoopType.Loop)
+		} else {
+			PlayAnimation(owner<AnimationControllerAttachable>,"Idle_NoShield",1,LoopType.Loop)
+		}
 	}
 }
