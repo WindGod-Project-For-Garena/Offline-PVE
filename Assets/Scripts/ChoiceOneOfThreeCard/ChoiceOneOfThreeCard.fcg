@@ -157,7 +157,7 @@ graph ChoiceOneOfThreeCard {
       UpdateNowChoiceCardIcon(selectedCardId, currentSkill)
 
       // 等待UI更新
-      WaitForMillisecond(2000)
+      WaitForMillisecond(1000)
       
       // 隐藏倒计时UI
       // var SecondDownUI = GetLocalPlayer()<PlayerJionGame>.SecondDownUI
@@ -166,13 +166,22 @@ graph ChoiceOneOfThreeCard {
       // 关闭选择界面并发送下一波事件
       thisEntity<CustomUI>.IsVisible = false
       
-      // 发送开始下一波事件到服务器
-      PVEController.StartNextWave()
-      
       // 调用Close函数更新技能数据
       CloseChooseCardUI(triggerPlayer)
 
       IsOver = false
+
+      CreateBuiltInUIClient(out var createdEntity3, BuiltInUIType.OpeningBannerHud)
+		createdEntity3<UIOpeningBanner>.IsVisible = true
+		// createdEntity3<UIOpeningBanner>.Icon = "Assets/Textures/Icon/Icon_1.png"
+      createdEntity3<UIOpeningBanner>.Title = "波数 " + (PVEController.CurrentWave + 1)
+      createdEntity3<UIOpeningBanner>.Description = "目标：存活" + "02:00"
+
+      // 等待UI更新
+      WaitForMillisecond(3500)
+
+      // 开始下一波事件
+      PVEController.StartNextWave()
    }
 //————————————————————————————————————————————————————————————————————————————————————————————————//
 //————————————————————————————————————————————————————————————————————————————————————————————————//

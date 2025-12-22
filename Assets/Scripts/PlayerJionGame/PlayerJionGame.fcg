@@ -31,6 +31,7 @@ graph PlayerJionGame {
     GiftedUI entity<CustomHud>      //天赋页面
     SecondDownUI entity<CustomHud>      //倒计时页面
     GameOverFinalUI entity<CustomHud>      //結算页面
+    TimeInGameUI entity<CustomHud>      //时间页面
     
     CurrentSkill int = 1
     //当前选择的卡牌第几张1-3
@@ -203,6 +204,10 @@ graph PlayerJionGame {
             GameOverFinalUI = GameOverFinalUIEntity
             GameOverFinalUIEntity<CustomUI>.IsVisible = false
 
+            CreateCustomUIClient(out var TimeInGameUIEntity, EResUI.TimeInGame)
+            TimeInGameUI = TimeInGameUIEntity
+            TimeInGameUIEntity<CustomUI>.IsVisible = false
+
             var Skill_1Panel = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_1")
             Skill_1Panel<UIWidget>.IsVisible = false
             var JoyStickButton_1 = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_1/JoyStickFillAmount")
@@ -248,7 +253,7 @@ graph PlayerJionGame {
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
 // 选择完角色
-    func ChoiceHeroOver(level int, skillIndex int, ability1Level int, ability2Level int, ability3Level int) {
+    async func ChoiceHeroOver(level int, skillIndex int, ability1Level int, ability2Level int, ability3Level int) {
         weaponMultiplier = 1.0 * ability1Level + 1
         healthMultiplier = 1.0 * ability2Level + 1
         skillMultiplier = 1.0 * ability3Level + 1
@@ -258,22 +263,22 @@ graph PlayerJionGame {
         //发放武器
         if  skillIndex == 1 {
             Offline.DestroyItem(ItemIDType.M1887X, 1)
+            Offline.DestroyItem(ItemIDType.SMGAmmo, 30)
+            Offline.DestroyItem(ItemIDType.SGAmmo, 30)
+            WaitForNextFrame()
             Offline.AddItem(ItemIDType.M1887X, 1, out var itemList)
+            Offline.AddItem(ItemIDType.SGAmmo, 30, out var createdEntity)
             currentWeapon = itemList[0] as entity<Weapon>
-
-            Offline.DestroyItem(ItemIDType.SMGAmmo, 999)
-            Offline.DestroyItem(ItemIDType.SGAmmo, 999)
-            Offline.AddItem(ItemIDType.SGAmmo, 999, out var createdEntity)
         }
 
         if skillIndex == 2 {
             Offline.DestroyItem(ItemIDType.GoldMP5_III, 1)
+            Offline.DestroyItem(ItemIDType.SGAmmo, 30)
+            Offline.DestroyItem(ItemIDType.SMGAmmo, 30)
+            WaitForNextFrame()
             Offline.AddItem(ItemIDType.GoldMP5_III, 1, out var itemList)
+            Offline.AddItem(ItemIDType.SMGAmmo, 30, out var createdEntity)
             currentWeapon = itemList[0] as entity<Weapon>
-
-            Offline.DestroyItem(ItemIDType.SGAmmo, 999)
-            Offline.DestroyItem(ItemIDType.SMGAmmo, 999)
-            Offline.AddItem(ItemIDType.SMGAmmo, 999, out var createdEntity)
         }
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
@@ -1691,9 +1696,9 @@ graph PlayerJionGame {
     // 更新玩家当前属性（使用局内数据）
     func UpdatePlayerAttributes() {
         // 更新玩家当前属性（使用局内数据）
-        // currPlayer<Player>.MaxHP = PlayerDataInGame["HP"] as int
-        // currPlayer<Player>.HP = PlayerDataInGame["HP"] as int
-        // currPlayer<Player>.RunSpeedScale = PlayerDataInGame["MoveSpeed"] as float
+        currPlayer<Player>.MaxHP = Round(PlayerDataInGame["HP"] as int)
+        currPlayer<Player>.HP = Round(PlayerDataInGame["HP"] as int)
+        currPlayer<Player>.RunSpeedScale = PlayerDataInGame["MoveSpeed"] as float
     }
 
     // 更新技能1数据
@@ -1750,7 +1755,7 @@ graph PlayerJionGame {
         Offline.DestroyItem(ItemIDType.SGAmmo, 999)
     }
 
-    // DEbug的临时初始化
+    // DEbug的初始化
     func S_Debug_NextWave() {
         IsCountdownActive = false
         Offline.DestroyItem(ItemIDType.M1887X, 1)
@@ -1760,6 +1765,9 @@ graph PlayerJionGame {
         currPlayer<Player>.MaxHP = Round(PlayerDataWithOuterBonus["HP"] as int)
         currPlayer<Player>.HP = Round(PlayerDataWithOuterBonus["HP"] as int)
         currPlayer<Player>.RunSpeedScale = PlayerDataWithOuterBonus["MoveSpeed"] as float
+        start PVEController.OnGameComplete()
+        // 关闭无关UI
+        ChoiceThreeCardUI<CustomUI>.IsVisible = false
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     // 显示当前所有属性

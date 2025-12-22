@@ -10,6 +10,7 @@ import "../CustomEvent.fcc" as CustomEvent
 import "Math.fcc" as Math
 import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
 import "../MobScripts/C_BossButcher.fcg" as C_BossButcher
+import "Hud.fcc" as Hud
 
 [platform_client]
 static graph PVEController {
@@ -44,6 +45,9 @@ static graph PVEController {
     func StartNextWave() {
         CurrentWave = CurrentWave + 1
         StartWave(CurrentWave)
+        // 显示波次和时间信息
+        var TimeInGameUIEntity = GetLocalPlayer()<PlayerJionGame>.TimeInGameUI
+        TimeInGameUIEntity<CustomUI>.IsVisible = true
     }
 
     // 开始PVE游戏（指定关卡）
@@ -98,8 +102,8 @@ static graph PVEController {
         while IsCountdownActive && waveTime < WaveTimeLimit {
             waveTime = globalEntity<Global>.GameTimeCount - WaveStartTime
             var remainTime int = (WaveTimeLimit - waveTime)/1000
-            //LogInfo("波次倒计时: " + waveTime + "ms")
-            //LogInfo("波次倒计时: " + waveTime/1000 + "秒")
+            // 实时更新倒计时UI
+            UpdateTimeInGameUI(remainTime)
             // 每10秒或最后10秒显示倒计时
             if remainTime % 10 == 0 || remainTime <= 10 {
                 Utilities.NotifyAllPlayers("波次 " + CurrentWave + " 剩余时间: " + remainTime + "秒", #FFFFFF, 1000)
@@ -122,6 +126,37 @@ static graph PVEController {
         }
     }
     
+    // 更新游戏时间UI
+    func UpdateTimeInGameUI(remainTime int) {
+        var TimeInGameUIEntity = GetLocalPlayer()<PlayerJionGame>.TimeInGameUI
+        var TimeText = GetWidgetByPath(GetLocalPlayer(), TimeInGameUIEntity, "/Time/TimePanel/Logo/Text")
+        if TimeText != nil {
+            TimeText<UIWidgetLabel>.Content = FormatTimeMMSS(remainTime)
+        }
+        var WaveText = GetWidgetByPath(GetLocalPlayer(), TimeInGameUIEntity, "/Time/TimePanel/Text")
+        if WaveText != nil {
+            WaveText<UIWidgetLabel>.Content = "波数：" + (CurrentWave + 1) + "/6"
+        }
+    }
+
+    // 通用的格式化时间函数
+    func FormatTimeMMSS(totalSeconds int) string {
+        var minutes int = Math.Floor(totalSeconds / 60)
+        var seconds int = totalSeconds % 60
+        
+        var result string = ""
+        if minutes < 10 {
+            result = result + "0"
+        }
+        result = result + Convert.ToString(minutes) + ":"
+        if seconds < 10 {
+            result = result + "0"
+        }
+        result = result + Convert.ToString(seconds)
+        
+        return result
+    }
+
     // 检查玩家存活状态
     func CheckPlayersAlive() bool {
         var allPlayers = GetAllPlayers()
