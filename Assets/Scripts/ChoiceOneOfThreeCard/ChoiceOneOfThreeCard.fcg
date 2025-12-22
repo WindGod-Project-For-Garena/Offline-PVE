@@ -177,7 +177,7 @@ graph ChoiceOneOfThreeCard {
       createdEntity3<UIOpeningBanner>.Description = "目标：存活" + "02:00"
 
       // 等待UI更新
-      WaitForMillisecond(3500)
+      WaitForMillisecond(4000)
 
       // 开始下一波事件
       PVEController.StartNextWave()

@@ -32,6 +32,7 @@ graph PlayerJionGame {
     SecondDownUI entity<CustomHud>      //倒计时页面
     GameOverFinalUI entity<CustomHud>      //結算页面
     TimeInGameUI entity<CustomHud>      //时间页面
+    WaveCompleteUI entity<CustomHud>      //波次完成页面
     
     CurrentSkill int = 1
     //当前选择的卡牌第几张1-3
@@ -207,6 +208,10 @@ graph PlayerJionGame {
             CreateCustomUIClient(out var TimeInGameUIEntity, EResUI.TimeInGame)
             TimeInGameUI = TimeInGameUIEntity
             TimeInGameUIEntity<CustomUI>.IsVisible = false
+
+            CreateCustomUIClient(out var WaveCompleteUIEntity, EResUI.WaveComplete)
+            WaveCompleteUI = WaveCompleteUIEntity
+            WaveCompleteUIEntity<CustomUI>.IsVisible = false
 
             var Skill_1Panel = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_1")
             Skill_1Panel<UIWidget>.IsVisible = false

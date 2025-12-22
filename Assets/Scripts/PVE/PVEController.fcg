@@ -82,7 +82,6 @@ static graph PVEController {
         IsCountdownActive = true
         
         LogInfo("开始关卡 " + CurrentLevel + " 波次 " + wave + "，时间限制: " + WaveTimeLimit/1000 + "秒")
-        Utilities.NotifyAllPlayers("波次 " + wave + " 开始！时间限制: " + WaveTimeLimit/1000 + "秒", #FFFF00FF, 2000)
         
         // 通知怪物管理器开始波次
         monsterManager.StartWave(wave)
@@ -107,7 +106,7 @@ static graph PVEController {
             WaitForMillisecond(WaveCountdownInterval)
             var DeadOrAlive bool = CheckPlayersAlive() // 检查玩家存活状态
             if DeadOrAlive == false {
-                OnGameOver()
+                start OnGameOver()
                 return
             }
         }
@@ -115,7 +114,27 @@ static graph PVEController {
         if IsCountdownActive && MaxWaves > CurrentWave {
             IsCountdownActive = false
             monsterManager.ForceEndWave()
-            GetLocalPlayer()<PlayerJionGame>.ToClient_DisplaySkillThreeChoiceOne()
+            //显示三选一
+            if CurrentWave < 5 {
+                //显示通关小横幅
+                var WaveCompleteUI = GetLocalPlayer()<PlayerJionGame>.WaveCompleteUI
+                WaveCompleteUI<CustomUI>.IsVisible = true
+                var WaveText = GetWidgetByPath(GetLocalPlayer(), WaveCompleteUI, "/WaveShow/Text")
+                if WaveText != nil {
+                    WaveText<UIWidgetLabel>.Content = "第" + CurrentWave + "波完成"
+                }
+
+                WaitForMillisecond(2000)
+                //隐藏通关小横幅
+                WaveCompleteUI<CustomUI>.IsVisible = false
+                //显示三选一
+                GetLocalPlayer()<PlayerJionGame>.ToClient_DisplaySkillThreeChoiceOne()
+
+            } else if CurrentWave == 5 {
+                //显示BOOYAH!横幅
+                CreateBuiltInUIClient(out var resultBanner, BuiltInUIType.ResultBannerHud)
+                resultBanner<UIWinOrLoseBanner>.Result = 1
+            }
         }else{
             monsterManager.ForceEndWave()
             OnGameComplete()
@@ -200,11 +219,19 @@ static graph PVEController {
     }
     
     // 游戏失败
-    func OnGameOver() {
+    async func OnGameOver() {
         LogInfo("PVE游戏失败！")
-        Utilities.NotifyAllPlayers("游戏失败！", #FF0000FF, 5000)
         IsGameSuccess = false
         EndPVEGame()
+
+        //显示战败横幅
+        CreateBuiltInUIClient(out var resultBanner, BuiltInUIType.ResultBannerHud)
+        resultBanner<UIWinOrLoseBanner>.Result = 2
+
+        WaitForMillisecond(2000)
+
+        //隐藏战败横幅
+        Destroy(resultBanner)
         // 显示最终统计
         ShowFinalStats()
     }
@@ -212,7 +239,6 @@ static graph PVEController {
     // 游戏完成
     async func OnGameComplete() {
         LogInfo("PVE游戏完成！")
-        Utilities.NotifyAllPlayers("恭喜！PVE游戏完成！", #FFD700FF, 10000)
         IsGameSuccess = true
         //GetAllPlayers()[0]<Player>
         var localPlayer entity<Player> = GetAllPlayers()[0]
@@ -237,7 +263,6 @@ static graph PVEController {
         // 清理BOSS
         //bossHandler.ForceEndBossFight()
         
-        Utilities.NotifyAllPlayers("PVE游戏结束", #FF0000FF, 1000)
         var localPlayer entity<Player> = GetAllPlayers()[0]
         localPlayer<Player>.Invincible = false
 
