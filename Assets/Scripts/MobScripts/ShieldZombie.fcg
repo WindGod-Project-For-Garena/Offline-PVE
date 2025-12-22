@@ -63,7 +63,7 @@ graph FC_NormalZombie {
 			"LastAttackTime_NormalAttack_NoShield": globalEntity<Global>.GameTimeCount as int,
 			"CD_NormalAttack_NoShield": 1800 as int,
 			"Duration_NormalAttack_NoShield": 1500 as int,
-			"Range_NormalAttack_NoShield": 1.5 as float,
+			"Range_NormalAttack_NoShield": 2.0 as float,
 
 			//不带盾冲击波攻击
 			"LastAttackTime_DashAttack_NoShield": globalEntity<Global>.GameTimeCount as int,
@@ -74,13 +74,6 @@ graph FC_NormalZombie {
 		}
 
         var nowTime int = globalEntity<Global>.GameTimeCount
-		LogInfo("set LastAttackTime: " + nowTime)
-		WaitForMillisecond(2000)
-		//DispatchEventWithPlatform_Deprecated(100002, thisEntity, true, List<object>{thisEntity<CustomComponent31897461>.ZombieInfo["InitSpeed"]})
-		
-        // for index3, element4 in GetAllPlayers() {
-        //     SetAttackableEntity(element4, thisEntity, 1)
-        // }
 	}
 
 	// 盾牌僵尸技能，当玩家进入一定范围时，触发冲击技能
@@ -96,6 +89,7 @@ graph FC_NormalZombie {
 		// 射线检测确保目标位置有效
 		SingleRaycast(curTarget<Player>.Position + Vector3{0, 0.5, 0}, Vector3{0, -10, 0}, 5, List<int>{0}, false, out var groundHitEntities, out var groundHitPoint, out var groundHitDistances, out var groundHitNormals)		
 		TargetPos = groundHitPoint
+
 		var direction = Normalize(TargetPos - currPos)
 		direction.Y = 0 // 保持水平移动
 		// 先让怪物面向目标方向
@@ -113,17 +107,19 @@ graph FC_NormalZombie {
 
 		// 计算冲击距离
 		// 射线检测前方障碍物
-		SingleRaycast(currPos, direction, skillRange, List<int>{0}, false, out var hitEntities, out var hitPoint, out var hitDistances, out var hitNormals)
+		SingleRaycast(currPos + Vector3{0,0.5,0}, direction, skillRange, List<int>{0}, false, out var hitEntities, out var hitPoint, out var hitDistances, out var hitNormals)
 		var finalTargetPos Vector3        //最终目标位置
 		var hitObstacle bool = false      //是否碰到障碍物
 		if hitEntities != nil && hitEntities != curTarget {        // 有障碍物，冲击到障碍物前一点
-			finalTargetPos = hitPoint - direction * 0.5 // 留一点距离
+			finalTargetPos = hitPoint - direction * 1.5 // 留一点距离
+			finalTargetPos.Y = -0.29
 			skillRange = Distance(currPos, finalTargetPos)
 			actualDuration = (skillRange / speed) * 1000 // 根据实际距离调整时间
 			hitObstacle = true
-			//LogInfo("检测到障碍物，调整冲击距离")
+			LogInfo("检测到障碍物，调整冲击距离")
 		} else {        //没有障碍物，冲击到目标位置
 			finalTargetPos = currPos + direction * skillRange        
+			LogInfo("没有障碍物，冲击到目标位置")
 		}
 
 		// 确保怪物面向最终目标位置
@@ -134,7 +130,8 @@ graph FC_NormalZombie {
 		// 等待移动完成
 		WaitForMillisecond(Round(actualDuration+100))
 		// 移动结束后播放Idle动画
-		myPlayIdleAnimation()
+		
+		//myPlayIdleAnimation()
 		//LogInfo("盾牌僵尸冲击技能结束")
 	}
 
@@ -151,8 +148,8 @@ graph FC_NormalZombie {
 			if currentDistance <= 1.5 {
 				// 命中玩家，造成伤害和击退效果
 				if !hasHit {
-					//LogInfo("触发伤害，距离: " + currentDistance)
-					Offline.DealDamage(target as entity<Combatable>, nil, DamageType.Monster, GetDamage() * 2) // 技能双倍伤害
+					LogInfo("触发伤害，距离: " + currentDistance)
+					Offline.DealDamage(target as entity<Combatable>, nil, DamageType.Monster, Math.Ceil(1.5*GetDamage() )) // 技能双倍伤害
 					// 添加击退效果
 					hasHit = true
 					
@@ -160,32 +157,33 @@ graph FC_NormalZombie {
 					myPlayIdleAnimation()
 					//LogInfo("盾牌僵尸冲击命中玩家，播放Idle动画")
 					
-					// 停止移动tween
-					if dashingMoveTween != nil {
-						Destroy(dashingMoveTween)
-						dashingMoveTween = nil
-					}
 					break // 跳出循环
 				}
 			}
-			WaitForMillisecond(100) // 每10ms检测一次
+			WaitForNextFrame() 
 		}
 		
+		//这里是个很特殊的操作
+		thisEntity<Mob>.StatusDic["InAttack"] = false
 		// 如果一开始就检测到障碍物，在技能开始时播放Idle动画
 		if hitObstacle && !hasHit {
+			LogInfo("碰撞到障碍物,停止播放tween")
+			LogInfo(dashingMoveTween)
+			Pause(dashingMoveTween)
 			myPlayIdleAnimation()
-			//LogInfo("碰撞到障碍物，播放Idle动画")
-			// 停止移动tween
-			if dashingMoveTween != nil {
-				Destroy(dashingMoveTween)
-				dashingMoveTween = nil
-			}
+		
+		}
+		if hasHit {
+			LogInfo("命中玩家,停止播放tween")
+			Pause(dashingMoveTween)
+			myPlayIdleAnimation()
 		}
 		//LogInfo("碰撞检测结束，命中状态: " + hasHit)
 	}
 
 	// 创建技能移动tween
 	func createDashingMoveTween(targetPos Vector3, duration float) {    
+		//LogInfo("targetPos: " + targetPos)
 		if dashingMoveTween == nil {
 			CreateTween(
 				thisEntity,

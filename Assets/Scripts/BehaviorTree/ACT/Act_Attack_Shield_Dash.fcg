@@ -39,7 +39,7 @@ graph Script_1_ {
     }
    
     event OnNodeExitForClient(nodeName string, owner entity<BevTreeAttachableForClient>) {
-        //LogInfo("OnNodeExit: Attack")
+        LogInfo("OnNodeExit: Dash Attack")
         owner<Mob>.StatusDic["InAttack"] = false
     }
 }
