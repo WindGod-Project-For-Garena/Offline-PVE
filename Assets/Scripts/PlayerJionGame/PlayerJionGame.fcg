@@ -2118,6 +2118,8 @@ graph PlayerJionGame {
         IsNextThreeChoiceOne = 1       //打开标志位
         RefeshCard(level, ability1Level, ability2Level, ability3Level)
         // start ShowSecondDown(10000)
+        // 隐藏波次和时间信息
+        TimeInGameUI<CustomUI>.IsVisible = false
     }
 
     func ToClient_GameComplete() {
