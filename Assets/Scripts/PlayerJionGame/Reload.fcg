@@ -16,13 +16,12 @@ graph Reload {
         var currPlayer =  GetLocalPlayer()<PlayerJionGame>.currPlayer
         var currentWeapon =  GetLocalPlayer()<PlayerJionGame>.currentWeapon
         GetLocalPlayer()<PlayerJionGame>.AmmoJudgement = 0
-
         if (SkillIndex == 1) {
-            Offline.AddItem(ItemIDType.SGAmmo, 999, out var createdEntity)
+            Offline.AddItem(ItemIDType.SGAmmo, 5, out var createdEntity)
         }
 
         if (SkillIndex == 2) {
-            Offline.AddItem(ItemIDType.SMGAmmo, 999, out var createdEntity)
+            Offline.AddItem(ItemIDType.SMGAmmo, 30, out var createdEntity)
             var ReloadBuff = GetLocalPlayer()<PlayerJionGame>.Skill2DataInGame["ReloadBuff"] as float
             if  ReloadBuff < 1 {
                 var ReloadForward = 0.0648
