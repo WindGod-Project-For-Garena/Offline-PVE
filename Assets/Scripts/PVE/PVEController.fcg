@@ -104,10 +104,6 @@ static graph PVEController {
             var remainTime int = (WaveTimeLimit - waveTime)/1000
             // 实时更新倒计时UI
             UpdateTimeInGameUI(remainTime)
-            // 每10秒或最后10秒显示倒计时
-            if remainTime % 10 == 0 || remainTime <= 10 {
-                Utilities.NotifyAllPlayers("波次 " + CurrentWave + " 剩余时间: " + remainTime + "秒", #FFFFFF, 1000)
-            }
             WaitForMillisecond(WaveCountdownInterval)
             var DeadOrAlive bool = CheckPlayersAlive() // 检查玩家存活状态
             if DeadOrAlive == false {
