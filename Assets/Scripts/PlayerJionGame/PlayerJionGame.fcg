@@ -2153,15 +2153,78 @@ graph PlayerJionGame {
         }
 
         StepEntity<UIWidgetLabel>.Content = "第" + Convert.ToString(CurrentLevel) + "关"  
-        
+
         var Time string = PVEController.FormatTimeMMSS(totalTime)
         PassTimeEntity<UIWidgetLabel>.Content = Convert.ToString(Time)
         BossKillTimeEntity<UIWidgetLabel>.Content = Convert.ToString(Time)
 
         GetMoneyEntity<UIWidgetLabel>.Content = 1000
 
+        // ==================== 显示已选择的三选一卡牌 ====================
+        // 获取已选择的卡牌列表
+        var selectedCards = List<int>{}
+        if CurrentSkill == 1 {
+            selectedCards = SelectedCards_1
+        } else if CurrentSkill == 2 {
+            selectedCards = SelectedCards_2
+        }
+        
+        // 获取NowCard列表的父节点
+        var nowCardListParent = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/NowCard/List")
+        
+        // 隐藏所有的卡牌位置（最多显示5个）
+        for i = 1, 6, 1 {
+            var cardPath = "Card (" + Convert.ToString(i) + ")"
+            var cardEntity = GetChildByName(nowCardListParent, cardPath)
+            if cardEntity != nil {
+                cardEntity<UIWidget>.IsVisible = false
+            }
+        }
+        
+        // 显示实际已选择的卡牌（最多显示5张）
+        var displayCount = Math.Min(List.Length(selectedCards), 6)
+
+        for i = 0, displayCount, 1 {
+            var cardIndex = i + 1
+            var cardId = selectedCards[i]
+            
+            var cardPath = "Card (" + Convert.ToString(cardIndex) + ")"
+            var cardEntity = GetChildByName(nowCardListParent, cardPath)
+            
+            if cardEntity != nil {
+                // 显示卡牌位置
+                cardEntity<UIWidget>.IsVisible = true
+                
+                // 获取卡牌信息
+                var cardInfo = GetCardInfoById(cardId, CurrentSkill)
+                if cardInfo != nil {
+                    // 获取HasCardPanel
+                    var hasCardPanel = GetChildByName(cardEntity, "HasCardPanel")
+                    if hasCardPanel != nil {
+                        // 设置技能文字
+                        var ifmText = GetChildByName(hasCardPanel, "IFMText")
+                        if ifmText != nil {
+                            var description = GenerateCardDescription(cardInfo)
+                            ifmText<UIWidgetLabel>.Content = description
+                        }
+                        
+                        // 设置图标
+                        var iconWidget = GetChildByName(hasCardPanel, "icon")
+                        if iconWidget != nil {
+                            //iconWidget<UIWidgetImage>.SetImage("CardIcon_" + Convert.ToString(cardId))
+                            iconWidget<UIWidget>.IsVisible = true
+                        }
+                    }
+                } else {
+                    LogWarning("未找到卡牌ID " + Convert.ToString(cardId) + " 的信息")
+                }
+            } else {
+                LogWarning("找不到卡牌UI位置: " + cardPath)
+            }
+        }
         //恢复默认选择技能1
         CurrentSkill = 1
+        ToClient_GameComplete()
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     func ToClient_DisplaySkillThreeChoiceOne() {

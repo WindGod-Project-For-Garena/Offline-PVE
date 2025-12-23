@@ -265,7 +265,5 @@ static graph PVEController {
         
         var localPlayer entity<Player> = GetAllPlayers()[0]
         localPlayer<Player>.Invincible = false
-
-        GetLocalPlayer()<PlayerJionGame>.ToClient_GameComplete()
     }
 }
