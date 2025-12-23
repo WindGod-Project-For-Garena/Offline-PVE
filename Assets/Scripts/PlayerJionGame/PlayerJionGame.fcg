@@ -2117,34 +2117,48 @@ graph PlayerJionGame {
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     func ToClient_ShowFinalStats(currTime int, GameStartTime int, IsGameSuccess bool, totalTime int, CurrentLevel int) {
         GameOverFinalUI<CustomUI>.IsVisible = true
-        var HeroEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/Hero/Name")                  //使用角色
-        var StepEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/Step/Name")                  //當前關卡
-        var IsPassOrNoEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/IsPassOrNo")           //通關狀態
-        var PassYesEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/IsPassOrNo/Yes")          //通關成功
-        var PassNoEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/IsPassOrNo/No")            //通關失敗
-        var PassTimeEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/PassTime/text")          //通關時間
-        var BossKillTimeEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/BossKillTime/text")  //殺死BOSS時間
-        var GetMoneyEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/GetMoney/text")          //獲得金錢
+        var StepEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/HeroPanel/GameOverIFM/StepPanel/Step/Name")                             //當前關卡
+        var IsPassOrNoEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/FuncPanel/IsPassOrNo")                                            //通關狀態
+        var PassTimeEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/HeroPanel/GameOverIFM/PassTimePanel/PassTime/text")                 //通關時間
+        var BossKillTimeEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/HeroPanel/GameOverIFM/BossKillTimePanel/BossKillTime/text")     //殺死BOSS時間
+        var GetMoneyEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/HeroPanel/GameOverIFM/GetMoneyPanel/GetMoney/text")                 //獲得金錢
+
+        var Hero1Entity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/HeroPanel/HeroIfmPanel/Hero1IFMPanel")                  //使用角色1
+        var Hero2Entity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/HeroPanel/HeroIfmPanel/Hero2IFMPanel")                  //使用角色2
+
+        var HeroDamage1Entity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/DamageNum/Skill_1_Damage_IFM")                  //使用角色1伤害
+        var HeroDamage2Entity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/DamageNum/Skill_2_Damage_IFM")                  //使用角色2伤害
+
         if  CurrentSkill == 1 {
-            HeroEntity<UIWidgetLabel>.Content = "近卫爆破手"
+            Hero1Entity<UIWidget>.IsVisible = true
+            HeroDamage1Entity<UIWidget>.IsVisible = true
+            Hero2Entity<UIWidget>.IsVisible = false
+            HeroDamage2Entity<UIWidget>.IsVisible = false
+
         }
         if  CurrentSkill == 2 {
-            HeroEntity<UIWidgetLabel>.Content = "风暴游击手"
+            Hero1Entity<UIWidget>.IsVisible = false
+            HeroDamage1Entity<UIWidget>.IsVisible = false
+            Hero2Entity<UIWidget>.IsVisible = true
+            HeroDamage2Entity<UIWidget>.IsVisible = true
         }
-        StepEntity<UIWidgetLabel>.Content = "第" + Convert.ToString(CurrentLevel) + "关"        
-        PassTimeEntity<UIWidgetLabel>.Content = Convert.ToString(totalTime)
-        BossKillTimeEntity<UIWidgetLabel>.Content = Convert.ToString(totalTime)
-        GetMoneyEntity<UIWidgetLabel>.Content = 1000
+
         //  通關顯示
         if  IsGameSuccess == true {
-            PassYesEntity<UIWidget>.IsVisible = true
-            PassNoEntity<UIWidget>.IsVisible = false
-            IsPassOrNoEntity<UIWidgetLabel>.Content = "通关成功"
+            IsPassOrNoEntity<UIWidgetLabel>.Content = "VICTORY"
+            IsPassOrNoEntity<UIWidgetLabel>.Color = #F1BF48
         } else {
-            PassYesEntity<UIWidget>.IsVisible = false
-            PassNoEntity<UIWidget>.IsVisible = true
-            IsPassOrNoEntity<UIWidgetLabel>.Content = "通关失败"
+            IsPassOrNoEntity<UIWidgetLabel>.Content = "DEFEAT"
+            IsPassOrNoEntity<UIWidgetLabel>.Color = #A3A3A3FF
         }
+
+        StepEntity<UIWidgetLabel>.Content = "第" + Convert.ToString(CurrentLevel) + "关"  
+        
+        var Time string = PVEController.FormatTimeMMSS(totalTime)
+        PassTimeEntity<UIWidgetLabel>.Content = Convert.ToString(Time)
+        BossKillTimeEntity<UIWidgetLabel>.Content = Convert.ToString(Time)
+
+        GetMoneyEntity<UIWidgetLabel>.Content = 1000
 
         //恢复默认选择技能1
         CurrentSkill = 1
