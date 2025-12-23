@@ -19,9 +19,6 @@ graph Reload {
         GetLocalPlayer()<PlayerJionGame>.AmmoJudgement = 0
         if (SkillIndex == 1) {
             Offline.AddItem(ItemIDType.SGAmmo, 5, out var createdEntity)
-            LogInfo(currPlayer)
-            LogInfo(currPlayer<Player>.Backpack)
-            LogInfo(currPlayer<Player>.MainWeapon)
         }
 
         if (SkillIndex == 2) {

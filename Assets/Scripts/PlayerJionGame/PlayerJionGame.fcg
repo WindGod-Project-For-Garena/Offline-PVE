@@ -13,6 +13,7 @@ import "Offline.fcc" as Offline
 import "Items.fcc" as Items
 import "../CustomEvent.fcc" as CustomEvent
 import "../PVE/PVEController.fcg" as PVEController
+import "Economy.fcc" as Economy
 
 // 这里是RCT最新代码，WindGod & Holy巨献
 
@@ -25,14 +26,15 @@ graph PlayerJionGame {
     currentWeapon entity<Weapon> = nil
       
     //主页面
-    ChoiceHeroUI entity<CustomHud>   //开始游戏选择英雄页面
-    ChoiceThreeCardUI entity<CustomHud>   //三选一卡牌界面
-    HeroUI entity<CustomHud>        //英雄页面
-    GiftedUI entity<CustomHud>      //天赋页面
-    SecondDownUI entity<CustomHud>      //倒计时页面
-    GameOverFinalUI entity<CustomHud>      //結算页面
-    TimeInGameUI entity<CustomHud>      //时间页面
-    WaveCompleteUI entity<CustomHud>      //波次完成页面
+    ChoiceHeroUI entity<CustomHud>          //开始游戏选择英雄页面
+    ChoiceThreeCardUI entity<CustomHud>     //三选一卡牌界面
+    HeroUI entity<CustomHud>                //英雄页面
+    GiftedUI entity<CustomHud>              //天赋页面
+    SecondDownUI entity<CustomHud>          //倒计时页面
+    GameOverFinalUI entity<CustomHud>       //結算页面
+    TimeInGameUI entity<CustomHud>          //时间页面
+    WaveCompleteUI entity<CustomHud>        //波次完成页面
+    PopupUI entity<CustomHud>               //弹窗页面
     
     CurrentSkill int = 1
     //当前选择的卡牌第几张1-3
@@ -212,6 +214,10 @@ graph PlayerJionGame {
             CreateCustomUIClient(out var WaveCompleteUIEntity, EResUI.WaveComplete)
             WaveCompleteUI = WaveCompleteUIEntity
             WaveCompleteUIEntity<CustomUI>.IsVisible = false
+
+            CreateCustomUIClient(out var PopupUIEntity, EResUI.Popup)
+            PopupUI = PopupUIEntity
+            PopupUIEntity<CustomUI>.IsVisible = false
 
             var Skill_1Panel = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_1")
             Skill_1Panel<UIWidget>.IsVisible = false
@@ -1479,7 +1485,33 @@ graph PlayerJionGame {
         DisplayGiftedCardBonusesInUI()
 
         // 弹出弹框显示抽到的卡牌
-        // ShowDrawCardPopup(selectedCard)
+        ShowDrawCardPopup(selectedCard)
+    }
+
+    func ShowDrawCardPopup(cardInfo Map<string, object>) {
+        // 弹出弹框显示抽到的卡牌
+        PopupUI<CustomUI>.IsVisible = true
+        
+        var cardId = cardInfo["CardID"] as int
+        var nature = Convert.ToString(cardInfo["Nature"])
+        var value = cardInfo["Value"] as float
+        var translationText = Convert.ToString(cardInfo["TranslationText"])
+        var GiftedNameText = Convert.ToString(cardInfo["GiftedName"])
+        var rarity = cardInfo["Rarity"] as int
+        var currentCount = Gifted_Card_Count[cardId]
+        var maxCount = GetMaxDrawCount(nature)
+
+        // 更新天赋卡牌说明
+        var PopupText = GetWidgetByPath(GetLocalPlayer(), PopupUI, "/Panel/Bb/ICONBb/Text")
+        if PopupText != nil {
+            PopupText<UIWidgetLabel>.Content = GiftedNameText
+        }
+
+        // 更新卡牌图标
+        var PopupIconEntity = GetWidgetByPath(GetLocalPlayer(), PopupUI, "/Panel/Bb/ICONBb/ICON")
+        if PopupIconEntity != nil {
+            // PopupIconEntity.SetImage("GiftedIcon_" + Convert.ToString(cardId))
+        }
     }
 
     // 扣除玩家货币

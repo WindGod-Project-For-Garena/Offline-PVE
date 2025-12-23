@@ -150,7 +150,7 @@ static graph PVEController {
         }
         var WaveText = GetWidgetByPath(GetLocalPlayer(), TimeInGameUIEntity, "/Time/TimePanel/Text")
         if WaveText != nil {
-            WaveText<UIWidgetLabel>.Content = "波数：" + (CurrentWave) + "/6"
+            WaveText<UIWidgetLabel>.Content = "波数：" + (CurrentWave) + "/5"
         }
     }
 
