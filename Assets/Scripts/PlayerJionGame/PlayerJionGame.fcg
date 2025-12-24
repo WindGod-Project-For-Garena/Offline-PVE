@@ -56,6 +56,18 @@ graph PlayerJionGame {
     ability1Level int = 0
     ability2Level int = 0
     ability3Level int = 0
+    // 伤害统计
+    AllDamage int = 0       // 伤害统计
+
+    WeaponDamage int = 0    // 武器伤害统计
+
+    Skill1Damage int = 0    // 技能1伤害统计
+    BurningDamage int = 0   // 燃烧伤害统计
+    GrenadeDamage int = 0   // 榴弹伤害统计
+
+    Skill2Damage int = 0                    // 技能2伤害统计
+    LightningExplosionDamage int = 0        // 闪电爆炸伤害统计
+    LightningDamage int = 0                 // 闪电伤害统计
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     Money int = 999999
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
@@ -2222,6 +2234,36 @@ graph PlayerJionGame {
                 LogWarning("找不到卡牌UI位置: " + cardPath)
             }
         }
+        //=======================显示相关伤害统计======================//
+        var AllDamageEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/DamageNum/AllDamage/Bb/AllDamage/Num")  //总伤害
+        var Weapon1DamageEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/DamageNum/Skill_1_Damage_IFM/Weapon/Weapon/Name")      //武器1普攻
+        var Skill1DamageEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/DamageNum/Skill_1_Damage_IFM/Boom/Boom/text")           //技能1伤害
+        var BurningDamageEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/DamageNum/Skill_1_Damage_IFM/Fire/Fire/text")          //燃烧伤害
+        var GrenadeDamageEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/DamageNum/Skill_1_Damage_IFM/GunBoom/GunBoom/text")    //榴弹爆炸伤害
+
+        var Weapon2DamageEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/DamageNum/Skill_2_Damage_IFM/Weapon/Weapon/Name")      //武器2普攻
+        var Skill2DamageEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/DamageNum/Skill_2_Damage_IFM/Elect/Boom/text")           //技能2伤害
+        var LightningExplosionDamageEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/DamageNum/Skill_2_Damage_IFM/Fire/Fire/text") //闪电爆炸伤害
+        var LightningDamageEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/DamageNum/Skill_2_Damage_IFM/GunBoom/GunBoom/text")    //闪电伤害
+
+        if CurrentSkill == 1 {
+            AllDamage = WeaponDamage + Skill1Damage + BurningDamage + GrenadeDamage
+        }
+        if CurrentSkill == 2 {
+            AllDamage = WeaponDamage + Skill2Damage + LightningExplosionDamage + LightningDamage
+        }
+        AllDamageEntity<UIWidgetLabel>.Content = Convert.ToString(AllDamage)
+
+        Weapon1DamageEntity<UIWidgetLabel>.Content = Convert.ToString(WeaponDamage)
+        Skill1DamageEntity<UIWidgetLabel>.Content = Convert.ToString(Skill1Damage)
+        BurningDamageEntity<UIWidgetLabel>.Content = Convert.ToString(BurningDamage)
+        GrenadeDamageEntity<UIWidgetLabel>.Content = Convert.ToString(GrenadeDamage)
+
+        Weapon2DamageEntity<UIWidgetLabel>.Content = Convert.ToString(WeaponDamage)
+        Skill2DamageEntity<UIWidgetLabel>.Content = Convert.ToString(Skill2Damage)
+        LightningExplosionDamageEntity<UIWidgetLabel>.Content = Convert.ToString(LightningExplosionDamage)
+        LightningDamageEntity<UIWidgetLabel>.Content = Convert.ToString(LightningDamage)
+        //============================================================//
         //恢复默认选择技能1
         CurrentSkill = 1
         ToClient_GameComplete()
@@ -2248,11 +2290,29 @@ graph PlayerJionGame {
         ResetInGameData()
         // 清空已选卡牌记录
         ClearSelectedCards()
+        // 重置伤害数据
+        ResetDamageData()
         // 恢复默认没有选择卡牌 
         NowChoiceCard = 0
         // 重置子弹判定
         AmmoJudgement = 0
     }
+
+    // 重置伤害数据
+    func ResetDamageData() {
+        AllDamage  = 0       // 伤害统计
+
+        WeaponDamage  = 0    // 武器伤害统计
+        
+        Skill1Damage  = 0    // 技能1伤害统计
+        BurningDamage  = 0   // 燃烧伤害统计
+        GrenadeDamage  = 0   // 榴弹伤害统计
+
+        Skill2Damage  = 0                    // 技能2伤害统计
+        LightningExplosionDamage  = 0        // 闪电爆炸伤害统计
+        LightningDamage  = 0                 // 闪电伤害统计
+    }
+    //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
 
     // 重置数据
     func ResetInGameData() {

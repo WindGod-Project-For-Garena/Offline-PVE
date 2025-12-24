@@ -184,6 +184,7 @@ graph SkillUI {
             var monster = monsters[j]
             var damage int = Math.Ceil(CurrentDamage * skillMultiplier)
             DispatchEventToEntity(OnDamageMob, monster, PlatformType.Client, List<object>{monster, nil, damage, GetLocalPlayer()})
+            GetLocalPlayer()<PlayerJionGame>.Skill1Damage += damage
             CreateDamageNum(damage, 10, #dde511, 800, monster as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
         }
     }
@@ -212,6 +213,7 @@ graph SkillUI {
         for i = 0, tickCount, 1 {
             // 造成燃烧伤害
             DispatchEventToEntity(OnDamageMob, monster, PlatformType.Client, List<object>{monster, nil, damagePerTick, GetLocalPlayer()})
+            GetLocalPlayer()<PlayerJionGame>.BurningDamage += damagePerTick
             CreateDamageNum(damagePerTick, 10, #ff6600, 500, monster as entity<Entity>, Vector3{0,1.2,0}, Vector2{50, 50}, true)
             // 等待0.5秒
         WaitForMillisecond(tickInterval)
@@ -271,9 +273,11 @@ graph SkillUI {
             if randomMonster != nil {
                 if  LightningExplosion == 0 {
                     start CreateThunder(i, randomMonster, damage)
+                    GetLocalPlayer()<PlayerJionGame>.Skill2Damage += damage
                 }
                 if  LightningExplosion > 0 {
                     start CreateThunder(i, randomMonster, damage)
+                    GetLocalPlayer()<PlayerJionGame>.Skill2Damage += damage
                     start ThunderBoom(i, randomMonster, damage,LightningRange,LightningExplosion)
                 }
                 WaitForMillisecond(200)
@@ -304,7 +308,6 @@ graph SkillUI {
         CreateDamageNum(realDamage, 10, #dde511, 800, targetMonster as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
     }
 
-    
     // 创建闪电爆炸
     async func ThunderBoom(index int, targetMonster entity<LevelObject>, damage int, LightningRange int ,LightningExplosion float) {
         // 释放特效 
@@ -321,6 +324,7 @@ graph SkillUI {
         for j = 0, List.Length(monsters), 1 {
             var monster = monsters[j]
             DispatchEventToEntity(OnDamageMob, monster, PlatformType.Client, List<object>{monster, nil, Boomdamage, GetLocalPlayer()})
+            GetLocalPlayer()<PlayerJionGame>.LightningExplosionDamage += Boomdamage
             CreateDamageNum(Boomdamage, 10, #00FFF2FF, 800, monster as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
         }
     }
