@@ -117,6 +117,7 @@ graph OnFire {
             
             // 发送伤害到服务器
             DispatchEventToEntity(OnDamageMob, monster, PlatformType.Client, List<object>{monster, nil, damage, GetLocalPlayer()})
+            GetLocalPlayer()<PlayerJionGame>.GrenadeDamage += damage
             CreateDamageNum(damage, 10, #dde511, 800, monster as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
             
             // 记录被击中的怪物信息
@@ -191,6 +192,7 @@ graph OnFire {
             if monster<Mob>.HP > 0 {
                 // 发送昫爆伤害到服务器
                 DispatchEventToEntity(OnDamageMob, monster, PlatformType.Client, List<object>{monster, nil, mainDamage, GetLocalPlayer()})
+                GetLocalPlayer()<PlayerJionGame>.Skill1Damage += mainDamage
                 // 显示昫爆伤害数字（用不同颜色区分）
                 CreateDamageNum(mainDamage, 10, #FF4500, 800, monster as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
             }
@@ -251,6 +253,7 @@ graph OnFire {
             //造成伤害
             var realDamage int = Math.Ceil(damage * skillMultiplier)
             DispatchEventToEntity(OnDamageMob, hitEntity, PlatformType.Client, List<object>{hitEntity, nil, realDamage, GetLocalPlayer()})
+            GetLocalPlayer()<PlayerJionGame>.LightningDamage += realDamage
             CreateDamageNum(realDamage, 10, #dde511, 800, hitEntity as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
 
             WaitForMillisecond(200)

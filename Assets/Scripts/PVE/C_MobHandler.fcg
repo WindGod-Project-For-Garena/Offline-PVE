@@ -3,6 +3,7 @@ import "EditorGenLib.fcc" as EditorLib
 import "Items.fcc" as Items
 import "Convert.fcc" as Convert
 import "../CustomEvent.fcc" as CustomEvent
+import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
 
 [platform_client]
 static graph C_MobHandler {
@@ -16,30 +17,37 @@ static graph C_MobHandler {
 		if (part == "Head") {
 			damage = damage * 2
 			DispatchEventToEntity(OnDamageMob, owner, PlatformType.Client, List<object>{owner, part, damage, weapon<Weapon>.Owner})
+            GetLocalPlayer()<PlayerJionGame>.WeaponDamage += damage
 			CreateDamageNum(ToString(damage), 14, #C40F04, 1000, owner as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
 		} else if (part == "Body") {
 			damage = damage
 			DispatchEventToEntity(OnDamageMob, owner, PlatformType.Client, List<object>{owner, part, damage, weapon<Weapon>.Owner})
+            GetLocalPlayer()<PlayerJionGame>.WeaponDamage += damage
 			CreateDamageNum(ToString(damage), 10, #dde511, 800, owner as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
 		} else if (part == "LeftArm") {
 			damage = damage
 			DispatchEventToEntity(OnDamageMob, owner, PlatformType.Client, List<object>{owner, part, damage, weapon<Weapon>.Owner})
+            GetLocalPlayer()<PlayerJionGame>.WeaponDamage += damage
 			CreateDamageNum(ToString(damage), 10, #dde511, 800, owner as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
 		} else if (part == "RightArm") {
 			damage = damage
 			DispatchEventToEntity(OnDamageMob, owner, PlatformType.Client, List<object>{owner, part, damage, weapon<Weapon>.Owner})
+            GetLocalPlayer()<PlayerJionGame>.WeaponDamage += damage
 			CreateDamageNum(ToString(damage), 10, #dde511, 800, owner as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
 		} else if (part == "LeftLeg") {
 			damage = damage
 			DispatchEventToEntity(OnDamageMob, owner, PlatformType.Client, List<object>{owner, part, damage, weapon<Weapon>.Owner})
+            GetLocalPlayer()<PlayerJionGame>.WeaponDamage += damage
 			CreateDamageNum(ToString(damage), 10, #dde511, 800, owner as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
 		}else if (part == "Zombie_Shield") {
 			damage = damage
 			DispatchEventToEntity(OnDamageMob, owner, PlatformType.Client, List<object>{owner, part, damage, weapon<Weapon>.Owner})
 			CreateDamageNum(ToString(damage), 10, #8101CBFF, 800, owner as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
+            GetLocalPlayer()<PlayerJionGame>.WeaponDamage += damage
 		} else {
 			damage = damage
 			DispatchEventToEntity(OnDamageMob, owner, PlatformType.Client, List<object>{owner, part, damage, weapon<Weapon>.Owner})
+            GetLocalPlayer()<PlayerJionGame>.WeaponDamage += damage
 			CreateDamageNum(ToString(damage), 10, #dde511, 800, owner as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
 		}
 	}
