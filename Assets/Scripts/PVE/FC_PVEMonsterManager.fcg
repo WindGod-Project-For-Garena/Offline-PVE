@@ -28,30 +28,27 @@ static graph FC_PVEMonsterManager {
     CurrentLevel int = 1
     CurrentWave int = 1
     IsWaveActive bool = false
-    currSpawnerIndex int = 0
-    
+    currSpawnerIndex int = 0 //当前生成器索引
     
     // 怪物追踪
     ActiveMonsters List<entity<LevelObject>> = List<entity<LevelObject>>{}
-    ActivenNormalMonsters List<entity<LevelObject>> = List<entity<LevelObject>>{}
-    MonsterDeathCount Map<int, int> = Map<int, int>{}  // 按类型统计死亡数量
+    ActiveNormalMonsters List<entity<LevelObject>> = List<entity<LevelObject>>{}
+    ActiveEliteMonsters List<entity<LevelObject>> = List<entity<LevelObject>>{}
+
+    BossSpawnedCount Map<int, int> = Map<int, int>{}  // MonsterID -> 已生成数量
+    EliteCurrentCount Map<int, int> = Map<int, int>{}  // MonsterID -> 当前存在数量
+
     TotalKills int = 0
     
     
     // CSV缓存（仅缓存当前Level行、按需缓存怪物行）
     LevelRowInfos Map<int, Map<string, object>> = Map<int, Map<string, object>>{} //LevelID -> LevelInfo
-
     //WaveID -> MonsterInfo(MonsterID, MaxNum, Possibility, Name_key, BaseHP, BaseDamage, MoveSpeed, IsElite, IsBoss, PrefabID)
     WaveMonsterInfos List<Map<string, object>> = List<Map<string, object>>{} 
     
     // 当前波次信息 - 使用基础类型
     CurrentHPModifier float = 1.0
     CurrentDamageModifier float = 1.0
-    
-    // BOSS和精英怪物追踪
-    EliteTracker List<entity<LevelObject>> = List<entity<LevelObject>>{}
-    BossSpawnedCount Map<int, int> = Map<int, int>{}  // MonsterID -> 已生成数量
-    EliteCurrentCount Map<int, int> = Map<int, int>{}  // MonsterID -> 当前存在数量
     
     // 普通怪物生成CD
     NormalSpawnCD int = 5000  // 毫秒
@@ -62,7 +59,6 @@ static graph FC_PVEMonsterManager {
     // 怪物父节点
     ActiveMonsterParentNode entity<Entity> = nil
     PendingRemoveMonsterParentNode entity<Entity> = nil
-
 
     //出生相关的对象池
     spawnEffectPool List<entity<Effect>> = List<entity<Effect>>{}
@@ -79,8 +75,8 @@ static graph FC_PVEMonsterManager {
         // 初始化统计数据
         TotalKills = 0
         list.Clear(ActiveMonsters)
-        list.Clear(ActivenNormalMonsters)
-        Map.Clear(MonsterDeathCount)
+        list.Clear(ActiveNormalMonsters)
+        list.Clear(ActiveEliteMonsters)
         Map.Clear(LevelRowInfos)
         list.Clear(WaveMonsterInfos)
         ActiveMonsterParentNode = EResSceneIsleLand.ActiveMobs as entity<Entity>
@@ -176,8 +172,7 @@ static graph FC_PVEMonsterManager {
         } 
 
         CurrentDamageModifier = waveRowInfo["DamageModifier"] as float
-        CurrentHPModifier = waveRowInfo["HPModifier"] as float
-        
+        CurrentHPModifier = waveRowInfo["HPModifier"] as float   
        
         // 构建优先队列（Boss -> Elite -> Normal）
         var bossQueue List<Map<string, object>> = List<Map<string, object>>{}
@@ -216,8 +211,8 @@ static graph FC_PVEMonsterManager {
         
         // 启动三个独立的生成循环（Boss -> Elite -> Normal）
         currSpawnerIndex = currSpawnerIndex + 1
-        //start SpawnBossLoop(bossQueue,currSpawnerIndex)
-        start SpawnEliteLoop(eliteQueue,currSpawnerIndex)
+        start SpawnBossLoop(bossQueue,currSpawnerIndex)
+        //start SpawnEliteLoop(eliteQueue,currSpawnerIndex)
         //start SpawnNormalLoop(normalQueue,currSpawnerIndex)
         
         LogInfo("波次怪物生成循环已启动")
@@ -225,6 +220,7 @@ static graph FC_PVEMonsterManager {
     
     // Boss生成循环：直接生成到MaxNum数量，同时满足MaxMonstersOnField限制
     async func SpawnBossLoop(bossQueue List<Map<string, object>>,spawnerIndex int) {
+        LogInfo("------SpawnBossLoop: " + bossQueue)
         while IsWaveActive && (spawnerIndex == currSpawnerIndex)  {
             // 检查是否所有Boss都已生成完成
             var allBossSpawned = true
@@ -246,8 +242,8 @@ static graph FC_PVEMonsterManager {
                 
                 allBossSpawned = false
                 
-                // 生成到MaxNum数量，每次生成前检查总量限制
-                while BossSpawnedCount[monsterID] < maxNum && IsWaveActive {
+                // 生成到MaxNum数量，每次生成前检查总量限制和currentSpawnerIndex
+                while BossSpawnedCount[monsterID] < maxNum && IsWaveActive && (spawnerIndex == currSpawnerIndex) {
                     // 检查总量限制，超过就等待
                     if GetActiveMonsterCount() >= MaxMonstersOnField {
                         WaitForMillisecond(500)
@@ -319,7 +315,7 @@ static graph FC_PVEMonsterManager {
                     WaitForMillisecond(500)
                 }
                 
-                if !IsWaveActive { break }
+                if !IsWaveActive || (spawnerIndex != currSpawnerIndex) { break }
                 
                 // 生成Elite
                 LogInfo("---------生成Elite: " + monsterInfo["Name_key"] as string)
@@ -376,7 +372,7 @@ static graph FC_PVEMonsterManager {
                 
                 // 生成指定数量的怪物
                 for j = 0, spawnCount, 1 {
-                    if !IsWaveActive { break }
+                    if !IsWaveActive || (spawnerIndex != currSpawnerIndex) { break }
                     
                     // 再次检查总量限制
                     if GetActiveMonsterCount() >= MaxMonstersOnField {
@@ -397,7 +393,7 @@ static graph FC_PVEMonsterManager {
 
     // 检查是否有普通怪物存活
     func HasNormalMonstersAlive() bool {
-        return list.Length(ActivenNormalMonsters) > 0
+        return list.Length(ActiveNormalMonsters) > 0
     }
     
     // 根据概率选择普通怪物类型（使用monsterInfo["Possibility"]）
@@ -452,7 +448,6 @@ static graph FC_PVEMonsterManager {
             spawnEffect = effect
             spawnEffect<Transform>.Scale = Vector3{1.5,1,1.5}
         }
-
         if list.Length(spawnTweenPool) > 0 {
             spawnTween = spawnTweenPool[0]
             list.Remove(spawnTweenPool, spawnTween)
@@ -462,6 +457,7 @@ static graph FC_PVEMonsterManager {
             spawnTween = tweenEntity
         }
 
+
         //创建怪物
         var name_key = monsterInfo["Name_key"] as string
         LogInfo("create single monster : " + name_key)
@@ -469,8 +465,6 @@ static graph FC_PVEMonsterManager {
         
         CreateFromPrefab(out var monsterEntity, prefabID)
         var monster = monsterEntity as entity<LevelObject>
-
-        
 
 
         //初始化到指定位置
@@ -481,7 +475,11 @@ static graph FC_PVEMonsterManager {
             list.Append(ActiveMonsters, monster)
         }
         if monsterInfo["IsElite"] as bool {
-            list.Append(EliteTracker, monster)
+            list.Append(ActiveEliteMonsters, monster)
+        } else if monsterInfo["IsBoss"] as bool {
+            //list.Append(ActiveBossMonsters, monster)
+        } else {
+            list.Append(ActiveNormalMonsters, monster)
         }
         SetParentClient(ActiveMonsterParentNode<Transform>, monsterEntity<Transform>, true) 
 
@@ -563,21 +561,6 @@ static graph FC_PVEMonsterManager {
         }
     }
   
-
-    
-    func GetMonsterType(monster entity<LevelObject>) int {
-        if HasComponent(monster, typeof(Mob)) {
-            var mobName = monster<Mob>.MobName
-
-            if mobName == "NormalZombie" { return 1 }
-            if mobName == "FastZombie" { return 2 }
-            if mobName == "TankZombie" { return 3 }
-            if mobName == "ZombieBoss" { return 4 }
-            if mobName == "SpitterZombie" { return 5 }
-            if mobName == "ExplosiveZombie" { return 6 }
-        }
-        return 0
-    }
     
     // 清理所有怪物（必需的基础方程）
     func ClearAllMonsters() {
@@ -596,10 +579,11 @@ static graph FC_PVEMonsterManager {
         
         // 清理数据结构
         list.Clear(ActiveMonsters)
-        Map.Clear(MonsterDeathCount)
-        list.Clear(EliteTracker)
+        list.Clear(ActiveEliteMonsters)
+        list.Clear(ActiveNormalMonsters)
         Map.Clear(BossSpawnedCount)
         Map.Clear(EliteCurrentCount)
+
         NormalLastSpawnTime = 0
         //map.Clear(EliteLastSpawnTime)
         
@@ -632,25 +616,10 @@ static graph FC_PVEMonsterManager {
             //LogInfo("-------------------------OnMonsterKilled-------------------------")
             SetParentClient(PendingRemoveMonsterParentNode<Transform>, monster<Transform>, true)
             list.Remove(ActiveMonsters, monster)
-            list.Remove(ActivenNormalMonsters, monster)
-            
-            // 统计死亡数量
-            if HasComponent(monster, typeof(Mob)) {
-                var monsterType = GetMonsterType(monster)
-                
-                if Map.ContainKey(MonsterDeathCount, monsterType) == false {
-                    MonsterDeathCount[monsterType] = 0
-                }
-                LogInfo("MonsterDeathCount: " + MonsterDeathCount)
-                var currentCount = MonsterDeathCount[monsterType]
-                MonsterDeathCount[monsterType] = currentCount + 1
-                TotalKills = TotalKills + 1
-            }
-            
+            list.Remove(ActiveNormalMonsters, monster)
             // 处理Elite死亡与CD记录
-            if list.Contain(EliteTracker, monster) {
-                list.Remove(EliteTracker,monster)
-                
+            if list.Contain(ActiveEliteMonsters, monster) {
+                list.Remove(ActiveEliteMonsters,monster)
                 // 减少对应MonsterID的Elite计数
                 var mobName = monster<Mob>.MobName
                 for i = 0, list.Length(WaveMonsterInfos), 1 {
@@ -667,6 +636,9 @@ static graph FC_PVEMonsterManager {
                 
                 LogInfo("Elite怪物死亡，CD开始: " + EliteSpawnCD + "ms")
             }
+           
+            
+            
         }
         
     }

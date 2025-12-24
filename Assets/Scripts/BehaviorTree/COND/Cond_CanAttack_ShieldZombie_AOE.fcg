@@ -30,6 +30,9 @@ graph Script_1_ {
     }
     
     func playCondition(owner entity<BevTreeAttachableForClient>) bool{
+        if (owner<Mob>.MobName != "ShieldZombie_Gold"){
+            return false
+        }
         if (owner<Mob>.StatusDic["InAttack"] as bool){
             return false
         }

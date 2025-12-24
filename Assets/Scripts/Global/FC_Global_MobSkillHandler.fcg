@@ -191,9 +191,9 @@ static graph FC_Global_MobSkillHandler {
 
 
     async func releaseSkill_ShieldZombieAOEAttack(mob entity<Mob>)  {
-        var Range1 float = 15.0
-		var Range2 float = 20.0
-		var Range3 float = 25.0
+        var Range1 float = 10.0
+		var Range2 float = 15.0
+		var Range3 float = 20.0
 		var time1 int = 1500
 		var time2 int = 2800
 		var time3 int = 3900
