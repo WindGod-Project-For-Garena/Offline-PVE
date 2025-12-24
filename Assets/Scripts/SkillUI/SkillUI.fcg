@@ -278,7 +278,9 @@ graph SkillUI {
                 if  LightningExplosion > 0 {
                     start CreateThunder(i, randomMonster, damage)
                     GetLocalPlayer()<PlayerJionGame>.Skill2Damage += damage
-                    start ThunderBoom(i, randomMonster, damage,LightningRange,LightningExplosion)
+                    // 传递怪物位置给爆炸函数
+                    var monsterPosition = randomMonster<Transform>.Position
+                    start ThunderBoom(i, monsterPosition, damage, LightningRange, LightningExplosion)
                 }
                 WaitForMillisecond(200)
             }
@@ -309,24 +311,39 @@ graph SkillUI {
     }
 
     // 创建闪电爆炸
-    async func ThunderBoom(index int, targetMonster entity<LevelObject>, damage int, LightningRange int ,LightningExplosion float) {
+    async func ThunderBoom(index int, explosionPosition Vector3, damage int, LightningRange int, LightningExplosion float) {
         // 释放特效 
         CreateEffectClient(out var NewcreatedEntity, VFXType.CurseExplosion, LoopType.Once, true)
         effectEntity = NewcreatedEntity
-        var thunderPosition = targetMonster<Transform>.Position
-        effectEntity<Transform>.Position = thunderPosition
+        // 使用传入的怪物位置
+        effectEntity<Transform>.Position = explosionPosition
         effectEntity<Transform>.Scale = Vector3{LightningRange, LightningRange, LightningRange}
         BoomColor(effectEntity, LightningRange)
+        
         // 造成伤害
         var Boomdamage int = Math.Ceil(LightningExplosion * damage)
-        // 造成伤害
-        var monsters = getMonsterWithinDistance(LightningRange)
+        
+        // 获取爆炸范围内的怪物
+        var monsters = getMonsterWithinDistanceFromPosition(explosionPosition, LightningRange)
         for j = 0, List.Length(monsters), 1 {
             var monster = monsters[j]
             DispatchEventToEntity(OnDamageMob, monster, PlatformType.Client, List<object>{monster, nil, Boomdamage, GetLocalPlayer()})
             GetLocalPlayer()<PlayerJionGame>.LightningExplosionDamage += Boomdamage
             CreateDamageNum(Boomdamage, 10, #00FFF2FF, 800, monster as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
         }
+    }
+
+    // 从指定位置获取范围内的怪物（新函数）
+    func getMonsterWithinDistanceFromPosition(position Vector3, distance int) List<entity<LevelObject>> {
+        var monsters List<entity<LevelObject>> = List<entity<LevelObject>>{}
+        var activeMonsters List<entity<LevelObject>> = GetChildren(ActiveMonstersParentNode) as List<entity<LevelObject>>
+        for i = 0, List.Length(activeMonsters), 1 {
+            var monster = activeMonsters[i]
+            if Distance(monster<Transform>.Position, position) <= distance {
+                List.Append(monsters, monster)
+            }
+        }
+        return monsters
     }
 
     // 获取范围内怪物
