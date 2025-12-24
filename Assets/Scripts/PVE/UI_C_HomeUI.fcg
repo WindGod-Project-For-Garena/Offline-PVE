@@ -71,28 +71,17 @@ graph UI_HomeUI {
     }
 
     func OnSkill3Click(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
-        GetLocalPlayer()<PlayerJionGame>.CurrentSkill = 3
+        GetLocalPlayer()<PlayerJionGame>.CurrentSkill = 0
         skill1<UIWidgetButton>.Color = #F2A245
         skill2<UIWidgetButton>.Color = #F2A245
         skill3<UIWidgetButton>.Color = #FF8900
     }
 
-    func OnAbility1Click(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
-        ability1Level = (ability1Level + 1) % 10
-        ability1Text<UIWidgetLabel>.Content = "LV." + ability1Level
-    }
-    func OnAbility2Click(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
-        ability2Level = (ability2Level + 1) % 10
-        ability2Text<UIWidgetLabel>.Content = "LV." + ability2Level
-    }
-    func OnAbility3Click(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
-        ability3Level = (ability3Level + 1) % 10
-        ability3Text<UIWidgetLabel>.Content = "LV." + ability3Level
-    }
-
     func OnStartButtonClick(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
         //临时处理，因为客户端服务端不互通
-        LogInfo("OnStartButtonClick")
+        if GetLocalPlayer()<PlayerJionGame>.CurrentSkill == 0 {
+            return
+        }
         var skillMultiplier float = 1.0 * ability3Level + 1
         GetLocalPlayer()<PlayerJionGame>.SkillUI<SkillUI>.skillMultiplier = skillMultiplier
         thisEntity<CustomUI>.IsVisible = false

@@ -18,6 +18,7 @@ graph FinalStats {
     func BackNewHome(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
         var GameOverFinalUI = GetLocalPlayer()<PlayerJionGame>.GameOverFinalUI
         GameOverFinalUI<CustomUI>.IsVisible = false
+        
         var ChoiceHeroUI = GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI
         ChoiceHeroUI<CustomUI>.IsVisible = true
         Offline.Revive()
@@ -38,5 +39,7 @@ graph FinalStats {
         //默认选择第一个技能
         var skillIndex int = 1
         GetLocalPlayer()<PlayerJionGame>.displaySkillByIndex(skillIndex)
+
+        Offline.Revive()
     }
 }

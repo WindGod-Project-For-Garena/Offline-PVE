@@ -316,10 +316,6 @@ graph FC_NormalZombie {
 		
 	}
 
-
-
-	
-
 	//funcID: GetDamage
 	func GetDamage() int {
 		return Floor((thisEntity<Mob>.Damage))
