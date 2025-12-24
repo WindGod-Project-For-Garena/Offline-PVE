@@ -1,0 +1,58 @@
+{
+  "fileId": "qij6xyy5wp9-m1kdugv3-xa9ctygleji",
+  "globalscale": 1,
+  "properties": {
+    "Common": ""
+  },
+  "subDynamicResources": {},
+  "subLOD": {},
+  "version": "1.6.4",
+  "manifest": {
+    "Meshes": [],
+    "BoneInfos": [],
+    "Anims": [
+      {
+        "OrgExtName": ".Anim",
+        "Name": "Walk.Anim",
+        "Size": 75447,
+        "ClipData": {
+          "Name": "Walk",
+          "BakeStart": 0,
+          "BakeStop": 1.1666666269302368,
+          "SampleRate": 30
+        },
+        "magicNumber": {
+          "magicNumber1": 100,
+          "magicNumber2": 98,
+          "magicNumber3": 158,
+          "magicNumber4": 134,
+          "version": 1009715
+        }
+      }
+    ],
+    "ManifestJSON": {
+      "FBXName": "C_ExploderZombie01@Walk",
+      "ImportSucceeded": true,
+      "MaterialCount": 0,
+      "MaterialDetail": [],
+      "MeshCount": 0,
+      "MeshDetail": []
+    }
+  },
+  "content": {
+    "Walk.anim": {
+      "_entityName": "AnimClipEntity",
+      "_entityId": "cHfPGXrC",
+      "_preModel": {
+        "fileId": "xbvub7vrfz-m1acvibh-zo1asb6qeb",
+        "filePath": "Assets\\ZombieAsset\\ExplodeZombie\\C_ExploderZombie01.FBX",
+        "_tag": {
+          "type": "GFileRefer"
+        },
+        "fileType": "fbx"
+      },
+      "children": []
+    }
+  },
+  "enabletangent": false
+}

@@ -1,0 +1,175 @@
+{
+  "blocks": {
+    "languageVersion": 0,
+    "blocks": [
+      {
+        "type": "e",
+        "id": "s8004_dup_block",
+        "x": 237,
+        "y": -80,
+        "extraState": {
+          "X": 8004,
+          "L": [
+            1,
+            2
+          ],
+          "T": "OnNodeEnter",
+          "OT": "BehaviourTreeNode"
+        },
+        "fields": {
+          "P1": {
+            "name": "节点名称",
+            "type": "String"
+          },
+          "P2": {
+            "name": "Owner",
+            "type": "BehaviourTreeAttachable"
+          }
+        },
+        "next": {
+          "block": {
+            "type": "a",
+            "id": "/7$=P|9BJpv{lr+|#i}y",
+            "extraState": {
+              "X": 8001,
+              "L": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "T": "PlayAnimationByController",
+              "OT": null
+            },
+            "inputs": {
+              "P1": {
+                "shadow": {
+                  "type": "tys",
+                  "id": ")NIGlfTvVg_W^(F:a,Ye",
+                  "extraState": "AnimationControllerAble"
+                },
+                "block": {
+                  "type": "tya",
+                  "id": "{hqNLLtQ0+Its(+?!iA|",
+                  "fields": {
+                    "T": "AnimationControllerAble"
+                  },
+                  "inputs": {
+                    "V": {
+                      "shadow": {
+                        "type": "tys",
+                        "id": "q+e1b7IcrJ_Y[p3g5nBv",
+                        "extraState": "any"
+                      },
+                      "block": {
+                        "type": "lcg",
+                        "id": "R3umwNe{C-%V5:V/BE4x",
+                        "extraState": "s8004_dup_blockP2",
+                        "fields": {
+                          "VR": "Owner"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "P2": {
+                "shadow": {
+                  "type": "ipe",
+                  "id": "v]}nCH@Vh|9=5ZpAe5A~",
+                  "extraState": "AnimationControllerStates",
+                  "fields": {
+                    "I": "Idle"
+                  }
+                },
+                "block": {
+                  "type": "ipt",
+                  "id": "r}0T_tP{uq,+,YNjjtnv",
+                  "fields": {
+                    "V": "Idle"
+                  }
+                }
+              },
+              "P3": {
+                "shadow": {
+                  "type": "ipf",
+                  "id": "zg6Bz6#nN]pKs-q|.KOj",
+                  "fields": {
+                    "V": 1
+                  }
+                }
+              },
+              "P4": {
+                "shadow": {
+                  "type": "ipe",
+                  "id": "_%1!jAH;.0UP}f(P8`@e",
+                  "extraState": "AnimationOverrideLoopType",
+                  "fields": {
+                    "I": "Loop"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "fnv",
+        "id": "G:?|d/.vBiUd2@RLO(+u",
+        "x": 257,
+        "y": 100,
+        "extraState": [
+          {
+            "id": "_arg6151",
+            "name": "Owner",
+            "type": "BehaviourTreeAttachable",
+            "isOut": false
+          }
+        ],
+        "fields": {
+          "N": "PlayAction",
+          "R": "BTreeNodeState",
+          "_arg6151": {
+            "name": "Owner",
+            "type": "BehaviourTreeAttachable"
+          }
+        },
+        "inputs": {
+          "D": {
+            "block": {
+              "type": "fnr",
+              "id": "{QB@wSnsavt2xpY3vdxd",
+              "extraState": {
+                "rt": "BTreeNodeState"
+              },
+              "inputs": {
+                "R": {
+                  "shadow": {
+                    "type": "tys",
+                    "id": "R[9EEfG+:B_QLDi|{y}]",
+                    "extraState": "BTreeNodeState"
+                  },
+                  "block": {
+                    "type": "ipe",
+                    "id": "U@IwIIh*dmhxpP)$v3}T",
+                    "extraState": 10024,
+                    "fields": {
+                      "I": "Running"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "graphData": {
+    "ownerType": "Entity",
+    "componentTypes": "Entity",
+    "isStatic": false,
+    "platform": 2
+  }
+}
+//"{FE:{"v":"1.10.3205371","c":{"FF":4501},"s":100}

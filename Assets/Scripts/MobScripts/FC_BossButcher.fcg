@@ -76,7 +76,7 @@ graph FC_NormalZombie {
 		// 先让怪物面向目标方向
 		PVEUtilities.myLookAt(TargetEntity<Transform>, curTarget, TargetPos)
 		// 地面播放开始时的预警特效
-		wait MobSkillHandler.GroundWarningEffect(TargetEntity, 1000)
+		//wait MobSkillHandler.GroundWarningEffect(TargetEntity, 1000)
 		// 播放冲击动画
 		PlayAnimation(TargetEntity, "Run", 2.0, LoopType.Once)
 		// 计算冲击距离

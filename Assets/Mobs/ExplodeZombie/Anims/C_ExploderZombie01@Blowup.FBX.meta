@@ -1,0 +1,78 @@
+{
+  "fileId": "orsu9wmwx4-m1kdug1e-dfk5inq302h",
+  "globalscale": 1,
+  "properties": {
+    "Common": ""
+  },
+  "subDynamicResources": {},
+  "subLOD": {},
+  "version": "1.6.4",
+  "manifest": {
+    "Meshes": [],
+    "BoneInfos": [],
+    "Anims": [
+      {
+        "OrgExtName": ".Anim",
+        "Name": "blow up_new.Anim",
+        "Size": 103566,
+        "ClipData": {
+          "Name": "blow up_new",
+          "BakeStart": 0,
+          "BakeStop": 1.7000000476837158,
+          "SampleRate": 30
+        },
+        "magicNumber": {
+          "magicNumber1": 100,
+          "magicNumber2": 98,
+          "magicNumber3": 158,
+          "magicNumber4": 134,
+          "version": 1009715
+        }
+      }
+    ],
+    "ManifestJSON": {
+      "FBXName": "C_ExploderZombie01@Blowup",
+      "ImportSucceeded": true,
+      "MaterialCount": 0,
+      "MaterialDetail": [],
+      "MeshCount": 0,
+      "MeshDetail": []
+    }
+  },
+  "content": {
+    "blow up_new.anim": {
+      "_entityName": "AnimClipEntity",
+      "_entityId": "NFnMG9op",
+      "_preModel": {
+        "fileId": "d0r6phu3hfe-m1kduh4j-0jprlcei5rzk",
+        "filePath": "Assets\\ZombieAsset\\ExplodeZombie\\C_ExploderZombie01.FBX",
+        "_tag": {
+          "type": "GFileRefer"
+        },
+        "fileType": "fbx"
+      },
+      "children": [
+        {
+          "_entityId": "Q5KtKVT0",
+          "EventFrameName": "事件帧",
+          "FrameIndex": 47,
+          "Time": 1.57,
+          "EventList": [
+            {
+              "eventKeyValue": "AnimationControllerAble::signal_52120933",
+              "paramList": [
+                {
+                  "type": "String",
+                  "label": "eventName",
+                  "newValue": "ExplodeZombieAttack02"
+                }
+              ],
+              "hideParam": false
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "enabletangent": false
+}

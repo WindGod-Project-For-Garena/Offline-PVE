@@ -10,4 +10,8 @@ event OnDamageMob(mob entity<Entity>, part string, damage int, player entity<Pla
 event OnMobActived()
 
 
+[platform_client]
+//当盾牌僵尸盾牌破碎时触发
+event OnShieldBreak()
+
 

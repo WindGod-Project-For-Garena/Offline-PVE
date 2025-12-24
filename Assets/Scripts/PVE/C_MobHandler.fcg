@@ -36,7 +36,7 @@ static graph C_MobHandler {
 		}else if (part == "Zombie_Shield") {
 			damage = damage
 			DispatchEventToEntity(OnDamageMob, owner, PlatformType.Client, List<object>{owner, part, damage, weapon<Weapon>.Owner})
-			CreateDamageNum(ToString(damage), 10, #979797FF, 800, owner as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
+			CreateDamageNum(ToString(damage), 10, #8101CBFF, 800, owner as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
 		} else {
 			damage = damage
 			DispatchEventToEntity(OnDamageMob, owner, PlatformType.Client, List<object>{owner, part, damage, weapon<Weapon>.Owner})

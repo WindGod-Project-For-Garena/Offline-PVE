@@ -1,0 +1,847 @@
+{
+  "_tag": {
+    "type": "ACEntity",
+    "resourceId": "ac.acEntity"
+  },
+  "_entityId": "o7OZL2Og",
+  "children": [
+    {
+      "_tag": {
+        "type": "ACStateEntity",
+        "resourceId": ""
+      },
+      "_entityId": "nl32p3FD",
+      "children": [
+        {
+          "_tag": {
+            "type": "ACLayerEntity",
+            "resourceId": ""
+          },
+          "_entityId": "1I79ZeQ1",
+          "children": [
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "IVCyjl1V",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": true,
+              "clipRefer": {
+                "fileId": "8yg8xa84atn-m1kdugh8-ueqaegcyv9g-Idle.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\ExplodeZombie\\Anims\\C_ExploderZombie01@Idle.FBX\\Idle.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "Clip",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 0,
+              "endTime": 3,
+              "wrapMode": 2
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "isLoop": false,
+          "isBaseLayer": true,
+          "mute": false,
+          "bodypartId": null,
+          "DisableChanged": false,
+          "_entityName": "Base Layer"
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "isLoop": true,
+      "DisableChanged": true,
+      "_entityName": "Idle",
+      "eventFrameGroup": {
+        "_tag": {
+          "type": "ACLayerEntity",
+          "resourceId": ""
+        },
+        "_entityId": "mQtx4uaE",
+        "children": [],
+        "prefabVariant": null,
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
+        "editorLockValue": false,
+        "editorVisibleValue": true,
+        "DisableChanged": false
+      },
+      "_eventFrameList": []
+    },
+    {
+      "_tag": {
+        "type": "ACStateEntity",
+        "resourceId": ""
+      },
+      "_entityId": "YDLp990e",
+      "children": [
+        {
+          "_tag": {
+            "type": "ACLayerEntity",
+            "resourceId": ""
+          },
+          "_entityId": "spyL99et",
+          "children": [
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "5pR4lIJf",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": false,
+              "clipRefer": {
+                "fileId": "puaom3p6u9-m1kdufw4-idb3qinszxm-attack.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\ExplodeZombie\\Anims\\C_ExploderZombie01@Attack01.FBX\\attack.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "Clip",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 0,
+              "endTime": 1.2000000476837158,
+              "wrapMode": 0
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "isLoop": false,
+          "isBaseLayer": true,
+          "mute": false,
+          "bodypartId": null,
+          "DisableChanged": false,
+          "_entityName": "Base Layer"
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "isLoop": false,
+      "DisableChanged": false,
+      "_entityName": "ExplodeZombie_Attack1",
+      "eventFrameGroup": {
+        "_tag": {
+          "type": "ACLayerEntity",
+          "resourceId": ""
+        },
+        "_entityId": "7aExY5tz",
+        "children": [],
+        "prefabVariant": null,
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
+        "editorLockValue": false,
+        "editorVisibleValue": true,
+        "DisableChanged": false
+      },
+      "_eventFrameList": []
+    },
+    {
+      "_tag": {
+        "type": "ACStateEntity",
+        "resourceId": ""
+      },
+      "_entityId": "ZoGTUogy",
+      "children": [
+        {
+          "_tag": {
+            "type": "ACLayerEntity",
+            "resourceId": ""
+          },
+          "_entityId": "ysVwHIDc",
+          "children": [
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "RhmyqT3b",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": false,
+              "clipRefer": {
+                "fileId": "orsu9wmwx4-m1kdug1e-dfk5inq302h-blow up_new.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\ExplodeZombie\\Anims\\C_ExploderZombie01@Blowup.FBX\\blow up_new.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "Clip",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 0,
+              "endTime": 1.7000000476837158,
+              "wrapMode": 0
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "isLoop": false,
+          "isBaseLayer": true,
+          "mute": false,
+          "bodypartId": null,
+          "DisableChanged": false,
+          "_entityName": "Base Layer"
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "isLoop": false,
+      "DisableChanged": false,
+      "_entityName": "ExplodeZombie_Attack2",
+      "eventFrameGroup": {
+        "_tag": {
+          "type": "ACLayerEntity",
+          "resourceId": ""
+        },
+        "_entityId": "eAFHFIAH",
+        "children": [],
+        "prefabVariant": null,
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
+        "editorLockValue": false,
+        "editorVisibleValue": true,
+        "DisableChanged": false
+      },
+      "_eventFrameList": []
+    },
+    {
+      "_tag": {
+        "type": "ACStateEntity",
+        "resourceId": ""
+      },
+      "_entityId": "x85drcE0",
+      "children": [
+        {
+          "_tag": {
+            "type": "ACLayerEntity",
+            "resourceId": ""
+          },
+          "_entityId": "10EuijR8",
+          "children": [
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "ZtbfMBCx",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": true,
+              "clipRefer": {
+                "fileId": "1zvwmulh2bt-m1kdugqt-tk1bg1ud3sf-Run.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\ExplodeZombie\\Anims\\C_ExploderZombie01@Run.FBX\\Run.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "Clip",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 0,
+              "endTime": 0.5333333611488342,
+              "wrapMode": 2
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "isLoop": false,
+          "isBaseLayer": true,
+          "mute": false,
+          "bodypartId": null,
+          "DisableChanged": false,
+          "_entityName": "Base Layer"
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "isLoop": false,
+      "DisableChanged": false,
+      "_entityName": "ExplodeZombie_Run",
+      "eventFrameGroup": {
+        "_tag": {
+          "type": "ACLayerEntity",
+          "resourceId": ""
+        },
+        "_entityId": "1vqxW161",
+        "children": [],
+        "prefabVariant": null,
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
+        "editorLockValue": false,
+        "editorVisibleValue": true,
+        "DisableChanged": false
+      },
+      "_eventFrameList": []
+    },
+    {
+      "_tag": {
+        "type": "ACStateEntity",
+        "resourceId": ""
+      },
+      "_entityId": "2xWhDjWy",
+      "children": [
+        {
+          "_tag": {
+            "type": "ACLayerEntity",
+            "resourceId": ""
+          },
+          "_entityId": "OpBMebDt",
+          "children": [
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "LXPYo7vp",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": true,
+              "clipRefer": {
+                "fileId": "qij6xyy5wp9-m1kdugv3-xa9ctygleji-Walk.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\ExplodeZombie\\Anims\\C_ExploderZombie01@Walk.FBX\\Walk.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "Clip",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 0,
+              "endTime": 1.1666666269302368,
+              "wrapMode": 2
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "isLoop": false,
+          "isBaseLayer": true,
+          "mute": false,
+          "bodypartId": null,
+          "DisableChanged": false,
+          "_entityName": "Base Layer"
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "isLoop": false,
+      "DisableChanged": false,
+      "_entityName": "ExplodeZombie_Walk",
+      "eventFrameGroup": {
+        "_tag": {
+          "type": "ACLayerEntity",
+          "resourceId": ""
+        },
+        "_entityId": "5z4XhZhm",
+        "children": [],
+        "prefabVariant": null,
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
+        "editorLockValue": false,
+        "editorVisibleValue": true,
+        "DisableChanged": false
+      },
+      "_eventFrameList": []
+    },
+    {
+      "_tag": {
+        "type": "ACStateEntity",
+        "resourceId": ""
+      },
+      "_entityId": "yE7BqOdj",
+      "children": [
+        {
+          "_tag": {
+            "type": "ACLayerEntity",
+            "resourceId": ""
+          },
+          "_entityId": "C5Qve5sM",
+          "children": [
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "0QJNQKhQ",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 0.5,
+              "loop": true,
+              "clipRefer": {
+                "fileId": "qij6xyy5wp9-m1kdugv3-xa9ctygleji-Walk.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\ExplodeZombie\\Anims\\C_ExploderZombie01@Walk.FBX\\Walk.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "Clip",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 0,
+              "endTime": 2.3333332538604736,
+              "wrapMode": 2
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "isLoop": false,
+          "isBaseLayer": true,
+          "mute": false,
+          "bodypartId": null,
+          "DisableChanged": false,
+          "_entityName": "Base Layer"
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "isLoop": false,
+      "DisableChanged": false,
+      "_entityName": "ExplodeZombie_Wander",
+      "eventFrameGroup": {
+        "_tag": {
+          "type": "ACLayerEntity",
+          "resourceId": ""
+        },
+        "_entityId": "lK5SJABY",
+        "children": [],
+        "prefabVariant": null,
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
+        "editorLockValue": false,
+        "editorVisibleValue": true,
+        "DisableChanged": false
+      },
+      "_eventFrameList": []
+    },
+    {
+      "_tag": {
+        "type": "ACStateEntity",
+        "resourceId": ""
+      },
+      "_entityId": "mD9NI30J",
+      "children": [
+        {
+          "_tag": {
+            "type": "ACLayerEntity",
+            "resourceId": ""
+          },
+          "_entityId": "KAOlN2gQ",
+          "children": [
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "M5aKBzZw",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": false,
+              "clipRefer": {
+                "fileId": "6ce3ecek4zh-m1kdugch-w0nre0kp1u-Dead.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\ExplodeZombie\\Anims\\C_ExploderZombie01@Death.FBX\\Dead.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "Clip",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 0,
+              "endTime": 1.6666666269302368,
+              "wrapMode": 0
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "isLoop": false,
+          "isBaseLayer": true,
+          "mute": false,
+          "bodypartId": null,
+          "DisableChanged": false,
+          "_entityName": "Base Layer"
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "isLoop": false,
+      "DisableChanged": false,
+      "_entityName": "ExplodeZombie_Dead1",
+      "eventFrameGroup": {
+        "_tag": {
+          "type": "ACLayerEntity",
+          "resourceId": ""
+        },
+        "_entityId": "5taeZz8c",
+        "children": [],
+        "prefabVariant": null,
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
+        "editorLockValue": false,
+        "editorVisibleValue": true,
+        "DisableChanged": false
+      },
+      "_eventFrameList": []
+    },
+    {
+      "_tag": {
+        "type": "ACStateEntity",
+        "resourceId": ""
+      },
+      "_entityId": "77g6WpOP",
+      "children": [
+        {
+          "_tag": {
+            "type": "ACLayerEntity",
+            "resourceId": ""
+          },
+          "_entityId": "OwKcW3hH",
+          "children": [
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "wpKOhvb3",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": false,
+              "clipRefer": {
+                "fileId": "jlx8ybz9lg-m1kduglz-au3p1pwwwqi-PrepareRun.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\ExplodeZombie\\Anims\\C_ExploderZombie01@PrepareRun.FBX\\PrepareRun.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "Clip",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 0,
+              "endTime": 1,
+              "wrapMode": 0
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "isLoop": false,
+          "isBaseLayer": true,
+          "mute": false,
+          "bodypartId": null,
+          "DisableChanged": false,
+          "_entityName": "Base Layer"
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "isLoop": false,
+      "DisableChanged": false,
+      "_entityName": "ExplodeZombie_Hit",
+      "eventFrameGroup": {
+        "_tag": {
+          "type": "ACLayerEntity",
+          "resourceId": ""
+        },
+        "_entityId": "m7eQVXer",
+        "children": [],
+        "prefabVariant": null,
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
+        "editorLockValue": false,
+        "editorVisibleValue": true,
+        "DisableChanged": false
+      },
+      "_eventFrameList": []
+    }
+  ],
+  "prefabVariant": null,
+  "activeValue": {
+    "selfValue": true,
+    "valueTag": "activeValue"
+  },
+  "unlockedValue": {
+    "selfValue": true,
+    "valueTag": "unlockedValue"
+  },
+  "editorLockValue": false,
+  "editorVisibleValue": true,
+  "_entityName": "ACEntity",
+  "version": 2
+}
+//"{FE:{"v":"1.12.3559061","c":{"FF":4701},"s":100}

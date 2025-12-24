@@ -1,0 +1,78 @@
+{
+  "fileId": "8o0pwa2u61-m1kbt0l9-1l5nn36vun5",
+  "globalscale": 1,
+  "properties": {
+    "Common": ""
+  },
+  "subDynamicResources": {},
+  "subLOD": {},
+  "version": "1.6.4",
+  "manifest": {
+    "Meshes": [],
+    "BoneInfos": [],
+    "Anims": [
+      {
+        "OrgExtName": ".Anim",
+        "Name": "attack01.Anim",
+        "Size": 68188,
+        "ClipData": {
+          "Name": "attack01",
+          "BakeStart": 0,
+          "BakeStop": 1.5333333015441895,
+          "SampleRate": 30
+        },
+        "magicNumber": {
+          "magicNumber1": 100,
+          "magicNumber2": 98,
+          "magicNumber3": 158,
+          "magicNumber4": 134,
+          "version": 1009715
+        }
+      }
+    ],
+    "ManifestJSON": {
+      "FBXName": "C_WeaponZombie01@Attack01",
+      "ImportSucceeded": true,
+      "MaterialCount": 0,
+      "MaterialDetail": [],
+      "MeshCount": 0,
+      "MeshDetail": []
+    }
+  },
+  "content": {
+    "attack01.anim": {
+      "_entityName": "AnimClipEntity",
+      "_entityId": "pNOWgis1",
+      "_preModel": {
+        "fileId": "bu6d5gucnc-m18qzk00-9j1ja8xhwt",
+        "filePath": "Assets\\ZombieAsset\\AxeZombie\\C_WeaponZombie01.FBX",
+        "_tag": {
+          "type": "GFileRefer"
+        },
+        "fileType": "fbx"
+      },
+      "children": [
+        {
+          "_entityId": "6XdEZbWa",
+          "EventFrameName": "事件帧",
+          "FrameIndex": 21,
+          "Time": 0.7,
+          "EventList": [
+            {
+              "eventKeyValue": "AnimationControllerAble::signal_52120933",
+              "paramList": [
+                {
+                  "type": "String",
+                  "label": "eventName",
+                  "newValue": "AxeZombieAttack01"
+                }
+              ],
+              "hideParam": false
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "enabletangent": false
+}

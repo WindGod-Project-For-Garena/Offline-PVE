@@ -292,7 +292,7 @@
       "editorVisibleValue": true,
       "isLoop": false,
       "DisableChanged": false,
-      "_entityName": "Attack",
+      "_entityName": "NormalAttack",
       "eventFrameGroup": {
         "_tag": {
           "type": "ACLayerEntity",
@@ -329,7 +329,7 @@
                   {
                     "type": "String",
                     "label": "attackName",
-                    "newValue": "NormalAttack1"
+                    "newValue": "NormalAttack"
                   }
                 ],
                 "hideParam": false
@@ -451,8 +451,14 @@
             "_entityId": "aqzypYBt",
             "children": [],
             "prefabVariant": null,
-            "activeValue": null,
-            "unlockedValue": null,
+            "activeValue": {
+              "selfValue": true,
+              "valueTag": "activeValue"
+            },
+            "unlockedValue": {
+              "selfValue": true,
+              "valueTag": "unlockedValue"
+            },
             "editorLockValue": false,
             "editorVisibleValue": true,
             "from": "ACState",
@@ -572,7 +578,7 @@
       "editorVisibleValue": true,
       "isLoop": false,
       "DisableChanged": false,
-      "_entityName": "Attack2",
+      "_entityName": "RangeAttack",
       "eventFrameGroup": {
         "_tag": {
           "type": "ACLayerEntity",
@@ -742,7 +748,7 @@
       },
       "isLoop": false,
       "DisableChanged": false,
-      "_entityName": "ShieldZombie_Attack4",
+      "_entityName": "RangeAttack_NoShield",
       "eventFrameGroup": {
         "_tag": {
           "type": "ACLayerEntity",
@@ -1947,14 +1953,41 @@
       "editorVisibleValue": true,
       "isLoop": false,
       "DisableChanged": false,
-      "_entityName": "ShieldZombie_ShieldBreak",
+      "_entityName": "ShiledBreak",
       "eventFrameGroup": {
         "_tag": {
           "type": "ACLayerEntity",
           "resourceId": ""
         },
         "_entityId": "94tKBC07",
-        "children": [],
+        "children": [
+          {
+            "_entityName": "",
+            "_tag": {
+              "type": "EventFrameEntity"
+            },
+            "_entityId": "HG7KlTlu",
+            "children": [],
+            "prefabVariant": null,
+            "activeValue": null,
+            "unlockedValue": null,
+            "editorLockValue": false,
+            "editorVisibleValue": true,
+            "from": "ACState",
+            "FrameIndex": 13,
+            "EventFrameName": "Event Frame 1",
+            "startTime": 0.4,
+            "EventList": [
+              {
+                "eventKeyValue": "AnimationControllerAble::signal_19004117",
+                "paramList": [],
+                "hideParam": false
+              }
+            ],
+            "dsada": "Sphere",
+            "enable": false
+          }
+        ],
         "prefabVariant": null,
         "activeValue": {
           "selfValue": true,
@@ -1971,29 +2004,208 @@
       "_eventFrameList": []
     },
     {
-      "_entityName": "test",
       "_tag": {
-        "type": "ACStateEntity"
+        "type": "ACStateEntity",
+        "resourceId": ""
       },
-      "_entityId": "ufcQlJG2",
+      "_entityId": "D0sccZG8",
       "children": [
         {
-          "_entityName": "Base Layer",
           "_tag": {
-            "type": "ACLayerEntity"
+            "type": "ACLayerEntity",
+            "resourceId": ""
           },
-          "_entityId": "BjU234SI",
-          "children": [],
+          "_entityId": "lFQTVj6c",
+          "children": [
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "EDTHRMYd",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": false,
+              "clipRefer": {
+                "fileId": "3ontle26rr4-m1keub9x-vp79sk04xul-C_TankZombie03@CriticalHitStart.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\ShieldZombie\\New\\Anims\\C_TankZombie03@CriticalHitStart.FBX\\C_TankZombie03@CriticalHitStart.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "Clip",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 0,
+              "endTime": 1.2666666507720947,
+              "wrapMode": 0,
+              "postExtrapolate": 0
+            },
+            {
+              "_entityName": "C_TankZombie03@CriticalHit.anim",
+              "_tag": {
+                "type": "ACClipEntity"
+              },
+              "_entityId": "DgL6AOA1",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": true,
+              "speed": 1,
+              "loop": false,
+              "fadeInTime": 0.13,
+              "enablefadeTime": true,
+              "clipRefer": {
+                "fileId": "tj437mhsi4p-m1keub4y-omk938lb5e-C_TankZombie03@CriticalHit.Anim",
+                "filePath": "fab://Assets\\Mobs\\ShieldZombie\\New\\Anims\\C_TankZombie03@CriticalHit.FBX\\C_TankZombie03@CriticalHit.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "wrapMode": 0,
+              "postExtrapolate": 0,
+              "startTime": 1.133,
+              "endTime": 1.7
+            },
+            {
+              "_entityName": "C_TankZombie03@CriticalEnd.anim",
+              "_tag": {
+                "type": "ACClipEntity"
+              },
+              "_entityId": "E8Su18uW",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": true,
+              "speed": 0.6,
+              "loop": false,
+              "fadeInTime": 0.09,
+              "enablefadeTime": true,
+              "clipRefer": {
+                "fileId": "f0l5wq1a2xt-m1keub0g-me9gczmm15-C_TankZombie03@CriticalEnd.Anim",
+                "filePath": "fab://Assets\\Mobs\\ShieldZombie\\New\\Anims\\C_TankZombie03@CriticalEnd.FBX\\C_TankZombie03@CriticalEnd.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "wrapMode": 0,
+              "postExtrapolate": 0,
+              "startTime": 1.6,
+              "endTime": 2.8
+            },
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "ycpDqeyi",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 0.6,
+              "loop": false,
+              "clipRefer": {
+                "fileId": "f0l5wq1a2xt-m1keub0g-me9gczmm15-C_TankZombie03@CriticalEnd.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\ShieldZombie\\New\\Anims\\C_TankZombie03@CriticalEnd.FBX\\C_TankZombie03@CriticalEnd.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "New Clip (1)",
+              "fadeInTime": 0.1,
+              "enablefadeTime": true,
+              "startTime": 2.7,
+              "endTime": 3.9,
+              "wrapMode": 0,
+              "postExtrapolate": 0
+            },
+            {
+              "_entityName": "C_TankZombie03@CriticalEnd.anim",
+              "_tag": {
+                "type": "ACClipEntity"
+              },
+              "_entityId": "OnBcJmK9",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": true,
+              "speed": 0.75,
+              "loop": false,
+              "fadeInTime": 0.1,
+              "enablefadeTime": true,
+              "clipRefer": {
+                "fileId": "f0l5wq1a2xt-m1keub0g-me9gczmm15-C_TankZombie03@CriticalEnd.Anim",
+                "filePath": "fab://Assets\\Mobs\\ShieldZombie\\New\\Anims\\C_TankZombie03@CriticalEnd.FBX\\C_TankZombie03@CriticalEnd.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "wrapMode": 0,
+              "postExtrapolate": 0,
+              "startTime": 3.8,
+              "endTime": 5.8
+            }
+          ],
           "prefabVariant": null,
-          "activeValue": null,
-          "unlockedValue": null,
-          "editorLockValue": false,
-          "editorVisibleValue": true,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
           "isLoop": false,
           "isBaseLayer": true,
           "mute": false,
           "bodypartId": null,
-          "DisableChanged": false
+          "DisableChanged": false,
+          "_entityName": "Base Layer"
         }
       ],
       "prefabVariant": null,
@@ -2001,28 +2213,32 @@
         "selfValue": true,
         "valueTag": "activeValue"
       },
-      "unlockedValue": null,
-      "editorLockValue": false,
-      "editorVisibleValue": true,
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
       "isLoop": false,
-      "_eventFrameList": [],
+      "DisableChanged": false,
+      "_entityName": "AOEAttack",
       "eventFrameGroup": {
-        "_entityName": "",
         "_tag": {
-          "type": "ACEventFrameGroup"
+          "type": "ACLayerEntity",
+          "resourceId": ""
         },
-        "_entityId": "eSRBnzf9",
+        "_entityId": "cxoYJ73y",
         "children": [],
         "prefabVariant": null,
-        "activeValue": null,
-        "unlockedValue": null,
-        "editorLockValue": false,
-        "editorVisibleValue": true,
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
         "DisableChanged": false
       },
-      "selectedBodyparts": [],
-      "muteEvent": false,
-      "DisableChanged": false
+      "_eventFrameList": []
     }
   ],
   "prefabVariant": null,

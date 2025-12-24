@@ -120,6 +120,17 @@
       "apiTargetV2": "both",
       "version": 45,
       "key": "signal_39342731"
+    },
+    "signal_19004117": {
+      "name": "OnZombieShieldBreak",
+      "eventType": 1,
+      "enitityType": "AnimationControllerAble",
+      "typeID": 100002,
+      "props": [],
+      "propCount": 0,
+      "apiTargetV2": "both",
+      "version": 45,
+      "key": "signal_19004117"
     }
   },
   "customName": {
@@ -127,8 +138,9 @@
     "MobDeathEvent_AC": "signal_87958515",
     "ZombieAnimationEvent": "signal_52120933",
     "C2SZBHurtEvent": "signal_10180040",
-    "C2SSkillEvent": "signal_39342731"
+    "C2SSkillEvent": "signal_39342731",
+    "OnZombieShieldBreak": "signal_19004117"
   },
   "children": []
 }
-//"{FE:{"v":"1.15.4008519","c":{"FF":5001},"s":100}
+//"{FE:{"v":"0.2.4113096","c":{"FF":5001},"s":100}

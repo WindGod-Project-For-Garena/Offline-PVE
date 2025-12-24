@@ -12,47 +12,13 @@ import "Offline.fcc" as Offline
 [platform_client]
 static graph FC_Global_MobSkillHandler {
     //Executed when entity is created
-    entityEffectDic Map<entity<Entity>, List<entity<object>>> = Map<entity<Entity>, List<entity<object>>>{}
     event OnAwake() {
 
     }
 
-    func displayWarningEffect(mob entity<Mob>,position Vector3,scale float) entity<object> {
-        CreateFromPrefab(out var warningEffect,EResPrefab.SkillWaring_Circle)
-        warningEffect<Transform>.Position = position
-        warningEffect<Transform>.Scale = Vector3{0.9*scale,0.1*scale,0.9*scale}
 
-        if Map.ContainKey(entityEffectDic, mob) == false {
-            entityEffectDic[mob] = List<entity<object>>{}
-        }
-        var effectList List<entity<object>> = entityEffectDic[mob]
-        List.Append(effectList, warningEffect)
-        return warningEffect
-    }
 
-    //这个方程只给某个玩家创建
-    async func displayWarningEffect_New(mob entity<Mob>,position Vector3,scale float,duration int)  {
-       // LogInfo("displayWarningEffect scale: " + scale)
-        CreateCustomUIClient(out var warningEffect,EResUI.WarningEffect)
-        warningEffect<CustomUI>.InScene = true
-        warningEffect<CustomUI>.WorldPosition = position
-        warningEffect<CustomUI>.Rotation = Vector3{90,0,0}
-        warningEffect<CustomUI>.Scale = Vector3{scale*1.5,scale*1.5,scale*1.5}
-        var image_center entity<UIWidget> = GetWidgetFromCustomUI(nil, warningEffect, EResUIWarningEffect.Image_center)
-        CreateTween(image_center,UIWidget.SizeDelta,Vector2{0,0},Vector2{Math.Ceil(scale*250),
-            Math.Ceil(scale*250)},TweenStyle.Once,CreateCurve({0.25, 0.1, 0.25, 1}),duration,out var tweenEntity,true)
-
-        if Map.ContainKey(entityEffectDic, mob) == false {
-            entityEffectDic[mob] = List<entity<object>>{}
-        }
-        var effectList List<entity<object>> = entityEffectDic[mob]
-        List.Append(effectList, warningEffect)
-
-        WaitForMillisecond(duration)
-        Destroy(warningEffect as entity<Entity>)
-        Destroy(tweenEntity as entity<Entity>)
-        
-    }
+   
 
     async func releaseSkill_GrenadeZombieNormalAttack(mob entity<Mob>,position Vector3,scale float) {
         LogInfo("releaseSkill_GrenadeZombieNormalAttack: position: " + position)
@@ -222,31 +188,103 @@ static graph FC_Global_MobSkillHandler {
 
 
     }
+
+
+    async func releaseSkill_ShieldZombieAOEAttack(mob entity<Mob>)  {
+        var Range1 float = 15.0
+		var Range2 float = 20.0
+		var Range3 float = 25.0
+		var time1 int = 1500
+		var time2 int = 2800
+		var time3 int = 3900
+		var pos = mob<Transform>.Position
+		pos.Y = -0.2
+
+        var skillDamage int = mob<Mob>.Damage
+        var damageScale1 float = 0.5
+        var damageScale2 float = 1
+        var damageScale3 float = 1.5
+
+
+        var explosionEffect entity<Effect> = nil
+        var areaEffect entity<Effect> = nil
+
+
+
+        //Offline.DealDamage(target as entity<Combatable>, nil, DamageType.Monster, Math.Ceil(1.5*GetDamage() )) // 技能双倍伤害
+					
+        
+
+
+		//1轮伤害判断
+		WaitForMillisecond(time1)
+        //判断是否活着
+        if (mob<Mob>.HP >= 0) {
+            CreateFromPrefab(out var effectEntity,EResPrefab.ShieldZombie_AOE)
+            explosionEffect = effectEntity as entity<Effect>
+            areaEffect = GetChildByIndex(effectEntity,0) as entity<Effect>
+
+            //设置爆炸特效和区域特效的缩放
+		    explosionEffect<Transform>.Scale = Vector3{Range1,Range1,Range1}
+
+            //设置爆炸特效和区域特效的位置为怪物位置
+		    explosionEffect<Transform>.Position = pos
+            Play(explosionEffect,true)
+            Play(areaEffect,true)      
+            
+            var players = getPlayersInRange(pos,Range1)
+            for i, player in players {
+                Offline.DealDamage(player as entity<Combatable>, mob as entity<Combatable>, DamageType.Monster, Floor(damageScale1*skillDamage))
+            }
+
+        }else{
+            return
+        }
+
+
+		//2轮伤害判断
+		WaitForMillisecond(time2-time1)
+		if (mob<Mob>.HP >= 0) {
+			explosionEffect<Transform>.Scale = Vector3{Range2,Range2,Range2}
+            Play(explosionEffect,true)
+            Play(areaEffect,true)
+            var players = getPlayersInRange(pos,Range2)
+            for i, player in players {
+                Offline.DealDamage(player as entity<Combatable>, mob as entity<Combatable>, DamageType.Monster, Floor(damageScale2*skillDamage))
+            }
+		}else{
+            Destroy(explosionEffect)
+            return
+		}
+
+        //3轮伤害判断
+        WaitForMillisecond(time3-time2)
+        if (mob<Mob>.HP >= 0) {
+            explosionEffect<Transform>.Scale = Vector3{Range3,Range3,Range3}
+            Play(explosionEffect,true)
+            Play(areaEffect,true)
+            var players = getPlayersInRange(pos,Range3)
+            for i, player in players {
+                Offline.DealDamage(player as entity<Combatable>, mob as entity<Combatable>, DamageType.Monster, Floor(damageScale3*skillDamage))
+            }
+        }else{
+            Destroy(explosionEffect)
+            return
+        }
+
+		WaitForMillisecond(1500)
+		Destroy(explosionEffect)
+		
+         
+     }
     //————————————————————————————————————————————————————————————————————————————————//
     //盾牌僵尸特效处理程序
-    async func GroundWarningEffect(TargetEntity entity,duration int) {
+    async func DisplayWarningSquare(position Vector3,rotation Vector3,length float,width float,duration int) {
         CreateEffectClient(out var WarningEffect, VFXType.Spawnpoint, LoopType.Once, false)
-		// 设置特效位置（怪物前面6米的位置）
-		var effectOffset float = 6 // 特效在怪物前方的偏移距离
-		var effectPos = TargetEntity<Transform>.Position + TargetEntity<Transform>.Forward * effectOffset
-		effectPos.Y = -0.2 // 保持在地面上方
-		WarningEffect<Transform>.Position = effectPos
-		// 使用怪物当前的朝向作为特效朝向
-		WarningEffect<Transform>.Forward = TargetEntity<Transform>.Forward
-        WarningEffect<Transform>.Rotation = TargetEntity<Transform>.Rotation + Vector3{0, 90, 0}
+       WarningEffect<Transform>.Position = position
+       WarningEffect<Transform>.Rotation = rotation
 		// 设置特效缩放
-		WarningEffect<Transform>.Scale = Vector3{10, 0.02, 1}
-        // CreateTween(
-        //     WarringEffect,
-        //     Transform.Scale,
-        //     Vector3{10, 0.02, 2},
-        //     Vector3{10, 0.02, 1},
-        //     TweenStyle.Once,
-        //     CreateCurve({0, 0, 1, 1}),
-        //     500,
-        //     out var tweenEntity,
-        //     false,
-        // )
+		WarningEffect<Transform>.Scale = Vector3{length, 0.02, width}
 		// 设置特效颜色
 		WarningEffect<Effect>.Color = #FF0000
         WarningEffect<Effect>.DiffuseAlpha = 20
@@ -255,5 +293,34 @@ static graph FC_Global_MobSkillHandler {
 		// Destroy(tweenEntity)
 		Destroy(WarningEffect)
     }
+
+     //这个方程只给某个怪物创建
+     async func DisplayWarningCircle(position Vector3,scale float,duration int)  {
+        // LogInfo("displayWarningEffect scale: " + scale)
+         CreateCustomUIClient(out var warningEffect,EResUI.WarningEffect)
+         warningEffect<CustomUI>.InScene = true
+         warningEffect<CustomUI>.WorldPosition = position
+         warningEffect<CustomUI>.Rotation = Vector3{90,0,0}
+         warningEffect<CustomUI>.Scale = Vector3{scale*1.5,scale*1.5,scale*1.5}
+         var image_center entity<UIWidget> = GetWidgetFromCustomUI(nil, warningEffect, EResUIWarningEffect.Image_center)
+         CreateTween(image_center,UIWidget.SizeDelta,Vector2{0,0},Vector2{Math.Ceil(scale*250),
+             Math.Ceil(scale*250)},TweenStyle.Once,CreateCurve({0.25, 0.1, 0.25, 1}),duration,out var tweenEntity,true)
+ 
+ 
+         WaitForMillisecond(duration)
+         Destroy(warningEffect as entity<Entity>)
+         Destroy(tweenEntity as entity<Entity>)
+         
+     }
+
+     func getPlayersInRange(position Vector3,range float) List<entity<Player>> {
+        var players List<entity<Player>> = List<entity<Player>>{}
+        for i, player in GetAllPlayers() {
+            if (Math.Distance(player<Player>.Position, position) <= range) {
+                List.Append(players, player)
+            }
+        }
+        return players
+     }
 
 }

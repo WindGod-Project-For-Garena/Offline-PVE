@@ -468,6 +468,9 @@ static graph FC_PVEMonsterManager {
         CreateFromPrefab(out var monsterEntity, prefabID)
         var monster = monsterEntity as entity<LevelObject>
 
+        
+
+
         //初始化到指定位置
         monster<Transform>.Position = Vector3{30, 0, 0}
 
@@ -481,14 +484,13 @@ static graph FC_PVEMonsterManager {
         SetParentClient(ActiveMonsterParentNode<Transform>, monsterEntity<Transform>, true) 
 
         //对应怪物外观组
-        WaitForNextFrame()        
+
+        WaitForNextFrame()             
         ShowAppearanceGroup(monsterEntity as entity<Appearance>,name_key)
 
-
-        //这里设置怪物的活动性
-      
         // 设置怪物属性
         if HasComponent(monster, typeof(Mob)) {
+            LogInfo("设置怪物属性")
             monster<Mob>.MobName = monsterInfo["Name_key"] as string
             var baseHP = monsterInfo["BaseHP"] as int
             var baseDmg = monsterInfo["BaseDamage"] as int
@@ -503,6 +505,19 @@ static graph FC_PVEMonsterManager {
             monster<Mob>.Damage = calculatedDamage
             monster<Mob>.WalkSpeed = calculatedSpeed
         }
+
+        if monster<Mob>.MobName == "ShieldZombie_Gold" {
+            LogInfo("ShieldZombie_Gold特殊处理")
+            monster<Mob>.StatusDic["IsShield"] = true
+            monster<Transform>.Scale = Vector3{2, 2, 2}
+            monster<Mob>.StatusDic["ShieldHP"] = math.Ceil(0.5*monster<Mob>.MaxHP)
+            monster<Mob>.StatusDic["ShieldMaxHP"] = math.Ceil(0.5*monster<Mob>.MaxHP)
+            ShowAppearanceGroup(monsterEntity as entity<Appearance>,"Shield")
+            
+        }
+
+  
+
 
         //设置怪物位置
         var spawnPosition = GetRandomSpawnPosition(monster as entity<Mob>)

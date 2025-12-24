@@ -1,0 +1,513 @@
+{
+  "_tag": {
+    "type": "Prefab"
+  },
+  "_entityId": "2Svo3B9M",
+  "children": [
+    {
+      "_tag": {
+        "type": "UGCSceneEntity",
+        "resourceId": ""
+      },
+      "_entityId": "DoDDweTl",
+      "children": [],
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "position": {
+        "x": 0,
+        "y": -0.3,
+        "z": 0
+      },
+      "scale": {
+        "x": 1.5,
+        "y": 1.5,
+        "z": 1.5
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "BTPath": [
+        {
+          "fileId": "77jjcl9wpw3-m1kbr7xy-casgzwvcc1d",
+          "filePath": "Assets\\ZombieAsset\\AxeZombie\\AxeZombie.xbt",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "xbt"
+        }
+      ],
+      "visible": true,
+      "VisibilityLayer": 0,
+      "modelOptimization": 0,
+      "streamingLayer": "",
+      "attributes": [
+        2,
+        4
+      ],
+      "isTrigger": false,
+      "collidable": true,
+      "physicalLayer": 1,
+      "physicalMaterial": null,
+      "initialTypes": {},
+      "componentList": [
+        "AvatarAble",
+        "AnimationControllerAble",
+        "ColliderShape",
+        "Collider",
+        "AimableEntity",
+        "AimAssistEntity",
+        "BehaviourTreeAttachable",
+        "CustomComponent31897461"
+      ],
+      "_filters": [
+        "node.withscript"
+      ],
+      "entityTagData": {
+        "tagPointers": []
+      },
+      "materials": [
+        null
+      ],
+      "colliders": [
+        {
+          "colliderType": "Capsule",
+          "enable": true,
+          "isTrigger": false,
+          "position": {
+            "x": 0,
+            "y": 0.5,
+            "z": 0
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "size": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "radius": 0.05,
+          "height": 0.8,
+          "isConvexIfMesh": false
+        }
+      ],
+      "Rigidbody": {
+        "Type": 1,
+        "Mass": 1,
+        "CenterOfMass": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "UseGravity": false,
+        "Drag": 0.05,
+        "AngularDrag": 0.05,
+        "FreezePosX": false,
+        "FreezePosY": false,
+        "FreezePosZ": false,
+        "FreezeRotX": false,
+        "FreezeRotY": false,
+        "FreezeRotZ": false
+      },
+      "isCreateAsEmpty": false,
+      "ecaScripts": [
+        {
+          "fileId": "catcudwkkn7-m1kbr7wy-or7qwxpnxw",
+          "filePath": "Assets\\ZombieAsset\\AxeZombie\\ECA\\AxeZombie.eca",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "eca"
+        },
+        {
+          "fileId": "gitse1tl188-m1kbr7xa-o7q4pig1s7",
+          "filePath": "Assets\\ZombieAsset\\AxeZombie\\ECA\\AxeZombie.ecac",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "ecaclient"
+        }
+      ],
+      "ecaProps": {
+        "CustomLevelObject": {
+          "PROP_14360378": 0,
+          "CustomLevelObject_81351029_custom": null
+        },
+        "LevelObject": {
+          "PROP_52849513": 0,
+          "PROP_45897236": 0
+        },
+        "Transform": {},
+        "Entity": {},
+        "Visibility": {},
+        "AvatarAble": {},
+        "AnimationControllerAble": {
+          "acRef": {
+            "fileId": "zf4gwq81b5f-m1kc0aln-u53hje4oa5",
+            "filePath": "Assets\\ZombieAsset\\AxeZombie\\AxeZombie.ac",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "ac"
+          }
+        },
+        "ColliderShape": {},
+        "Collider": {},
+        "AimableEntity": {},
+        "AimAssistEntity": {},
+        "BehaviourTreeAttachable": {},
+        "MeshRender": {},
+        "CustomComponent31897461": {
+          "PROP_49135054": 600,
+          "PROP_81455094": 600,
+          "PROP_73815879": 4,
+          "PROP_66147538": 20,
+          "PROP_45837287": 1,
+          "PROP_70190061": 1,
+          "PROP_44090358": 1,
+          "PROP_29109301": 1,
+          "PROP_73716871": 0.6,
+          "PROP_76912094": 0.6,
+          "PROP_30104596": 1,
+          "PROP_69523903": "",
+          "PROP_56297798": null,
+          "PROP_35241580": null,
+          "PROP_29661490": null,
+          "PROP_92573979": null,
+          "PROP_20114578": null,
+          "PROP_57044040": null,
+          "PROP_92060434": 0
+        }
+      },
+      "entityVersion": 3,
+      "_entityName": "C_Zombie01",
+      "skeleton": {
+        "fileId": "zi88jf1spk-m1kbu4qt-2z1xdf79yg5-C_WeaponZombie01.sk",
+        "filePath": "fab://Assets\\ZombieAsset\\AxeZombie\\C_WeaponZombie01.FBX\\C_WeaponZombie01.sk",
+        "_tag": {
+          "type": "GFileRefer"
+        },
+        "fileType": "sk"
+      },
+      "boneEntity": {
+        "_tag": {
+          "type": "BoneContentEntity"
+        },
+        "_entityId": "43UnzCFa",
+        "children": [
+          {
+            "_tag": {
+              "type": "BoneMeshGroupEntity"
+            },
+            "_entityId": "TRQ8a4Sc",
+            "children": [
+              {
+                "_tag": {
+                  "type": "BoneMeshEntity"
+                },
+                "_entityId": "ZkVl2hs5",
+                "children": [],
+                "prefabVariant": null,
+                "activeValue": {
+                  "selfValue": true,
+                  "valueTag": "activeValue"
+                },
+                "unlockedValue": {
+                  "selfValue": true,
+                  "valueTag": "unlockedValue"
+                },
+                "editorLockValue": false,
+                "editorVisibleValue": true,
+                "_mesh": {
+                  "fileId": "zi88jf1spk-m1kbu4qt-2z1xdf79yg5-mC_CLaJiguai.~@FFSKIN",
+                  "filePath": "fab://Assets\\ZombieAsset\\AxeZombie\\C_WeaponZombie01.FBX\\mC_CLaJiguai.mesh",
+                  "_tag": {
+                    "type": "GFileRefer"
+                  },
+                  "fileType": "mesh"
+                },
+                "_cloth": null,
+                "partType": 0,
+                "causeAnimationTypeChange": false,
+                "outwardType": 0,
+                "materials": [
+                  {
+                    "fileId": "cnyxrob39qk-m1kbtptr-7yia1ipgvlm",
+                    "filePath": "Assets\\ZombieAsset\\AxeZombie\\Materials\\AxeZombie.mat",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "material"
+                  }
+                ],
+                "avatarPartInfo": {
+                  "bone": "mC_CLaJiguai",
+                  "bindType": 0
+                },
+                "position": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "scale": {
+                  "x": 1,
+                  "y": 1,
+                  "z": 1
+                },
+                "rotation": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "_entityName": "mC_CLaJiguai.mesh"
+              }
+            ],
+            "prefabVariant": null,
+            "activeValue": {
+              "selfValue": true,
+              "valueTag": "activeValue"
+            },
+            "unlockedValue": null,
+            "editorLockValue": false,
+            "editorVisibleValue": true,
+            "groupId": "",
+            "enable": true,
+            "_entityName": "Skin"
+          },
+          {
+            "_tag": {
+              "type": "BoneMeshGroupEntity"
+            },
+            "_entityId": "obBaX8nx",
+            "children": [
+              {
+                "_tag": {
+                  "type": "BoneMeshEntity"
+                },
+                "_entityId": "Oa3MqXyN",
+                "children": [],
+                "prefabVariant": null,
+                "activeValue": {
+                  "selfValue": true,
+                  "valueTag": "activeValue"
+                },
+                "unlockedValue": {
+                  "selfValue": true,
+                  "valueTag": "unlockedValue"
+                },
+                "editorLockValue": false,
+                "editorVisibleValue": true,
+                "_mesh": {
+                  "fileId": "eiahibnj9xb-m1kbu4ey-alwheyyyxza-C_Weapon.~@FFFUB",
+                  "filePath": "fab://Assets\\ZombieAsset\\AxeZombie\\C_WeaponZombie01_Weapon.FBX\\C_Weapon.mesh",
+                  "_tag": {
+                    "type": "GFileRefer"
+                  },
+                  "fileType": "mesh"
+                },
+                "_cloth": null,
+                "partType": 0,
+                "causeAnimationTypeChange": false,
+                "outwardType": 0,
+                "materials": [
+                  {
+                    "fileId": "cnyxrob39qk-m1kbtptr-7yia1ipgvlm",
+                    "filePath": "Assets\\ZombieAsset\\AxeZombie\\Materials\\AxeZombie.mat",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "material"
+                  }
+                ],
+                "avatarPartInfo": {
+                  "bone": "bone_R_Hand",
+                  "bindType": 1
+                },
+                "position": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "scale": {
+                  "x": 1,
+                  "y": 1,
+                  "z": 1
+                },
+                "rotation": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "_entityName": "C_Weapon.mesh"
+              }
+            ],
+            "prefabVariant": null,
+            "activeValue": {
+              "selfValue": true,
+              "valueTag": "activeValue"
+            },
+            "unlockedValue": null,
+            "editorLockValue": false,
+            "editorVisibleValue": true,
+            "groupId": "",
+            "enable": true,
+            "_entityName": "外观组 (1)"
+          },
+          {
+            "_tag": {
+              "type": "BoneMeshGroupEntity"
+            },
+            "_entityId": "IvGDBb45",
+            "children": [
+              {
+                "_tag": {
+                  "type": "BoneMeshEntity"
+                },
+                "_entityId": "NcSfjt5M",
+                "children": [],
+                "prefabVariant": null,
+                "activeValue": {
+                  "selfValue": true,
+                  "valueTag": "activeValue"
+                },
+                "unlockedValue": {
+                  "selfValue": true,
+                  "valueTag": "unlockedValue"
+                },
+                "editorLockValue": false,
+                "editorVisibleValue": true,
+                "_mesh": {
+                  "fileId": "zi88jf1spk-m1kbu4qt-2z1xdf79yg5-mC_CLaJiguai.~@FFSKIN",
+                  "filePath": "fab://Assets\\ZombieAsset\\AxeZombie\\C_WeaponZombie01.FBX\\mC_CLaJiguai.mesh",
+                  "_tag": {
+                    "type": "GFileRefer"
+                  },
+                  "fileType": "mesh"
+                },
+                "_cloth": null,
+                "partType": 0,
+                "causeAnimationTypeChange": false,
+                "outwardType": 0,
+                "materials": [
+                  {
+                    "fileId": "cvzbz96axrt-ma1ymqzc-xaudnpk0b5b",
+                    "filePath": "Assets\\ZombieAsset\\EffectMats\\AxeZombie_cold.mat",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "material"
+                  }
+                ],
+                "avatarPartInfo": {
+                  "bone": "mC_CLaJiguai",
+                  "bindType": 0
+                },
+                "position": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "scale": {
+                  "x": 1,
+                  "y": 1,
+                  "z": 1
+                },
+                "rotation": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "_entityName": "mC_CLaJiguai.mesh"
+              }
+            ],
+            "prefabVariant": null,
+            "activeValue": {
+              "selfValue": true,
+              "valueTag": "activeValue"
+            },
+            "unlockedValue": null,
+            "editorLockValue": false,
+            "editorVisibleValue": true,
+            "groupId": "",
+            "enable": false,
+            "_entityName": "Skin_cold"
+          }
+        ],
+        "prefabVariant": null,
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
+        "editorLockValue": false,
+        "editorVisibleValue": true,
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "BTPath": [
+          null
+        ],
+        "visible": true,
+        "VisibilityLayer": 0,
+        "modelOptimization": 0,
+        "streamingLayer": "",
+        "attributes": [
+          2,
+          4
+        ],
+        "isTrigger": false,
+        "collidable": true,
+        "physicalLayer": 0,
+        "physicalMaterial": null,
+        "initialTypes": {},
+        "componentList": [],
+        "_filters": [],
+        "_entityName": "C_Zombie01"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "prefabVariant": null,
+      "propsData": {},
+      "aoiSetting": 0
+    }
+  ],
+  "prefabVariant": null,
+  "activeValue": {
+    "selfValue": true,
+    "valueTag": "activeValue"
+  },
+  "unlockedValue": {
+    "selfValue": true,
+    "valueTag": "unlockedValue"
+  },
+  "editorLockValue": false,
+  "editorVisibleValue": true,
+  "discriminator": "ISceneLike",
+  "_entityName": "AxeZombie"
+}
+//"{FE:{"v":"1.13.3737256","c":{"FF":4901},"s":100}

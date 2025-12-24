@@ -1,0 +1,225 @@
+{
+  "_entityName": "ShieldZombie_AOE",
+  "_tag": {
+    "type": "Prefab"
+  },
+  "_entityId": "s7O1wud6",
+  "children": [
+    {
+      "_entityName": "Effect_Explosion",
+      "_tag": {
+        "type": "SceneEditEntity",
+        "resourceId": "Primitive/Empty"
+      },
+      "_entityId": "kzg1qPaG",
+      "children": [
+        {
+          "_entityName": "Effect_Area",
+          "_tag": {
+            "type": "SceneEditEntity",
+            "resourceId": "Primitive/Empty"
+          },
+          "_entityId": "Gk0lYDDZ",
+          "children": [],
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "scale": {
+            "x": 1,
+            "y": 0.2,
+            "z": 1
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "BTPath": [
+            null
+          ],
+          "visible": true,
+          "VisibilityLayer": 0,
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "attributes": [
+            2
+          ],
+          "isTrigger": false,
+          "collidable": true,
+          "physicalLayer": 0,
+          "physicalMaterial": null,
+          "aoiSetting": 0,
+          "initialTypes": {},
+          "componentList": [],
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "tempIndex": 511,
+          "itemID": 224,
+          "seParent": null,
+          "ecaScripts": [
+            null
+          ],
+          "ecaProps": {
+            "EffectEntityGenerator": {},
+            "ItemContainerGenerator": {},
+            "Entity": {},
+            "EffectEntity": {},
+            "Playable": {},
+            "Loopable": {},
+            "LevelObject": {},
+            "Transform": {},
+            "Visibility": {}
+          },
+          "propsData": {
+            "effectColor": {
+              "r": 255,
+              "g": 218,
+              "b": 138,
+              "a": 1
+            },
+            "playSpeed": 72,
+            "autoPlay": true,
+            "effectTypeResId": "",
+            "effectTexture": "VFX_Air_A",
+            "effectTextureRef": {
+              "fileId": "64126cc7addb486a7d944a239cd5fff8",
+              "filePath": "lib://fftextures/EffectTextures/Air.png",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "texture"
+            },
+            "effectTypeRef": {
+              "fileId": "EffectType_WS_FF_VFX_Default_Grenade_Attri_Debuff_02",
+              "filePath": "lib://ffEffects/T_40_WZY_WS_NEWVFX12",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "effecttype"
+            },
+            "effectType": "WS_FF_VFX_Default_Grenade_Attri_Debuff_02",
+            "isLoop": 0
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "prefabVariant": null
+        }
+      ],
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "scale": {
+        "x": 6,
+        "y": 6,
+        "z": 6
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "BTPath": [
+        null
+      ],
+      "visible": true,
+      "VisibilityLayer": 0,
+      "modelOptimization": 0,
+      "streamingLayer": "",
+      "attributes": [
+        2
+      ],
+      "isTrigger": false,
+      "collidable": true,
+      "physicalLayer": 0,
+      "physicalMaterial": null,
+      "aoiSetting": 0,
+      "initialTypes": {},
+      "componentList": [],
+      "entityTagData": {
+        "tagPointers": []
+      },
+      "tempIndex": 512,
+      "itemID": 224,
+      "seParent": null,
+      "ecaScripts": [
+        null
+      ],
+      "ecaProps": {
+        "EffectEntityGenerator": {},
+        "ItemContainerGenerator": {},
+        "Entity": {},
+        "EffectEntity": {},
+        "Playable": {},
+        "Loopable": {},
+        "LevelObject": {},
+        "Transform": {},
+        "Visibility": {}
+      },
+      "propsData": {
+        "effectColor": {
+          "r": 255,
+          "g": 218,
+          "b": 138,
+          "a": 1
+        },
+        "playSpeed": 70,
+        "autoPlay": true,
+        "effectTypeResId": "",
+        "effectTexture": "VFX_Air_A",
+        "effectTextureRef": {
+          "fileId": "64126cc7addb486a7d944a239cd5fff8",
+          "filePath": "lib://fftextures/EffectTextures/Air.png",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "texture"
+        },
+        "effectTypeRef": {
+          "fileId": "EffectType_WS_FF_VFX_Cobra_grenade_Explode_02",
+          "filePath": "lib://ffEffects/T_40_WZY_WS_NEWVFX10",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "effecttype"
+        },
+        "effectType": "WS_FF_VFX_Cobra_grenade_Explode_02",
+        "isLoop": 0
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "prefabVariant": null
+    }
+  ],
+  "prefabVariant": null,
+  "activeValue": {
+    "selfValue": true,
+    "valueTag": "activeValue"
+  },
+  "unlockedValue": null,
+  "editorLockValue": false,
+  "editorVisibleValue": true,
+  "HintCraftlandCombineMesh": false,
+  "discriminator": "ISceneLike"
+}
+//"{FE:{"v":"0.2.4113096","c":{"FF":5001},"s":100}

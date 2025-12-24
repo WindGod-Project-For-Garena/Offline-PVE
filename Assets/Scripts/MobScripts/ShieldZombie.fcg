@@ -28,9 +28,9 @@ graph FC_NormalZombie {
 	preDisplayEffect entity<Effect> = nil
 
 	TargetPos Vector3 = Vector3{0,0,0}
+	shieldHitboxEntity entity = nil
 
 	event OnAwake() {
-        WaitForNextFrame()
         Init()
     }
 	event OnMobActived() {
@@ -42,8 +42,24 @@ graph FC_NormalZombie {
         SetParentClient(GetSkeletonPartByName(thisEntity, "Bip001 Head"), headHitbox<Transform>, false)
 		headHitbox<HitBox>.SetOwner(thisEntity, "Head")
 
+		CreateFromPrefab(out var shieldHitbox, EResPrefab.HitBox_ShieldZombie_Shield)
+		AddScript(shieldHitbox, EResFCG.C_HitBox)
+		
+        SetParentClient(GetSkeletonPartByName(thisEntity, "bone_Right_Weapon"), shieldHitbox<Transform>, false)
+		shieldHitbox<Transform>.LocalRotation = Vector3{12,27,3}
+		shieldHitbox<Transform>.LocalPosition = Vector3{-0.04,-0.06,-0.16}
+		//shieldHitbox<Transform>.LocalPosition = Vector3{-0.04,-0.06,-0.16}
+		shieldHitbox<HitBox>.SetOwner(thisEntity, "Zombie_Shield")
+		shieldHitboxEntity = shieldHitbox
+
+		LogInfo("shieldHitboxEntity: " + shieldHitboxEntity)
+		
+
 		AddScript(thisEntity, EResFCG.C_HitBox)
 		thisEntity<HitBox>.SetOwner(thisEntity, "Body")
+
+
+
 	}
 
 	//funcID: Init
@@ -54,26 +70,36 @@ graph FC_NormalZombie {
 		thisEntity<Mob>.DetectRange = 30
 		thisEntity<Mob>.StatusDic = Map<string, object>{
 			"InAttack": false as bool,
+			"InShieldBreak": false as bool,
 
 			"IsShield": false as bool, //是否持有盾牌
 			"ShieldHP": 1000 as int, //盾牌血量
 			"ShieldMaxHP": 1000 as int, //盾牌最大血量
 
-			//不带盾普通攻击
-			"LastAttackTime_NormalAttack_NoShield": globalEntity<Global>.GameTimeCount as int,
-			"CD_NormalAttack_NoShield": 1800 as int,
-			"Duration_NormalAttack_NoShield": 1500 as int,
-			"Range_NormalAttack_NoShield": 2.0 as float,
+			//盾牌普通攻击
+			"LastAttackTime_NormalAttack": globalEntity<Global>.GameTimeCount as int,
+			"CD_NormalAttack": 2500 as int,
+			"Duration_NormalAttack": 2200 as int,
+			"Range_NormalAttack": 2.0 as float,
+			//OnShieldBreak会重置这些值
 
-			//不带盾冲击波攻击
-			"LastAttackTime_DashAttack_NoShield": globalEntity<Global>.GameTimeCount as int,
-			"CD_DashAttack_NoShield": 3000 as int,
-			"Duration_DashAttack_NoShield": 2500 as int,
-			"Range_DashAttack_NoShield": 30.0 as float,
+			//冲刺攻击
+			"LastAttackTime_DashAttack": globalEntity<Global>.GameTimeCount as int,
+			"CD_DashAttack": 3000 as int,
+			"Duration_DashAttack": 2500 as int,
+			"Range_DashAttack": 30.0 as float,
+
+			//AOE攻击（没有盾牌时）
+			"LastAttackTime_AOEAttack": globalEntity<Global>.GameTimeCount as int,
+			"CD_AOEAttack": 8000 as int,
+			"Duration_AOEAttack": 5900 as int,
+			"Range_AOEAttack": 8.0 as float,
+
 
 		}
 
-        var nowTime int = globalEntity<Global>.GameTimeCount
+
+		
 	}
 
 	// 盾牌僵尸技能，当玩家进入一定范围时，触发冲击技能
@@ -81,6 +107,12 @@ graph FC_NormalZombie {
 		var skillRange float = 10.0        //冲击距离
 		var speed float = 15.0            //冲击速度
 		var actualDuration float = 800  // 毫秒
+		var warningDuration int = 1000
+		var warningLength float = 10
+		var warningWidth float = 1.5
+		if thisEntity<Mob>.MobName == "ShieldZombie_Gold" {
+			warningWidth = 2
+		}
 
 		var curTarget = thisEntity<Mob>.CurrTarget
 		// 计算冲击方向
@@ -94,9 +126,15 @@ graph FC_NormalZombie {
 		direction.Y = 0 // 保持水平移动
 		// 先让怪物面向目标方向
 		PVEUtilities.myLookAt(TargetEntity<Transform>, curTarget, TargetPos)
+
+		var effectOffset float = warningLength/2+1 // 特效在怪物前方的偏移距离
+		var effectPos = TargetEntity<Transform>.Position + TargetEntity<Transform>.Forward * effectOffset
+		effectPos.Y = -0.2 
+
+		var  rotation Vector3 = TargetEntity<Transform>.Rotation + Vector3{0, 90, 0}
 		// 地面播放开始时的预警特效
-		start MobSkillHandler.GroundWarningEffect(TargetEntity, 1000)
-		WaitForMillisecond(1000)
+		start MobSkillHandler.DisplayWarningSquare(effectPos, rotation,warningLength, warningWidth, warningDuration)
+		WaitForMillisecond(warningDuration)
 
 		// 播放冲击动画
 		if thisEntity<Mob>.StatusDic["IsShield"] as bool {
@@ -116,10 +154,10 @@ graph FC_NormalZombie {
 			skillRange = Distance(currPos, finalTargetPos)
 			actualDuration = (skillRange / speed) * 1000 // 根据实际距离调整时间
 			hitObstacle = true
-			LogInfo("检测到障碍物，调整冲击距离")
+			//LogInfo("检测到障碍物，调整冲击距离")
 		} else {        //没有障碍物，冲击到目标位置
 			finalTargetPos = currPos + direction * skillRange        
-			LogInfo("没有障碍物，冲击到目标位置")
+			//LogInfo("没有障碍物，冲击到目标位置")
 		}
 
 		// 确保怪物面向最终目标位置
@@ -127,58 +165,51 @@ graph FC_NormalZombie {
 		createDashingMoveTween(finalTargetPos, actualDuration)
 		// 设置碰撞检测 - 使用start启动异步函数
 		start startDashingCollisionCheck(curTarget, actualDuration, hitObstacle)
-		// 等待移动完成
-		WaitForMillisecond(Round(actualDuration+100))
-		// 移动结束后播放Idle动画
-		
-		//myPlayIdleAnimation()
-		//LogInfo("盾牌僵尸冲击技能结束")
+		// 等待移动完成// 移动结束后播放Idle动画
+
 	}
+
+
+
+
+
 
 	// 技能期间碰撞检测 - 需要是async函数
 	async func startDashingCollisionCheck(target entity<Player>, skillDuration float, hitObstacle bool) {
 		var startTime int = globalEntity<Global>.GameTimeCount
 		var endTime int = startTime + Floor(skillDuration)
 		var hasHit bool = false
+		var warningDistance float = 1.5
+		if thisEntity<Mob>.MobName == "ShieldZombie_Gold" {
+			warningDistance = 2
+		}
 		//LogInfo("开始碰撞检测，持续时间: " + skillDuration + "ms")
-		while globalEntity<Global>.GameTimeCount < endTime && !hasHit {
+		while globalEntity<Global>.GameTimeCount < endTime && !hasHit && (thisEntity<Mob>.StatusDic["InAttack"] as bool){
 			// 检测与目标的距离
 			var currentDistance = Distance(thisEntity<Transform>.Position, target<Player>.Position)
 			//LogInfo("检测距离: " + currentDistance)
-			if currentDistance <= 1.5 {
+			if currentDistance <= warningDistance {
 				// 命中玩家，造成伤害和击退效果
 				if !hasHit {
-					LogInfo("触发伤害，距离: " + currentDistance)
+					//LogInfo("触发伤害，距离: " + currentDistance)
 					Offline.DealDamage(target as entity<Combatable>, nil, DamageType.Monster, Math.Ceil(1.5*GetDamage() )) // 技能双倍伤害
 					// 添加击退效果
 					hasHit = true
-					
 					// 碰撞到玩家后立即播放Idle动画
+					thisEntity<Mob>.StatusDic["InAttack"] = false 
 					myPlayIdleAnimation()
-					//LogInfo("盾牌僵尸冲击命中玩家，播放Idle动画")
-					
 					break // 跳出循环
 				}
 			}
 			WaitForNextFrame() 
 		}
 		
-		//这里是个很特殊的操作
-		thisEntity<Mob>.StatusDic["InAttack"] = false
-		// 如果一开始就检测到障碍物，在技能开始时播放Idle动画
-		if hitObstacle && !hasHit {
-			LogInfo("碰撞到障碍物,停止播放tween")
-			LogInfo(dashingMoveTween)
-			Pause(dashingMoveTween)
-			myPlayIdleAnimation()
 		
-		}
-		if hasHit {
-			LogInfo("命中玩家,停止播放tween")
-			Pause(dashingMoveTween)
-			myPlayIdleAnimation()
-		}
-		//LogInfo("碰撞检测结束，命中状态: " + hasHit)
+		// 如果一开始就检测到障碍物，在技能开始时播放Idle动画
+
+		Pause(dashingMoveTween)
+		//myPlayIdleAnimation()
+		
 	}
 
 	// 创建技能移动tween
@@ -214,12 +245,20 @@ graph FC_NormalZombie {
 		}
 	}
 
+	async func startShieldZombieAOEAttack() {
+		start MobSkillHandler.releaseSkill_ShieldZombieAOEAttack(thisEntity as entity<Mob>)
+	}
+
 	
 	//eventID: 91//r;Zn+-uY8Ahq`0JH4Yr{ //animation
 	event MobAttackEvent_AC(attackName string) {
-		if (attackName == "NormalAttack_NoShield") {
+		if (attackName == "NormalAttack_NoShield" || attackName == "NormalAttack") {
 			var curTarget = thisEntity<Mob>.CurrTarget
-			if (curTarget != nil && (Distance(curTarget as entity<Player><Player>.Position, thisEntity as entity<LevelObject><Transform>.Position) <= 3.0)) {					
+			var attackRange float = 2.5
+			if thisEntity<Mob>.MobName == "ShieldZombie_Gold" {
+				attackRange = 3.0
+			}
+			if (curTarget != nil && (Distance(curTarget as entity<Player><Player>.Position, thisEntity as entity<LevelObject><Transform>.Position) <= attackRange)) {					
 				Offline.DealDamage(curTarget as entity<Combatable>, nil, DamageType.Monster, GetDamage())
 			}
 		} else if (attackName == "NormalAttack2") {
@@ -243,18 +282,41 @@ graph FC_NormalZombie {
 		}
 
 		if (part == "Zombie_Shield") {
-			mob<Mob>.StatusDic["ShieldHP"] = mob<Mob>.StatusDic["ShieldHP"] as int - damage
+			if !(thisEntity<Mob>.StatusDic["IsShield"] as bool) {
+				//如果怪物没有盾牌，则不处理
+				return
+			}
+
+			mob<Mob>.StatusDic["ShieldHP"] = mob<Mob>.StatusDic["ShieldHP"] as int - damage*10
+		//	LogInfo("ShieldHP: " + mob<Mob>.StatusDic["ShieldHP"] as int)
 			if (mob<Mob>.StatusDic["ShieldHP"] as int <= 0) {
 				mob<Mob>.StatusDic["ShieldHP"] = 0
+				thisEntity<Mob>.StatusDic["InShieldBreak"] = true
+				thisEntity<Mob>.StatusDic["InAttack"] = false
 			}
 		}else{
 			//处理血量，如果血量小于0，则死亡
 			mob<Mob>.HP = mob<Mob>.HP - damage
+			
 			if (mob<Mob>.HP <= 0) {
 				mob<Mob>.HP = 0
 			}
 		}
 	}
+
+	event OnZombieShieldBreak() {
+		LogInfo("-----hide shiled")
+		HideAppearanceGroup(thisEntity as entity<Appearance>,"Shield")
+		thisEntity<Mob>.StatusDic["IsShield"] = false
+		Destroy(shieldHitboxEntity)
+		//NormalAttack CD和Duration调整
+		thisEntity<Mob>.StatusDic["CD_NormalAttack"] = 1800 as int
+		thisEntity<Mob>.StatusDic["Duration_NormalAttack"] = 1550 as int
+		
+		
+	}
+
+
 
 	
 

@@ -1,0 +1,56 @@
+import "Animation.fcc" as Animation
+import "StdLibrary.fcc" as StdLib
+import "EditorGenLib.fcc" as EditorLib
+import "BehaviourTree.fcc" as BehaviourTree
+import "Math.fcc" as Math
+import "../../Static/FC_Utilities.fcg" as Utilities
+import "Convert.fcc" as Convert
+
+[platform_client]
+graph Script_1_ {
+    _Duration int
+    _AttackBeginTime int
+    //Executed when entity is created
+ 
+    event OnNodeEnterForClient(nodeName string, owner entity<BevTreeAttachableForClient>) {
+        //var attackScale = owner<ZombieCom>.ZombieInfo["LeftAttackSPDScale"] as float
+        // LogInfo("Action OnNodeEnter: Attack")
+        owner<Mob>.StatusDic["InAttack"] = true
+        GetNodeVariable(thisEntity<BevTreeCustomNode>,"AttackName",out var attackName) 
+
+        var duration = owner<Mob>.StatusDic["Duration_" + attackName] as int
+        var attackScale float= 1
+        _Duration = Ceil(duration as int * attackScale)
+        var curTarget entity<Player> = owner<Mob>.CurrTarget
+
+        _AttackBeginTime = globalEntity<Global>.GameTimeCount
+
+        owner<Mob>.StatusDic["LastAttackTime_" + attackName] = _AttackBeginTime
+        //SetBlackboardValue(owner<BevTreeAttachableForClient>.AttachTarget,"LastAttackTime",_AttackBeginTime)
+        var attackspeed float = 1.0/attackScale
+        //LogInfo("OnNodeEnter: Attack curTarget: " + curTarget)
+        Utilities.myLookAt(owner<Transform>,curTarget as entity<Player>,Vector3{0, 0, 0})
+
+        var animationName string = attackName
+        if owner<Mob>.StatusDic["IsShield"] == false {
+            animationName = animationName + "_NoShield"
+        }
+        //LogInfo("----------animationName: " + animationName)
+        
+        PlayAnimation(owner<AnimationControllerAttachable>,attackName,attackspeed,LoopType.Once)
+    }
+    func PlayAction(owner entity<BevTreeAttachableForClient>) BevTreeNodeStatus{
+
+        if(globalEntity<Global>.GameTimeCount >= _AttackBeginTime+_Duration){
+            //LogInfo("Action Finish")
+            return BevTreeNodeStatus.Finish
+        }else{
+            //LogInfo("Action Running")
+            return BevTreeNodeStatus.Running
+        }
+    }
+    event OnNodeExitForClient(nodeName string, owner entity<BevTreeAttachableForClient>) {
+        //LogInfo("OnNodeExit: Attack")
+        owner<Mob>.StatusDic["InAttack"] = false
+    }
+}

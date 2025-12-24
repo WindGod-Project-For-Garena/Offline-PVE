@@ -68,8 +68,8 @@ graph FC_NormalZombie {
 		hitPos = hitPoint+Vector3{0,0.05,0}
 	//	LogInfo("hitpoint:"+hitPos)
 		
-		start MobSkillHandler.displayWarningEffect_New(thisEntity as entity<Mob>,hitPos,1.5,1300)
-		//preDisplayEffect = MobSkillHandler.displayWarningEffect_New(thisEntity as entity<Mob>,hitPos,1.5,1300) as entity<Effect>
+		start MobSkillHandler.DisplayWarningCircle(hitPos,1.5,1300)
+
 	}
 	
 

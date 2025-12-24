@@ -1,0 +1,950 @@
+{
+  "_tag": {
+    "type": "ACEntity",
+    "resourceId": "ac.acEntity"
+  },
+  "_entityId": "Ps2ats3U",
+  "children": [
+    {
+      "_tag": {
+        "type": "ACStateEntity",
+        "resourceId": ""
+      },
+      "_entityId": "JvwDmOPB",
+      "children": [
+        {
+          "_tag": {
+            "type": "ACLayerEntity",
+            "resourceId": ""
+          },
+          "_entityId": "eqXCBRA2",
+          "children": [
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "1AK3ROx4",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": true,
+              "clipRefer": {
+                "fileId": "kj2plb1m71-m1kbt1wy-jvnvr05f36-Idle01.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\AxeZombie\\Anims\\C_WeaponZombie01@Idle01.FBX\\Idle01.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "Clip",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 0,
+              "endTime": 3,
+              "wrapMode": 2
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "isLoop": false,
+          "isBaseLayer": true,
+          "mute": false,
+          "bodypartId": null,
+          "DisableChanged": false,
+          "_entityName": "Base Layer"
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "isLoop": true,
+      "DisableChanged": true,
+      "_entityName": "Idle",
+      "eventFrameGroup": {
+        "_tag": {
+          "type": "ACLayerEntity",
+          "resourceId": ""
+        },
+        "_entityId": "L5HmFf77",
+        "children": [],
+        "prefabVariant": null,
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
+        "editorLockValue": false,
+        "editorVisibleValue": true,
+        "DisableChanged": false
+      },
+      "_eventFrameList": []
+    },
+    {
+      "_tag": {
+        "type": "ACStateEntity",
+        "resourceId": ""
+      },
+      "_entityId": "4CCsANlk",
+      "children": [
+        {
+          "_tag": {
+            "type": "ACLayerEntity",
+            "resourceId": ""
+          },
+          "_entityId": "R7lcu6s2",
+          "children": [
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "tJ3A6dHF",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": false,
+              "clipRefer": {
+                "fileId": "8o0pwa2u61-m1kbt0l9-1l5nn36vun5-attack01.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\AxeZombie\\Anims\\C_WeaponZombie01@Attack01.FBX\\attack01.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "Clip",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 0,
+              "endTime": 1.5333333015441895,
+              "wrapMode": 0
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "isLoop": false,
+          "isBaseLayer": true,
+          "mute": false,
+          "bodypartId": null,
+          "DisableChanged": false,
+          "_entityName": "Base Layer"
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "isLoop": false,
+      "DisableChanged": false,
+      "_entityName": "AxeZombie_Attack1",
+      "eventFrameGroup": {
+        "_tag": {
+          "type": "ACLayerEntity",
+          "resourceId": ""
+        },
+        "_entityId": "di2KKbjg",
+        "children": [],
+        "prefabVariant": null,
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
+        "editorLockValue": false,
+        "editorVisibleValue": true,
+        "DisableChanged": false
+      },
+      "_eventFrameList": []
+    },
+    {
+      "_tag": {
+        "type": "ACStateEntity",
+        "resourceId": ""
+      },
+      "_entityId": "xbuLPyu5",
+      "children": [
+        {
+          "_tag": {
+            "type": "ACLayerEntity",
+            "resourceId": ""
+          },
+          "_entityId": "mzFzj2RZ",
+          "children": [
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "HkweADmf",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": false,
+              "clipRefer": {
+                "fileId": "xfvvbok9dbk-m1kbt0rq-k5z6v4m46yk-attack02.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\AxeZombie\\Anims\\C_WeaponZombie01@Attack02.FBX\\attack02.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "Clip",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 0,
+              "endTime": 1.3333333730697632,
+              "wrapMode": 0
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "isLoop": false,
+          "isBaseLayer": true,
+          "mute": false,
+          "bodypartId": null,
+          "DisableChanged": false,
+          "_entityName": "Base Layer"
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "isLoop": false,
+      "DisableChanged": false,
+      "_entityName": "AxeZombie_Attack2",
+      "eventFrameGroup": {
+        "_tag": {
+          "type": "ACLayerEntity",
+          "resourceId": ""
+        },
+        "_entityId": "aB1JPxMT",
+        "children": [],
+        "prefabVariant": null,
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
+        "editorLockValue": false,
+        "editorVisibleValue": true,
+        "DisableChanged": false
+      },
+      "_eventFrameList": []
+    },
+    {
+      "_tag": {
+        "type": "ACStateEntity",
+        "resourceId": ""
+      },
+      "_entityId": "kES2Ajbw",
+      "children": [
+        {
+          "_tag": {
+            "type": "ACLayerEntity",
+            "resourceId": ""
+          },
+          "_entityId": "D6HrhaZy",
+          "children": [
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "9wtCOVky",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": false,
+              "clipRefer": {
+                "fileId": "wedk89qbnya-m1kbt0xf-wfrq9wnydlm-WeaponZombie01_Attack03.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\AxeZombie\\Anims\\C_WeaponZombie01@Attack03.FBX\\WeaponZombie01_Attack03.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "Clip",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 0,
+              "endTime": 2.3333332538604736,
+              "wrapMode": 0
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "isLoop": false,
+          "isBaseLayer": true,
+          "mute": false,
+          "bodypartId": null,
+          "DisableChanged": false,
+          "_entityName": "Base Layer"
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "isLoop": false,
+      "DisableChanged": false,
+      "_entityName": "AxeZombie_Attack3",
+      "eventFrameGroup": {
+        "_tag": {
+          "type": "ACLayerEntity",
+          "resourceId": ""
+        },
+        "_entityId": "VnK2wjQ7",
+        "children": [],
+        "prefabVariant": null,
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
+        "editorLockValue": false,
+        "editorVisibleValue": true,
+        "DisableChanged": false
+      },
+      "_eventFrameList": []
+    },
+    {
+      "_tag": {
+        "type": "ACStateEntity",
+        "resourceId": ""
+      },
+      "_entityId": "bxKJ0tz7",
+      "children": [
+        {
+          "_tag": {
+            "type": "ACLayerEntity",
+            "resourceId": ""
+          },
+          "_entityId": "C97dx7rO",
+          "children": [
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "a4IC1oIB",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": true,
+              "clipRefer": {
+                "fileId": "qauc0wyk5ve-m1kbt2g0-snglreenrph-WeaponZombie01_Run01.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\AxeZombie\\Anims\\C_WeaponZombie01@Run01.FBX\\WeaponZombie01_Run01.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "Clip",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 0,
+              "endTime": 0.5333333611488342,
+              "wrapMode": 2
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "isLoop": false,
+          "isBaseLayer": true,
+          "mute": false,
+          "bodypartId": null,
+          "DisableChanged": false,
+          "_entityName": "Base Layer"
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "isLoop": false,
+      "DisableChanged": false,
+      "_entityName": "AxeZombie_Run",
+      "eventFrameGroup": {
+        "_tag": {
+          "type": "ACLayerEntity",
+          "resourceId": ""
+        },
+        "_entityId": "kEnwUvBq",
+        "children": [],
+        "prefabVariant": null,
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
+        "editorLockValue": false,
+        "editorVisibleValue": true,
+        "DisableChanged": false
+      },
+      "_eventFrameList": []
+    },
+    {
+      "_tag": {
+        "type": "ACStateEntity",
+        "resourceId": ""
+      },
+      "_entityId": "UUD9LkJe",
+      "children": [
+        {
+          "_tag": {
+            "type": "ACLayerEntity",
+            "resourceId": ""
+          },
+          "_entityId": "HUjcbixp",
+          "children": [
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "zA7pUyLr",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": true,
+              "clipRefer": {
+                "fileId": "9lrvety3ef-m1kbt2xe-s53ctlg8sx-WeaponZombie01_Walk01.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\AxeZombie\\Anims\\C_WeaponZombie01@Walk01.FBX\\WeaponZombie01_Walk01.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "Clip",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 0,
+              "endTime": 1,
+              "wrapMode": 2
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "isLoop": false,
+          "isBaseLayer": true,
+          "mute": false,
+          "bodypartId": null,
+          "DisableChanged": false,
+          "_entityName": "Base Layer"
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "isLoop": false,
+      "DisableChanged": false,
+      "_entityName": "AxeZombie_Walk",
+      "eventFrameGroup": {
+        "_tag": {
+          "type": "ACLayerEntity",
+          "resourceId": ""
+        },
+        "_entityId": "Ej09lYOF",
+        "children": [],
+        "prefabVariant": null,
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
+        "editorLockValue": false,
+        "editorVisibleValue": true,
+        "DisableChanged": false
+      },
+      "_eventFrameList": []
+    },
+    {
+      "_tag": {
+        "type": "ACStateEntity",
+        "resourceId": ""
+      },
+      "_entityId": "bgVmgZlE",
+      "children": [
+        {
+          "_tag": {
+            "type": "ACLayerEntity",
+            "resourceId": ""
+          },
+          "_entityId": "1VSU01FC",
+          "children": [
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "fo8kqUJJ",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 0.5,
+              "loop": true,
+              "clipRefer": {
+                "fileId": "9lrvety3ef-m1kbt2xe-s53ctlg8sx-WeaponZombie01_Walk01.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\AxeZombie\\Anims\\C_WeaponZombie01@Walk01.FBX\\WeaponZombie01_Walk01.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "Clip",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 0,
+              "endTime": 2,
+              "wrapMode": 2
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "isLoop": false,
+          "isBaseLayer": true,
+          "mute": false,
+          "bodypartId": null,
+          "DisableChanged": false,
+          "_entityName": "Base Layer"
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "isLoop": false,
+      "DisableChanged": false,
+      "_entityName": "AxeZombie_Wander",
+      "eventFrameGroup": {
+        "_tag": {
+          "type": "ACLayerEntity",
+          "resourceId": ""
+        },
+        "_entityId": "WBNRMj5R",
+        "children": [],
+        "prefabVariant": null,
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
+        "editorLockValue": false,
+        "editorVisibleValue": true,
+        "DisableChanged": false
+      },
+      "_eventFrameList": []
+    },
+    {
+      "_tag": {
+        "type": "ACStateEntity",
+        "resourceId": ""
+      },
+      "_entityId": "ZQ9ZYkzG",
+      "children": [
+        {
+          "_tag": {
+            "type": "ACLayerEntity",
+            "resourceId": ""
+          },
+          "_entityId": "mZq6ObtR",
+          "children": [
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "eoL5kPbw",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 5,
+              "loop": false,
+              "clipRefer": {
+                "fileId": "if59n3fkqc-m1kbt13n-bqodoke5ej7-WeaponZombie01_bellow.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\AxeZombie\\Anims\\C_WeaponZombie01@Bellow.FBX\\WeaponZombie01_bellow.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "Clip",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 0,
+              "endTime": 0.3799999952316284,
+              "wrapMode": 0
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "isLoop": false,
+          "isBaseLayer": true,
+          "mute": false,
+          "bodypartId": null,
+          "DisableChanged": false,
+          "_entityName": "Base Layer"
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "isLoop": false,
+      "DisableChanged": false,
+      "_entityName": "AxeZombie_Hit",
+      "eventFrameGroup": {
+        "_tag": {
+          "type": "ACLayerEntity",
+          "resourceId": ""
+        },
+        "_entityId": "KJNZMMPs",
+        "children": [],
+        "prefabVariant": null,
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
+        "editorLockValue": false,
+        "editorVisibleValue": true,
+        "DisableChanged": false
+      },
+      "_eventFrameList": []
+    },
+    {
+      "_tag": {
+        "type": "ACStateEntity",
+        "resourceId": ""
+      },
+      "_entityId": "x28wIFex",
+      "children": [
+        {
+          "_tag": {
+            "type": "ACLayerEntity",
+            "resourceId": ""
+          },
+          "_entityId": "q9m5oS2o",
+          "children": [
+            {
+              "_tag": {
+                "type": "ACClipEntity",
+                "resourceId": ""
+              },
+              "_entityId": "DsKycwdP",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "speed": 1,
+              "loop": false,
+              "clipRefer": {
+                "fileId": "nb0th6cwq1p-m1kbt1ft-z6xu8kk80w-dead01.Anim",
+                "filePath": "fab://Assets\\ZombieAsset\\AxeZombie\\Anims\\C_WeaponZombie01@Dead01.FBX\\dead01.anim",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "anim"
+              },
+              "_entityName": "Clip",
+              "fadeInTime": 0.3,
+              "enablefadeTime": true,
+              "startTime": 0,
+              "endTime": 1.1666666269302368,
+              "wrapMode": 0
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "isLoop": false,
+          "isBaseLayer": true,
+          "mute": false,
+          "bodypartId": null,
+          "DisableChanged": false,
+          "_entityName": "Base Layer"
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "isLoop": false,
+      "DisableChanged": false,
+      "_entityName": "AxeZombie_Dead",
+      "eventFrameGroup": {
+        "_tag": {
+          "type": "ACLayerEntity",
+          "resourceId": ""
+        },
+        "_entityId": "XziI7qTi",
+        "children": [],
+        "prefabVariant": null,
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
+        "editorLockValue": false,
+        "editorVisibleValue": true,
+        "DisableChanged": false
+      },
+      "_eventFrameList": []
+    }
+  ],
+  "prefabVariant": null,
+  "activeValue": {
+    "selfValue": true,
+    "valueTag": "activeValue"
+  },
+  "unlockedValue": {
+    "selfValue": true,
+    "valueTag": "unlockedValue"
+  },
+  "editorLockValue": false,
+  "editorVisibleValue": true,
+  "_entityName": "ACEntity",
+  "version": 2
+}
+//"{FE:{"v":"1.12.3559061","c":{"FF":4701},"s":100}

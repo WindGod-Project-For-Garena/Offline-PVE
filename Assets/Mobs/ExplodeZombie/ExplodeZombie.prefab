@@ -1,0 +1,434 @@
+{
+  "_tag": {
+    "type": "Prefab"
+  },
+  "_entityId": "2Svo3B9M",
+  "children": [
+    {
+      "_tag": {
+        "type": "UGCSceneEntity",
+        "resourceId": ""
+      },
+      "_entityId": "DoDDweTl",
+      "children": [],
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "position": {
+        "x": 0,
+        "y": -0.3,
+        "z": 0
+      },
+      "scale": {
+        "x": 1.5,
+        "y": 1.5,
+        "z": 1.5
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "BTPath": [
+        {
+          "fileId": "v2mq9syyac-m1kdscds-wjn6fciau9p",
+          "filePath": "Assets\\ZombieAsset\\ExplodeZombie\\ExplodeZombie.xbt",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "xbt"
+        }
+      ],
+      "visible": true,
+      "VisibilityLayer": 0,
+      "modelOptimization": 0,
+      "streamingLayer": "",
+      "attributes": [
+        2,
+        4
+      ],
+      "isTrigger": false,
+      "collidable": true,
+      "physicalLayer": 1,
+      "physicalMaterial": null,
+      "initialTypes": {},
+      "componentList": [
+        "AvatarAble",
+        "AnimationControllerAble",
+        "ColliderShape",
+        "Collider",
+        "AimableEntity",
+        "AimAssistEntity",
+        "BehaviourTreeAttachable",
+        "CustomComponent31897461"
+      ],
+      "_filters": [
+        "node.withscript"
+      ],
+      "entityTagData": {
+        "tagPointers": []
+      },
+      "materials": [
+        null
+      ],
+      "colliders": [
+        {
+          "colliderType": "Capsule",
+          "enable": true,
+          "isTrigger": false,
+          "position": {
+            "x": 0,
+            "y": 0.5,
+            "z": 0
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "size": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "radius": 0.05,
+          "height": 0.8,
+          "isConvexIfMesh": false
+        }
+      ],
+      "Rigidbody": {
+        "Type": 1,
+        "Mass": 1,
+        "CenterOfMass": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "UseGravity": false,
+        "Drag": 0.05,
+        "AngularDrag": 0.05,
+        "FreezePosX": false,
+        "FreezePosY": false,
+        "FreezePosZ": false,
+        "FreezeRotX": false,
+        "FreezeRotY": false,
+        "FreezeRotZ": false
+      },
+      "isCreateAsEmpty": false,
+      "ecaScripts": [
+        {
+          "fileId": "hau95aj23dd-m1kdscw5-k7uto541hu8",
+          "filePath": "Assets\\ZombieAsset\\ExplodeZombie\\ECA\\ExplodeZombie.eca",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "eca"
+        },
+        {
+          "fileId": "1i6gslwr5bc-m1kdscwf-1by2slfy0yw",
+          "filePath": "Assets\\ZombieAsset\\ExplodeZombie\\ECA\\ExplodeZombie.ecac",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "ecaclient"
+        }
+      ],
+      "ecaProps": {
+        "CustomLevelObject": {
+          "PROP_14360378": 0,
+          "CustomLevelObject_81351029_custom": null
+        },
+        "LevelObject": {
+          "PROP_52849513": 0,
+          "PROP_45897236": 0
+        },
+        "Transform": {},
+        "Entity": {},
+        "Visibility": {},
+        "AvatarAble": {},
+        "AnimationControllerAble": {
+          "acRef": {
+            "fileId": "b24t12eesql-m1kduh34-ia125j0ti8f",
+            "filePath": "Assets\\ZombieAsset\\ExplodeZombie\\ExplodeZombie.ac",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "ac"
+          }
+        },
+        "ColliderShape": {},
+        "Collider": {},
+        "AimableEntity": {},
+        "AimAssistEntity": {},
+        "BehaviourTreeAttachable": {},
+        "MeshRender": {},
+        "CustomComponent31897461": {
+          "PROP_49135054": 600,
+          "PROP_81455094": 600,
+          "PROP_73815879": 4,
+          "PROP_66147538": 20,
+          "PROP_45837287": 1,
+          "PROP_70190061": 1,
+          "PROP_44090358": 1,
+          "PROP_29109301": 1,
+          "PROP_73716871": 0.6,
+          "PROP_76912094": 0.6,
+          "PROP_30104596": 1,
+          "PROP_69523903": "",
+          "PROP_56297798": null,
+          "PROP_35241580": null,
+          "PROP_29661490": null,
+          "PROP_92573979": null,
+          "PROP_20114578": null,
+          "PROP_57044040": null,
+          "PROP_92060434": 0
+        }
+      },
+      "entityVersion": 3,
+      "_entityName": "C_Zombie01",
+      "skeleton": {
+        "fileId": "d0r6phu3hfe-m1kduh4j-0jprlcei5rzk-C_ExploderZombie01.sk",
+        "filePath": "fab://Assets\\ZombieAsset\\ExplodeZombie\\C_ExploderZombie01.FBX\\C_ExploderZombie01.sk",
+        "_tag": {
+          "type": "GFileRefer"
+        },
+        "fileType": "sk"
+      },
+      "boneEntity": {
+        "_tag": {
+          "type": "BoneContentEntity"
+        },
+        "_entityId": "G0PJuoNM",
+        "children": [
+          {
+            "_tag": {
+              "type": "BoneMeshGroupEntity"
+            },
+            "_entityId": "I1mL3weY",
+            "children": [
+              {
+                "_tag": {
+                  "type": "BoneMeshEntity"
+                },
+                "_entityId": "gaOuZ3s6",
+                "children": [],
+                "prefabVariant": null,
+                "activeValue": {
+                  "selfValue": true,
+                  "valueTag": "activeValue"
+                },
+                "unlockedValue": {
+                  "selfValue": true,
+                  "valueTag": "unlockedValue"
+                },
+                "editorLockValue": false,
+                "editorVisibleValue": true,
+                "_mesh": {
+                  "fileId": "d0r6phu3hfe-m1kduh4j-0jprlcei5rzk-C_ExploderZombie01.~@FFSKIN",
+                  "filePath": "fab://Assets\\ZombieAsset\\ExplodeZombie\\C_ExploderZombie01.FBX\\C_ExploderZombie01.mesh",
+                  "_tag": {
+                    "type": "GFileRefer"
+                  },
+                  "fileType": "mesh"
+                },
+                "_cloth": null,
+                "partType": 0,
+                "causeAnimationTypeChange": false,
+                "outwardType": 0,
+                "materials": [
+                  {
+                    "fileId": "zkjjw575x8g-m1kdvbfx-fztv4a4316a",
+                    "filePath": "Assets\\ZombieAsset\\ExplodeZombie\\Materials\\ExpodeZombie.mat",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "material"
+                  }
+                ],
+                "avatarPartInfo": {
+                  "bone": "C_ExploderZombie01",
+                  "bindType": 0
+                },
+                "position": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "scale": {
+                  "x": 1,
+                  "y": 1,
+                  "z": 1
+                },
+                "rotation": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "_entityName": "C_ExploderZombie01.mesh"
+              }
+            ],
+            "prefabVariant": null,
+            "activeValue": {
+              "selfValue": true,
+              "valueTag": "activeValue"
+            },
+            "unlockedValue": null,
+            "editorLockValue": false,
+            "editorVisibleValue": true,
+            "groupId": "",
+            "enable": true,
+            "_entityName": "Skin"
+          },
+          {
+            "_tag": {
+              "type": "BoneMeshGroupEntity"
+            },
+            "_entityId": "Eb5aqQZX",
+            "children": [
+              {
+                "_tag": {
+                  "type": "BoneMeshEntity"
+                },
+                "_entityId": "TjsnUFEI",
+                "children": [],
+                "prefabVariant": null,
+                "activeValue": {
+                  "selfValue": true,
+                  "valueTag": "activeValue"
+                },
+                "unlockedValue": {
+                  "selfValue": true,
+                  "valueTag": "unlockedValue"
+                },
+                "editorLockValue": false,
+                "editorVisibleValue": true,
+                "_mesh": {
+                  "fileId": "d0r6phu3hfe-m1kduh4j-0jprlcei5rzk-C_ExploderZombie01.~@FFSKIN",
+                  "filePath": "fab://Assets\\ZombieAsset\\ExplodeZombie\\C_ExploderZombie01.FBX\\C_ExploderZombie01.mesh",
+                  "_tag": {
+                    "type": "GFileRefer"
+                  },
+                  "fileType": "mesh"
+                },
+                "_cloth": null,
+                "partType": 0,
+                "causeAnimationTypeChange": false,
+                "outwardType": 0,
+                "materials": [
+                  {
+                    "fileId": "yp78eu1w6g-ma1yna29-5yi81k343yy",
+                    "filePath": "Assets\\ZombieAsset\\ZombieMatsEffect\\ExpodeZombie_cold.mat",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "material"
+                  }
+                ],
+                "avatarPartInfo": {
+                  "bone": "C_ExploderZombie01",
+                  "bindType": 0
+                },
+                "position": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "scale": {
+                  "x": 1,
+                  "y": 1,
+                  "z": 1
+                },
+                "rotation": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                },
+                "_entityName": "C_ExploderZombie01.mesh"
+              }
+            ],
+            "prefabVariant": null,
+            "activeValue": {
+              "selfValue": true,
+              "valueTag": "activeValue"
+            },
+            "unlockedValue": null,
+            "editorLockValue": false,
+            "editorVisibleValue": true,
+            "groupId": "",
+            "enable": false,
+            "_entityName": "Skin_cold"
+          }
+        ],
+        "prefabVariant": null,
+        "activeValue": {
+          "selfValue": true,
+          "valueTag": "activeValue"
+        },
+        "unlockedValue": {
+          "selfValue": true,
+          "valueTag": "unlockedValue"
+        },
+        "editorLockValue": false,
+        "editorVisibleValue": true,
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "scale": {
+          "x": 1,
+          "y": 1,
+          "z": 1
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "BTPath": [
+          null
+        ],
+        "visible": true,
+        "VisibilityLayer": 0,
+        "modelOptimization": 0,
+        "streamingLayer": "",
+        "attributes": [
+          2,
+          4
+        ],
+        "isTrigger": false,
+        "collidable": true,
+        "physicalLayer": 0,
+        "physicalMaterial": null,
+        "initialTypes": {},
+        "componentList": [],
+        "_filters": [],
+        "_entityName": "C_Zombie01"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "prefabVariant": null,
+      "propsData": {},
+      "aoiSetting": 0
+    }
+  ],
+  "prefabVariant": null,
+  "activeValue": {
+    "selfValue": true,
+    "valueTag": "activeValue"
+  },
+  "unlockedValue": {
+    "selfValue": true,
+    "valueTag": "unlockedValue"
+  },
+  "editorLockValue": false,
+  "editorVisibleValue": true,
+  "discriminator": "ISceneLike",
+  "_entityName": "ExplodeZombie"
+}
+//"{FE:{"v":"1.13.3737256","c":{"FF":4901},"s":100}
