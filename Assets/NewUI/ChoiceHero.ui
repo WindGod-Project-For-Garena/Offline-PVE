@@ -586,13 +586,104 @@
           "_entityId": "z7Y4xLPl",
           "children": [
             {
-              "_entityName": "Image",
+              "_entityName": "ICON",
               "_tag": {
                 "type": "UIImageEntity",
                 "resourceId": ""
               },
-              "_entityId": "udLpwSUp",
-              "children": [],
+              "_entityId": "Yj0tYljy",
+              "children": [
+                {
+                  "_entityName": "HeroName",
+                  "_tag": {
+                    "type": "UITextEntity",
+                    "resourceId": ""
+                  },
+                  "_entityId": "Eqvs7dIW",
+                  "children": [],
+                  "prefabVariant": null,
+                  "activeValue": {
+                    "selfValue": true,
+                    "valueTag": "activeValue"
+                  },
+                  "unlockedValue": {
+                    "selfValue": true,
+                    "valueTag": "unlockedValue"
+                  },
+                  "propsData": {
+                    "activeSelf": true,
+                    "transform": {
+                      "rotate": 0,
+                      "anchorMin": {
+                        "x": 0.5,
+                        "y": 0
+                      },
+                      "anchorMax": {
+                        "x": 0.5,
+                        "y": 0
+                      },
+                      "pivot": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "anchoredPosition": {
+                        "x": 0,
+                        "y": 20
+                      },
+                      "sizeDelta": {
+                        "x": 125,
+                        "y": 50
+                      }
+                    },
+                    "alpha": 100,
+                    "priority": 0,
+                    "text": {
+                      "value": "近卫爆破手",
+                      "key": "",
+                      "font": "Default",
+                      "fontSize": 24,
+                      "fontStyle": {
+                        "bold": false,
+                        "italic": false,
+                        "underline": false
+                      },
+                      "color": "#ffffff",
+                      "alignment": {
+                        "h": "center",
+                        "v": "middle"
+                      },
+                      "lineSpacing": 0,
+                      "background": false,
+                      "backgroundColor": "#e7b200",
+                      "overflow": 0,
+                      "backgroundRGBA": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 0
+                      },
+                      "shadow": true,
+                      "shadowColor": "#000000",
+                      "shadowOffset": {
+                        "x": 1,
+                        "y": 1
+                      }
+                    }
+                  },
+                  "ecaScripts": [],
+                  "ecaProps": {
+                    "HudLabelWidget": {},
+                    "HudWidget": {},
+                    "Entity": {}
+                  },
+                  "componentList": [],
+                  "entityTagData": {
+                    "tagPointers": []
+                  },
+                  "editorLockValue": false,
+                  "editorVisibleValue": true
+                }
+              ],
               "prefabVariant": null,
               "activeValue": {
                 "selfValue": true,
@@ -602,8 +693,6 @@
                 "selfValue": true,
                 "valueTag": "unlockedValue"
               },
-              "editorLockValue": false,
-              "editorVisibleValue": true,
               "propsData": {
                 "activeSelf": true,
                 "transform": {
@@ -633,8 +722,8 @@
                 "priority": 0,
                 "image": {
                   "source": {
-                    "fileId": "53ce9392ac4bf7064cceb62c16eab923",
-                    "filePath": "lib://fftextures/WorkshopIconLibrary/ui_icon_skill_richgirl.png",
+                    "fileId": "48348ca582e21034acb86c75a7306934",
+                    "filePath": "lib://fftextures/WorkshopIconLibrary/FF_ingame_hud_UGC_Dyeing_Campicon.png",
                     "_tag": {
                       "type": "GFileRefer"
                     },
@@ -642,7 +731,7 @@
                   },
                   "color": "#ffffff",
                   "reverse": {
-                    "x": true,
+                    "x": false,
                     "y": false
                   },
                   "fillType": 1,
@@ -687,16 +776,213 @@
               "componentList": [],
               "entityTagData": {
                 "tagPointers": []
-              }
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": true
             },
             {
-              "_entityName": "Image (1)",
+              "_entityName": "Hero_1_WeaponIFM",
               "_tag": {
-                "type": "UIImageEntity",
+                "type": "UIPanelEntityV3",
                 "resourceId": ""
               },
-              "_entityId": "xxkJm3uf",
-              "children": [],
+              "_entityId": "kfA04cZ7",
+              "children": [
+                {
+                  "_entityName": "WeaponImage",
+                  "_tag": {
+                    "type": "UIImageEntity",
+                    "resourceId": ""
+                  },
+                  "_entityId": "ktAdMJ92",
+                  "children": [],
+                  "prefabVariant": null,
+                  "activeValue": {
+                    "selfValue": true,
+                    "valueTag": "activeValue"
+                  },
+                  "unlockedValue": {
+                    "selfValue": true,
+                    "valueTag": "unlockedValue"
+                  },
+                  "propsData": {
+                    "activeSelf": true,
+                    "transform": {
+                      "rotate": 0,
+                      "anchorMin": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "anchorMax": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "pivot": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "anchoredPosition": {
+                        "x": 0,
+                        "y": 15
+                      },
+                      "sizeDelta": {
+                        "x": 150,
+                        "y": 60
+                      }
+                    },
+                    "alpha": 100,
+                    "priority": 0,
+                    "image": {
+                      "source": {
+                        "fileId": "cdcf5e0836cd6c4d293fa12c1263eb62",
+                        "filePath": "lib://fftextures/WorkshopIconLibrary/Icon_HUD_M1887.png",
+                        "_tag": {
+                          "type": "GFileRefer"
+                        },
+                        "fileType": "texture"
+                      },
+                      "color": "#ffffff",
+                      "reverse": {
+                        "x": true,
+                        "y": false
+                      },
+                      "fillType": 1,
+                      "slicedBorder": {
+                        "left": 0,
+                        "right": 0,
+                        "top": 0,
+                        "bottom": 0
+                      },
+                      "tiledBorder": {
+                        "left": 0,
+                        "right": 0,
+                        "top": 0,
+                        "bottom": 0
+                      },
+                      "centerInvisible": false,
+                      "fillDir": 0,
+                      "fillAmount": 0,
+                      "invertFill": false,
+                      "flip": 0,
+                      "gradient": 1,
+                      "gradientTop": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 1
+                      },
+                      "gradientBottom": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 1
+                      }
+                    }
+                  },
+                  "ecaScripts": [],
+                  "ecaProps": {
+                    "HudImageWidget": {},
+                    "HudWidget": {},
+                    "Entity": {}
+                  },
+                  "componentList": [],
+                  "entityTagData": {
+                    "tagPointers": []
+                  },
+                  "editorLockValue": false,
+                  "editorVisibleValue": true
+                },
+                {
+                  "_entityName": "Title",
+                  "_tag": {
+                    "type": "UITextEntity",
+                    "resourceId": ""
+                  },
+                  "_entityId": "TdzqKisZ",
+                  "children": [],
+                  "prefabVariant": null,
+                  "activeValue": {
+                    "selfValue": true,
+                    "valueTag": "activeValue"
+                  },
+                  "unlockedValue": {
+                    "selfValue": true,
+                    "valueTag": "unlockedValue"
+                  },
+                  "propsData": {
+                    "activeSelf": true,
+                    "transform": {
+                      "rotate": 0,
+                      "anchorMin": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "anchorMax": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "pivot": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "anchoredPosition": {
+                        "x": 0,
+                        "y": -30
+                      },
+                      "sizeDelta": {
+                        "x": 200,
+                        "y": 20
+                      }
+                    },
+                    "alpha": 100,
+                    "priority": 0,
+                    "text": {
+                      "value": "M1887",
+                      "key": "",
+                      "font": "Default",
+                      "fontSize": 22,
+                      "fontStyle": {
+                        "bold": false,
+                        "italic": false,
+                        "underline": false
+                      },
+                      "color": "#ffffff",
+                      "alignment": {
+                        "h": "center",
+                        "v": "middle"
+                      },
+                      "lineSpacing": 0,
+                      "background": false,
+                      "backgroundColor": "#e7b200",
+                      "overflow": 0,
+                      "backgroundRGBA": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 0
+                      },
+                      "shadow": false,
+                      "shadowColor": "#FFFFFF",
+                      "shadowOffset": {
+                        "x": 1,
+                        "y": 1
+                      }
+                    }
+                  },
+                  "ecaScripts": [],
+                  "ecaProps": {
+                    "HudLabelWidget": {},
+                    "HudWidget": {},
+                    "Entity": {}
+                  },
+                  "componentList": [],
+                  "entityTagData": {
+                    "tagPointers": []
+                  },
+                  "editorLockValue": false,
+                  "editorVisibleValue": true
+                }
+              ],
               "prefabVariant": null,
               "activeValue": {
                 "selfValue": true,
@@ -706,8 +992,6 @@
                 "selfValue": true,
                 "valueTag": "unlockedValue"
               },
-              "editorLockValue": false,
-              "editorVisibleValue": true,
               "propsData": {
                 "activeSelf": true,
                 "transform": {
@@ -729,16 +1013,281 @@
                     "y": 0
                   },
                   "sizeDelta": {
-                    "x": 100,
-                    "y": 40
+                    "x": 200,
+                    "y": 60
+                  }
+                },
+                "alpha": 100,
+                "priority": 0,
+                "panel": {
+                  "enableBackground": false,
+                  "maskName": null,
+                  "bgName": {
+                    "fileId": "b063b0439839b3d97a8fd2aa6a57ef8b",
+                    "filePath": "lib://fftextures/WorkshopIconLibrary/T_34_M_WS_ICON_SQUARE.png",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "texture"
+                  },
+                  "bgColor": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 0.2
+                  },
+                  "clippingType": 0,
+                  "softness": {
+                    "x": 0,
+                    "y": 0
+                  }
+                }
+              },
+              "ecaScripts": [],
+              "ecaProps": {
+                "HudEmptyPanel": {},
+                "HudPanel": {},
+                "HudWidget": {},
+                "Entity": {}
+              },
+              "componentList": [],
+              "entityTagData": {
+                "tagPointers": []
+              },
+              "version": "UIPanelEntityV3",
+              "editorLockValue": false,
+              "editorVisibleValue": true
+            },
+            {
+              "_entityName": "SKILL_1_LOGO",
+              "_tag": {
+                "type": "UIImageEntity",
+                "resourceId": ""
+              },
+              "_entityId": "R6sIV6L1",
+              "children": [
+                {
+                  "_entityName": "SKill",
+                  "_tag": {
+                    "type": "UITextEntity",
+                    "resourceId": ""
+                  },
+                  "_entityId": "ovV4xjKD",
+                  "children": [
+                    {
+                      "_entityName": "skill_type",
+                      "_tag": {
+                        "type": "UITextEntity",
+                        "resourceId": ""
+                      },
+                      "_entityId": "WDURzHTt",
+                      "children": [],
+                      "prefabVariant": null,
+                      "activeValue": {
+                        "selfValue": true,
+                        "valueTag": "activeValue"
+                      },
+                      "unlockedValue": {
+                        "selfValue": true,
+                        "valueTag": "unlockedValue"
+                      },
+                      "propsData": {
+                        "activeSelf": true,
+                        "transform": {
+                          "rotate": 0,
+                          "anchorMin": {
+                            "x": 0.5,
+                            "y": 0
+                          },
+                          "anchorMax": {
+                            "x": 0.5,
+                            "y": 0
+                          },
+                          "pivot": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "anchoredPosition": {
+                            "x": 0,
+                            "y": -5
+                          },
+                          "sizeDelta": {
+                            "x": 120,
+                            "y": 30
+                          }
+                        },
+                        "alpha": 100,
+                        "priority": 0,
+                        "text": {
+                          "value": "[主动]",
+                          "key": "",
+                          "font": "Default",
+                          "fontSize": 18,
+                          "fontStyle": {
+                            "bold": false,
+                            "italic": false,
+                            "underline": false
+                          },
+                          "color": "#CECECE",
+                          "alignment": {
+                            "h": "center",
+                            "v": "middle"
+                          },
+                          "lineSpacing": 0,
+                          "background": false,
+                          "backgroundColor": "#e7b200",
+                          "overflow": 0,
+                          "backgroundRGBA": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0,
+                            "a": 0
+                          },
+                          "shadow": false,
+                          "shadowColor": "#000000",
+                          "shadowOffset": {
+                            "x": 1,
+                            "y": 1
+                          }
+                        }
+                      },
+                      "ecaScripts": [],
+                      "ecaProps": {
+                        "HudLabelWidget": {},
+                        "HudWidget": {},
+                        "Entity": {}
+                      },
+                      "componentList": [],
+                      "entityTagData": {
+                        "tagPointers": []
+                      },
+                      "editorLockValue": false,
+                      "editorVisibleValue": true
+                    }
+                  ],
+                  "prefabVariant": null,
+                  "activeValue": {
+                    "selfValue": true,
+                    "valueTag": "activeValue"
+                  },
+                  "unlockedValue": {
+                    "selfValue": true,
+                    "valueTag": "unlockedValue"
+                  },
+                  "propsData": {
+                    "activeSelf": true,
+                    "transform": {
+                      "rotate": 0,
+                      "anchorMin": {
+                        "x": 0.5,
+                        "y": 0
+                      },
+                      "anchorMax": {
+                        "x": 0.5,
+                        "y": 0
+                      },
+                      "pivot": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "anchoredPosition": {
+                        "x": 0,
+                        "y": -15
+                      },
+                      "sizeDelta": {
+                        "x": 120,
+                        "y": 30
+                      }
+                    },
+                    "alpha": 100,
+                    "priority": 0,
+                    "text": {
+                      "value": "爆裂轰炸",
+                      "key": "",
+                      "font": "Default",
+                      "fontSize": 20,
+                      "fontStyle": {
+                        "bold": false,
+                        "italic": false,
+                        "underline": false
+                      },
+                      "color": "#ffffff",
+                      "alignment": {
+                        "h": "center",
+                        "v": "middle"
+                      },
+                      "lineSpacing": 0,
+                      "background": false,
+                      "backgroundColor": "#e7b200",
+                      "overflow": 0,
+                      "backgroundRGBA": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 0
+                      },
+                      "shadow": false,
+                      "shadowColor": "#000000",
+                      "shadowOffset": {
+                        "x": 1,
+                        "y": 1
+                      }
+                    }
+                  },
+                  "ecaScripts": [],
+                  "ecaProps": {
+                    "HudLabelWidget": {},
+                    "HudWidget": {},
+                    "Entity": {}
+                  },
+                  "componentList": [],
+                  "entityTagData": {
+                    "tagPointers": []
+                  },
+                  "editorLockValue": false,
+                  "editorVisibleValue": true
+                }
+              ],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "propsData": {
+                "activeSelf": true,
+                "transform": {
+                  "rotate": 0,
+                  "anchorMin": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchorMax": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "pivot": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchoredPosition": {
+                    "x": -50,
+                    "y": -90
+                  },
+                  "sizeDelta": {
+                    "x": 60,
+                    "y": 60
                   }
                 },
                 "alpha": 100,
                 "priority": 0,
                 "image": {
                   "source": {
-                    "fileId": "cdcf5e0836cd6c4d293fa12c1263eb62",
-                    "filePath": "lib://fftextures/WorkshopIconLibrary/Icon_HUD_M1887.png",
+                    "fileId": "b4186094cfcacd418ef9a74ea8408629",
+                    "filePath": "lib://fftextures/WorkshopIconLibrary/ui_icon_skill_SwatGuy.png",
                     "_tag": {
                       "type": "GFileRefer"
                     },
@@ -746,7 +1295,7 @@
                   },
                   "color": "#ffffff",
                   "reverse": {
-                    "x": true,
+                    "x": false,
                     "y": false
                   },
                   "fillType": 1,
@@ -791,7 +1340,295 @@
               "componentList": [],
               "entityTagData": {
                 "tagPointers": []
-              }
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": true
+            },
+            {
+              "_entityName": "SKILL_2_LOGO",
+              "_tag": {
+                "type": "UIImageEntity",
+                "resourceId": ""
+              },
+              "_entityId": "BnoIoI6Y",
+              "children": [
+                {
+                  "_entityName": "SKill",
+                  "_tag": {
+                    "type": "UITextEntity",
+                    "resourceId": ""
+                  },
+                  "_entityId": "pnG37KG3",
+                  "children": [
+                    {
+                      "_entityName": "skill_type",
+                      "_tag": {
+                        "type": "UITextEntity",
+                        "resourceId": ""
+                      },
+                      "_entityId": "Ue8X5vvF",
+                      "children": [],
+                      "prefabVariant": null,
+                      "activeValue": {
+                        "selfValue": true,
+                        "valueTag": "activeValue"
+                      },
+                      "unlockedValue": {
+                        "selfValue": true,
+                        "valueTag": "unlockedValue"
+                      },
+                      "propsData": {
+                        "activeSelf": true,
+                        "transform": {
+                          "rotate": 0,
+                          "anchorMin": {
+                            "x": 0.5,
+                            "y": 0
+                          },
+                          "anchorMax": {
+                            "x": 0.5,
+                            "y": 0
+                          },
+                          "pivot": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "anchoredPosition": {
+                            "x": 0,
+                            "y": -5
+                          },
+                          "sizeDelta": {
+                            "x": 120,
+                            "y": 30
+                          }
+                        },
+                        "alpha": 100,
+                        "priority": 0,
+                        "text": {
+                          "value": "[被动]",
+                          "key": "",
+                          "font": "Default",
+                          "fontSize": 18,
+                          "fontStyle": {
+                            "bold": false,
+                            "italic": false,
+                            "underline": false
+                          },
+                          "color": "#CECECE",
+                          "alignment": {
+                            "h": "center",
+                            "v": "middle"
+                          },
+                          "lineSpacing": 0,
+                          "background": false,
+                          "backgroundColor": "#e7b200",
+                          "overflow": 0,
+                          "backgroundRGBA": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0,
+                            "a": 0
+                          },
+                          "shadow": false,
+                          "shadowColor": "#000000",
+                          "shadowOffset": {
+                            "x": 1,
+                            "y": 1
+                          }
+                        }
+                      },
+                      "ecaScripts": [],
+                      "ecaProps": {
+                        "HudLabelWidget": {},
+                        "HudWidget": {},
+                        "Entity": {}
+                      },
+                      "componentList": [],
+                      "entityTagData": {
+                        "tagPointers": []
+                      },
+                      "editorLockValue": false,
+                      "editorVisibleValue": true
+                    }
+                  ],
+                  "prefabVariant": null,
+                  "activeValue": {
+                    "selfValue": true,
+                    "valueTag": "activeValue"
+                  },
+                  "unlockedValue": {
+                    "selfValue": true,
+                    "valueTag": "unlockedValue"
+                  },
+                  "propsData": {
+                    "activeSelf": true,
+                    "transform": {
+                      "rotate": 0,
+                      "anchorMin": {
+                        "x": 0.5,
+                        "y": 0
+                      },
+                      "anchorMax": {
+                        "x": 0.5,
+                        "y": 0
+                      },
+                      "pivot": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "anchoredPosition": {
+                        "x": 0,
+                        "y": -15
+                      },
+                      "sizeDelta": {
+                        "x": 120,
+                        "y": 30
+                      }
+                    },
+                    "alpha": 100,
+                    "priority": 0,
+                    "text": {
+                      "value": "绝命榴弹",
+                      "key": "",
+                      "font": "Default",
+                      "fontSize": 20,
+                      "fontStyle": {
+                        "bold": false,
+                        "italic": false,
+                        "underline": false
+                      },
+                      "color": "#ffffff",
+                      "alignment": {
+                        "h": "center",
+                        "v": "middle"
+                      },
+                      "lineSpacing": 0,
+                      "background": false,
+                      "backgroundColor": "#e7b200",
+                      "overflow": 0,
+                      "backgroundRGBA": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 0
+                      },
+                      "shadow": false,
+                      "shadowColor": "#000000",
+                      "shadowOffset": {
+                        "x": 1,
+                        "y": 1
+                      }
+                    }
+                  },
+                  "ecaScripts": [],
+                  "ecaProps": {
+                    "HudLabelWidget": {},
+                    "HudWidget": {},
+                    "Entity": {}
+                  },
+                  "componentList": [],
+                  "entityTagData": {
+                    "tagPointers": []
+                  },
+                  "editorLockValue": false,
+                  "editorVisibleValue": true
+                }
+              ],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "propsData": {
+                "activeSelf": true,
+                "transform": {
+                  "rotate": 0,
+                  "anchorMin": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchorMax": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "pivot": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchoredPosition": {
+                    "x": 50,
+                    "y": -90
+                  },
+                  "sizeDelta": {
+                    "x": 60,
+                    "y": 61
+                  }
+                },
+                "alpha": 100,
+                "priority": 0,
+                "image": {
+                  "source": {
+                    "fileId": "b4186094cfcacd418ef9a74ea8408629",
+                    "filePath": "lib://fftextures/WorkshopIconLibrary/ui_icon_skill_SwatGuy.png",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "texture"
+                  },
+                  "color": "#ffffff",
+                  "reverse": {
+                    "x": false,
+                    "y": false
+                  },
+                  "fillType": 1,
+                  "slicedBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "tiledBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "centerInvisible": false,
+                  "fillDir": 0,
+                  "fillAmount": 0,
+                  "invertFill": false,
+                  "flip": 0,
+                  "gradient": 1,
+                  "gradientTop": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  },
+                  "gradientBottom": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  }
+                }
+              },
+              "ecaScripts": [],
+              "ecaProps": {
+                "HudImageWidget": {},
+                "HudWidget": {},
+                "Entity": {}
+              },
+              "componentList": [],
+              "entityTagData": {
+                "tagPointers": []
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": true
             }
           ],
           "prefabVariant": null,
@@ -921,13 +1758,104 @@
           "_entityId": "S7qTq2Re",
           "children": [
             {
-              "_entityName": "Image",
+              "_entityName": "ICON",
               "_tag": {
                 "type": "UIImageEntity",
                 "resourceId": ""
               },
-              "_entityId": "eLngPQHH",
-              "children": [],
+              "_entityId": "i1RFu0eH",
+              "children": [
+                {
+                  "_entityName": "HeroName",
+                  "_tag": {
+                    "type": "UITextEntity",
+                    "resourceId": ""
+                  },
+                  "_entityId": "CgudrBGV",
+                  "children": [],
+                  "prefabVariant": null,
+                  "activeValue": {
+                    "selfValue": true,
+                    "valueTag": "activeValue"
+                  },
+                  "unlockedValue": {
+                    "selfValue": true,
+                    "valueTag": "unlockedValue"
+                  },
+                  "propsData": {
+                    "activeSelf": true,
+                    "transform": {
+                      "rotate": 0,
+                      "anchorMin": {
+                        "x": 0.5,
+                        "y": 0
+                      },
+                      "anchorMax": {
+                        "x": 0.5,
+                        "y": 0
+                      },
+                      "pivot": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "anchoredPosition": {
+                        "x": 0,
+                        "y": 20
+                      },
+                      "sizeDelta": {
+                        "x": 140,
+                        "y": 50
+                      }
+                    },
+                    "alpha": 100,
+                    "priority": 0,
+                    "text": {
+                      "value": "风暴游击手",
+                      "key": "",
+                      "font": "Default",
+                      "fontSize": 24,
+                      "fontStyle": {
+                        "bold": false,
+                        "italic": false,
+                        "underline": false
+                      },
+                      "color": "#ffffff",
+                      "alignment": {
+                        "h": "center",
+                        "v": "middle"
+                      },
+                      "lineSpacing": 0,
+                      "background": false,
+                      "backgroundColor": "#e7b200",
+                      "overflow": 0,
+                      "backgroundRGBA": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 0
+                      },
+                      "shadow": true,
+                      "shadowColor": "#000000",
+                      "shadowOffset": {
+                        "x": 1,
+                        "y": 1
+                      }
+                    }
+                  },
+                  "ecaScripts": [],
+                  "ecaProps": {
+                    "HudLabelWidget": {},
+                    "HudWidget": {},
+                    "Entity": {}
+                  },
+                  "componentList": [],
+                  "entityTagData": {
+                    "tagPointers": []
+                  },
+                  "editorLockValue": false,
+                  "editorVisibleValue": true
+                }
+              ],
               "prefabVariant": null,
               "activeValue": {
                 "selfValue": true,
@@ -966,8 +1894,8 @@
                 "priority": 0,
                 "image": {
                   "source": {
-                    "fileId": "3c4a4a26b613484d827148feeff47e29",
-                    "filePath": "lib://fftextures/WorkshopIconLibrary/ui_icon_skill_ParkourGuy.png",
+                    "fileId": "c1ba61d251a686942a2c4390a0de1637",
+                    "filePath": "lib://fftextures/WorkshopIconLibrary/FF_ingame_hud_UGC_Dyeing_Campicon1.png",
                     "_tag": {
                       "type": "GFileRefer"
                     },
@@ -975,7 +1903,7 @@
                   },
                   "color": "#ffffff",
                   "reverse": {
-                    "x": true,
+                    "x": false,
                     "y": false
                   },
                   "fillType": 1,
@@ -1025,13 +1953,208 @@
               "editorVisibleValue": true
             },
             {
-              "_entityName": "Image (1)",
+              "_entityName": "Hero_2_WeaponIFM",
               "_tag": {
-                "type": "UIImageEntity",
+                "type": "UIPanelEntityV3",
                 "resourceId": ""
               },
-              "_entityId": "Z3oPDAxG",
-              "children": [],
+              "_entityId": "XixnFm4f",
+              "children": [
+                {
+                  "_entityName": "WeaponImage",
+                  "_tag": {
+                    "type": "UIImageEntity",
+                    "resourceId": ""
+                  },
+                  "_entityId": "WrJfWz5H",
+                  "children": [],
+                  "prefabVariant": null,
+                  "activeValue": {
+                    "selfValue": true,
+                    "valueTag": "activeValue"
+                  },
+                  "unlockedValue": {
+                    "selfValue": true,
+                    "valueTag": "unlockedValue"
+                  },
+                  "propsData": {
+                    "activeSelf": true,
+                    "transform": {
+                      "rotate": 0,
+                      "anchorMin": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "anchorMax": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "pivot": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "anchoredPosition": {
+                        "x": 0,
+                        "y": 15
+                      },
+                      "sizeDelta": {
+                        "x": 150,
+                        "y": 50
+                      }
+                    },
+                    "alpha": 100,
+                    "priority": 0,
+                    "image": {
+                      "source": {
+                        "fileId": "ee4b707388050f40905ae7c3b0fb1482",
+                        "filePath": "lib://fftextures/WorkshopIconLibrary/Icon_HUD_MP5.png",
+                        "_tag": {
+                          "type": "GFileRefer"
+                        },
+                        "fileType": "texture"
+                      },
+                      "color": "#ffffff",
+                      "reverse": {
+                        "x": true,
+                        "y": false
+                      },
+                      "fillType": 1,
+                      "slicedBorder": {
+                        "left": 0,
+                        "right": 0,
+                        "top": 0,
+                        "bottom": 0
+                      },
+                      "tiledBorder": {
+                        "left": 0,
+                        "right": 0,
+                        "top": 0,
+                        "bottom": 0
+                      },
+                      "centerInvisible": false,
+                      "fillDir": 0,
+                      "fillAmount": 0,
+                      "invertFill": false,
+                      "flip": 0,
+                      "gradient": 1,
+                      "gradientTop": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 1
+                      },
+                      "gradientBottom": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 1
+                      }
+                    }
+                  },
+                  "ecaScripts": [],
+                  "ecaProps": {
+                    "HudImageWidget": {},
+                    "HudWidget": {},
+                    "Entity": {}
+                  },
+                  "componentList": [],
+                  "entityTagData": {
+                    "tagPointers": []
+                  },
+                  "editorLockValue": false,
+                  "editorVisibleValue": true
+                },
+                {
+                  "_entityName": "Title",
+                  "_tag": {
+                    "type": "UITextEntity",
+                    "resourceId": ""
+                  },
+                  "_entityId": "k1xbmeQm",
+                  "children": [],
+                  "prefabVariant": null,
+                  "activeValue": {
+                    "selfValue": true,
+                    "valueTag": "activeValue"
+                  },
+                  "unlockedValue": {
+                    "selfValue": true,
+                    "valueTag": "unlockedValue"
+                  },
+                  "propsData": {
+                    "activeSelf": true,
+                    "transform": {
+                      "rotate": 0,
+                      "anchorMin": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "anchorMax": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "pivot": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "anchoredPosition": {
+                        "x": 0,
+                        "y": -30
+                      },
+                      "sizeDelta": {
+                        "x": 200,
+                        "y": 20
+                      }
+                    },
+                    "alpha": 100,
+                    "priority": 0,
+                    "text": {
+                      "value": "MP5",
+                      "key": "",
+                      "font": "Default",
+                      "fontSize": 22,
+                      "fontStyle": {
+                        "bold": false,
+                        "italic": false,
+                        "underline": false
+                      },
+                      "color": "#ffffff",
+                      "alignment": {
+                        "h": "center",
+                        "v": "middle"
+                      },
+                      "lineSpacing": 0,
+                      "background": false,
+                      "backgroundColor": "#e7b200",
+                      "overflow": 0,
+                      "backgroundRGBA": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 0
+                      },
+                      "shadow": false,
+                      "shadowColor": "#FFFFFF",
+                      "shadowOffset": {
+                        "x": 1,
+                        "y": 1
+                      }
+                    }
+                  },
+                  "ecaScripts": [],
+                  "ecaProps": {
+                    "HudLabelWidget": {},
+                    "HudWidget": {},
+                    "Entity": {}
+                  },
+                  "componentList": [],
+                  "entityTagData": {
+                    "tagPointers": []
+                  },
+                  "editorLockValue": false,
+                  "editorVisibleValue": true
+                }
+              ],
               "prefabVariant": null,
               "activeValue": {
                 "selfValue": true,
@@ -1062,16 +2185,281 @@
                     "y": 0
                   },
                   "sizeDelta": {
-                    "x": 100,
-                    "y": 40
+                    "x": 200,
+                    "y": 60
+                  }
+                },
+                "alpha": 100,
+                "priority": 0,
+                "panel": {
+                  "enableBackground": false,
+                  "maskName": null,
+                  "bgName": {
+                    "fileId": "b063b0439839b3d97a8fd2aa6a57ef8b",
+                    "filePath": "lib://fftextures/WorkshopIconLibrary/T_34_M_WS_ICON_SQUARE.png",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "texture"
+                  },
+                  "bgColor": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 0.2
+                  },
+                  "clippingType": 0,
+                  "softness": {
+                    "x": 0,
+                    "y": 0
+                  }
+                }
+              },
+              "ecaScripts": [],
+              "ecaProps": {
+                "HudEmptyPanel": {},
+                "HudPanel": {},
+                "HudWidget": {},
+                "Entity": {}
+              },
+              "componentList": [],
+              "entityTagData": {
+                "tagPointers": []
+              },
+              "version": "UIPanelEntityV3",
+              "editorLockValue": false,
+              "editorVisibleValue": true
+            },
+            {
+              "_entityName": "SKILL_1_LOGO",
+              "_tag": {
+                "type": "UIImageEntity",
+                "resourceId": ""
+              },
+              "_entityId": "i38V01WM",
+              "children": [
+                {
+                  "_entityName": "SKill",
+                  "_tag": {
+                    "type": "UITextEntity",
+                    "resourceId": ""
+                  },
+                  "_entityId": "mDBxioMk",
+                  "children": [
+                    {
+                      "_entityName": "skill_type",
+                      "_tag": {
+                        "type": "UITextEntity",
+                        "resourceId": ""
+                      },
+                      "_entityId": "H8lo8UNY",
+                      "children": [],
+                      "prefabVariant": null,
+                      "activeValue": {
+                        "selfValue": true,
+                        "valueTag": "activeValue"
+                      },
+                      "unlockedValue": {
+                        "selfValue": true,
+                        "valueTag": "unlockedValue"
+                      },
+                      "propsData": {
+                        "activeSelf": true,
+                        "transform": {
+                          "rotate": 0,
+                          "anchorMin": {
+                            "x": 0.5,
+                            "y": 0
+                          },
+                          "anchorMax": {
+                            "x": 0.5,
+                            "y": 0
+                          },
+                          "pivot": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "anchoredPosition": {
+                            "x": 0,
+                            "y": -5
+                          },
+                          "sizeDelta": {
+                            "x": 120,
+                            "y": 30
+                          }
+                        },
+                        "alpha": 100,
+                        "priority": 0,
+                        "text": {
+                          "value": "[主动]",
+                          "key": "",
+                          "font": "Default",
+                          "fontSize": 18,
+                          "fontStyle": {
+                            "bold": false,
+                            "italic": false,
+                            "underline": false
+                          },
+                          "color": "#CECECE",
+                          "alignment": {
+                            "h": "center",
+                            "v": "middle"
+                          },
+                          "lineSpacing": 0,
+                          "background": false,
+                          "backgroundColor": "#e7b200",
+                          "overflow": 0,
+                          "backgroundRGBA": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0,
+                            "a": 0
+                          },
+                          "shadow": false,
+                          "shadowColor": "#000000",
+                          "shadowOffset": {
+                            "x": 1,
+                            "y": 1
+                          }
+                        }
+                      },
+                      "ecaScripts": [],
+                      "ecaProps": {
+                        "HudLabelWidget": {},
+                        "HudWidget": {},
+                        "Entity": {}
+                      },
+                      "componentList": [],
+                      "entityTagData": {
+                        "tagPointers": []
+                      },
+                      "editorLockValue": false,
+                      "editorVisibleValue": true
+                    }
+                  ],
+                  "prefabVariant": null,
+                  "activeValue": {
+                    "selfValue": true,
+                    "valueTag": "activeValue"
+                  },
+                  "unlockedValue": {
+                    "selfValue": true,
+                    "valueTag": "unlockedValue"
+                  },
+                  "propsData": {
+                    "activeSelf": true,
+                    "transform": {
+                      "rotate": 0,
+                      "anchorMin": {
+                        "x": 0.5,
+                        "y": 0
+                      },
+                      "anchorMax": {
+                        "x": 0.5,
+                        "y": 0
+                      },
+                      "pivot": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "anchoredPosition": {
+                        "x": 0,
+                        "y": -15
+                      },
+                      "sizeDelta": {
+                        "x": 120,
+                        "y": 30
+                      }
+                    },
+                    "alpha": 100,
+                    "priority": 0,
+                    "text": {
+                      "value": "爆裂轰炸",
+                      "key": "",
+                      "font": "Default",
+                      "fontSize": 20,
+                      "fontStyle": {
+                        "bold": false,
+                        "italic": false,
+                        "underline": false
+                      },
+                      "color": "#ffffff",
+                      "alignment": {
+                        "h": "center",
+                        "v": "middle"
+                      },
+                      "lineSpacing": 0,
+                      "background": false,
+                      "backgroundColor": "#e7b200",
+                      "overflow": 0,
+                      "backgroundRGBA": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 0
+                      },
+                      "shadow": false,
+                      "shadowColor": "#000000",
+                      "shadowOffset": {
+                        "x": 1,
+                        "y": 1
+                      }
+                    }
+                  },
+                  "ecaScripts": [],
+                  "ecaProps": {
+                    "HudLabelWidget": {},
+                    "HudWidget": {},
+                    "Entity": {}
+                  },
+                  "componentList": [],
+                  "entityTagData": {
+                    "tagPointers": []
+                  },
+                  "editorLockValue": false,
+                  "editorVisibleValue": true
+                }
+              ],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "propsData": {
+                "activeSelf": true,
+                "transform": {
+                  "rotate": 0,
+                  "anchorMin": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchorMax": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "pivot": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchoredPosition": {
+                    "x": -50,
+                    "y": -90
+                  },
+                  "sizeDelta": {
+                    "x": 60,
+                    "y": 60
                   }
                 },
                 "alpha": 100,
                 "priority": 0,
                 "image": {
                   "source": {
-                    "fileId": "ee4b707388050f40905ae7c3b0fb1482",
-                    "filePath": "lib://fftextures/WorkshopIconLibrary/Icon_HUD_MP5.png",
+                    "fileId": "b4186094cfcacd418ef9a74ea8408629",
+                    "filePath": "lib://fftextures/WorkshopIconLibrary/ui_icon_skill_SwatGuy.png",
                     "_tag": {
                       "type": "GFileRefer"
                     },
@@ -1079,7 +2467,293 @@
                   },
                   "color": "#ffffff",
                   "reverse": {
-                    "x": true,
+                    "x": false,
+                    "y": false
+                  },
+                  "fillType": 1,
+                  "slicedBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "tiledBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "centerInvisible": false,
+                  "fillDir": 0,
+                  "fillAmount": 0,
+                  "invertFill": false,
+                  "flip": 0,
+                  "gradient": 1,
+                  "gradientTop": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  },
+                  "gradientBottom": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  }
+                }
+              },
+              "ecaScripts": [],
+              "ecaProps": {
+                "HudImageWidget": {},
+                "HudWidget": {},
+                "Entity": {}
+              },
+              "componentList": [],
+              "entityTagData": {
+                "tagPointers": []
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": true
+            },
+            {
+              "_entityName": "SKILL_2_LOGO",
+              "_tag": {
+                "type": "UIImageEntity",
+                "resourceId": ""
+              },
+              "_entityId": "KCCcMZCg",
+              "children": [
+                {
+                  "_entityName": "SKill",
+                  "_tag": {
+                    "type": "UITextEntity",
+                    "resourceId": ""
+                  },
+                  "_entityId": "z5K8mZOO",
+                  "children": [
+                    {
+                      "_entityName": "skill_type",
+                      "_tag": {
+                        "type": "UITextEntity",
+                        "resourceId": ""
+                      },
+                      "_entityId": "cnGx7ebo",
+                      "children": [],
+                      "prefabVariant": null,
+                      "activeValue": {
+                        "selfValue": true,
+                        "valueTag": "activeValue"
+                      },
+                      "unlockedValue": {
+                        "selfValue": true,
+                        "valueTag": "unlockedValue"
+                      },
+                      "propsData": {
+                        "activeSelf": true,
+                        "transform": {
+                          "rotate": 0,
+                          "anchorMin": {
+                            "x": 0.5,
+                            "y": 0
+                          },
+                          "anchorMax": {
+                            "x": 0.5,
+                            "y": 0
+                          },
+                          "pivot": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "anchoredPosition": {
+                            "x": 0,
+                            "y": -5
+                          },
+                          "sizeDelta": {
+                            "x": 120,
+                            "y": 30
+                          }
+                        },
+                        "alpha": 100,
+                        "priority": 0,
+                        "text": {
+                          "value": "[被动]",
+                          "key": "",
+                          "font": "Default",
+                          "fontSize": 18,
+                          "fontStyle": {
+                            "bold": false,
+                            "italic": false,
+                            "underline": false
+                          },
+                          "color": "#CECECE",
+                          "alignment": {
+                            "h": "center",
+                            "v": "middle"
+                          },
+                          "lineSpacing": 0,
+                          "background": false,
+                          "backgroundColor": "#e7b200",
+                          "overflow": 0,
+                          "backgroundRGBA": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0,
+                            "a": 0
+                          },
+                          "shadow": false,
+                          "shadowColor": "#000000",
+                          "shadowOffset": {
+                            "x": 1,
+                            "y": 1
+                          }
+                        }
+                      },
+                      "ecaScripts": [],
+                      "ecaProps": {
+                        "HudLabelWidget": {},
+                        "HudWidget": {},
+                        "Entity": {}
+                      },
+                      "componentList": [],
+                      "entityTagData": {
+                        "tagPointers": []
+                      },
+                      "editorLockValue": false,
+                      "editorVisibleValue": true
+                    }
+                  ],
+                  "prefabVariant": null,
+                  "activeValue": {
+                    "selfValue": true,
+                    "valueTag": "activeValue"
+                  },
+                  "unlockedValue": {
+                    "selfValue": true,
+                    "valueTag": "unlockedValue"
+                  },
+                  "propsData": {
+                    "activeSelf": true,
+                    "transform": {
+                      "rotate": 0,
+                      "anchorMin": {
+                        "x": 0.5,
+                        "y": 0
+                      },
+                      "anchorMax": {
+                        "x": 0.5,
+                        "y": 0
+                      },
+                      "pivot": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "anchoredPosition": {
+                        "x": 0,
+                        "y": -15
+                      },
+                      "sizeDelta": {
+                        "x": 120,
+                        "y": 30
+                      }
+                    },
+                    "alpha": 100,
+                    "priority": 0,
+                    "text": {
+                      "value": "绝命榴弹",
+                      "key": "",
+                      "font": "Default",
+                      "fontSize": 20,
+                      "fontStyle": {
+                        "bold": false,
+                        "italic": false,
+                        "underline": false
+                      },
+                      "color": "#ffffff",
+                      "alignment": {
+                        "h": "center",
+                        "v": "middle"
+                      },
+                      "lineSpacing": 0,
+                      "background": false,
+                      "backgroundColor": "#e7b200",
+                      "overflow": 0,
+                      "backgroundRGBA": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 0
+                      },
+                      "shadow": false,
+                      "shadowColor": "#000000",
+                      "shadowOffset": {
+                        "x": 1,
+                        "y": 1
+                      }
+                    }
+                  },
+                  "ecaScripts": [],
+                  "ecaProps": {
+                    "HudLabelWidget": {},
+                    "HudWidget": {},
+                    "Entity": {}
+                  },
+                  "componentList": [],
+                  "entityTagData": {
+                    "tagPointers": []
+                  },
+                  "editorLockValue": false,
+                  "editorVisibleValue": true
+                }
+              ],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "propsData": {
+                "activeSelf": true,
+                "transform": {
+                  "rotate": 0,
+                  "anchorMin": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchorMax": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "pivot": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchoredPosition": {
+                    "x": 50,
+                    "y": -90
+                  },
+                  "sizeDelta": {
+                    "x": 60,
+                    "y": 61
+                  }
+                },
+                "alpha": 100,
+                "priority": 0,
+                "image": {
+                  "source": {
+                    "fileId": "b4186094cfcacd418ef9a74ea8408629",
+                    "filePath": "lib://fftextures/WorkshopIconLibrary/ui_icon_skill_SwatGuy.png",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "texture"
+                  },
+                  "color": "#ffffff",
+                  "reverse": {
+                    "x": false,
                     "y": false
                   },
                   "fillType": 1,
