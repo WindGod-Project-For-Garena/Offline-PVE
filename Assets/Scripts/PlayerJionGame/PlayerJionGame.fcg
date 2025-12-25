@@ -35,6 +35,7 @@ graph PlayerJionGame {
     TimeInGameUI entity<CustomHud>          //时间页面
     WaveCompleteUI entity<CustomHud>        //波次完成页面
     PopupUI entity<CustomHud>               //弹窗页面
+    BossHPBar entity<CustomHud>             //Boss血条页面
     
     CurrentSkill int = 1
     //当前选择的卡牌第几张1-3
@@ -230,6 +231,10 @@ graph PlayerJionGame {
             CreateCustomUIClient(out var PopupUIEntity, EResUI.Popup)
             PopupUI = PopupUIEntity
             PopupUIEntity<CustomUI>.IsVisible = false
+
+            CreateCustomUIClient(out var bossHPBar, EResUI.BossHP)
+            BossHPBar = bossHPBar
+            bossHPBar<CustomUI>.IsVisible = false
 
             var Skill_1Panel = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_1")
             Skill_1Panel<UIWidget>.IsVisible = false

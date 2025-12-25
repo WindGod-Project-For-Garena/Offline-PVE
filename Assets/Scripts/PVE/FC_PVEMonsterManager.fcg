@@ -64,27 +64,112 @@ static graph FC_PVEMonsterManager {
     spawnEffectPool List<entity<Effect>> = List<entity<Effect>>{}
     spawnTweenPool List<entity<Tween>> = List<entity<Tween>>{}
 
-  
-    event OnAwake() {
-        LogInfo("PVE怪物管理器初始化")
-        InitializeManager()
+    event OnUpdate() {
+        UpdateBossHPBar()
+    }
+
+    // 更新Boss血条的函数 - 实时获取怪物血量并更新UI
+    func UpdateBossHPBar() {
+        // 查找当前场景中的Boss
+        var boss entity<LevelObject> = nil
+        var bossFound = false
         
+        // 遍历ActiveMonsters查找Boss
+        for i = 0, list.Length(ActiveMonsters), 1 {
+            var monster = ActiveMonsters[i]
+            if monster != nil && HasComponent(monster, typeof(Mob)) {
+                // 检查怪物是否还活着
+                if monster<Mob>.HP <= 0 {
+                    continue
+                }
+                
+                if monster<Mob>.StatusDic["IsBoss"] == true {
+                    boss = monster
+                    bossFound = true
+                    break
+                }
+            }
+        }
+        
+        // 如果没有找到Boss，隐藏血条并返回
+        if !bossFound {
+            var BossHPBar = GetLocalPlayer()<PlayerJionGame>.BossHPBar
+            if BossHPBar != nil {
+                BossHPBar<CustomUI>.IsVisible = false
+            }
+            return
+        }
+        
+        // 获取Boss当前血量和最大血量
+        var currentHP = boss<Mob>.HP
+        var maxHP = boss<Mob>.MaxHP
+        
+        // 计算血量百分比 (0.0 - 1.0)
+        var hpPercent float = 0.0
+        if maxHP > 0 {
+            hpPercent = IntToFloat(currentHP) / IntToFloat(maxHP)
+        }
+        
+        // 获取血条UI并更新
+        var BossHPBar = GetLocalPlayer()<PlayerJionGame>.BossHPBar
+        if  BossHPBar != nil {
+            BossHPBar<CustomUI>.IsVisible = true
+            var BossHPNow = GetWidgetByPath(GetLocalPlayer(), BossHPBar, "/Panel/HP")
+            BossHPNow<UIWidgetImage>.FillAmount = hpPercent
+        }
     }
     
-    func InitializeManager() {
-        // 初始化统计数据
-        TotalKills = 0
-        list.Clear(ActiveMonsters)
-        list.Clear(ActiveNormalMonsters)
-        list.Clear(ActiveEliteMonsters)
-        Map.Clear(LevelRowInfos)
-        list.Clear(WaveMonsterInfos)
-        ActiveMonsterParentNode = EResSceneIsleLand.ActiveMobs as entity<Entity>
-        PendingRemoveMonsterParentNode = EResSceneIsleLand.PendingRemoveMobs as entity<Entity>
-        
-        LogInfo("怪物管理器初始化完成")
+    // 检查当前波次配置中是否有Boss
+    func HasBossInWave(wave int) bool {
+        if wave > 0 && wave <= list.Length(WaveMonsterInfos) {
+            for i = 0, list.Length(WaveMonsterInfos), 1 {
+                var monsterInfo = WaveMonsterInfos[i]
+                if monsterInfo["IsBoss"] as bool == true {
+                    return true
+                }
+            }
+        }
+        return false
     }
-    
+
+    // 检查是否有存活的Boss
+    func HasAliveBoss() bool {
+        var bossFound = false
+        
+        // 遍历ActiveMonsters查找Boss
+        for i = 0, list.Length(ActiveMonsters), 1 {
+            var monster = ActiveMonsters[i]
+            if monster != nil && HasComponent(monster, typeof(Mob)) {
+                // 检查怪物是否还活着
+                if monster<Mob>.HP <= 0 {
+                    continue
+                }
+                
+                // 检查是否标记为Boss
+                if monster<Mob>.StatusDic["IsBoss"] == true {
+                    bossFound = true
+                    break
+                }
+            }
+        }
+        
+        return bossFound
+    }
+
+    // 获取当前波次的Boss数量
+    func GetBossCountInCurrentWave() int {
+        var bossCount = 0
+        
+        // 检查当前波次的怪物配置
+        for i = 0, list.Length(WaveMonsterInfos), 1 {
+            var monsterInfo = WaveMonsterInfos[i]
+            if monsterInfo["IsBoss"] as bool == true {
+                bossCount = bossCount + 1
+            }
+        }
+        
+        return bossCount
+    }
     
     // 仅加载当前Level的LevelConfig行
     // 返回LevelID -> LevelInfo
@@ -190,7 +275,6 @@ static graph FC_PVEMonsterManager {
             } else {
                 list.Append(normalQueue, monsterInfo)
             }
-            
         }
         
         IsWaveActive = true
@@ -477,7 +561,16 @@ static graph FC_PVEMonsterManager {
         if monsterInfo["IsElite"] as bool {
             list.Append(ActiveEliteMonsters, monster)
         } else if monsterInfo["IsBoss"] as bool {
-            //list.Append(ActiveBossMonsters, monster)
+            // Boss特殊处理：显示血条并标记为Boss
+            LogInfo("生成Boss血条并标记为Boss")
+            var BossHPBar = GetLocalPlayer()<PlayerJionGame>.BossHPBar
+            BossHPBar<CustomUI>.IsVisible = true
+            BossHPBar<UIWidgetImage>.FillAmount = 1.0
+            
+            // 在怪物上添加Boss标记
+            if HasComponent(monster, typeof(Mob)) {
+                monster<Mob>.StatusDic["IsBoss"] = true
+            }
         } else {
             list.Append(ActiveNormalMonsters, monster)
         }
@@ -569,6 +662,16 @@ static graph FC_PVEMonsterManager {
         // 停止生成
         IsWaveActive = false
         
+        // 销毁所有怪物前先清理Boss标记
+        for i = 0, list.Length(ActiveMonsters), 1 {
+            var monster = ActiveMonsters[i]
+            if monster != nil && HasComponent(monster, typeof(Mob)) {
+                if monster<Mob>.StatusDic["IsBoss"] == true {
+                    monster<Mob>.StatusDic["IsBoss"] = false
+                }
+            }
+        }
+
         // 销毁所有怪物
         for i = 0, list.Length(ActiveMonsters), 1 {
             var monster = ActiveMonsters[i]
@@ -612,7 +715,12 @@ static graph FC_PVEMonsterManager {
     }
     
     func OnMonsterKilled(monster entity<LevelObject>) {
-        if monster != nil {
+        if monster != nil && HasComponent(monster, typeof(Mob)) {
+            // 如果是Boss，清理标记
+            if monster<Mob>.StatusDic["IsBoss"] == true {
+                monster<Mob>.StatusDic["IsBoss"] = false
+                LogInfo("Boss标记已清理")
+            }
             //LogInfo("-------------------------OnMonsterKilled-------------------------")
             SetParentClient(PendingRemoveMonsterParentNode<Transform>, monster<Transform>, true)
             list.Remove(ActiveMonsters, monster)
