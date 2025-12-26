@@ -679,7 +679,7 @@ static graph FC_PVEMonsterManager {
                 }
 
                 LogInfo("Elite怪物死亡，CD开始: " + EliteSpawnCD + "ms")
-            }else if list.Contain(ActiveEliteMonsters, monster) {
+            }else if list.Contain(ActiveBossMonsters, monster) {
                 list.Remove(ActiveBossMonsters, monster)
             }
            

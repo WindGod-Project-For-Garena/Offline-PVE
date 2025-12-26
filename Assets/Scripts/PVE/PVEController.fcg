@@ -165,6 +165,7 @@ static graph PVEController {
             
             // 检查是否有存活Boss
             var hasAliveBoss = list.Length(monsterManager.ActiveBossMonsters) > 0
+            LogInfo("存活Boss数量: " + list.Length(monsterManager.ActiveBossMonsters))
             if !hasAliveBoss {
                 LogInfo("Boss已被击败")
                 OnBossDefeated()
