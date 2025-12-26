@@ -172,9 +172,18 @@ graph ChoiceOneOfThreeCard {
 
       CreateBuiltInUIClient(out var createdEntity3, BuiltInUIType.OpeningBannerHud)
 		createdEntity3<UIOpeningBanner>.IsVisible = true
-		// createdEntity3<UIOpeningBanner>.Icon = "Assets/Textures/Icon/Icon_1.png"
+		createdEntity3<UIOpeningBanner>.ThemeColor = #00FFD5FF
+
+		createdEntity3<UIOpeningBanner>.Icon = EResSprite.UI_RuinSurvivor_Icon01
+
       createdEntity3<UIOpeningBanner>.Title = "波数 " + (PVEController.CurrentWave + 1)
+      var createdEntity5 = createdEntity3<UIOpeningBanner>.Title as entity
+      createdEntity5<UIWidgetLabel>.FontSize = 48
+
       createdEntity3<UIOpeningBanner>.Description = "目标：存活" + "02:00"
+      var createdEntity6 = createdEntity3<UIOpeningBanner>.Description as entity
+      createdEntity6<UIWidgetLabel>.FontSize = 36
+      createdEntity6<UIWidgetLabel>.Color = #D1D1D1
 
       // 等待UI更新
       WaitForMillisecond(4000)
