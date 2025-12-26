@@ -529,7 +529,7 @@ static graph FC_PVEMonsterManager {
         if monsterInfo["IsElite"] as bool {
             list.Append(ActiveEliteMonsters, monster)
         } else if monsterInfo["IsBoss"] as bool {
-            LogInfo("---------------生成Boss")
+            LogInfo("生成Boss")
             list.Append(ActiveBossMonsters, monster)
             // Boss特殊处理：显示血条并标记为Boss
             LogInfo("生成Boss血条并标记为Boss")
