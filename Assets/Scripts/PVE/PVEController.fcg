@@ -193,6 +193,7 @@ static graph PVEController {
         
         WaitForMillisecond(2000)
         start OnGameComplete()
+        Destroy(resultBanner)
         // // 显示通关小横幅
         // var WaveCompleteUI = GetLocalPlayer()<PlayerJionGame>.WaveCompleteUI
         // WaveCompleteUI<CustomUI>.IsVisible = true
