@@ -25,7 +25,6 @@ graph FC_NormalZombie {
     tickInterval int = 1
 	
 	hitPos Vector3 = Vector3{0,0,0}
-	preDisplayEffect entity<Effect> = nil
 
 	TargetPos Vector3 = Vector3{0,0,0}
 	shieldHitboxEntity entity = nil

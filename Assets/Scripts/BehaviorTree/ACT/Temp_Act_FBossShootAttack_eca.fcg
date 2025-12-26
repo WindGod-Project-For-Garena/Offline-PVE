@@ -1,0 +1,39 @@
+import "StdLibrary.fcc" as stdlibrary
+import "BehaviourTree.fcc" as behaviourtree
+import "EditorGenLib.fcc" as editorgenlib
+import "Math.fcc" as math
+import "Animation.fcc" as animation
+import "Strings.fcc" as strings
+//import "./GlobalFunc_eca.fcg" as globalfunc_eca
+
+
+//graphID: 3Y2qYTtj.pbqgm8enbg9-m82vmygj-hccdsznv7uc
+graph Act_FBossShootAttack_eca { 
+	Duration int = 0
+	AttackBeginTime int = 0
+
+	// //funcID: PlayAction
+	// func PlayAction(locBevTreeAttachableVar1 entity<BevTreeAttachable>) BTreeNodeState {
+	// 	if (globalEntity<Global>.GameTimeCount >= (AttackBeginTime + Duration)) {
+	// 		SetBlackboardValue(locBevTreeAttachableVar1<BevTreeAttachable>.AttachTarget, "InSkill", false)
+	// 		return 1
+	// 	} else {
+	// 		return 2
+	// 	}
+	// }
+
+	// //eventID: 156//s8004_dup_block
+	// event OnNodeEnter(locStringVar2 String, locBehaviourTreeAttachableVar3 entity<BehaviourTreeAttachable>) {
+	// 	var locFloatVar4 float = locBehaviourTreeAttachableVar3<CustomComponent31897461>.ZombieInfo["RightAttackSPDScale"]
+	// 	GetNodeVariable(thisEntity, "Duration", out var value5)
+	// 	Duration = Ceil((value5 * locFloatVar4))
+	// 	GetBlackboardValue(locBehaviourTreeAttachableVar3<BevTreeAttachable>.AttachTarget, "CurTarget", out var value6)
+	// 	start globalEntity<globalfunc_eca>.LookAt(locBehaviourTreeAttachableVar3, value6, nil)
+	// 	AttackBeginTime = globalEntity<Global>.GameTimeCount
+	// 	SetBlackboardValue(locBehaviourTreeAttachableVar3<BevTreeAttachable>.AttachTarget, "InSkill", true)
+	// 	SetBlackboardValue(locBehaviourTreeAttachableVar3<BevTreeAttachable>.AttachTarget, "LastAttackTimeS4", AttackBeginTime)
+	// 	var locFloatVar7 float = (1 / locFloatVar4)
+	// 	PlayAnimation(locBehaviourTreeAttachableVar3, Connect(locBehaviourTreeAttachableVar3<CustomComponent31897461>.ZombieName, "_ShootAttack"), locFloatVar7, 2)
+	// }
+
+}

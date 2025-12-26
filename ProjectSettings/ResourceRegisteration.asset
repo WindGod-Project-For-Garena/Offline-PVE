@@ -575,6 +575,78 @@
           },
           "scriptName": "ShieldZombie_AOE",
           "children": []
+        },
+        {
+          "refer": {
+            "fileId": "qurwm1spizs-m7ygvf6s-b7cwtfrss3",
+            "filePath": "Assets\\Mobs\\FlowerBoss\\FlowerBoss.prefab",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "prefab"
+          },
+          "scriptName": "BossFlower",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "ccvgo4z7x1b-m7yig9h0-flwykz1a0s7",
+            "filePath": "Assets\\Mobs\\FlowerBoss\\HitBox\\FBossTongueHitBox.prefab",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "prefab"
+          },
+          "scriptName": "HitBox_BossFlower_Tongue",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "ki59zi417io-m7yig9gz-64xgd9n50k4",
+            "filePath": "Assets\\Mobs\\FlowerBoss\\HitBox\\FBossBodyHitBox2.prefab",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "prefab"
+          },
+          "scriptName": "HitBox_BossFlower_Body2",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "3j6lfb9u5ls-m7yig9gr-lye6b0wi01",
+            "filePath": "Assets\\Mobs\\FlowerBoss\\HitBox\\FBossBodyHitBox.prefab",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "prefab"
+          },
+          "scriptName": "HitBox_BossFlower_Body",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "8j6u4p3l6aa-mjkv5xac-6iaggurzy0c",
+            "filePath": "Assets\\Prefab\\SkillEffect\\Effect_FBoss_Explosion.prefab",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "prefab"
+          },
+          "scriptName": "SkillEffect_FBoss_Explosion",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "2nv0esixw51-mjkuueyu-p4njceqg1zp",
+            "filePath": "Assets\\Prefab\\SkillEffect\\SkillEffect_FBoss_Ball.prefab",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "prefab"
+          },
+          "scriptName": "SkillEffect_FBoss_Ball",
+          "children": []
         }
       ]
     },

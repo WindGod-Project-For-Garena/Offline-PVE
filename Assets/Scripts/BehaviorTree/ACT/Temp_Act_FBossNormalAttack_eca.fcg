@@ -1,0 +1,41 @@
+import "Animation.fcc" as animation
+import "Strings.fcc" as strings
+import "StdLibrary.fcc" as stdlibrary
+import "BehaviourTree.fcc" as behaviourtree
+import "EditorGenLib.fcc" as editorgenlib
+import "Math.fcc" as math
+//import "./GlobalFunc_eca.fcg" as globalfunc_eca
+
+
+//graphID: 3Y2qYTtj.1xrvrma0t5y-m7yhemrc-b8j4pbp9cv8
+graph Act_FBossNormalAttack_eca { 
+	Duration int = 0
+	AttackBeginTime int = 0
+
+	// //funcID: PlayAction
+	// func PlayAction(locBevTreeAttachableVar1 entity<BevTreeAttachable>) BTreeNodeState {
+	// 	if (globalEntity<Global>.GameTimeCount >= (AttackBeginTime + Duration)) {
+	// 		GetNodeVariable(thisEntity, "SkillType", out var value2)
+	// 		SetBlackboardValue(locBevTreeAttachableVar1<BevTreeAttachable>.AttachTarget, "LastSkillType", value2)
+	// 		SetBlackboardValue(locBevTreeAttachableVar1<BevTreeAttachable>.AttachTarget, "InSkill", false)
+	// 		return 1
+	// 	} else {
+	// 		return 2
+	// 	}
+	// }
+
+	// //eventID: 154//s8004_dup_block
+	// event OnNodeEnter(locStringVar3 String, locBehaviourTreeAttachableVar4 entity<BehaviourTreeAttachable>) {
+	// 	var locFloatVar5 float = locBehaviourTreeAttachableVar4<CustomComponent31897461>.ZombieInfo["LeftAttackSPDScale"]
+	// 	GetNodeVariable(thisEntity, "Duration", out var value6)
+	// 	Duration = Ceil((value6 * locFloatVar5))
+	// 	GetBlackboardValue(locBehaviourTreeAttachableVar4<BevTreeAttachable>.AttachTarget, "CurTarget", out var value7)
+	// 	start globalEntity<globalfunc_eca>.LookAt(locBehaviourTreeAttachableVar4, value7, nil)
+	// 	AttackBeginTime = globalEntity<Global>.GameTimeCount
+	// 	SetBlackboardValue(locBehaviourTreeAttachableVar4<BevTreeAttachable>.AttachTarget, "InSkill", true)
+	// 	SetBlackboardValue(locBehaviourTreeAttachableVar4<BevTreeAttachable>.AttachTarget, "LastAttackTimeS3", AttackBeginTime)
+	// 	var locFloatVar8 float = (1 / locFloatVar5)
+	// 	PlayAnimation(locBehaviourTreeAttachableVar4, Connect(locBehaviourTreeAttachableVar4<CustomComponent31897461>.ZombieName, "_MeleeAttack"), locFloatVar8, 2)
+	// }
+
+}

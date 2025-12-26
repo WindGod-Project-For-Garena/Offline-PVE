@@ -292,7 +292,7 @@
       },
       "selectedBodyparts": [],
       "DisableChanged": false,
-      "_entityName": "FBoss_BigShootAttack"
+      "_entityName": "BigShootAttack"
     },
     {
       "_tag": {
@@ -408,12 +408,12 @@
             "startTime": 0.7,
             "EventList": [
               {
-                "eventKeyValue": "AnimationControllerAble::signal_52120933",
+                "eventKeyValue": "AnimationControllerAble::signal_40948046",
                 "paramList": [
                   {
                     "type": "String",
-                    "label": "eventName",
-                    "newValue": "FBossMeleeAttack"
+                    "label": "attackName",
+                    "newValue": "NormalAttack"
                   }
                 ],
                 "hideParam": false
@@ -438,7 +438,7 @@
       },
       "selectedBodyparts": [],
       "DisableChanged": false,
-      "_entityName": "FBoss_MeleeAttack"
+      "_entityName": "NormalAttack"
     },
     {
       "_tag": {
@@ -554,15 +554,9 @@
             "startTime": 1.2,
             "EventList": [
               {
-                "eventKeyValue": "AnimationControllerAble::signal_52120933",
-                "paramList": [
-                  {
-                    "type": "String",
-                    "label": "eventName",
-                    "newValue": "FBossDead"
-                  }
-                ],
-                "hideParam": false
+                "eventKeyValue": "AnimationControllerAble::signal_87958515",
+                "paramList": [],
+                "hideParam": true
               }
             ],
             "dsada": "Sphere",
@@ -584,7 +578,7 @@
       },
       "selectedBodyparts": [],
       "DisableChanged": false,
-      "_entityName": "FBoss_Dead"
+      "_entityName": "Dead"
     },
     {
       "_tag": {
@@ -668,7 +662,7 @@
               },
               "wrapMode": 0,
               "startTime": 5.4,
-              "endTime": 9.666666587193808,
+              "endTime": 8.73,
               "_entityName": "Take 001.anim",
               "postExtrapolate": 0
             }
@@ -842,7 +836,7 @@
       },
       "selectedBodyparts": [],
       "DisableChanged": false,
-      "_entityName": "FBoss_Drill"
+      "_entityName": "DrillAttack"
     },
     {
       "_tag": {
@@ -958,12 +952,12 @@
             "startTime": 0.6,
             "EventList": [
               {
-                "eventKeyValue": "AnimationControllerAble::signal_52120933",
+                "eventKeyValue": "AnimationControllerAble::signal_40948046",
                 "paramList": [
                   {
                     "type": "String",
-                    "label": "eventName",
-                    "newValue": "FBossShoot"
+                    "label": "attackName",
+                    "newValue": "ShootAttack"
                   }
                 ],
                 "hideParam": false
@@ -988,7 +982,7 @@
       },
       "selectedBodyparts": [],
       "DisableChanged": false,
-      "_entityName": "FBoss_ShootAttack"
+      "_entityName": "ShootAttack"
     },
     {
       "_tag": {
@@ -1445,4 +1439,4 @@
   "bpcFile": null,
   "_entityName": "ACEntity"
 }
-//"{FE:{"v":"1.14.3839372","c":{"FF":5001},"s":100}
+//"{FE:{"v":"0.2.4113096","c":{"FF":5001},"s":100}

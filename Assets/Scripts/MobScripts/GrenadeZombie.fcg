@@ -20,7 +20,6 @@ graph FC_NormalZombie {
 	LastHitPlayer entity<Player> = nil
 	hitPos Vector3 = Vector3{0,0,0}
     tickInterval int = 1
-	preDisplayEffect entity<Effect> = nil
 
 
 	
