@@ -474,6 +474,7 @@ static graph FC_PVEMonsterManager {
         if monster != nil {
             list.Append(ActiveMonsters, monster)
         }
+        
         if monsterInfo["IsElite"] as bool {
             list.Append(ActiveEliteMonsters, monster)
         } else if monsterInfo["IsBoss"] as bool {
@@ -535,6 +536,7 @@ static graph FC_PVEMonsterManager {
         WaitForMillisecond(1100)
 
         //激活怪物
+        //isLogInfo("------激活怪物: " + monster<Mob>.MobName)
         monster<Mob>.IsActive = true
 
         DispatchEventToEntity(OnMobActived, monster, PlatformType.Client, List<object>{})

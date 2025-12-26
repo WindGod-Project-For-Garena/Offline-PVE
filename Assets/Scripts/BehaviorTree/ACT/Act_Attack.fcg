@@ -14,7 +14,7 @@ graph Script_1_ {
  
     event OnNodeEnterForClient(nodeName string, owner entity<BevTreeAttachableForClient>) {
         //var attackScale = owner<ZombieCom>.ZombieInfo["LeftAttackSPDScale"] as float
-        // LogInfo("Action OnNodeEnter: Attack")
+        //LogInfo("Action OnNodeEnter:  Attack ")
         owner<Mob>.StatusDic["InAttack"] = true
         GetNodeVariable(thisEntity<BevTreeCustomNode>,"AttackName",out var attackName) 
 

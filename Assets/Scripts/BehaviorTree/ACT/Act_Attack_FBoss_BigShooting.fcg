@@ -3,7 +3,7 @@ import "StdLibrary.fcc" as StdLib
 import "EditorGenLib.fcc" as EditorLib
 import "BehaviourTree.fcc" as BehaviourTree
 import "Math.fcc" as Math
-import "../../MobScripts/GrenadeZombie.fcg" as garenadeZombie
+import "../../MobScripts/FlowerZombie.fcg" as FlowerZombie
 import "../../Static/FC_Utilities.fcg" as Utilities
 
 [platform_client]
@@ -14,6 +14,7 @@ graph Script_1_ {
  
     event OnNodeEnterForClient(nodeName string, owner entity<BevTreeAttachableForClient>) {
         //var attackScale = owner<ZombieCom>.ZombieInfo["LeftAttackSPDScale"] as float
+        LogInfo("OnNodeEnter: BigShoot Attack")
         owner<Mob>.StatusDic["InAttack"] = true
         GetNodeVariable(thisEntity<BevTreeCustomNode>,"AttackName",out var attackName)
         var attackScale float= 1
@@ -23,11 +24,11 @@ graph Script_1_ {
         var curTarget entity<Player> = owner<Mob>.CurrTarget
         Utilities.myLookAt(owner<Transform>,curTarget as entity<Player>,Vector3{0,0,0})
         _AttackBeginTime = globalEntity<Global>.GameTimeCount
-        owner<Mob>.StatusDic["LastAttackTime_" + attackName] = _AttackBeginTime
+        owner<Mob>.StatusDic["LastAttackTime_" + attackName] = _AttackBeginTime 
         //SetBlackboardValue(owner<BevTreeAttachableForClient>.AttachTarget,"LastAttackTime",_AttackBeginTime)
         var attackspeed float = 1.0/attackScale
         PlayAnimation(owner<AnimationControllerAttachable>,attackName,attackspeed,LoopType.Once)
-        owner<garenadeZombie>.startGarenadeSkill()
+        owner<FlowerZombie>.startBigShootAttack()
     }
     func PlayAction(owner entity<BevTreeAttachableForClient>) BevTreeNodeStatus{
         //LogInfo("PlayAction: Attack2")
@@ -38,7 +39,8 @@ graph Script_1_ {
         }
     }
     event OnNodeExitForClient(nodeName string, owner entity<BevTreeAttachableForClient>) {
-        //LogInfo("OnNodeExit: Attack")
+        //LogInfo("OnNodeExit: Shoot Attack")
         owner<Mob>.StatusDic["InAttack"] = false
+
     }
 }

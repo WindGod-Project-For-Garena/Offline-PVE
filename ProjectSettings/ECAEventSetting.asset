@@ -32,21 +32,6 @@
       "version": 45,
       "key": "signal_87958515"
     },
-    "signal_52120933": {
-      "name": "ZombieAnimationEvent",
-      "enitityType": "AnimationControllerAble",
-      "typeID": 100003,
-      "props": [
-        {
-          "name": "eventName",
-          "value": "String",
-          "key": 1
-        }
-      ],
-      "propCount": 1,
-      "apiTargetV2": "both",
-      "key": "signal_52120933"
-    },
     "signal_10180040": {
       "name": "C2SZBHurtEvent",
       "eventType": 0,
@@ -131,15 +116,31 @@
       "apiTargetV2": "both",
       "version": 45,
       "key": "signal_19004117"
+    },
+    "signal_52120933": {
+      "name": "ZombieAnimationEvent_AC",
+      "enitityType": "AnimationControllerAble",
+      "typeID": 100003,
+      "props": [
+        {
+          "name": "eventName",
+          "value": "String",
+          "key": 1
+        }
+      ],
+      "propCount": 1,
+      "apiTargetV2": "both",
+      "key": "signal_52120933",
+      "eventType": 1
     }
   },
   "customName": {
     "MobAttackEvent_AC": "signal_40948046",
     "MobDeathEvent_AC": "signal_87958515",
-    "ZombieAnimationEvent": "signal_52120933",
     "C2SZBHurtEvent": "signal_10180040",
     "C2SSkillEvent": "signal_39342731",
-    "OnZombieShieldBreak": "signal_19004117"
+    "OnZombieShieldBreak": "signal_19004117",
+    "ZombieAnimationEvent_AC": "signal_52120933"
   },
   "children": []
 }

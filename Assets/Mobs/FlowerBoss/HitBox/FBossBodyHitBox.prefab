@@ -22,18 +22,18 @@
       "editorLockValue": false,
       "editorVisibleValue": true,
       "position": {
-        "x": 0,
-        "y": 1,
-        "z": 0
+        "x": 1,
+        "y": 0,
+        "z": -0.8
       },
       "scale": {
-        "x": 1,
-        "y": 1,
-        "z": 1
+        "x": 1.8,
+        "y": 0.7,
+        "z": 2
       },
       "rotation": {
         "x": 0,
-        "y": 0,
+        "y": 37,
         "z": 0
       },
       "BTPath": [
@@ -43,9 +43,7 @@
       "VisibilityLayer": 0,
       "modelOptimization": 0,
       "streamingLayer": "",
-      "attributes": [
-        4
-      ],
+      "attributes": [],
       "isTrigger": false,
       "collidable": true,
       "physicalLayer": 1,
@@ -80,7 +78,7 @@
           },
           "size": {
             "x": 1,
-            "y": 1.5,
+            "y": 1,
             "z": 1
           },
           "radius": 0.2,
@@ -109,12 +107,12 @@
       "isCreateAsEmpty": true,
       "ecaScripts": [
         {
-          "fileId": "6i0sg897iqe-m8pr2pu0-78mzsnbvmh9",
-          "filePath": "Assets\\ZombieAsset\\HitBox.ecac",
+          "fileId": "s29up5mmysh-mha4pylw-e8sdadlg8rd",
+          "filePath": "Assets\\Scripts\\C_HitBox.fcg",
           "_tag": {
             "type": "GFileRefer"
           },
-          "fileType": "ecaclient"
+          "fileType": "ugcscript"
         }
       ],
       "ecaProps": {
@@ -159,4 +157,4 @@
   "discriminator": "ISceneLike",
   "_entityName": "FBossBodyHitBox"
 }
-//"{FE:{"v":"1.13.3737256","c":{"FF":4901},"s":100}
+//"{FE:{"v":"0.2.4113096","c":{"FF":5001},"s":100}

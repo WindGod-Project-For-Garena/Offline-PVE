@@ -11,7 +11,7 @@ graph Script_1_ {
     
     func PlayCondition(owner entity<BevTreeAttachableForClient>) bool{
         //获取当前目标
-       // LogInfo("PlayCondition: can find target")
+       //LogInfo("PlayCondition: can find target")
         var curTarget entity<Player> = owner<Mob>.CurrTarget
         GetNodeVariable(thisEntity<BevTreeCustomNode>,"SeekRange",out var SeekRange)
         var tempTarget = curTarget 

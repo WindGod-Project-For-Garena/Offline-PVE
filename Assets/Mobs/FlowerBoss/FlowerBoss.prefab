@@ -10,714 +10,7 @@
         "resourceId": ""
       },
       "_entityId": "DoDDweTl",
-      "children": [
-        {
-          "_tag": {
-            "type": "SceneEditEntity",
-            "resourceId": "Primitive/Empty"
-          },
-          "_entityId": "3DW3lXQi",
-          "children": [],
-          "activeValue": {
-            "selfValue": false,
-            "valueTag": "activeValue"
-          },
-          "unlockedValue": {
-            "selfValue": true,
-            "valueTag": "unlockedValue"
-          },
-          "editorLockValue": false,
-          "editorVisibleValue": true,
-          "position": {
-            "x": 0,
-            "y": 0.1,
-            "z": 0
-          },
-          "scale": {
-            "x": 5,
-            "y": 5,
-            "z": 5
-          },
-          "rotation": {
-            "x": 0,
-            "y": 0,
-            "z": 0
-          },
-          "BTPath": [
-            null
-          ],
-          "visible": true,
-          "VisibilityLayer": 0,
-          "modelOptimization": 0,
-          "streamingLayer": "",
-          "attributes": [
-            2
-          ],
-          "isTrigger": false,
-          "collidable": true,
-          "physicalLayer": 0,
-          "physicalMaterial": null,
-          "aoiSetting": 0,
-          "initialTypes": {},
-          "componentList": [],
-          "_filters": [],
-          "entityTagData": {
-            "tagPointers": []
-          },
-          "tempIndex": 51,
-          "itemID": 224,
-          "seParent": null,
-          "ecaScripts": [
-            null
-          ],
-          "ecaProps": {
-            "EffectEntityGenerator": {},
-            "ItemContainerGenerator": {},
-            "Entity": {},
-            "EffectEntity": {},
-            "Playable": {},
-            "Loopable": {},
-            "LevelObject": {},
-            "Transform": {},
-            "Visibility": {}
-          },
-          "_entityName": "BreakEffect",
-          "propsData": {
-            "effectColor": {
-              "r": 255,
-              "g": 165,
-              "b": 0,
-              "a": 1
-            },
-            "playSpeed": 100,
-            "autoPlay": true,
-            "effectTypeResId": "",
-            "effectTexture": "",
-            "effectTextureRef": null,
-            "effectTypeRef": {
-              "fileId": "EffectType_WS_FF_VFX_Cobra_grenade_Explode_02",
-              "filePath": "lib://ffEffects/WS_FF_VFX_Cobra_grenade_Explode_02",
-              "_tag": {
-                "type": "GFileRefer"
-              },
-              "fileType": "effecttype"
-            },
-            "effectType": "WS_FF_VFX_Cobra_grenade_Explode_02",
-            "isLoop": 0
-          },
-          "prefabVariant": {
-            "prefabFile": {
-              "fileId": "gg7j8jpsvu-m7tx29tu-k32x71qpqcr",
-              "filePath": "Assets\\ZombieAsset\\Boss01\\BreakEffect.prefab",
-              "_tag": {
-                "type": "GFileRefer"
-              },
-              "fileType": "Prefab"
-            },
-            "snapShots": {
-              "3DW3lXQi": {
-                "_entityId": "HY7Tj0Hj",
-                "activeValue": {
-                  "selfValue": true,
-                  "valueTag": "activeValue"
-                },
-                "unlockedValue": null,
-                "editorLockValue": false,
-                "editorVisibleValue": true,
-                "scale": {
-                  "x": 4,
-                  "y": 4,
-                  "z": 4
-                },
-                "BTPath": [
-                  null
-                ],
-                "visible": true,
-                "VisibilityLayer": 0,
-                "modelOptimization": 0,
-                "streamingLayer": "",
-                "attributes": [
-                  2,
-                  4
-                ],
-                "isTrigger": false,
-                "collidable": true,
-                "physicalLayer": 0,
-                "physicalMaterial": null,
-                "aoiSetting": 0,
-                "initialTypes": {},
-                "componentList": [],
-                "_filters": [],
-                "entityTagData": {
-                  "tagPointers": []
-                },
-                "itemID": 224,
-                "seParent": null,
-                "ecaScripts": [
-                  null
-                ],
-                "ecaProps": {
-                  "EffectEntityGenerator": {},
-                  "ItemContainerGenerator": {},
-                  "Entity": {},
-                  "EffectEntity": {},
-                  "Playable": {},
-                  "Loopable": {},
-                  "LevelObject": {},
-                  "Transform": {},
-                  "Visibility": {}
-                },
-                "propsData": {
-                  "effectColor": {
-                    "r": 255,
-                    "g": 165,
-                    "b": 0,
-                    "a": 1
-                  },
-                  "playSpeed": 100,
-                  "autoPlay": true,
-                  "effectTypeResId": "",
-                  "effectTexture": "",
-                  "effectTextureRef": null,
-                  "effectTypeRef": {
-                    "fileId": "EffectType_WS_FF_VFX_Cobra_grenade_Explode_02",
-                    "filePath": "lib://ffEffects/WS_FF_VFX_Cobra_grenade_Explode_02",
-                    "fileType": "effecttype"
-                  },
-                  "effectType": "WS_FF_VFX_Cobra_grenade_Explode_02",
-                  "isLoop": 0
-                }
-              }
-            }
-          }
-        },
-        {
-          "_tag": {
-            "type": "UGCSceneEntity",
-            "resourceId": "Primitive/Empty"
-          },
-          "_entityId": "mlyImkb6",
-          "children": [
-            {
-              "_tag": {
-                "type": "SceneEditEntity",
-                "resourceId": "Primitive/Empty"
-              },
-              "_entityId": "iVFO2KGf",
-              "children": [],
-              "activeValue": {
-                "selfValue": true,
-                "valueTag": "activeValue"
-              },
-              "unlockedValue": {
-                "selfValue": true,
-                "valueTag": "unlockedValue"
-              },
-              "editorLockValue": false,
-              "editorVisibleValue": true,
-              "position": {
-                "x": 0,
-                "y": -0.30000001192092896,
-                "z": 0
-              },
-              "scale": {
-                "x": 3,
-                "y": 2,
-                "z": 3
-              },
-              "rotation": {
-                "x": 0,
-                "y": 0,
-                "z": 0
-              },
-              "BTPath": [
-                null
-              ],
-              "visible": true,
-              "VisibilityLayer": 0,
-              "modelOptimization": 0,
-              "streamingLayer": "",
-              "attributes": [
-                2
-              ],
-              "isTrigger": false,
-              "collidable": true,
-              "physicalLayer": 0,
-              "physicalMaterial": null,
-              "aoiSetting": 0,
-              "initialTypes": {},
-              "componentList": [],
-              "_filters": [],
-              "entityTagData": {
-                "tagPointers": []
-              },
-              "tempIndex": 52,
-              "itemID": 224,
-              "seParent": null,
-              "ecaScripts": [
-                null
-              ],
-              "ecaProps": {
-                "EffectEntityGenerator": {},
-                "ItemContainerGenerator": {},
-                "Entity": {},
-                "EffectEntity": {},
-                "Playable": {},
-                "Loopable": {},
-                "LevelObject": {},
-                "Transform": {},
-                "Visibility": {}
-              },
-              "_entityName": "特效 (1)",
-              "propsData": {
-                "effectColor": {
-                  "r": 255,
-                  "g": 165,
-                  "b": 0,
-                  "a": 1
-                },
-                "playSpeed": 100,
-                "autoPlay": true,
-                "effectTypeResId": "",
-                "effectTexture": "",
-                "effectTextureRef": null,
-                "effectTypeRef": {
-                  "fileId": "EffectType_VFX_UGC_BOOM_02",
-                  "filePath": "lib://ffEffects/VFX_UGC_BOOM_02",
-                  "_tag": {
-                    "type": "GFileRefer"
-                  },
-                  "fileType": "effecttype"
-                },
-                "effectType": "VFX_UGC_BOOM_02",
-                "isLoop": 0
-              }
-            },
-            {
-              "_tag": {
-                "type": "SceneEditEntity",
-                "resourceId": "Primitive/Empty"
-              },
-              "_entityId": "iA5VzN28",
-              "children": [],
-              "activeValue": {
-                "selfValue": true,
-                "valueTag": "activeValue"
-              },
-              "unlockedValue": {
-                "selfValue": true,
-                "valueTag": "unlockedValue"
-              },
-              "position": {
-                "x": 0,
-                "y": -0.30000001192092896,
-                "z": 0
-              },
-              "scale": {
-                "x": 3,
-                "y": 2,
-                "z": 3
-              },
-              "rotation": {
-                "x": 0,
-                "y": 0,
-                "z": 0
-              },
-              "BTPath": [
-                null
-              ],
-              "visible": true,
-              "VisibilityLayer": 0,
-              "modelOptimization": 0,
-              "streamingLayer": "",
-              "attributes": [
-                2
-              ],
-              "isTrigger": false,
-              "collidable": true,
-              "physicalLayer": 0,
-              "physicalMaterial": null,
-              "aoiSetting": 0,
-              "initialTypes": {},
-              "componentList": [],
-              "_filters": [],
-              "entityTagData": {
-                "tagPointers": []
-              },
-              "tempIndex": 53,
-              "itemID": 224,
-              "seParent": null,
-              "ecaScripts": [
-                null
-              ],
-              "ecaProps": {
-                "EffectEntityGenerator": {},
-                "ItemContainerGenerator": {},
-                "Entity": {},
-                "EffectEntity": {},
-                "Playable": {},
-                "Loopable": {},
-                "LevelObject": {},
-                "Transform": {},
-                "Visibility": {}
-              },
-              "_entityName": "特效 (3)",
-              "propsData": {
-                "effectColor": {
-                  "r": 72,
-                  "g": 47,
-                  "b": 2,
-                  "a": 1
-                },
-                "playSpeed": 100,
-                "autoPlay": true,
-                "effectTypeResId": "",
-                "effectTexture": "",
-                "effectTextureRef": null,
-                "effectTypeRef": {
-                  "fileId": "EffectType_WS_FF_VFX_Griza_Grenade_Explode_02",
-                  "filePath": "lib://ffEffects/WS_FF_VFX_Griza_Grenade_Explode_02",
-                  "_tag": {
-                    "type": "GFileRefer"
-                  },
-                  "fileType": "effecttype"
-                },
-                "effectType": "WS_FF_VFX_Griza_Grenade_Explode_02",
-                "isLoop": 0
-              },
-              "editorLockValue": false,
-              "editorVisibleValue": true
-            }
-          ],
-          "activeValue": {
-            "selfValue": false,
-            "valueTag": "activeValue"
-          },
-          "unlockedValue": {
-            "selfValue": true,
-            "valueTag": "unlockedValue"
-          },
-          "editorLockValue": false,
-          "editorVisibleValue": true,
-          "position": {
-            "x": 0,
-            "y": 0,
-            "z": 0
-          },
-          "scale": {
-            "x": 1,
-            "y": 1,
-            "z": 1
-          },
-          "rotation": {
-            "x": 0,
-            "y": 0,
-            "z": 0
-          },
-          "BTPath": [
-            null
-          ],
-          "visible": true,
-          "VisibilityLayer": 0,
-          "modelOptimization": 0,
-          "streamingLayer": "",
-          "attributes": [
-            2
-          ],
-          "isTrigger": false,
-          "collidable": true,
-          "physicalLayer": 0,
-          "physicalMaterial": null,
-          "aoiSetting": 0,
-          "initialTypes": {},
-          "componentList": [],
-          "_filters": [],
-          "entityTagData": {
-            "tagPointers": []
-          },
-          "materials": [
-            null
-          ],
-          "colliders": [],
-          "IsNPC": false,
-          "Rigidbody": {
-            "Type": 1,
-            "Mass": 1,
-            "CenterOfMass": {
-              "x": 0,
-              "y": 0,
-              "z": 0
-            },
-            "UseGravity": true,
-            "Drag": 0.05,
-            "AngularDrag": 0.05,
-            "FreezePosX": false,
-            "FreezePosY": false,
-            "FreezePosZ": false,
-            "FreezeRotX": false,
-            "FreezeRotY": false,
-            "FreezeRotZ": false
-          },
-          "isCreateAsEmpty": true,
-          "ecaScripts": [],
-          "ecaProps": {
-            "CustomLevelObject": {},
-            "LevelObject": {},
-            "Transform": {},
-            "Entity": {},
-            "Visibility": {},
-            "MeshRender": {}
-          },
-          "propsData": {},
-          "entityVersion": 3,
-          "_entityName": "DigEffectNode",
-          "prefabVariant": {
-            "prefabFile": {
-              "fileId": "cdsyi4kw7w-m82gc36z-6nw2zpatooe",
-              "filePath": "Assets\\ZombieAsset\\FlowerBoss\\SkillPrefab\\DigEffectNode.prefab",
-              "_tag": {
-                "type": "GFileRefer"
-              },
-              "fileType": "Prefab"
-            },
-            "snapShots": {
-              "mlyImkb6": {
-                "_entityId": "1lHksdYp",
-                "activeValue": {
-                  "selfValue": false,
-                  "valueTag": "activeValue"
-                },
-                "unlockedValue": null,
-                "editorLockValue": false,
-                "editorVisibleValue": true,
-                "scale": {
-                  "x": 1,
-                  "y": 1,
-                  "z": 1
-                },
-                "BTPath": [
-                  null
-                ],
-                "visible": true,
-                "VisibilityLayer": 0,
-                "modelOptimization": 0,
-                "streamingLayer": "",
-                "attributes": [
-                  2,
-                  4
-                ],
-                "isTrigger": false,
-                "collidable": true,
-                "physicalLayer": 0,
-                "physicalMaterial": null,
-                "aoiSetting": 0,
-                "initialTypes": {},
-                "componentList": [],
-                "_filters": [],
-                "entityTagData": {
-                  "tagPointers": []
-                },
-                "materials": [
-                  null
-                ],
-                "colliders": [],
-                "IsNPC": false,
-                "Rigidbody": {
-                  "Type": 1,
-                  "Mass": 1,
-                  "CenterOfMass": {
-                    "x": 0,
-                    "y": 0,
-                    "z": 0
-                  },
-                  "UseGravity": true,
-                  "Drag": 0.05,
-                  "AngularDrag": 0.05
-                },
-                "isCreateAsEmpty": true,
-                "ecaScripts": [],
-                "ecaProps": {
-                  "CustomLevelObject": {},
-                  "LevelObject": {},
-                  "Transform": {},
-                  "Entity": {},
-                  "Visibility": {}
-                },
-                "propsData": {},
-                "entityVersion": 3
-              },
-              "iVFO2KGf": {
-                "_entityId": "rgYMUdWI",
-                "activeValue": {
-                  "selfValue": true,
-                  "valueTag": "activeValue"
-                },
-                "unlockedValue": null,
-                "editorLockValue": false,
-                "editorVisibleValue": true,
-                "position": {
-                  "x": 0,
-                  "y": -0.30000001192092896,
-                  "z": 0
-                },
-                "scale": {
-                  "x": 3,
-                  "y": 1,
-                  "z": 3
-                },
-                "rotation": {
-                  "x": 0,
-                  "y": 0,
-                  "z": 0
-                },
-                "BTPath": [
-                  null
-                ],
-                "visible": true,
-                "VisibilityLayer": 0,
-                "modelOptimization": 0,
-                "streamingLayer": "",
-                "attributes": [
-                  2,
-                  4
-                ],
-                "isTrigger": false,
-                "collidable": true,
-                "physicalLayer": 0,
-                "physicalMaterial": null,
-                "aoiSetting": 0,
-                "initialTypes": {},
-                "componentList": [],
-                "_filters": [],
-                "entityTagData": {
-                  "tagPointers": []
-                },
-                "itemID": 224,
-                "seParent": null,
-                "ecaScripts": [
-                  null
-                ],
-                "ecaProps": {
-                  "EffectEntityGenerator": {},
-                  "ItemContainerGenerator": {},
-                  "Entity": {},
-                  "EffectEntity": {},
-                  "Playable": {},
-                  "Loopable": {},
-                  "LevelObject": {},
-                  "Transform": {},
-                  "Visibility": {}
-                },
-                "_entityName": "特效 (1)",
-                "propsData": {
-                  "effectColor": {
-                    "r": 255,
-                    "g": 165,
-                    "b": 0,
-                    "a": 1
-                  },
-                  "playSpeed": 100,
-                  "autoPlay": true,
-                  "effectTypeResId": "",
-                  "effectTexture": "",
-                  "effectTextureRef": null,
-                  "effectTypeRef": {
-                    "fileId": "EffectType_VFX_UGC_BOOM_02",
-                    "filePath": "lib://ffEffects/VFX_UGC_BOOM_02",
-                    "fileType": "effecttype"
-                  },
-                  "effectType": "VFX_UGC_BOOM_02",
-                  "isLoop": 0
-                }
-              },
-              "iA5VzN28": {
-                "_entityId": "2GBGjRT0",
-                "activeValue": {
-                  "selfValue": true,
-                  "valueTag": "activeValue"
-                },
-                "unlockedValue": null,
-                "position": {
-                  "x": 0,
-                  "y": -0.30000001192092896,
-                  "z": 0
-                },
-                "scale": {
-                  "x": 3,
-                  "y": 1,
-                  "z": 3
-                },
-                "rotation": {
-                  "x": 0,
-                  "y": 0,
-                  "z": 0
-                },
-                "BTPath": [
-                  null
-                ],
-                "visible": true,
-                "VisibilityLayer": 0,
-                "modelOptimization": 0,
-                "streamingLayer": "",
-                "attributes": [
-                  2,
-                  4
-                ],
-                "isTrigger": false,
-                "collidable": true,
-                "physicalLayer": 0,
-                "physicalMaterial": null,
-                "aoiSetting": 0,
-                "initialTypes": {},
-                "componentList": [],
-                "_filters": [],
-                "entityTagData": {
-                  "tagPointers": []
-                },
-                "itemID": 224,
-                "seParent": null,
-                "ecaScripts": [
-                  null
-                ],
-                "ecaProps": {
-                  "EffectEntityGenerator": {},
-                  "ItemContainerGenerator": {},
-                  "Entity": {},
-                  "EffectEntity": {},
-                  "Playable": {},
-                  "Loopable": {},
-                  "LevelObject": {},
-                  "Transform": {},
-                  "Visibility": {}
-                },
-                "_entityName": "特效 (3)",
-                "propsData": {
-                  "effectColor": {
-                    "r": 72,
-                    "g": 47,
-                    "b": 2,
-                    "a": 1
-                  },
-                  "playSpeed": 100,
-                  "autoPlay": true,
-                  "effectTypeResId": "",
-                  "effectTexture": "",
-                  "effectTextureRef": null,
-                  "effectTypeRef": {
-                    "fileId": "EffectType_WS_FF_VFX_Griza_Grenade_Explode_02",
-                    "filePath": "lib://ffEffects/WS_FF_VFX_Griza_Grenade_Explode_02",
-                    "fileType": "effecttype"
-                  },
-                  "effectType": "WS_FF_VFX_Griza_Grenade_Explode_02",
-                  "isLoop": 0
-                },
-                "editorLockValue": false,
-                "editorVisibleValue": true
-              }
-            }
-          }
-        }
-      ],
+      "children": [],
       "activeValue": {
         "selfValue": true,
         "valueTag": "activeValue"
@@ -763,8 +56,8 @@
         "Collider",
         "AimableEntity",
         "AimAssistEntity",
-        "BehaviourTreeAttachable",
-        "CustomComponent31897461"
+        "BehaviourTreeAttachableForClient",
+        "CustomComponent59601760"
       ],
       "_filters": [
         "node.withscript"
@@ -821,20 +114,20 @@
       "isCreateAsEmpty": false,
       "ecaScripts": [
         {
-          "fileId": "kttgjrn9sp-m7yhems9-m3cudv22ws",
-          "filePath": "Assets\\ZombieAsset\\FlowerBoss\\ECA\\FBoss.eca",
+          "fileId": "f124lylha6e-mhvqlgm0-c863tnvxd0n",
+          "filePath": "Assets\\Scripts\\MobScripts\\FC_MobComponent.fcg",
           "_tag": {
             "type": "GFileRefer"
           },
-          "fileType": "eca"
+          "fileType": "ugcscript"
         },
         {
-          "fileId": "5hmawh1zkdn-m7yhemsp-zymjg28qah",
-          "filePath": "Assets\\ZombieAsset\\FlowerBoss\\ECA\\FBoss.ecac",
+          "fileId": "n8zvrfqw14p-mjjr50kd-6w39bz503sj",
+          "filePath": "Assets\\Scripts\\MobScripts\\FlowerZombie.fcg",
           "_tag": {
             "type": "GFileRefer"
           },
-          "fileType": "ecaclient"
+          "fileType": "ugcscript"
         }
       ],
       "ecaProps": {
@@ -886,6 +179,31 @@
           "PROP_20114578": null,
           "PROP_92060434": 0,
           "PROP_57044040": null
+        },
+        "BehaviourTreeAttachableForClient": {
+          "BTreeID": {
+            "fileId": "idg0xqgfb7m-mjjrjvsr-5yxqnqeuy5v",
+            "filePath": "Assets\\Mobs\\FlowerBoss\\N_FlowerBoss.xbt",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "xbt"
+          }
+        },
+        "CustomComponent59601760": {
+          "PROP_22515481": "",
+          "PROP_31785558": 100,
+          "PROP_74830943": 100,
+          "PROP_27635539": 10,
+          "PROP_12765276": 2,
+          "PROP_77801521": null,
+          "PROP_92961702": null,
+          "PROP_84519962": 10,
+          "PROP_90540570": null,
+          "PROP_42420456": 0,
+          "PROP_56442283": 0,
+          "PROP_26191266": null,
+          "PROP_36359999": false
         }
       },
       "entityVersion": 3,
@@ -969,6 +287,92 @@
                   "z": 0
                 },
                 "_entityName": "Egg_Pumpkin_LOD0.mesh"
+              },
+              {
+                "_entityName": "FE_0_HW_GRAPH_NONE",
+                "_tag": {
+                  "type": "BoneMeshEntity"
+                },
+                "_entityId": "QzwD6Ip8",
+                "children": [],
+                "prefabVariant": null,
+                "activeValue": {
+                  "selfValue": true,
+                  "valueTag": "activeValue"
+                },
+                "unlockedValue": null,
+                "editorLockValue": false,
+                "editorVisibleValue": true,
+                "_mesh": null,
+                "_cloth": null,
+                "partType": 0,
+                "causeAnimationTypeChange": false,
+                "outwardType": 0,
+                "materials": [
+                  null
+                ],
+                "avatarPartInfo": {
+                  "bone": "Bone006",
+                  "bindType": 1
+                },
+                "position": {
+                  "x": 0,
+                  "y": 0.2,
+                  "z": 0
+                },
+                "scale": {
+                  "x": 1,
+                  "y": 3.2,
+                  "z": 2.5
+                },
+                "rotation": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+                }
+              },
+              {
+                "_entityName": "FE_0_HW_GRAPH_NONE",
+                "_tag": {
+                  "type": "BoneMeshEntity"
+                },
+                "_entityId": "vvQcHc8M",
+                "children": [],
+                "prefabVariant": null,
+                "activeValue": {
+                  "selfValue": true,
+                  "valueTag": "activeValue"
+                },
+                "unlockedValue": null,
+                "editorLockValue": false,
+                "editorVisibleValue": true,
+                "_mesh": null,
+                "_cloth": null,
+                "partType": 0,
+                "causeAnimationTypeChange": false,
+                "outwardType": 0,
+                "materials": [
+                  null
+                ],
+                "avatarPartInfo": {
+                  "bone": "Bone106",
+                  "bindType": 1
+                },
+                "position": {
+                  "x": 1,
+                  "y": 0,
+                  "z": -0.8
+                },
+                "scale": {
+                  "x": 1.8,
+                  "y": 0.7,
+                  "z": 2
+                },
+                "rotation": {
+                  "x": 0,
+                  "y": 37,
+                  "z": 0
+                }
               }
             ],
             "prefabVariant": null,
@@ -981,84 +385,7 @@
             "editorVisibleValue": true,
             "groupId": "",
             "enable": true,
-            "_entityName": "Skin"
-          },
-          {
-            "_tag": {
-              "type": "BoneMeshGroupEntity"
-            },
-            "_entityId": "HCcDbiUw",
-            "children": [
-              {
-                "_tag": {
-                  "type": "BoneMeshEntity"
-                },
-                "_entityId": "5dqzmaMB",
-                "children": [],
-                "prefabVariant": null,
-                "activeValue": {
-                  "selfValue": true,
-                  "valueTag": "activeValue"
-                },
-                "unlockedValue": {
-                  "selfValue": true,
-                  "valueTag": "unlockedValue"
-                },
-                "_mesh": {
-                  "fileId": "sdvsvu47p1q-m7vix2tr-b84agq54oct-Egg_Pumpkin_LOD0.~@FFSKIN",
-                  "filePath": "Assets\\ZombieAsset\\FlowerBoss\\enBoss\\HalloweenBoss_Rig.FBX\\Egg_Pumpkin_LOD0.mesh",
-                  "_tag": {
-                    "type": "GFileRefer"
-                  },
-                  "fileType": "mesh"
-                },
-                "_cloth": null,
-                "partType": 0,
-                "causeAnimationTypeChange": false,
-                "outwardType": 0,
-                "materials": [
-                  {
-                    "fileId": "8xkprmf7xfp-m7vjfnif-8e3ngk27mnj",
-                    "filePath": "Assets\\ZombieAsset\\FlowerBoss\\New MaterialCold.mat",
-                    "_tag": {
-                      "type": "GFileRefer"
-                    },
-                    "fileType": "material"
-                  }
-                ],
-                "avatarPartInfo": {
-                  "bone": "Egg_Pumpkin_LOD0",
-                  "bindType": 0
-                },
-                "position": {
-                  "x": 0,
-                  "y": 0,
-                  "z": 0
-                },
-                "scale": {
-                  "x": 1,
-                  "y": 1,
-                  "z": 1
-                },
-                "rotation": {
-                  "x": 0,
-                  "y": 0,
-                  "z": 0
-                },
-                "_entityName": "Egg_Pumpkin_LOD0.mesh"
-              }
-            ],
-            "prefabVariant": null,
-            "activeValue": {
-              "selfValue": true,
-              "valueTag": "activeValue"
-            },
-            "unlockedValue": null,
-            "editorLockValue": false,
-            "editorVisibleValue": true,
-            "groupId": "",
-            "enable": false,
-            "_entityName": "Skin_cold"
+            "_entityName": "BossFlower"
           }
         ],
         "prefabVariant": null,
@@ -1129,4 +456,4 @@
   "discriminator": "ISceneLike",
   "_entityName": "FlowerBoss"
 }
-//"{FE:{"v":"0.2.4081265","c":{"FF":5001},"s":100}
+//"{FE:{"v":"0.2.4113096","c":{"FF":5001},"s":100}

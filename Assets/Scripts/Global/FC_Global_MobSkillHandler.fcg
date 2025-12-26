@@ -8,6 +8,8 @@ import "Math.fcc" as Math
 import "Combat.fcc" as Combat
 import "Hud.fcc" as Hud
 import "Offline.fcc" as Offline
+import "Physics.fcc" as Physics
+
 
 [platform_client]
 static graph FC_Global_MobSkillHandler {
@@ -21,7 +23,7 @@ static graph FC_Global_MobSkillHandler {
    
 
     async func releaseSkill_GrenadeZombieNormalAttack(mob entity<Mob>,position Vector3,scale float) {
-        LogInfo("releaseSkill_GrenadeZombieNormalAttack: position: " + position)
+        //LogInfo("releaseSkill_GrenadeZombieNormalAttack: position: " + position)
         var projectileEffect entity<Effect> = nil
         var skillEffect entity<Effect> = nil
         var projectileTween entity<Tween> = nil
@@ -212,12 +214,8 @@ static graph FC_Global_MobSkillHandler {
 
 
         //Offline.DealDamage(target as entity<Combatable>, nil, DamageType.Monster, Math.Ceil(1.5*GetDamage() )) // 技能双倍伤害
-					
-        
-
-
 		//1轮伤害判断
-		WaitForMillisecond(time1)
+		WaitForMillisecond(time1-500)
         //判断是否活着
         if (mob<Mob>.HP >= 0) {
             CreateFromPrefab(out var effectEntity,EResPrefab.ShieldZombie_AOE)
@@ -231,10 +229,14 @@ static graph FC_Global_MobSkillHandler {
 		    explosionEffect<Transform>.Position = pos
             Play(explosionEffect,true)
             Play(areaEffect,true)      
-            
-            var players = getPlayersInRange(pos,Range1)
-            for i, player in players {
-                Offline.DealDamage(player as entity<Combatable>, mob as entity<Combatable>, DamageType.Monster, Floor(damageScale1*skillDamage))
+            var realRange = 0.5*Range1
+
+            WaitForMillisecond(500)
+            if (mob<Mob>.HP >= 0) {
+                var players = getPlayersInRange(pos,realRange)
+                for i, player in players {
+                    Offline.DealDamage(player as entity<Combatable>, mob as entity<Combatable>, DamageType.Monster, Floor(damageScale1*skillDamage))
+                }
             }
 
         }else{
@@ -243,14 +245,18 @@ static graph FC_Global_MobSkillHandler {
 
 
 		//2轮伤害判断
-		WaitForMillisecond(time2-time1)
+		WaitForMillisecond(time2-time1-500)
 		if (mob<Mob>.HP >= 0) {
 			explosionEffect<Transform>.Scale = Vector3{Range2,Range2,Range2}
             Play(explosionEffect,true)
             Play(areaEffect,true)
-            var players = getPlayersInRange(pos,Range2)
-            for i, player in players {
-                Offline.DealDamage(player as entity<Combatable>, mob as entity<Combatable>, DamageType.Monster, Floor(damageScale2*skillDamage))
+            var realRange = 0.5*Range2
+            WaitForMillisecond(500)
+            if (mob<Mob>.HP >= 0) {
+                var players = getPlayersInRange(pos,realRange)
+                for i, player in players {
+                    Offline.DealDamage(player as entity<Combatable>, mob as entity<Combatable>, DamageType.Monster, Floor(damageScale2*skillDamage))
+                }
             }
 		}else{
             Destroy(explosionEffect)
@@ -258,14 +264,18 @@ static graph FC_Global_MobSkillHandler {
 		}
 
         //3轮伤害判断
-        WaitForMillisecond(time3-time2)
+        WaitForMillisecond(time3-time2-500)
         if (mob<Mob>.HP >= 0) {
             explosionEffect<Transform>.Scale = Vector3{Range3,Range3,Range3}
             Play(explosionEffect,true)
             Play(areaEffect,true)
-            var players = getPlayersInRange(pos,Range3)
-            for i, player in players {
-                Offline.DealDamage(player as entity<Combatable>, mob as entity<Combatable>, DamageType.Monster, Floor(damageScale3*skillDamage))
+            var realRange = 0.5*Range3
+            WaitForMillisecond(500)
+            if (mob<Mob>.HP >= 0) {
+                var players = getPlayersInRange(pos,realRange)
+                for i, player in players {
+                    Offline.DealDamage(player as entity<Combatable>, mob as entity<Combatable>, DamageType.Monster, Floor(damageScale3*skillDamage))
+                }
             }
         }else{
             Destroy(explosionEffect)
@@ -277,12 +287,177 @@ static graph FC_Global_MobSkillHandler {
 		
          
      }
+    //FBoss钻地攻击
+    async func releaseSkill_FlowerBossDrillAttack(mob entity<Mob>,target entity<Player>) {
+        var curTarget = target
+        var direction Vector3 = Normalize(curTarget<Player>.Position - mob<Transform>.Position)
+        direction.Y = 0
+        var centerPos Vector3 = mob<Transform>.Position
+        centerPos.Y = -0.2
+        
+    }
+
+     
+    //————————————————————————————————————————————————————————————————————————————————//
+    //Flowerboss射击攻击
+
+    //Flowerboss连射攻击
+    async func releaseSkill_FlowerBossBigShootAttack(mob entity<Mob>,target entity<Player>) {
+        var randRange float = 2.0
+		var curTarget = target
+
+        var optionIndex int = 0
+        optionIndex = RandomInt(0, 2)
+        //距离大于7则使用0
+        if (Math.Distance(mob<Transform>.Position, curTarget<Player>.Position) > 8) {
+            optionIndex = 0
+        }
+        if (optionIndex == 0) {
+            //循环7个随机点位
+            var interval int = 500
+            for i = 0,7,1 {
+                if (mob<Mob>.HP <= 0) {
+                    return
+                }
+                var centerPos Vector3 = curTarget<Player>.Position
+                centerPos.Y = -0.2
+                //获取随机点位
+                var randPos Vector3 = centerPos + Vector3{RandomFloat(-randRange, randRange), 0, RandomFloat(-randRange, randRange)}
+                randPos.Y = -0.2
+                var dist = Distance(randPos, centerPos)
+                var direction = Normalize(randPos - centerPos)
+                //中心朝向打射线,打到射线为墙壁则返回墙前的点位
+                SingleRaycast(centerPos + Vector3{0,0.5,0}, direction, dist, List<int>{0}, false, out var hitEntities, out var hitPoint, out var hitDistances, out var hitNormals)
+                if hitEntities != nil {
+                    //LogInfo("hitEntities: "+hitEntities)
+                    randPos = hitPoint - direction * 0.5
+                    randPos.Y = -0.2
+                }
+                //LogInfo("after randPos: " + randPos)
+                start releaseSkill_FlowerBossShootAttack(mob as entity<Mob>,randPos,2)
+                WaitForMillisecond(interval)
+            }
+        }else if (optionIndex == 1) {
+            //循环5次渐进扇形点位，每次3个，离怪物朝目标方向,距离递增，角度为-30到30度
+            var interval int = 800
+            var direction Vector3 = Normalize(curTarget<Player>.Position - mob<Transform>.Position)
+            direction.Y = 0
+            var centerPos Vector3 = mob<Transform>.Position
+            var distanceIncrement float = 3.0
+            centerPos.Y = -0.2
+            var direction1 Vector3 = RotateVector(direction,Quaternion{0, 0.2164, 0,0.9763})
+            var direction2 Vector3 = RotateVector(direction,Quaternion{0, -0.2164, 0,0.9763})
+
+            for i = 1,6,1 {
+                if (mob<Mob>.HP <= 0) {
+                    return
+                }
+                LogInfo("i: " + i)
+                // var w = Math.Cos(angle/2)
+                // var y = Math.Sin(angle/2)
+
+
+                //三维空间，要计算3个点位，中心到目标方向偏移30度的方向固定距离，以及偏移-30度方向
+
+                var point1 Vector3 = centerPos + direction * distanceIncrement*i
+                var point2 Vector3 = centerPos + direction1 * distanceIncrement*i
+                var point3 Vector3 = centerPos + direction2 * distanceIncrement*i
+                //LogInfo("after randPos: " + randPos)
+                start releaseSkill_FlowerBossShootAttack(mob as entity<Mob>,point1,2)
+                start releaseSkill_FlowerBossShootAttack(mob as entity<Mob>,point2,2)
+                start releaseSkill_FlowerBossShootAttack(mob as entity<Mob>,point3,2)
+                WaitForMillisecond(interval)
+            }
+        }
+
+		
+
+		
+
+    }
+
+    //Flowerboss射击攻击
+    async func releaseSkill_FlowerBossShootAttack(mob entity<Mob>,position Vector3,scale float) {
+        var castingTime int = 1150
+        var dropTime int = 1000
+        var skillDamage int = mob<Mob>.Damage
+
+        //球特效创建
+        CreateFromPrefab(out var ballEffect,EResPrefab.SkillEffect_FBoss_Ball)
+        var offset Vector3 = Vector3{0,5,0}
+
+        
+        //显示警告圈
+        start DisplayWarningCircle(position,scale,castingTime+dropTime)
+
+        //球出现：设置位置和渐显Tween
+        start Local_displayBallEffect(ballEffect as entity<Effect>,position,offset,castingTime)
+
+         WaitForMillisecond(castingTime)
+        if (mob<Mob>.HP >= 0) {
+            //球特效下落
+            start Local_ballDropping(ballEffect as entity<Effect>,position,offset,dropTime,scale,skillDamage) 
+        }else{
+            WaitForMillisecond(3000)
+            Destroy(ballEffect as entity<Entity>)
+           
+        }
+
+        
+    }
+    
+
+
+
+    //处理球特效出现
+    async func Local_displayBallEffect(ballEffect entity<Effect>,position Vector3,offset Vector3, castingTime int) {
+        ballEffect<Transform>.Position = position + offset
+        CreateTween(ballEffect,Transform.Scale,Vector3{0,0,0},Vector3{1,1,1},TweenStyle.Once,CreateCurve({0.25, 0.1, 0.25, 1}),castingTime,out var tweenEntity,false)
+        Play(tweenEntity,true)
+        CreateTween(ballEffect,Effect.DiffuseAlpha,0,100,TweenStyle.Once,CreateCurve({0.25, 0.1, 0.25, 1}),castingTime,out var tweenEntity2,false)
+        Play(tweenEntity2,true)
+        WaitForMillisecond(3000)
+        Destroy(tweenEntity as entity<Entity>)
+        Destroy(tweenEntity2 as entity<Entity>)
+       
+    }
+    //处理球特效下落
+    async func Local_ballDropping(ballEffect entity<Effect>,position Vector3,offset Vector3, dropTime int,scale float,skillDamage int) {
+        var explosionEffect entity<Effect> = nil
+        
+        CreateTween(ballEffect,Transform.Position,position + offset,position - Vector3{0, 0.2, 0},TweenStyle.Once,CreateCurve({0.25, 0.1, 0.25, 1}),dropTime,out var tweenEntity3,false)
+        var posTween entity<Tween> = tweenEntity3
+        Play(posTween,true)
+
+        WaitForMillisecond(dropTime)
+
+        Destroy(ballEffect as entity<Entity>)
+        CreateFromPrefab(out var eEffect,EResPrefab.SkillEffect_FBoss_Explosion)
+        explosionEffect = eEffect as entity<Effect>
+        explosionEffect<Transform>.Position = position
+        explosionEffect<Transform>.Scale = Vector3{scale,scale,scale}
+       
+
+        var players = getPlayersInRange(position,scale)
+        for i, player in players {
+            Offline.DealDamage(player as entity<Combatable>, nil, DamageType.Monster, skillDamage)
+        }
+
+    }
+
+    //Flowerboss射击攻击结束
+    //————————————————————————————————————————————————————————————————————————————————//
+    
+
+
+
     //————————————————————————————————————————————————————————————————————————————————//
     //盾牌僵尸特效处理程序
     async func DisplayWarningSquare(position Vector3,rotation Vector3,length float,width float,duration int) {
+        
         CreateEffectClient(out var WarningEffect, VFXType.Spawnpoint, LoopType.Once, false)
-       WarningEffect<Transform>.Position = position
-       WarningEffect<Transform>.Rotation = rotation
+        WarningEffect<Transform>.Position = position
+        WarningEffect<Transform>.Rotation = rotation
 		// 设置特效缩放
 		WarningEffect<Transform>.Scale = Vector3{length, 0.02, width}
 		// 设置特效颜色
@@ -295,16 +470,21 @@ static graph FC_Global_MobSkillHandler {
     }
 
      //这个方程只给某个怪物创建
-     async func DisplayWarningCircle(position Vector3,scale float,duration int)  {
-        // LogInfo("displayWarningEffect scale: " + scale)
+     async func DisplayWarningCircle(position Vector3,radius float,duration int)  {
+       // LogInfo("DisplayWarningSquare position: " + position)
+        //这里头圈填满的时间和圈的大小有点问题
+        //LogInfo("displayWarningEffect scale: " + scale)
+        //LogInfo("DisplayWarningCircle duration: " + duration)
          CreateCustomUIClient(out var warningEffect,EResUI.WarningEffect)
          warningEffect<CustomUI>.InScene = true
          warningEffect<CustomUI>.WorldPosition = position
          warningEffect<CustomUI>.Rotation = Vector3{90,0,0}
-         warningEffect<CustomUI>.Scale = Vector3{scale*1.5,scale*1.5,scale*1.5}
+
+
+         warningEffect<CustomUI>.Scale = Vector3{radius*1.5,radius*1.5,radius*1.5}
          var image_center entity<UIWidget> = GetWidgetFromCustomUI(nil, warningEffect, EResUIWarningEffect.Image_center)
-         CreateTween(image_center,UIWidget.SizeDelta,Vector2{0,0},Vector2{Math.Ceil(scale*250),
-             Math.Ceil(scale*250)},TweenStyle.Once,CreateCurve({0.25, 0.1, 0.25, 1}),duration,out var tweenEntity,true)
+         CreateTween(image_center,UIWidget.SizeDelta,Vector2{0,0},Vector2{Math.Ceil(375),
+             Math.Ceil(375)},TweenStyle.Once,CreateCurve({0.25, 0.1, 0.25, 1}),duration,out var tweenEntity,true)
  
  
          WaitForMillisecond(duration)
