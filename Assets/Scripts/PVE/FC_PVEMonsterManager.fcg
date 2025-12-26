@@ -34,6 +34,7 @@ static graph FC_PVEMonsterManager {
     ActiveMonsters List<entity<LevelObject>> = List<entity<LevelObject>>{}
     ActiveNormalMonsters List<entity<LevelObject>> = List<entity<LevelObject>>{}
     ActiveEliteMonsters List<entity<LevelObject>> = List<entity<LevelObject>>{}
+    ActiveBossMonsters List<entity<LevelObject>> = List<entity<LevelObject>>{} //Boss怪物列表
 
     BossSpawnedCount Map<int, int> = Map<int, int>{}  // MonsterID -> 已生成数量
     EliteCurrentCount Map<int, int> = Map<int, int>{}  // MonsterID -> 当前存在数量
@@ -75,21 +76,10 @@ static graph FC_PVEMonsterManager {
         var bossFound = false
         
         // 遍历ActiveMonsters查找Boss
-        for i = 0, list.Length(ActiveMonsters), 1 {
-            var monster = ActiveMonsters[i]
-            if monster != nil && HasComponent(monster, typeof(Mob)) {
-                // 检查怪物是否还活着
-                if monster<Mob>.HP <= 0 {
-                    continue
-                }
-                
-                if monster<Mob>.StatusDic["IsBoss"] == true {
-                    boss = monster
-                    bossFound = true
-                    break
-                }
-            }
-        }
+       if list.Length(ActiveBossMonsters) > 0 {
+            boss = ActiveBossMonsters[0]
+            bossFound = true
+       }
         
         // 如果没有找到Boss，隐藏血条并返回
         if !bossFound {
@@ -132,29 +122,6 @@ static graph FC_PVEMonsterManager {
         return false
     }
 
-    // 检查是否有存活的Boss
-    func HasAliveBoss() bool {
-        var bossFound = false
-        
-        // 遍历ActiveMonsters查找Boss
-        for i = 0, list.Length(ActiveMonsters), 1 {
-            var monster = ActiveMonsters[i]
-            if monster != nil && HasComponent(monster, typeof(Mob)) {
-                // 检查怪物是否还活着
-                if monster<Mob>.HP <= 0 {
-                    continue
-                }
-                
-                // 检查是否标记为Boss
-                if monster<Mob>.StatusDic["IsBoss"] == true {
-                    bossFound = true
-                    break
-                }
-            }
-        }
-        
-        return bossFound
-    }
 
     // 获取当前波次的Boss数量
     func GetBossCountInCurrentWave() int {
@@ -562,16 +529,14 @@ static graph FC_PVEMonsterManager {
         if monsterInfo["IsElite"] as bool {
             list.Append(ActiveEliteMonsters, monster)
         } else if monsterInfo["IsBoss"] as bool {
+            LogInfo("---------------生成Boss")
+            list.Append(ActiveBossMonsters, monster)
             // Boss特殊处理：显示血条并标记为Boss
             LogInfo("生成Boss血条并标记为Boss")
             var BossHPBar = GetLocalPlayer()<PlayerJionGame>.BossHPBar
             BossHPBar<CustomUI>.IsVisible = true
             BossHPBar<UIWidgetImage>.FillAmount = 1.0
             
-            // 在怪物上添加Boss标记
-            if HasComponent(monster, typeof(Mob)) {
-                monster<Mob>.StatusDic["IsBoss"] = true
-            }
         } else {
             list.Append(ActiveNormalMonsters, monster)
         }
@@ -609,10 +574,6 @@ static graph FC_PVEMonsterManager {
             ShowAppearanceGroup(monsterEntity as entity<Appearance>,"Shield")
             
         }
-
-  
-
-
         //设置怪物位置
         var spawnPosition = GetRandomSpawnPosition(monster as entity<Mob>)
         var offSetPosition Vector3 = Vector3{0,-1,0}
@@ -663,16 +624,6 @@ static graph FC_PVEMonsterManager {
         
         // 停止生成
         IsWaveActive = false
-        
-        // 销毁所有怪物前先清理Boss标记
-        for i = 0, list.Length(ActiveMonsters), 1 {
-            var monster = ActiveMonsters[i]
-            if monster != nil && HasComponent(monster, typeof(Mob)) {
-                if monster<Mob>.StatusDic["IsBoss"] == true {
-                    monster<Mob>.StatusDic["IsBoss"] = false
-                }
-            }
-        }
 
         // 销毁所有怪物
         for i = 0, list.Length(ActiveMonsters), 1 {
@@ -686,6 +637,7 @@ static graph FC_PVEMonsterManager {
         list.Clear(ActiveMonsters)
         list.Clear(ActiveEliteMonsters)
         list.Clear(ActiveNormalMonsters)
+        list.Clear(ActiveBossMonsters)
         Map.Clear(BossSpawnedCount)
         Map.Clear(EliteCurrentCount)
 
@@ -718,11 +670,6 @@ static graph FC_PVEMonsterManager {
     
     func OnMonsterKilled(monster entity<LevelObject>) {
         if monster != nil && HasComponent(monster, typeof(Mob)) {
-            // 如果是Boss，清理标记
-            if monster<Mob>.StatusDic["IsBoss"] == true {
-                monster<Mob>.StatusDic["IsBoss"] = false
-                LogInfo("Boss标记已清理")
-            }
             //LogInfo("-------------------------OnMonsterKilled-------------------------")
             SetParentClient(PendingRemoveMonsterParentNode<Transform>, monster<Transform>, true)
             list.Remove(ActiveMonsters, monster)
@@ -743,8 +690,10 @@ static graph FC_PVEMonsterManager {
                         break
                     }
                 }
-                
+
                 LogInfo("Elite怪物死亡，CD开始: " + EliteSpawnCD + "ms")
+            }else if list.Contain(ActiveEliteMonsters, monster) {
+                list.Remove(ActiveBossMonsters, monster)
             }
            
             

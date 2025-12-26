@@ -56,8 +56,8 @@
         "Collider",
         "AimableEntity",
         "AimAssistEntity",
-        "BehaviourTreeAttachable",
-        "CustomComponent59601760"
+        "CustomComponent59601760",
+        "BehaviourTreeAttachableForClient"
       ],
       "_filters": [
         "node.withscript"
@@ -113,14 +113,6 @@
       },
       "isCreateAsEmpty": false,
       "ecaScripts": [
-        {
-          "fileId": "gwfwh1xpjrf-mio9f1um-vjp9dmua28",
-          "filePath": "Assets\\Scripts\\MobScripts\\C_BossButcher.fcg",
-          "_tag": {
-            "type": "GFileRefer"
-          },
-          "fileType": "ugcscript"
-        },
         {
           "fileId": "pmaqljth6jb-mio9edw1-htgaa22iqts",
           "filePath": "Assets\\Scripts\\MobScripts\\FC_BossButcher.fcg",
@@ -200,7 +192,18 @@
           "PROP_90540570": null,
           "PROP_42420456": 0,
           "PROP_26191266": null,
-          "PROP_56442283": 0
+          "PROP_56442283": 0,
+          "PROP_36359999": false
+        },
+        "BehaviourTreeAttachableForClient": {
+          "BTreeID": {
+            "fileId": "lgfrhdkckeb-mjmm5gf9-w5ryvm19g29",
+            "filePath": "Assets\\Mobs\\BossButcher\\N_BossButcher.xbt",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "xbt"
+          }
         }
       },
       "entityVersion": 3,
@@ -355,143 +358,8 @@
             "editorLockValue": false,
             "editorVisibleValue": true,
             "groupId": "",
-            "enable": true,
-            "_entityName": "BossButcher"
-          },
-          {
-            "_tag": {
-              "type": "BoneMeshGroupEntity"
-            },
-            "_entityId": "52GCVYMc",
-            "children": [
-              {
-                "_tag": {
-                  "type": "BoneMeshEntity"
-                },
-                "_entityId": "sP3GtzWF",
-                "children": [],
-                "prefabVariant": null,
-                "activeValue": {
-                  "selfValue": true,
-                  "valueTag": "activeValue"
-                },
-                "unlockedValue": {
-                  "selfValue": true,
-                  "valueTag": "unlockedValue"
-                },
-                "_mesh": {
-                  "fileId": "9vel9h3f3ur-m3i6ro22-txsdy9gig4-BossButcher.~@FFSKIN",
-                  "filePath": "fab://Assets\\ZombieAsset\\Boss01\\BossButcher.FBX\\BossButcher.mesh",
-                  "_tag": {
-                    "type": "GFileRefer"
-                  },
-                  "fileType": "mesh"
-                },
-                "_cloth": null,
-                "partType": 0,
-                "causeAnimationTypeChange": false,
-                "outwardType": 0,
-                "materials": [
-                  {
-                    "fileId": "pkvbbg7odgc-mdofzw8x-x7i9x3zlxk7",
-                    "filePath": "Assets\\ZombieAsset\\Boss01\\Materials\\ButcherCold.mat",
-                    "_tag": {
-                      "type": "GFileRefer"
-                    },
-                    "fileType": "material"
-                  }
-                ],
-                "avatarPartInfo": {
-                  "bone": "Root",
-                  "bindType": 0
-                },
-                "position": {
-                  "x": 0,
-                  "y": 0,
-                  "z": 0
-                },
-                "scale": {
-                  "x": 1,
-                  "y": 1,
-                  "z": 1
-                },
-                "rotation": {
-                  "x": 0,
-                  "y": 0,
-                  "z": 0
-                },
-                "_entityName": "BossButcher.mesh"
-              },
-              {
-                "_tag": {
-                  "type": "BoneMeshEntity"
-                },
-                "_entityId": "IWhHFKSx",
-                "children": [],
-                "prefabVariant": null,
-                "activeValue": {
-                  "selfValue": true,
-                  "valueTag": "activeValue"
-                },
-                "unlockedValue": {
-                  "selfValue": true,
-                  "valueTag": "unlockedValue"
-                },
-                "_mesh": {
-                  "fileId": "9vel9h3f3ur-m3i6ro22-txsdy9gig4-BossButcherWeapon.~@FFSKIN",
-                  "filePath": "fab://Assets\\ZombieAsset\\Boss01\\BossButcher.FBX\\BossButcherWeapon.mesh",
-                  "_tag": {
-                    "type": "GFileRefer"
-                  },
-                  "fileType": "mesh"
-                },
-                "_cloth": null,
-                "partType": 0,
-                "causeAnimationTypeChange": false,
-                "outwardType": 0,
-                "materials": [
-                  {
-                    "fileId": "iv6rgaehz3r-m3i6x5ci-md8bj0hrbrf",
-                    "filePath": "Assets\\ZombieAsset\\Boss01\\Materials\\Butcher Weapon.mat",
-                    "_tag": {
-                      "type": "GFileRefer"
-                    },
-                    "fileType": "material"
-                  }
-                ],
-                "avatarPartInfo": {
-                  "bone": "Root",
-                  "bindType": 0
-                },
-                "position": {
-                  "x": 0,
-                  "y": 0,
-                  "z": 0
-                },
-                "scale": {
-                  "x": 1,
-                  "y": 1,
-                  "z": 1
-                },
-                "rotation": {
-                  "x": 0,
-                  "y": 0,
-                  "z": 0
-                },
-                "_entityName": "BossButcherWeapon.mesh"
-              }
-            ],
-            "prefabVariant": null,
-            "activeValue": {
-              "selfValue": true,
-              "valueTag": "activeValue"
-            },
-            "unlockedValue": null,
-            "editorLockValue": false,
-            "editorVisibleValue": true,
-            "groupId": "",
             "enable": false,
-            "_entityName": "BossButcher_cold"
+            "_entityName": "BossButcher"
           }
         ],
         "prefabVariant": null,
@@ -561,4 +429,4 @@
   "discriminator": "ISceneLike",
   "_entityName": "BossButcher"
 }
-//"{FE:{"v":"0.2.4081265","c":{"FF":5001},"s":100}
+//"{FE:{"v":"0.2.4113096","c":{"FF":5001},"s":100}

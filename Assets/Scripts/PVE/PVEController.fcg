@@ -9,7 +9,7 @@ import "Items.fcc" as Items
 import "../CustomEvent.fcc" as CustomEvent
 import "Math.fcc" as Math
 import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
-import "../MobScripts/C_BossButcher.fcg" as C_BossButcher
+import "../MobScripts/BossButcher.fcg" as C_BossButcher
 import "Hud.fcc" as Hud
 
 [platform_client]
@@ -87,11 +87,10 @@ static graph PVEController {
         monsterManager.StartWave(wave)
         
         // 检查当前波次是否有Boss
-        var isBossWave = CheckWaveHasBoss(wave)
+        var isBossWave = monsterManager.HasBossInWave(wave)
         
         if isBossWave {
             IsCountdownActive = false  // Boss波次不进行倒计时
-            LogInfo("第" + wave + "波是Boss波次，不进行倒计时")
         }
         
         // 更新UI显示
@@ -106,11 +105,6 @@ static graph PVEController {
         }
     }
 
-    // 检查波次是否有Boss
-    func CheckWaveHasBoss(wave int) bool {
-        // 尝试从怪物管理器获取波次信息
-        return monsterManager.HasBossInWave(wave)
-    }
 
     // 波次倒计时器
     async func WaveCountdownTimer() {
@@ -158,6 +152,7 @@ static graph PVEController {
         
         // 记录当前波次
         var currentBossWave = CurrentWave
+        WaitForMillisecond(1000)
         
         while IsGameActive && CurrentWave == currentBossWave {
             // 检查玩家是否存活
@@ -168,9 +163,9 @@ static graph PVEController {
                 return
             }
             
-            // 检查Boss是否已被击败
-            var bossDefeated = CheckBossDefeated()
-            if bossDefeated {
+            // 检查是否有存活Boss
+            var hasAliveBoss = list.Length(monsterManager.ActiveBossMonsters) > 0
+            if !hasAliveBoss {
                 LogInfo("Boss已被击败")
                 OnBossDefeated()
                 return
@@ -183,26 +178,7 @@ static graph PVEController {
         LogInfo("Boss波次存活检测结束")
     }
 
-    // 检查Boss是否被击败
-    func CheckBossDefeated() bool {
-        // 获取当前波次的Boss总数
-        var totalBossCount = monsterManager.GetBossCountInCurrentWave()
-        
-        // 如果没有Boss，直接返回true
-        if totalBossCount == 0 {
-            LogInfo("当前波次没有Boss")
-            return true
-        }
-        
-        // 检查是否有存活的Boss
-        var hasAliveBoss = monsterManager.HasAliveBoss()
-        
-        LogInfo("Boss状态检查: 总数=" + totalBossCount + ", 存活=" + hasAliveBoss)
-        
-        // 如果没有存活的Boss，说明Boss已被击败
-        return !hasAliveBoss
-        return false
-    }
+
 
     // Boss被击败后的处理
     async func OnBossDefeated() {
