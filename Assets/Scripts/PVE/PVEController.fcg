@@ -86,8 +86,150 @@ static graph PVEController {
         // 通知怪物管理器开始波次
         monsterManager.StartWave(wave)
         
-        // 开始倒计时
-        start WaveCountdownTimer()
+        // 检查当前波次是否有Boss
+        var isBossWave = CheckWaveHasBoss(wave)
+        
+        if isBossWave {
+            IsCountdownActive = false  // Boss波次不进行倒计时
+            LogInfo("第" + wave + "波是Boss波次，不进行倒计时")
+        }
+        
+        // 更新UI显示
+        UpdateTimeInGameUI(WaveTimeLimit/1000, isBossWave)
+
+        // 如果是普通波次，开始倒计时
+        if !isBossWave {
+            start WaveCountdownTimer()
+        } else {
+            // Boss波次：启动专门的存活检测
+            start BossWaveSurvivalCheck()
+        }
+    }
+
+    // 检查波次是否有Boss
+    func CheckWaveHasBoss(wave int) bool {
+        // 尝试从怪物管理器获取波次信息
+        return monsterManager.HasBossInWave(wave)
+    }
+
+    // 波次倒计时器
+    async func WaveCountdownTimer() {
+        var waveTime int = globalEntity<Global>.GameTimeCount - WaveStartTime
+        while IsCountdownActive && waveTime < WaveTimeLimit {
+            waveTime = globalEntity<Global>.GameTimeCount - WaveStartTime
+            var remainTime int = (WaveTimeLimit - waveTime)/1000
+            
+            // 更新UI
+            UpdateTimeInGameUI(remainTime, false)
+            
+            WaitForMillisecond(WaveCountdownInterval)
+            
+            var DeadOrAlive bool = CheckPlayersAlive() // 检查玩家存活状态
+            if DeadOrAlive == false {
+                start OnGameOver()
+                return
+            }
+        }
+        
+        // 倒计时结束，检查玩家存活状态
+        if IsCountdownActive && CurrentWave < 5 {  // 只有前4波有倒计时
+            IsCountdownActive = false
+            monsterManager.ForceEndWave()
+            
+            //显示通关小横幅
+            var WaveCompleteUI = GetLocalPlayer()<PlayerJionGame>.WaveCompleteUI
+            WaveCompleteUI<CustomUI>.IsVisible = true
+            var WaveText = GetWidgetByPath(GetLocalPlayer(), WaveCompleteUI, "/WaveShow/Text")
+            if WaveText != nil {
+                WaveText<UIWidgetLabel>.Content = "第" + CurrentWave + "波完成"
+            }
+
+            WaitForMillisecond(2000)
+            //隐藏通关小横幅
+            WaveCompleteUI<CustomUI>.IsVisible = false
+            //显示三选一
+            GetLocalPlayer()<PlayerJionGame>.ToClient_DisplaySkillThreeChoiceOne()
+        }
+    }
+
+    // Boss波次存活检测
+    async func BossWaveSurvivalCheck() {
+        LogInfo("开始玩家Boss波次存活检测")
+        
+        // 记录当前波次
+        var currentBossWave = CurrentWave
+        
+        while IsGameActive && CurrentWave == currentBossWave {
+            // 检查玩家是否存活
+            var DeadOrAlive bool = CheckPlayersAlive()
+            if DeadOrAlive == false {
+                LogInfo("Boss波次中玩家死亡")
+                start OnGameOver()
+                return
+            }
+            
+            // 检查Boss是否已被击败
+            var bossDefeated = CheckBossDefeated()
+            if bossDefeated {
+                LogInfo("Boss已被击败")
+                OnBossDefeated()
+                return
+            }
+            
+            // 等待一段时间再检查
+            WaitForMillisecond(WaveCountdownInterval)
+        }
+        
+        LogInfo("Boss波次存活检测结束")
+    }
+
+    // 检查Boss是否被击败
+    func CheckBossDefeated() bool {
+        // 获取当前波次的Boss总数
+        var totalBossCount = monsterManager.GetBossCountInCurrentWave()
+        
+        // 如果没有Boss，直接返回true
+        if totalBossCount == 0 {
+            LogInfo("当前波次没有Boss")
+            return true
+        }
+        
+        // 检查是否有存活的Boss
+        var hasAliveBoss = monsterManager.HasAliveBoss()
+        
+        LogInfo("Boss状态检查: 总数=" + totalBossCount + ", 存活=" + hasAliveBoss)
+        
+        // 如果没有存活的Boss，说明Boss已被击败
+        return !hasAliveBoss
+        return false
+    }
+
+    // Boss被击败后的处理
+    async func OnBossDefeated() {
+        LogInfo("Boss被击败，进入下一波")
+        
+        // 强制结束当前波次
+        monsterManager.ForceEndWave()
+        
+        //显示BOOYAH!横幅
+        CreateBuiltInUIClient(out var resultBanner, BuiltInUIType.ResultBannerHud)
+        resultBanner<UIWinOrLoseBanner>.Result = 1
+        
+        WaitForMillisecond(2000)
+        start OnGameComplete()
+        // // 显示通关小横幅
+        // var WaveCompleteUI = GetLocalPlayer()<PlayerJionGame>.WaveCompleteUI
+        // WaveCompleteUI<CustomUI>.IsVisible = true
+        // var WaveText = GetWidgetByPath(GetLocalPlayer(), WaveCompleteUI, "/WaveShow/Text")
+        // if WaveText != nil {
+        //     WaveText<UIWidgetLabel>.Content = "Boss击败！第" + CurrentWave + "波完成"
+        // }
+
+        // WaitForMillisecond(2000)
+        // //隐藏通关小横幅
+        // WaveCompleteUI<CustomUI>.IsVisible = false
+        // //显示三选一
+        // GetLocalPlayer()<PlayerJionGame>.ToClient_DisplaySkillThreeChoiceOne()
     }
 
       //DEbug的临时初始化
@@ -95,62 +237,45 @@ static graph PVEController {
         IsCountdownActive = false
     }
     
-    // 波次倒计时器
-    async func WaveCountdownTimer() {
-        var waveTime int = globalEntity<Global>.GameTimeCount - WaveStartTime
-        while IsCountdownActive && waveTime < WaveTimeLimit {
-            waveTime = globalEntity<Global>.GameTimeCount - WaveStartTime
-            var remainTime int = (WaveTimeLimit - waveTime)/1000
-            // 实时更新倒计时UI
-            UpdateTimeInGameUI(remainTime)
-            WaitForMillisecond(WaveCountdownInterval)
-            var DeadOrAlive bool = CheckPlayersAlive() // 检查玩家存活状态
-            if DeadOrAlive == false {
-                start OnGameOver()
-                return
-            }
-        }
-        // 倒计时结束，检查玩家存活状态
-        if IsCountdownActive && MaxWaves > CurrentWave {
-            IsCountdownActive = false
-            monsterManager.ForceEndWave()
-            //显示三选一
-            if CurrentWave < 5 {
-                //显示通关小横幅
-                var WaveCompleteUI = GetLocalPlayer()<PlayerJionGame>.WaveCompleteUI
-                WaveCompleteUI<CustomUI>.IsVisible = true
-                var WaveText = GetWidgetByPath(GetLocalPlayer(), WaveCompleteUI, "/WaveShow/Text")
-                if WaveText != nil {
-                    WaveText<UIWidgetLabel>.Content = "第" + CurrentWave + "波完成"
-                }
-
-                WaitForMillisecond(2000)
-                //隐藏通关小横幅
-                WaveCompleteUI<CustomUI>.IsVisible = false
-                //显示三选一
-                GetLocalPlayer()<PlayerJionGame>.ToClient_DisplaySkillThreeChoiceOne()
-
-            } else if CurrentWave == 5 {
-                //显示BOOYAH!横幅
-                CreateBuiltInUIClient(out var resultBanner, BuiltInUIType.ResultBannerHud)
-                resultBanner<UIWinOrLoseBanner>.Result = 1
-            }
-        }else{
-            monsterManager.ForceEndWave()
-            OnGameComplete()
-        }
-    }
-    
-    // 更新游戏时间UI
-    func UpdateTimeInGameUI(remainTime int) {
+    // 更新UI
+    func UpdateTimeInGameUI(remainTime int, isBossWave bool) {
         var TimeInGameUIEntity = GetLocalPlayer()<PlayerJionGame>.TimeInGameUI
+        
+        // 查找UI组件
         var TimeText = GetWidgetByPath(GetLocalPlayer(), TimeInGameUIEntity, "/Time/TimePanel/Logo/Text")
-        if TimeText != nil {
-            TimeText<UIWidgetLabel>.Content = FormatTimeMMSS(remainTime)
-        }
         var WaveText = GetWidgetByPath(GetLocalPlayer(), TimeInGameUIEntity, "/Time/TimePanel/Text")
-        if WaveText != nil {
-            WaveText<UIWidgetLabel>.Content = "波数：" + (CurrentWave) + "/5"
+        var LogoPanel = GetWidgetByPath(GetLocalPlayer(), TimeInGameUIEntity, "/Time/TimePanel/Logo")
+        var BossPanel = GetWidgetByPath(GetLocalPlayer(), TimeInGameUIEntity, "/Time/TimePanel/Boss")
+        
+        // 根据是否是Boss波次显示不同的UI
+        if isBossWave {
+            // Boss波次：显示Boss面板，隐藏Logo面板
+            if LogoPanel != nil {
+                LogoPanel<UIWidget>.IsVisible = false
+            }
+            if BossPanel != nil {
+                BossPanel<UIWidget>.IsVisible = true
+            }
+            if WaveText != nil {
+                WaveText<UIWidgetLabel>.Content = "波数：" + CurrentWave + "/5"
+            }
+            if TimeText != nil {
+                TimeText<UIWidgetLabel>.Content = "--:--"  // Boss战没有时间限制
+            }
+        } else {
+            // 普通波次：显示Logo面板，隐藏Boss面板
+            if LogoPanel != nil {
+                LogoPanel<UIWidget>.IsVisible = true
+            }
+            if BossPanel != nil {
+                BossPanel<UIWidget>.IsVisible = false
+            }
+            if WaveText != nil {
+                WaveText<UIWidgetLabel>.Content = "波数：" + CurrentWave + "/5"
+            }
+            if TimeText != nil {
+                TimeText<UIWidgetLabel>.Content = FormatTimeMMSS(remainTime)
+            }
         }
     }
 
@@ -192,6 +317,10 @@ static graph PVEController {
         // 隐藏波次和时间信息
         var TimeInGameUIEntity = GetLocalPlayer()<PlayerJionGame>.TimeInGameUI
         TimeInGameUIEntity<CustomUI>.IsVisible = false
+        var BossHPBar = GetLocalPlayer()<PlayerJionGame>.BossHPBar
+        if BossHPBar != nil {
+            BossHPBar<CustomUI>.IsVisible = false
+        }
     }
     
     // 获取游戏状态

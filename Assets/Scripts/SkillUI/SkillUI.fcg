@@ -11,6 +11,7 @@ import "../SuperFcc/TransferList.fcc" as TransferList
 import "List.fcc" as List
 import "Items.fcc" as Items
 import "../CustomEvent.fcc" as CustomEvent
+import "../PVE/FC_PVEMonsterManager.fcg" as PVEMonsterManager
 
 [platform_client]
 graph SkillUI {
@@ -289,7 +290,9 @@ graph SkillUI {
 
     // 获取随机怪物
     func GetRandomMonster() entity<LevelObject> {
-        var activeMonsters = GetChildren(ActiveMonstersParentNode)
+        var activeMonsters = PVEMonsterManager.ActiveMonsters
+        LogInfo("当前活跃怪物数量: " + List.Length(activeMonsters))
+        LogInfo(activeMonsters)
         if List.Length(activeMonsters) == 0 { return nil }
         var randomIndex = RandomInt(0, List.Length(activeMonsters) - 1)
         return activeMonsters[randomIndex] as entity<LevelObject>

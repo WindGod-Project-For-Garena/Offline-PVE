@@ -1,0 +1,429 @@
+{
+  "_entityName": "BossHP",
+  "_tag": {
+    "type": "UIRootEntity",
+    "resourceId": ""
+  },
+  "_entityId": "ejGB4tX4",
+  "children": [
+    {
+      "_entityName": "Panel",
+      "_tag": {
+        "type": "UIPanelEntityV3",
+        "resourceId": ""
+      },
+      "_entityId": "e51XyRUN",
+      "children": [
+        {
+          "_entityName": "Text",
+          "_tag": {
+            "type": "UITextEntity",
+            "resourceId": ""
+          },
+          "_entityId": "P8sN9AnO",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": null,
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "propsData": {
+            "activeSelf": true,
+            "transform": {
+              "rotate": 0,
+              "anchorMin": {
+                "x": 0.5,
+                "y": 1
+              },
+              "anchorMax": {
+                "x": 0.5,
+                "y": 1
+              },
+              "pivot": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "anchoredPosition": {
+                "x": 0,
+                "y": 20
+              },
+              "sizeDelta": {
+                "x": 120,
+                "y": 40
+              }
+            },
+            "alpha": 100,
+            "priority": 0,
+            "text": {
+              "value": "BOSS",
+              "key": "",
+              "font": "Default",
+              "fontSize": 30,
+              "fontStyle": {
+                "bold": false,
+                "italic": false,
+                "underline": false
+              },
+              "color": "#ffffff",
+              "alignment": {
+                "h": "center",
+                "v": "middle"
+              },
+              "lineSpacing": 0,
+              "background": false,
+              "backgroundColor": "#e7b200",
+              "overflow": 0,
+              "backgroundRGBA": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
+              "shadow": false,
+              "shadowColor": "#000000",
+              "shadowOffset": {
+                "x": 1,
+                "y": 1
+              }
+            }
+          },
+          "ecaScripts": [],
+          "ecaProps": {
+            "HudLabelWidget": {},
+            "HudWidget": {},
+            "Entity": {}
+          },
+          "componentList": [],
+          "entityTagData": {
+            "tagPointers": []
+          }
+        },
+        {
+          "_entityName": "Bb",
+          "_tag": {
+            "type": "UIImageEntity",
+            "resourceId": ""
+          },
+          "_entityId": "B86do9Ke",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": null,
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "propsData": {
+            "activeSelf": true,
+            "transform": {
+              "rotate": 0,
+              "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "pivot": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "anchoredPosition": {
+                "x": 0,
+                "y": 0
+              },
+              "sizeDelta": {
+                "x": 500,
+                "y": 25
+              }
+            },
+            "alpha": 100,
+            "priority": 0,
+            "image": {
+              "source": {
+                "fileId": "1825665227fdf4993c4c5d6062c9a1e9",
+                "filePath": "lib://fftextures/WorkshopIconLibrary/FF_UI_SmallWindow_Botton.png",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "texture"
+              },
+              "color": "#5F5F5F",
+              "reverse": {
+                "x": false,
+                "y": false
+              },
+              "fillType": 1,
+              "slicedBorder": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              },
+              "tiledBorder": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              },
+              "centerInvisible": false,
+              "fillDir": 0,
+              "fillAmount": 0,
+              "invertFill": false,
+              "flip": 0,
+              "gradient": 1,
+              "gradientTop": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 1
+              },
+              "gradientBottom": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 1
+              }
+            }
+          },
+          "ecaScripts": [],
+          "ecaProps": {
+            "HudImageWidget": {},
+            "HudWidget": {},
+            "Entity": {}
+          },
+          "componentList": [],
+          "entityTagData": {
+            "tagPointers": []
+          }
+        },
+        {
+          "_entityName": "HP",
+          "_tag": {
+            "type": "UIImageEntity",
+            "resourceId": ""
+          },
+          "_entityId": "tu1FHluO",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": null,
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "propsData": {
+            "activeSelf": true,
+            "transform": {
+              "rotate": 0,
+              "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "pivot": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "anchoredPosition": {
+                "x": 0,
+                "y": 0
+              },
+              "sizeDelta": {
+                "x": 500,
+                "y": 25
+              }
+            },
+            "alpha": 100,
+            "priority": 0,
+            "image": {
+              "source": {
+                "fileId": "b063b0439839b3d97a8fd2aa6a57ef8b",
+                "filePath": "lib://fftextures/WorkshopIconLibrary/T_34_M_WS_ICON_SQUARE.png",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "texture"
+              },
+              "color": "#870000",
+              "reverse": {
+                "x": false,
+                "y": false
+              },
+              "fillType": 3,
+              "slicedBorder": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              },
+              "tiledBorder": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              },
+              "centerInvisible": false,
+              "fillDir": 0,
+              "fillAmount": 1,
+              "invertFill": false,
+              "flip": 0,
+              "gradient": 1,
+              "gradientTop": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 1
+              },
+              "gradientBottom": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 1
+              }
+            }
+          },
+          "ecaScripts": [],
+          "ecaProps": {
+            "HudImageWidget": {},
+            "HudWidget": {},
+            "Entity": {}
+          },
+          "componentList": [],
+          "entityTagData": {
+            "tagPointers": []
+          }
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": null,
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "propsData": {
+        "activeSelf": true,
+        "transform": {
+          "rotate": 0,
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchoredPosition": {
+            "x": 0,
+            "y": 220
+          },
+          "sizeDelta": {
+            "x": 500,
+            "y": 25
+          }
+        },
+        "alpha": 100,
+        "priority": 0,
+        "panel": {
+          "enableBackground": false,
+          "maskName": null,
+          "bgName": {
+            "fileId": "b063b0439839b3d97a8fd2aa6a57ef8b",
+            "filePath": "lib://fftextures/WorkshopIconLibrary/T_34_M_WS_ICON_SQUARE.png",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "texture"
+          },
+          "bgColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 0.2
+          },
+          "clippingType": 0,
+          "softness": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      },
+      "ecaScripts": [],
+      "ecaProps": {
+        "HudEmptyPanel": {},
+        "HudPanel": {},
+        "HudWidget": {},
+        "Entity": {}
+      },
+      "componentList": [],
+      "entityTagData": {
+        "tagPointers": []
+      },
+      "version": "UIPanelEntityV3"
+    }
+  ],
+  "prefabVariant": null,
+  "activeValue": {
+    "selfValue": true,
+    "valueTag": "activeValue"
+  },
+  "unlockedValue": null,
+  "editorLockValue": false,
+  "editorVisibleValue": true,
+  "propsData": {
+    "activeSelf": true,
+    "transform": {
+      "rotate": 0,
+      "anchorMin": {
+        "x": 0,
+        "y": 0
+      },
+      "anchorMax": {
+        "x": 0,
+        "y": 0
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "anchoredPosition": {
+        "x": 667,
+        "y": 375
+      },
+      "sizeDelta": {
+        "x": 1334,
+        "y": 750
+      }
+    },
+    "alpha": 100,
+    "priority": 0
+  },
+  "ecaScripts": [],
+  "ecaProps": {
+    "CustomHud": {},
+    "Entity": {}
+  },
+  "componentList": [],
+  "entityTagData": {
+    "tagPointers": []
+  },
+  "layer": 267,
+  "discriminator": "ISceneLike",
+  "version": 3
+}
+//"{FE:{"v":"0.2.4113096","c":{"FF":5001},"s":100}
