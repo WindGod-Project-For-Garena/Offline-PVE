@@ -65,47 +65,33 @@ static graph FC_PVEMonsterManager {
     spawnEffectPool List<entity<Effect>> = List<entity<Effect>>{}
     spawnTweenPool List<entity<Tween>> = List<entity<Tween>>{}
 
-    event OnUpdate() {
-        UpdateBossHPBar()
-    }
-
     // 更新Boss血条的函数 - 实时获取怪物血量并更新UI
-    func UpdateBossHPBar() {
+    async func UpdateBossHPBar() {
         // 查找当前场景中的Boss
-        var boss entity<LevelObject> = nil
-        var bossFound = false
-        
-        // 遍历ActiveMonsters查找Boss
-       if list.Length(ActiveBossMonsters) > 0 {
-            boss = ActiveBossMonsters[0]
-            bossFound = true
-       }
-        
-        // 如果没有找到Boss，隐藏血条并返回
-        if !bossFound {
-            var BossHPBar = GetLocalPlayer()<PlayerJionGame>.BossHPBar
-            if BossHPBar != nil {
-                BossHPBar<CustomUI>.IsVisible = false
-            }
-            return
-        }
-        
-        // 获取Boss当前血量和最大血量
-        var currentHP = boss<Mob>.HP
-        var maxHP = boss<Mob>.MaxHP
-        
-        // 计算血量百分比 (0.0 - 1.0)
-        var hpPercent float = 0.0
-        if maxHP > 0 {
-            hpPercent = IntToFloat(currentHP) / IntToFloat(maxHP)
-        }
-        
-        // 获取血条UI并更新
+        var boss = ActiveBossMonsters[0]
         var BossHPBar = GetLocalPlayer()<PlayerJionGame>.BossHPBar
-        if  BossHPBar != nil {
+
+        while boss != nil{
+            // 获取Boss当前血量和最大血量
+            var currentHP = boss<Mob>.HP
+            var maxHP = boss<Mob>.MaxHP
+
+            // 计算血量百分比 (0.0 - 1.0)
+            var hpPercent float = 0.0
+            if maxHP > 0 {
+                hpPercent = IntToFloat(currentHP) / IntToFloat(maxHP)
+            }
+            
+            // 获取血条UI并更新
             BossHPBar<CustomUI>.IsVisible = true
             var BossHPNow = GetWidgetByPath(GetLocalPlayer(), BossHPBar, "/Panel/HP")
             BossHPNow<UIWidgetImage>.FillAmount = hpPercent
+            WaitForNextFrame()
+        }
+
+        if boss == nil {
+            // 如果没有找到Boss，隐藏血条并返回
+            BossHPBar<CustomUI>.IsVisible = false
         }
     }
     
@@ -598,6 +584,7 @@ static graph FC_PVEMonsterManager {
         list.Append(spawnEffectPool, spawnEffect)
         list.Append(spawnTweenPool, spawnTween)
 
+        start UpdateBossHPBar()
     }
 
 
