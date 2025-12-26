@@ -18,7 +18,6 @@ import "Avatar.fcc" as Avatar
 [platform_client]
 graph FC_NormalZombie {
     //Executed when entity is created
-    HeadShoted bool = false
 	LastHitPlayer entity<Player> = nil
 	dashingMoveTween entity<Tween> = nil
 	LastPos Vector3 = Vector3{0,0,0}

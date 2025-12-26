@@ -13,27 +13,37 @@ import "Animation.fcc" as Animation
 import "../Static/FC_Utilities.fcg" as PVEUtilities
 import "../PVE/PVEController.fcg" as PVEController
 import "Offline.fcc" as Offline
+import "../C_HitBox.fcg" as HitBox
+import "Avatar.fcc" as Avatar
 
 [platform_client]
 graph FC_NormalZombie {
     //Executed when entity is created
-    HeadShoted bool = false
 	LastHitPlayer entity<Player> = nil
-	moveTween entity<Tween> = nil
-	LastPos Vector3 = Vector3{0,0,0}
     tickInterval int = 1
-
-
 	hitPos Vector3 = Vector3{0,0,0}
 
     Dist float = 0
-	KeepDist float = 0
+	moveTween entity<Tween> = nil
 	TargetPos Vector3 = Vector3{0,0,0}
 
 	event OnAwake() {
         WaitForNextFrame()
         Init()
     }
+
+	event OnMobActived() {
+		CreateFromPrefab(out var headHitbox, EResPrefab.HitBox_BossButcher_Head)
+		AddScript(headHitbox, EResFCG.C_HitBox)
+        SetParentClient(GetSkeletonPartByName(thisEntity, "Bip001 Head"), headHitbox<Transform>, false)
+		headHitbox<HitBox>.SetOwner(thisEntity, "Head")
+        
+		AddScript(thisEntity, EResFCG.C_HitBox)
+		thisEntity<HitBox>.SetOwner(thisEntity, "Body")
+
+	}
+
+	
 
 	//funcID: Init
 	async func Init() {
@@ -42,16 +52,14 @@ graph FC_NormalZombie {
 		thisEntity<Mob>.HateGainInterval = 3000
 		thisEntity<Mob>.DetectRange = 30
 		thisEntity<Mob>.StatusDic = Map<string, object>{
-			"LastAttackTime": globalEntity<Global>.GameTimeCount,
+			"InAttack": false as bool,
+
+			"LastAttackTime_NormalAttack": globalEntity<Global>.GameTimeCount as int,
+			"CD_NormalAttack": 3000 as int,
+			"Duration_NormalAttack": 2200 as int,
+			"Range_NormalAttack": 3.0 as float,
 		}
-		
-        // var nowTime int = globalEntity<Global>.GameTimeCount
-		WaitForMillisecond(2000)
-		//DispatchEventWithPlatform_Deprecated(100002, thisEntity, true, List<object>{thisEntity<CustomComponent31897461>.ZombieInfo["InitSpeed"]})
-		
-        // for index3, element4 in GetAllPlayers() {
-        //     SetAttackableEntity(element4, thisEntity, 1)
-        // }
+
 	}
 
 	// 剪刀僵尸技能，当玩家进入一定范围时，触发冲击技能
@@ -177,19 +185,15 @@ graph FC_NormalZombie {
 
 	//eventID: 91//r;Zn+-uY8Ahq`0JH4Yr{ //animation
 	event MobAttackEvent_AC(attackName string) {
-		if (attackName == "NormalAttack1") {
-			////LogInfo("NormalAttack1")
+		if (attackName == "NormalAttack") {
 			var curTarget = thisEntity<Mob>.CurrTarget
-		//	//LogInfo("curTarget: " + curTarget as entity<Player><Player>.Position)
-			if (curTarget != nil && (Distance(curTarget as entity<Player><Player>.Position, thisEntity as entity<LevelObject><Transform>.Position) <= 1.5)) {		
-				
+			if (curTarget != nil && (Distance(curTarget as entity<Player><Player>.Position, thisEntity as entity<LevelObject><Transform>.Position) <= 5.0)) {		
 				Offline.DealDamage(curTarget as entity<Combatable>, nil, DamageType.Monster, GetDamage())
 			}
 		} else if (attackName == "NormalAttack2") {
 			
 		} else {
-			//start globalEntity<global_process_eca>.DeleteThisZombie(thisEntity)
-			//Destroy(thisEntity)
+			
 		}
 	}
 
@@ -198,8 +202,6 @@ graph FC_NormalZombie {
 	}
 
 	event OnDamageMob(mob entity<Entity>, part string, damage int, player entity<Player>) {
-		////LogInfo("OnDamageMob: " + part + " damage: " + damage + "HP: " + mob<Mob>.HP)
-		////LogInfo("mob: " + mob + "thisEntity: " + thisEntity)
 		//处理仇恨值
 		if mob<Mob>.HateGainTime > globalEntity<Global>.GameTimeCount - thisEntity<Mob>.HateGainInterval {
 			mob<Mob>.HateTarget = player

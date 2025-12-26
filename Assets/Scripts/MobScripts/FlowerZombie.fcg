@@ -18,7 +18,6 @@ import "List.fcc" as List
 [platform_client]
 graph FC_NormalZombie {
     //Executed when entity is created
-    HeadShoted bool = false
 	LastHitPlayer entity<Player> = nil
 	hitPos Vector3 = Vector3{0,0,0}
     tickInterval int = 1

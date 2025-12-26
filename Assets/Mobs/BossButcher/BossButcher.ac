@@ -50,7 +50,8 @@
               "enablefadeTime": true,
               "startTime": 0,
               "endTime": 2.3333332538604736,
-              "wrapMode": 2
+              "wrapMode": 2,
+              "postExtrapolate": 0
             }
           ],
           "prefabVariant": null,
@@ -153,7 +154,8 @@
               "enablefadeTime": true,
               "startTime": 0,
               "endTime": 2.200000047683716,
-              "wrapMode": 0
+              "wrapMode": 0,
+              "postExtrapolate": 0
             }
           ],
           "prefabVariant": null,
@@ -188,7 +190,7 @@
       "editorVisibleValue": true,
       "isLoop": false,
       "DisableChanged": false,
-      "_entityName": "Boss1_NormalAttack",
+      "_entityName": "NormalAttack",
       "eventFrameGroup": {
         "_tag": {
           "type": "ACLayerEntity",
@@ -217,15 +219,15 @@
             "from": "ACState",
             "FrameIndex": 0,
             "EventFrameName": "事件帧 1",
-            "startTime": 0,
+            "startTime": 1,
             "EventList": [
               {
-                "eventKeyValue": "AnimationControllerAble::signal_34643746",
+                "eventKeyValue": "AnimationControllerAble::signal_40948046",
                 "paramList": [
                   {
                     "type": "String",
-                    "label": "eventName",
-                    "newValue": "Boss1OpenNormalEffect"
+                    "label": "attackName",
+                    "newValue": "NormalAttack"
                   }
                 ],
                 "hideParam": false
@@ -295,7 +297,8 @@
               "enablefadeTime": true,
               "startTime": 0,
               "endTime": 0.8333333134651184,
-              "wrapMode": 0
+              "wrapMode": 0,
+              "postExtrapolate": 0
             },
             {
               "_tag": {
@@ -326,9 +329,10 @@
               "_entityName": "New Clip",
               "fadeInTime": 0.3,
               "enablefadeTime": true,
-              "startTime": 0.8333333134651184,
-              "endTime": 1.5,
-              "wrapMode": 2
+              "startTime": 0.5333333134651184,
+              "endTime": 1.2,
+              "wrapMode": 2,
+              "postExtrapolate": 0
             }
           ],
           "prefabVariant": null,
@@ -508,7 +512,8 @@
               "enablefadeTime": true,
               "startTime": 0,
               "endTime": 0.8666666746139526,
-              "wrapMode": 0
+              "wrapMode": 0,
+              "postExtrapolate": 0
             },
             {
               "_tag": {
@@ -539,9 +544,10 @@
               "_entityName": "New Clip",
               "fadeInTime": 0.01,
               "enablefadeTime": true,
-              "startTime": 0.8666666746139526,
-              "endTime": 1.4000000357627869,
-              "wrapMode": 0
+              "startTime": 0.8566666746139526,
+              "endTime": 1.3900000357627869,
+              "wrapMode": 0,
+              "postExtrapolate": 0
             }
           ],
           "prefabVariant": null,
@@ -644,7 +650,8 @@
               "enablefadeTime": true,
               "startTime": 0,
               "endTime": 1.5,
-              "wrapMode": 0
+              "wrapMode": 0,
+              "postExtrapolate": 0
             },
             {
               "_tag": {
@@ -675,9 +682,10 @@
               "_entityName": "New Clip",
               "fadeInTime": 0.3,
               "enablefadeTime": true,
-              "startTime": 1.5,
-              "endTime": 2.700000047683716,
-              "wrapMode": 2
+              "startTime": 1.2,
+              "endTime": 2.400000047683716,
+              "wrapMode": 2,
+              "postExtrapolate": 0
             }
           ],
           "prefabVariant": null,
@@ -857,7 +865,8 @@
               "enablefadeTime": true,
               "startTime": 0,
               "endTime": 0.6000000238418579,
-              "wrapMode": 0
+              "wrapMode": 0,
+              "postExtrapolate": 0
             }
           ],
           "prefabVariant": null,
@@ -960,7 +969,8 @@
               "enablefadeTime": true,
               "startTime": 0,
               "endTime": 1.5,
-              "wrapMode": 0
+              "wrapMode": 0,
+              "postExtrapolate": 0
             },
             {
               "_tag": {
@@ -993,7 +1003,8 @@
               "enablefadeTime": true,
               "startTime": 1.5,
               "endTime": 1.8,
-              "wrapMode": 0
+              "wrapMode": 0,
+              "postExtrapolate": 0
             },
             {
               "_tag": {
@@ -1024,9 +1035,10 @@
               "_entityName": "New Clip (1)",
               "fadeInTime": 0.3,
               "enablefadeTime": true,
-              "startTime": 1.8,
-              "endTime": 2.8,
-              "wrapMode": 0
+              "startTime": 1.5,
+              "endTime": 2.5,
+              "wrapMode": 0,
+              "postExtrapolate": 0
             }
           ],
           "prefabVariant": null,
@@ -1206,7 +1218,8 @@
               "enablefadeTime": true,
               "startTime": 0,
               "endTime": 0.4000000059604645,
-              "wrapMode": 0
+              "wrapMode": 0,
+              "postExtrapolate": 0
             },
             {
               "_tag": {
@@ -1237,9 +1250,10 @@
               "_entityName": "New Clip",
               "fadeInTime": 0.3,
               "enablefadeTime": true,
-              "startTime": 0.4000000059604645,
-              "endTime": 1.0000000298023224,
-              "wrapMode": 2
+              "startTime": 0.10000000596046449,
+              "endTime": 0.7000000298023223,
+              "wrapMode": 2,
+              "postExtrapolate": 0
             }
           ],
           "prefabVariant": null,
@@ -1381,7 +1395,8 @@
               "enablefadeTime": true,
               "startTime": 0,
               "endTime": 0.3333333432674408,
-              "wrapMode": 0
+              "wrapMode": 0,
+              "postExtrapolate": 0
             }
           ],
           "prefabVariant": null,
@@ -1523,7 +1538,8 @@
               "enablefadeTime": true,
               "startTime": 0,
               "endTime": 1,
-              "wrapMode": 2
+              "wrapMode": 2,
+              "postExtrapolate": 0
             }
           ],
           "prefabVariant": null,
@@ -1558,7 +1574,7 @@
       "editorVisibleValue": true,
       "isLoop": false,
       "DisableChanged": false,
-      "_entityName": "Boss1_Run",
+      "_entityName": "Run",
       "eventFrameGroup": {
         "_tag": {
           "type": "ACLayerEntity",
@@ -1626,7 +1642,8 @@
               "enablefadeTime": true,
               "startTime": 0,
               "endTime": 1.3333333730697632,
-              "wrapMode": 2
+              "wrapMode": 2,
+              "postExtrapolate": 0
             }
           ],
           "prefabVariant": null,
@@ -1661,7 +1678,7 @@
       "editorVisibleValue": true,
       "isLoop": false,
       "DisableChanged": false,
-      "_entityName": "Boss1_Walk",
+      "_entityName": "Walk",
       "eventFrameGroup": {
         "_tag": {
           "type": "ACLayerEntity",
@@ -1729,7 +1746,8 @@
               "enablefadeTime": true,
               "startTime": 0,
               "endTime": 1.3333333730697632,
-              "wrapMode": 2
+              "wrapMode": 2,
+              "postExtrapolate": 0
             }
           ],
           "prefabVariant": null,
@@ -1832,7 +1850,8 @@
               "enablefadeTime": true,
               "startTime": 0,
               "endTime": 2.6666667461395264,
-              "wrapMode": 0
+              "wrapMode": 0,
+              "postExtrapolate": 0
             }
           ],
           "prefabVariant": null,
@@ -1867,7 +1886,7 @@
       "editorVisibleValue": true,
       "isLoop": false,
       "DisableChanged": false,
-      "_entityName": "Boss1_Dead",
+      "_entityName": "Dead",
       "eventFrameGroup": {
         "_tag": {
           "type": "ACLayerEntity",
@@ -1974,7 +1993,8 @@
               "enablefadeTime": true,
               "startTime": 0,
               "endTime": 5,
-              "wrapMode": 0
+              "wrapMode": 0,
+              "postExtrapolate": 0
             },
             {
               "_tag": {
@@ -2005,9 +2025,10 @@
               "_entityName": "New Clip",
               "fadeInTime": 0.3,
               "enablefadeTime": true,
-              "startTime": 5,
-              "endTime": 7,
-              "wrapMode": 0
+              "startTime": 4.7,
+              "endTime": 6.7,
+              "wrapMode": 0,
+              "postExtrapolate": 0
             }
           ],
           "prefabVariant": null,
@@ -2110,7 +2131,8 @@
               "enablefadeTime": true,
               "startTime": 0,
               "endTime": 2,
-              "wrapMode": 0
+              "wrapMode": 0,
+              "postExtrapolate": 0
             },
             {
               "_tag": {
@@ -2141,9 +2163,10 @@
               "_entityName": "New Clip",
               "fadeInTime": 0.3,
               "enablefadeTime": true,
-              "startTime": 2,
-              "endTime": 3.333333373069763,
-              "wrapMode": 0
+              "startTime": 1.7,
+              "endTime": 3.0333333730697634,
+              "wrapMode": 0,
+              "postExtrapolate": 0
             },
             {
               "_tag": {
@@ -2174,9 +2197,10 @@
               "_entityName": "New Clip 2",
               "fadeInTime": 0.3,
               "enablefadeTime": true,
-              "startTime": 3.333333373069763,
-              "endTime": 5.333333373069763,
-              "wrapMode": 0
+              "startTime": 2.733333373069763,
+              "endTime": 4.7333333730697635,
+              "wrapMode": 0,
+              "postExtrapolate": 0
             }
           ],
           "prefabVariant": null,
@@ -2279,7 +2303,8 @@
               "enablefadeTime": true,
               "startTime": 0,
               "endTime": 0.4333333373069763,
-              "wrapMode": 0
+              "wrapMode": 0,
+              "postExtrapolate": 0
             }
           ],
           "prefabVariant": null,
@@ -2382,7 +2407,8 @@
               "enablefadeTime": true,
               "startTime": 0,
               "endTime": 0.6666666865348816,
-              "wrapMode": 0
+              "wrapMode": 0,
+              "postExtrapolate": 0
             }
           ],
           "prefabVariant": null,
@@ -2485,7 +2511,8 @@
               "enablefadeTime": true,
               "startTime": 0,
               "endTime": 0.6666666865348816,
-              "wrapMode": 0
+              "wrapMode": 0,
+              "postExtrapolate": 0
             }
           ],
           "prefabVariant": null,
@@ -2588,7 +2615,8 @@
               "enablefadeTime": true,
               "startTime": 0,
               "endTime": 0.6666666865348816,
-              "wrapMode": 2
+              "wrapMode": 2,
+              "postExtrapolate": 0
             }
           ],
           "prefabVariant": null,
@@ -2691,7 +2719,8 @@
               "enablefadeTime": true,
               "startTime": 0,
               "endTime": 1.4333332777023315,
-              "wrapMode": 0
+              "wrapMode": 0,
+              "postExtrapolate": 0
             }
           ],
           "prefabVariant": null,
@@ -2796,7 +2825,8 @@
               "wrapMode": 0,
               "startTime": 0,
               "endTime": 2,
-              "_entityName": "BossButcher@DormancyStart.anim"
+              "_entityName": "BossButcher@DormancyStart.anim",
+              "postExtrapolate": 0
             },
             {
               "_tag": {
@@ -2829,9 +2859,10 @@
                 "fileType": "anim"
               },
               "wrapMode": 0,
-              "startTime": 2,
-              "endTime": 3.333333373069763,
-              "_entityName": "BossButcher@DormancyEnd.anim"
+              "startTime": 1.7,
+              "endTime": 3.0333333730697634,
+              "_entityName": "BossButcher@DormancyEnd.anim",
+              "postExtrapolate": 0
             },
             {
               "_tag": {
@@ -2864,9 +2895,10 @@
                 "fileType": "anim"
               },
               "wrapMode": 0,
-              "startTime": 3.3333333333333335,
-              "endTime": 5.333333333333333,
-              "_entityName": "BossButcher@Revival_xiu.anim"
+              "startTime": 2.7333333333333334,
+              "endTime": 4.733333333333333,
+              "_entityName": "BossButcher@Revival_xiu.anim",
+              "postExtrapolate": 0
             }
           ],
           "prefabVariant": null,
@@ -2938,7 +2970,7 @@
   "editorLockValue": false,
   "editorVisibleValue": true,
   "_entityName": "ACEntity",
-  "version": 2,
+  "version": 3,
   "preModel": {
     "fileId": "9vel9h3f3ur-m3i6ro22-txsdy9gig4",
     "filePath": "Assets\\ZombieAsset\\Boss01\\BossButcher.FBX",
@@ -2948,4 +2980,4 @@
     "fileType": "fbx"
   }
 }
-//"{FE:{"v":"1.12.3559061","c":{"FF":4701},"s":100}
+//"{FE:{"v":"0.2.4113096","c":{"FF":5001},"s":100}
