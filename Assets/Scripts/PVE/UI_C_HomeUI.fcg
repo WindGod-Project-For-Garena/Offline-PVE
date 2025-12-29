@@ -102,6 +102,9 @@ graph UI_HomeUI {
         GiftedUIEntity<CustomUI>.IsVisible = true
         var ChoiceHeroUIEntity = GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI
         ChoiceHeroUIEntity<CustomUI>.IsVisible = false
+        // 隐藏弹窗
+        var PopupPanel = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.GiftedUI, "/PopupPanel")
+        PopupPanel<UIWidget>.IsVisible = false
         //初始化天赋面板
         GetLocalPlayer()<PlayerJionGame>.InitAllGiftedCardUI()
     }
