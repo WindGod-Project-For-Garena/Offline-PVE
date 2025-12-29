@@ -184,12 +184,12 @@ graph PlayerJionGame {
             CreateCustomUIClient(out var ChoiceHeroUIEntity, EResUI.ChoiceHero)
             ChoiceHeroUI = ChoiceHeroUIEntity 
             ChoiceHeroUIEntity<CustomUI>.IsVisible = true
-            var skill1 entity<UIWidgetButton> = GetWidgetFromCustomUI(GetLocalPlayer(),ChoiceHeroUIEntity , EResUIChoiceHero.Hero_1) as entity<UIWidgetButton>
-            var skill2 entity<UIWidgetButton> = GetWidgetFromCustomUI(GetLocalPlayer(),ChoiceHeroUIEntity , EResUIChoiceHero.Hero_2) as entity<UIWidgetButton>
-            var skill3 entity<UIWidgetButton> = GetWidgetFromCustomUI(GetLocalPlayer(),ChoiceHeroUIEntity , EResUIChoiceHero.Hero_3) as entity<UIWidgetButton>
-            skill1<UIWidgetButton>.Color = #FF8900
-            skill2<UIWidgetButton>.Color = #F2A245
-            skill3<UIWidgetButton>.Color = #F2A245
+            var HeroButtonEntity1 = GetWidgetByPath(GetLocalPlayer(), ChoiceHeroUI, "/ChoiceHero/Hero_1/BBIMAGE")
+            var HeroButtonEntity2 = GetWidgetByPath(GetLocalPlayer(), ChoiceHeroUI, "/ChoiceHero/Hero_2/BBIMAGE")
+            var HeroButtonEntity3 = GetWidgetByPath(GetLocalPlayer(), ChoiceHeroUI, "/ChoiceHero/Hero_3/BBIMAGE")
+            HeroButtonEntity1<UIWidget>.IsVisible = true
+            HeroButtonEntity2<UIWidget>.IsVisible = false
+            HeroButtonEntity3<UIWidget>.IsVisible = false
             //默认选择第一个技能
             var skillIndex int = 1
             displaySkillByIndex(skillIndex)
@@ -1502,6 +1502,7 @@ graph PlayerJionGame {
         ShowDrawCardPopup(selectedCard)
 
         currentSelectedCardId = selectedCardId
+
     }
 
     func ShowDrawCardPopup(cardInfo Map<string, object>) {
