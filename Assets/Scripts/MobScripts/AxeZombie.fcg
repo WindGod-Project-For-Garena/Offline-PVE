@@ -1,0 +1,105 @@
+import "StdLibrary.fcc" as StdLib
+import "EditorGenLib.fcc" as EditorLib
+import "Playable.fcc" as Playable
+import "BehaviourTree.fcc" as BehaviourTree
+import "Camera.fcc" as Camera
+import "Math.fcc" as Math
+import "Combat.fcc" as Combat
+import "../CustomEvent.fcc" as CustomEvent
+import "../PVE/FC_PVEMonsterManager.fcg" as PVEMonsterManager
+import "Offline.fcc" as Offline
+import "../C_HitBox.fcg" as HitBox
+import "Avatar.fcc" as Avatar
+
+[platform_client]
+graph FC_NormalZombie {
+    //Executed when entity is created
+	LastHitPlayer entity<Player> = nil
+	LastPos Vector3 = Vector3{0,0,0}
+    tickInterval int = 1
+	
+
+	event OnAwake() {
+        WaitForNextFrame()
+        Init()
+    }
+
+	event OnMobActived() {
+		WaitForMillisecond(1200)
+		//LogInfo("添加受击盒")
+		
+        CreateFromPrefab(out var headHitbox, EResPrefab.HitBox_Zombie_Head)
+		AddScript(headHitbox, EResFCG.C_HitBox)
+        SetParentClient(GetSkeletonPartByName(thisEntity, "bone_Head"), headHitbox<Transform>, false)
+		headHitbox<HitBox>.SetOwner(thisEntity, "Head")
+
+		AddScript(thisEntity, EResFCG.C_HitBox)
+		thisEntity<HitBox>.SetOwner(thisEntity, "Body")
+	}
+
+	//funcID: Init
+	async func Init() {
+		thisEntity<BevTreeAttachableForClient>.AttachTarget<BevTree>.TickInterval = tickInterval
+		thisEntity<Mob>.HateGainInterval = 3000
+		thisEntity<Mob>.DetectRange = 30
+		thisEntity<Mob>.StatusDic = Map<string, object>{
+			"InAttack": false as bool,
+			"LastAttackTime_NormalAttack": globalEntity<Global>.GameTimeCount as int,
+			"CD_NormalAttack": 1800 as int,
+			"Duration_NormalAttack": 1550 as int,
+			"Range_NormalAttack": 1.2 as float,
+		}
+		
+
+
+	}
+	
+	
+
+
+
+	//eventID: 91//r;Zn+-uY8Ahq`0JH4Yr{ //animation
+	event MobAttackEvent_AC(attackName string) {
+		if (attackName == "NormalAttack") {
+			//LogInfo("NormalAttack1")
+			var curTarget = thisEntity<Mob>.CurrTarget
+		//	LogInfo("curTarget: " + curTarget as entity<Player><Player>.Position)
+			if (curTarget != nil && (Distance(curTarget as entity<Player><Player>.Position, thisEntity as entity<LevelObject><Transform>.Position) <= 1.7)) {		
+				
+				Offline.DealDamage(curTarget as entity<Combatable>, nil, DamageType.Monster, GetDamage())
+			}
+		} else if (attackName == "NormalAttack2") {
+			
+		} else {
+			//start globalEntity<global_process_eca>.DeleteThisZombie(thisEntity)
+			//Destroy(thisEntity)
+		}
+	}
+
+	event MobDeathEvent_AC() {
+		LogInfo("-------------------------MobDeathEvent_AC-------------------------")
+		PVEMonsterManager.OnMonsterKilledAnimationFinished(thisEntity as entity<LevelObject>)
+	}
+
+	event OnDamageMob(mob entity<Entity>, part string, damage int, player entity<Player>) {
+		//LogInfo("OnDamageMob: " + part + " damage: " + damage + "HP: " + mob<Mob>.HP)
+		//LogInfo("mob: " + mob + "thisEntity: " + thisEntity)
+
+		//处理仇恨值
+		if mob<Mob>.HateGainTime > globalEntity<Global>.GameTimeCount - thisEntity<Mob>.HateGainInterval {
+			mob<Mob>.HateTarget = player
+			mob<Mob>.HateGainTime = globalEntity<Global>.GameTimeCount
+		}
+
+		//处理血量，如果血量小于0，则死亡
+		mob<Mob>.HP = mob<Mob>.HP - damage
+		if (mob<Mob>.HP <= 0) {
+			mob<Mob>.HP = 0
+		}
+	}
+
+	//funcID: GetDamage
+	func GetDamage() int {
+		return Floor((thisEntity<Mob>.Damage))
+	}
+}

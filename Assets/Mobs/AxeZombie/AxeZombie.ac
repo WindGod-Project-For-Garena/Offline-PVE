@@ -50,7 +50,8 @@
               "enablefadeTime": true,
               "startTime": 0,
               "endTime": 3,
-              "wrapMode": 2
+              "wrapMode": 2,
+              "postExtrapolate": 0
             }
           ],
           "prefabVariant": null,
@@ -153,7 +154,8 @@
               "enablefadeTime": true,
               "startTime": 0,
               "endTime": 1.5333333015441895,
-              "wrapMode": 0
+              "wrapMode": 0,
+              "postExtrapolate": 0
             }
           ],
           "prefabVariant": null,
@@ -188,14 +190,47 @@
       "editorVisibleValue": true,
       "isLoop": false,
       "DisableChanged": false,
-      "_entityName": "AxeZombie_Attack1",
+      "_entityName": "NoramlAttack",
       "eventFrameGroup": {
         "_tag": {
           "type": "ACLayerEntity",
           "resourceId": ""
         },
         "_entityId": "di2KKbjg",
-        "children": [],
+        "children": [
+          {
+            "_entityName": "",
+            "_tag": {
+              "type": "EventFrameEntity"
+            },
+            "_entityId": "yKJmGZeN",
+            "children": [],
+            "prefabVariant": null,
+            "activeValue": null,
+            "unlockedValue": null,
+            "editorLockValue": false,
+            "editorVisibleValue": true,
+            "from": "ACState",
+            "FrameIndex": 21,
+            "EventFrameName": "Event Frame 1",
+            "startTime": 0.666,
+            "EventList": [
+              {
+                "eventKeyValue": "AnimationControllerAble::signal_40948046",
+                "paramList": [
+                  {
+                    "type": "String",
+                    "label": "attackName",
+                    "newValue": "NormalAttack"
+                  }
+                ],
+                "hideParam": false
+              }
+            ],
+            "dsada": "Sphere",
+            "enable": false
+          }
+        ],
         "prefabVariant": null,
         "activeValue": {
           "selfValue": true,
@@ -256,7 +291,8 @@
               "enablefadeTime": true,
               "startTime": 0,
               "endTime": 1.3333333730697632,
-              "wrapMode": 0
+              "wrapMode": 0,
+              "postExtrapolate": 0
             }
           ],
           "prefabVariant": null,
@@ -291,7 +327,7 @@
       "editorVisibleValue": true,
       "isLoop": false,
       "DisableChanged": false,
-      "_entityName": "AxeZombie_Attack2",
+      "_entityName": "NoramlAttack2",
       "eventFrameGroup": {
         "_tag": {
           "type": "ACLayerEntity",
@@ -359,7 +395,8 @@
               "enablefadeTime": true,
               "startTime": 0,
               "endTime": 2.3333332538604736,
-              "wrapMode": 0
+              "wrapMode": 0,
+              "postExtrapolate": 0
             }
           ],
           "prefabVariant": null,
@@ -394,7 +431,7 @@
       "editorVisibleValue": true,
       "isLoop": false,
       "DisableChanged": false,
-      "_entityName": "AxeZombie_Attack3",
+      "_entityName": "SpinAttack",
       "eventFrameGroup": {
         "_tag": {
           "type": "ACLayerEntity",
@@ -462,7 +499,8 @@
               "enablefadeTime": true,
               "startTime": 0,
               "endTime": 0.5333333611488342,
-              "wrapMode": 2
+              "wrapMode": 2,
+              "postExtrapolate": 0
             }
           ],
           "prefabVariant": null,
@@ -497,7 +535,7 @@
       "editorVisibleValue": true,
       "isLoop": false,
       "DisableChanged": false,
-      "_entityName": "AxeZombie_Run",
+      "_entityName": "Run",
       "eventFrameGroup": {
         "_tag": {
           "type": "ACLayerEntity",
@@ -565,7 +603,8 @@
               "enablefadeTime": true,
               "startTime": 0,
               "endTime": 1,
-              "wrapMode": 2
+              "wrapMode": 2,
+              "postExtrapolate": 0
             }
           ],
           "prefabVariant": null,
@@ -600,7 +639,7 @@
       "editorVisibleValue": true,
       "isLoop": false,
       "DisableChanged": false,
-      "_entityName": "AxeZombie_Walk",
+      "_entityName": "Walk",
       "eventFrameGroup": {
         "_tag": {
           "type": "ACLayerEntity",
@@ -668,7 +707,8 @@
               "enablefadeTime": true,
               "startTime": 0,
               "endTime": 2,
-              "wrapMode": 2
+              "wrapMode": 2,
+              "postExtrapolate": 0
             }
           ],
           "prefabVariant": null,
@@ -771,7 +811,8 @@
               "enablefadeTime": true,
               "startTime": 0,
               "endTime": 0.3799999952316284,
-              "wrapMode": 0
+              "wrapMode": 0,
+              "postExtrapolate": 0
             }
           ],
           "prefabVariant": null,
@@ -874,7 +915,8 @@
               "enablefadeTime": true,
               "startTime": 0,
               "endTime": 1.1666666269302368,
-              "wrapMode": 0
+              "wrapMode": 0,
+              "postExtrapolate": 0
             }
           ],
           "prefabVariant": null,
@@ -909,7 +951,7 @@
       "editorVisibleValue": true,
       "isLoop": false,
       "DisableChanged": false,
-      "_entityName": "AxeZombie_Dead",
+      "_entityName": "Dead",
       "eventFrameGroup": {
         "_tag": {
           "type": "ACLayerEntity",
@@ -945,6 +987,14 @@
   "editorLockValue": false,
   "editorVisibleValue": true,
   "_entityName": "ACEntity",
-  "version": 2
+  "version": 3,
+  "preModel": {
+    "fileId": "zi88jf1spk-m1kbu4qt-2z1xdf79yg5",
+    "filePath": "Assets\\Mobs\\AxeZombie\\C_WeaponZombie01.FBX",
+    "_tag": {
+      "type": "GFileRefer"
+    },
+    "fileType": "fbx"
+  }
 }
-//"{FE:{"v":"1.12.3559061","c":{"FF":4701},"s":100}
+//"{FE:{"v":"0.2.4113096","c":{"FF":5001},"s":100}
