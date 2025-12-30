@@ -12,6 +12,7 @@ import "../PVE/UI_C_HomeUI.fcg" as UI_C_HomeUI
 import "../CustomEvent.fcc" as CustomEvent
 import "../PVE/PVEController.fcg" as PVEController
 import "Convert.fcc" as Convert
+import "../Static/FC_Config.fcg" as FC_Config
 
 [platform_client]
 graph ChoiceOneOfThreeCard {
@@ -245,20 +246,25 @@ graph ChoiceOneOfThreeCard {
       }
    }
    
-   // 更新单个卡牌位置的图标
+   // 更新单个卡牌位置的图标(小图标)
    func UpdateSingleCardIcon(position int, cardId int, currentSkill int) {
-      // 图标路径
-      var iconPath = "/NowChoicePanel/List/Card (" + Convert.ToString(position) + ")/ICON"
+
+      var cardInfo = GetLocalPlayer()<PlayerJionGame>.GetCardInfoById(cardId, currentSkill)
+      var rarity = cardInfo["Rarity"] as int
+      // 按钮路径
+      var buttonPath = "/NowChoicePanel/List/Card (" + Convert.ToString(position) + ")"
       // 获取图标控件
-      var iconWidget = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.ChoiceThreeCardUI, iconPath)
-      if iconWidget != nil {
-         // 显示图标控件
+      var buttonWidget = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.ChoiceThreeCardUI, buttonPath)
+      var iconWidget = GetChildByName(buttonWidget, "ICON")
+      if buttonWidget != nil {
+         // 设置按钮的图标
+         buttonWidget<UIWidgetButton>.SpriteResource = FC_Config.CardRaritySprite[rarity]
          iconWidget<UIWidget>.IsVisible = true
          // 根据卡牌ID设置不同的图标
          // iconWidget<UIWidgetImage>.SetImage("CardIcon_" + Convert.ToString(cardId))
          LogInfo("已更新位置 " + Convert.ToString(position) + " 的图标")
       } else {
-         LogError("找不到图标控件: " + iconPath)
+         LogError("找不到按钮控件: " + buttonPath)
       }
    }
    

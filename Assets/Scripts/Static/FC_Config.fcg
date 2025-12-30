@@ -5,6 +5,7 @@ import "EditorGenLib.fcc" as EditorLib
 static graph FC_Config {
     //Executed when entity is created
     MobPrefabIDs Map<string, EResPrefab> = Map<string, EResPrefab>{}
+    CardRaritySprite Map<int, EResSprite> = Map<int, EResSprite>{}
     event OnAwake() {
         MobPrefabIDs = Map<string, EResPrefab>{
             "NormalZombie": EResPrefab.NormalZombie,
@@ -18,6 +19,13 @@ static graph FC_Config {
             "BossFlower": EResPrefab.BossFlower,
             "AxeZombie": EResPrefab.AxeZombie,
         }
+        CardRaritySprite = Map<int, EResSprite>{
+            0: EResSprite.FF_ingame_hud_RandomBuff_Grey,
+            1: EResSprite.FF_ingame_hud_RandomBuff_Blue,
+            2: EResSprite.FF_ingame_hud_RandomBuff_Purple,
+            3: EResSprite.FF_ingame_hud_RandomBuff_Yellow,
+        }
+
     }
 
 }

@@ -15,6 +15,7 @@ import "../CustomEvent.fcc" as CustomEvent
 import "../PVE/PVEController.fcg" as PVEController
 import "Economy.fcc" as Economy
 import "../Home/GiftedPanel.fcg" as GiftedPanel
+import "../Static/FC_Config.fcg" as FC_Config
 
 // 这里是RCT最新代码，WindGod & Holy巨献
 
@@ -1220,20 +1221,14 @@ graph PlayerJionGame {
 
     // 更新卡牌稀有度显示（根据稀有度显示不同的边框颜色）
     func UpdateCardRarityUI(cardIndex int, rarity int) {
+        LogInfo("更新卡牌稀有度显示: " + Convert.ToString(cardIndex) + " " + Convert.ToString(rarity))
         var rarityPath = "/ChoiceThreeCardPanel/Card_" + Convert.ToString(cardIndex)
         var rarityWidget = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, rarityPath)
+        var spriteName = FC_Config.CardRaritySprite[rarity]
+        LogInfo("EresourceSprite: " + Convert.ToString(spriteName))
+        LogInfo("name: " + Convert.ToString(EResSprite.FF_ingame_hud_RandomBuff_Blue))
         if rarityWidget != nil {
-            // 根据稀有度设置不同的颜色
-            if rarity == 1 {
-                // 普通 - 蓝色
-                rarityWidget<UIWidgetButton>.Color = #18C6FF
-            } else if rarity == 2 {
-                // 稀有 - 紫色
-                rarityWidget<UIWidgetButton>.Color = #FF31F8
-            } else if rarity == 3 {
-                // 史诗 - 金色
-                rarityWidget<UIWidgetButton>.Color = #FFBA00
-            }
+            rarityWidget<UIWidgetButton>.SpriteResource = spriteName
         }
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
@@ -1528,6 +1523,7 @@ graph PlayerJionGame {
         // 更具稀有度更新边框颜色
         var PopupBorderBBEntity = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/PopupPanel/Bb/ICONBb")
         var PopupBorderEntity = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/PopupPanel/Bb/ICONBb/ICONBB/Icon")
+        var EresourceSprite = FC_Config.CardRaritySprite[rarity]
         if PopupBorderEntity != nil {
             if rarity == 1 {
                 // 普通 - 蓝色

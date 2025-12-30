@@ -249,7 +249,7 @@ static graph FC_PVEMonsterManager {
         // 启动三个独立的生成循环（Boss -> Elite -> Normal）
         currSpawnerIndex = currSpawnerIndex + 1
         start SpawnBossLoop(bossQueue,currSpawnerIndex)
-        //start SpawnEliteLoop(eliteQueue,currSpawnerIndex)
+        start SpawnEliteLoop(eliteQueue,currSpawnerIndex)
         //start SpawnNormalLoop(normalQueue,currSpawnerIndex)
         
         LogInfo("波次怪物生成循环已启动")
