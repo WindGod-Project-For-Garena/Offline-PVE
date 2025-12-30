@@ -58,23 +58,32 @@ graph UI_HomeUI {
 
     func OnSkill1Click(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
         GetLocalPlayer()<PlayerJionGame>.CurrentSkill = 1
-        skill1<UIWidgetButton>.Color = #FF8900
-        skill2<UIWidgetButton>.Color = #F2A245
-        skill3<UIWidgetButton>.Color = #F2A245
+        var HeroButtonEntity1 = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI, "/ChoiceHero/Hero_1/BBIMAGE")
+        var HeroButtonEntity2 = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI, "/ChoiceHero/Hero_2/BBIMAGE")
+        var HeroButtonEntity3 = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI, "/ChoiceHero/Hero_3/BBIMAGE")
+        HeroButtonEntity1<UIWidget>.IsVisible = true
+        HeroButtonEntity2<UIWidget>.IsVisible = false
+        HeroButtonEntity3<UIWidget>.IsVisible = false
     }
 
     func OnSkill2Click(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
         GetLocalPlayer()<PlayerJionGame>.CurrentSkill = 2
-        skill1<UIWidgetButton>.Color = #F2A245
-        skill2<UIWidgetButton>.Color = #FF8900
-        skill3<UIWidgetButton>.Color = #F2A245
+        var HeroButtonEntity1 = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI, "/ChoiceHero/Hero_1/BBIMAGE")
+        var HeroButtonEntity2 = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI, "/ChoiceHero/Hero_2/BBIMAGE")
+        var HeroButtonEntity3 = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI, "/ChoiceHero/Hero_3/BBIMAGE")
+        HeroButtonEntity1<UIWidget>.IsVisible = false
+        HeroButtonEntity2<UIWidget>.IsVisible = true
+        HeroButtonEntity3<UIWidget>.IsVisible = false
     }
 
     func OnSkill3Click(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
         GetLocalPlayer()<PlayerJionGame>.CurrentSkill = 0
-        skill1<UIWidgetButton>.Color = #F2A245
-        skill2<UIWidgetButton>.Color = #F2A245
-        skill3<UIWidgetButton>.Color = #FF8900
+        var HeroButtonEntity1 = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI, "/ChoiceHero/Hero_1/BBIMAGE")
+        var HeroButtonEntity2 = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI, "/ChoiceHero/Hero_2/BBIMAGE")
+        var HeroButtonEntity3 = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI, "/ChoiceHero/Hero_3/BBIMAGE")
+        HeroButtonEntity1<UIWidget>.IsVisible = false
+        HeroButtonEntity2<UIWidget>.IsVisible = false
+        HeroButtonEntity3<UIWidget>.IsVisible = true
     }
 
     func OnStartButtonClick(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
@@ -102,6 +111,9 @@ graph UI_HomeUI {
         GiftedUIEntity<CustomUI>.IsVisible = true
         var ChoiceHeroUIEntity = GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI
         ChoiceHeroUIEntity<CustomUI>.IsVisible = false
+        // 隐藏弹窗
+        var PopupPanel = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.GiftedUI, "/PopupPanel")
+        PopupPanel<UIWidget>.IsVisible = false
         //初始化天赋面板
         GetLocalPlayer()<PlayerJionGame>.InitAllGiftedCardUI()
     }

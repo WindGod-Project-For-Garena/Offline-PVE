@@ -14,6 +14,7 @@ import "Items.fcc" as Items
 import "../CustomEvent.fcc" as CustomEvent
 import "../PVE/PVEController.fcg" as PVEController
 import "Economy.fcc" as Economy
+import "../Home/GiftedPanel.fcg" as GiftedPanel
 
 // 这里是RCT最新代码，WindGod & Holy巨献
 
@@ -34,12 +35,12 @@ graph PlayerJionGame {
     GameOverFinalUI entity<CustomHud>       //結算页面
     TimeInGameUI entity<CustomHud>          //时间页面
     WaveCompleteUI entity<CustomHud>        //波次完成页面
-    PopupUI entity<CustomHud>               //弹窗页面
     BossHPBar entity<CustomHud>             //Boss血条页面
     
     CurrentSkill int = 1
     //当前选择的卡牌第几张1-3
     NowChoiceCard int = 0
+    currentSelectedCardId int = 0
     // 每个技能的各个属性等级（范围、伤害、CD分别维护）
     Skill1_RangeLevel int = 0
     Skill1_DamageLevel int = 0
@@ -183,12 +184,12 @@ graph PlayerJionGame {
             CreateCustomUIClient(out var ChoiceHeroUIEntity, EResUI.ChoiceHero)
             ChoiceHeroUI = ChoiceHeroUIEntity 
             ChoiceHeroUIEntity<CustomUI>.IsVisible = true
-            var skill1 entity<UIWidgetButton> = GetWidgetFromCustomUI(GetLocalPlayer(),ChoiceHeroUIEntity , EResUIChoiceHero.Hero_1) as entity<UIWidgetButton>
-            var skill2 entity<UIWidgetButton> = GetWidgetFromCustomUI(GetLocalPlayer(),ChoiceHeroUIEntity , EResUIChoiceHero.Hero_2) as entity<UIWidgetButton>
-            var skill3 entity<UIWidgetButton> = GetWidgetFromCustomUI(GetLocalPlayer(),ChoiceHeroUIEntity , EResUIChoiceHero.Hero_3) as entity<UIWidgetButton>
-            skill1<UIWidgetButton>.Color = #FF8900
-            skill2<UIWidgetButton>.Color = #F2A245
-            skill3<UIWidgetButton>.Color = #F2A245
+            var HeroButtonEntity1 = GetWidgetByPath(GetLocalPlayer(), ChoiceHeroUI, "/ChoiceHero/Hero_1/BBIMAGE")
+            var HeroButtonEntity2 = GetWidgetByPath(GetLocalPlayer(), ChoiceHeroUI, "/ChoiceHero/Hero_2/BBIMAGE")
+            var HeroButtonEntity3 = GetWidgetByPath(GetLocalPlayer(), ChoiceHeroUI, "/ChoiceHero/Hero_3/BBIMAGE")
+            HeroButtonEntity1<UIWidget>.IsVisible = true
+            HeroButtonEntity2<UIWidget>.IsVisible = false
+            HeroButtonEntity3<UIWidget>.IsVisible = false
             //默认选择第一个技能
             var skillIndex int = 1
             displaySkillByIndex(skillIndex)
@@ -227,10 +228,6 @@ graph PlayerJionGame {
             CreateCustomUIClient(out var WaveCompleteUIEntity, EResUI.WaveComplete)
             WaveCompleteUI = WaveCompleteUIEntity
             WaveCompleteUIEntity<CustomUI>.IsVisible = false
-
-            CreateCustomUIClient(out var PopupUIEntity, EResUI.Popup)
-            PopupUI = PopupUIEntity
-            PopupUIEntity<CustomUI>.IsVisible = false
 
             CreateCustomUIClient(out var bossHPBar, EResUI.BossHP)
             BossHPBar = bossHPBar
@@ -1229,13 +1226,13 @@ graph PlayerJionGame {
             // 根据稀有度设置不同的颜色
             if rarity == 1 {
                 // 普通 - 蓝色
-                rarityWidget<UIWidgetButton>.Color = #1B92D6
+                rarityWidget<UIWidgetButton>.Color = #18C6FF
             } else if rarity == 2 {
                 // 稀有 - 紫色
-                rarityWidget<UIWidgetButton>.Color = #6C00FF
+                rarityWidget<UIWidgetButton>.Color = #FF31F8
             } else if rarity == 3 {
                 // 史诗 - 金色
-                rarityWidget<UIWidgetButton>.Color = #FFD700
+                rarityWidget<UIWidgetButton>.Color = #FFBA00
             }
         }
     }
@@ -1503,11 +1500,15 @@ graph PlayerJionGame {
 
         // 弹出弹框显示抽到的卡牌
         ShowDrawCardPopup(selectedCard)
+
+        currentSelectedCardId = selectedCardId
+
     }
 
     func ShowDrawCardPopup(cardInfo Map<string, object>) {
         // 弹出弹框显示抽到的卡牌
-        PopupUI<CustomUI>.IsVisible = true
+        var PopupPanel = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/PopupPanel")
+        PopupPanel<UIWidget>.IsVisible = true
         
         var cardId = cardInfo["CardID"] as int
         var nature = Convert.ToString(cardInfo["Nature"])
@@ -1519,13 +1520,32 @@ graph PlayerJionGame {
         var maxCount = GetMaxDrawCount(nature)
 
         // 更新天赋卡牌说明
-        var PopupText = GetWidgetByPath(GetLocalPlayer(), PopupUI, "/Panel/Bb/ICONBb/Text")
+        var PopupText = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/PopupPanel/Bb/ICONBb/Text")
         if PopupText != nil {
             PopupText<UIWidgetLabel>.Content = GiftedNameText
         }
 
+        // 更具稀有度更新边框颜色
+        var PopupBorderBBEntity = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/PopupPanel/Bb/ICONBb")
+        var PopupBorderEntity = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/PopupPanel/Bb/ICONBb/ICONBB/Icon")
+        if PopupBorderEntity != nil {
+            if rarity == 1 {
+                // 普通 - 蓝色
+                PopupBorderEntity<UIWidgetImage>.Color = #18C6FF
+                PopupBorderBBEntity<UIWidgetImage>.SpriteName = EResSprite.FF_ingame_hud_RandomBuff_Blue
+            } else if rarity == 2 {
+                // 稀有 - 紫色
+                PopupBorderEntity<UIWidgetImage>.Color = #FF31F8
+                PopupBorderBBEntity<UIWidgetImage>.SpriteName = EResSprite.FF_ingame_hud_RandomBuff_Purple
+            } else if rarity == 3 {
+                // 史诗 - 金色
+                PopupBorderEntity<UIWidgetImage>.Color = #FFBA00
+                PopupBorderBBEntity<UIWidgetImage>.SpriteName = EResSprite.FF_ingame_hud_RandomBuff_Yellow
+            }
+        }
+
         // 更新卡牌图标
-        var PopupIconEntity = GetWidgetByPath(GetLocalPlayer(), PopupUI, "/Panel/Bb/ICONBb/ICON")
+        var PopupIconEntity = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/PopupPanel/Bb/ICONBb/ICONBB/Icon/GiftICON")
         if PopupIconEntity != nil {
             // PopupIconEntity.SetImage("GiftedIcon_" + Convert.ToString(cardId))
         }
@@ -1610,7 +1630,7 @@ graph PlayerJionGame {
         // 计算所有天赋的加成百分比
         var bonuses = CalculateGiftedCardBonusPercentages()
         // HP加成显示
-        var hpBonusWidget = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/AllPanel/IFMLang/HP/HPLogo/Name/Num")
+        var hpBonusWidget = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/AllPanel/IFMLang/HPLogo/Name/Num")
         if hpBonusWidget != nil {
             var hpBonus = 0.0
             if bonuses["HP"] != nil {
@@ -1619,7 +1639,7 @@ graph PlayerJionGame {
             hpBonusWidget<UIWidgetLabel>.Content = "+"+Convert.ToString(Math.Round(hpBonus))
         }
         // 移动速度加成显示
-        var moveSpeedBonusWidget = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/AllPanel/IFMLang/MoveSpeed/MoveSpeedLogo/Name/Num")
+        var moveSpeedBonusWidget = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/AllPanel/IFMLang/MoveSpeedLogo/Name/Num")
         if moveSpeedBonusWidget != nil {
             var moveSpeedBonus = 0.0
             if bonuses["MoveSpeed"] != nil {
@@ -1628,7 +1648,7 @@ graph PlayerJionGame {
             moveSpeedBonusWidget<UIWidgetLabel>.Content = "+"+Convert.ToString(Math.Round(moveSpeedBonus)) + "%"
         }
         // 武器伤害加成显示
-        var weaponDamageBonusWidget = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/AllPanel/IFMLang/WeaponDamage/WeaponDamageLogo/Name/Num")
+        var weaponDamageBonusWidget = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/AllPanel/IFMLang/WeaponDamageLogo/Name/Num")
         if weaponDamageBonusWidget != nil {
             var weaponDamageBonus = 0.0
             if bonuses["WeaponDamage"] != nil {
@@ -1637,7 +1657,7 @@ graph PlayerJionGame {
             weaponDamageBonusWidget<UIWidgetLabel>.Content = "+"+Convert.ToString(Math.Round(weaponDamageBonus)) + "%"
         }
         // 技能伤害加成显示
-        var skillDamageBonusWidget = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/AllPanel/IFMLang/SKillDamage/SkillLogo/Name/Num")
+        var skillDamageBonusWidget = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/AllPanel/IFMLang/SkillLogo/Name/Num")
         if skillDamageBonusWidget != nil {
             var skillDamageBonus = 0.0
             if bonuses["SkillDamage"] != nil {
@@ -1880,17 +1900,18 @@ graph PlayerJionGame {
             NumTextEntity<UIWidgetLabel>.Content = "x" + Convert.ToString(currentCount)
         }
         
-        // 根据稀有度设置卡牌颜色
-        if cardEntity != nil {
+        // 更具稀有度更新边框颜色
+        var ICONBBEntity = GetChildByName(HasCardPanelEntity, "ICONBB")
+        if ICONBBEntity != nil {
             if rarity == 1 {
                 // 普通 - 蓝色
-                cardEntity<UIWidgetButton>.Color = #1B92D6
+                ICONBBEntity<UIWidgetImage>.Color = #18C6FF
             } else if rarity == 2 {
                 // 稀有 - 紫色
-                cardEntity<UIWidgetButton>.Color = #6C00FF
+                ICONBBEntity<UIWidgetImage>.Color = #FF31F8
             } else if rarity == 3 {
                 // 史诗 - 金色
-                cardEntity<UIWidgetButton>.Color = #FFD700
+                ICONBBEntity<UIWidgetImage>.Color = #FFBA00
             }
         }
         
@@ -1947,14 +1968,19 @@ graph PlayerJionGame {
             priceText<UIWidgetLabel>.Content = Convert.ToString(currentPrice)
         }
         // 技能名称文本控件
-        var skillNameWidget = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/Panel/GiftIFMPanel/GiftIFMTitle")
+        var skillNameWidget = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/Panel/GiftIFMPanel/SubTitleCCCC/GiftIFMTitle")
         if skillNameWidget != nil {
             skillNameWidget<UIWidgetLabel>.Content = ""
         }
         // 技能描述文本控件
-        var skillDescWidget = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/Panel/GiftIFMPanel/GiftIFMTitle/GiftIFMSubtitle")
+        var skillDescWidget = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/Panel/GiftIFMPanel/SubTitleCCCC/GiftIFMTitle/GiftIFMSubtitle")
         if skillDescWidget != nil {
             skillDescWidget<UIWidgetLabel>.Content = ""
+        }
+        // 技能描述文本面板
+        var skillPanelWidget = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/Panel/GiftIFMPanel/SubTitleCCCC")
+        if skillPanelWidget != nil {
+            skillPanelWidget<UIWidget>.IsVisible = false
         }
         // 初始化时显示天赋加成百分比
         DisplayGiftedCardBonusesInUI()
@@ -2118,13 +2144,13 @@ graph PlayerJionGame {
             // 根据稀有度设置不同的颜色
             if rarity == 1 {
                 // 普通 - 蓝色
-                cardEntity<UIWidgetButton>.Color = #1B92D6
+                cardEntity<UIWidgetButton>.Color = #18C6FF
             } else if rarity == 2 {
                 // 稀有 - 紫色
-                cardEntity<UIWidgetButton>.Color = #6C00FF
+                cardEntity<UIWidgetButton>.Color = #FF31F8
             } else if rarity == 3 {
                 // 史诗 - 金色
-                cardEntity<UIWidgetButton>.Color = #FFD700
+                cardEntity<UIWidgetButton>.Color = #FFBA00
             }
         }
     }

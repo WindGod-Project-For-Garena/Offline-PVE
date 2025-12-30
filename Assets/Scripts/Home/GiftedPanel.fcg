@@ -12,9 +12,6 @@ import "Convert.fcc" as Convert
 
 [platform_client]
 graph GiftedPanel {
-     // 存储当前选中的卡牌ID
-     currentSelectedCardId int = 0
-     
      //前往选择角色开始游戏面板
      func ToNewHome(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
           var ChoiceHeroUIEntity = GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI
@@ -78,10 +75,10 @@ graph GiftedPanel {
           ShowCardDetails(10)
      }
 
-          // 显示卡牌详情的统一函数
+     // 显示卡牌详情的统一函数
      func ShowCardDetails(cardId int) {
           // 更新当前选中的卡牌ID
-          currentSelectedCardId = cardId
+          GetLocalPlayer()<PlayerJionGame>.currentSelectedCardId = cardId
           // 从PlayerJionGame获取卡牌数据
           var giftedCardData = GetLocalPlayer()<PlayerJionGame>.Gifted_CardData
           var cardInfo = giftedCardData[cardId]
@@ -131,74 +128,45 @@ graph GiftedPanel {
           }
           // 显示到UI
           UpdateCardDetailUI(skillNameText, skillDescText, rarity)
-          
-          // 高亮显示当前选中的卡牌
-          // HighlightSelectedCard(cardId)
      }
     
     // 更新卡牌详情UI显示
      func UpdateCardDetailUI(skillNameText string, skillDescText string, rarity int) {
+          if skillNameText == "" && skillDescText == "" {
+               LogInfo(skillNameText)
+               // 如果名称和描述都是空，说明卡牌未解锁，直接返回
+               return
+          }
+          // 技能描述文本面板
+          var skillPanelWidget = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.GiftedUI, "/Panel/GiftIFMPanel/SubTitleCCCC")
+          if skillPanelWidget != nil {
+               skillPanelWidget<UIWidget>.IsVisible = true
+          }
+
           // 技能名称文本控件
-          var skillNameWidget = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.GiftedUI, "/Panel/GiftIFMPanel/GiftIFMTitle")
+          var skillNameWidget = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.GiftedUI, "/Panel/GiftIFMPanel/SubTitleCCCC/GiftIFMTitle")
           if skillNameWidget != nil {
                skillNameWidget<UIWidgetLabel>.Content = skillNameText
           }
           
           // 技能描述文本控件
-          var skillDescWidget = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.GiftedUI, "/Panel/GiftIFMPanel/GiftIFMTitle/GiftIFMSubtitle")
+          var skillDescWidget = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.GiftedUI, "/Panel/GiftIFMPanel/SubTitleCCCC/GiftIFMTitle/GiftIFMSubtitle")
           if skillDescWidget != nil {
                skillDescWidget<UIWidgetLabel>.Content = skillDescText
           }
           
           // 显示详情面板
-          var detailPanel = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.GiftedUI, "/Panel/GiftIFMPanel/GiftIFMTitle/GiftIFMSubtitle")
+          var detailPanel = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.GiftedUI, "/Panel/GiftIFMPanel/SubTitleCCCC/GiftIFMTitle/GiftIFMSubtitle")
           if detailPanel != nil {
                detailPanel<UIWidget>.IsVisible = true
           }
      }
     
-     // 高亮显示当前选中的卡牌
-     func HighlightSelectedCard(cardId int) {
-          // 重置所有卡牌的高亮状态
-          for i = 1, 11, 1 {
-               var cardWidget = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.GiftedUI, 
-                    "/Panel/List/Card (" + Convert.ToString(i) + ")")
-               if cardWidget != nil {
-                    // 移除高亮边框或效果
-                    var highlightWidget = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.GiftedUI, 
-                         "/Panel/List/Card (" + Convert.ToString(i) + ")/Highlight")
-                    if highlightWidget != nil {
-                         highlightWidget<UIWidget>.IsVisible = false
-                    }
-               }
-          }
-          
-          // 高亮当前选中的卡牌
-          var selectedCardWidget = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.GiftedUI, 
-               "/Panel/List/Card (" + Convert.ToString(cardId) + ")")
-          if selectedCardWidget != nil {
-               var highlightWidget = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.GiftedUI, 
-                    "/Panel/List/Card (" + Convert.ToString(cardId) + ")/Highlight")
-               if highlightWidget != nil {
-                    highlightWidget<UIWidget>.IsVisible = true
-               }
-          }
-     }
-    
      // 关闭详情面板
-     func CloseDetailPanel(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
-          var detailPanelWidget = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.GiftedUI, "/Panel/GiftIFMPanel/GiftIFMTitle/GiftIFMSubtitle")
-          if detailPanelWidget != nil {
-               detailPanelWidget<UIWidget>.IsVisible = false
-          }
-          // 清除高亮
-          // if currentSelectedCardId > 0 {
-          //      var highlightWidget = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.GiftedUI, 
-          //           "/Panel/List/Card (" + Convert.ToString(currentSelectedCardId) + ")/Highlight")
-          //      if highlightWidget != nil {
-          //           highlightWidget<UIWidget>.IsVisible = false
-          //      }
-          // }
-          currentSelectedCardId = 0
+     async func CloseDetailPanel(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+          var PopupPanel = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.GiftedUI, "/PopupPanel")
+          PopupPanel<UIWidget>.IsVisible = false
+          ShowCardDetails(GetLocalPlayer()<PlayerJionGame>.currentSelectedCardId)
+          GetLocalPlayer()<PlayerJionGame>.currentSelectedCardId = 0
      }
 }

@@ -24,7 +24,7 @@
         "valueTag": "unlockedValue"
       },
       "editorLockValue": false,
-      "editorVisibleValue": true,
+      "editorVisibleValue": false,
       "propsData": {
         "activeSelf": true,
         "transform": {
@@ -146,11 +146,11 @@
             "y": 0.5
           },
           "anchoredPosition": {
-            "x": -490,
+            "x": -354,
             "y": 330
           },
           "sizeDelta": {
-            "x": 300,
+            "x": 572,
             "y": 60
           }
         },
@@ -160,7 +160,7 @@
           "value": "PVE离线玩法",
           "key": "",
           "font": "Default",
-          "fontSize": 53,
+          "fontSize": 48,
           "fontStyle": {
             "bold": false,
             "italic": false,
@@ -252,7 +252,7 @@
                     "y": 0.5
                   },
                   "anchoredPosition": {
-                    "x": 50,
+                    "x": 60,
                     "y": 0
                   },
                   "sizeDelta": {
@@ -266,7 +266,7 @@
                   "value": "8888",
                   "key": "",
                   "font": "Default",
-                  "fontSize": 30,
+                  "fontSize": 24,
                   "fontStyle": {
                     "bold": false,
                     "italic": false,
@@ -274,7 +274,7 @@
                   },
                   "color": "#ffffff",
                   "alignment": {
-                    "h": "center",
+                    "h": "left",
                     "v": "middle"
                   },
                   "lineSpacing": 0,
@@ -339,16 +339,16 @@
                 "y": 0
               },
               "sizeDelta": {
-                "x": 50,
-                "y": 50
+                "x": 40,
+                "y": 40
               }
             },
             "alpha": 100,
             "priority": 0,
             "image": {
               "source": {
-                "fileId": "79ed553ce8b38be0c2bd27fac5014dbc",
-                "filePath": "lib://fftextures/WorkshopIconLibrary/T_34_M_WS_ICON_MONEY.png",
+                "fileId": "zvmiw2ze6vc-mjmkvat6-xjp0z1d4sbi",
+                "filePath": "Assets\\Image\\Home\\UI_ICON01.png",
                 "_tag": {
                   "type": "GFileRefer"
                 },
@@ -521,8 +521,8 @@
                 "y": 0.5
               },
               "anchoredPosition": {
-                "x": 5,
-                "y": 228
+                "x": 0,
+                "y": 300
               },
               "sizeDelta": {
                 "x": 500,
@@ -586,6 +586,107 @@
           "_entityId": "z7Y4xLPl",
           "children": [
             {
+              "_entityName": "BBIMAGE",
+              "_tag": {
+                "type": "UIImageEntity",
+                "resourceId": ""
+              },
+              "_entityId": "ymLexyjc",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": null,
+              "editorLockValue": false,
+              "editorVisibleValue": false,
+              "propsData": {
+                "activeSelf": true,
+                "transform": {
+                  "rotate": 0,
+                  "anchorMin": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchorMax": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "pivot": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchoredPosition": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "sizeDelta": {
+                    "x": 360,
+                    "y": 525
+                  }
+                },
+                "alpha": 100,
+                "priority": 0,
+                "image": {
+                  "source": {
+                    "fileId": "ohxt3rc9f9l-mjmkvb8v-anx6waorow",
+                    "filePath": "Assets\\Image\\Home\\选中框.png",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "texture"
+                  },
+                  "color": "#ffffff",
+                  "reverse": {
+                    "x": false,
+                    "y": false
+                  },
+                  "fillType": 1,
+                  "slicedBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "tiledBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "centerInvisible": false,
+                  "fillDir": 0,
+                  "fillAmount": 0,
+                  "invertFill": false,
+                  "flip": 0,
+                  "gradient": 1,
+                  "gradientTop": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  },
+                  "gradientBottom": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  }
+                }
+              },
+              "ecaScripts": [],
+              "ecaProps": {
+                "HudImageWidget": {},
+                "HudWidget": {},
+                "Entity": {}
+              },
+              "componentList": [],
+              "entityTagData": {
+                "tagPointers": []
+              }
+            },
+            {
               "_entityName": "ICON",
               "_tag": {
                 "type": "UIImageEntity",
@@ -616,11 +717,11 @@
                       "rotate": 0,
                       "anchorMin": {
                         "x": 0.5,
-                        "y": 0
+                        "y": 0.5
                       },
                       "anchorMax": {
                         "x": 0.5,
-                        "y": 0
+                        "y": 0.5
                       },
                       "pivot": {
                         "x": 0.5,
@@ -628,7 +729,7 @@
                       },
                       "anchoredPosition": {
                         "x": 0,
-                        "y": 20
+                        "y": -120
                       },
                       "sizeDelta": {
                         "x": 125,
@@ -641,7 +742,7 @@
                       "value": "近卫爆破手",
                       "key": "",
                       "font": "Default",
-                      "fontSize": 24,
+                      "fontSize": 26,
                       "fontStyle": {
                         "bold": false,
                         "italic": false,
@@ -682,6 +783,485 @@
                   },
                   "editorLockValue": false,
                   "editorVisibleValue": true
+                },
+                {
+                  "_entityName": "NameBB",
+                  "_tag": {
+                    "type": "UIImageEntity",
+                    "resourceId": ""
+                  },
+                  "_entityId": "aMG0tpHU",
+                  "children": [],
+                  "prefabVariant": null,
+                  "activeValue": {
+                    "selfValue": true,
+                    "valueTag": "activeValue"
+                  },
+                  "unlockedValue": null,
+                  "propsData": {
+                    "activeSelf": true,
+                    "transform": {
+                      "rotate": 0,
+                      "anchorMin": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "anchorMax": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "pivot": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "anchoredPosition": {
+                        "x": 0,
+                        "y": -120
+                      },
+                      "sizeDelta": {
+                        "x": 320,
+                        "y": 22
+                      }
+                    },
+                    "alpha": 20,
+                    "priority": 0,
+                    "image": {
+                      "source": {
+                        "fileId": "grvvcxhqt9a-mjmkva4n-t7rbv0ryswm",
+                        "filePath": "Assets\\Image\\Home\\Huntingground_Title_Specil_Line.png",
+                        "_tag": {
+                          "type": "GFileRefer"
+                        },
+                        "fileType": "texture"
+                      },
+                      "color": "#ffffff",
+                      "reverse": {
+                        "x": false,
+                        "y": false
+                      },
+                      "fillType": 1,
+                      "slicedBorder": {
+                        "left": 0,
+                        "right": 0,
+                        "top": 0,
+                        "bottom": 0
+                      },
+                      "tiledBorder": {
+                        "left": 0,
+                        "right": 0,
+                        "top": 0,
+                        "bottom": 0
+                      },
+                      "centerInvisible": false,
+                      "fillDir": 0,
+                      "fillAmount": 1,
+                      "invertFill": false,
+                      "flip": 0,
+                      "gradient": 1,
+                      "gradientTop": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 1
+                      },
+                      "gradientBottom": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 1
+                      }
+                    }
+                  },
+                  "ecaScripts": [],
+                  "ecaProps": {
+                    "HudImageWidget": {},
+                    "HudWidget": {},
+                    "Entity": {}
+                  },
+                  "componentList": [],
+                  "entityTagData": {
+                    "tagPointers": []
+                  },
+                  "editorLockValue": false,
+                  "editorVisibleValue": true
+                },
+                {
+                  "_entityName": "left",
+                  "_tag": {
+                    "type": "UIImageEntity",
+                    "resourceId": ""
+                  },
+                  "_entityId": "eyn3qqog",
+                  "children": [
+                    {
+                      "_entityName": "TExt",
+                      "_tag": {
+                        "type": "UITextEntity",
+                        "resourceId": ""
+                      },
+                      "_entityId": "DwFvAo6U",
+                      "children": [],
+                      "prefabVariant": null,
+                      "activeValue": {
+                        "selfValue": true,
+                        "valueTag": "activeValue"
+                      },
+                      "unlockedValue": null,
+                      "editorLockValue": false,
+                      "editorVisibleValue": true,
+                      "propsData": {
+                        "activeSelf": true,
+                        "transform": {
+                          "rotate": 0,
+                          "anchorMin": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "anchorMax": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "pivot": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "anchoredPosition": {
+                            "x": 0,
+                            "y": 0
+                          },
+                          "sizeDelta": {
+                            "x": 120,
+                            "y": 20
+                          }
+                        },
+                        "alpha": 100,
+                        "priority": 0,
+                        "text": {
+                          "value": "高爆发",
+                          "key": "",
+                          "font": "Default",
+                          "fontSize": 20,
+                          "fontStyle": {
+                            "bold": false,
+                            "italic": false,
+                            "underline": false
+                          },
+                          "color": "#d1d1d1",
+                          "alignment": {
+                            "h": "center",
+                            "v": "middle"
+                          },
+                          "lineSpacing": 0,
+                          "background": false,
+                          "backgroundColor": "#e7b200",
+                          "overflow": 0,
+                          "backgroundRGBA": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0,
+                            "a": 0
+                          },
+                          "shadow": false,
+                          "shadowColor": "#000000",
+                          "shadowOffset": {
+                            "x": 1,
+                            "y": 1
+                          }
+                        }
+                      },
+                      "ecaScripts": [],
+                      "ecaProps": {
+                        "HudLabelWidget": {},
+                        "HudWidget": {},
+                        "Entity": {}
+                      },
+                      "componentList": [],
+                      "entityTagData": {
+                        "tagPointers": []
+                      }
+                    }
+                  ],
+                  "prefabVariant": null,
+                  "activeValue": {
+                    "selfValue": true,
+                    "valueTag": "activeValue"
+                  },
+                  "unlockedValue": null,
+                  "editorLockValue": false,
+                  "editorVisibleValue": true,
+                  "propsData": {
+                    "activeSelf": true,
+                    "transform": {
+                      "rotate": 0,
+                      "anchorMin": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "anchorMax": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "pivot": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "anchoredPosition": {
+                        "x": -90,
+                        "y": -155
+                      },
+                      "sizeDelta": {
+                        "x": 120,
+                        "y": 20
+                      }
+                    },
+                    "alpha": 100,
+                    "priority": 0,
+                    "image": {
+                      "source": {
+                        "fileId": "83f71c99fd43ad7cf5633394aab81268",
+                        "filePath": "lib://fftextures/WorkshopIconLibrary/UGC_Btn_0102_Mid_Disable.png",
+                        "_tag": {
+                          "type": "GFileRefer"
+                        },
+                        "fileType": "texture"
+                      },
+                      "color": "#ffffff",
+                      "reverse": {
+                        "x": false,
+                        "y": false
+                      },
+                      "fillType": 2,
+                      "slicedBorder": {
+                        "left": 0,
+                        "right": 0,
+                        "top": 0,
+                        "bottom": 0
+                      },
+                      "tiledBorder": {
+                        "left": 0,
+                        "right": 0,
+                        "top": 0,
+                        "bottom": 0
+                      },
+                      "centerInvisible": false,
+                      "fillDir": 0,
+                      "fillAmount": 1,
+                      "invertFill": false,
+                      "flip": 0,
+                      "gradient": 1,
+                      "gradientTop": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 1
+                      },
+                      "gradientBottom": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 1
+                      }
+                    }
+                  },
+                  "ecaScripts": [],
+                  "ecaProps": {
+                    "HudImageWidget": {},
+                    "HudWidget": {},
+                    "Entity": {}
+                  },
+                  "componentList": [],
+                  "entityTagData": {
+                    "tagPointers": []
+                  }
+                },
+                {
+                  "_entityName": "right",
+                  "_tag": {
+                    "type": "UIImageEntity",
+                    "resourceId": ""
+                  },
+                  "_entityId": "CRNLYSIV",
+                  "children": [
+                    {
+                      "_entityName": "TExt",
+                      "_tag": {
+                        "type": "UITextEntity",
+                        "resourceId": ""
+                      },
+                      "_entityId": "XOacPIPW",
+                      "children": [],
+                      "prefabVariant": null,
+                      "activeValue": {
+                        "selfValue": true,
+                        "valueTag": "activeValue"
+                      },
+                      "unlockedValue": null,
+                      "propsData": {
+                        "activeSelf": true,
+                        "transform": {
+                          "rotate": 0,
+                          "anchorMin": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "anchorMax": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "pivot": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "anchoredPosition": {
+                            "x": 0,
+                            "y": 0
+                          },
+                          "sizeDelta": {
+                            "x": 120,
+                            "y": 20
+                          }
+                        },
+                        "alpha": 100,
+                        "priority": 0,
+                        "text": {
+                          "value": "范围伤害",
+                          "key": "",
+                          "font": "Default",
+                          "fontSize": 20,
+                          "fontStyle": {
+                            "bold": false,
+                            "italic": false,
+                            "underline": false
+                          },
+                          "color": "#d1d1d1",
+                          "alignment": {
+                            "h": "center",
+                            "v": "middle"
+                          },
+                          "lineSpacing": 0,
+                          "background": false,
+                          "backgroundColor": "#e7b200",
+                          "overflow": 0,
+                          "backgroundRGBA": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0,
+                            "a": 0
+                          },
+                          "shadow": false,
+                          "shadowColor": "#000000",
+                          "shadowOffset": {
+                            "x": 1,
+                            "y": 1
+                          }
+                        }
+                      },
+                      "ecaScripts": [],
+                      "ecaProps": {
+                        "HudLabelWidget": {},
+                        "HudWidget": {},
+                        "Entity": {}
+                      },
+                      "componentList": [],
+                      "entityTagData": {
+                        "tagPointers": []
+                      },
+                      "editorLockValue": false,
+                      "editorVisibleValue": true
+                    }
+                  ],
+                  "prefabVariant": null,
+                  "activeValue": {
+                    "selfValue": true,
+                    "valueTag": "activeValue"
+                  },
+                  "unlockedValue": null,
+                  "propsData": {
+                    "activeSelf": true,
+                    "transform": {
+                      "rotate": 0,
+                      "anchorMin": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "anchorMax": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "pivot": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "anchoredPosition": {
+                        "x": 65,
+                        "y": -155
+                      },
+                      "sizeDelta": {
+                        "x": 170,
+                        "y": 20
+                      }
+                    },
+                    "alpha": 100,
+                    "priority": 0,
+                    "image": {
+                      "source": {
+                        "fileId": "83f71c99fd43ad7cf5633394aab81268",
+                        "filePath": "lib://fftextures/WorkshopIconLibrary/UGC_Btn_0102_Mid_Disable.png",
+                        "_tag": {
+                          "type": "GFileRefer"
+                        },
+                        "fileType": "texture"
+                      },
+                      "color": "#ffffff",
+                      "reverse": {
+                        "x": false,
+                        "y": false
+                      },
+                      "fillType": 2,
+                      "slicedBorder": {
+                        "left": 0,
+                        "right": 0,
+                        "top": 0,
+                        "bottom": 0
+                      },
+                      "tiledBorder": {
+                        "left": 0,
+                        "right": 0,
+                        "top": 0,
+                        "bottom": 0
+                      },
+                      "centerInvisible": false,
+                      "fillDir": 0,
+                      "fillAmount": 1,
+                      "invertFill": false,
+                      "flip": 0,
+                      "gradient": 1,
+                      "gradientTop": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 1
+                      },
+                      "gradientBottom": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 1
+                      }
+                    }
+                  },
+                  "ecaScripts": [],
+                  "ecaProps": {
+                    "HudImageWidget": {},
+                    "HudWidget": {},
+                    "Entity": {}
+                  },
+                  "componentList": [],
+                  "entityTagData": {
+                    "tagPointers": []
+                  },
+                  "editorLockValue": false,
+                  "editorVisibleValue": true
                 }
               ],
               "prefabVariant": null,
@@ -711,7 +1291,7 @@
                   },
                   "anchoredPosition": {
                     "x": 0,
-                    "y": 125
+                    "y": 190
                   },
                   "sizeDelta": {
                     "x": 150,
@@ -823,11 +1403,11 @@
                       },
                       "anchoredPosition": {
                         "x": 0,
-                        "y": 15
+                        "y": 0
                       },
                       "sizeDelta": {
-                        "x": 150,
-                        "y": 60
+                        "x": 157,
+                        "y": 56
                       }
                     },
                     "alpha": 100,
@@ -843,7 +1423,7 @@
                       },
                       "color": "#ffffff",
                       "reverse": {
-                        "x": true,
+                        "x": false,
                         "y": false
                       },
                       "fillType": 1,
@@ -893,6 +1473,107 @@
                   "editorVisibleValue": true
                 },
                 {
+                  "_entityName": "Image",
+                  "_tag": {
+                    "type": "UIImageEntity",
+                    "resourceId": ""
+                  },
+                  "_entityId": "H7RnLdLU",
+                  "children": [],
+                  "prefabVariant": null,
+                  "activeValue": {
+                    "selfValue": true,
+                    "valueTag": "activeValue"
+                  },
+                  "unlockedValue": null,
+                  "editorLockValue": false,
+                  "editorVisibleValue": true,
+                  "propsData": {
+                    "activeSelf": true,
+                    "transform": {
+                      "rotate": 0,
+                      "anchorMin": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "anchorMax": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "pivot": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "anchoredPosition": {
+                        "x": 0,
+                        "y": -60
+                      },
+                      "sizeDelta": {
+                        "x": 320,
+                        "y": 22
+                      }
+                    },
+                    "alpha": 20,
+                    "priority": 0,
+                    "image": {
+                      "source": {
+                        "fileId": "grvvcxhqt9a-mjmkva4n-t7rbv0ryswm",
+                        "filePath": "Assets\\Image\\Home\\Huntingground_Title_Specil_Line.png",
+                        "_tag": {
+                          "type": "GFileRefer"
+                        },
+                        "fileType": "texture"
+                      },
+                      "color": "#ffffff",
+                      "reverse": {
+                        "x": false,
+                        "y": false
+                      },
+                      "fillType": 1,
+                      "slicedBorder": {
+                        "left": 0,
+                        "right": 0,
+                        "top": 0,
+                        "bottom": 0
+                      },
+                      "tiledBorder": {
+                        "left": 0,
+                        "right": 0,
+                        "top": 0,
+                        "bottom": 0
+                      },
+                      "centerInvisible": false,
+                      "fillDir": 0,
+                      "fillAmount": 1,
+                      "invertFill": false,
+                      "flip": 0,
+                      "gradient": 1,
+                      "gradientTop": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 1
+                      },
+                      "gradientBottom": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 1
+                      }
+                    }
+                  },
+                  "ecaScripts": [],
+                  "ecaProps": {
+                    "HudImageWidget": {},
+                    "HudWidget": {},
+                    "Entity": {}
+                  },
+                  "componentList": [],
+                  "entityTagData": {
+                    "tagPointers": []
+                  }
+                },
+                {
                   "_entityName": "Title",
                   "_tag": {
                     "type": "UITextEntity",
@@ -927,11 +1608,11 @@
                       },
                       "anchoredPosition": {
                         "x": 0,
-                        "y": -30
+                        "y": -60
                       },
                       "sizeDelta": {
-                        "x": 200,
-                        "y": 20
+                        "x": 320,
+                        "y": 22
                       }
                     },
                     "alpha": 100,
@@ -1010,7 +1691,7 @@
                   },
                   "anchoredPosition": {
                     "x": 0,
-                    "y": 0
+                    "y": -30
                   },
                   "sizeDelta": {
                     "x": 200,
@@ -1109,7 +1790,7 @@
                           },
                           "anchoredPosition": {
                             "x": 0,
-                            "y": -5
+                            "y": -8
                           },
                           "sizeDelta": {
                             "x": 120,
@@ -1128,7 +1809,7 @@
                             "italic": false,
                             "underline": false
                           },
-                          "color": "#CECECE",
+                          "color": "#D1D1D1",
                           "alignment": {
                             "h": "center",
                             "v": "middle"
@@ -1274,8 +1955,8 @@
                     "y": 0.5
                   },
                   "anchoredPosition": {
-                    "x": -50,
-                    "y": -90
+                    "x": -65,
+                    "y": -148
                   },
                   "sizeDelta": {
                     "x": 60,
@@ -1395,7 +2076,7 @@
                           },
                           "anchoredPosition": {
                             "x": 0,
-                            "y": -5
+                            "y": -8
                           },
                           "sizeDelta": {
                             "x": 120,
@@ -1408,13 +2089,13 @@
                           "value": "[被动]",
                           "key": "",
                           "font": "Default",
-                          "fontSize": 18,
+                          "fontSize": 20,
                           "fontStyle": {
                             "bold": false,
                             "italic": false,
                             "underline": false
                           },
-                          "color": "#CECECE",
+                          "color": "#D1D1D1",
                           "alignment": {
                             "h": "center",
                             "v": "middle"
@@ -1491,7 +2172,7 @@
                       "value": "绝命榴弹",
                       "key": "",
                       "font": "Default",
-                      "fontSize": 20,
+                      "fontSize": 22,
                       "fontStyle": {
                         "bold": false,
                         "italic": false,
@@ -1560,8 +2241,8 @@
                     "y": 0.5
                   },
                   "anchoredPosition": {
-                    "x": 50,
-                    "y": -90
+                    "x": 65,
+                    "y": -148
                   },
                   "sizeDelta": {
                     "x": 60,
@@ -1629,6 +2310,208 @@
               },
               "editorLockValue": false,
               "editorVisibleValue": true
+            },
+            {
+              "_entityName": "Tableft",
+              "_tag": {
+                "type": "UIImageEntity",
+                "resourceId": ""
+              },
+              "_entityId": "OHVVu3uV",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": null,
+              "editorLockValue": false,
+              "editorVisibleValue": true,
+              "propsData": {
+                "activeSelf": true,
+                "transform": {
+                  "rotate": 0,
+                  "anchorMin": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "anchorMax": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "pivot": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchoredPosition": {
+                    "x": 35,
+                    "y": 45
+                  },
+                  "sizeDelta": {
+                    "x": 60,
+                    "y": 60
+                  }
+                },
+                "alpha": 30,
+                "priority": 0,
+                "image": {
+                  "source": {
+                    "fileId": "5r4uk937e6m-mjmkv9qd-dw18j1d9t5m",
+                    "filePath": "Assets\\Image\\Home\\Huntingground_Tab01.png",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "texture"
+                  },
+                  "color": "#707070",
+                  "reverse": {
+                    "x": false,
+                    "y": false
+                  },
+                  "fillType": 1,
+                  "slicedBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "tiledBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "centerInvisible": false,
+                  "fillDir": 0,
+                  "fillAmount": 0,
+                  "invertFill": false,
+                  "flip": 0,
+                  "gradient": 1,
+                  "gradientTop": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  },
+                  "gradientBottom": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  }
+                }
+              },
+              "ecaScripts": [],
+              "ecaProps": {
+                "HudImageWidget": {},
+                "HudWidget": {},
+                "Entity": {}
+              },
+              "componentList": [],
+              "entityTagData": {
+                "tagPointers": []
+              }
+            },
+            {
+              "_entityName": "Tabright",
+              "_tag": {
+                "type": "UIImageEntity",
+                "resourceId": ""
+              },
+              "_entityId": "t4UoaUfq",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": null,
+              "propsData": {
+                "activeSelf": true,
+                "transform": {
+                  "rotate": 0,
+                  "anchorMin": {
+                    "x": 1,
+                    "y": 1
+                  },
+                  "anchorMax": {
+                    "x": 1,
+                    "y": 1
+                  },
+                  "pivot": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchoredPosition": {
+                    "x": -35,
+                    "y": -40
+                  },
+                  "sizeDelta": {
+                    "x": 60,
+                    "y": 60
+                  }
+                },
+                "alpha": 30,
+                "priority": 0,
+                "image": {
+                  "source": {
+                    "fileId": "5r4uk937e6m-mjmkv9qd-dw18j1d9t5m",
+                    "filePath": "Assets\\Image\\Home\\Huntingground_Tab01.png",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "texture"
+                  },
+                  "color": "#707070",
+                  "reverse": {
+                    "x": true,
+                    "y": true
+                  },
+                  "fillType": 1,
+                  "slicedBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "tiledBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "centerInvisible": false,
+                  "fillDir": 0,
+                  "fillAmount": 0,
+                  "invertFill": false,
+                  "flip": 0,
+                  "gradient": 1,
+                  "gradientTop": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  },
+                  "gradientBottom": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  }
+                }
+              },
+              "ecaScripts": [],
+              "ecaProps": {
+                "HudImageWidget": {},
+                "HudWidget": {},
+                "Entity": {}
+              },
+              "componentList": [],
+              "entityTagData": {
+                "tagPointers": []
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": true
             }
           ],
           "prefabVariant": null,
@@ -1645,11 +2528,11 @@
             "transform": {
               "rotate": 0,
               "anchorMin": {
-                "x": 0,
+                "x": 0.5,
                 "y": 0.5
               },
               "anchorMax": {
-                "x": 0,
+                "x": 0.5,
                 "y": 0.5
               },
               "pivot": {
@@ -1657,26 +2540,26 @@
                 "y": 0.5
               },
               "anchoredPosition": {
-                "x": 120,
+                "x": -350,
                 "y": 0
               },
               "sizeDelta": {
-                "x": 240,
-                "y": 400
+                "x": 330,
+                "y": 498
               }
             },
             "alpha": 100,
             "priority": 0,
             "button": {
               "spriteName": {
-                "fileId": "2995f0a057711a77f0af604a5ee474ee",
-                "filePath": "lib://fftextures/WorkshopIconLibrary/FF_UI_Profile_Block_03.png",
+                "fileId": "uxlmcm8u6ll-mjmkv9la-vmcl00r7o8f",
+                "filePath": "Assets\\Image\\Home\\Huntingground_SpecilCDN_Bg01.png",
                 "_tag": {
                   "type": "GFileRefer"
                 },
                 "fileType": "texture"
               },
-              "normal": "#FF8900",
+              "normal": "#FFFFFF",
               "highlight": "#e2a222",
               "pressed": "#C5C5C5",
               "disabled": "#494949",
@@ -1755,15 +2638,116 @@
             "type": "UIButtonEntity",
             "resourceId": ""
           },
-          "_entityId": "S7qTq2Re",
+          "_entityId": "WbjtGqf2",
           "children": [
+            {
+              "_entityName": "BBIMAGE",
+              "_tag": {
+                "type": "UIImageEntity",
+                "resourceId": ""
+              },
+              "_entityId": "qBE0TWfx",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": null,
+              "propsData": {
+                "activeSelf": true,
+                "transform": {
+                  "rotate": 0,
+                  "anchorMin": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchorMax": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "pivot": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchoredPosition": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "sizeDelta": {
+                    "x": 360,
+                    "y": 525
+                  }
+                },
+                "alpha": 100,
+                "priority": 0,
+                "image": {
+                  "source": {
+                    "fileId": "ohxt3rc9f9l-mjmkvb8v-anx6waorow",
+                    "filePath": "Assets\\Image\\Home\\选中框.png",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "texture"
+                  },
+                  "color": "#ffffff",
+                  "reverse": {
+                    "x": false,
+                    "y": false
+                  },
+                  "fillType": 1,
+                  "slicedBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "tiledBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "centerInvisible": false,
+                  "fillDir": 0,
+                  "fillAmount": 0,
+                  "invertFill": false,
+                  "flip": 0,
+                  "gradient": 1,
+                  "gradientTop": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  },
+                  "gradientBottom": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  }
+                }
+              },
+              "ecaScripts": [],
+              "ecaProps": {
+                "HudImageWidget": {},
+                "HudWidget": {},
+                "Entity": {}
+              },
+              "componentList": [],
+              "entityTagData": {
+                "tagPointers": []
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": false
+            },
             {
               "_entityName": "ICON",
               "_tag": {
                 "type": "UIImageEntity",
                 "resourceId": ""
               },
-              "_entityId": "i1RFu0eH",
+              "_entityId": "BPG2HdNG",
               "children": [
                 {
                   "_entityName": "HeroName",
@@ -1771,7 +2755,7 @@
                     "type": "UITextEntity",
                     "resourceId": ""
                   },
-                  "_entityId": "CgudrBGV",
+                  "_entityId": "wM9ASYxX",
                   "children": [],
                   "prefabVariant": null,
                   "activeValue": {
@@ -1788,11 +2772,11 @@
                       "rotate": 0,
                       "anchorMin": {
                         "x": 0.5,
-                        "y": 0
+                        "y": 0.5
                       },
                       "anchorMax": {
                         "x": 0.5,
-                        "y": 0
+                        "y": 0.5
                       },
                       "pivot": {
                         "x": 0.5,
@@ -1800,10 +2784,10 @@
                       },
                       "anchoredPosition": {
                         "x": 0,
-                        "y": 20
+                        "y": -120
                       },
                       "sizeDelta": {
-                        "x": 140,
+                        "x": 125,
                         "y": 50
                       }
                     },
@@ -1813,7 +2797,7 @@
                       "value": "风暴游击手",
                       "key": "",
                       "font": "Default",
-                      "fontSize": 24,
+                      "fontSize": 26,
                       "fontStyle": {
                         "bold": false,
                         "italic": false,
@@ -1854,6 +2838,485 @@
                   },
                   "editorLockValue": false,
                   "editorVisibleValue": true
+                },
+                {
+                  "_entityName": "NameBB",
+                  "_tag": {
+                    "type": "UIImageEntity",
+                    "resourceId": ""
+                  },
+                  "_entityId": "cioCAi03",
+                  "children": [],
+                  "prefabVariant": null,
+                  "activeValue": {
+                    "selfValue": true,
+                    "valueTag": "activeValue"
+                  },
+                  "unlockedValue": null,
+                  "propsData": {
+                    "activeSelf": true,
+                    "transform": {
+                      "rotate": 0,
+                      "anchorMin": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "anchorMax": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "pivot": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "anchoredPosition": {
+                        "x": 0,
+                        "y": -120
+                      },
+                      "sizeDelta": {
+                        "x": 320,
+                        "y": 22
+                      }
+                    },
+                    "alpha": 20,
+                    "priority": 0,
+                    "image": {
+                      "source": {
+                        "fileId": "grvvcxhqt9a-mjmkva4n-t7rbv0ryswm",
+                        "filePath": "Assets\\Image\\Home\\Huntingground_Title_Specil_Line.png",
+                        "_tag": {
+                          "type": "GFileRefer"
+                        },
+                        "fileType": "texture"
+                      },
+                      "color": "#ffffff",
+                      "reverse": {
+                        "x": false,
+                        "y": false
+                      },
+                      "fillType": 1,
+                      "slicedBorder": {
+                        "left": 0,
+                        "right": 0,
+                        "top": 0,
+                        "bottom": 0
+                      },
+                      "tiledBorder": {
+                        "left": 0,
+                        "right": 0,
+                        "top": 0,
+                        "bottom": 0
+                      },
+                      "centerInvisible": false,
+                      "fillDir": 0,
+                      "fillAmount": 1,
+                      "invertFill": false,
+                      "flip": 0,
+                      "gradient": 1,
+                      "gradientTop": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 1
+                      },
+                      "gradientBottom": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 1
+                      }
+                    }
+                  },
+                  "ecaScripts": [],
+                  "ecaProps": {
+                    "HudImageWidget": {},
+                    "HudWidget": {},
+                    "Entity": {}
+                  },
+                  "componentList": [],
+                  "entityTagData": {
+                    "tagPointers": []
+                  },
+                  "editorLockValue": false,
+                  "editorVisibleValue": true
+                },
+                {
+                  "_entityName": "left",
+                  "_tag": {
+                    "type": "UIImageEntity",
+                    "resourceId": ""
+                  },
+                  "_entityId": "MABKGWtN",
+                  "children": [
+                    {
+                      "_entityName": "TExt",
+                      "_tag": {
+                        "type": "UITextEntity",
+                        "resourceId": ""
+                      },
+                      "_entityId": "RJvNLono",
+                      "children": [],
+                      "prefabVariant": null,
+                      "activeValue": {
+                        "selfValue": true,
+                        "valueTag": "activeValue"
+                      },
+                      "unlockedValue": null,
+                      "propsData": {
+                        "activeSelf": true,
+                        "transform": {
+                          "rotate": 0,
+                          "anchorMin": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "anchorMax": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "pivot": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "anchoredPosition": {
+                            "x": 0,
+                            "y": 0
+                          },
+                          "sizeDelta": {
+                            "x": 120,
+                            "y": 20
+                          }
+                        },
+                        "alpha": 100,
+                        "priority": 0,
+                        "text": {
+                          "value": "高射速",
+                          "key": "",
+                          "font": "Default",
+                          "fontSize": 20,
+                          "fontStyle": {
+                            "bold": false,
+                            "italic": false,
+                            "underline": false
+                          },
+                          "color": "#d1d1d1",
+                          "alignment": {
+                            "h": "center",
+                            "v": "middle"
+                          },
+                          "lineSpacing": 0,
+                          "background": false,
+                          "backgroundColor": "#e7b200",
+                          "overflow": 0,
+                          "backgroundRGBA": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0,
+                            "a": 0
+                          },
+                          "shadow": false,
+                          "shadowColor": "#000000",
+                          "shadowOffset": {
+                            "x": 1,
+                            "y": 1
+                          }
+                        }
+                      },
+                      "ecaScripts": [],
+                      "ecaProps": {
+                        "HudLabelWidget": {},
+                        "HudWidget": {},
+                        "Entity": {}
+                      },
+                      "componentList": [],
+                      "entityTagData": {
+                        "tagPointers": []
+                      },
+                      "editorLockValue": false,
+                      "editorVisibleValue": true
+                    }
+                  ],
+                  "prefabVariant": null,
+                  "activeValue": {
+                    "selfValue": true,
+                    "valueTag": "activeValue"
+                  },
+                  "unlockedValue": null,
+                  "propsData": {
+                    "activeSelf": true,
+                    "transform": {
+                      "rotate": 0,
+                      "anchorMin": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "anchorMax": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "pivot": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "anchoredPosition": {
+                        "x": -90,
+                        "y": -155
+                      },
+                      "sizeDelta": {
+                        "x": 120,
+                        "y": 20
+                      }
+                    },
+                    "alpha": 100,
+                    "priority": 0,
+                    "image": {
+                      "source": {
+                        "fileId": "83f71c99fd43ad7cf5633394aab81268",
+                        "filePath": "lib://fftextures/WorkshopIconLibrary/UGC_Btn_0102_Mid_Disable.png",
+                        "_tag": {
+                          "type": "GFileRefer"
+                        },
+                        "fileType": "texture"
+                      },
+                      "color": "#ffffff",
+                      "reverse": {
+                        "x": false,
+                        "y": false
+                      },
+                      "fillType": 2,
+                      "slicedBorder": {
+                        "left": 0,
+                        "right": 0,
+                        "top": 0,
+                        "bottom": 0
+                      },
+                      "tiledBorder": {
+                        "left": 0,
+                        "right": 0,
+                        "top": 0,
+                        "bottom": 0
+                      },
+                      "centerInvisible": false,
+                      "fillDir": 0,
+                      "fillAmount": 1,
+                      "invertFill": false,
+                      "flip": 0,
+                      "gradient": 1,
+                      "gradientTop": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 1
+                      },
+                      "gradientBottom": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 1
+                      }
+                    }
+                  },
+                  "ecaScripts": [],
+                  "ecaProps": {
+                    "HudImageWidget": {},
+                    "HudWidget": {},
+                    "Entity": {}
+                  },
+                  "componentList": [],
+                  "entityTagData": {
+                    "tagPointers": []
+                  },
+                  "editorLockValue": false,
+                  "editorVisibleValue": true
+                },
+                {
+                  "_entityName": "right",
+                  "_tag": {
+                    "type": "UIImageEntity",
+                    "resourceId": ""
+                  },
+                  "_entityId": "P8ngbDnP",
+                  "children": [
+                    {
+                      "_entityName": "TExt",
+                      "_tag": {
+                        "type": "UITextEntity",
+                        "resourceId": ""
+                      },
+                      "_entityId": "xWwMKpZ0",
+                      "children": [],
+                      "prefabVariant": null,
+                      "activeValue": {
+                        "selfValue": true,
+                        "valueTag": "activeValue"
+                      },
+                      "unlockedValue": null,
+                      "propsData": {
+                        "activeSelf": true,
+                        "transform": {
+                          "rotate": 0,
+                          "anchorMin": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "anchorMax": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "pivot": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "anchoredPosition": {
+                            "x": 0,
+                            "y": 0
+                          },
+                          "sizeDelta": {
+                            "x": 120,
+                            "y": 20
+                          }
+                        },
+                        "alpha": 100,
+                        "priority": 0,
+                        "text": {
+                          "value": "高机动",
+                          "key": "",
+                          "font": "Default",
+                          "fontSize": 20,
+                          "fontStyle": {
+                            "bold": false,
+                            "italic": false,
+                            "underline": false
+                          },
+                          "color": "#d1d1d1",
+                          "alignment": {
+                            "h": "center",
+                            "v": "middle"
+                          },
+                          "lineSpacing": 0,
+                          "background": false,
+                          "backgroundColor": "#e7b200",
+                          "overflow": 0,
+                          "backgroundRGBA": {
+                            "r": 0,
+                            "g": 0,
+                            "b": 0,
+                            "a": 0
+                          },
+                          "shadow": false,
+                          "shadowColor": "#000000",
+                          "shadowOffset": {
+                            "x": 1,
+                            "y": 1
+                          }
+                        }
+                      },
+                      "ecaScripts": [],
+                      "ecaProps": {
+                        "HudLabelWidget": {},
+                        "HudWidget": {},
+                        "Entity": {}
+                      },
+                      "componentList": [],
+                      "entityTagData": {
+                        "tagPointers": []
+                      },
+                      "editorLockValue": false,
+                      "editorVisibleValue": true
+                    }
+                  ],
+                  "prefabVariant": null,
+                  "activeValue": {
+                    "selfValue": true,
+                    "valueTag": "activeValue"
+                  },
+                  "unlockedValue": null,
+                  "propsData": {
+                    "activeSelf": true,
+                    "transform": {
+                      "rotate": 0,
+                      "anchorMin": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "anchorMax": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "pivot": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "anchoredPosition": {
+                        "x": 65,
+                        "y": -155
+                      },
+                      "sizeDelta": {
+                        "x": 170,
+                        "y": 20
+                      }
+                    },
+                    "alpha": 100,
+                    "priority": 0,
+                    "image": {
+                      "source": {
+                        "fileId": "83f71c99fd43ad7cf5633394aab81268",
+                        "filePath": "lib://fftextures/WorkshopIconLibrary/UGC_Btn_0102_Mid_Disable.png",
+                        "_tag": {
+                          "type": "GFileRefer"
+                        },
+                        "fileType": "texture"
+                      },
+                      "color": "#ffffff",
+                      "reverse": {
+                        "x": false,
+                        "y": false
+                      },
+                      "fillType": 2,
+                      "slicedBorder": {
+                        "left": 0,
+                        "right": 0,
+                        "top": 0,
+                        "bottom": 0
+                      },
+                      "tiledBorder": {
+                        "left": 0,
+                        "right": 0,
+                        "top": 0,
+                        "bottom": 0
+                      },
+                      "centerInvisible": false,
+                      "fillDir": 0,
+                      "fillAmount": 1,
+                      "invertFill": false,
+                      "flip": 0,
+                      "gradient": 1,
+                      "gradientTop": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 1
+                      },
+                      "gradientBottom": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 1
+                      }
+                    }
+                  },
+                  "ecaScripts": [],
+                  "ecaProps": {
+                    "HudImageWidget": {},
+                    "HudWidget": {},
+                    "Entity": {}
+                  },
+                  "componentList": [],
+                  "entityTagData": {
+                    "tagPointers": []
+                  },
+                  "editorLockValue": false,
+                  "editorVisibleValue": true
                 }
               ],
               "prefabVariant": null,
@@ -1882,8 +3345,8 @@
                     "y": 0.5
                   },
                   "anchoredPosition": {
-                    "x": 2,
-                    "y": 125
+                    "x": 0,
+                    "y": 190
                   },
                   "sizeDelta": {
                     "x": 150,
@@ -1894,8 +3357,8 @@
                 "priority": 0,
                 "image": {
                   "source": {
-                    "fileId": "c1ba61d251a686942a2c4390a0de1637",
-                    "filePath": "lib://fftextures/WorkshopIconLibrary/FF_ingame_hud_UGC_Dyeing_Campicon1.png",
+                    "fileId": "48348ca582e21034acb86c75a7306934",
+                    "filePath": "lib://fftextures/WorkshopIconLibrary/FF_ingame_hud_UGC_Dyeing_Campicon.png",
                     "_tag": {
                       "type": "GFileRefer"
                     },
@@ -1953,12 +3416,12 @@
               "editorVisibleValue": true
             },
             {
-              "_entityName": "Hero_2_WeaponIFM",
+              "_entityName": "Hero_1_WeaponIFM",
               "_tag": {
                 "type": "UIPanelEntityV3",
                 "resourceId": ""
               },
-              "_entityId": "XixnFm4f",
+              "_entityId": "mlCvZUTb",
               "children": [
                 {
                   "_entityName": "WeaponImage",
@@ -1966,7 +3429,7 @@
                     "type": "UIImageEntity",
                     "resourceId": ""
                   },
-                  "_entityId": "WrJfWz5H",
+                  "_entityId": "MmwYm0Xh",
                   "children": [],
                   "prefabVariant": null,
                   "activeValue": {
@@ -1995,11 +3458,11 @@
                       },
                       "anchoredPosition": {
                         "x": 0,
-                        "y": 15
+                        "y": 0
                       },
                       "sizeDelta": {
-                        "x": 150,
-                        "y": 50
+                        "x": 157,
+                        "y": 56
                       }
                     },
                     "alpha": 100,
@@ -2015,7 +3478,7 @@
                       },
                       "color": "#ffffff",
                       "reverse": {
-                        "x": true,
+                        "x": false,
                         "y": false
                       },
                       "fillType": 1,
@@ -2065,12 +3528,113 @@
                   "editorVisibleValue": true
                 },
                 {
+                  "_entityName": "Image",
+                  "_tag": {
+                    "type": "UIImageEntity",
+                    "resourceId": ""
+                  },
+                  "_entityId": "a3cjnEDM",
+                  "children": [],
+                  "prefabVariant": null,
+                  "activeValue": {
+                    "selfValue": true,
+                    "valueTag": "activeValue"
+                  },
+                  "unlockedValue": null,
+                  "propsData": {
+                    "activeSelf": true,
+                    "transform": {
+                      "rotate": 0,
+                      "anchorMin": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "anchorMax": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "pivot": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "anchoredPosition": {
+                        "x": 0,
+                        "y": -60
+                      },
+                      "sizeDelta": {
+                        "x": 320,
+                        "y": 22
+                      }
+                    },
+                    "alpha": 20,
+                    "priority": 0,
+                    "image": {
+                      "source": {
+                        "fileId": "grvvcxhqt9a-mjmkva4n-t7rbv0ryswm",
+                        "filePath": "Assets\\Image\\Home\\Huntingground_Title_Specil_Line.png",
+                        "_tag": {
+                          "type": "GFileRefer"
+                        },
+                        "fileType": "texture"
+                      },
+                      "color": "#ffffff",
+                      "reverse": {
+                        "x": false,
+                        "y": false
+                      },
+                      "fillType": 1,
+                      "slicedBorder": {
+                        "left": 0,
+                        "right": 0,
+                        "top": 0,
+                        "bottom": 0
+                      },
+                      "tiledBorder": {
+                        "left": 0,
+                        "right": 0,
+                        "top": 0,
+                        "bottom": 0
+                      },
+                      "centerInvisible": false,
+                      "fillDir": 0,
+                      "fillAmount": 1,
+                      "invertFill": false,
+                      "flip": 0,
+                      "gradient": 1,
+                      "gradientTop": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 1
+                      },
+                      "gradientBottom": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 1
+                      }
+                    }
+                  },
+                  "ecaScripts": [],
+                  "ecaProps": {
+                    "HudImageWidget": {},
+                    "HudWidget": {},
+                    "Entity": {}
+                  },
+                  "componentList": [],
+                  "entityTagData": {
+                    "tagPointers": []
+                  },
+                  "editorLockValue": false,
+                  "editorVisibleValue": true
+                },
+                {
                   "_entityName": "Title",
                   "_tag": {
                     "type": "UITextEntity",
                     "resourceId": ""
                   },
-                  "_entityId": "k1xbmeQm",
+                  "_entityId": "ilIGwRWO",
                   "children": [],
                   "prefabVariant": null,
                   "activeValue": {
@@ -2099,11 +3663,11 @@
                       },
                       "anchoredPosition": {
                         "x": 0,
-                        "y": -30
+                        "y": -60
                       },
                       "sizeDelta": {
-                        "x": 200,
-                        "y": 20
+                        "x": 320,
+                        "y": 22
                       }
                     },
                     "alpha": 100,
@@ -2182,7 +3746,7 @@
                   },
                   "anchoredPosition": {
                     "x": 0,
-                    "y": 0
+                    "y": -30
                   },
                   "sizeDelta": {
                     "x": 200,
@@ -2236,7 +3800,7 @@
                 "type": "UIImageEntity",
                 "resourceId": ""
               },
-              "_entityId": "i38V01WM",
+              "_entityId": "dWQjLW9f",
               "children": [
                 {
                   "_entityName": "SKill",
@@ -2244,7 +3808,7 @@
                     "type": "UITextEntity",
                     "resourceId": ""
                   },
-                  "_entityId": "mDBxioMk",
+                  "_entityId": "oE2m8IDm",
                   "children": [
                     {
                       "_entityName": "skill_type",
@@ -2252,7 +3816,7 @@
                         "type": "UITextEntity",
                         "resourceId": ""
                       },
-                      "_entityId": "H8lo8UNY",
+                      "_entityId": "BCp7Z5gP",
                       "children": [],
                       "prefabVariant": null,
                       "activeValue": {
@@ -2281,7 +3845,7 @@
                           },
                           "anchoredPosition": {
                             "x": 0,
-                            "y": -5
+                            "y": -8
                           },
                           "sizeDelta": {
                             "x": 120,
@@ -2300,7 +3864,7 @@
                             "italic": false,
                             "underline": false
                           },
-                          "color": "#CECECE",
+                          "color": "#D1D1D1",
                           "alignment": {
                             "h": "center",
                             "v": "middle"
@@ -2374,7 +3938,7 @@
                     "alpha": 100,
                     "priority": 0,
                     "text": {
-                      "value": "爆裂轰炸",
+                      "value": "电弧冲击",
                       "key": "",
                       "font": "Default",
                       "fontSize": 20,
@@ -2446,8 +4010,8 @@
                     "y": 0.5
                   },
                   "anchoredPosition": {
-                    "x": -50,
-                    "y": -90
+                    "x": -65,
+                    "y": -148
                   },
                   "sizeDelta": {
                     "x": 60,
@@ -2522,7 +4086,7 @@
                 "type": "UIImageEntity",
                 "resourceId": ""
               },
-              "_entityId": "KCCcMZCg",
+              "_entityId": "OD1CChrQ",
               "children": [
                 {
                   "_entityName": "SKill",
@@ -2530,7 +4094,7 @@
                     "type": "UITextEntity",
                     "resourceId": ""
                   },
-                  "_entityId": "z5K8mZOO",
+                  "_entityId": "zbfuuRmH",
                   "children": [
                     {
                       "_entityName": "skill_type",
@@ -2538,7 +4102,7 @@
                         "type": "UITextEntity",
                         "resourceId": ""
                       },
-                      "_entityId": "cnGx7ebo",
+                      "_entityId": "sApb41GH",
                       "children": [],
                       "prefabVariant": null,
                       "activeValue": {
@@ -2567,7 +4131,7 @@
                           },
                           "anchoredPosition": {
                             "x": 0,
-                            "y": -5
+                            "y": -8
                           },
                           "sizeDelta": {
                             "x": 120,
@@ -2580,13 +4144,13 @@
                           "value": "[被动]",
                           "key": "",
                           "font": "Default",
-                          "fontSize": 18,
+                          "fontSize": 20,
                           "fontStyle": {
                             "bold": false,
                             "italic": false,
                             "underline": false
                           },
-                          "color": "#CECECE",
+                          "color": "#D1D1D1",
                           "alignment": {
                             "h": "center",
                             "v": "middle"
@@ -2660,10 +4224,10 @@
                     "alpha": 100,
                     "priority": 0,
                     "text": {
-                      "value": "绝命榴弹",
+                      "value": "闪电触发",
                       "key": "",
                       "font": "Default",
-                      "fontSize": 20,
+                      "fontSize": 22,
                       "fontStyle": {
                         "bold": false,
                         "italic": false,
@@ -2732,8 +4296,8 @@
                     "y": 0.5
                   },
                   "anchoredPosition": {
-                    "x": 50,
-                    "y": -90
+                    "x": 65,
+                    "y": -148
                   },
                   "sizeDelta": {
                     "x": 60,
@@ -2755,6 +4319,208 @@
                   "reverse": {
                     "x": false,
                     "y": false
+                  },
+                  "fillType": 1,
+                  "slicedBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "tiledBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "centerInvisible": false,
+                  "fillDir": 0,
+                  "fillAmount": 0,
+                  "invertFill": false,
+                  "flip": 0,
+                  "gradient": 1,
+                  "gradientTop": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  },
+                  "gradientBottom": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  }
+                }
+              },
+              "ecaScripts": [],
+              "ecaProps": {
+                "HudImageWidget": {},
+                "HudWidget": {},
+                "Entity": {}
+              },
+              "componentList": [],
+              "entityTagData": {
+                "tagPointers": []
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": true
+            },
+            {
+              "_entityName": "Tableft",
+              "_tag": {
+                "type": "UIImageEntity",
+                "resourceId": ""
+              },
+              "_entityId": "pWEd97Qg",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": null,
+              "propsData": {
+                "activeSelf": true,
+                "transform": {
+                  "rotate": 0,
+                  "anchorMin": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "anchorMax": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "pivot": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchoredPosition": {
+                    "x": 35,
+                    "y": 45
+                  },
+                  "sizeDelta": {
+                    "x": 60,
+                    "y": 60
+                  }
+                },
+                "alpha": 30,
+                "priority": 0,
+                "image": {
+                  "source": {
+                    "fileId": "5r4uk937e6m-mjmkv9qd-dw18j1d9t5m",
+                    "filePath": "Assets\\Image\\Home\\Huntingground_Tab01.png",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "texture"
+                  },
+                  "color": "#707070",
+                  "reverse": {
+                    "x": false,
+                    "y": false
+                  },
+                  "fillType": 1,
+                  "slicedBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "tiledBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "centerInvisible": false,
+                  "fillDir": 0,
+                  "fillAmount": 0,
+                  "invertFill": false,
+                  "flip": 0,
+                  "gradient": 1,
+                  "gradientTop": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  },
+                  "gradientBottom": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  }
+                }
+              },
+              "ecaScripts": [],
+              "ecaProps": {
+                "HudImageWidget": {},
+                "HudWidget": {},
+                "Entity": {}
+              },
+              "componentList": [],
+              "entityTagData": {
+                "tagPointers": []
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": true
+            },
+            {
+              "_entityName": "Tabright",
+              "_tag": {
+                "type": "UIImageEntity",
+                "resourceId": ""
+              },
+              "_entityId": "tBc1WL8r",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": null,
+              "propsData": {
+                "activeSelf": true,
+                "transform": {
+                  "rotate": 0,
+                  "anchorMin": {
+                    "x": 1,
+                    "y": 1
+                  },
+                  "anchorMax": {
+                    "x": 1,
+                    "y": 1
+                  },
+                  "pivot": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchoredPosition": {
+                    "x": -35,
+                    "y": -40
+                  },
+                  "sizeDelta": {
+                    "x": 60,
+                    "y": 60
+                  }
+                },
+                "alpha": 30,
+                "priority": 0,
+                "image": {
+                  "source": {
+                    "fileId": "5r4uk937e6m-mjmkv9qd-dw18j1d9t5m",
+                    "filePath": "Assets\\Image\\Home\\Huntingground_Tab01.png",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "texture"
+                  },
+                  "color": "#707070",
+                  "reverse": {
+                    "x": true,
+                    "y": true
                   },
                   "fillType": 1,
                   "slicedBorder": {
@@ -2833,22 +4599,22 @@
                 "y": 0
               },
               "sizeDelta": {
-                "x": 240,
-                "y": 400
+                "x": 330,
+                "y": 498
               }
             },
             "alpha": 100,
             "priority": 0,
             "button": {
               "spriteName": {
-                "fileId": "2995f0a057711a77f0af604a5ee474ee",
-                "filePath": "lib://fftextures/WorkshopIconLibrary/FF_UI_Profile_Block_03.png",
+                "fileId": "uxlmcm8u6ll-mjmkv9la-vmcl00r7o8f",
+                "filePath": "Assets\\Image\\Home\\Huntingground_SpecilCDN_Bg01.png",
                 "_tag": {
                   "type": "GFileRefer"
                 },
                 "fileType": "texture"
               },
-              "normal": "#FF8900",
+              "normal": "#FFFFFF",
               "highlight": "#e2a222",
               "pressed": "#C5C5C5",
               "disabled": "#494949",
@@ -2927,16 +4693,309 @@
             "type": "UIButtonEntity",
             "resourceId": ""
           },
-          "_entityId": "AxKVCNqu",
+          "_entityId": "DTAPCCYh",
           "children": [
             {
-              "_entityName": "Image",
+              "_entityName": "BBIMAGE",
               "_tag": {
                 "type": "UIImageEntity",
                 "resourceId": ""
               },
-              "_entityId": "R7wC2tXE",
+              "_entityId": "IR2nHMn4",
               "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": null,
+              "propsData": {
+                "activeSelf": true,
+                "transform": {
+                  "rotate": 0,
+                  "anchorMin": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchorMax": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "pivot": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchoredPosition": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "sizeDelta": {
+                    "x": 360,
+                    "y": 525
+                  }
+                },
+                "alpha": 100,
+                "priority": 0,
+                "image": {
+                  "source": {
+                    "fileId": "ohxt3rc9f9l-mjmkvb8v-anx6waorow",
+                    "filePath": "Assets\\Image\\Home\\选中框.png",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "texture"
+                  },
+                  "color": "#ffffff",
+                  "reverse": {
+                    "x": false,
+                    "y": false
+                  },
+                  "fillType": 1,
+                  "slicedBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "tiledBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "centerInvisible": false,
+                  "fillDir": 0,
+                  "fillAmount": 0,
+                  "invertFill": false,
+                  "flip": 0,
+                  "gradient": 1,
+                  "gradientTop": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  },
+                  "gradientBottom": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  }
+                }
+              },
+              "ecaScripts": [],
+              "ecaProps": {
+                "HudImageWidget": {},
+                "HudWidget": {},
+                "Entity": {}
+              },
+              "componentList": [],
+              "entityTagData": {
+                "tagPointers": []
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": false
+            },
+            {
+              "_entityName": "ICON",
+              "_tag": {
+                "type": "UIImageEntity",
+                "resourceId": ""
+              },
+              "_entityId": "F8LfXmgm",
+              "children": [
+                {
+                  "_entityName": "HeroName",
+                  "_tag": {
+                    "type": "UITextEntity",
+                    "resourceId": ""
+                  },
+                  "_entityId": "hrb25AI1",
+                  "children": [],
+                  "prefabVariant": null,
+                  "activeValue": {
+                    "selfValue": true,
+                    "valueTag": "activeValue"
+                  },
+                  "unlockedValue": {
+                    "selfValue": true,
+                    "valueTag": "unlockedValue"
+                  },
+                  "propsData": {
+                    "activeSelf": true,
+                    "transform": {
+                      "rotate": 0,
+                      "anchorMin": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "anchorMax": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "pivot": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "anchoredPosition": {
+                        "x": 0,
+                        "y": -120
+                      },
+                      "sizeDelta": {
+                        "x": 125,
+                        "y": 50
+                      }
+                    },
+                    "alpha": 100,
+                    "priority": 0,
+                    "text": {
+                      "value": "新角色",
+                      "key": "",
+                      "font": "Default",
+                      "fontSize": 26,
+                      "fontStyle": {
+                        "bold": false,
+                        "italic": false,
+                        "underline": false
+                      },
+                      "color": "#ffffff",
+                      "alignment": {
+                        "h": "center",
+                        "v": "middle"
+                      },
+                      "lineSpacing": 0,
+                      "background": false,
+                      "backgroundColor": "#e7b200",
+                      "overflow": 0,
+                      "backgroundRGBA": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 0
+                      },
+                      "shadow": true,
+                      "shadowColor": "#000000",
+                      "shadowOffset": {
+                        "x": 1,
+                        "y": 1
+                      }
+                    }
+                  },
+                  "ecaScripts": [],
+                  "ecaProps": {
+                    "HudLabelWidget": {},
+                    "HudWidget": {},
+                    "Entity": {}
+                  },
+                  "componentList": [],
+                  "entityTagData": {
+                    "tagPointers": []
+                  },
+                  "editorLockValue": false,
+                  "editorVisibleValue": true
+                },
+                {
+                  "_entityName": "NameBB",
+                  "_tag": {
+                    "type": "UIImageEntity",
+                    "resourceId": ""
+                  },
+                  "_entityId": "tWf3D2FL",
+                  "children": [],
+                  "prefabVariant": null,
+                  "activeValue": {
+                    "selfValue": true,
+                    "valueTag": "activeValue"
+                  },
+                  "unlockedValue": null,
+                  "propsData": {
+                    "activeSelf": true,
+                    "transform": {
+                      "rotate": 0,
+                      "anchorMin": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "anchorMax": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "pivot": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "anchoredPosition": {
+                        "x": 0,
+                        "y": -120
+                      },
+                      "sizeDelta": {
+                        "x": 320,
+                        "y": 22
+                      }
+                    },
+                    "alpha": 20,
+                    "priority": 0,
+                    "image": {
+                      "source": {
+                        "fileId": "grvvcxhqt9a-mjmkva4n-t7rbv0ryswm",
+                        "filePath": "Assets\\Image\\Home\\Huntingground_Title_Specil_Line.png",
+                        "_tag": {
+                          "type": "GFileRefer"
+                        },
+                        "fileType": "texture"
+                      },
+                      "color": "#ffffff",
+                      "reverse": {
+                        "x": false,
+                        "y": false
+                      },
+                      "fillType": 1,
+                      "slicedBorder": {
+                        "left": 0,
+                        "right": 0,
+                        "top": 0,
+                        "bottom": 0
+                      },
+                      "tiledBorder": {
+                        "left": 0,
+                        "right": 0,
+                        "top": 0,
+                        "bottom": 0
+                      },
+                      "centerInvisible": false,
+                      "fillDir": 0,
+                      "fillAmount": 1,
+                      "invertFill": false,
+                      "flip": 0,
+                      "gradient": 1,
+                      "gradientTop": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 1
+                      },
+                      "gradientBottom": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 1
+                      }
+                    }
+                  },
+                  "ecaScripts": [],
+                  "ecaProps": {
+                    "HudImageWidget": {},
+                    "HudWidget": {},
+                    "Entity": {}
+                  },
+                  "componentList": [],
+                  "entityTagData": {
+                    "tagPointers": []
+                  },
+                  "editorLockValue": false,
+                  "editorVisibleValue": true
+                }
+              ],
               "prefabVariant": null,
               "activeValue": {
                 "selfValue": true,
@@ -2963,8 +5022,8 @@
                     "y": 0.5
                   },
                   "anchoredPosition": {
-                    "x": 2,
-                    "y": 125
+                    "x": 0,
+                    "y": 190
                   },
                   "sizeDelta": {
                     "x": 150,
@@ -2975,8 +5034,8 @@
                 "priority": 0,
                 "image": {
                   "source": {
-                    "fileId": "bea14753511029f1d3f2a43d8d4faa99",
-                    "filePath": "lib://fftextures/WorkshopIconLibrary/TXT_AVATAR_PARACHUTE_8.png",
+                    "fileId": "48348ca582e21034acb86c75a7306934",
+                    "filePath": "lib://fftextures/WorkshopIconLibrary/FF_ingame_hud_UGC_Dyeing_Campicon.png",
                     "_tag": {
                       "type": "GFileRefer"
                     },
@@ -2984,8 +5043,210 @@
                   },
                   "color": "#ffffff",
                   "reverse": {
-                    "x": true,
+                    "x": false,
                     "y": false
+                  },
+                  "fillType": 1,
+                  "slicedBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "tiledBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "centerInvisible": false,
+                  "fillDir": 0,
+                  "fillAmount": 0,
+                  "invertFill": false,
+                  "flip": 0,
+                  "gradient": 1,
+                  "gradientTop": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  },
+                  "gradientBottom": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  }
+                }
+              },
+              "ecaScripts": [],
+              "ecaProps": {
+                "HudImageWidget": {},
+                "HudWidget": {},
+                "Entity": {}
+              },
+              "componentList": [],
+              "entityTagData": {
+                "tagPointers": []
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": true
+            },
+            {
+              "_entityName": "Tableft",
+              "_tag": {
+                "type": "UIImageEntity",
+                "resourceId": ""
+              },
+              "_entityId": "vReKM9Cv",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": null,
+              "propsData": {
+                "activeSelf": true,
+                "transform": {
+                  "rotate": 0,
+                  "anchorMin": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "anchorMax": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "pivot": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchoredPosition": {
+                    "x": 35,
+                    "y": 45
+                  },
+                  "sizeDelta": {
+                    "x": 60,
+                    "y": 60
+                  }
+                },
+                "alpha": 30,
+                "priority": 0,
+                "image": {
+                  "source": {
+                    "fileId": "5r4uk937e6m-mjmkv9qd-dw18j1d9t5m",
+                    "filePath": "Assets\\Image\\Home\\Huntingground_Tab01.png",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "texture"
+                  },
+                  "color": "#707070",
+                  "reverse": {
+                    "x": false,
+                    "y": false
+                  },
+                  "fillType": 1,
+                  "slicedBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "tiledBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "centerInvisible": false,
+                  "fillDir": 0,
+                  "fillAmount": 0,
+                  "invertFill": false,
+                  "flip": 0,
+                  "gradient": 1,
+                  "gradientTop": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  },
+                  "gradientBottom": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  }
+                }
+              },
+              "ecaScripts": [],
+              "ecaProps": {
+                "HudImageWidget": {},
+                "HudWidget": {},
+                "Entity": {}
+              },
+              "componentList": [],
+              "entityTagData": {
+                "tagPointers": []
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": true
+            },
+            {
+              "_entityName": "Tabright",
+              "_tag": {
+                "type": "UIImageEntity",
+                "resourceId": ""
+              },
+              "_entityId": "e2cP5j9z",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": null,
+              "propsData": {
+                "activeSelf": true,
+                "transform": {
+                  "rotate": 0,
+                  "anchorMin": {
+                    "x": 1,
+                    "y": 1
+                  },
+                  "anchorMax": {
+                    "x": 1,
+                    "y": 1
+                  },
+                  "pivot": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchoredPosition": {
+                    "x": -35,
+                    "y": -40
+                  },
+                  "sizeDelta": {
+                    "x": 60,
+                    "y": 60
+                  }
+                },
+                "alpha": 30,
+                "priority": 0,
+                "image": {
+                  "source": {
+                    "fileId": "5r4uk937e6m-mjmkv9qd-dw18j1d9t5m",
+                    "filePath": "Assets\\Image\\Home\\Huntingground_Tab01.png",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "texture"
+                  },
+                  "color": "#707070",
+                  "reverse": {
+                    "x": true,
+                    "y": true
                   },
                   "fillType": 1,
                   "slicedBorder": {
@@ -3048,11 +5309,11 @@
             "transform": {
               "rotate": 0,
               "anchorMin": {
-                "x": 1,
+                "x": 0.5,
                 "y": 0.5
               },
               "anchorMax": {
-                "x": 1,
+                "x": 0.5,
                 "y": 0.5
               },
               "pivot": {
@@ -3060,26 +5321,26 @@
                 "y": 0.5
               },
               "anchoredPosition": {
-                "x": -120,
+                "x": 350,
                 "y": 0
               },
               "sizeDelta": {
-                "x": 240,
-                "y": 400
+                "x": 330,
+                "y": 498
               }
             },
             "alpha": 100,
             "priority": 0,
             "button": {
               "spriteName": {
-                "fileId": "2995f0a057711a77f0af604a5ee474ee",
-                "filePath": "lib://fftextures/WorkshopIconLibrary/FF_UI_Profile_Block_03.png",
+                "fileId": "uxlmcm8u6ll-mjmkv9la-vmcl00r7o8f",
+                "filePath": "Assets\\Image\\Home\\Huntingground_SpecilCDN_Bg01.png",
                 "_tag": {
                   "type": "GFileRefer"
                 },
                 "fileType": "texture"
               },
-              "normal": "#FF8900",
+              "normal": "#FFFFFF",
               "highlight": "#e2a222",
               "pressed": "#C5C5C5",
               "disabled": "#494949",
@@ -3181,12 +5442,12 @@
             "y": 0.5
           },
           "anchoredPosition": {
-            "x": 100,
-            "y": 25
+            "x": 125,
+            "y": 0
           },
           "sizeDelta": {
-            "x": 800,
-            "y": 400
+            "x": 1030,
+            "y": 500
           }
         },
         "alpha": 100,
@@ -3274,22 +5535,22 @@
                 "y": 0
               },
               "sizeDelta": {
-                "x": 30,
-                "y": 50
+                "x": 40,
+                "y": 40
               }
             },
             "alpha": 100,
             "priority": 0,
             "button": {
               "spriteName": {
-                "fileId": "0cdb8f66891eca2021730763868b5158",
-                "filePath": "lib://fftextures/WorkshopIconLibrary/HuntingGround_icon_arrow_left01.png",
+                "fileId": "h6ve13xxc1s-mjmkva9n-gbsmqhrln4i",
+                "filePath": "Assets\\Image\\Home\\Icon_Arrow_New01.png",
                 "_tag": {
                   "type": "GFileRefer"
                 },
                 "fileType": "texture"
               },
-              "normal": "#F2A245",
+              "normal": "#FFBA00",
               "highlight": "#e2a222",
               "pressed": "#C5C5C5",
               "disabled": "#494949",
@@ -3382,7 +5643,7 @@
           "propsData": {
             "activeSelf": true,
             "transform": {
-              "rotate": 0,
+              "rotate": 180,
               "anchorMin": {
                 "x": 0,
                 "y": 0.5
@@ -3400,22 +5661,22 @@
                 "y": 0
               },
               "sizeDelta": {
-                "x": 30,
-                "y": 50
+                "x": 40,
+                "y": 40
               }
             },
             "alpha": 100,
             "priority": 0,
             "button": {
               "spriteName": {
-                "fileId": "0cdb8f66891eca2021730763868b5158",
-                "filePath": "lib://fftextures/WorkshopIconLibrary/HuntingGround_icon_arrow_left01.png",
+                "fileId": "h6ve13xxc1s-mjmkva9n-gbsmqhrln4i",
+                "filePath": "Assets\\Image\\Home\\Icon_Arrow_New01.png",
                 "_tag": {
                   "type": "GFileRefer"
                 },
                 "fileType": "texture"
               },
-              "normal": "#F2A245",
+              "normal": "#FFBA00",
               "highlight": "#e2a222",
               "pressed": "#C5C5C5",
               "disabled": "#494949",
@@ -3605,11 +5866,11 @@
             "y": 0.5
           },
           "anchoredPosition": {
-            "x": 520,
-            "y": -250
+            "x": 250,
+            "y": -320
           },
           "sizeDelta": {
-            "x": 250,
+            "x": 200,
             "y": 70
           }
         },
@@ -3617,8 +5878,8 @@
         "priority": 0,
         "image": {
           "source": {
-            "fileId": "c8519293c79df750559f67e696a42211",
-            "filePath": "lib://fftextures/WorkshopIconLibrary/HuntingGroun d_BG_Bag_01.png",
+            "fileId": "wi460jrem9g-mjmkv9zu-ll4ewhqq6os",
+            "filePath": "Assets\\Image\\Home\\Huntingground_talentcount_Bg.png",
             "_tag": {
               "type": "GFileRefer"
             },
@@ -3626,7 +5887,7 @@
           },
           "color": "#ffffff",
           "reverse": {
-            "x": false,
+            "x": true,
             "y": false
           },
           "fillType": 1,
@@ -3723,7 +5984,7 @@
                 "y": 0
               },
               "sizeDelta": {
-                "x": 120,
+                "x": 200,
                 "y": 50
               }
             },
@@ -3733,13 +5994,13 @@
               "value": "开始",
               "key": "",
               "font": "Default",
-              "fontSize": 30,
+              "fontSize": 42,
               "fontStyle": {
                 "bold": false,
                 "italic": false,
                 "underline": false
               },
-              "color": "#000000",
+              "color": "#2C2A2A",
               "alignment": {
                 "h": "center",
                 "v": "middle"
@@ -3803,7 +6064,7 @@
           },
           "anchoredPosition": {
             "x": 520,
-            "y": -330
+            "y": -320
           },
           "sizeDelta": {
             "x": 250,
@@ -3893,21 +6154,318 @@
       }
     },
     {
-      "_entityName": "Gifted",
+      "_entityName": "GiftedPanel",
       "_tag": {
-        "type": "UIButtonEntity",
+        "type": "UIPanelEntityV3",
         "resourceId": ""
       },
-      "_entityId": "Mi9dQcT7",
+      "_entityId": "L39HYikp",
       "children": [
         {
-          "_entityName": "Text",
+          "_entityName": "tab",
           "_tag": {
-            "type": "UITextEntity",
+            "type": "UIImageEntity",
             "resourceId": ""
           },
-          "_entityId": "BNx25spW",
+          "_entityId": "sz0nA9OP",
           "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": null,
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "propsData": {
+            "activeSelf": true,
+            "transform": {
+              "rotate": 0,
+              "anchorMin": {
+                "x": 0,
+                "y": 0.5
+              },
+              "anchorMax": {
+                "x": 0,
+                "y": 0.5
+              },
+              "pivot": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "anchoredPosition": {
+                "x": 30,
+                "y": 0
+              },
+              "sizeDelta": {
+                "x": 52,
+                "y": 55
+              }
+            },
+            "alpha": 60,
+            "priority": 0,
+            "image": {
+              "source": {
+                "fileId": "5r4uk937e6m-mjmkv9qd-dw18j1d9t5m",
+                "filePath": "Assets\\Image\\Home\\Huntingground_Tab01.png",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "texture"
+              },
+              "color": "#717171",
+              "reverse": {
+                "x": false,
+                "y": false
+              },
+              "fillType": 1,
+              "slicedBorder": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              },
+              "tiledBorder": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              },
+              "centerInvisible": false,
+              "fillDir": 0,
+              "fillAmount": 0,
+              "invertFill": false,
+              "flip": 0,
+              "gradient": 1,
+              "gradientTop": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 1
+              },
+              "gradientBottom": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 1
+              }
+            }
+          },
+          "ecaScripts": [],
+          "ecaProps": {
+            "HudImageWidget": {},
+            "HudWidget": {},
+            "Entity": {}
+          },
+          "componentList": [],
+          "entityTagData": {
+            "tagPointers": []
+          }
+        },
+        {
+          "_entityName": "Gifted",
+          "_tag": {
+            "type": "UIButtonEntity",
+            "resourceId": ""
+          },
+          "_entityId": "Mi9dQcT7",
+          "children": [
+            {
+              "_entityName": "Iamge",
+              "_tag": {
+                "type": "UIImageEntity",
+                "resourceId": ""
+              },
+              "_entityId": "vT3M9q9v",
+              "children": [
+                {
+                  "_entityName": "Text",
+                  "_tag": {
+                    "type": "UITextEntity",
+                    "resourceId": ""
+                  },
+                  "_entityId": "BNx25spW",
+                  "children": [],
+                  "prefabVariant": null,
+                  "activeValue": {
+                    "selfValue": true,
+                    "valueTag": "activeValue"
+                  },
+                  "unlockedValue": {
+                    "selfValue": true,
+                    "valueTag": "unlockedValue"
+                  },
+                  "propsData": {
+                    "activeSelf": true,
+                    "transform": {
+                      "rotate": 0,
+                      "anchorMin": {
+                        "x": 1,
+                        "y": 0.5
+                      },
+                      "anchorMax": {
+                        "x": 1,
+                        "y": 0.5
+                      },
+                      "pivot": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "anchoredPosition": {
+                        "x": 55,
+                        "y": 0
+                      },
+                      "sizeDelta": {
+                        "x": 120,
+                        "y": 50
+                      }
+                    },
+                    "alpha": 70,
+                    "priority": 0,
+                    "text": {
+                      "value": "天赋",
+                      "key": "",
+                      "font": "Default",
+                      "fontSize": 28,
+                      "fontStyle": {
+                        "bold": false,
+                        "italic": false,
+                        "underline": false
+                      },
+                      "color": "#FFFFFF",
+                      "alignment": {
+                        "h": "left",
+                        "v": "middle"
+                      },
+                      "lineSpacing": 0,
+                      "background": false,
+                      "backgroundColor": "#e7b200",
+                      "overflow": 0,
+                      "backgroundRGBA": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 0
+                      },
+                      "shadow": true,
+                      "shadowColor": "#000000",
+                      "shadowOffset": {
+                        "x": 1,
+                        "y": 1
+                      }
+                    }
+                  },
+                  "ecaScripts": [],
+                  "ecaProps": {
+                    "HudLabelWidget": {},
+                    "HudWidget": {},
+                    "Entity": {}
+                  },
+                  "componentList": [],
+                  "entityTagData": {
+                    "tagPointers": []
+                  },
+                  "editorLockValue": false,
+                  "editorVisibleValue": true
+                }
+              ],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": true,
+              "propsData": {
+                "activeSelf": true,
+                "transform": {
+                  "rotate": 0,
+                  "anchorMin": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchorMax": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "pivot": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchoredPosition": {
+                    "x": -30,
+                    "y": 0
+                  },
+                  "sizeDelta": {
+                    "x": 64,
+                    "y": 64
+                  }
+                },
+                "alpha": 100,
+                "priority": 0,
+                "image": {
+                  "source": {
+                    "fileId": "cjnbdt966tn-mjmkvax8-aw3vb018m5i",
+                    "filePath": "Assets\\Image\\Home\\UI_Icon_Awaken.png",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "texture"
+                  },
+                  "color": "#ffffff",
+                  "reverse": {
+                    "x": false,
+                    "y": false
+                  },
+                  "fillType": 1,
+                  "slicedBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "tiledBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "centerInvisible": false,
+                  "fillDir": 0,
+                  "fillAmount": 0,
+                  "invertFill": false,
+                  "flip": 0,
+                  "gradient": 1,
+                  "gradientTop": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  },
+                  "gradientBottom": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  }
+                }
+              },
+              "ecaScripts": [],
+              "ecaProps": {
+                "HudImageWidget": {},
+                "HudWidget": {},
+                "Entity": {}
+              },
+              "componentList": [],
+              "entityTagData": {
+                "tagPointers": []
+              }
+            }
+          ],
           "prefabVariant": null,
           "activeValue": {
             "selfValue": true,
@@ -3938,48 +6496,84 @@
                 "y": 0
               },
               "sizeDelta": {
-                "x": 120,
-                "y": 50
+                "x": 224,
+                "y": 58
               }
             },
             "alpha": 100,
             "priority": 0,
-            "text": {
-              "value": "天赋",
-              "key": "",
-              "font": "Default",
-              "fontSize": 24,
-              "fontStyle": {
-                "bold": false,
-                "italic": false,
-                "underline": false
+            "button": {
+              "spriteName": {
+                "fileId": "htx7xndp56e-mjmkv9sk-1h9x68s7b2z",
+                "filePath": "Assets\\Image\\Home\\Huntingground_Tab02.png",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "texture"
               },
-              "color": "#000000",
-              "alignment": {
-                "h": "center",
-                "v": "middle"
+              "normal": "#FFFFFF",
+              "highlight": "#e2a222",
+              "pressed": "#C5C5C5",
+              "disabled": "#494949",
+              "onClicks": [],
+              "enableBorderImage": true,
+              "clickHandlers": [
+                {
+                  "eventName": "OnClick",
+                  "funcKey": "ToGiftedPanel",
+                  "type": "ugcscript",
+                  "fileID": "ib290qp153d-mhxditfr-cstq6pvvk9u"
+                }
+              ],
+              "disableCollider": false,
+              "fillType": 1,
+              "slicedBorder": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
               },
-              "lineSpacing": 0,
-              "background": false,
-              "backgroundColor": "#e7b200",
-              "overflow": 0,
-              "backgroundRGBA": {
-                "r": 0,
-                "g": 0,
-                "b": 0,
-                "a": 0
+              "tiledBorder": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
               },
-              "shadow": false,
-              "shadowColor": "#000000",
-              "shadowOffset": {
-                "x": 1,
-                "y": 1
+              "centerInvisible": false,
+              "fillDir": 0,
+              "fillAmount": 0,
+              "invertFill": false,
+              "reverse": {
+                "x": false,
+                "y": false
+              },
+              "flip": 0,
+              "gradient": 1,
+              "gradientTop": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 1
+              },
+              "gradientBottom": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 1
               }
             }
           },
           "ecaScripts": [],
           "ecaProps": {
-            "HudLabelWidget": {},
+            "HudButtonWidget": {
+              "HudButtonWidget_15026837_custom": null,
+              "HudButtonWidget_67680512_custom": null,
+              "HudButtonWidget_33700402_custom": 0,
+              "HudButtonWidget_52340716_custom": null,
+              "HudButtonWidget_47946058_custom": 0,
+              "HudButtonWidget_73587085_custom": "",
+              "HudButtonWidget_39454785_custom": true
+            },
             "HudWidget": {},
             "Entity": {}
           },
@@ -3996,10 +6590,9 @@
         "selfValue": true,
         "valueTag": "activeValue"
       },
-      "unlockedValue": {
-        "selfValue": true,
-        "valueTag": "unlockedValue"
-      },
+      "unlockedValue": null,
+      "editorLockValue": false,
+      "editorVisibleValue": true,
       "propsData": {
         "activeSelf": true,
         "transform": {
@@ -4017,522 +6610,44 @@
             "y": 0.5
           },
           "anchoredPosition": {
-            "x": -550,
-            "y": 200
+            "x": -535,
+            "y": 218
           },
           "sizeDelta": {
-            "x": 180,
-            "y": 50
+            "x": 224,
+            "y": 58
           }
         },
         "alpha": 100,
         "priority": 0,
-        "button": {
-          "spriteName": {
-            "fileId": "1825665227fdf4993c4c5d6062c9a1e9",
-            "filePath": "lib://fftextures/WorkshopIconLibrary/FF_UI_SmallWindow_Botton.png",
+        "panel": {
+          "enableBackground": false,
+          "maskName": null,
+          "bgName": {
+            "fileId": "b063b0439839b3d97a8fd2aa6a57ef8b",
+            "filePath": "lib://fftextures/WorkshopIconLibrary/T_34_M_WS_ICON_SQUARE.png",
             "_tag": {
               "type": "GFileRefer"
             },
             "fileType": "texture"
           },
-          "normal": "#FFFFFF",
-          "highlight": "#e2a222",
-          "pressed": "#C5C5C5",
-          "disabled": "#494949",
-          "onClicks": [],
-          "enableBorderImage": true,
-          "clickHandlers": [
-            {
-              "eventName": "OnClick",
-              "funcKey": "ToGiftedPanel",
-              "type": "ugcscript",
-              "fileID": "ib290qp153d-mhxditfr-cstq6pvvk9u"
-            }
-          ],
-          "disableCollider": false,
-          "fillType": 1,
-          "slicedBorder": {
-            "left": 0,
-            "right": 0,
-            "top": 0,
-            "bottom": 0
-          },
-          "tiledBorder": {
-            "left": 0,
-            "right": 0,
-            "top": 0,
-            "bottom": 0
-          },
-          "centerInvisible": false,
-          "fillDir": 0,
-          "fillAmount": 0,
-          "invertFill": false,
-          "reverse": {
-            "x": false,
-            "y": false
-          },
-          "flip": 0,
-          "gradient": 1,
-          "gradientTop": {
+          "bgColor": {
             "r": 255,
             "g": 255,
             "b": 255,
-            "a": 1
+            "a": 0.2
           },
-          "gradientBottom": {
-            "r": 255,
-            "g": 255,
-            "b": 255,
-            "a": 1
-          }
-        }
-      },
-      "ecaScripts": [],
-      "ecaProps": {
-        "HudButtonWidget": {
-          "HudButtonWidget_15026837_custom": null,
-          "HudButtonWidget_67680512_custom": null,
-          "HudButtonWidget_33700402_custom": 0,
-          "HudButtonWidget_52340716_custom": null,
-          "HudButtonWidget_47946058_custom": 0,
-          "HudButtonWidget_73587085_custom": "",
-          "HudButtonWidget_39454785_custom": true
-        },
-        "HudWidget": {},
-        "Entity": {}
-      },
-      "componentList": [],
-      "entityTagData": {
-        "tagPointers": []
-      },
-      "editorLockValue": false,
-      "editorVisibleValue": true
-    },
-    {
-      "_entityName": "Hero",
-      "_tag": {
-        "type": "UIButtonEntity",
-        "resourceId": ""
-      },
-      "_entityId": "xWFuVFFh",
-      "children": [
-        {
-          "_entityName": "Text",
-          "_tag": {
-            "type": "UITextEntity",
-            "resourceId": ""
-          },
-          "_entityId": "STKgvaSS",
-          "children": [],
-          "prefabVariant": null,
-          "activeValue": {
-            "selfValue": true,
-            "valueTag": "activeValue"
-          },
-          "unlockedValue": {
-            "selfValue": true,
-            "valueTag": "unlockedValue"
-          },
-          "propsData": {
-            "activeSelf": true,
-            "transform": {
-              "rotate": 0,
-              "anchorMin": {
-                "x": 0.5,
-                "y": 0.5
-              },
-              "anchorMax": {
-                "x": 0.5,
-                "y": 0.5
-              },
-              "pivot": {
-                "x": 0.5,
-                "y": 0.5
-              },
-              "anchoredPosition": {
-                "x": 0,
-                "y": 0
-              },
-              "sizeDelta": {
-                "x": 120,
-                "y": 50
-              }
-            },
-            "alpha": 100,
-            "priority": 0,
-            "text": {
-              "value": "角色",
-              "key": "",
-              "font": "Default",
-              "fontSize": 24,
-              "fontStyle": {
-                "bold": false,
-                "italic": false,
-                "underline": false
-              },
-              "color": "#000000",
-              "alignment": {
-                "h": "center",
-                "v": "middle"
-              },
-              "lineSpacing": 0,
-              "background": false,
-              "backgroundColor": "#e7b200",
-              "overflow": 0,
-              "backgroundRGBA": {
-                "r": 0,
-                "g": 0,
-                "b": 0,
-                "a": 0
-              },
-              "shadow": false,
-              "shadowColor": "#000000",
-              "shadowOffset": {
-                "x": 1,
-                "y": 1
-              }
-            }
-          },
-          "ecaScripts": [],
-          "ecaProps": {
-            "HudLabelWidget": {},
-            "HudWidget": {},
-            "Entity": {}
-          },
-          "componentList": [],
-          "entityTagData": {
-            "tagPointers": []
-          },
-          "editorLockValue": false,
-          "editorVisibleValue": true
-        }
-      ],
-      "prefabVariant": null,
-      "activeValue": {
-        "selfValue": true,
-        "valueTag": "activeValue"
-      },
-      "unlockedValue": {
-        "selfValue": true,
-        "valueTag": "unlockedValue"
-      },
-      "propsData": {
-        "activeSelf": true,
-        "transform": {
-          "rotate": 0,
-          "anchorMin": {
-            "x": 0.5,
-            "y": 0.5
-          },
-          "anchorMax": {
-            "x": 0.5,
-            "y": 0.5
-          },
-          "pivot": {
-            "x": 0.5,
-            "y": 0.5
-          },
-          "anchoredPosition": {
-            "x": -550,
-            "y": 100
-          },
-          "sizeDelta": {
-            "x": 180,
-            "y": 50
-          }
-        },
-        "alpha": 100,
-        "priority": 0,
-        "button": {
-          "spriteName": {
-            "fileId": "1825665227fdf4993c4c5d6062c9a1e9",
-            "filePath": "lib://fftextures/WorkshopIconLibrary/FF_UI_SmallWindow_Botton.png",
-            "_tag": {
-              "type": "GFileRefer"
-            },
-            "fileType": "texture"
-          },
-          "normal": "#FFFFFF",
-          "highlight": "#e2a222",
-          "pressed": "#C5C5C5",
-          "disabled": "#494949",
-          "onClicks": [],
-          "enableBorderImage": true,
-          "clickHandlers": [
-            {
-              "eventName": "OnClick",
-              "funcKey": "ToHeroPanel",
-              "type": "ugcscript",
-              "fileID": "ib290qp153d-mhxditfr-cstq6pvvk9u"
-            }
-          ],
-          "disableCollider": false,
-          "fillType": 1,
-          "slicedBorder": {
-            "left": 0,
-            "right": 0,
-            "top": 0,
-            "bottom": 0
-          },
-          "tiledBorder": {
-            "left": 0,
-            "right": 0,
-            "top": 0,
-            "bottom": 0
-          },
-          "centerInvisible": false,
-          "fillDir": 0,
-          "fillAmount": 0,
-          "invertFill": false,
-          "reverse": {
-            "x": false,
-            "y": false
-          },
-          "flip": 0,
-          "gradient": 1,
-          "gradientTop": {
-            "r": 255,
-            "g": 255,
-            "b": 255,
-            "a": 1
-          },
-          "gradientBottom": {
-            "r": 255,
-            "g": 255,
-            "b": 255,
-            "a": 1
-          }
-        }
-      },
-      "ecaScripts": [],
-      "ecaProps": {
-        "HudButtonWidget": {
-          "HudButtonWidget_15026837_custom": null,
-          "HudButtonWidget_67680512_custom": null,
-          "HudButtonWidget_33700402_custom": 0,
-          "HudButtonWidget_52340716_custom": null,
-          "HudButtonWidget_47946058_custom": 0,
-          "HudButtonWidget_73587085_custom": "",
-          "HudButtonWidget_39454785_custom": true
-        },
-        "HudWidget": {},
-        "Entity": {}
-      },
-      "componentList": [],
-      "entityTagData": {
-        "tagPointers": []
-      },
-      "editorLockValue": false,
-      "editorVisibleValue": true
-    },
-    {
-      "_entityName": "Ranking",
-      "_tag": {
-        "type": "UIButtonEntity",
-        "resourceId": ""
-      },
-      "_entityId": "IpR9yyTD",
-      "children": [
-        {
-          "_entityName": "Text",
-          "_tag": {
-            "type": "UITextEntity",
-            "resourceId": ""
-          },
-          "_entityId": "ZdPSYJyS",
-          "children": [],
-          "prefabVariant": null,
-          "activeValue": {
-            "selfValue": true,
-            "valueTag": "activeValue"
-          },
-          "unlockedValue": {
-            "selfValue": true,
-            "valueTag": "unlockedValue"
-          },
-          "propsData": {
-            "activeSelf": true,
-            "transform": {
-              "rotate": 0,
-              "anchorMin": {
-                "x": 0.5,
-                "y": 0.5
-              },
-              "anchorMax": {
-                "x": 0.5,
-                "y": 0.5
-              },
-              "pivot": {
-                "x": 0.5,
-                "y": 0.5
-              },
-              "anchoredPosition": {
-                "x": 0,
-                "y": 0
-              },
-              "sizeDelta": {
-                "x": 150,
-                "y": 50
-              }
-            },
-            "alpha": 100,
-            "priority": 0,
-            "text": {
-              "value": "排行",
-              "key": "",
-              "font": "Default",
-              "fontSize": 24,
-              "fontStyle": {
-                "bold": false,
-                "italic": false,
-                "underline": false
-              },
-              "color": "#000000",
-              "alignment": {
-                "h": "center",
-                "v": "middle"
-              },
-              "lineSpacing": 0,
-              "background": false,
-              "backgroundColor": "#e7b200",
-              "overflow": 0,
-              "backgroundRGBA": {
-                "r": 0,
-                "g": 0,
-                "b": 0,
-                "a": 0
-              },
-              "shadow": false,
-              "shadowColor": "#000000",
-              "shadowOffset": {
-                "x": 1,
-                "y": 1
-              }
-            }
-          },
-          "ecaScripts": [],
-          "ecaProps": {
-            "HudLabelWidget": {},
-            "HudWidget": {},
-            "Entity": {}
-          },
-          "componentList": [],
-          "entityTagData": {
-            "tagPointers": []
-          },
-          "editorLockValue": false,
-          "editorVisibleValue": true
-        }
-      ],
-      "prefabVariant": null,
-      "activeValue": {
-        "selfValue": true,
-        "valueTag": "activeValue"
-      },
-      "unlockedValue": {
-        "selfValue": true,
-        "valueTag": "unlockedValue"
-      },
-      "propsData": {
-        "activeSelf": true,
-        "transform": {
-          "rotate": 0,
-          "anchorMin": {
-            "x": 0.5,
-            "y": 0.5
-          },
-          "anchorMax": {
-            "x": 0.5,
-            "y": 0.5
-          },
-          "pivot": {
-            "x": 0.5,
-            "y": 0.5
-          },
-          "anchoredPosition": {
-            "x": -550,
+          "clippingType": 0,
+          "softness": {
+            "x": 0,
             "y": 0
-          },
-          "sizeDelta": {
-            "x": 180,
-            "y": 50
-          }
-        },
-        "alpha": 100,
-        "priority": 0,
-        "button": {
-          "spriteName": {
-            "fileId": "1825665227fdf4993c4c5d6062c9a1e9",
-            "filePath": "lib://fftextures/WorkshopIconLibrary/FF_UI_SmallWindow_Botton.png",
-            "_tag": {
-              "type": "GFileRefer"
-            },
-            "fileType": "texture"
-          },
-          "normal": "#FFFFFF",
-          "highlight": "#e2a222",
-          "pressed": "#C5C5C5",
-          "disabled": "#494949",
-          "onClicks": [],
-          "enableBorderImage": true,
-          "clickHandlers": [
-            {
-              "eventName": "OnClick",
-              "funcKey": "ToRankingPanel",
-              "type": "ugcscript",
-              "fileID": "ib290qp153d-mhxditfr-cstq6pvvk9u"
-            }
-          ],
-          "disableCollider": false,
-          "fillType": 1,
-          "slicedBorder": {
-            "left": 0,
-            "right": 0,
-            "top": 0,
-            "bottom": 0
-          },
-          "tiledBorder": {
-            "left": 0,
-            "right": 0,
-            "top": 0,
-            "bottom": 0
-          },
-          "centerInvisible": false,
-          "fillDir": 0,
-          "fillAmount": 0,
-          "invertFill": false,
-          "reverse": {
-            "x": false,
-            "y": false
-          },
-          "flip": 0,
-          "gradient": 1,
-          "gradientTop": {
-            "r": 255,
-            "g": 255,
-            "b": 255,
-            "a": 1
-          },
-          "gradientBottom": {
-            "r": 255,
-            "g": 255,
-            "b": 255,
-            "a": 1
           }
         }
       },
       "ecaScripts": [],
       "ecaProps": {
-        "HudButtonWidget": {
-          "HudButtonWidget_15026837_custom": null,
-          "HudButtonWidget_67680512_custom": null,
-          "HudButtonWidget_33700402_custom": 0,
-          "HudButtonWidget_52340716_custom": null,
-          "HudButtonWidget_47946058_custom": 0,
-          "HudButtonWidget_73587085_custom": "",
-          "HudButtonWidget_39454785_custom": true
-        },
+        "HudEmptyPanel": {},
+        "HudPanel": {},
         "HudWidget": {},
         "Entity": {}
       },
@@ -4540,6 +6655,1013 @@
       "entityTagData": {
         "tagPointers": []
       },
+      "version": "UIPanelEntityV3"
+    },
+    {
+      "_entityName": "HeroPanel",
+      "_tag": {
+        "type": "UIPanelEntityV3",
+        "resourceId": ""
+      },
+      "_entityId": "L5QDIQi8",
+      "children": [
+        {
+          "_entityName": "tab",
+          "_tag": {
+            "type": "UIImageEntity",
+            "resourceId": ""
+          },
+          "_entityId": "UwIfU9nN",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": null,
+          "propsData": {
+            "activeSelf": true,
+            "transform": {
+              "rotate": 0,
+              "anchorMin": {
+                "x": 0,
+                "y": 0.5
+              },
+              "anchorMax": {
+                "x": 0,
+                "y": 0.5
+              },
+              "pivot": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "anchoredPosition": {
+                "x": 30,
+                "y": 0
+              },
+              "sizeDelta": {
+                "x": 52,
+                "y": 55
+              }
+            },
+            "alpha": 60,
+            "priority": 0,
+            "image": {
+              "source": {
+                "fileId": "5r4uk937e6m-mjmkv9qd-dw18j1d9t5m",
+                "filePath": "Assets\\Image\\Home\\Huntingground_Tab01.png",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "texture"
+              },
+              "color": "#717171",
+              "reverse": {
+                "x": false,
+                "y": false
+              },
+              "fillType": 1,
+              "slicedBorder": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              },
+              "tiledBorder": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              },
+              "centerInvisible": false,
+              "fillDir": 0,
+              "fillAmount": 0,
+              "invertFill": false,
+              "flip": 0,
+              "gradient": 1,
+              "gradientTop": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 1
+              },
+              "gradientBottom": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 1
+              }
+            }
+          },
+          "ecaScripts": [],
+          "ecaProps": {
+            "HudImageWidget": {},
+            "HudWidget": {},
+            "Entity": {}
+          },
+          "componentList": [],
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true
+        },
+        {
+          "_entityName": "Hero",
+          "_tag": {
+            "type": "UIButtonEntity",
+            "resourceId": ""
+          },
+          "_entityId": "xWFuVFFh",
+          "children": [
+            {
+              "_entityName": "Iamge",
+              "_tag": {
+                "type": "UIImageEntity",
+                "resourceId": ""
+              },
+              "_entityId": "hUVbA2Dc",
+              "children": [
+                {
+                  "_entityName": "Text",
+                  "_tag": {
+                    "type": "UITextEntity",
+                    "resourceId": ""
+                  },
+                  "_entityId": "EeohONGM",
+                  "children": [],
+                  "prefabVariant": null,
+                  "activeValue": {
+                    "selfValue": true,
+                    "valueTag": "activeValue"
+                  },
+                  "unlockedValue": {
+                    "selfValue": true,
+                    "valueTag": "unlockedValue"
+                  },
+                  "propsData": {
+                    "activeSelf": true,
+                    "transform": {
+                      "rotate": 0,
+                      "anchorMin": {
+                        "x": 1,
+                        "y": 0.5
+                      },
+                      "anchorMax": {
+                        "x": 1,
+                        "y": 0.5
+                      },
+                      "pivot": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "anchoredPosition": {
+                        "x": 65,
+                        "y": 0
+                      },
+                      "sizeDelta": {
+                        "x": 120,
+                        "y": 50
+                      }
+                    },
+                    "alpha": 70,
+                    "priority": 0,
+                    "text": {
+                      "value": "角色",
+                      "key": "",
+                      "font": "Default",
+                      "fontSize": 28,
+                      "fontStyle": {
+                        "bold": false,
+                        "italic": false,
+                        "underline": false
+                      },
+                      "color": "#FFFFFF",
+                      "alignment": {
+                        "h": "left",
+                        "v": "middle"
+                      },
+                      "lineSpacing": 0,
+                      "background": false,
+                      "backgroundColor": "#e7b200",
+                      "overflow": 0,
+                      "backgroundRGBA": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 0
+                      },
+                      "shadow": true,
+                      "shadowColor": "#000000",
+                      "shadowOffset": {
+                        "x": 1,
+                        "y": 1
+                      }
+                    }
+                  },
+                  "ecaScripts": [],
+                  "ecaProps": {
+                    "HudLabelWidget": {},
+                    "HudWidget": {},
+                    "Entity": {}
+                  },
+                  "componentList": [],
+                  "entityTagData": {
+                    "tagPointers": []
+                  },
+                  "editorLockValue": false,
+                  "editorVisibleValue": true
+                }
+              ],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "propsData": {
+                "activeSelf": true,
+                "transform": {
+                  "rotate": 0,
+                  "anchorMin": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchorMax": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "pivot": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchoredPosition": {
+                    "x": -30,
+                    "y": 0
+                  },
+                  "sizeDelta": {
+                    "x": 40,
+                    "y": 40
+                  }
+                },
+                "alpha": 100,
+                "priority": 0,
+                "image": {
+                  "source": {
+                    "fileId": "phxyvki6yq-mjmkvarc-rdwplv4mywd",
+                    "filePath": "Assets\\Image\\Home\\UI_icn_Character.png",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "texture"
+                  },
+                  "color": "#ffffff",
+                  "reverse": {
+                    "x": false,
+                    "y": false
+                  },
+                  "fillType": 1,
+                  "slicedBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "tiledBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "centerInvisible": false,
+                  "fillDir": 0,
+                  "fillAmount": 0,
+                  "invertFill": false,
+                  "flip": 0,
+                  "gradient": 1,
+                  "gradientTop": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  },
+                  "gradientBottom": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  }
+                }
+              },
+              "ecaScripts": [],
+              "ecaProps": {
+                "HudImageWidget": {},
+                "HudWidget": {},
+                "Entity": {}
+              },
+              "componentList": [],
+              "entityTagData": {
+                "tagPointers": []
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": true
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "propsData": {
+            "activeSelf": true,
+            "transform": {
+              "rotate": 0,
+              "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "pivot": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "anchoredPosition": {
+                "x": 0,
+                "y": 0
+              },
+              "sizeDelta": {
+                "x": 224,
+                "y": 58
+              }
+            },
+            "alpha": 100,
+            "priority": 0,
+            "button": {
+              "spriteName": {
+                "fileId": "htx7xndp56e-mjmkv9sk-1h9x68s7b2z",
+                "filePath": "Assets\\Image\\Home\\Huntingground_Tab02.png",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "texture"
+              },
+              "normal": "#FFFFFF",
+              "highlight": "#e2a222",
+              "pressed": "#C5C5C5",
+              "disabled": "#494949",
+              "onClicks": [],
+              "enableBorderImage": true,
+              "clickHandlers": [
+                {
+                  "eventName": "OnClick",
+                  "funcKey": "ToHeroPanel",
+                  "type": "ugcscript",
+                  "fileID": "ib290qp153d-mhxditfr-cstq6pvvk9u"
+                }
+              ],
+              "disableCollider": false,
+              "fillType": 1,
+              "slicedBorder": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              },
+              "tiledBorder": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              },
+              "centerInvisible": false,
+              "fillDir": 0,
+              "fillAmount": 0,
+              "invertFill": false,
+              "reverse": {
+                "x": false,
+                "y": false
+              },
+              "flip": 0,
+              "gradient": 1,
+              "gradientTop": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 1
+              },
+              "gradientBottom": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 1
+              }
+            }
+          },
+          "ecaScripts": [],
+          "ecaProps": {
+            "HudButtonWidget": {
+              "HudButtonWidget_15026837_custom": null,
+              "HudButtonWidget_67680512_custom": null,
+              "HudButtonWidget_33700402_custom": 0,
+              "HudButtonWidget_52340716_custom": null,
+              "HudButtonWidget_47946058_custom": 0,
+              "HudButtonWidget_73587085_custom": "",
+              "HudButtonWidget_39454785_custom": true
+            },
+            "HudWidget": {},
+            "Entity": {}
+          },
+          "componentList": [],
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": null,
+      "propsData": {
+        "activeSelf": true,
+        "transform": {
+          "rotate": 0,
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchoredPosition": {
+            "x": -535,
+            "y": 145
+          },
+          "sizeDelta": {
+            "x": 224,
+            "y": 58
+          }
+        },
+        "alpha": 100,
+        "priority": 0,
+        "panel": {
+          "enableBackground": false,
+          "maskName": null,
+          "bgName": {
+            "fileId": "b063b0439839b3d97a8fd2aa6a57ef8b",
+            "filePath": "lib://fftextures/WorkshopIconLibrary/T_34_M_WS_ICON_SQUARE.png",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "texture"
+          },
+          "bgColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 0.2
+          },
+          "clippingType": 0,
+          "softness": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      },
+      "ecaScripts": [],
+      "ecaProps": {
+        "HudEmptyPanel": {},
+        "HudPanel": {},
+        "HudWidget": {},
+        "Entity": {}
+      },
+      "componentList": [],
+      "entityTagData": {
+        "tagPointers": []
+      },
+      "version": "UIPanelEntityV3",
+      "editorLockValue": false,
+      "editorVisibleValue": true
+    },
+    {
+      "_entityName": "RankingPanel",
+      "_tag": {
+        "type": "UIPanelEntityV3",
+        "resourceId": ""
+      },
+      "_entityId": "TqnCiPBs",
+      "children": [
+        {
+          "_entityName": "Ranking",
+          "_tag": {
+            "type": "UIButtonEntity",
+            "resourceId": ""
+          },
+          "_entityId": "IpR9yyTD",
+          "children": [
+            {
+              "_entityName": "Iamge",
+              "_tag": {
+                "type": "UIImageEntity",
+                "resourceId": ""
+              },
+              "_entityId": "UnfSyNMR",
+              "children": [
+                {
+                  "_entityName": "Text",
+                  "_tag": {
+                    "type": "UITextEntity",
+                    "resourceId": ""
+                  },
+                  "_entityId": "cxPvPkE6",
+                  "children": [],
+                  "prefabVariant": null,
+                  "activeValue": {
+                    "selfValue": true,
+                    "valueTag": "activeValue"
+                  },
+                  "unlockedValue": {
+                    "selfValue": true,
+                    "valueTag": "unlockedValue"
+                  },
+                  "propsData": {
+                    "activeSelf": true,
+                    "transform": {
+                      "rotate": 0,
+                      "anchorMin": {
+                        "x": 1,
+                        "y": 0.5
+                      },
+                      "anchorMax": {
+                        "x": 1,
+                        "y": 0.5
+                      },
+                      "pivot": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "anchoredPosition": {
+                        "x": 65,
+                        "y": 0
+                      },
+                      "sizeDelta": {
+                        "x": 120,
+                        "y": 50
+                      }
+                    },
+                    "alpha": 70,
+                    "priority": 0,
+                    "text": {
+                      "value": "排行",
+                      "key": "",
+                      "font": "Default",
+                      "fontSize": 28,
+                      "fontStyle": {
+                        "bold": false,
+                        "italic": false,
+                        "underline": false
+                      },
+                      "color": "#FFFFFF",
+                      "alignment": {
+                        "h": "left",
+                        "v": "middle"
+                      },
+                      "lineSpacing": 0,
+                      "background": false,
+                      "backgroundColor": "#e7b200",
+                      "overflow": 0,
+                      "backgroundRGBA": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 0
+                      },
+                      "shadow": true,
+                      "shadowColor": "#000000",
+                      "shadowOffset": {
+                        "x": 1,
+                        "y": 1
+                      }
+                    }
+                  },
+                  "ecaScripts": [],
+                  "ecaProps": {
+                    "HudLabelWidget": {},
+                    "HudWidget": {},
+                    "Entity": {}
+                  },
+                  "componentList": [],
+                  "entityTagData": {
+                    "tagPointers": []
+                  },
+                  "editorLockValue": false,
+                  "editorVisibleValue": true
+                }
+              ],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "propsData": {
+                "activeSelf": true,
+                "transform": {
+                  "rotate": 0,
+                  "anchorMin": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchorMax": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "pivot": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchoredPosition": {
+                    "x": -30,
+                    "y": 0
+                  },
+                  "sizeDelta": {
+                    "x": 40,
+                    "y": 40
+                  }
+                },
+                "alpha": 100,
+                "priority": 0,
+                "image": {
+                  "source": {
+                    "fileId": "6lth9vwrb1c-mjmkvb17-qm6uii2pn0i",
+                    "filePath": "Assets\\Image\\Home\\UI_Icon_Leaderboard_icon.png",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "texture"
+                  },
+                  "color": "#ffffff",
+                  "reverse": {
+                    "x": false,
+                    "y": false
+                  },
+                  "fillType": 1,
+                  "slicedBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "tiledBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "centerInvisible": false,
+                  "fillDir": 0,
+                  "fillAmount": 0,
+                  "invertFill": false,
+                  "flip": 0,
+                  "gradient": 1,
+                  "gradientTop": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  },
+                  "gradientBottom": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  }
+                }
+              },
+              "ecaScripts": [],
+              "ecaProps": {
+                "HudImageWidget": {},
+                "HudWidget": {},
+                "Entity": {}
+              },
+              "componentList": [],
+              "entityTagData": {
+                "tagPointers": []
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": true
+            }
+          ],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "propsData": {
+            "activeSelf": true,
+            "transform": {
+              "rotate": 0,
+              "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "pivot": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "anchoredPosition": {
+                "x": 0,
+                "y": 0
+              },
+              "sizeDelta": {
+                "x": 224,
+                "y": 58
+              }
+            },
+            "alpha": 100,
+            "priority": 0,
+            "button": {
+              "spriteName": {
+                "fileId": "htx7xndp56e-mjmkv9sk-1h9x68s7b2z",
+                "filePath": "Assets\\Image\\Home\\Huntingground_Tab02.png",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "texture"
+              },
+              "normal": "#FFFFFF",
+              "highlight": "#e2a222",
+              "pressed": "#C5C5C5",
+              "disabled": "#494949",
+              "onClicks": [],
+              "enableBorderImage": true,
+              "clickHandlers": [
+                {
+                  "eventName": "OnClick",
+                  "funcKey": "ToRankingPanel",
+                  "type": "ugcscript",
+                  "fileID": "ib290qp153d-mhxditfr-cstq6pvvk9u"
+                }
+              ],
+              "disableCollider": false,
+              "fillType": 1,
+              "slicedBorder": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              },
+              "tiledBorder": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              },
+              "centerInvisible": false,
+              "fillDir": 0,
+              "fillAmount": 0,
+              "invertFill": false,
+              "reverse": {
+                "x": false,
+                "y": false
+              },
+              "flip": 0,
+              "gradient": 1,
+              "gradientTop": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 1
+              },
+              "gradientBottom": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 1
+              }
+            }
+          },
+          "ecaScripts": [],
+          "ecaProps": {
+            "HudButtonWidget": {
+              "HudButtonWidget_15026837_custom": null,
+              "HudButtonWidget_67680512_custom": null,
+              "HudButtonWidget_33700402_custom": 0,
+              "HudButtonWidget_52340716_custom": null,
+              "HudButtonWidget_47946058_custom": 0,
+              "HudButtonWidget_73587085_custom": "",
+              "HudButtonWidget_39454785_custom": true
+            },
+            "HudWidget": {},
+            "Entity": {}
+          },
+          "componentList": [],
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true
+        },
+        {
+          "_entityName": "tab",
+          "_tag": {
+            "type": "UIImageEntity",
+            "resourceId": ""
+          },
+          "_entityId": "Jm5weQyJ",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": null,
+          "propsData": {
+            "activeSelf": true,
+            "transform": {
+              "rotate": 0,
+              "anchorMin": {
+                "x": 0,
+                "y": 0.5
+              },
+              "anchorMax": {
+                "x": 0,
+                "y": 0.5
+              },
+              "pivot": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "anchoredPosition": {
+                "x": 30,
+                "y": 0
+              },
+              "sizeDelta": {
+                "x": 52,
+                "y": 55
+              }
+            },
+            "alpha": 60,
+            "priority": 0,
+            "image": {
+              "source": {
+                "fileId": "5r4uk937e6m-mjmkv9qd-dw18j1d9t5m",
+                "filePath": "Assets\\Image\\Home\\Huntingground_Tab01.png",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "texture"
+              },
+              "color": "#717171",
+              "reverse": {
+                "x": false,
+                "y": false
+              },
+              "fillType": 1,
+              "slicedBorder": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              },
+              "tiledBorder": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              },
+              "centerInvisible": false,
+              "fillDir": 0,
+              "fillAmount": 0,
+              "invertFill": false,
+              "flip": 0,
+              "gradient": 1,
+              "gradientTop": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 1
+              },
+              "gradientBottom": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 1
+              }
+            }
+          },
+          "ecaScripts": [],
+          "ecaProps": {
+            "HudImageWidget": {},
+            "HudWidget": {},
+            "Entity": {}
+          },
+          "componentList": [],
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": null,
+      "propsData": {
+        "activeSelf": true,
+        "transform": {
+          "rotate": 0,
+          "anchorMin": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchoredPosition": {
+            "x": -535,
+            "y": 70
+          },
+          "sizeDelta": {
+            "x": 224,
+            "y": 58
+          }
+        },
+        "alpha": 100,
+        "priority": 0,
+        "panel": {
+          "enableBackground": false,
+          "maskName": null,
+          "bgName": {
+            "fileId": "b063b0439839b3d97a8fd2aa6a57ef8b",
+            "filePath": "lib://fftextures/WorkshopIconLibrary/T_34_M_WS_ICON_SQUARE.png",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "texture"
+          },
+          "bgColor": {
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 0.2
+          },
+          "clippingType": 0,
+          "softness": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      },
+      "ecaScripts": [],
+      "ecaProps": {
+        "HudEmptyPanel": {},
+        "HudPanel": {},
+        "HudWidget": {},
+        "Entity": {}
+      },
+      "componentList": [],
+      "entityTagData": {
+        "tagPointers": []
+      },
+      "version": "UIPanelEntityV3",
       "editorLockValue": false,
       "editorVisibleValue": true
     },
@@ -4585,11 +7707,11 @@
                 "y": 0.5
               },
               "anchoredPosition": {
-                "x": 0,
+                "x": 40,
                 "y": 0
               },
               "sizeDelta": {
-                "x": 120,
+                "x": 100,
                 "y": 50
               }
             },
@@ -4599,15 +7721,15 @@
               "value": "退出",
               "key": "",
               "font": "Default",
-              "fontSize": 24,
+              "fontSize": 22,
               "fontStyle": {
                 "bold": false,
                 "italic": false,
                 "underline": false
               },
-              "color": "#000000",
+              "color": "#2C2A2A",
               "alignment": {
-                "h": "center",
+                "h": "left",
                 "v": "middle"
               },
               "lineSpacing": 0,
@@ -4640,6 +7762,110 @@
           },
           "editorLockValue": false,
           "editorVisibleValue": true
+        },
+        {
+          "_entityName": "BackImage",
+          "_tag": {
+            "type": "UIImageEntity",
+            "resourceId": ""
+          },
+          "_entityId": "W1Qdcw4Z",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "propsData": {
+            "activeSelf": true,
+            "transform": {
+              "rotate": 0,
+              "anchorMin": {
+                "x": 0,
+                "y": 0.5
+              },
+              "anchorMax": {
+                "x": 0,
+                "y": 0.5
+              },
+              "pivot": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "anchoredPosition": {
+                "x": 40,
+                "y": 1
+              },
+              "sizeDelta": {
+                "x": 40,
+                "y": 40
+              }
+            },
+            "alpha": 100,
+            "priority": 0,
+            "image": {
+              "source": {
+                "fileId": "kc9rt1d17a-mjmkvaz5-00ex2jdro37o9",
+                "filePath": "Assets\\Image\\Home\\UI_Icon_Back.png",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "texture"
+              },
+              "color": "#2C2A2A",
+              "reverse": {
+                "x": false,
+                "y": false
+              },
+              "fillType": 1,
+              "slicedBorder": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              },
+              "tiledBorder": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              },
+              "centerInvisible": false,
+              "fillDir": 0,
+              "fillAmount": 0,
+              "invertFill": false,
+              "flip": 0,
+              "gradient": 1,
+              "gradientTop": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 1
+              },
+              "gradientBottom": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 1
+              }
+            }
+          },
+          "ecaScripts": [],
+          "ecaProps": {
+            "HudImageWidget": {},
+            "HudWidget": {},
+            "Entity": {}
+          },
+          "componentList": [],
+          "entityTagData": {
+            "tagPointers": []
+          }
         }
       ],
       "prefabVariant": null,
@@ -4669,19 +7895,19 @@
           },
           "anchoredPosition": {
             "x": -550,
-            "y": -330
+            "y": -320
           },
           "sizeDelta": {
             "x": 180,
-            "y": 50
+            "y": 60
           }
         },
         "alpha": 100,
         "priority": 0,
         "button": {
           "spriteName": {
-            "fileId": "1825665227fdf4993c4c5d6062c9a1e9",
-            "filePath": "lib://fftextures/WorkshopIconLibrary/FF_UI_SmallWindow_Botton.png",
+            "fileId": "6a549a0fce1374982403dde200730c6a",
+            "filePath": "lib://fftextures/WorkshopIconLibrary/UGC_Btn_01_Big_Normal.png",
             "_tag": {
               "type": "GFileRefer"
             },
