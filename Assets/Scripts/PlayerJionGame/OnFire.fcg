@@ -11,6 +11,7 @@ import "Camera.fcc" as Camera
 import "List.fcc" as List
 import "Strings.fcc" as Strings
 import "../CustomEvent.fcc" as CustomEvent
+import "../PVE/FC_PVEMonsterManager.fcg" as PVEMonsterManager
 
 [platform_client]
 graph OnFire {
@@ -202,7 +203,7 @@ graph OnFire {
     // 获取指定位置和距离内的怪物
     func getMonsterWithinDistanceAtPosition(position Vector3, distance int) List<entity<LevelObject>> {
         var monsters List<entity<LevelObject>> = List<entity<LevelObject>>{}
-        var activeMonsters List<entity<LevelObject>> = GetChildren(ActiveMonstersParentNode) as List<entity<LevelObject>>
+        var activeMonsters List<entity<LevelObject>> = PVEMonsterManager.ActiveMonsters
         for i = 0, List.Length(activeMonsters), 1 {
             var monster = activeMonsters[i]
             if Distance(monster<Transform>.Position, position) <= distance {
@@ -254,7 +255,7 @@ graph OnFire {
             var realDamage int = Math.Ceil(damage * skillMultiplier)
             DispatchEventToEntity(OnDamageMob, hitEntity, PlatformType.Client, List<object>{hitEntity, nil, realDamage, GetLocalPlayer()})
             GetLocalPlayer()<PlayerJionGame>.LightningDamage += realDamage
-            CreateDamageNum(realDamage, 10, #dde511, 800, hitEntity as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
+            CreateDamageNum(realDamage, 10, #00EEFFFF, 800, hitEntity as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
 
             WaitForMillisecond(200)
 

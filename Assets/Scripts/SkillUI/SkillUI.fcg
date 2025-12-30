@@ -178,7 +178,7 @@ graph SkillUI {
         effectEntity<Transform>.Position = ReleasedEffectPosition
         effectEntity<Transform>.Scale = Vector3{Size, Size, Size}
         BoomColor(effectEntity, Size)
-    
+        
         // 造成伤害
         var monsters = getMonsterWithinDistance(Size)
         for j = 0, List.Length(monsters), 1 {
@@ -291,8 +291,6 @@ graph SkillUI {
     // 获取随机怪物
     func GetRandomMonster() entity<LevelObject> {
         var activeMonsters = PVEMonsterManager.ActiveMonsters
-        LogInfo("当前活跃怪物数量: " + List.Length(activeMonsters))
-        LogInfo(activeMonsters)
         if List.Length(activeMonsters) == 0 { return nil }
         var randomIndex = RandomInt(0, List.Length(activeMonsters) - 1)
         return activeMonsters[randomIndex] as entity<LevelObject>
@@ -339,7 +337,7 @@ graph SkillUI {
     // 从指定位置获取范围内的怪物（新函数）
     func getMonsterWithinDistanceFromPosition(position Vector3, distance int) List<entity<LevelObject>> {
         var monsters List<entity<LevelObject>> = List<entity<LevelObject>>{}
-        var activeMonsters List<entity<LevelObject>> = GetChildren(ActiveMonstersParentNode) as List<entity<LevelObject>>
+        var activeMonsters List<entity<LevelObject>> = PVEMonsterManager.ActiveMonsters
         for i = 0, List.Length(activeMonsters), 1 {
             var monster = activeMonsters[i]
             if Distance(monster<Transform>.Position, position) <= distance {
@@ -352,7 +350,7 @@ graph SkillUI {
     // 获取范围内怪物
     func getMonsterWithinDistance(distance int) List<entity<LevelObject>> {
         var monsters List<entity<LevelObject>> = List<entity<LevelObject>>{}
-        var activeMonsters List<entity<LevelObject>> = GetChildren(ActiveMonstersParentNode) as List<entity<LevelObject>>
+        var activeMonsters List<entity<LevelObject>> = PVEMonsterManager.ActiveMonsters
         for i = 0, List.Length(activeMonsters), 1 {
             var monster = activeMonsters[i]
             if Distance(monster<Transform>.Position, ReleasedEffectPosition) <= distance {
