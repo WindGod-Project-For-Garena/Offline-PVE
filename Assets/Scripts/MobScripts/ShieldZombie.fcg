@@ -121,13 +121,11 @@ graph FC_NormalZombie {
 		TargetPos = groundHitPoint
 
 		var direction = Normalize(TargetPos - currPos)
-		direction.Y = 0 // 保持水平移动
-		// 先让怪物面向目标方向
-		PVEUtilities.myLookAt(TargetEntity<Transform>, curTarget, TargetPos)
+		direction = SetYClient(direction,0)
 
 		var effectOffset float = warningLength/2+1 // 特效在怪物前方的偏移距离
 		var effectPos = TargetEntity<Transform>.Position + TargetEntity<Transform>.Forward * effectOffset
-		effectPos.Y = -0.2 
+		effectPos = SetYClient(effectPos,-0.2)
 
 		var  rotation Vector3 = TargetEntity<Transform>.Rotation + Vector3{0, 90, 0}
 		// 地面播放开始时的预警特效
@@ -148,7 +146,7 @@ graph FC_NormalZombie {
 		var hitObstacle bool = false      //是否碰到障碍物
 		if hitEntities != nil && hitEntities != curTarget {        // 有障碍物，冲击到障碍物前一点
 			finalTargetPos = hitPoint - direction * 1.5 // 留一点距离
-			finalTargetPos.Y = -0.29
+			finalTargetPos = SetYClient(finalTargetPos,-0.2)
 			skillRange = Distance(currPos, finalTargetPos)
 			actualDuration = (skillRange / speed) * 1000 // 根据实际距离调整时间
 			hitObstacle = true
@@ -226,6 +224,7 @@ graph FC_NormalZombie {
 				true,
 			)
 			dashingMoveTween = tweenEntity
+			//SetParentClient(tweenEntity, thisEntity<Transform>, false)
 		}else{
 			dashingMoveTween<Tween>.StartValue = thisEntity<Transform>.Position
 			dashingMoveTween<Tween>.EndValue = targetPos

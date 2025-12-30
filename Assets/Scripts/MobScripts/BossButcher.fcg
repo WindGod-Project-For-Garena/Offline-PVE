@@ -24,7 +24,6 @@ graph FC_NormalZombie {
 	hitPos Vector3 = Vector3{0,0,0}
 
     Dist float = 0
-	moveTween entity<Tween> = nil
 	TargetPos Vector3 = Vector3{0,0,0}
 
 	event OnAwake() {
@@ -58,130 +57,41 @@ graph FC_NormalZombie {
 			"CD_NormalAttack": 3000 as int,
 			"Duration_NormalAttack": 2200 as int,
 			"Range_NormalAttack": 3.0 as float,
+
+			"LastAttackTime_SlashAttack": globalEntity<Global>.GameTimeCount as int,
+			"CD_SlashAttack": 5000 as int,
+			"Duration_SlashAttack": 2550 as int,
+			"Range_SlashAttack": 10.0 as float,
+
+			"LastAttackTime_SpinAttack": globalEntity<Global>.GameTimeCount as int,
+			"CD_SpinAttack": 10000 as int,
+			"Duration_SpinAttack": 7500 as int,//这里没有加上转圈结束动画的时间
+			"Range_SpinAttack": 5.0 as float,
+			"SpinAttack_InSpinning": false as bool,
+			"SpinAttack_InSpinningEnd": false as bool,
 		}
 
 	}
 
-	// 剪刀僵尸技能，当玩家进入一定范围时，触发冲击技能
-	async func startBossButcherSkill(TargetEntity entity<AnimationControllerAttachable>) {
-		var skillRange float = 10.0        //冲击距离
-		var speed float = 15.0            //冲击速度
-		var actualDuration float = 800  // 毫秒
-
-		//LogInfo("剪刀僵尸开始冲击技能")
-		var curTarget = thisEntity<Mob>.CurrTarget
-		// 重置碰撞检测状态
-		// 计算冲击方向
-		var currPos Vector3 = TargetEntity<Transform>.Position
-		var targetOffset Vector3 = Vector3{Math.RandomFloat(-0.8, 0.8), 0, Math.RandomFloat(-0.8, 0.8)}
-		var targetPosWithOffset = curTarget<Transform>.Position + targetOffset
+	// 冲击波技能
+	async func startBossButcherSkill_Slash(target entity<AnimationControllerAttachable>) {
+		var curTarget = target
+	//	LogInfo("startBossButcherSkill_Slash")
 		// 射线检测确保目标位置有效
-		SingleRaycast(curTarget<Player>.Position + Vector3{0, 5, 0}, Vector3{0, -10, 0}, 10, List<int>{0}, false, out var groundHitEntities, out var groundHitPoint, out var groundHitDistances, out var groundHitNormals)
+		SingleRaycast(curTarget<Player>.Position + Vector3{0, 2, 0}, Vector3{0, -10, 0}, 10, List<int>{0}, false, out var groundHitEntities, out var groundHitPoint, out var groundHitDistances, out var groundHitNormals)
 		TargetPos = groundHitPoint
-		var direction = Normalize(TargetPos - currPos)
-		direction.Y = 0 // 保持水平移动
-		// 先让怪物面向目标方向
-		PVEUtilities.myLookAt(TargetEntity<Transform>, curTarget, TargetPos)
-		// 地面播放开始时的预警特效
-		//wait MobSkillHandler.GroundWarningEffect(TargetEntity, 1000)
-		// 播放冲击动画
-		PlayAnimation(TargetEntity, "Run", 2.0, LoopType.Once)
-		// 计算冲击距离
-		// 射线检测前方障碍物
-		SingleRaycast(currPos, direction, skillRange,List<int>{0}, false, out var hitEntities, out var hitPoint, out var hitDistances, out var hitNormals)
-		var finalTargetPos Vector3        //最终目标位置
-		var hitObstacle bool = false      //是否碰到障碍物
-		if hitEntities != nil && hitEntities != curTarget {        // 有障碍物，冲击到障碍物前一点
-			finalTargetPos = hitPoint - direction * 0.5 // 留一点距离
-			skillRange = Distance(currPos, finalTargetPos)
-			actualDuration = (skillRange / speed) * 1000 // 根据实际距离调整时间
-			hitObstacle = true
-			//LogInfo("检测到障碍物，调整冲击距离")
-		} else {        //没有障碍物，冲击到目标位置
-			finalTargetPos = currPos + direction * skillRange        
-		}
-		// 确保怪物面向最终目标位置
-		PVEUtilities.myLookAt(TargetEntity<Transform>, curTarget, finalTargetPos)
-		// 创建移动tween
-		CreateSkillMoveTween(finalTargetPos, actualDuration)
-		// 设置碰撞检测 - 使用start启动异步函数
-		start StartSkillCollisionCheck(curTarget, actualDuration, hitObstacle)
-		// 等待移动完成
-		WaitForMillisecond(Round(actualDuration))
-		// 移动结束后播放Idle动画
-		PlayAnimation(TargetEntity, "Idle", 1.0, LoopType.Once)
-		//LogInfo("剪刀僵尸冲击技能结束")
-	}
-
-	// 技能期间碰撞检测 - 需要是async函数
-	async func StartSkillCollisionCheck(target entity<Player>, skillDuration float, hitObstacle bool) {
-		var startTime int = globalEntity<Global>.GameTimeCount
-		var endTime int = startTime + Floor(skillDuration)
-		var hasHit bool = false
-		//LogInfo("开始碰撞检测，持续时间: " + skillDuration + "ms")
-		while globalEntity<Global>.GameTimeCount < endTime && !hasHit {
-			// 检测与目标的距离
-			var currentDistance = Distance(thisEntity<Transform>.Position, target<Player>.Position)
-			//LogInfo("检测距离: " + currentDistance)
-			if currentDistance <= 1.5 {
-				// 命中玩家，造成伤害和击退效果
-				if !hasHit {
-					//LogInfo("触发伤害，距离: " + currentDistance)
-					Offline.DealDamage(target as entity<Combatable>, nil, DamageType.Monster, GetDamage() * 2) // 技能双倍伤害
-					// 添加击退效果
-					hasHit = true
-					
-					// 碰撞到玩家后立即播放Idle动画
-					PlayAnimation(thisEntity as entity<AnimationControllerAttachable>, "Idle", 1.0, LoopType.Once)
-					//LogInfo("剪刀僵尸冲击命中玩家，播放Idle动画")
-					
-					// 停止移动tween
-					if moveTween != nil {
-						Destroy(moveTween)
-						moveTween = nil
-					}
-					break // 跳出循环
-				}
-			}
-			WaitForMillisecond(10) // 每10ms检测一次
-		}
+		TargetPos = SetYClient(TargetPos,-0.2)
+		LogInfo("startBossButcherSkill_Slash - TargetPos: " + TargetPos)
 		
-		// 如果一开始就检测到障碍物，在技能开始时播放Idle动画
-		if hitObstacle && !hasHit {
-			PlayAnimation(thisEntity as entity<AnimationControllerAttachable>, "Idle", 1.0, LoopType.Once)
-			//LogInfo("碰撞到障碍物，播放Idle动画")
-			// 停止移动tween
-			if moveTween != nil {
-				Destroy(moveTween)
-				moveTween = nil
-			}
-		}
-		//LogInfo("碰撞检测结束，命中状态: " + hasHit)
+		start MobSkillHandler.releaseSkill_ButcherBossSlash(thisEntity as entity<Mob>, TargetPos)
+		
 	}
 
-	// 创建技能移动tween
-	func CreateSkillMoveTween(targetPos Vector3, duration float) {    
-		if moveTween != nil {
-			Destroy(moveTween)
-		}
-		CreateTween(
-			thisEntity,
-			Transform.Position,
-			thisEntity<Transform>.Position,
-			targetPos,
-			TweenStyle.Once,
-			CreateCurve({0, 0, 1, 1}),
-			duration,
-			out var tweenEntity,
-			true,
-		)
-		moveTween = tweenEntity
-		moveTween<Tween>.OnTweenCompleted = func() {
-			// Tween完成后确保播放Idle动画
-			PlayAnimation(thisEntity as entity<AnimationControllerAttachable>, "Idle", 1.0, LoopType.Once)
-			//LogInfo("移动完成，播放Idle动画")
-		}
+	func OnPlayerEnterSlashEffect(player entity<Player>) {
+		LogInfo("OnPlayerEnterSlashEffect")
+		Offline.DealDamage(player as entity<Combatable>, nil, DamageType.Monster, GetDamage())
 	}
+
 
 	//eventID: 91//r;Zn+-uY8Ahq`0JH4Yr{ //animation
 	event MobAttackEvent_AC(attackName string) {
@@ -190,8 +100,11 @@ graph FC_NormalZombie {
 			if (curTarget != nil && (Distance(curTarget as entity<Player><Player>.Position, thisEntity as entity<LevelObject><Transform>.Position) <= 5.0)) {		
 				Offline.DealDamage(curTarget as entity<Combatable>, nil, DamageType.Monster, GetDamage())
 			}
-		} else if (attackName == "NormalAttack2") {
-			
+		} else if (attackName == "StartSpinning") {
+			thisEntity<Mob>.StatusDic["SpinAttack_InSpinning"] = true
+			//设置转圈动画
+			var spinLoop = GetChildByName(thisEntity, "SpinLoop")
+			spinLoop<Entity>.ActiveSelf = true
 		} else {
 			
 		}

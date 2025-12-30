@@ -25,7 +25,7 @@ static graph FC_PVEUtilities {
 		}
 		var sub Vector3 = targetPos - curPos
 		var angle float = ATan2(sub.X, sub.Z)
-		var mobName string = transform<Mob>.MobName
+		//var mobName string = transform<Mob>.MobName
 		transform<Transform>.LocalRotation = Vector3{0, angle, 0}
 		// SetPropertySmoothly(transform, Transform.LocalRotation, Vector3{0, angle, 0})
 	}

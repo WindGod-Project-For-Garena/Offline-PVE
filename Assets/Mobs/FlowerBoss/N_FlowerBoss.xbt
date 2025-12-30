@@ -1318,8 +1318,8 @@
       },
       {
         "position": {
-          "x": 1640,
-          "y": -300
+          "x": 1610,
+          "y": -260
         },
         "size": {
           "width": 180,
@@ -3500,6 +3500,7 @@
         "id": "jvJBde0v",
         "component": "xbt-base-node",
         "data": {},
+        "zIndex": 83,
         "ports": {
           "groups": {
             "in": {
@@ -3642,8 +3643,7 @@
               "id": "d5351f7f-8330-4eb2-a860-15a4744e9872"
             }
           ]
-        },
-        "zIndex": 83
+        }
       },
       {
         "position": {
@@ -3659,6 +3659,7 @@
         "id": "DENIOBxc",
         "component": "xbt-base-node",
         "data": {},
+        "zIndex": 84,
         "ports": {
           "groups": {
             "in": {
@@ -3756,8 +3757,7 @@
               "id": "2d337c9c-2e3a-493e-aa3b-8c286bb39cc3"
             }
           ]
-        },
-        "zIndex": 84
+        }
       },
       {
         "position": {
@@ -3773,6 +3773,7 @@
         "id": "aPJVIF8s",
         "component": "xbt-base-node",
         "data": {},
+        "zIndex": 85,
         "ports": {
           "groups": {
             "in": {
@@ -3870,8 +3871,7 @@
               "id": "23b31804-16d9-4868-a005-7c2d2e24de71"
             }
           ]
-        },
-        "zIndex": 85
+        }
       },
       {
         "shape": "edge",
@@ -3882,6 +3882,7 @@
           }
         },
         "id": "daa6bfd0-6d65-4247-99b3-262df660e402",
+        "zIndex": 86,
         "source": {
           "cell": "jvJBde0v",
           "port": "7c7f8c5e-540f-4b09-973b-752a91c0503f"
@@ -3889,8 +3890,7 @@
         "target": {
           "cell": "DENIOBxc",
           "port": "2d337c9c-2e3a-493e-aa3b-8c286bb39cc3"
-        },
-        "zIndex": 86
+        }
       },
       {
         "shape": "edge",
@@ -3901,6 +3901,7 @@
           }
         },
         "id": "879e5c13-dc79-4b1b-a3b7-36c04f8e449f",
+        "zIndex": 87,
         "source": {
           "cell": "jvJBde0v",
           "port": "5c440f62-23a4-43d1-95d5-8d7b3e5952e7"
@@ -3908,8 +3909,7 @@
         "target": {
           "cell": "aPJVIF8s",
           "port": "23b31804-16d9-4868-a005-7c2d2e24de71"
-        },
-        "zIndex": 87
+        }
       },
       {
         "shape": "edge",
@@ -3920,6 +3920,7 @@
           }
         },
         "id": "0b2c29e7-8179-48c3-bd6e-c154e40e9b1c",
+        "zIndex": 92,
         "source": {
           "cell": "h94FKWgv",
           "port": "5821110b-cb30-47f8-9920-0ff35fa61072"
@@ -3927,8 +3928,7 @@
         "target": {
           "cell": "PZJ35GIi",
           "port": "728fad9f-051e-4bc2-a04d-27e694a80564"
-        },
-        "zIndex": 92
+        }
       },
       {
         "shape": "edge",
@@ -3939,6 +3939,7 @@
           }
         },
         "id": "e8522afb-28ca-4edd-aa05-1c4401617444",
+        "zIndex": 93,
         "source": {
           "cell": "h94FKWgv",
           "port": "6f144231-1431-43f3-8bca-cbc2ce345994"
@@ -3946,8 +3947,7 @@
         "target": {
           "cell": "jvJBde0v",
           "port": "6eccc87d-0255-47e9-b67b-642ebc5b70cd"
-        },
-        "zIndex": 93
+        }
       },
       {
         "shape": "edge",
@@ -3958,6 +3958,7 @@
           }
         },
         "id": "e5a68a18-d695-4bd5-9f33-9a3177694ed7",
+        "zIndex": 94,
         "source": {
           "cell": "h94FKWgv",
           "port": "86fd4b8f-b794-4b0d-9680-a4a286c06bd2"
@@ -3965,8 +3966,7 @@
         "target": {
           "cell": "O3ecGB3a",
           "port": "8b7a86d6-704e-4d35-b824-b0fece37a4b2"
-        },
-        "zIndex": 94
+        }
       }
     ]
   },
@@ -4517,8 +4517,8 @@
                           "editorVisibleValue": true,
                           "ecaScripts": [
                             {
-                              "fileId": "wdpok401a-mjlibayk-9bruimf5sgv",
-                              "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_FBoss_DrillAttack.fcg",
+                              "fileId": "m4kysfo17-mhblumlp-ooqnjq9gw7",
+                              "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack.fcg",
                               "_tag": {
                                 "type": "GFileRefer"
                               },
@@ -4596,8 +4596,14 @@
                           "_entityId": "DENIOBxc",
                           "children": [],
                           "prefabVariant": null,
-                          "activeValue": null,
-                          "unlockedValue": null,
+                          "activeValue": {
+                            "selfValue": true,
+                            "valueTag": "activeValue"
+                          },
+                          "unlockedValue": {
+                            "selfValue": true,
+                            "valueTag": "unlockedValue"
+                          },
                           "editorLockValue": false,
                           "editorVisibleValue": true,
                           "ecaScripts": [
@@ -4640,8 +4646,14 @@
                           "_entityId": "aPJVIF8s",
                           "children": [],
                           "prefabVariant": null,
-                          "activeValue": null,
-                          "unlockedValue": null,
+                          "activeValue": {
+                            "selfValue": true,
+                            "valueTag": "activeValue"
+                          },
+                          "unlockedValue": {
+                            "selfValue": true,
+                            "valueTag": "unlockedValue"
+                          },
                           "editorLockValue": false,
                           "editorVisibleValue": true,
                           "ecaScripts": [
@@ -4678,8 +4690,14 @@
                         }
                       ],
                       "prefabVariant": null,
-                      "activeValue": null,
-                      "unlockedValue": null,
+                      "activeValue": {
+                        "selfValue": true,
+                        "valueTag": "activeValue"
+                      },
+                      "unlockedValue": {
+                        "selfValue": true,
+                        "valueTag": "unlockedValue"
+                      },
                       "editorLockValue": false,
                       "editorVisibleValue": true,
                       "ecaScripts": [
@@ -5639,8 +5657,8 @@
                       "editorVisibleValue": true,
                       "ecaScripts": [
                         {
-                          "fileId": "wdpok401a-mjlibayk-9bruimf5sgv",
-                          "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_FBoss_DrillAttack.fcg",
+                          "fileId": "m4kysfo17-mhblumlp-ooqnjq9gw7",
+                          "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack.fcg",
                           "_tag": {
                             "type": "GFileRefer"
                           },
@@ -5718,8 +5736,14 @@
                       "_entityId": "DENIOBxc",
                       "children": [],
                       "prefabVariant": null,
-                      "activeValue": null,
-                      "unlockedValue": null,
+                      "activeValue": {
+                        "selfValue": true,
+                        "valueTag": "activeValue"
+                      },
+                      "unlockedValue": {
+                        "selfValue": true,
+                        "valueTag": "unlockedValue"
+                      },
                       "editorLockValue": false,
                       "editorVisibleValue": true,
                       "ecaScripts": [
@@ -5762,8 +5786,14 @@
                       "_entityId": "aPJVIF8s",
                       "children": [],
                       "prefabVariant": null,
-                      "activeValue": null,
-                      "unlockedValue": null,
+                      "activeValue": {
+                        "selfValue": true,
+                        "valueTag": "activeValue"
+                      },
+                      "unlockedValue": {
+                        "selfValue": true,
+                        "valueTag": "unlockedValue"
+                      },
                       "editorLockValue": false,
                       "editorVisibleValue": true,
                       "ecaScripts": [
@@ -5800,8 +5830,14 @@
                     }
                   ],
                   "prefabVariant": null,
-                  "activeValue": null,
-                  "unlockedValue": null,
+                  "activeValue": {
+                    "selfValue": true,
+                    "valueTag": "activeValue"
+                  },
+                  "unlockedValue": {
+                    "selfValue": true,
+                    "valueTag": "unlockedValue"
+                  },
                   "editorLockValue": false,
                   "editorVisibleValue": true,
                   "ecaScripts": [
@@ -6940,8 +6976,8 @@
                   "editorVisibleValue": true,
                   "ecaScripts": [
                     {
-                      "fileId": "wdpok401a-mjlibayk-9bruimf5sgv",
-                      "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_FBoss_DrillAttack.fcg",
+                      "fileId": "m4kysfo17-mhblumlp-ooqnjq9gw7",
+                      "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack.fcg",
                       "_tag": {
                         "type": "GFileRefer"
                       },
@@ -7019,8 +7055,14 @@
                   "_entityId": "DENIOBxc",
                   "children": [],
                   "prefabVariant": null,
-                  "activeValue": null,
-                  "unlockedValue": null,
+                  "activeValue": {
+                    "selfValue": true,
+                    "valueTag": "activeValue"
+                  },
+                  "unlockedValue": {
+                    "selfValue": true,
+                    "valueTag": "unlockedValue"
+                  },
                   "editorLockValue": false,
                   "editorVisibleValue": true,
                   "ecaScripts": [
@@ -7063,8 +7105,14 @@
                   "_entityId": "aPJVIF8s",
                   "children": [],
                   "prefabVariant": null,
-                  "activeValue": null,
-                  "unlockedValue": null,
+                  "activeValue": {
+                    "selfValue": true,
+                    "valueTag": "activeValue"
+                  },
+                  "unlockedValue": {
+                    "selfValue": true,
+                    "valueTag": "unlockedValue"
+                  },
                   "editorLockValue": false,
                   "editorVisibleValue": true,
                   "ecaScripts": [
@@ -7101,8 +7149,14 @@
                 }
               ],
               "prefabVariant": null,
-              "activeValue": null,
-              "unlockedValue": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
               "editorLockValue": false,
               "editorVisibleValue": true,
               "ecaScripts": [
@@ -7613,8 +7667,8 @@
               "editorVisibleValue": true,
               "ecaScripts": [
                 {
-                  "fileId": "wdpok401a-mjlibayk-9bruimf5sgv",
-                  "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_FBoss_DrillAttack.fcg",
+                  "fileId": "m4kysfo17-mhblumlp-ooqnjq9gw7",
+                  "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack.fcg",
                   "_tag": {
                     "type": "GFileRefer"
                   },
@@ -7692,8 +7746,14 @@
               "_entityId": "DENIOBxc",
               "children": [],
               "prefabVariant": null,
-              "activeValue": null,
-              "unlockedValue": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
               "editorLockValue": false,
               "editorVisibleValue": true,
               "ecaScripts": [
@@ -7736,8 +7796,14 @@
               "_entityId": "aPJVIF8s",
               "children": [],
               "prefabVariant": null,
-              "activeValue": null,
-              "unlockedValue": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
               "editorLockValue": false,
               "editorVisibleValue": true,
               "ecaScripts": [
@@ -7774,8 +7840,14 @@
             }
           ],
           "prefabVariant": null,
-          "activeValue": null,
-          "unlockedValue": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
           "editorLockValue": false,
           "editorVisibleValue": true,
           "ecaScripts": [
@@ -8218,6 +8290,488 @@
         "fileId": "tbdwluazbo-mj73d2uh-9j2rdg9gy89"
       }
     },
+    "PZJ35GIi": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "PZJ35GIi",
+      "children": [
+        {
+          "_entityName": "XBTEntity",
+          "_tag": {
+            "type": "XBTEntity"
+          },
+          "_entityId": "FOx0Ivng",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "ecaScripts": [
+            {
+              "fileId": "cjyb66bk25t-mhblrmum-j8p5kivhzp",
+              "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanAttack.fcg",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "ugcscript"
+            }
+          ],
+          "x": 1550.5419921875,
+          "y": 382.46722412109375,
+          "width": 180,
+          "height": 88,
+          "nodeInfo": {
+            "type": "condition",
+            "name": "DrillAttack",
+            "id": "FOx0Ivng",
+            "varArr": [
+              {
+                "name": "AttackName",
+                "type": "String",
+                "val": "DrillAttack"
+              }
+            ],
+            "ecaScript": null,
+            "iscustom": true,
+            "desc": "",
+            "icon": "General_Customize_20",
+            "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+          }
+        },
+        {
+          "_entityName": "XBTEntity",
+          "_tag": {
+            "type": "XBTEntity"
+          },
+          "_entityId": "GMVbkcds",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "ecaScripts": [
+            {
+              "fileId": "m4kysfo17-mhblumlp-ooqnjq9gw7",
+              "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack.fcg",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "ugcscript"
+            }
+          ],
+          "x": 1480.5419921875,
+          "y": 523.8958129882812,
+          "width": 180,
+          "height": 88,
+          "nodeInfo": {
+            "type": "action",
+            "name": "DashAttack",
+            "id": "GMVbkcds",
+            "varArr": [
+              {
+                "name": "AttackName",
+                "type": "String",
+                "val": "DrillAttack"
+              }
+            ],
+            "ecaScript": null,
+            "iscustom": true,
+            "desc": "",
+            "icon": "General_Customize_20",
+            "fileId": "lifnvfwskwb-mjglu66n-juvbafsw00j"
+          }
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        null
+      ],
+      "x": 1290.5419921875,
+      "y": 388.1814880371094,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "composite",
+        "name": "MemSequence",
+        "id": "PZJ35GIi",
+        "keyName": "MemSequence",
+        "desc": "FE_42_JH_WS_MENSEQUENCE",
+        "varArr": [],
+        "in": null,
+        "icon": "General_MemSequence_20",
+        "out": [
+          "FOx0Ivng",
+          "GMVbkcds"
+        ]
+      }
+    },
+    "FOx0Ivng": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "FOx0Ivng",
+      "children": [],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        {
+          "fileId": "cjyb66bk25t-mhblrmum-j8p5kivhzp",
+          "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanAttack.fcg",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "ugcscript"
+        }
+      ],
+      "x": 1550.5419921875,
+      "y": 382.46722412109375,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "condition",
+        "name": "DrillAttack",
+        "id": "FOx0Ivng",
+        "varArr": [
+          {
+            "name": "AttackName",
+            "type": "String",
+            "val": "DrillAttack"
+          }
+        ],
+        "ecaScript": null,
+        "iscustom": true,
+        "desc": "",
+        "icon": "General_Customize_20",
+        "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+      }
+    },
+    "GMVbkcds": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "GMVbkcds",
+      "children": [],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        {
+          "fileId": "m4kysfo17-mhblumlp-ooqnjq9gw7",
+          "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack.fcg",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "ugcscript"
+        }
+      ],
+      "x": 1480.5419921875,
+      "y": 523.8958129882812,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "action",
+        "name": "DashAttack",
+        "id": "GMVbkcds",
+        "varArr": [
+          {
+            "name": "AttackName",
+            "type": "String",
+            "val": "DrillAttack"
+          }
+        ],
+        "ecaScript": null,
+        "iscustom": true,
+        "desc": "",
+        "icon": "General_Customize_20",
+        "fileId": "lifnvfwskwb-mjglu66n-juvbafsw00j"
+      }
+    },
+    "jvJBde0v": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "jvJBde0v",
+      "children": [
+        {
+          "_entityName": "XBTEntity",
+          "_tag": {
+            "type": "XBTEntity"
+          },
+          "_entityId": "DENIOBxc",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "ecaScripts": [
+            {
+              "fileId": "cjyb66bk25t-mhblrmum-j8p5kivhzp",
+              "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanAttack.fcg",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "ugcscript"
+            }
+          ],
+          "x": 1724.4439697265625,
+          "y": 344.1205749511719,
+          "width": 180,
+          "height": 88,
+          "nodeInfo": {
+            "type": "condition",
+            "name": "Codition",
+            "id": "DENIOBxc",
+            "varArr": [
+              {
+                "name": "AttackName",
+                "type": "String",
+                "val": "BigShootAttack"
+              }
+            ],
+            "ecaScript": null,
+            "iscustom": true,
+            "desc": "",
+            "icon": "General_Customize_20",
+            "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+          }
+        },
+        {
+          "_entityName": "XBTEntity",
+          "_tag": {
+            "type": "XBTEntity"
+          },
+          "_entityId": "aPJVIF8s",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "ecaScripts": [
+            {
+              "fileId": "zc8q4845ir-mjl32t53-b70qb1ml9k4",
+              "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_FBoss_BigShooting.fcg",
+              "_tag": {
+                "type": "GFileRefer"
+              },
+              "fileType": "ugcscript"
+            }
+          ],
+          "x": 2091.944091796875,
+          "y": 344.1205749511719,
+          "width": 180,
+          "height": 88,
+          "nodeInfo": {
+            "type": "action",
+            "name": "Action",
+            "id": "aPJVIF8s",
+            "varArr": [
+              {
+                "name": "AttackName",
+                "type": "String",
+                "val": "BigShootAttack"
+              }
+            ],
+            "ecaScript": null,
+            "iscustom": true,
+            "desc": "",
+            "icon": "General_Customize_20",
+            "fileId": "lv3ieuvoscc-mjjqgqcf-uwgel3izhlg"
+          }
+        }
+      ],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        null
+      ],
+      "x": 1383.1939697265625,
+      "y": 290.3705749511719,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "composite",
+        "name": "MemSequence",
+        "id": "jvJBde0v",
+        "keyName": "MemSequence",
+        "desc": "FE_42_JH_WS_MENSEQUENCE",
+        "varArr": [],
+        "in": null,
+        "icon": "General_MemSequence_20",
+        "out": [
+          "DENIOBxc",
+          "aPJVIF8s"
+        ]
+      }
+    },
+    "DENIOBxc": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "DENIOBxc",
+      "children": [],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        {
+          "fileId": "cjyb66bk25t-mhblrmum-j8p5kivhzp",
+          "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanAttack.fcg",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "ugcscript"
+        }
+      ],
+      "x": 1724.4439697265625,
+      "y": 344.1205749511719,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "condition",
+        "name": "Codition",
+        "id": "DENIOBxc",
+        "varArr": [
+          {
+            "name": "AttackName",
+            "type": "String",
+            "val": "BigShootAttack"
+          }
+        ],
+        "ecaScript": null,
+        "iscustom": true,
+        "desc": "",
+        "icon": "General_Customize_20",
+        "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
+      }
+    },
+    "aPJVIF8s": {
+      "_entityName": "XBTEntity",
+      "_tag": {
+        "type": "XBTEntity"
+      },
+      "_entityId": "aPJVIF8s",
+      "children": [],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "ecaScripts": [
+        {
+          "fileId": "zc8q4845ir-mjl32t53-b70qb1ml9k4",
+          "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_FBoss_BigShooting.fcg",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "ugcscript"
+        }
+      ],
+      "x": 2091.944091796875,
+      "y": 344.1205749511719,
+      "width": 180,
+      "height": 88,
+      "nodeInfo": {
+        "type": "action",
+        "name": "Action",
+        "id": "aPJVIF8s",
+        "varArr": [
+          {
+            "name": "AttackName",
+            "type": "String",
+            "val": "BigShootAttack"
+          }
+        ],
+        "ecaScript": null,
+        "iscustom": true,
+        "desc": "",
+        "icon": "General_Customize_20",
+        "fileId": "lv3ieuvoscc-mjjqgqcf-uwgel3izhlg"
+      }
+    },
     "O3ecGB3a": {
       "_entityName": "XBTEntity",
       "_tag": {
@@ -8457,247 +9011,6 @@
         "desc": "",
         "icon": "General_Customize_20",
         "fileId": "gu4y4opmh76-mji8f4dt-2q3g79vhxfp"
-      }
-    },
-    "PZJ35GIi": {
-      "_entityName": "XBTEntity",
-      "_tag": {
-        "type": "XBTEntity"
-      },
-      "_entityId": "PZJ35GIi",
-      "children": [
-        {
-          "_entityName": "XBTEntity",
-          "_tag": {
-            "type": "XBTEntity"
-          },
-          "_entityId": "FOx0Ivng",
-          "children": [],
-          "prefabVariant": null,
-          "activeValue": {
-            "selfValue": true,
-            "valueTag": "activeValue"
-          },
-          "unlockedValue": {
-            "selfValue": true,
-            "valueTag": "unlockedValue"
-          },
-          "editorLockValue": false,
-          "editorVisibleValue": true,
-          "ecaScripts": [
-            {
-              "fileId": "cjyb66bk25t-mhblrmum-j8p5kivhzp",
-              "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanAttack.fcg",
-              "_tag": {
-                "type": "GFileRefer"
-              },
-              "fileType": "ugcscript"
-            }
-          ],
-          "x": 1550.5419921875,
-          "y": 382.46722412109375,
-          "width": 180,
-          "height": 88,
-          "nodeInfo": {
-            "type": "condition",
-            "name": "DrillAttack",
-            "id": "FOx0Ivng",
-            "varArr": [
-              {
-                "name": "AttackName",
-                "type": "String",
-                "val": "DrillAttack"
-              }
-            ],
-            "ecaScript": null,
-            "iscustom": true,
-            "desc": "",
-            "icon": "General_Customize_20",
-            "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
-          }
-        },
-        {
-          "_entityName": "XBTEntity",
-          "_tag": {
-            "type": "XBTEntity"
-          },
-          "_entityId": "GMVbkcds",
-          "children": [],
-          "prefabVariant": null,
-          "activeValue": {
-            "selfValue": true,
-            "valueTag": "activeValue"
-          },
-          "unlockedValue": {
-            "selfValue": true,
-            "valueTag": "unlockedValue"
-          },
-          "editorLockValue": false,
-          "editorVisibleValue": true,
-          "ecaScripts": [
-            {
-              "fileId": "wdpok401a-mjlibayk-9bruimf5sgv",
-              "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_FBoss_DrillAttack.fcg",
-              "_tag": {
-                "type": "GFileRefer"
-              },
-              "fileType": "ugcscript"
-            }
-          ],
-          "x": 1480.5419921875,
-          "y": 523.8958129882812,
-          "width": 180,
-          "height": 88,
-          "nodeInfo": {
-            "type": "action",
-            "name": "DashAttack",
-            "id": "GMVbkcds",
-            "varArr": [
-              {
-                "name": "AttackName",
-                "type": "String",
-                "val": "DrillAttack"
-              }
-            ],
-            "ecaScript": null,
-            "iscustom": true,
-            "desc": "",
-            "icon": "General_Customize_20",
-            "fileId": "lifnvfwskwb-mjglu66n-juvbafsw00j"
-          }
-        }
-      ],
-      "prefabVariant": null,
-      "activeValue": {
-        "selfValue": true,
-        "valueTag": "activeValue"
-      },
-      "unlockedValue": {
-        "selfValue": true,
-        "valueTag": "unlockedValue"
-      },
-      "editorLockValue": false,
-      "editorVisibleValue": true,
-      "ecaScripts": [
-        null
-      ],
-      "x": 1290.5419921875,
-      "y": 388.1814880371094,
-      "width": 180,
-      "height": 88,
-      "nodeInfo": {
-        "type": "composite",
-        "name": "MemSequence",
-        "id": "PZJ35GIi",
-        "keyName": "MemSequence",
-        "desc": "FE_42_JH_WS_MENSEQUENCE",
-        "varArr": [],
-        "in": null,
-        "icon": "General_MemSequence_20",
-        "out": [
-          "FOx0Ivng",
-          "GMVbkcds"
-        ]
-      }
-    },
-    "FOx0Ivng": {
-      "_entityName": "XBTEntity",
-      "_tag": {
-        "type": "XBTEntity"
-      },
-      "_entityId": "FOx0Ivng",
-      "children": [],
-      "prefabVariant": null,
-      "activeValue": {
-        "selfValue": true,
-        "valueTag": "activeValue"
-      },
-      "unlockedValue": {
-        "selfValue": true,
-        "valueTag": "unlockedValue"
-      },
-      "editorLockValue": false,
-      "editorVisibleValue": true,
-      "ecaScripts": [
-        {
-          "fileId": "cjyb66bk25t-mhblrmum-j8p5kivhzp",
-          "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanAttack.fcg",
-          "_tag": {
-            "type": "GFileRefer"
-          },
-          "fileType": "ugcscript"
-        }
-      ],
-      "x": 1550.5419921875,
-      "y": 382.46722412109375,
-      "width": 180,
-      "height": 88,
-      "nodeInfo": {
-        "type": "condition",
-        "name": "DrillAttack",
-        "id": "FOx0Ivng",
-        "varArr": [
-          {
-            "name": "AttackName",
-            "type": "String",
-            "val": "DrillAttack"
-          }
-        ],
-        "ecaScript": null,
-        "iscustom": true,
-        "desc": "",
-        "icon": "General_Customize_20",
-        "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
-      }
-    },
-    "GMVbkcds": {
-      "_entityName": "XBTEntity",
-      "_tag": {
-        "type": "XBTEntity"
-      },
-      "_entityId": "GMVbkcds",
-      "children": [],
-      "prefabVariant": null,
-      "activeValue": {
-        "selfValue": true,
-        "valueTag": "activeValue"
-      },
-      "unlockedValue": {
-        "selfValue": true,
-        "valueTag": "unlockedValue"
-      },
-      "editorLockValue": false,
-      "editorVisibleValue": true,
-      "ecaScripts": [
-        {
-          "fileId": "wdpok401a-mjlibayk-9bruimf5sgv",
-          "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_FBoss_DrillAttack.fcg",
-          "_tag": {
-            "type": "GFileRefer"
-          },
-          "fileType": "ugcscript"
-        }
-      ],
-      "x": 1480.5419921875,
-      "y": 523.8958129882812,
-      "width": 180,
-      "height": 88,
-      "nodeInfo": {
-        "type": "action",
-        "name": "DashAttack",
-        "id": "GMVbkcds",
-        "varArr": [
-          {
-            "name": "AttackName",
-            "type": "String",
-            "val": "DrillAttack"
-          }
-        ],
-        "ecaScript": null,
-        "iscustom": true,
-        "desc": "",
-        "icon": "General_Customize_20",
-        "fileId": "lifnvfwskwb-mjglu66n-juvbafsw00j"
       }
     },
     "mTc4pqCB": {
@@ -8950,217 +9263,6 @@
         "desc": "",
         "icon": "General_Customize_20",
         "fileId": "tbdwluazbo-mj73d2uh-9j2rdg9gy89"
-      }
-    },
-    "jvJBde0v": {
-      "_entityName": "XBTEntity",
-      "_tag": {
-        "type": "XBTEntity"
-      },
-      "_entityId": "jvJBde0v",
-      "children": [
-        {
-          "_entityName": "XBTEntity",
-          "_tag": {
-            "type": "XBTEntity"
-          },
-          "_entityId": "DENIOBxc",
-          "children": [],
-          "prefabVariant": null,
-          "activeValue": null,
-          "unlockedValue": null,
-          "editorLockValue": false,
-          "editorVisibleValue": true,
-          "ecaScripts": [
-            {
-              "fileId": "cjyb66bk25t-mhblrmum-j8p5kivhzp",
-              "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanAttack.fcg",
-              "_tag": {
-                "type": "GFileRefer"
-              },
-              "fileType": "ugcscript"
-            }
-          ],
-          "x": 1724.4439697265625,
-          "y": 344.1205749511719,
-          "width": 180,
-          "height": 88,
-          "nodeInfo": {
-            "type": "condition",
-            "name": "Codition",
-            "id": "DENIOBxc",
-            "varArr": [
-              {
-                "name": "AttackName",
-                "type": "String",
-                "val": "BigShootAttack"
-              }
-            ],
-            "ecaScript": null,
-            "iscustom": true,
-            "desc": "",
-            "icon": "General_Customize_20",
-            "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
-          }
-        },
-        {
-          "_entityName": "XBTEntity",
-          "_tag": {
-            "type": "XBTEntity"
-          },
-          "_entityId": "aPJVIF8s",
-          "children": [],
-          "prefabVariant": null,
-          "activeValue": null,
-          "unlockedValue": null,
-          "editorLockValue": false,
-          "editorVisibleValue": true,
-          "ecaScripts": [
-            {
-              "fileId": "zc8q4845ir-mjl32t53-b70qb1ml9k4",
-              "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_FBoss_BigShooting.fcg",
-              "_tag": {
-                "type": "GFileRefer"
-              },
-              "fileType": "ugcscript"
-            }
-          ],
-          "x": 2091.944091796875,
-          "y": 344.1205749511719,
-          "width": 180,
-          "height": 88,
-          "nodeInfo": {
-            "type": "action",
-            "name": "Action",
-            "id": "aPJVIF8s",
-            "varArr": [
-              {
-                "name": "AttackName",
-                "type": "String",
-                "val": "BigShootAttack"
-              }
-            ],
-            "ecaScript": null,
-            "iscustom": true,
-            "desc": "",
-            "icon": "General_Customize_20",
-            "fileId": "lv3ieuvoscc-mjjqgqcf-uwgel3izhlg"
-          }
-        }
-      ],
-      "prefabVariant": null,
-      "activeValue": null,
-      "unlockedValue": null,
-      "editorLockValue": false,
-      "editorVisibleValue": true,
-      "ecaScripts": [
-        null
-      ],
-      "x": 1383.1939697265625,
-      "y": 290.3705749511719,
-      "width": 180,
-      "height": 88,
-      "nodeInfo": {
-        "type": "composite",
-        "name": "MemSequence",
-        "id": "jvJBde0v",
-        "keyName": "MemSequence",
-        "desc": "FE_42_JH_WS_MENSEQUENCE",
-        "varArr": [],
-        "in": null,
-        "icon": "General_MemSequence_20",
-        "out": [
-          "DENIOBxc",
-          "aPJVIF8s"
-        ]
-      }
-    },
-    "DENIOBxc": {
-      "_entityName": "XBTEntity",
-      "_tag": {
-        "type": "XBTEntity"
-      },
-      "_entityId": "DENIOBxc",
-      "children": [],
-      "prefabVariant": null,
-      "activeValue": null,
-      "unlockedValue": null,
-      "editorLockValue": false,
-      "editorVisibleValue": true,
-      "ecaScripts": [
-        {
-          "fileId": "cjyb66bk25t-mhblrmum-j8p5kivhzp",
-          "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanAttack.fcg",
-          "_tag": {
-            "type": "GFileRefer"
-          },
-          "fileType": "ugcscript"
-        }
-      ],
-      "x": 1724.4439697265625,
-      "y": 344.1205749511719,
-      "width": 180,
-      "height": 88,
-      "nodeInfo": {
-        "type": "condition",
-        "name": "Codition",
-        "id": "DENIOBxc",
-        "varArr": [
-          {
-            "name": "AttackName",
-            "type": "String",
-            "val": "BigShootAttack"
-          }
-        ],
-        "ecaScript": null,
-        "iscustom": true,
-        "desc": "",
-        "icon": "General_Customize_20",
-        "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
-      }
-    },
-    "aPJVIF8s": {
-      "_entityName": "XBTEntity",
-      "_tag": {
-        "type": "XBTEntity"
-      },
-      "_entityId": "aPJVIF8s",
-      "children": [],
-      "prefabVariant": null,
-      "activeValue": null,
-      "unlockedValue": null,
-      "editorLockValue": false,
-      "editorVisibleValue": true,
-      "ecaScripts": [
-        {
-          "fileId": "zc8q4845ir-mjl32t53-b70qb1ml9k4",
-          "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_FBoss_BigShooting.fcg",
-          "_tag": {
-            "type": "GFileRefer"
-          },
-          "fileType": "ugcscript"
-        }
-      ],
-      "x": 2091.944091796875,
-      "y": 344.1205749511719,
-      "width": 180,
-      "height": 88,
-      "nodeInfo": {
-        "type": "action",
-        "name": "Action",
-        "id": "aPJVIF8s",
-        "varArr": [
-          {
-            "name": "AttackName",
-            "type": "String",
-            "val": "BigShootAttack"
-          }
-        ],
-        "ecaScript": null,
-        "iscustom": true,
-        "desc": "",
-        "icon": "General_Customize_20",
-        "fileId": "lv3ieuvoscc-mjjqgqcf-uwgel3izhlg"
       }
     }
   }

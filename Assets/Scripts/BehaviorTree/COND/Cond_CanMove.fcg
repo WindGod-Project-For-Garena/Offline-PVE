@@ -20,7 +20,7 @@ graph Script_1_ {
         var curPos = owner<Transform>.Position
         var targetPos = tempPlayer<Player>.Position
         var sub1 = curPos - targetPos
-        sub1.Y = 0
+        sub1 = SetYClient(sub1,0)
         var dist float = Magnitude(sub1)
 
         GetNodeVariable(thisEntity<BevTreeCustomNode>,"KeepDist",out var keepdist)

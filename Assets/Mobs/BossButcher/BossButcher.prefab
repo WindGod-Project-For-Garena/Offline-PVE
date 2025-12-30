@@ -10,7 +10,144 @@
         "resourceId": ""
       },
       "_entityId": "DoDDweTl",
-      "children": [],
+      "children": [
+        {
+          "_entityName": "SpinLoop",
+          "_tag": {
+            "type": "SimpleUGCSceneEntity",
+            "resourceId": "#uuc0efaf630690d6443874dd2d992e8c25",
+            "gfileId": "d9a8be70f1b14529aab9972fd765449a-res://c0efaf630690d6443874dd2d992e8c25"
+          },
+          "_entityId": "wgWuKsoM",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": false,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": null,
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "BTPath": [
+            null
+          ],
+          "visible": true,
+          "VisibilityLayer": 0,
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "attributes": [
+            2
+          ],
+          "isTrigger": false,
+          "collidable": true,
+          "physicalLayer": 0,
+          "physicalMaterial": null,
+          "aoiSetting": 0,
+          "initialTypes": {},
+          "componentList": [],
+          "ecaProps": {
+            "CustomLevelObject": {
+              "CustomLevelObject_81351029_custom": null
+            },
+            "LevelObject": {},
+            "Transform": {},
+            "Entity": {},
+            "Visibility": {},
+            "SimpleRender": {}
+          },
+          "resFile": {
+            "fileId": "d9a8be70f1b14529aab9972fd765449a-res://c0efaf630690d6443874dd2d992e8c25",
+            "filePath": "fab://Assets\\Mobs\\BossButcher\\boss_vfx.fab/vfx_bossbutcher_spinloop.prefab",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "abgameobj"
+          }
+        },
+        {
+          "_entityName": "SpinEnd",
+          "_tag": {
+            "type": "SimpleUGCSceneEntity",
+            "resourceId": "#uub84bf4e4e3610014f940b170d82d2422",
+            "gfileId": "d9a8be70f1b14529aab9972fd765449a-res://b84bf4e4e3610014f940b170d82d2422"
+          },
+          "_entityId": "HKsDSU5k",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": false,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": null,
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "BTPath": [
+            null
+          ],
+          "visible": true,
+          "VisibilityLayer": 0,
+          "modelOptimization": 0,
+          "streamingLayer": "",
+          "attributes": [
+            2
+          ],
+          "isTrigger": false,
+          "collidable": true,
+          "physicalLayer": 0,
+          "physicalMaterial": null,
+          "aoiSetting": 0,
+          "initialTypes": {},
+          "componentList": [],
+          "ecaProps": {
+            "CustomLevelObject": {
+              "CustomLevelObject_81351029_custom": null
+            },
+            "LevelObject": {},
+            "Transform": {},
+            "Entity": {},
+            "Visibility": {},
+            "SimpleRender": {}
+          },
+          "resFile": {
+            "fileId": "d9a8be70f1b14529aab9972fd765449a-res://b84bf4e4e3610014f940b170d82d2422",
+            "filePath": "fab://Assets\\Mobs\\BossButcher\\boss_vfx.fab/vfx_bossbutcher_spinend.prefab",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "abgameobj"
+          }
+        }
+      ],
       "activeValue": {
         "selfValue": true,
         "valueTag": "activeValue"

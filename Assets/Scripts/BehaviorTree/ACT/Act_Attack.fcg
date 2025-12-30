@@ -14,11 +14,9 @@ graph Script_1_ {
  
     event OnNodeEnterForClient(nodeName string, owner entity<BevTreeAttachableForClient>) {
         //var attackScale = owner<ZombieCom>.ZombieInfo["LeftAttackSPDScale"] as float
-        //LogInfo("Action OnNodeEnter:  Attack ")
         owner<Mob>.StatusDic["InAttack"] = true
         GetNodeVariable(thisEntity<BevTreeCustomNode>,"AttackName",out var attackName) 
-
-        var duration = owner<Mob>.StatusDic["Duration_" + attackName] as int
+        var duration int = owner<Mob>.StatusDic["Duration_" + attackName] as int
         var attackScale float= 1
         _Duration = Ceil(duration as int * attackScale)
         var curTarget entity<Player> = owner<Mob>.CurrTarget
@@ -28,7 +26,6 @@ graph Script_1_ {
         owner<Mob>.StatusDic["LastAttackTime_" + attackName] = _AttackBeginTime
         //SetBlackboardValue(owner<BevTreeAttachableForClient>.AttachTarget,"LastAttackTime",_AttackBeginTime)
         var attackspeed float = 1.0/attackScale
-        //LogInfo("OnNodeEnter: Attack curTarget: " + curTarget)
         Utilities.myLookAt(owner<Transform>,curTarget as entity<Player>,Vector3{0, 0, 0})
         PlayAnimation(owner<AnimationControllerAttachable>,attackName,attackspeed,LoopType.Once)
     }
