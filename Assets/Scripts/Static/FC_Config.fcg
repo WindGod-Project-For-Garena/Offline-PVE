@@ -7,7 +7,9 @@ static graph FC_Config {
     MobPrefabIDs Map<string, EResPrefab> = Map<string, EResPrefab>{}
     CardRaritySprite Map<int, EResSprite> = Map<int, EResSprite>{}
     SkillCardIDs Map<string, EResSprite> = Map<string, EResSprite>{}
+    CardRarityColor Map<int, Color> = Map<int, Color>{}
     event OnAwake() {
+        // 怪物预制体ID
         MobPrefabIDs = Map<string, EResPrefab>{
             "NormalZombie": EResPrefab.NormalZombie,
             "NormalZombie_Blue": EResPrefab.NormalZombie,
@@ -20,6 +22,7 @@ static graph FC_Config {
             "BossFlower": EResPrefab.BossFlower,
             "AxeZombie": EResPrefab.AxeZombie,
         }
+        // 卡牌稀有度图标
         CardRaritySprite = Map<int, EResSprite>{
             0: EResSprite.FF_ingame_hud_RandomBuff_Grey,
             1: EResSprite.FF_ingame_hud_RandomBuff_Blue,
@@ -27,8 +30,16 @@ static graph FC_Config {
             3: EResSprite.FF_ingame_hud_RandomBuff_Yellow,
         }
 
-    
+        // 卡牌稀有度颜色
+        CardRarityColor = Map<int, Color>{
+           0:#FFFFFF,
+           1:#2C92C2,
+           2:#9F34EA,
+           3:#FFBA00,
+        }
 
+    
+        // 技能卡牌图标
         SkillCardIDs = Map<string, EResSprite>{
 
             "movespeed": EResSprite.MoveSpeed,
