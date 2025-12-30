@@ -6,6 +6,7 @@ static graph FC_Config {
     //Executed when entity is created
     MobPrefabIDs Map<string, EResPrefab> = Map<string, EResPrefab>{}
     CardRaritySprite Map<int, EResSprite> = Map<int, EResSprite>{}
+    SkillCardIDs Map<string, EResSprite> = Map<string, EResSprite>{}
     event OnAwake() {
         MobPrefabIDs = Map<string, EResPrefab>{
             "NormalZombie": EResPrefab.NormalZombie,
@@ -26,6 +27,19 @@ static graph FC_Config {
             3: EResSprite.FF_ingame_hud_RandomBuff_Yellow,
         }
 
-    }
+    
 
+        SkillCardIDs = Map<string, EResSprite>{
+            "SkillRange": EResSprite.SkillRange,
+            "WeaponLightningProb": EResSprite.WeaponLightningProb,
+            "SkillCD": EResSprite.SkillCD,
+            "Skill_Just_Do_It": EResSprite.Skill_Just_Do_It,
+            "SkillDamage": EResSprite.SkillDamage,
+            "WeaponMaxMagazine": EResSprite.WeaponMaxMagazine,
+            "AttackSpeed": EResSprite.AttackSpeed,
+            "ReloadSpeed": EResSprite.ReloadSpeed,
+            "WeaponDamage": EResSprite.WeaponDamage,
+            "movespeed": EResSprite.movespeed,
+        }
+    }
 }

@@ -590,6 +590,18 @@
         },
         {
           "refer": {
+            "fileId": "9yc09t0gldd-m1kbr7xx-oexidwmcw2",
+            "filePath": "Assets\\Mobs\\AxeZombie\\AxeZombie.prefab",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "prefab"
+          },
+          "scriptName": "AxeZombie",
+          "children": []
+        },
+        {
+          "refer": {
             "fileId": "efi94idkm9-mjqrcmxu-lhd4cnwsqj",
             "filePath": "Assets\\Prefab\\SkillEffect\\SkillEffect_Bossbutcher_Slash3.prefab",
             "_tag": {
@@ -610,18 +622,6 @@
             "fileType": "prefab"
           },
           "scriptName": "SkillEffect_ButcherBoss_Slash1",
-          "children": []
-        },
-        {
-          "refer": {
-            "fileId": "9yc09t0gldd-m1kbr7xx-oexidwmcw2",
-            "filePath": "Assets\\Mobs\\AxeZombie\\AxeZombie.prefab",
-            "_tag": {
-              "type": "GFileRefer"
-            },
-            "fileType": "prefab"
-          },
-          "scriptName": "AxeZombie",
           "children": []
         }
       ]
@@ -744,6 +744,126 @@
             "fileType": "texture"
           },
           "scriptName": "Huntingground_Tab03",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "uhkvjhmf0z-mjs3u77p-iydo76ijg6e",
+            "filePath": "Assets\\Image\\SkillIcon\\技能_范围.png",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "texture"
+          },
+          "scriptName": "SkillRange",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "2ykalxemjli-mjs3u75x-vht24mzqnq",
+            "filePath": "Assets\\Image\\SkillIcon\\技能_概率.png",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "texture"
+          },
+          "scriptName": "WeaponLightningProb",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "x2oamm45mca-mjs3u744-wlff3dvew7b",
+            "filePath": "Assets\\Image\\SkillIcon\\技能_冷却.png",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "texture"
+          },
+          "scriptName": "SkillCD",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "2h5s88b7slg-mjs3u79n-5n2l76ea0r3",
+            "filePath": "Assets\\Image\\SkillIcon\\技能_通用.png",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "texture"
+          },
+          "scriptName": "Skill_Just_Do_It",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "ju2yqotgzyn-mjs3u7bu-i7z4ob7a3r",
+            "filePath": "Assets\\Image\\SkillIcon\\技能伤害.png",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "texture"
+          },
+          "scriptName": "SkillDamage",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "4uh1i6fz7zi-mjs3u7fp-j53n1kzkoa",
+            "filePath": "Assets\\Image\\SkillIcon\\武器_弹夹容量.png",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "texture"
+          },
+          "scriptName": "WeaponMaxMagazine",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "x7oetftwr9q-mjs3u7k5-sfucs1h9ng",
+            "filePath": "Assets\\Image\\SkillIcon\\武器_攻速.png",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "texture"
+          },
+          "scriptName": "AttackSpeed",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "jg7qg8q6qg-mjs3u7hq-h4b1c64n48",
+            "filePath": "Assets\\Image\\SkillIcon\\武器_换弹速度.png",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "texture"
+          },
+          "scriptName": "ReloadSpeed",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "kjh60nb22p-mjs3u7mb-ufzwro3jf9",
+            "filePath": "Assets\\Image\\SkillIcon\\武器伤害.png",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "texture"
+          },
+          "scriptName": "WeaponDamage",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "0f81dbdrmz5k-mjs3u7ru-xyr6o4r0e9",
+            "filePath": "Assets\\Image\\SkillIcon\\移速提升.png",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "texture"
+          },
+          "scriptName": "movespeed",
           "children": []
         }
       ]
