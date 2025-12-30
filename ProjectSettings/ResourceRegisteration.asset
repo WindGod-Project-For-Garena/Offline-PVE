@@ -767,7 +767,7 @@
             },
             "fileType": "texture"
           },
-          "scriptName": "WeaponLightningProb",
+          "scriptName": "SkillProb",
           "children": []
         },
         {
@@ -815,7 +815,7 @@
             },
             "fileType": "texture"
           },
-          "scriptName": "WeaponMaxMagazine",
+          "scriptName": "Weapon_Maganize",
           "children": []
         },
         {
@@ -827,7 +827,7 @@
             },
             "fileType": "texture"
           },
-          "scriptName": "AttackSpeed",
+          "scriptName": "Weapon_AttackSpeed",
           "children": []
         },
         {
@@ -839,7 +839,7 @@
             },
             "fileType": "texture"
           },
-          "scriptName": "ReloadSpeed",
+          "scriptName": "Weapon_ReloadSpeed",
           "children": []
         },
         {
@@ -863,7 +863,19 @@
             },
             "fileType": "texture"
           },
-          "scriptName": "movespeed",
+          "scriptName": "MoveSpeed",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "2h5s88b7slg-mjs3u79n-5n2l76ea0r3",
+            "filePath": "Assets\\Image\\SkillIcon\\技能_通用.png",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "texture"
+          },
+          "scriptName": "Skill_General",
           "children": []
         }
       ]

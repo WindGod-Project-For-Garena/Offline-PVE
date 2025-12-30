@@ -30,16 +30,28 @@ static graph FC_Config {
     
 
         SkillCardIDs = Map<string, EResSprite>{
-            "SkillRange": EResSprite.SkillRange,
-            "WeaponLightningProb": EResSprite.WeaponLightningProb,
-            "SkillCD": EResSprite.SkillCD,
-            "Skill_Just_Do_It": EResSprite.Skill_Just_Do_It,
-            "SkillDamage": EResSprite.SkillDamage,
-            "WeaponMaxMagazine": EResSprite.WeaponMaxMagazine,
-            "AttackSpeed": EResSprite.AttackSpeed,
-            "ReloadSpeed": EResSprite.ReloadSpeed,
+
+            "movespeed": EResSprite.MoveSpeed,
             "WeaponDamage": EResSprite.WeaponDamage,
-            "movespeed": EResSprite.movespeed,
+            "LightningAmount": EResSprite.Skill_General,
+            "SkillDamage": EResSprite.SkillDamage,
+            "SkillAmount": EResSprite.Skill_General,
+            "LightningRange": EResSprite.SkillRange,
+            "LightningExplosion": EResSprite.Skill_General,
+            "WeaponLightningProb": EResSprite.SkillProb,
+            "ReloadBuff": EResSprite.Weapon_ReloadSpeed,
+            "ReloadSpeed": EResSprite.Weapon_ReloadSpeed,
+            "SkillCD": EResSprite.SkillCD,
+            "ReloadNow": EResSprite.Weapon_ReloadSpeed,
+            "WeaponMaxMagazine": EResSprite.Weapon_Maganize,
+            "AttackSpeed": EResSprite.Weapon_AttackSpeed,
+            "SkillRange": EResSprite.SkillRange,
+            "SkillFireDamage": EResSprite.SkillDamage,
+            "WeaponBoomRange": EResSprite.SkillRange,
+            "WeaponBoomProbability": EResSprite.SkillProb,
+            "WeaponDoubleBoom": EResSprite.Skill_General,
+            "WeaponBoomDamage": EResSprite.SkillDamage,
+            
         }
     }
 }
