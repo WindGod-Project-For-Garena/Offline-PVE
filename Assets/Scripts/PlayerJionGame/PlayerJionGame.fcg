@@ -15,6 +15,7 @@ import "../CustomEvent.fcc" as CustomEvent
 import "../PVE/PVEController.fcg" as PVEController
 import "Economy.fcc" as Economy
 import "../Home/GiftedPanel.fcg" as GiftedPanel
+import "../Static/FC_Config.fcg" as FC_Config
 
 // 这里是RCT最新代码，WindGod & Holy巨献
 
@@ -2114,13 +2115,20 @@ graph PlayerJionGame {
         }
         //——————————————————————————————————————————————————————————————————————————————————————————————//
         // 显示图标
-        var iconImageEntity = GetChildByName(cardEntity, "IconImage")
-        if iconImageEntity != nil {
-            iconImageEntity<UIWidget>.IsVisible = false
-        }
         var hasCardIconEntity = GetChildByName(hasCardPanelEntity, "icon")
         if hasCardIconEntity != nil {
             hasCardIconEntity<UIWidget>.IsVisible = true
+            var nature = cardInfo["Nature"]
+            var iconKey = "Skill_Just_Do_It"  // 通用默认值
+            
+            // 检查配置中是否存在该nature对应的图标
+            if (nature != nil && nature != "") {
+                if (FC_Config.SkillCardIDs[nature] != nil) {
+                    iconKey = nature  // 如果配置中有，直接使用nature作为key
+                }
+            }
+            
+            hasCardIconEntity<UIWidgetImage>.SpriteName = FC_Config.SkillCardIDs[iconKey]
         }
         //——————————————————————————————————————————————————————————————————————————————————————————————//
         // 显示详细信息
@@ -2148,16 +2156,19 @@ graph PlayerJionGame {
                 ICONBBEntity<UIWidgetImage>.SpriteName = EResSprite.FF_ingame_hud_RandomBuff_Blue
                 tableftEntity<UIWidgetImage>.Color = #2C92C2
                 tabrightEntity<UIWidgetImage>.Color = #2C92C2
+                hasCardPanelEntity<UIWidgetImage>.Color = #2C92C2
             } else if rarity == 2 {
                 // 稀有 - 紫色
                 ICONBBEntity<UIWidgetImage>.SpriteName = EResSprite.FF_ingame_hud_RandomBuff_Purple
                 tableftEntity<UIWidgetImage>.Color = #9F34EA
                 tabrightEntity<UIWidgetImage>.Color = #9F34EA
+                hasCardPanelEntity<UIWidgetImage>.Color = #9F34EA
             } else if rarity == 3 {
                 // 史诗 - 金色
                 ICONBBEntity<UIWidgetImage>.SpriteName = EResSprite.FF_ingame_hud_RandomBuff_Yellow
                 tableftEntity<UIWidgetImage>.Color = #FF9E00
                 tabrightEntity<UIWidgetImage>.Color = #FF9E00
+                hasCardPanelEntity<UIWidgetImage>.Color = #FF9E00
             }
         }
     }
