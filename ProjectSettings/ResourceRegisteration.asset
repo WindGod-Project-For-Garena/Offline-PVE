@@ -518,30 +518,6 @@
         },
         {
           "refer": {
-            "fileId": "xy4kqy60hfb-m3i77rvv-mq5mhc9i9b",
-            "filePath": "Assets\\Mobs\\BossButcher\\HitBox\\BossButcherLeftArmHitBox.prefab",
-            "_tag": {
-              "type": "GFileRefer"
-            },
-            "fileType": "prefab"
-          },
-          "scriptName": "HitBox_BossButcher_LeftArm",
-          "children": []
-        },
-        {
-          "refer": {
-            "fileId": "yig94ptzgw-miobaf7r-5uqne6hbweh",
-            "filePath": "Assets\\Mobs\\BossButcher\\HitBox\\BossButcherBodyHitBox.prefab",
-            "_tag": {
-              "type": "GFileRefer"
-            },
-            "fileType": "prefab"
-          },
-          "scriptName": "HitBox_BossButcher_Body",
-          "children": []
-        },
-        {
-          "refer": {
             "fileId": "bivw2cbcy2r-mjijfof0-o9wab11owmk",
             "filePath": "Assets\\Prefab\\ShieldZombie_AOE.prefab",
             "_tag": {
@@ -626,14 +602,38 @@
         },
         {
           "refer": {
-            "fileId": "xy4kqy60hfb-m3i77rvv-mq5mhc9i9b",
-            "filePath": "Assets\\Mobs\\BossButcher\\HitBox\\BossButcherLeftArmHitBox.prefab",
+            "fileId": "efi94idkm9-mjqrcmxu-lhd4cnwsqj",
+            "filePath": "Assets\\Prefab\\SkillEffect\\SkillEffect_Bossbutcher_Slash3.prefab",
             "_tag": {
               "type": "GFileRefer"
             },
             "fileType": "prefab"
           },
-          "scriptName": "Key",
+          "scriptName": "SkillEffect_ButcherBoss_Slash3",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "mugm1h1384-mjqwbjqp-9jjne11xif8",
+            "filePath": "Assets\\Prefab\\SkillEffect\\SkillEffect_Bossbutcher_Slash1.prefab",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "prefab"
+          },
+          "scriptName": "SkillEffect_ButcherBoss_Slash1",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "9yc09t0gldd-m1kbr7xx-oexidwmcw2",
+            "filePath": "Assets\\Mobs\\AxeZombie\\AxeZombie.prefab",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "prefab"
+          },
+          "scriptName": "AxeZombie",
           "children": []
         }
       ]

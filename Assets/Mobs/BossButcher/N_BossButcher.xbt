@@ -1149,7 +1149,7 @@
                   "text": "in"
                 },
                 "circle": {
-                  "fill": "var(--t15)"
+                  "fill": "var(--bg5)"
                 }
               },
               "id": "2d9376df-da1d-400e-82da-72c1e03b20f2"
@@ -3104,8 +3104,8 @@
       },
       {
         "position": {
-          "x": 1780,
-          "y": 420
+          "x": 1690,
+          "y": 390
         },
         "size": {
           "width": 180,
@@ -3261,7 +3261,7 @@
         },
         "size": {
           "width": 180,
-          "height": 130
+          "height": 102
         },
         "view": "vue-shape-view",
         "shape": "vue-shape",
@@ -3379,45 +3379,13 @@
                   "fill": "var(--t15)"
                 }
               },
-              "id": "7d2aa42d-c0d9-4612-a17c-0145c479042d"
-            },
-            {
-              "group": "out",
-              "args": {
-                "x": 172,
-                "y": 83
-              },
-              "attrs": {
-                "text": {
-                  "text": "out"
-                },
-                "circle": {
-                  "fill": "var(--t15)"
-                }
-              },
               "id": "b469e930-9c3f-43f3-9762-703e20a72a3d"
             },
             {
               "group": "out",
               "args": {
                 "x": 172,
-                "y": 97
-              },
-              "attrs": {
-                "text": {
-                  "text": "out"
-                },
-                "circle": {
-                  "fill": "var(--t15)"
-                }
-              },
-              "id": "694a6394-9c31-48aa-bb44-bfc1bc3e33ab"
-            },
-            {
-              "group": "out",
-              "args": {
-                "x": 172,
-                "y": 111
+                "y": 83
               },
               "attrs": {
                 "text": {
@@ -3446,25 +3414,6 @@
         "target": {
           "cell": "h94FKWgv",
           "port": "f11ae00c-ff6f-4b8b-b955-ecacf0632094"
-        }
-      },
-      {
-        "shape": "edge",
-        "attrs": {
-          "line": {
-            "stroke": "var(--t11)",
-            "strokeWidth": 1
-          }
-        },
-        "id": "a3cb7115-1a78-4acc-8b17-2a9a97938254",
-        "zIndex": 64,
-        "source": {
-          "cell": "h94FKWgv",
-          "port": "7d2aa42d-c0d9-4612-a17c-0145c479042d"
-        },
-        "target": {
-          "cell": "m3ArLs1x",
-          "port": "2d9376df-da1d-400e-82da-72c1e03b20f2"
         }
       },
       {
@@ -3611,7 +3560,7 @@
                   "text": "in"
                 },
                 "circle": {
-                  "fill": "var(--t15)"
+                  "fill": "var(--bg5)"
                 }
               },
               "id": "8b7a86d6-704e-4d35-b824-b0fece37a4b2"
@@ -3666,7 +3615,7 @@
       },
       {
         "position": {
-          "x": 1670,
+          "x": 1690,
           "y": -70
         },
         "size": {
@@ -3900,44 +3849,6 @@
             "strokeWidth": 1
           }
         },
-        "id": "c60d041e-8a99-4db4-9ed0-165b45e130ac",
-        "zIndex": 78,
-        "source": {
-          "cell": "h94FKWgv",
-          "port": "b469e930-9c3f-43f3-9762-703e20a72a3d"
-        },
-        "target": {
-          "cell": "O3ecGB3a",
-          "port": "8b7a86d6-704e-4d35-b824-b0fece37a4b2"
-        }
-      },
-      {
-        "shape": "edge",
-        "attrs": {
-          "line": {
-            "stroke": "var(--t11)",
-            "strokeWidth": 1
-          }
-        },
-        "id": "4a092366-3266-4778-aafc-28e5b54eaa43",
-        "zIndex": 79,
-        "source": {
-          "cell": "h94FKWgv",
-          "port": "694a6394-9c31-48aa-bb44-bfc1bc3e33ab"
-        },
-        "target": {
-          "cell": "PZJ35GIi",
-          "port": "728fad9f-051e-4bc2-a04d-27e694a80564"
-        }
-      },
-      {
-        "shape": "edge",
-        "attrs": {
-          "line": {
-            "stroke": "var(--t11)",
-            "strokeWidth": 1
-          }
-        },
         "id": "a7fe23b0-b181-45ec-a71f-7867cf84cdd0",
         "zIndex": 80,
         "source": {
@@ -3967,6 +3878,25 @@
           "cell": "LmUrfAZA",
           "port": "dab53b51-3415-4c11-a278-c30196a8cede"
         }
+      },
+      {
+        "shape": "edge",
+        "attrs": {
+          "line": {
+            "stroke": "var(--t11)",
+            "strokeWidth": 1
+          }
+        },
+        "id": "83c59fce-9014-4a72-823e-ae0fdfff5780",
+        "source": {
+          "cell": "h94FKWgv",
+          "port": "b469e930-9c3f-43f3-9762-703e20a72a3d"
+        },
+        "target": {
+          "cell": "PZJ35GIi",
+          "port": "728fad9f-051e-4bc2-a04d-27e694a80564"
+        },
+        "zIndex": 82
       }
     ]
   },
@@ -4304,288 +4234,6 @@
                       "_tag": {
                         "type": "XBTEntity"
                       },
-                      "_entityId": "m3ArLs1x",
-                      "children": [
-                        {
-                          "_entityName": "XBTEntity",
-                          "_tag": {
-                            "type": "XBTEntity"
-                          },
-                          "_entityId": "FlFhiXxJ",
-                          "children": [],
-                          "prefabVariant": null,
-                          "activeValue": {
-                            "selfValue": true,
-                            "valueTag": "activeValue"
-                          },
-                          "unlockedValue": {
-                            "selfValue": true,
-                            "valueTag": "unlockedValue"
-                          },
-                          "editorLockValue": false,
-                          "editorVisibleValue": true,
-                          "ecaScripts": [
-                            {
-                              "fileId": "cjyb66bk25t-mhblrmum-j8p5kivhzp",
-                              "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanAttack.fcg",
-                              "_tag": {
-                                "type": "GFileRefer"
-                              },
-                              "fileType": "ugcscript"
-                            }
-                          ],
-                          "x": 1544.675048828125,
-                          "y": 138.39999389648438,
-                          "width": 180,
-                          "height": 88,
-                          "nodeInfo": {
-                            "type": "condition",
-                            "name": "CanAttack1",
-                            "id": "FlFhiXxJ",
-                            "varArr": [
-                              {
-                                "name": "AttackName",
-                                "type": "String",
-                                "val": "NormalAttack"
-                              }
-                            ],
-                            "ecaScript": null,
-                            "iscustom": true,
-                            "desc": "",
-                            "icon": "General_Customize_20",
-                            "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
-                          }
-                        },
-                        {
-                          "_entityName": "XBTEntity",
-                          "_tag": {
-                            "type": "XBTEntity"
-                          },
-                          "_entityId": "mum3LlpR",
-                          "children": [],
-                          "prefabVariant": null,
-                          "activeValue": {
-                            "selfValue": true,
-                            "valueTag": "activeValue"
-                          },
-                          "unlockedValue": {
-                            "selfValue": true,
-                            "valueTag": "unlockedValue"
-                          },
-                          "editorLockValue": false,
-                          "editorVisibleValue": true,
-                          "ecaScripts": [
-                            {
-                              "fileId": "z0hgg3ajbf-mjh2jfyh-97cobbt2wis",
-                              "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_Shield_Normal.fcg",
-                              "_tag": {
-                                "type": "GFileRefer"
-                              },
-                              "fileType": "ugcscript"
-                            }
-                          ],
-                          "x": 1474.675048828125,
-                          "y": 228.39999389648438,
-                          "width": 180,
-                          "height": 88,
-                          "nodeInfo": {
-                            "type": "action",
-                            "name": "NormalAttack",
-                            "id": "mum3LlpR",
-                            "varArr": [
-                              {
-                                "name": "AttackName",
-                                "type": "String",
-                                "val": "NormalAttack"
-                              }
-                            ],
-                            "ecaScript": null,
-                            "iscustom": true,
-                            "desc": "",
-                            "icon": "General_Customize_20",
-                            "fileId": "tbdwluazbo-mj73d2uh-9j2rdg9gy89"
-                          }
-                        }
-                      ],
-                      "prefabVariant": null,
-                      "activeValue": {
-                        "selfValue": true,
-                        "valueTag": "activeValue"
-                      },
-                      "unlockedValue": {
-                        "selfValue": true,
-                        "valueTag": "unlockedValue"
-                      },
-                      "editorLockValue": false,
-                      "editorVisibleValue": true,
-                      "ecaScripts": [
-                        null
-                      ],
-                      "x": 1237.675048828125,
-                      "y": 193.39999389648438,
-                      "width": 180,
-                      "height": 88,
-                      "nodeInfo": {
-                        "type": "composite",
-                        "name": "MemSequence",
-                        "id": "m3ArLs1x",
-                        "keyName": "MemSequence",
-                        "desc": "FE_42_JH_WS_MENSEQUENCE",
-                        "varArr": [],
-                        "in": null,
-                        "icon": "General_MemSequence_20",
-                        "out": [
-                          "FlFhiXxJ",
-                          "mum3LlpR"
-                        ]
-                      }
-                    },
-                    {
-                      "_entityName": "XBTEntity",
-                      "_tag": {
-                        "type": "XBTEntity"
-                      },
-                      "_entityId": "O3ecGB3a",
-                      "children": [
-                        {
-                          "_entityName": "XBTEntity",
-                          "_tag": {
-                            "type": "XBTEntity"
-                          },
-                          "_entityId": "Diga3uHy",
-                          "children": [],
-                          "prefabVariant": null,
-                          "activeValue": {
-                            "selfValue": true,
-                            "valueTag": "activeValue"
-                          },
-                          "unlockedValue": {
-                            "selfValue": true,
-                            "valueTag": "unlockedValue"
-                          },
-                          "editorLockValue": false,
-                          "editorVisibleValue": true,
-                          "ecaScripts": [
-                            {
-                              "fileId": "knpg6yqbcgr-mjiiqzon-2wwbvwh6wty",
-                              "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanAttack_ShieldZombie_AOE.fcg",
-                              "_tag": {
-                                "type": "GFileRefer"
-                              },
-                              "fileType": "ugcscript"
-                            }
-                          ],
-                          "x": 1713.3990478515625,
-                          "y": 536.7529296875,
-                          "width": 180,
-                          "height": 88,
-                          "nodeInfo": {
-                            "type": "condition",
-                            "name": "AOEAttack",
-                            "id": "Diga3uHy",
-                            "varArr": [
-                              {
-                                "name": "AttackName",
-                                "type": "String",
-                                "val": "AOEAttack"
-                              }
-                            ],
-                            "ecaScript": null,
-                            "iscustom": true,
-                            "desc": "",
-                            "icon": "General_Customize_20",
-                            "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
-                          }
-                        },
-                        {
-                          "_entityName": "XBTEntity",
-                          "_tag": {
-                            "type": "XBTEntity"
-                          },
-                          "_entityId": "LmUrfAZA",
-                          "children": [],
-                          "prefabVariant": null,
-                          "activeValue": {
-                            "selfValue": true,
-                            "valueTag": "activeValue"
-                          },
-                          "unlockedValue": {
-                            "selfValue": true,
-                            "valueTag": "unlockedValue"
-                          },
-                          "editorLockValue": false,
-                          "editorVisibleValue": true,
-                          "ecaScripts": [
-                            {
-                              "fileId": "9xt7h2wmflq-mjiiqc5m-c24fycdkfnv",
-                              "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_Shield_AOE.fcg",
-                              "_tag": {
-                                "type": "GFileRefer"
-                              },
-                              "fileType": "ugcscript"
-                            }
-                          ],
-                          "x": 1764.82763671875,
-                          "y": 641.0386352539062,
-                          "width": 180,
-                          "height": 88,
-                          "nodeInfo": {
-                            "type": "action",
-                            "name": "AOEAttack",
-                            "id": "LmUrfAZA",
-                            "varArr": [
-                              {
-                                "name": "AttackName",
-                                "type": "String",
-                                "val": "AOEAttack"
-                              }
-                            ],
-                            "ecaScript": null,
-                            "iscustom": true,
-                            "desc": "",
-                            "icon": "General_Customize_20",
-                            "fileId": "gu4y4opmh76-mji8f4dt-2q3g79vhxfp"
-                          }
-                        }
-                      ],
-                      "prefabVariant": null,
-                      "activeValue": {
-                        "selfValue": true,
-                        "valueTag": "activeValue"
-                      },
-                      "unlockedValue": {
-                        "selfValue": true,
-                        "valueTag": "unlockedValue"
-                      },
-                      "editorLockValue": false,
-                      "editorVisibleValue": true,
-                      "ecaScripts": [
-                        null
-                      ],
-                      "x": 1400.5419921875,
-                      "y": 485.3243713378906,
-                      "width": 180,
-                      "height": 88,
-                      "nodeInfo": {
-                        "type": "composite",
-                        "name": "MemSequence",
-                        "id": "O3ecGB3a",
-                        "keyName": "MemSequence",
-                        "desc": "FE_42_JH_WS_MENSEQUENCE",
-                        "varArr": [],
-                        "in": null,
-                        "icon": "General_MemSequence_20",
-                        "out": [
-                          "Diga3uHy",
-                          "LmUrfAZA"
-                        ]
-                      }
-                    },
-                    {
-                      "_entityName": "XBTEntity",
-                      "_tag": {
-                        "type": "XBTEntity"
-                      },
                       "_entityId": "PZJ35GIi",
                       "children": [
                         {
@@ -4622,13 +4270,13 @@
                           "height": 88,
                           "nodeInfo": {
                             "type": "condition",
-                            "name": "DashAttack",
+                            "name": "SpinAttack",
                             "id": "FOx0Ivng",
                             "varArr": [
                               {
                                 "name": "AttackName",
                                 "type": "String",
-                                "val": "DashAttack"
+                                "val": "SpinAttack"
                               }
                             ],
                             "ecaScript": null,
@@ -4658,8 +4306,8 @@
                           "editorVisibleValue": true,
                           "ecaScripts": [
                             {
-                              "fileId": "1yo0cb6x9w1-mhxcx653-ch59cqj8i8m",
-                              "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_Shield.fcg",
+                              "fileId": "cy917wbx8d5-mjs053pq-cp3upngm81p",
+                              "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_BossButcher_Spin.fcg",
                               "_tag": {
                                 "type": "GFileRefer"
                               },
@@ -4672,13 +4320,13 @@
                           "height": 88,
                           "nodeInfo": {
                             "type": "action",
-                            "name": "DashAttack",
+                            "name": "SpinAttack",
                             "id": "GMVbkcds",
                             "varArr": [
                               {
                                 "name": "AttackName",
                                 "type": "String",
-                                "val": "DashAttack"
+                                "val": "SpinAttack"
                               }
                             ],
                             "ecaScript": null,
@@ -4751,8 +4399,6 @@
                     "in": null,
                     "icon": "General_Selector_20",
                     "out": [
-                      "m3ArLs1x",
-                      "O3ecGB3a",
                       "PZJ35GIi"
                     ]
                   }
@@ -5444,288 +5090,6 @@
                   "_tag": {
                     "type": "XBTEntity"
                   },
-                  "_entityId": "m3ArLs1x",
-                  "children": [
-                    {
-                      "_entityName": "XBTEntity",
-                      "_tag": {
-                        "type": "XBTEntity"
-                      },
-                      "_entityId": "FlFhiXxJ",
-                      "children": [],
-                      "prefabVariant": null,
-                      "activeValue": {
-                        "selfValue": true,
-                        "valueTag": "activeValue"
-                      },
-                      "unlockedValue": {
-                        "selfValue": true,
-                        "valueTag": "unlockedValue"
-                      },
-                      "editorLockValue": false,
-                      "editorVisibleValue": true,
-                      "ecaScripts": [
-                        {
-                          "fileId": "cjyb66bk25t-mhblrmum-j8p5kivhzp",
-                          "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanAttack.fcg",
-                          "_tag": {
-                            "type": "GFileRefer"
-                          },
-                          "fileType": "ugcscript"
-                        }
-                      ],
-                      "x": 1544.675048828125,
-                      "y": 138.39999389648438,
-                      "width": 180,
-                      "height": 88,
-                      "nodeInfo": {
-                        "type": "condition",
-                        "name": "CanAttack1",
-                        "id": "FlFhiXxJ",
-                        "varArr": [
-                          {
-                            "name": "AttackName",
-                            "type": "String",
-                            "val": "NormalAttack"
-                          }
-                        ],
-                        "ecaScript": null,
-                        "iscustom": true,
-                        "desc": "",
-                        "icon": "General_Customize_20",
-                        "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
-                      }
-                    },
-                    {
-                      "_entityName": "XBTEntity",
-                      "_tag": {
-                        "type": "XBTEntity"
-                      },
-                      "_entityId": "mum3LlpR",
-                      "children": [],
-                      "prefabVariant": null,
-                      "activeValue": {
-                        "selfValue": true,
-                        "valueTag": "activeValue"
-                      },
-                      "unlockedValue": {
-                        "selfValue": true,
-                        "valueTag": "unlockedValue"
-                      },
-                      "editorLockValue": false,
-                      "editorVisibleValue": true,
-                      "ecaScripts": [
-                        {
-                          "fileId": "z0hgg3ajbf-mjh2jfyh-97cobbt2wis",
-                          "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_Shield_Normal.fcg",
-                          "_tag": {
-                            "type": "GFileRefer"
-                          },
-                          "fileType": "ugcscript"
-                        }
-                      ],
-                      "x": 1474.675048828125,
-                      "y": 228.39999389648438,
-                      "width": 180,
-                      "height": 88,
-                      "nodeInfo": {
-                        "type": "action",
-                        "name": "NormalAttack",
-                        "id": "mum3LlpR",
-                        "varArr": [
-                          {
-                            "name": "AttackName",
-                            "type": "String",
-                            "val": "NormalAttack"
-                          }
-                        ],
-                        "ecaScript": null,
-                        "iscustom": true,
-                        "desc": "",
-                        "icon": "General_Customize_20",
-                        "fileId": "tbdwluazbo-mj73d2uh-9j2rdg9gy89"
-                      }
-                    }
-                  ],
-                  "prefabVariant": null,
-                  "activeValue": {
-                    "selfValue": true,
-                    "valueTag": "activeValue"
-                  },
-                  "unlockedValue": {
-                    "selfValue": true,
-                    "valueTag": "unlockedValue"
-                  },
-                  "editorLockValue": false,
-                  "editorVisibleValue": true,
-                  "ecaScripts": [
-                    null
-                  ],
-                  "x": 1237.675048828125,
-                  "y": 193.39999389648438,
-                  "width": 180,
-                  "height": 88,
-                  "nodeInfo": {
-                    "type": "composite",
-                    "name": "MemSequence",
-                    "id": "m3ArLs1x",
-                    "keyName": "MemSequence",
-                    "desc": "FE_42_JH_WS_MENSEQUENCE",
-                    "varArr": [],
-                    "in": null,
-                    "icon": "General_MemSequence_20",
-                    "out": [
-                      "FlFhiXxJ",
-                      "mum3LlpR"
-                    ]
-                  }
-                },
-                {
-                  "_entityName": "XBTEntity",
-                  "_tag": {
-                    "type": "XBTEntity"
-                  },
-                  "_entityId": "O3ecGB3a",
-                  "children": [
-                    {
-                      "_entityName": "XBTEntity",
-                      "_tag": {
-                        "type": "XBTEntity"
-                      },
-                      "_entityId": "Diga3uHy",
-                      "children": [],
-                      "prefabVariant": null,
-                      "activeValue": {
-                        "selfValue": true,
-                        "valueTag": "activeValue"
-                      },
-                      "unlockedValue": {
-                        "selfValue": true,
-                        "valueTag": "unlockedValue"
-                      },
-                      "editorLockValue": false,
-                      "editorVisibleValue": true,
-                      "ecaScripts": [
-                        {
-                          "fileId": "knpg6yqbcgr-mjiiqzon-2wwbvwh6wty",
-                          "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanAttack_ShieldZombie_AOE.fcg",
-                          "_tag": {
-                            "type": "GFileRefer"
-                          },
-                          "fileType": "ugcscript"
-                        }
-                      ],
-                      "x": 1713.3990478515625,
-                      "y": 536.7529296875,
-                      "width": 180,
-                      "height": 88,
-                      "nodeInfo": {
-                        "type": "condition",
-                        "name": "AOEAttack",
-                        "id": "Diga3uHy",
-                        "varArr": [
-                          {
-                            "name": "AttackName",
-                            "type": "String",
-                            "val": "AOEAttack"
-                          }
-                        ],
-                        "ecaScript": null,
-                        "iscustom": true,
-                        "desc": "",
-                        "icon": "General_Customize_20",
-                        "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
-                      }
-                    },
-                    {
-                      "_entityName": "XBTEntity",
-                      "_tag": {
-                        "type": "XBTEntity"
-                      },
-                      "_entityId": "LmUrfAZA",
-                      "children": [],
-                      "prefabVariant": null,
-                      "activeValue": {
-                        "selfValue": true,
-                        "valueTag": "activeValue"
-                      },
-                      "unlockedValue": {
-                        "selfValue": true,
-                        "valueTag": "unlockedValue"
-                      },
-                      "editorLockValue": false,
-                      "editorVisibleValue": true,
-                      "ecaScripts": [
-                        {
-                          "fileId": "9xt7h2wmflq-mjiiqc5m-c24fycdkfnv",
-                          "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_Shield_AOE.fcg",
-                          "_tag": {
-                            "type": "GFileRefer"
-                          },
-                          "fileType": "ugcscript"
-                        }
-                      ],
-                      "x": 1764.82763671875,
-                      "y": 641.0386352539062,
-                      "width": 180,
-                      "height": 88,
-                      "nodeInfo": {
-                        "type": "action",
-                        "name": "AOEAttack",
-                        "id": "LmUrfAZA",
-                        "varArr": [
-                          {
-                            "name": "AttackName",
-                            "type": "String",
-                            "val": "AOEAttack"
-                          }
-                        ],
-                        "ecaScript": null,
-                        "iscustom": true,
-                        "desc": "",
-                        "icon": "General_Customize_20",
-                        "fileId": "gu4y4opmh76-mji8f4dt-2q3g79vhxfp"
-                      }
-                    }
-                  ],
-                  "prefabVariant": null,
-                  "activeValue": {
-                    "selfValue": true,
-                    "valueTag": "activeValue"
-                  },
-                  "unlockedValue": {
-                    "selfValue": true,
-                    "valueTag": "unlockedValue"
-                  },
-                  "editorLockValue": false,
-                  "editorVisibleValue": true,
-                  "ecaScripts": [
-                    null
-                  ],
-                  "x": 1400.5419921875,
-                  "y": 485.3243713378906,
-                  "width": 180,
-                  "height": 88,
-                  "nodeInfo": {
-                    "type": "composite",
-                    "name": "MemSequence",
-                    "id": "O3ecGB3a",
-                    "keyName": "MemSequence",
-                    "desc": "FE_42_JH_WS_MENSEQUENCE",
-                    "varArr": [],
-                    "in": null,
-                    "icon": "General_MemSequence_20",
-                    "out": [
-                      "Diga3uHy",
-                      "LmUrfAZA"
-                    ]
-                  }
-                },
-                {
-                  "_entityName": "XBTEntity",
-                  "_tag": {
-                    "type": "XBTEntity"
-                  },
                   "_entityId": "PZJ35GIi",
                   "children": [
                     {
@@ -5762,13 +5126,13 @@
                       "height": 88,
                       "nodeInfo": {
                         "type": "condition",
-                        "name": "DashAttack",
+                        "name": "SpinAttack",
                         "id": "FOx0Ivng",
                         "varArr": [
                           {
                             "name": "AttackName",
                             "type": "String",
-                            "val": "DashAttack"
+                            "val": "SpinAttack"
                           }
                         ],
                         "ecaScript": null,
@@ -5798,8 +5162,8 @@
                       "editorVisibleValue": true,
                       "ecaScripts": [
                         {
-                          "fileId": "1yo0cb6x9w1-mhxcx653-ch59cqj8i8m",
-                          "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_Shield.fcg",
+                          "fileId": "cy917wbx8d5-mjs053pq-cp3upngm81p",
+                          "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_BossButcher_Spin.fcg",
                           "_tag": {
                             "type": "GFileRefer"
                           },
@@ -5812,13 +5176,13 @@
                       "height": 88,
                       "nodeInfo": {
                         "type": "action",
-                        "name": "DashAttack",
+                        "name": "SpinAttack",
                         "id": "GMVbkcds",
                         "varArr": [
                           {
                             "name": "AttackName",
                             "type": "String",
-                            "val": "DashAttack"
+                            "val": "SpinAttack"
                           }
                         ],
                         "ecaScript": null,
@@ -5891,8 +5255,6 @@
                 "in": null,
                 "icon": "General_Selector_20",
                 "out": [
-                  "m3ArLs1x",
-                  "O3ecGB3a",
                   "PZJ35GIi"
                 ]
               }
@@ -6763,288 +6125,6 @@
               "_tag": {
                 "type": "XBTEntity"
               },
-              "_entityId": "m3ArLs1x",
-              "children": [
-                {
-                  "_entityName": "XBTEntity",
-                  "_tag": {
-                    "type": "XBTEntity"
-                  },
-                  "_entityId": "FlFhiXxJ",
-                  "children": [],
-                  "prefabVariant": null,
-                  "activeValue": {
-                    "selfValue": true,
-                    "valueTag": "activeValue"
-                  },
-                  "unlockedValue": {
-                    "selfValue": true,
-                    "valueTag": "unlockedValue"
-                  },
-                  "editorLockValue": false,
-                  "editorVisibleValue": true,
-                  "ecaScripts": [
-                    {
-                      "fileId": "cjyb66bk25t-mhblrmum-j8p5kivhzp",
-                      "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanAttack.fcg",
-                      "_tag": {
-                        "type": "GFileRefer"
-                      },
-                      "fileType": "ugcscript"
-                    }
-                  ],
-                  "x": 1544.675048828125,
-                  "y": 138.39999389648438,
-                  "width": 180,
-                  "height": 88,
-                  "nodeInfo": {
-                    "type": "condition",
-                    "name": "CanAttack1",
-                    "id": "FlFhiXxJ",
-                    "varArr": [
-                      {
-                        "name": "AttackName",
-                        "type": "String",
-                        "val": "NormalAttack"
-                      }
-                    ],
-                    "ecaScript": null,
-                    "iscustom": true,
-                    "desc": "",
-                    "icon": "General_Customize_20",
-                    "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
-                  }
-                },
-                {
-                  "_entityName": "XBTEntity",
-                  "_tag": {
-                    "type": "XBTEntity"
-                  },
-                  "_entityId": "mum3LlpR",
-                  "children": [],
-                  "prefabVariant": null,
-                  "activeValue": {
-                    "selfValue": true,
-                    "valueTag": "activeValue"
-                  },
-                  "unlockedValue": {
-                    "selfValue": true,
-                    "valueTag": "unlockedValue"
-                  },
-                  "editorLockValue": false,
-                  "editorVisibleValue": true,
-                  "ecaScripts": [
-                    {
-                      "fileId": "z0hgg3ajbf-mjh2jfyh-97cobbt2wis",
-                      "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_Shield_Normal.fcg",
-                      "_tag": {
-                        "type": "GFileRefer"
-                      },
-                      "fileType": "ugcscript"
-                    }
-                  ],
-                  "x": 1474.675048828125,
-                  "y": 228.39999389648438,
-                  "width": 180,
-                  "height": 88,
-                  "nodeInfo": {
-                    "type": "action",
-                    "name": "NormalAttack",
-                    "id": "mum3LlpR",
-                    "varArr": [
-                      {
-                        "name": "AttackName",
-                        "type": "String",
-                        "val": "NormalAttack"
-                      }
-                    ],
-                    "ecaScript": null,
-                    "iscustom": true,
-                    "desc": "",
-                    "icon": "General_Customize_20",
-                    "fileId": "tbdwluazbo-mj73d2uh-9j2rdg9gy89"
-                  }
-                }
-              ],
-              "prefabVariant": null,
-              "activeValue": {
-                "selfValue": true,
-                "valueTag": "activeValue"
-              },
-              "unlockedValue": {
-                "selfValue": true,
-                "valueTag": "unlockedValue"
-              },
-              "editorLockValue": false,
-              "editorVisibleValue": true,
-              "ecaScripts": [
-                null
-              ],
-              "x": 1237.675048828125,
-              "y": 193.39999389648438,
-              "width": 180,
-              "height": 88,
-              "nodeInfo": {
-                "type": "composite",
-                "name": "MemSequence",
-                "id": "m3ArLs1x",
-                "keyName": "MemSequence",
-                "desc": "FE_42_JH_WS_MENSEQUENCE",
-                "varArr": [],
-                "in": null,
-                "icon": "General_MemSequence_20",
-                "out": [
-                  "FlFhiXxJ",
-                  "mum3LlpR"
-                ]
-              }
-            },
-            {
-              "_entityName": "XBTEntity",
-              "_tag": {
-                "type": "XBTEntity"
-              },
-              "_entityId": "O3ecGB3a",
-              "children": [
-                {
-                  "_entityName": "XBTEntity",
-                  "_tag": {
-                    "type": "XBTEntity"
-                  },
-                  "_entityId": "Diga3uHy",
-                  "children": [],
-                  "prefabVariant": null,
-                  "activeValue": {
-                    "selfValue": true,
-                    "valueTag": "activeValue"
-                  },
-                  "unlockedValue": {
-                    "selfValue": true,
-                    "valueTag": "unlockedValue"
-                  },
-                  "editorLockValue": false,
-                  "editorVisibleValue": true,
-                  "ecaScripts": [
-                    {
-                      "fileId": "knpg6yqbcgr-mjiiqzon-2wwbvwh6wty",
-                      "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanAttack_ShieldZombie_AOE.fcg",
-                      "_tag": {
-                        "type": "GFileRefer"
-                      },
-                      "fileType": "ugcscript"
-                    }
-                  ],
-                  "x": 1713.3990478515625,
-                  "y": 536.7529296875,
-                  "width": 180,
-                  "height": 88,
-                  "nodeInfo": {
-                    "type": "condition",
-                    "name": "AOEAttack",
-                    "id": "Diga3uHy",
-                    "varArr": [
-                      {
-                        "name": "AttackName",
-                        "type": "String",
-                        "val": "AOEAttack"
-                      }
-                    ],
-                    "ecaScript": null,
-                    "iscustom": true,
-                    "desc": "",
-                    "icon": "General_Customize_20",
-                    "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
-                  }
-                },
-                {
-                  "_entityName": "XBTEntity",
-                  "_tag": {
-                    "type": "XBTEntity"
-                  },
-                  "_entityId": "LmUrfAZA",
-                  "children": [],
-                  "prefabVariant": null,
-                  "activeValue": {
-                    "selfValue": true,
-                    "valueTag": "activeValue"
-                  },
-                  "unlockedValue": {
-                    "selfValue": true,
-                    "valueTag": "unlockedValue"
-                  },
-                  "editorLockValue": false,
-                  "editorVisibleValue": true,
-                  "ecaScripts": [
-                    {
-                      "fileId": "9xt7h2wmflq-mjiiqc5m-c24fycdkfnv",
-                      "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_Shield_AOE.fcg",
-                      "_tag": {
-                        "type": "GFileRefer"
-                      },
-                      "fileType": "ugcscript"
-                    }
-                  ],
-                  "x": 1764.82763671875,
-                  "y": 641.0386352539062,
-                  "width": 180,
-                  "height": 88,
-                  "nodeInfo": {
-                    "type": "action",
-                    "name": "AOEAttack",
-                    "id": "LmUrfAZA",
-                    "varArr": [
-                      {
-                        "name": "AttackName",
-                        "type": "String",
-                        "val": "AOEAttack"
-                      }
-                    ],
-                    "ecaScript": null,
-                    "iscustom": true,
-                    "desc": "",
-                    "icon": "General_Customize_20",
-                    "fileId": "gu4y4opmh76-mji8f4dt-2q3g79vhxfp"
-                  }
-                }
-              ],
-              "prefabVariant": null,
-              "activeValue": {
-                "selfValue": true,
-                "valueTag": "activeValue"
-              },
-              "unlockedValue": {
-                "selfValue": true,
-                "valueTag": "unlockedValue"
-              },
-              "editorLockValue": false,
-              "editorVisibleValue": true,
-              "ecaScripts": [
-                null
-              ],
-              "x": 1400.5419921875,
-              "y": 485.3243713378906,
-              "width": 180,
-              "height": 88,
-              "nodeInfo": {
-                "type": "composite",
-                "name": "MemSequence",
-                "id": "O3ecGB3a",
-                "keyName": "MemSequence",
-                "desc": "FE_42_JH_WS_MENSEQUENCE",
-                "varArr": [],
-                "in": null,
-                "icon": "General_MemSequence_20",
-                "out": [
-                  "Diga3uHy",
-                  "LmUrfAZA"
-                ]
-              }
-            },
-            {
-              "_entityName": "XBTEntity",
-              "_tag": {
-                "type": "XBTEntity"
-              },
               "_entityId": "PZJ35GIi",
               "children": [
                 {
@@ -7081,13 +6161,13 @@
                   "height": 88,
                   "nodeInfo": {
                     "type": "condition",
-                    "name": "DashAttack",
+                    "name": "SpinAttack",
                     "id": "FOx0Ivng",
                     "varArr": [
                       {
                         "name": "AttackName",
                         "type": "String",
-                        "val": "DashAttack"
+                        "val": "SpinAttack"
                       }
                     ],
                     "ecaScript": null,
@@ -7117,8 +6197,8 @@
                   "editorVisibleValue": true,
                   "ecaScripts": [
                     {
-                      "fileId": "1yo0cb6x9w1-mhxcx653-ch59cqj8i8m",
-                      "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_Shield.fcg",
+                      "fileId": "cy917wbx8d5-mjs053pq-cp3upngm81p",
+                      "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_BossButcher_Spin.fcg",
                       "_tag": {
                         "type": "GFileRefer"
                       },
@@ -7131,13 +6211,13 @@
                   "height": 88,
                   "nodeInfo": {
                     "type": "action",
-                    "name": "DashAttack",
+                    "name": "SpinAttack",
                     "id": "GMVbkcds",
                     "varArr": [
                       {
                         "name": "AttackName",
                         "type": "String",
-                        "val": "DashAttack"
+                        "val": "SpinAttack"
                       }
                     ],
                     "ecaScript": null,
@@ -7210,8 +6290,6 @@
             "in": null,
             "icon": "General_Selector_20",
             "out": [
-              "m3ArLs1x",
-              "O3ecGB3a",
               "PZJ35GIi"
             ]
           }
@@ -7312,288 +6390,6 @@
           "_tag": {
             "type": "XBTEntity"
           },
-          "_entityId": "m3ArLs1x",
-          "children": [
-            {
-              "_entityName": "XBTEntity",
-              "_tag": {
-                "type": "XBTEntity"
-              },
-              "_entityId": "FlFhiXxJ",
-              "children": [],
-              "prefabVariant": null,
-              "activeValue": {
-                "selfValue": true,
-                "valueTag": "activeValue"
-              },
-              "unlockedValue": {
-                "selfValue": true,
-                "valueTag": "unlockedValue"
-              },
-              "editorLockValue": false,
-              "editorVisibleValue": true,
-              "ecaScripts": [
-                {
-                  "fileId": "cjyb66bk25t-mhblrmum-j8p5kivhzp",
-                  "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanAttack.fcg",
-                  "_tag": {
-                    "type": "GFileRefer"
-                  },
-                  "fileType": "ugcscript"
-                }
-              ],
-              "x": 1544.675048828125,
-              "y": 138.39999389648438,
-              "width": 180,
-              "height": 88,
-              "nodeInfo": {
-                "type": "condition",
-                "name": "CanAttack1",
-                "id": "FlFhiXxJ",
-                "varArr": [
-                  {
-                    "name": "AttackName",
-                    "type": "String",
-                    "val": "NormalAttack"
-                  }
-                ],
-                "ecaScript": null,
-                "iscustom": true,
-                "desc": "",
-                "icon": "General_Customize_20",
-                "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
-              }
-            },
-            {
-              "_entityName": "XBTEntity",
-              "_tag": {
-                "type": "XBTEntity"
-              },
-              "_entityId": "mum3LlpR",
-              "children": [],
-              "prefabVariant": null,
-              "activeValue": {
-                "selfValue": true,
-                "valueTag": "activeValue"
-              },
-              "unlockedValue": {
-                "selfValue": true,
-                "valueTag": "unlockedValue"
-              },
-              "editorLockValue": false,
-              "editorVisibleValue": true,
-              "ecaScripts": [
-                {
-                  "fileId": "z0hgg3ajbf-mjh2jfyh-97cobbt2wis",
-                  "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_Shield_Normal.fcg",
-                  "_tag": {
-                    "type": "GFileRefer"
-                  },
-                  "fileType": "ugcscript"
-                }
-              ],
-              "x": 1474.675048828125,
-              "y": 228.39999389648438,
-              "width": 180,
-              "height": 88,
-              "nodeInfo": {
-                "type": "action",
-                "name": "NormalAttack",
-                "id": "mum3LlpR",
-                "varArr": [
-                  {
-                    "name": "AttackName",
-                    "type": "String",
-                    "val": "NormalAttack"
-                  }
-                ],
-                "ecaScript": null,
-                "iscustom": true,
-                "desc": "",
-                "icon": "General_Customize_20",
-                "fileId": "tbdwluazbo-mj73d2uh-9j2rdg9gy89"
-              }
-            }
-          ],
-          "prefabVariant": null,
-          "activeValue": {
-            "selfValue": true,
-            "valueTag": "activeValue"
-          },
-          "unlockedValue": {
-            "selfValue": true,
-            "valueTag": "unlockedValue"
-          },
-          "editorLockValue": false,
-          "editorVisibleValue": true,
-          "ecaScripts": [
-            null
-          ],
-          "x": 1237.675048828125,
-          "y": 193.39999389648438,
-          "width": 180,
-          "height": 88,
-          "nodeInfo": {
-            "type": "composite",
-            "name": "MemSequence",
-            "id": "m3ArLs1x",
-            "keyName": "MemSequence",
-            "desc": "FE_42_JH_WS_MENSEQUENCE",
-            "varArr": [],
-            "in": null,
-            "icon": "General_MemSequence_20",
-            "out": [
-              "FlFhiXxJ",
-              "mum3LlpR"
-            ]
-          }
-        },
-        {
-          "_entityName": "XBTEntity",
-          "_tag": {
-            "type": "XBTEntity"
-          },
-          "_entityId": "O3ecGB3a",
-          "children": [
-            {
-              "_entityName": "XBTEntity",
-              "_tag": {
-                "type": "XBTEntity"
-              },
-              "_entityId": "Diga3uHy",
-              "children": [],
-              "prefabVariant": null,
-              "activeValue": {
-                "selfValue": true,
-                "valueTag": "activeValue"
-              },
-              "unlockedValue": {
-                "selfValue": true,
-                "valueTag": "unlockedValue"
-              },
-              "editorLockValue": false,
-              "editorVisibleValue": true,
-              "ecaScripts": [
-                {
-                  "fileId": "knpg6yqbcgr-mjiiqzon-2wwbvwh6wty",
-                  "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanAttack_ShieldZombie_AOE.fcg",
-                  "_tag": {
-                    "type": "GFileRefer"
-                  },
-                  "fileType": "ugcscript"
-                }
-              ],
-              "x": 1713.3990478515625,
-              "y": 536.7529296875,
-              "width": 180,
-              "height": 88,
-              "nodeInfo": {
-                "type": "condition",
-                "name": "AOEAttack",
-                "id": "Diga3uHy",
-                "varArr": [
-                  {
-                    "name": "AttackName",
-                    "type": "String",
-                    "val": "AOEAttack"
-                  }
-                ],
-                "ecaScript": null,
-                "iscustom": true,
-                "desc": "",
-                "icon": "General_Customize_20",
-                "fileId": "na15jav8v4l-mj73d2uc-vsyh0evdou8"
-              }
-            },
-            {
-              "_entityName": "XBTEntity",
-              "_tag": {
-                "type": "XBTEntity"
-              },
-              "_entityId": "LmUrfAZA",
-              "children": [],
-              "prefabVariant": null,
-              "activeValue": {
-                "selfValue": true,
-                "valueTag": "activeValue"
-              },
-              "unlockedValue": {
-                "selfValue": true,
-                "valueTag": "unlockedValue"
-              },
-              "editorLockValue": false,
-              "editorVisibleValue": true,
-              "ecaScripts": [
-                {
-                  "fileId": "9xt7h2wmflq-mjiiqc5m-c24fycdkfnv",
-                  "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_Shield_AOE.fcg",
-                  "_tag": {
-                    "type": "GFileRefer"
-                  },
-                  "fileType": "ugcscript"
-                }
-              ],
-              "x": 1764.82763671875,
-              "y": 641.0386352539062,
-              "width": 180,
-              "height": 88,
-              "nodeInfo": {
-                "type": "action",
-                "name": "AOEAttack",
-                "id": "LmUrfAZA",
-                "varArr": [
-                  {
-                    "name": "AttackName",
-                    "type": "String",
-                    "val": "AOEAttack"
-                  }
-                ],
-                "ecaScript": null,
-                "iscustom": true,
-                "desc": "",
-                "icon": "General_Customize_20",
-                "fileId": "gu4y4opmh76-mji8f4dt-2q3g79vhxfp"
-              }
-            }
-          ],
-          "prefabVariant": null,
-          "activeValue": {
-            "selfValue": true,
-            "valueTag": "activeValue"
-          },
-          "unlockedValue": {
-            "selfValue": true,
-            "valueTag": "unlockedValue"
-          },
-          "editorLockValue": false,
-          "editorVisibleValue": true,
-          "ecaScripts": [
-            null
-          ],
-          "x": 1400.5419921875,
-          "y": 485.3243713378906,
-          "width": 180,
-          "height": 88,
-          "nodeInfo": {
-            "type": "composite",
-            "name": "MemSequence",
-            "id": "O3ecGB3a",
-            "keyName": "MemSequence",
-            "desc": "FE_42_JH_WS_MENSEQUENCE",
-            "varArr": [],
-            "in": null,
-            "icon": "General_MemSequence_20",
-            "out": [
-              "Diga3uHy",
-              "LmUrfAZA"
-            ]
-          }
-        },
-        {
-          "_entityName": "XBTEntity",
-          "_tag": {
-            "type": "XBTEntity"
-          },
           "_entityId": "PZJ35GIi",
           "children": [
             {
@@ -7630,13 +6426,13 @@
               "height": 88,
               "nodeInfo": {
                 "type": "condition",
-                "name": "DashAttack",
+                "name": "SpinAttack",
                 "id": "FOx0Ivng",
                 "varArr": [
                   {
                     "name": "AttackName",
                     "type": "String",
-                    "val": "DashAttack"
+                    "val": "SpinAttack"
                   }
                 ],
                 "ecaScript": null,
@@ -7666,8 +6462,8 @@
               "editorVisibleValue": true,
               "ecaScripts": [
                 {
-                  "fileId": "1yo0cb6x9w1-mhxcx653-ch59cqj8i8m",
-                  "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_Shield.fcg",
+                  "fileId": "cy917wbx8d5-mjs053pq-cp3upngm81p",
+                  "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_BossButcher_Spin.fcg",
                   "_tag": {
                     "type": "GFileRefer"
                   },
@@ -7680,13 +6476,13 @@
               "height": 88,
               "nodeInfo": {
                 "type": "action",
-                "name": "DashAttack",
+                "name": "SpinAttack",
                 "id": "GMVbkcds",
                 "varArr": [
                   {
                     "name": "AttackName",
                     "type": "String",
-                    "val": "DashAttack"
+                    "val": "SpinAttack"
                   }
                 ],
                 "ecaScript": null,
@@ -7759,8 +6555,6 @@
         "in": null,
         "icon": "General_Selector_20",
         "out": [
-          "m3ArLs1x",
-          "O3ecGB3a",
           "PZJ35GIi"
         ]
       }
@@ -7842,8 +6636,8 @@
           "editorVisibleValue": true,
           "ecaScripts": [
             {
-              "fileId": "z0hgg3ajbf-mjh2jfyh-97cobbt2wis",
-              "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_Shield_Normal.fcg",
+              "fileId": "m4kysfo17-mhblumlp-ooqnjq9gw7",
+              "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack.fcg",
               "_tag": {
                 "type": "GFileRefer"
               },
@@ -7976,8 +6770,8 @@
       "editorVisibleValue": true,
       "ecaScripts": [
         {
-          "fileId": "z0hgg3ajbf-mjh2jfyh-97cobbt2wis",
-          "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_Shield_Normal.fcg",
+          "fileId": "m4kysfo17-mhblumlp-ooqnjq9gw7",
+          "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack.fcg",
           "_tag": {
             "type": "GFileRefer"
           },
@@ -8033,8 +6827,8 @@
           "editorVisibleValue": true,
           "ecaScripts": [
             {
-              "fileId": "knpg6yqbcgr-mjiiqzon-2wwbvwh6wty",
-              "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanAttack_ShieldZombie_AOE.fcg",
+              "fileId": "cjyb66bk25t-mhblrmum-j8p5kivhzp",
+              "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanAttack.fcg",
               "_tag": {
                 "type": "GFileRefer"
               },
@@ -8047,13 +6841,13 @@
           "height": 88,
           "nodeInfo": {
             "type": "condition",
-            "name": "AOEAttack",
+            "name": "SlashAttack",
             "id": "Diga3uHy",
             "varArr": [
               {
                 "name": "AttackName",
                 "type": "String",
-                "val": "AOEAttack"
+                "val": "SlashAttack"
               }
             ],
             "ecaScript": null,
@@ -8083,8 +6877,8 @@
           "editorVisibleValue": true,
           "ecaScripts": [
             {
-              "fileId": "9xt7h2wmflq-mjiiqc5m-c24fycdkfnv",
-              "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_Shield_AOE.fcg",
+              "fileId": "2kus6hjh20e-mjqrb3jk-q205zhp8c7o",
+              "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_BossButcher_Slash.fcg",
               "_tag": {
                 "type": "GFileRefer"
               },
@@ -8097,13 +6891,13 @@
           "height": 88,
           "nodeInfo": {
             "type": "action",
-            "name": "AOEAttack",
+            "name": "SlashAttack",
             "id": "LmUrfAZA",
             "varArr": [
               {
                 "name": "AttackName",
                 "type": "String",
-                "val": "AOEAttack"
+                "val": "SlashAttack"
               }
             ],
             "ecaScript": null,
@@ -8167,8 +6961,8 @@
       "editorVisibleValue": true,
       "ecaScripts": [
         {
-          "fileId": "knpg6yqbcgr-mjiiqzon-2wwbvwh6wty",
-          "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanAttack_ShieldZombie_AOE.fcg",
+          "fileId": "cjyb66bk25t-mhblrmum-j8p5kivhzp",
+          "filePath": "Assets\\Scripts\\BehaviorTree\\COND\\Cond_CanAttack.fcg",
           "_tag": {
             "type": "GFileRefer"
           },
@@ -8181,13 +6975,13 @@
       "height": 88,
       "nodeInfo": {
         "type": "condition",
-        "name": "AOEAttack",
+        "name": "SlashAttack",
         "id": "Diga3uHy",
         "varArr": [
           {
             "name": "AttackName",
             "type": "String",
-            "val": "AOEAttack"
+            "val": "SlashAttack"
           }
         ],
         "ecaScript": null,
@@ -8217,8 +7011,8 @@
       "editorVisibleValue": true,
       "ecaScripts": [
         {
-          "fileId": "9xt7h2wmflq-mjiiqc5m-c24fycdkfnv",
-          "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_Shield_AOE.fcg",
+          "fileId": "2kus6hjh20e-mjqrb3jk-q205zhp8c7o",
+          "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_BossButcher_Slash.fcg",
           "_tag": {
             "type": "GFileRefer"
           },
@@ -8231,13 +7025,13 @@
       "height": 88,
       "nodeInfo": {
         "type": "action",
-        "name": "AOEAttack",
+        "name": "SlashAttack",
         "id": "LmUrfAZA",
         "varArr": [
           {
             "name": "AttackName",
             "type": "String",
-            "val": "AOEAttack"
+            "val": "SlashAttack"
           }
         ],
         "ecaScript": null,
@@ -8288,13 +7082,13 @@
           "height": 88,
           "nodeInfo": {
             "type": "condition",
-            "name": "DashAttack",
+            "name": "SpinAttack",
             "id": "FOx0Ivng",
             "varArr": [
               {
                 "name": "AttackName",
                 "type": "String",
-                "val": "DashAttack"
+                "val": "SpinAttack"
               }
             ],
             "ecaScript": null,
@@ -8324,8 +7118,8 @@
           "editorVisibleValue": true,
           "ecaScripts": [
             {
-              "fileId": "1yo0cb6x9w1-mhxcx653-ch59cqj8i8m",
-              "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_Shield.fcg",
+              "fileId": "cy917wbx8d5-mjs053pq-cp3upngm81p",
+              "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_BossButcher_Spin.fcg",
               "_tag": {
                 "type": "GFileRefer"
               },
@@ -8338,13 +7132,13 @@
           "height": 88,
           "nodeInfo": {
             "type": "action",
-            "name": "DashAttack",
+            "name": "SpinAttack",
             "id": "GMVbkcds",
             "varArr": [
               {
                 "name": "AttackName",
                 "type": "String",
-                "val": "DashAttack"
+                "val": "SpinAttack"
               }
             ],
             "ecaScript": null,
@@ -8422,13 +7216,13 @@
       "height": 88,
       "nodeInfo": {
         "type": "condition",
-        "name": "DashAttack",
+        "name": "SpinAttack",
         "id": "FOx0Ivng",
         "varArr": [
           {
             "name": "AttackName",
             "type": "String",
-            "val": "DashAttack"
+            "val": "SpinAttack"
           }
         ],
         "ecaScript": null,
@@ -8458,8 +7252,8 @@
       "editorVisibleValue": true,
       "ecaScripts": [
         {
-          "fileId": "1yo0cb6x9w1-mhxcx653-ch59cqj8i8m",
-          "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_Shield.fcg",
+          "fileId": "cy917wbx8d5-mjs053pq-cp3upngm81p",
+          "filePath": "Assets\\Scripts\\BehaviorTree\\ACT\\Act_Attack_BossButcher_Spin.fcg",
           "_tag": {
             "type": "GFileRefer"
           },
@@ -8472,13 +7266,13 @@
       "height": 88,
       "nodeInfo": {
         "type": "action",
-        "name": "DashAttack",
+        "name": "SpinAttack",
         "id": "GMVbkcds",
         "varArr": [
           {
             "name": "AttackName",
             "type": "String",
-            "val": "DashAttack"
+            "val": "SpinAttack"
           }
         ],
         "ecaScript": null,

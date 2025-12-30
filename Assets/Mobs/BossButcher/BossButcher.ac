@@ -720,7 +720,7 @@
       "editorVisibleValue": true,
       "isLoop": false,
       "DisableChanged": false,
-      "_entityName": "Boss1_SpinAttack",
+      "_entityName": "SpinAttack",
       "eventFrameGroup": {
         "_tag": {
           "type": "ACLayerEntity",
@@ -752,50 +752,12 @@
             "startTime": 1.4333333333333333,
             "EventList": [
               {
-                "eventKeyValue": "AnimationControllerAble::signal_52120933",
+                "eventKeyValue": "AnimationControllerAble::signal_40948046",
                 "paramList": [
                   {
                     "type": "String",
-                    "label": "eventName",
-                    "newValue": "Boss1StartSkillMove"
-                  }
-                ],
-                "hideParam": false
-              }
-            ],
-            "dsada": "Sphere",
-            "enable": false
-          },
-          {
-            "_tag": {
-              "type": "EventFrameEntity",
-              "resourceId": ""
-            },
-            "_entityId": "I525Wnd4",
-            "children": [],
-            "prefabVariant": null,
-            "activeValue": {
-              "selfValue": true,
-              "valueTag": "activeValue"
-            },
-            "unlockedValue": {
-              "selfValue": true,
-              "valueTag": "unlockedValue"
-            },
-            "editorLockValue": false,
-            "editorVisibleValue": true,
-            "from": "ACState",
-            "FrameIndex": 44,
-            "EventFrameName": "事件帧 2",
-            "startTime": 1.4666666666666666,
-            "EventList": [
-              {
-                "eventKeyValue": "AnimationControllerAble::signal_34643746",
-                "paramList": [
-                  {
-                    "type": "String",
-                    "label": "eventName",
-                    "newValue": "Boss1OpenSpinEffect"
+                    "label": "attackName",
+                    "newValue": "StartSpinning"
                   }
                 ],
                 "hideParam": false
@@ -901,7 +863,7 @@
       "editorVisibleValue": true,
       "isLoop": false,
       "DisableChanged": false,
-      "_entityName": "Boss1_SpinAttackEnd",
+      "_entityName": "SpinAttackEnd",
       "eventFrameGroup": {
         "_tag": {
           "type": "ACLayerEntity",
@@ -1073,7 +1035,7 @@
       "editorVisibleValue": true,
       "isLoop": false,
       "DisableChanged": false,
-      "_entityName": "Boss1_SlashAttack",
+      "_entityName": "SlashAttack",
       "eventFrameGroup": {
         "_tag": {
           "type": "ACLayerEntity",
@@ -1081,44 +1043,6 @@
         },
         "_entityId": "tefrDYl2",
         "children": [
-          {
-            "_tag": {
-              "type": "EventFrameEntity",
-              "resourceId": ""
-            },
-            "_entityId": "3Vn7CNKH",
-            "children": [],
-            "prefabVariant": null,
-            "activeValue": {
-              "selfValue": true,
-              "valueTag": "activeValue"
-            },
-            "unlockedValue": {
-              "selfValue": true,
-              "valueTag": "unlockedValue"
-            },
-            "editorLockValue": false,
-            "editorVisibleValue": true,
-            "from": "ACState",
-            "FrameIndex": 0,
-            "EventFrameName": "事件帧 2",
-            "startTime": 0,
-            "EventList": [
-              {
-                "eventKeyValue": "AnimationControllerAble::signal_34643746",
-                "paramList": [
-                  {
-                    "type": "String",
-                    "label": "eventName",
-                    "newValue": "Boss1OpenSlashEffect"
-                  }
-                ],
-                "hideParam": false
-              }
-            ],
-            "dsada": "Sphere",
-            "enable": false
-          },
           {
             "_tag": {
               "type": "EventFrameEntity",
@@ -1148,7 +1072,7 @@
                   {
                     "type": "String",
                     "label": "eventName",
-                    "newValue": "Boss1Slash"
+                    "newValue": "SlashAttack"
                   }
                 ],
                 "hideParam": false

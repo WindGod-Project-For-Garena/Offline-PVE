@@ -14,11 +14,10 @@ graph Script_1_ {
  
     event OnNodeEnterForClient(nodeName string, owner entity<BevTreeAttachableForClient>) {
         //var attackScale = owner<ZombieCom>.ZombieInfo["LeftAttackSPDScale"] as float
-        LogInfo("OnNodeEnter: Shoot Attack")
         owner<Mob>.StatusDic["InAttack"] = true
         GetNodeVariable(thisEntity<BevTreeCustomNode>,"AttackName",out var attackName)
-        var attackScale float= 1
         var duration int = owner<Mob>.StatusDic["Duration_" + attackName] as int
+        var attackScale float= 1
         _Duration = Ceil(duration as int * attackScale)
 
         var curTarget entity<Player> = owner<Mob>.CurrTarget

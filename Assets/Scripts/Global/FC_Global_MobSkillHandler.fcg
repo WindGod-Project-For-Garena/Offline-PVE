@@ -9,6 +9,8 @@ import "Combat.fcc" as Combat
 import "Hud.fcc" as Hud
 import "Offline.fcc" as Offline
 import "Physics.fcc" as Physics
+import "LevelObject.fcc" as LevelObject
+import "../MobScripts/Trigger_ButherBossSlashEffect.fcg" as Trigger_ButherBossSlashEffect
 
 
 [platform_client]
@@ -200,7 +202,7 @@ static graph FC_Global_MobSkillHandler {
 		var time2 int = 2800
 		var time3 int = 3900
 		var pos = mob<Transform>.Position
-		pos.Y = -0.2
+		pos = SetYClient(pos,-0.2)
 
         var skillDamage int = mob<Mob>.Damage
         var damageScale1 float = 0.5
@@ -291,9 +293,9 @@ static graph FC_Global_MobSkillHandler {
     async func releaseSkill_FlowerBossDrillAttack(mob entity<Mob>,target entity<Player>) {
         var curTarget = target
         var direction Vector3 = Normalize(curTarget<Player>.Position - mob<Transform>.Position)
-        direction.Y = 0
+        direction = SetYClient(direction,0)
         var centerPos Vector3 = mob<Transform>.Position
-        centerPos.Y = -0.2
+        centerPos = SetYClient(centerPos,-0.2)
         
     }
 
@@ -320,10 +322,10 @@ static graph FC_Global_MobSkillHandler {
                     return
                 }
                 var centerPos Vector3 = curTarget<Player>.Position
-                centerPos.Y = -0.2
+                centerPos = SetYClient(centerPos,-0.2)
                 //获取随机点位
                 var randPos Vector3 = centerPos + Vector3{RandomFloat(-randRange, randRange), 0, RandomFloat(-randRange, randRange)}
-                randPos.Y = -0.2
+                randPos = SetYClient(randPos,-0.2)
                 var dist = Distance(randPos, centerPos)
                 var direction = Normalize(randPos - centerPos)
                 //中心朝向打射线,打到射线为墙壁则返回墙前的点位
@@ -331,7 +333,7 @@ static graph FC_Global_MobSkillHandler {
                 if hitEntities != nil {
                     //LogInfo("hitEntities: "+hitEntities)
                     randPos = hitPoint - direction * 0.5
-                    randPos.Y = -0.2
+                    randPos = SetYClient(randPos,-0.2)
                 }
                 //LogInfo("after randPos: " + randPos)
                 start releaseSkill_FlowerBossShootAttack(mob as entity<Mob>,randPos,2)
@@ -341,10 +343,10 @@ static graph FC_Global_MobSkillHandler {
             //循环5次渐进扇形点位，每次3个，离怪物朝目标方向,距离递增，角度为-30到30度
             var interval int = 800
             var direction Vector3 = Normalize(curTarget<Player>.Position - mob<Transform>.Position)
-            direction.Y = 0
+            direction = SetYClient(direction,0)
             var centerPos Vector3 = mob<Transform>.Position
             var distanceIncrement float = 3.0
-            centerPos.Y = -0.2
+            centerPos = SetYClient(centerPos,-0.2)
             var direction1 Vector3 = RotateVector(direction,Quaternion{0, 0.2164, 0,0.9763})
             var direction2 Vector3 = RotateVector(direction,Quaternion{0, -0.2164, 0,0.9763})
 
@@ -448,7 +450,84 @@ static graph FC_Global_MobSkillHandler {
     //Flowerboss射击攻击结束
     //————————————————————————————————————————————————————————————————————————————————//
     
+    async func releaseSkill_ButcherBossSlash(mob entity<Mob>, tarPos Vector3) {
+        var skillRange float = 10.0        //冲击距离
+		var speed float = 10.0            //冲击速度
+		var warningDuration int = 1600  // 毫秒
+		var warningLength float = 15.0
+		var warningWidth float = 2.5
+        var currPos Vector3 = mob<Transform>.Position
+        var damage int = mob<Mob>.Damage
+       
 
+		var direction = Normalize(tarPos - currPos)
+        direction = SetYClient(direction,0)
+
+
+        var realTragePos = currPos + direction * (1+warningLength)
+        var realStartPos = currPos + direction * 1
+
+        var effectOffset float = warningLength/2+1 // 特效在怪物前方的偏移距离
+		var effectPos = mob<Transform>.Position + mob<Transform>.Forward * effectOffset
+		effectPos = SetYClient(effectPos,-0.2)
+
+		var rotation Vector3 = mob<Transform>.Rotation + Vector3{0, 90, 0}
+
+
+		// 地面播放开始时的预警特效
+        start skill_ButcherBoss_CreateHandsUpEffect(currPos)
+		start DisplayWarningSquare(effectPos, rotation,warningLength, warningWidth, warningDuration)
+        WaitForMillisecond(warningDuration)
+
+        //开始创建技能
+        if (mob<Mob>.HP >= 0) {
+            CreateFromPrefab(out var skillEffect, EResPrefab.SkillEffect_ButcherBoss_Slash3)
+            var trigger = GetChildByIndex(GetChildByIndex(skillEffect,0),0)
+            trigger<Trigger_ButherBossSlashEffect>._damage = damage
+
+            var duration float= skillRange/speed*1000
+            LogInfo("duration: " + duration)
+            // 创建移动tween
+            CreateTween(
+                skillEffect,
+                Transform.Position,
+                realStartPos,
+                realTragePos,
+                TweenStyle.Once,
+                CreateCurve({0, 0, 1, 1}),
+                duration,
+                out var tweenEntity,
+                true,
+            )
+            // 设置碰撞检测 - 使用start启动异步函数
+            //检测碰撞
+            WaitForMillisecond(Floor(duration))
+            Destroy(skillEffect)
+            Destroy(tweenEntity)
+        }else{
+            return
+        }
+	}
+
+
+    //冲击波击中玩家后
+    async func skill_ButcherBoss_OnBallEffectHitPlayer(damage int,effect entity,player entity<Player>) {
+        var position = effect<Transform>.Position
+        Destroy(effect)
+        //创建爆炸特效
+        //CreateFromPrefab(out var explosionEffect,EResPrefab.SkillEffect_ButcherBoss_Slash1)
+        //explosionEffect<Transform>.Position = position
+        Offline.DealDamage(player as entity<Combatable>, nil, DamageType.Monster, damage)
+        // WaitForMillisecond(3000)
+        // Destroy(explosionEffect)
+
+    }
+    async func skill_ButcherBoss_CreateHandsUpEffect(position Vector3) {
+        CreateFromPrefab(out var explosionEffect,EResPrefab.SkillEffect_ButcherBoss_Slash1)
+        explosionEffect<Transform>.Position = position
+        WaitForMillisecond(3000)
+        Destroy(explosionEffect)
+    }
 
 
     //————————————————————————————————————————————————————————————————————————————————//
@@ -492,6 +571,7 @@ static graph FC_Global_MobSkillHandler {
          Destroy(tweenEntity as entity<Entity>)
          
      }
+
 
      func getPlayersInRange(position Vector3,range float) List<entity<Player>> {
         var players List<entity<Player>> = List<entity<Player>>{}

@@ -1,0 +1,23 @@
+import "StdLibrary.fcc" as StdLib
+import "EditorGenLib.fcc" as EditorLib
+import "Physics.fcc" as Physics
+import "LevelObject.fcc" as LevelObject
+import "./BossButcher.fcg" as BossButcher
+import "../Global/FC_Global_MobSkillHandler.fcg" as MobSkillHandler
+
+
+[platform_client]
+graph Trigger_ButherBossSlashEffect {
+    _effect entity = nil
+    _damage int = 0
+    //Executed when entity is created
+    event OnAwake() {
+        _effect = GetParent(GetParent(thisEntity)) 
+    }
+
+    event OnPlayerEnter(player entity<Player>) {
+        LogInfo("Trigger_ButherBossSlashEffect OnTriggerEnter")
+        start MobSkillHandler.skill_ButcherBoss_OnBallEffectHitPlayer(_damage,_effect,player)
+        
+    }
+}

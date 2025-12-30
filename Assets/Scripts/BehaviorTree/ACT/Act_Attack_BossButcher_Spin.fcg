@@ -1,0 +1,142 @@
+import "StdLibrary.fcc" as StdLib
+import "EditorGenLib.fcc" as EditorLib
+import "Scene.fcc" as Scene
+import "BehaviourTree.fcc" as BehaviourTree
+import "Playable.fcc" as Playable
+import "Animation.fcc" as Animation
+import "Physics.fcc" as Physics
+import "List.fcc" as List
+import "Math.fcc" as Math
+import "../../MobScripts/FC_MobComponent.fcg" as mobComponent
+import "../../Static/FC_Utilities.fcg" as PVEUtilities
+import "Player.fcc" as Player
+import "Offline.fcc" as Offline
+import "Combat.fcc" as Combat
+
+[platform_client]
+graph FC_Act_Move2Target {
+    //Executed when entity is created
+	KeepDist float = 2.0
+	TargetPos Vector3 = Vector3{0,0,0}
+	
+    //转圈持续时间
+	_Duration int
+	_AttackBeginTime int
+	_EndAnimationDuration int = 800
+
+	//转圈伤害相关
+	_LastDamageTime int = 0
+	_DamageInterval int = 200
+	_SpinDamageRange float = 3.5
+
+	//转圈寻路相关
+	_LastFindPathTime int = 0
+	_FindPathInterval int = 1000
+
+
+	//funcID: PlayAction
+	func PlayAction(owner entity<BevTreeAttachableForClient>) BTreeNodeState {	
+
+		if (owner<Mob>.StatusDic["SpinAttack_InSpinning"] == false) {
+			return BevTreeNodeStatus.Running
+
+		}else{
+			
+			//等待转圈结束
+			if (globalEntity<Global>.GameTimeCount >= _AttackBeginTime+_Duration) {
+				
+				if (owner<Mob>.StatusDic["SpinAttack_InSpinningEnd"] == false) {
+					//播放转圈结束动画
+					PlayAnimation(owner<AnimationControllerAttachable>, "SpinAttackEnd", 1, LoopType.Once)
+					owner<Mob>.StatusDic["SpinAttack_InSpinningEnd"] = true
+					//看向玩家
+					PVEUtilities.myLookAt(owner<Transform>, nil, TargetPos)
+					//关闭特效
+					var spinLoop = GetChildByName(owner, "SpinLoop")
+					spinLoop<Entity>.ActiveSelf = false
+					//播放结束特效
+					var spinEndEffect = GetChildByName(owner, "SpinEnd")
+					spinEndEffect<Entity>.ActiveSelf = true
+					return BevTreeNodeStatus.Running
+				}else{
+					//等待转圈结束动画结束
+					if (globalEntity<Global>.GameTimeCount >= _AttackBeginTime+_Duration+_EndAnimationDuration) {
+						return BevTreeNodeStatus.Finish
+					}else{
+						return BevTreeNodeStatus.Running
+					}
+				}
+			}else{
+				//转圈逻辑
+				var curTarget entity<Player> = owner<Mob>.CurrTarget
+				
+				//判断和玩家的距离，如果距离小于KeepDist，则返回Finish
+				var currPos Vector3 = owner<Transform>.Position
+				var playerPos = curTarget<Player>.Position
+				var sub Vector3 = playerPos - currPos
+				var normalizeDir Vector3 = Normalize(sub)
+				var dist float = Magnitude(sub)
+
+				var gameTime int = globalEntity<Global>.GameTimeCount
+				if ((gameTime - _LastFindPathTime) > _FindPathInterval) {
+					_LastFindPathTime = gameTime
+					//寻路到随机位置
+					var offset Vector3 = Vector3{Math.RandomFloat(-0.8,0.8),0.5,Math.RandomFloat(-0.8,0.8)}
+					SingleRaycast((curTarget<Player>.Position + offset), Vector3{0,-3,0}, 5, List<int>{0}, false, out var hitEntities, out var hitPoint, out var hitDistances, out var hitNormals)
+					
+					TargetPos = hitPoint
+					sub = TargetPos - currPos
+					normalizeDir = Normalize(sub)
+					var Speed float = owner<Mob>.WalkSpeed
+					var velocity Vector3 = normalizeDir * Speed
+					owner<mobComponent>.CreateMoveTween(velocity)
+				}
+
+
+
+				//根据距离和受伤间隔计算伤害
+				if (gameTime >= _LastDamageTime + _DamageInterval || _LastDamageTime == 0) {
+					_LastDamageTime = gameTime
+					if (dist <= _SpinDamageRange) {
+						Offline.DealDamage(curTarget as entity<Combatable>, nil, DamageType.Monster, Floor(0.1*owner<Mob>.Damage))
+					}
+				}
+
+				return BevTreeNodeStatus.Running
+				
+			}
+
+
+
+		}
+
+
+	}
+
+	//eventID: 18//s8004_dup_block //先nodeenter,再playaction，再nodeexit
+	event OnNodeEnterForClient(nodeName string, owner entity<BevTreeAttachableForClient>) {
+		//LogInfo("OnNodeEnter: Move2Target")
+		owner<Mob>.StatusDic["InAttack"] = true
+        GetNodeVariable(thisEntity<BevTreeCustomNode>,"AttackName",out var attackName) 
+        _Duration = owner<Mob>.StatusDic["Duration_" + attackName] as int
+        var curTarget entity<Player> = owner<Mob>.CurrTarget
+
+		PVEUtilities.myLookAt(owner<Transform>, curTarget, TargetPos)
+        _AttackBeginTime = globalEntity<Global>.GameTimeCount
+
+        owner<Mob>.StatusDic["LastAttackTime_" + attackName] = _AttackBeginTime
+        //SetBlackboardValue(owner<BevTreeAttachableForClient>.AttachTarget,"LastAttackTime",_AttackBeginTime)
+        PlayAnimation(owner<AnimationControllerAttachable>,attackName,1,LoopType.Once)
+			
+	}
+
+	event OnNodeExitForClient(nodeName string, owner entity<BevTreeAttachableForClient>) {
+		PlayAnimation(owner as entity<AnimationControllerAttachable>, "Idle", 1, LoopType.Loop)
+		owner<Mob>.StatusDic["SpinAttack_InSpinning"] = false
+		owner<Mob>.StatusDic["SpinAttack_InSpinningEnd"] = false
+		owner<Mob>.StatusDic["InAttack"] = false
+		//关闭结束特效
+		var spinEndEffect = GetChildByName(owner, "SpinEnd")
+		spinEndEffect<Entity>.ActiveSelf = false
+	}
+}
