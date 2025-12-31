@@ -237,7 +237,7 @@
                   },
                   "sizeDelta": {
                     "x": 280,
-                    "y": 410
+                    "y": 400
                   }
                 },
                 "alpha": 100,
@@ -750,7 +750,7 @@
                   },
                   "sizeDelta": {
                     "x": 280,
-                    "y": 410
+                    "y": 400
                   }
                 },
                 "alpha": 100,
@@ -1265,7 +1265,7 @@
                   },
                   "sizeDelta": {
                     "x": 280,
-                    "y": 410
+                    "y": 400
                   }
                 },
                 "alpha": 100,
@@ -1830,7 +1830,10 @@
             "selfValue": true,
             "valueTag": "activeValue"
           },
-          "unlockedValue": null,
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
           "editorLockValue": false,
           "editorVisibleValue": true,
           "propsData": {

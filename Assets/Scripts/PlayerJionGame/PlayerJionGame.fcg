@@ -2110,11 +2110,16 @@ graph PlayerJionGame {
         }
         //——————————————————————————————————————————————————————————————————————————————————————————————//
         // 显示图标
-        var hasCardIconEntity = GetChildByName(hasCardPanelEntity, "icon")
-        if hasCardIconEntity != nil {
-            hasCardIconEntity<UIWidget>.IsVisible = true
+        var iconImageEntity = GetChildByName(hasCardPanelEntity, "icon")
+        if iconImageEntity != nil {
+            iconImageEntity<UIWidget>.IsVisible = true
             var nature = cardInfo["Nature"]
             var iconKey = "Skill_Just_Do_It"  // 通用默认值
+
+            // 设置图标稀有度颜色
+            var rarity = cardInfo["Rarity"] as int
+            var iconColor = FC_Config.CardRarityColor[rarity]
+            iconImageEntity<UIWidgetImage>.Color = iconColor
             
             // 检查配置中是否存在该nature对应的图标
             if (nature != nil && nature != "") {
@@ -2123,7 +2128,7 @@ graph PlayerJionGame {
                 }
             }
             
-            hasCardIconEntity<UIWidgetImage>.SpriteName = FC_Config.SkillCardIDs[iconKey]
+            iconImageEntity<UIWidgetImage>.SpriteName = FC_Config.SkillCardIDs[iconKey]
         }
         //——————————————————————————————————————————————————————————————————————————————————————————————//
         // 显示详细信息
@@ -2145,27 +2150,11 @@ graph PlayerJionGame {
         var ICONBBEntity = GetChildByName(hasCardPanelEntity, "BackBoard")
         var tableftEntity = GetChildByName(ICONBBEntity, "tableft")
         var tabrightEntity = GetChildByName(ICONBBEntity, "tabright")
-        if ICONBBEntity != nil {
-            if rarity == 1 {
-                // 普通 - 蓝色
-                ICONBBEntity<UIWidgetImage>.SpriteName = EResSprite.FF_ingame_hud_RandomBuff_Blue
-                tableftEntity<UIWidgetImage>.Color = #2C92C2
-                tabrightEntity<UIWidgetImage>.Color = #2C92C2
-                hasCardPanelEntity<UIWidgetImage>.Color = #2C92C2
-            } else if rarity == 2 {
-                // 稀有 - 紫色
-                ICONBBEntity<UIWidgetImage>.SpriteName = EResSprite.FF_ingame_hud_RandomBuff_Purple
-                tableftEntity<UIWidgetImage>.Color = #9F34EA
-                tabrightEntity<UIWidgetImage>.Color = #9F34EA
-                hasCardPanelEntity<UIWidgetImage>.Color = #9F34EA
-            } else if rarity == 3 {
-                // 史诗 - 金色
-                ICONBBEntity<UIWidgetImage>.SpriteName = EResSprite.FF_ingame_hud_RandomBuff_Yellow
-                tableftEntity<UIWidgetImage>.Color = #FF9E00
-                tabrightEntity<UIWidgetImage>.Color = #FF9E00
-                hasCardPanelEntity<UIWidgetImage>.Color = #FF9E00
-            }
-        }
+        var iconColor = FC_Config.CardRarityColor[rarity]
+        tableftEntity<UIWidgetImage>.Color = iconColor
+        tabrightEntity<UIWidgetImage>.Color = iconColor
+        ICONBBEntity<UIWidgetImage>.Color = iconColor
+       
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
 //—————————————————————————————————————————————————以下为結算統計相关方程——————————————————————————————————————————————————————//
