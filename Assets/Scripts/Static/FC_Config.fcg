@@ -6,7 +6,7 @@ static graph FC_Config {
     //Executed when entity is created
     MobPrefabIDs Map<string, EResPrefab> = Map<string, EResPrefab>{}
     CardRaritySprite Map<int, EResSprite> = Map<int, EResSprite>{}
-    SkillCardIDs Map<string, EResSprite> = Map<string, EResSprite>{}
+    CardIconSprites Map<string, EResSprite> = Map<string, EResSprite>{}
     GiftedCardIDs Map<string, EResSprite> = Map<string, EResSprite>{}
     CardRarityColor Map<int, Color> = Map<int, Color>{}
     event OnAwake() {
@@ -41,7 +41,7 @@ static graph FC_Config {
 
     
         // 技能卡牌图标
-        SkillCardIDs = Map<string, EResSprite>{
+        CardIconSprites = Map<string, EResSprite>{
             "movespeed": EResSprite.MoveSpeed,
             "WeaponDamage": EResSprite.WeaponDamage,
             "LightningAmount": EResSprite.Skill_General,

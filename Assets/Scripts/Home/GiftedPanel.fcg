@@ -22,7 +22,7 @@ graph GiftedPanel {
 
      // 抽卡功能
      func DrawCard(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
-          GetLocalPlayer()<PlayerJionGame>.DrawCard()
+          GetLocalPlayer()<PlayerJionGame>.DrawGiftedCard()
      }
 
      // 显示卡牌1详情

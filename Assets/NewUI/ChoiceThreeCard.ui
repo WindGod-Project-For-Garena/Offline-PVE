@@ -197,6 +197,107 @@
           "_entityId": "IeaMkGBE",
           "children": [
             {
+              "_entityName": "Image_bottomBG",
+              "_tag": {
+                "type": "UIImageEntity",
+                "resourceId": ""
+              },
+              "_entityId": "MhFnbIK6",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": null,
+              "editorLockValue": false,
+              "editorVisibleValue": true,
+              "propsData": {
+                "activeSelf": true,
+                "transform": {
+                  "rotate": 0,
+                  "anchorMin": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchorMax": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "pivot": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchoredPosition": {
+                    "x": 0,
+                    "y": -100
+                  },
+                  "sizeDelta": {
+                    "x": 245,
+                    "y": 155
+                  }
+                },
+                "alpha": 36,
+                "priority": 0,
+                "image": {
+                  "source": {
+                    "fileId": "l4t3xzkzhlh-mjmkv9ep-78ejh5z7ijv",
+                    "filePath": "Assets\\Image\\Home\\HuntingGround_Frame_BGteam01.png",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "texture"
+                  },
+                  "color": "#000000",
+                  "reverse": {
+                    "x": false,
+                    "y": true
+                  },
+                  "fillType": 1,
+                  "slicedBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "tiledBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "centerInvisible": false,
+                  "fillDir": 0,
+                  "fillAmount": 0,
+                  "invertFill": false,
+                  "flip": 0,
+                  "gradient": 1,
+                  "gradientTop": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  },
+                  "gradientBottom": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  }
+                }
+              },
+              "ecaScripts": [],
+              "ecaProps": {
+                "HudImageWidget": {},
+                "HudWidget": {},
+                "Entity": {}
+              },
+              "componentList": [],
+              "entityTagData": {
+                "tagPointers": []
+              }
+            },
+            {
               "_entityName": "IsChoice",
               "_tag": {
                 "type": "UIImageEntity",
@@ -206,7 +307,7 @@
               "children": [],
               "prefabVariant": null,
               "activeValue": {
-                "selfValue": true,
+                "selfValue": false,
                 "valueTag": "activeValue"
               },
               "unlockedValue": {
@@ -216,7 +317,7 @@
               "editorLockValue": false,
               "editorVisibleValue": true,
               "propsData": {
-                "activeSelf": true,
+                "activeSelf": false,
                 "transform": {
                   "rotate": 0,
                   "anchorMin": {
@@ -583,6 +684,208 @@
               },
               "editorLockValue": false,
               "editorVisibleValue": true
+            },
+            {
+              "_entityName": "right_smallBG",
+              "_tag": {
+                "type": "UIImageEntity",
+                "resourceId": ""
+              },
+              "_entityId": "X0E2sn9D",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": null,
+              "editorLockValue": false,
+              "editorVisibleValue": true,
+              "propsData": {
+                "activeSelf": true,
+                "transform": {
+                  "rotate": 180,
+                  "anchorMin": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchorMax": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "pivot": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchoredPosition": {
+                    "x": 80,
+                    "y": 145
+                  },
+                  "sizeDelta": {
+                    "x": 75,
+                    "y": 75
+                  }
+                },
+                "alpha": 10,
+                "priority": 0,
+                "image": {
+                  "source": {
+                    "fileId": "5r4uk937e6m-mjmkv9qd-dw18j1d9t5m",
+                    "filePath": "Assets\\Image\\Home\\Huntingground_Tab01.png",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "texture"
+                  },
+                  "color": "#ffffff",
+                  "reverse": {
+                    "x": false,
+                    "y": false
+                  },
+                  "fillType": 0,
+                  "slicedBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "tiledBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "centerInvisible": false,
+                  "fillDir": 0,
+                  "fillAmount": 0,
+                  "invertFill": false,
+                  "flip": 0,
+                  "gradient": 1,
+                  "gradientTop": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  },
+                  "gradientBottom": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  }
+                }
+              },
+              "ecaScripts": [],
+              "ecaProps": {
+                "HudImageWidget": {},
+                "HudWidget": {},
+                "Entity": {}
+              },
+              "componentList": [],
+              "entityTagData": {
+                "tagPointers": []
+              }
+            },
+            {
+              "_entityName": "left_smallBG",
+              "_tag": {
+                "type": "UIImageEntity",
+                "resourceId": ""
+              },
+              "_entityId": "oObhZDee",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": null,
+              "propsData": {
+                "activeSelf": true,
+                "transform": {
+                  "rotate": 0,
+                  "anchorMin": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchorMax": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "pivot": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchoredPosition": {
+                    "x": -80,
+                    "y": 15
+                  },
+                  "sizeDelta": {
+                    "x": 75,
+                    "y": 75
+                  }
+                },
+                "alpha": 10,
+                "priority": 0,
+                "image": {
+                  "source": {
+                    "fileId": "5r4uk937e6m-mjmkv9qd-dw18j1d9t5m",
+                    "filePath": "Assets\\Image\\Home\\Huntingground_Tab01.png",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "texture"
+                  },
+                  "color": "#ffffff",
+                  "reverse": {
+                    "x": false,
+                    "y": false
+                  },
+                  "fillType": 0,
+                  "slicedBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "tiledBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "centerInvisible": false,
+                  "fillDir": 0,
+                  "fillAmount": 0,
+                  "invertFill": false,
+                  "flip": 0,
+                  "gradient": 1,
+                  "gradientTop": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  },
+                  "gradientBottom": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  }
+                }
+              },
+              "ecaScripts": [],
+              "ecaProps": {
+                "HudImageWidget": {},
+                "HudWidget": {},
+                "Entity": {}
+              },
+              "componentList": [],
+              "entityTagData": {
+                "tagPointers": []
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": true
             }
           ],
           "prefabVariant": null,
@@ -709,19 +1012,120 @@
             "type": "UIButtonEntity",
             "resourceId": ""
           },
-          "_entityId": "gTLdVnoX",
+          "_entityId": "dWxekzFd",
           "children": [
+            {
+              "_entityName": "Image_bottomBG",
+              "_tag": {
+                "type": "UIImageEntity",
+                "resourceId": ""
+              },
+              "_entityId": "N7JpwGBr",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": null,
+              "propsData": {
+                "activeSelf": true,
+                "transform": {
+                  "rotate": 0,
+                  "anchorMin": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchorMax": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "pivot": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchoredPosition": {
+                    "x": 0,
+                    "y": -100
+                  },
+                  "sizeDelta": {
+                    "x": 245,
+                    "y": 155
+                  }
+                },
+                "alpha": 36,
+                "priority": 0,
+                "image": {
+                  "source": {
+                    "fileId": "l4t3xzkzhlh-mjmkv9ep-78ejh5z7ijv",
+                    "filePath": "Assets\\Image\\Home\\HuntingGround_Frame_BGteam01.png",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "texture"
+                  },
+                  "color": "#000000",
+                  "reverse": {
+                    "x": false,
+                    "y": true
+                  },
+                  "fillType": 1,
+                  "slicedBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "tiledBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "centerInvisible": false,
+                  "fillDir": 0,
+                  "fillAmount": 0,
+                  "invertFill": false,
+                  "flip": 0,
+                  "gradient": 1,
+                  "gradientTop": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  },
+                  "gradientBottom": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  }
+                }
+              },
+              "ecaScripts": [],
+              "ecaProps": {
+                "HudImageWidget": {},
+                "HudWidget": {},
+                "Entity": {}
+              },
+              "componentList": [],
+              "entityTagData": {
+                "tagPointers": []
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": true
+            },
             {
               "_entityName": "IsChoice",
               "_tag": {
                 "type": "UIImageEntity",
                 "resourceId": ""
               },
-              "_entityId": "uanJkyM4",
+              "_entityId": "zzXwvj8B",
               "children": [],
               "prefabVariant": null,
               "activeValue": {
-                "selfValue": true,
+                "selfValue": false,
                 "valueTag": "activeValue"
               },
               "unlockedValue": {
@@ -729,7 +1133,7 @@
                 "valueTag": "unlockedValue"
               },
               "propsData": {
-                "activeSelf": true,
+                "activeSelf": false,
                 "transform": {
                   "rotate": 0,
                   "anchorMin": {
@@ -749,7 +1153,7 @@
                     "y": -5
                   },
                   "sizeDelta": {
-                    "x": 280,
+                    "x": 285,
                     "y": 425
                   }
                 },
@@ -821,7 +1225,7 @@
                 "type": "UIImageEntity",
                 "resourceId": ""
               },
-              "_entityId": "ngSBNn2X",
+              "_entityId": "WPNpq6Wo",
               "children": [],
               "prefabVariant": null,
               "activeValue": {
@@ -925,7 +1329,7 @@
                 "type": "UITextEntity",
                 "resourceId": ""
               },
-              "_entityId": "EOPciw1l",
+              "_entityId": "bUV1FRRh",
               "children": [],
               "prefabVariant": null,
               "activeValue": {
@@ -1015,7 +1419,7 @@
                 "type": "UITextEntity",
                 "resourceId": ""
               },
-              "_entityId": "i6Q7Vobr",
+              "_entityId": "CvxY5PuM",
               "children": [],
               "prefabVariant": null,
               "activeValue": {
@@ -1089,6 +1493,208 @@
               "ecaScripts": [],
               "ecaProps": {
                 "HudLabelWidget": {},
+                "HudWidget": {},
+                "Entity": {}
+              },
+              "componentList": [],
+              "entityTagData": {
+                "tagPointers": []
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": true
+            },
+            {
+              "_entityName": "right_smallBG",
+              "_tag": {
+                "type": "UIImageEntity",
+                "resourceId": ""
+              },
+              "_entityId": "MWhVP8dI",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": null,
+              "propsData": {
+                "activeSelf": true,
+                "transform": {
+                  "rotate": 180,
+                  "anchorMin": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchorMax": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "pivot": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchoredPosition": {
+                    "x": 80,
+                    "y": 145
+                  },
+                  "sizeDelta": {
+                    "x": 75,
+                    "y": 75
+                  }
+                },
+                "alpha": 10,
+                "priority": 0,
+                "image": {
+                  "source": {
+                    "fileId": "5r4uk937e6m-mjmkv9qd-dw18j1d9t5m",
+                    "filePath": "Assets\\Image\\Home\\Huntingground_Tab01.png",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "texture"
+                  },
+                  "color": "#ffffff",
+                  "reverse": {
+                    "x": false,
+                    "y": false
+                  },
+                  "fillType": 0,
+                  "slicedBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "tiledBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "centerInvisible": false,
+                  "fillDir": 0,
+                  "fillAmount": 0,
+                  "invertFill": false,
+                  "flip": 0,
+                  "gradient": 1,
+                  "gradientTop": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  },
+                  "gradientBottom": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  }
+                }
+              },
+              "ecaScripts": [],
+              "ecaProps": {
+                "HudImageWidget": {},
+                "HudWidget": {},
+                "Entity": {}
+              },
+              "componentList": [],
+              "entityTagData": {
+                "tagPointers": []
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": true
+            },
+            {
+              "_entityName": "left_smallBG",
+              "_tag": {
+                "type": "UIImageEntity",
+                "resourceId": ""
+              },
+              "_entityId": "khuhoQwk",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": null,
+              "propsData": {
+                "activeSelf": true,
+                "transform": {
+                  "rotate": 0,
+                  "anchorMin": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchorMax": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "pivot": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchoredPosition": {
+                    "x": -80,
+                    "y": 15
+                  },
+                  "sizeDelta": {
+                    "x": 75,
+                    "y": 75
+                  }
+                },
+                "alpha": 10,
+                "priority": 0,
+                "image": {
+                  "source": {
+                    "fileId": "5r4uk937e6m-mjmkv9qd-dw18j1d9t5m",
+                    "filePath": "Assets\\Image\\Home\\Huntingground_Tab01.png",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "texture"
+                  },
+                  "color": "#ffffff",
+                  "reverse": {
+                    "x": false,
+                    "y": false
+                  },
+                  "fillType": 0,
+                  "slicedBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "tiledBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "centerInvisible": false,
+                  "fillDir": 0,
+                  "fillAmount": 0,
+                  "invertFill": false,
+                  "flip": 0,
+                  "gradient": 1,
+                  "gradientTop": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  },
+                  "gradientBottom": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  }
+                }
+              },
+              "ecaScripts": [],
+              "ecaProps": {
+                "HudImageWidget": {},
                 "HudWidget": {},
                 "Entity": {}
               },
@@ -1224,19 +1830,120 @@
             "type": "UIButtonEntity",
             "resourceId": ""
           },
-          "_entityId": "r8lslXQW",
+          "_entityId": "DzpuM2VV",
           "children": [
+            {
+              "_entityName": "Image_bottomBG",
+              "_tag": {
+                "type": "UIImageEntity",
+                "resourceId": ""
+              },
+              "_entityId": "L0mJqyx5",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": null,
+              "propsData": {
+                "activeSelf": true,
+                "transform": {
+                  "rotate": 0,
+                  "anchorMin": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchorMax": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "pivot": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchoredPosition": {
+                    "x": 0,
+                    "y": -100
+                  },
+                  "sizeDelta": {
+                    "x": 245,
+                    "y": 155
+                  }
+                },
+                "alpha": 36,
+                "priority": 0,
+                "image": {
+                  "source": {
+                    "fileId": "l4t3xzkzhlh-mjmkv9ep-78ejh5z7ijv",
+                    "filePath": "Assets\\Image\\Home\\HuntingGround_Frame_BGteam01.png",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "texture"
+                  },
+                  "color": "#000000",
+                  "reverse": {
+                    "x": false,
+                    "y": true
+                  },
+                  "fillType": 1,
+                  "slicedBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "tiledBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "centerInvisible": false,
+                  "fillDir": 0,
+                  "fillAmount": 0,
+                  "invertFill": false,
+                  "flip": 0,
+                  "gradient": 1,
+                  "gradientTop": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  },
+                  "gradientBottom": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  }
+                }
+              },
+              "ecaScripts": [],
+              "ecaProps": {
+                "HudImageWidget": {},
+                "HudWidget": {},
+                "Entity": {}
+              },
+              "componentList": [],
+              "entityTagData": {
+                "tagPointers": []
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": true
+            },
             {
               "_entityName": "IsChoice",
               "_tag": {
                 "type": "UIImageEntity",
                 "resourceId": ""
               },
-              "_entityId": "TsTywTxe",
+              "_entityId": "XaA71L1t",
               "children": [],
               "prefabVariant": null,
               "activeValue": {
-                "selfValue": true,
+                "selfValue": false,
                 "valueTag": "activeValue"
               },
               "unlockedValue": {
@@ -1244,7 +1951,7 @@
                 "valueTag": "unlockedValue"
               },
               "propsData": {
-                "activeSelf": true,
+                "activeSelf": false,
                 "transform": {
                   "rotate": 0,
                   "anchorMin": {
@@ -1264,7 +1971,7 @@
                     "y": -5
                   },
                   "sizeDelta": {
-                    "x": 280,
+                    "x": 285,
                     "y": 425
                   }
                 },
@@ -1336,7 +2043,7 @@
                 "type": "UIImageEntity",
                 "resourceId": ""
               },
-              "_entityId": "jdwWhIin",
+              "_entityId": "OxHzWY19",
               "children": [],
               "prefabVariant": null,
               "activeValue": {
@@ -1440,7 +2147,7 @@
                 "type": "UITextEntity",
                 "resourceId": ""
               },
-              "_entityId": "ekw5uTu0",
+              "_entityId": "Bph7yt6f",
               "children": [],
               "prefabVariant": null,
               "activeValue": {
@@ -1530,7 +2237,7 @@
                 "type": "UITextEntity",
                 "resourceId": ""
               },
-              "_entityId": "JjKFtB4x",
+              "_entityId": "O00HhfxM",
               "children": [],
               "prefabVariant": null,
               "activeValue": {
@@ -1604,6 +2311,208 @@
               "ecaScripts": [],
               "ecaProps": {
                 "HudLabelWidget": {},
+                "HudWidget": {},
+                "Entity": {}
+              },
+              "componentList": [],
+              "entityTagData": {
+                "tagPointers": []
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": true
+            },
+            {
+              "_entityName": "right_smallBG",
+              "_tag": {
+                "type": "UIImageEntity",
+                "resourceId": ""
+              },
+              "_entityId": "IBh0M5Zl",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": null,
+              "propsData": {
+                "activeSelf": true,
+                "transform": {
+                  "rotate": 180,
+                  "anchorMin": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchorMax": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "pivot": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchoredPosition": {
+                    "x": 80,
+                    "y": 145
+                  },
+                  "sizeDelta": {
+                    "x": 75,
+                    "y": 75
+                  }
+                },
+                "alpha": 10,
+                "priority": 0,
+                "image": {
+                  "source": {
+                    "fileId": "5r4uk937e6m-mjmkv9qd-dw18j1d9t5m",
+                    "filePath": "Assets\\Image\\Home\\Huntingground_Tab01.png",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "texture"
+                  },
+                  "color": "#ffffff",
+                  "reverse": {
+                    "x": false,
+                    "y": false
+                  },
+                  "fillType": 0,
+                  "slicedBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "tiledBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "centerInvisible": false,
+                  "fillDir": 0,
+                  "fillAmount": 0,
+                  "invertFill": false,
+                  "flip": 0,
+                  "gradient": 1,
+                  "gradientTop": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  },
+                  "gradientBottom": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  }
+                }
+              },
+              "ecaScripts": [],
+              "ecaProps": {
+                "HudImageWidget": {},
+                "HudWidget": {},
+                "Entity": {}
+              },
+              "componentList": [],
+              "entityTagData": {
+                "tagPointers": []
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": true
+            },
+            {
+              "_entityName": "left_smallBG",
+              "_tag": {
+                "type": "UIImageEntity",
+                "resourceId": ""
+              },
+              "_entityId": "mgMVG0rc",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": null,
+              "propsData": {
+                "activeSelf": true,
+                "transform": {
+                  "rotate": 0,
+                  "anchorMin": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchorMax": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "pivot": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchoredPosition": {
+                    "x": -80,
+                    "y": 15
+                  },
+                  "sizeDelta": {
+                    "x": 75,
+                    "y": 75
+                  }
+                },
+                "alpha": 10,
+                "priority": 0,
+                "image": {
+                  "source": {
+                    "fileId": "5r4uk937e6m-mjmkv9qd-dw18j1d9t5m",
+                    "filePath": "Assets\\Image\\Home\\Huntingground_Tab01.png",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "texture"
+                  },
+                  "color": "#ffffff",
+                  "reverse": {
+                    "x": false,
+                    "y": false
+                  },
+                  "fillType": 0,
+                  "slicedBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "tiledBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "centerInvisible": false,
+                  "fillDir": 0,
+                  "fillAmount": 0,
+                  "invertFill": false,
+                  "flip": 0,
+                  "gradient": 1,
+                  "gradientTop": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  },
+                  "gradientBottom": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  }
+                }
+              },
+              "ecaScripts": [],
+              "ecaProps": {
+                "HudImageWidget": {},
                 "HudWidget": {},
                 "Entity": {}
               },
@@ -3487,7 +4396,7 @@
           "clickHandlers": [
             {
               "eventName": "OnClick",
-              "funcKey": "NextWave",
+              "funcKey": "OnConfirmBtnClicked",
               "type": "ugcscript",
               "fileID": "bk265ge1mx-mie1awii-vzssxujbip"
             }
@@ -3702,7 +4611,7 @@
           "clickHandlers": [
             {
               "eventName": "OnClick",
-              "funcKey": "RefreshCards",
+              "funcKey": "OnRefreshCardsClicked",
               "type": "ugcscript",
               "fileID": "bk265ge1mx-mie1awii-vzssxujbip"
             }
