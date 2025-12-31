@@ -10111,98 +10111,7 @@
                         "resourceId": ""
                       },
                       "_entityId": "XSDzYzMZ",
-                      "children": [
-                        {
-                          "_entityName": "Num",
-                          "_tag": {
-                            "type": "UITextEntity",
-                            "resourceId": ""
-                          },
-                          "_entityId": "JpxBOfEd",
-                          "children": [],
-                          "prefabVariant": null,
-                          "activeValue": {
-                            "selfValue": true,
-                            "valueTag": "activeValue"
-                          },
-                          "unlockedValue": {
-                            "selfValue": true,
-                            "valueTag": "unlockedValue"
-                          },
-                          "propsData": {
-                            "activeSelf": true,
-                            "transform": {
-                              "rotate": 0,
-                              "anchorMin": {
-                                "x": 1,
-                                "y": 0.5
-                              },
-                              "anchorMax": {
-                                "x": 1,
-                                "y": 0.5
-                              },
-                              "pivot": {
-                                "x": 0.5,
-                                "y": 0.5
-                              },
-                              "anchoredPosition": {
-                                "x": 80,
-                                "y": 0
-                              },
-                              "sizeDelta": {
-                                "x": 200,
-                                "y": 50
-                              }
-                            },
-                            "alpha": 100,
-                            "priority": 0,
-                            "text": {
-                              "value": "0000000",
-                              "key": "",
-                              "font": "Default",
-                              "fontSize": 36,
-                              "fontStyle": {
-                                "bold": false,
-                                "italic": false,
-                                "underline": false
-                              },
-                              "color": "#FFba00",
-                              "alignment": {
-                                "h": "right",
-                                "v": "middle"
-                              },
-                              "lineSpacing": 0,
-                              "background": false,
-                              "backgroundColor": "#e7b200",
-                              "overflow": 0,
-                              "backgroundRGBA": {
-                                "r": 0,
-                                "g": 0,
-                                "b": 0,
-                                "a": 0
-                              },
-                              "shadow": true,
-                              "shadowColor": "#000000",
-                              "shadowOffset": {
-                                "x": 1,
-                                "y": 1
-                              }
-                            }
-                          },
-                          "ecaScripts": [],
-                          "ecaProps": {
-                            "HudLabelWidget": {},
-                            "HudWidget": {},
-                            "Entity": {}
-                          },
-                          "componentList": [],
-                          "entityTagData": {
-                            "tagPointers": []
-                          },
-                          "editorLockValue": false,
-                          "editorVisibleValue": true
-                        }
-                      ],
+                      "children": [],
                       "prefabVariant": null,
                       "activeValue": {
                         "selfValue": true,
@@ -10322,18 +10231,18 @@
                         "y": 90
                       }
                     },
-                    "alpha": 70,
+                    "alpha": 50,
                     "priority": 0,
                     "image": {
                       "source": {
-                        "fileId": "b063b0439839b3d97a8fd2aa6a57ef8b",
-                        "filePath": "lib://fftextures/WorkshopIconLibrary/T_34_M_WS_ICON_SQUARE.png",
+                        "fileId": "iifl8gr357-mjmkvb55-wrzc93feoh",
+                        "filePath": "Assets\\Image\\Home\\UI_Profile_BG_2.png",
                         "_tag": {
                           "type": "GFileRefer"
                         },
                         "fileType": "texture"
                       },
-                      "color": "#000000",
+                      "color": "#603AA5",
                       "reverse": {
                         "x": false,
                         "y": false
@@ -10381,6 +10290,96 @@
                   "entityTagData": {
                     "tagPointers": []
                   }
+                },
+                {
+                  "_entityName": "Num",
+                  "_tag": {
+                    "type": "UITextEntity",
+                    "resourceId": ""
+                  },
+                  "_entityId": "JpxBOfEd",
+                  "children": [],
+                  "prefabVariant": null,
+                  "activeValue": {
+                    "selfValue": true,
+                    "valueTag": "activeValue"
+                  },
+                  "unlockedValue": {
+                    "selfValue": true,
+                    "valueTag": "unlockedValue"
+                  },
+                  "propsData": {
+                    "activeSelf": true,
+                    "transform": {
+                      "rotate": 0,
+                      "anchorMin": {
+                        "x": 1,
+                        "y": 0.5
+                      },
+                      "anchorMax": {
+                        "x": 1,
+                        "y": 0.5
+                      },
+                      "pivot": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "anchoredPosition": {
+                        "x": -110,
+                        "y": -15
+                      },
+                      "sizeDelta": {
+                        "x": 200,
+                        "y": 50
+                      }
+                    },
+                    "alpha": 100,
+                    "priority": 0,
+                    "text": {
+                      "value": "0000000",
+                      "key": "",
+                      "font": "Default",
+                      "fontSize": 36,
+                      "fontStyle": {
+                        "bold": false,
+                        "italic": false,
+                        "underline": false
+                      },
+                      "color": "#FFba00",
+                      "alignment": {
+                        "h": "right",
+                        "v": "middle"
+                      },
+                      "lineSpacing": 0,
+                      "background": false,
+                      "backgroundColor": "#e7b200",
+                      "overflow": 0,
+                      "backgroundRGBA": {
+                        "r": 0,
+                        "g": 0,
+                        "b": 0,
+                        "a": 0
+                      },
+                      "shadow": true,
+                      "shadowColor": "#000000",
+                      "shadowOffset": {
+                        "x": 1,
+                        "y": 1
+                      }
+                    }
+                  },
+                  "ecaScripts": [],
+                  "ecaProps": {
+                    "HudLabelWidget": {},
+                    "HudWidget": {},
+                    "Entity": {}
+                  },
+                  "componentList": [],
+                  "entityTagData": {
+                    "tagPointers": []
+                  },
+                  "editorLockValue": false,
+                  "editorVisibleValue": true
                 }
               ],
               "prefabVariant": null,

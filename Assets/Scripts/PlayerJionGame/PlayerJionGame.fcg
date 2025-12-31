@@ -2319,7 +2319,7 @@ graph PlayerJionGame {
             }
         }
         //=======================显示相关伤害统计======================//
-        var AllDamageEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/DamageNum/AllDamage/Bb/AllDamage/Num")  //总伤害
+        var AllDamageEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/DamageNum/AllDamage/Num")  //总伤害
         var Weapon1DamageEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/DamageNum/Skill_1_Damage_IFM/Weapon/Weapon/Name")      //武器1普攻
         var Skill1DamageEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/DamageNum/Skill_1_Damage_IFM/Boom/Boom/text")           //技能1伤害
         var BurningDamageEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/DamageNum/Skill_1_Damage_IFM/Fire/Fire/text")          //燃烧伤害
