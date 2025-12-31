@@ -1525,17 +1525,15 @@ graph PlayerJionGame {
         var PopupBorderEntity = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/PopupPanel/Bb/ICONBb/ICONBB/Icon")
         var EresourceSprite = FC_Config.CardRaritySprite[rarity]
         if PopupBorderEntity != nil {
+            PopupBorderEntity<UIWidgetImage>.Color = FC_Config.CardRarityColor[rarity]
             if rarity == 1 {
                 // 普通 - 蓝色
-                PopupBorderEntity<UIWidgetImage>.Color = #18C6FF
                 PopupBorderBBEntity<UIWidgetImage>.SpriteName = EResSprite.FF_ingame_hud_RandomBuff_Blue
             } else if rarity == 2 {
                 // 稀有 - 紫色
-                PopupBorderEntity<UIWidgetImage>.Color = #FF31F8
                 PopupBorderBBEntity<UIWidgetImage>.SpriteName = EResSprite.FF_ingame_hud_RandomBuff_Purple
             } else if rarity == 3 {
                 // 史诗 - 金色
-                PopupBorderEntity<UIWidgetImage>.Color = #FFBA00
                 PopupBorderBBEntity<UIWidgetImage>.SpriteName = EResSprite.FF_ingame_hud_RandomBuff_Yellow
             }
         }
@@ -1543,7 +1541,23 @@ graph PlayerJionGame {
         // 更新卡牌图标
         var PopupIconEntity = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/PopupPanel/Bb/ICONBb/ICONBB/Icon/GiftICON")
         if PopupIconEntity != nil {
-            // PopupIconEntity.SetImage("GiftedIcon_" + Convert.ToString(cardId))
+            // 显示图标
+            PopupIconEntity<UIWidget>.IsVisible = true
+            var nature = cardInfo["Nature"]
+            var iconKey = "Skill_Just_Do_It"  // 通用默认值
+
+            // 设置图标稀有度颜色
+            var rarity = cardInfo["Rarity"] as int
+            var iconColor = FC_Config.CardRarityColor[rarity]
+            PopupIconEntity<UIWidgetImage>.Color = iconColor
+            
+            // 检查配置中是否存在该nature对应的图标
+            if (nature != nil && nature != "") {
+                if (FC_Config.GiftedCardIDs[nature] != nil) {
+                    iconKey = nature  // 如果配置中有，直接使用nature作为key
+                }
+            }
+            PopupIconEntity<UIWidgetImage>.SpriteName = FC_Config.GiftedCardIDs[iconKey]
         }
     }
 
@@ -1899,16 +1913,8 @@ graph PlayerJionGame {
         // 更具稀有度更新边框颜色
         var ICONBBEntity = GetChildByName(HasCardPanelEntity, "ICONBB")
         if ICONBBEntity != nil {
-            if rarity == 1 {
-                // 普通 - 蓝色
-                ICONBBEntity<UIWidgetImage>.Color = #18C6FF
-            } else if rarity == 2 {
-                // 稀有 - 紫色
-                ICONBBEntity<UIWidgetImage>.Color = #FF31F8
-            } else if rarity == 3 {
-                // 史诗 - 金色
-                ICONBBEntity<UIWidgetImage>.Color = #FFBA00
-            }
+            var iconColor = FC_Config.CardRarityColor[rarity]
+            ICONBBEntity<UIWidgetImage>.Color = iconColor
         }
         
         // 处理卡牌状态显示
@@ -1928,13 +1934,33 @@ graph PlayerJionGame {
         }
         
         // 点亮卡牌：隐藏IconImage，显示HasCardPanel
-        var iconImageEntity = GetChildByName(cardEntity, "IconImage")
+        var iconImageEntity = GetChildByName(cardEntity, "Text")
         if iconImageEntity != nil {
             iconImageEntity<UIWidget>.IsVisible = false  // 隐藏未点亮状态
         }
         var hasCardPanelEntity = GetChildByName(cardEntity, "HasCardPanel")
         if hasCardPanelEntity != nil {
             hasCardPanelEntity<UIWidget>.IsVisible = true  // 显示已点亮状态
+            // 显示图标
+            var iconImageEntity = GetChildByName(hasCardPanelEntity, "icon")
+            if iconImageEntity != nil {
+                iconImageEntity<UIWidget>.IsVisible = true
+                var nature = cardInfo["Nature"]
+                var iconKey = "Skill_Just_Do_It"  // 通用默认值
+
+                // 设置图标稀有度颜色
+                var rarity = cardInfo["Rarity"] as int
+                var iconColor = FC_Config.CardRarityColor[rarity]
+                iconImageEntity<UIWidgetImage>.Color = iconColor
+                
+                // 检查配置中是否存在该nature对应的图标
+                if (nature != nil && nature != "") {
+                    if (FC_Config.GiftedCardIDs[nature] != nil) {
+                        iconKey = nature  // 如果配置中有，直接使用nature作为key
+                    }
+                }
+                iconImageEntity<UIWidgetImage>.SpriteName = FC_Config.GiftedCardIDs[iconKey]
+            }
         }
         // 显示天赋界面
         GiftedUI<CustomUI>.IsVisible = true
@@ -2191,7 +2217,7 @@ graph PlayerJionGame {
         //  通關顯示
         if  IsGameSuccess == true {
             IsPassOrNoEntity<UIWidgetLabel>.Content = "VICTORY"
-            IsPassOrNoEntity<UIWidgetLabel>.Color = #F1BF48
+            IsPassOrNoEntity<UIWidgetLabel>.Color = #FFBA00
         } else {
             IsPassOrNoEntity<UIWidgetLabel>.Content = "DEFEAT"
             IsPassOrNoEntity<UIWidgetLabel>.Color = #A3A3A3FF
@@ -2254,11 +2280,36 @@ graph PlayerJionGame {
                         }
                         
                         // 设置图标
-                        var iconWidget = GetChildByName(hasCardPanel, "icon")
-                        if iconWidget != nil {
-                            //iconWidget<UIWidgetImage>.SetImage("CardIcon_" + Convert.ToString(cardId))
-                            iconWidget<UIWidget>.IsVisible = true
+                        var iconImageEntity = GetChildByName(hasCardPanel, "icon")
+                        if iconImageEntity != nil {
+                            iconImageEntity<UIWidget>.IsVisible = true
+                            var nature = cardInfo["Nature"]
+                            var iconKey = "Skill_Just_Do_It"  // 通用默认值
+
+                            // 设置图标稀有度颜色
+                            var rarity = cardInfo["Rarity"] as int
+                            var iconColor = FC_Config.CardRarityColor[rarity]
+                            iconImageEntity<UIWidgetImage>.Color = iconColor
+                            
+                            // 检查配置中是否存在该nature对应的图标
+                            if (nature != nil && nature != "") {
+                                if (FC_Config.SkillCardIDs[nature] != nil) {
+                                    iconKey = nature  // 如果配置中有，直接使用nature作为key
+                                }
+                            }
+                            
+                            iconImageEntity<UIWidgetImage>.SpriteName = FC_Config.SkillCardIDs[iconKey]
                         }
+
+                        // 更具稀有度更新边框颜色
+                        var rarity = cardInfo["Rarity"] as int
+                        var ICONBBEntity = GetChildByName(hasCardPanel, "BackBoard")
+                        var tableftEntity = GetChildByName(ICONBBEntity, "tableft")
+                        var tabrightEntity = GetChildByName(ICONBBEntity, "tabright")
+                        var iconColor = FC_Config.CardRarityColor[rarity]
+                        tableftEntity<UIWidgetImage>.Color = iconColor
+                        tabrightEntity<UIWidgetImage>.Color = iconColor
+                        ICONBBEntity<UIWidgetImage>.Color = iconColor
                     }
                 } else {
                     LogWarning("未找到卡牌ID " + Convert.ToString(cardId) + " 的信息")
