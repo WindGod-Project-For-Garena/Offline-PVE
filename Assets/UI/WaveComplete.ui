@@ -27,7 +27,10 @@
             "selfValue": true,
             "valueTag": "activeValue"
           },
-          "unlockedValue": null,
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
           "editorLockValue": false,
           "editorVisibleValue": true,
           "propsData": {
@@ -47,31 +50,31 @@
                 "y": 0.5
               },
               "anchoredPosition": {
-                "x": 0,
-                "y": 0
+                "x": -35,
+                "y": -10
               },
               "sizeDelta": {
-                "x": 450,
-                "y": 60
+                "x": 1080,
+                "y": 118
               }
             },
             "alpha": 100,
             "priority": 0,
             "image": {
               "source": {
-                "fileId": "b063b0439839b3d97a8fd2aa6a57ef8b",
-                "filePath": "lib://fftextures/WorkshopIconLibrary/T_34_M_WS_ICON_SQUARE.png",
+                "fileId": "escajqd8pfb-mjs3u69c-me5en117t07",
+                "filePath": "Assets\\Image\\InGame\\HuntingGround_BOOYAH_bg.png",
                 "_tag": {
                   "type": "GFileRefer"
                 },
                 "fileType": "texture"
               },
-              "color": "#F8BC27",
+              "color": "#FFFFFF",
               "reverse": {
                 "x": false,
                 "y": false
               },
-              "fillType": 1,
+              "fillType": 3,
               "slicedBorder": {
                 "left": 0,
                 "right": 0,
@@ -86,7 +89,7 @@
               },
               "centerInvisible": false,
               "fillDir": 0,
-              "fillAmount": 0,
+              "fillAmount": 1,
               "invertFill": false,
               "flip": 0,
               "gradient": 2,
@@ -163,7 +166,7 @@
               "value": "第0波完成",
               "key": "",
               "font": "Default",
-              "fontSize": 35,
+              "fontSize": 40,
               "fontStyle": {
                 "bold": false,
                 "italic": false,
@@ -287,7 +290,10 @@
     "selfValue": true,
     "valueTag": "activeValue"
   },
-  "unlockedValue": null,
+  "unlockedValue": {
+    "selfValue": true,
+    "valueTag": "unlockedValue"
+  },
   "editorLockValue": false,
   "editorVisibleValue": true,
   "propsData": {
