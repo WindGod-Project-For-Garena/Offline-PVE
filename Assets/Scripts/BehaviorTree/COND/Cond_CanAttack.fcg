@@ -55,7 +55,7 @@ graph Script_1_ {
         }
         var TempPlayer = curTarget as entity<Player>
         var result = IsInRange(owner<Transform>,TempPlayer<Player>,range as float)
-        //LogInfo("playCondition: CanAttack result: " + result)
+       // LogInfo("playCondition: CanAttack result: " + result)
         return result
     }
 

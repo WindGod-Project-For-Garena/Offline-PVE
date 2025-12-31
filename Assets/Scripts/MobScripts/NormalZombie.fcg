@@ -77,7 +77,7 @@ graph FC_NormalZombie {
 	}
 
 	event MobDeathEvent_AC() {
-		LogInfo("-------------------------MobDeathEvent_AC-------------------------")
+	
 		PVEMonsterManager.OnMonsterKilledAnimationFinished(thisEntity as entity<LevelObject>)
 	}
 

@@ -44,10 +44,16 @@ graph FC_NormalZombie {
 		thisEntity<Mob>.DetectRange = 30
 		thisEntity<Mob>.StatusDic = Map<string, object>{
 			"InAttack": false as bool,
+
 			"LastAttackTime_NormalAttack": globalEntity<Global>.GameTimeCount as int,
 			"CD_NormalAttack": 1800 as int,
 			"Duration_NormalAttack": 1550 as int,
 			"Range_NormalAttack": 1.2 as float,
+			
+			"LastAttackTime_SpinAttack": globalEntity<Global>.GameTimeCount as int,
+			"CD_SpinAttack": 5000 as int,
+			"Duration_SpinAttack": 2350 as int,
+			"Range_SpinAttack": 1.2 as float,
 		}
 		
 
@@ -60,24 +66,24 @@ graph FC_NormalZombie {
 
 	//eventID: 91//r;Zn+-uY8Ahq`0JH4Yr{ //animation
 	event MobAttackEvent_AC(attackName string) {
-		if (attackName == "NormalAttack") {
+		if (attackName == "NormalAttack" || attackName == "NormalAttack2") {
 			//LogInfo("NormalAttack1")
 			var curTarget = thisEntity<Mob>.CurrTarget
-		//	LogInfo("curTarget: " + curTarget as entity<Player><Player>.Position)
 			if (curTarget != nil && (Distance(curTarget as entity<Player><Player>.Position, thisEntity as entity<LevelObject><Transform>.Position) <= 1.7)) {		
-				
 				Offline.DealDamage(curTarget as entity<Combatable>, nil, DamageType.Monster, GetDamage())
 			}
-		} else if (attackName == "NormalAttack2") {
 			
-		} else {
+		} else if (attackName == "SpinAttack") {
+			var curTarget = thisEntity<Mob>.CurrTarget
+			if (curTarget != nil && (Distance(curTarget as entity<Player><Player>.Position, thisEntity as entity<LevelObject><Transform>.Position) <= 2)) {		
+				Offline.DealDamage(curTarget as entity<Combatable>, nil, DamageType.Monster, Math.Floor(1.5*GetDamage()))
+			}
 			//start globalEntity<global_process_eca>.DeleteThisZombie(thisEntity)
 			//Destroy(thisEntity)
 		}
 	}
 
 	event MobDeathEvent_AC() {
-		LogInfo("-------------------------MobDeathEvent_AC-------------------------")
 		PVEMonsterManager.OnMonsterKilledAnimationFinished(thisEntity as entity<LevelObject>)
 	}
 

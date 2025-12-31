@@ -1830,12 +1830,12 @@ graph PlayerJionGame {
                             
                             // 检查配置中是否存在该nature对应的图标
                             if (nature != nil && nature != "") {
-                                if (FC_Config.SkillCardIDs[nature] != nil) {
+                                if (FC_Config.CardIconSprites[nature] != nil) {
                                     iconKey = nature  // 如果配置中有，直接使用nature作为key
                                 }
                             }
                             
-                            iconImageEntity<UIWidgetImage>.SpriteName = FC_Config.SkillCardIDs[iconKey]
+                            iconImageEntity<UIWidgetImage>.SpriteName = FC_Config.CardIconSprites[iconKey]
                         }
 
                         // 更具稀有度更新边框颜色

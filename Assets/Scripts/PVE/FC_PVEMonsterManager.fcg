@@ -65,6 +65,11 @@ static graph FC_PVEMonsterManager {
     spawnEffectPool List<entity<Effect>> = List<entity<Effect>>{}
     spawnTweenPool List<entity<Tween>> = List<entity<Tween>>{}
 
+    event OnAwake() {
+        ActiveMonsterParentNode = EResSceneIsleLand.ActiveMobs as entity<Entity>
+        PendingRemoveMonsterParentNode = EResSceneIsleLand.PendingRemoveMobs as entity<Entity>
+    }
+
     // 更新Boss血条的函数 - 实时获取怪物血量并更新UI
     async func UpdateBossHPBar() {
         // 查找当前场景中的Boss
@@ -678,7 +683,7 @@ static graph FC_PVEMonsterManager {
                     }
                 }
 
-                LogInfo("Elite怪物死亡，CD开始: " + EliteSpawnCD + "ms")
+                //LogInfo("Elite怪物死亡，CD开始: " + EliteSpawnCD + "ms")
             }else if list.Contain(ActiveBossMonsters, monster) {
                 list.Remove(ActiveBossMonsters, monster)
             }
@@ -690,9 +695,7 @@ static graph FC_PVEMonsterManager {
     }
 
     func OnMonsterKilledAnimationFinished(monster entity<LevelObject>) {
-        //LogInfo("-------------------------Destroy Monster 1-------------------------")
         if monster != nil {
-            //LogInfo("-------------------------Destroy Monster 2-------------------------")
             start myDestroyMonster(monster)
         }
     }

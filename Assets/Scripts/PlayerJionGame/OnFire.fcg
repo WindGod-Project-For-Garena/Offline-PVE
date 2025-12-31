@@ -18,10 +18,8 @@ import "../PVE/FC_PVEMonsterManager.fcg" as PVEMonsterManager
 graph OnFire {
     //子弹判定
     skillMultiplier float = 1
-    ActiveMonstersParentNode entity<Entity> 
     ReleasedEffectPosition Vector3
     event OnAwake() {
-        ActiveMonstersParentNode = EResSceneIsleLand.ActiveMobs as entity<Entity>
     }
 
     // 特效颜色

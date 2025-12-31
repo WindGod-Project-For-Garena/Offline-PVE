@@ -23,12 +23,10 @@ graph SkillUI {
     ReleasedEffectPosition Vector3
     JoyStickButton entity<UIWidget>
     FillAmountTween entity<Tween>
-    ActiveMonstersParentNode entity<Entity> 
 
     skillMultiplier float = 1
 
     event OnAwake() {
-        ActiveMonstersParentNode = EResSceneIsleLand.ActiveMobs as entity<Entity>
     }
 
     // 特效颜色
