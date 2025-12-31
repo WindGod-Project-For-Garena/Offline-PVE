@@ -7,6 +7,7 @@ static graph FC_Config {
     MobPrefabIDs Map<string, EResPrefab> = Map<string, EResPrefab>{}
     CardRaritySprite Map<int, EResSprite> = Map<int, EResSprite>{}
     CardIconSprites Map<string, EResSprite> = Map<string, EResSprite>{}
+    GiftedCardIDs Map<string, EResSprite> = Map<string, EResSprite>{}
     CardRarityColor Map<int, Color> = Map<int, Color>{}
     event OnAwake() {
         // 怪物预制体ID
@@ -61,7 +62,14 @@ static graph FC_Config {
             "WeaponBoomProbability": EResSprite.SkillProb,
             "WeaponDoubleBoom": EResSprite.Skill_General,
             "WeaponBoomDamage": EResSprite.SkillDamage,
-            
+        }
+
+        // 天赋卡牌图标
+        GiftedCardIDs = Map<string, EResSprite>{
+            "SkillDamage": EResSprite.SkillDamage,
+            "WeaponDamage": EResSprite.WeaponDamage,
+            "HP": EResSprite.HP,
+            "MoveSpeed": EResSprite.MoveSpeed,
         }
     }
 }
