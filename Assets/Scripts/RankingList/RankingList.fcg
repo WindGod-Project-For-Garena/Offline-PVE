@@ -1,0 +1,80 @@
+import "StdLibrary.fcc" as StdLib
+import "EditorGenLib.fcc" as EditorLib
+import "Hud.fcc" as Hud
+import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
+
+[platform_client]
+graph RankingList {
+    // 当前选择的排行类型
+    NowChoiceRankType int = 0  // 0: 通关数排行，1: 伤害排行
+    // 通关数排行信息
+    func NumberOfPasses(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        CheckNoRecordDisplay()
+        // 显示/隐藏对应的排行信息面板
+        var LevelAmountIFMEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.RankingListUI, "/RankPanel/TitleBoard/IFMPanel/IFMPanelBB/LevelAmountIFM")
+        var DamageIFMEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.RankingListUI, "/RankPanel/TitleBoard/IFMPanel/IFMPanelBB/DamageIFM")
+        LevelAmountIFMEntity<UIWidget>.IsVisible = true
+        DamageIFMEntity<UIWidget>.IsVisible = false
+        // 按钮颜色切换
+        var NumberOfPassesButtonEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.RankingListUI, "/RankPanel/TitleBoard/LeftPanel/LeftPanelBB/LevelAmounts")
+        var DamageButtonEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.RankingListUI, "/RankPanel/TitleBoard/LeftPanel/LeftPanelBB/Damage")
+        NumberOfPassesButtonEntity<UIWidgetButton>.Color = #FFFFFF
+        DamageButtonEntity<UIWidgetButton>.Color = #000000
+        // 按钮文字颜色切换
+        var NumberOfPassesButtonTextEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.RankingListUI, "/RankPanel/TitleBoard/LeftPanel/LeftPanelBB/LevelAmounts/text")
+        NumberOfPassesButtonTextEntity<UIWidgetLabel>.Color = #000000
+        var DamageButtonTextEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.RankingListUI, "/RankPanel/TitleBoard/LeftPanel/LeftPanelBB/Damage/text")
+        DamageButtonTextEntity<UIWidgetLabel>.Color = #FFFFFF
+        // 更新当前选择的排行类型
+        NowChoiceRankType = 0
+    }
+
+    // 伤害排行信息
+    func Damage(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        CheckNoRecordDisplay()
+        // 显示/隐藏对应的排行信息面板
+        var DamageIFMEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.RankingListUI, "/RankPanel/TitleBoard/IFMPanel/IFMPanelBB/DamageIFM")
+        var LevelAmountIFMEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.RankingListUI, "/RankPanel/TitleBoard/IFMPanel/IFMPanelBB/LevelAmountIFM")
+        DamageIFMEntity<UIWidget>.IsVisible = true
+        LevelAmountIFMEntity<UIWidget>.IsVisible = false
+        // 按钮颜色切换
+        var NumberOfPassesButtonEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.RankingListUI, "/RankPanel/TitleBoard/LeftPanel/LeftPanelBB/LevelAmounts")
+        var DamageButtonEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.RankingListUI, "/RankPanel/TitleBoard/LeftPanel/LeftPanelBB/Damage")
+        NumberOfPassesButtonEntity<UIWidgetButton>.Color = #000000
+        DamageButtonEntity<UIWidgetButton>.Color = #FFFFFF
+        // 按钮文字颜色切换
+        var NumberOfPassesButtonTextEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.RankingListUI, "/RankPanel/TitleBoard/LeftPanel/LeftPanelBB/LevelAmounts/text")
+        NumberOfPassesButtonTextEntity<UIWidgetLabel>.Color = #FFFFFF
+        var DamageButtonTextEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.RankingListUI, "/RankPanel/TitleBoard/LeftPanel/LeftPanelBB/Damage/text")
+        DamageButtonTextEntity<UIWidgetLabel>.Color = #000000
+        // 更新当前选择的排行类型
+        NowChoiceRankType = 1
+    }
+
+    //关闭排行榜面板
+    func CloseRankingPanel(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        var RankingListUIEntity = GetLocalPlayer()<PlayerJionGame>.RankingListUI
+        RankingListUIEntity<CustomUI>.IsVisible = false 
+        NowChoiceRankType = 0
+    }
+
+    //判定是否有记录，显示/隐藏《暂无排行信息显示》
+    func CheckNoRecordDisplay() {
+        var HasRecord bool = true
+        if NowChoiceRankType == 0 {
+            var NoRecordEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.RankingListUI, "/RankPanel/TitleBoard/IFMPanel/IFMPanelBB/LevelAmountIFM/TitleIFM/Part3")
+            if HasRecord {
+                NoRecordEntity<UIWidget>.IsVisible = false
+            } else {
+                NoRecordEntity<UIWidget>.IsVisible = true
+            }
+        } else if NowChoiceRankType == 1 {
+            var NoRecordEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.RankingListUI, "/RankPanel/TitleBoard/IFMPanel/IFMPanelBB/DamageIFM/TitleIFM/Part3")
+            if HasRecord {
+                NoRecordEntity<UIWidget>.IsVisible = false
+            } else {
+                NoRecordEntity<UIWidget>.IsVisible = true
+            }
+        }
+    }
+}

@@ -134,6 +134,19 @@ graph UI_HomeUI {
 
     //前往排行榜面板
     func ToRankingPanel(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
-       LogInfo("忙死了没做，别点劳资了")
+        var RankingListUIEntity = GetLocalPlayer()<PlayerJionGame>.RankingListUI
+        RankingListUIEntity<CustomUI>.IsVisible = true
+        // 默认显示通关数排行
+        var LevelAmountIFMEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.RankingListUI, "/RankPanel/TitleBoard/IFMPanel/IFMPanelBB/LevelAmountIFM")
+        var DamageIFMEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.RankingListUI, "/RankPanel/TitleBoard/IFMPanel/IFMPanelBB/DamageIFM")
+        LevelAmountIFMEntity<UIWidget>.IsVisible = true
+        DamageIFMEntity<UIWidget>.IsVisible = false
+        var NumberOfPassesButtonEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.RankingListUI, "/RankPanel/TitleBoard/LeftPanel/LeftPanelBB/LevelAmounts")
+        var DamageButtonEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.RankingListUI, "/RankPanel/TitleBoard/LeftPanel/LeftPanelBB/Damage")
+        NumberOfPassesButtonEntity<UIWidgetButton>.Color = #FFFFFF
+        DamageButtonEntity<UIWidgetButton>.Color = #000000
+        // 判断是否有记录，如果没有则不显示（！！！！！！！！！！！！）
+        var LevelAmountIFMPart3Entity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.RankingListUI, "/RankPanel/TitleBoard/IFMPanel/IFMPanelBB/LevelAmountIFM/TitleIFM/Part3")
+        LevelAmountIFMPart3Entity<UIWidget>.IsVisible = false
     }
 }

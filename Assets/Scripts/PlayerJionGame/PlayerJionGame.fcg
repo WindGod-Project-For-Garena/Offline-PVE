@@ -38,6 +38,7 @@ graph PlayerJionGame {
     TimeInGameUI entity<CustomHud>          //时间页面
     WaveCompleteUI entity<CustomHud>        //波次完成页面
     BossHPBar entity<CustomHud>             //Boss血条页面
+    RankingListUI entity<CustomHud>        // 排行榜页面
     
     CurrentSkill int = 1
     currentSelectedCardId int = 0
@@ -223,6 +224,10 @@ graph PlayerJionGame {
             CreateCustomUIClient(out var WaveCompleteUIEntity, EResUI.WaveComplete)
             WaveCompleteUI = WaveCompleteUIEntity
             WaveCompleteUIEntity<CustomUI>.IsVisible = false
+
+            CreateCustomUIClient(out var RankingListUIEntity, EResUI.RankingList)
+            RankingListUI = RankingListUIEntity
+            RankingListUIEntity<CustomUI>.IsVisible = false
 
             CreateCustomUIClient(out var bossHPBar, EResUI.BossHP)
             BossHPBar = bossHPBar
