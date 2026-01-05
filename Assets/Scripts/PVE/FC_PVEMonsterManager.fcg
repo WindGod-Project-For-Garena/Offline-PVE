@@ -86,7 +86,6 @@ static graph FC_PVEMonsterManager {
             if maxHP > 0 {
                 hpPercent = IntToFloat(currentHP) / IntToFloat(maxHP)
             }
-            
             // 获取血条UI并更新
             BossHPBar<CustomUI>.IsVisible = true
             var BossHPNow = GetWidgetByPath(GetLocalPlayer(), BossHPBar, "/Panel/HP")
@@ -102,33 +101,15 @@ static graph FC_PVEMonsterManager {
     
     // 检查当前波次配置中是否有Boss
     func HasBossInWave(wave int) bool {
-        if wave > 0 && wave <= list.Length(WaveMonsterInfos) {
-            for i = 0, list.Length(WaveMonsterInfos), 1 {
-                var monsterInfo = WaveMonsterInfos[i]
-                if monsterInfo["IsBoss"] as bool == true {
-                    return true
-                }
+        for i = 0, list.Length(WaveMonsterInfos), 1 {
+            var monsterInfo = WaveMonsterInfos[i]
+            if monsterInfo["IsBoss"] as bool == true {
+                return true
             }
         }
         return false
     }
 
-
-    // 获取当前波次的Boss数量
-    func GetBossCountInCurrentWave() int {
-        var bossCount = 0
-        
-        // 检查当前波次的怪物配置
-        for i = 0, list.Length(WaveMonsterInfos), 1 {
-            var monsterInfo = WaveMonsterInfos[i]
-            if monsterInfo["IsBoss"] as bool == true {
-                bossCount = bossCount + 1
-            }
-        }
-        
-        return bossCount
-    }
-    
     // 仅加载当前Level的LevelConfig行
     // 返回LevelID -> LevelInfo
     func LoadCurrentLevelRows(level int) {
@@ -185,7 +166,6 @@ static graph FC_PVEMonsterManager {
     // 开始新的波次
     func StartWave(wave int) {
         CurrentWave = wave
-        LogInfo("start wave in PVEMONSTER MANAGER")
         LogInfo("开始关卡 " + CurrentLevel + " 波次 " + wave)
         for key, value in LevelRowInfos {
              LogInfo(key + ": " + value)

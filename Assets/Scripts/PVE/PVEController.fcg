@@ -85,7 +85,7 @@ static graph PVEController {
         
         // 通知怪物管理器开始波次
         monsterManager.StartWave(wave)
-        
+
         // 检查当前波次是否有Boss
         var isBossWave = monsterManager.HasBossInWave(wave)
         
@@ -158,7 +158,7 @@ static graph PVEController {
             // 检查玩家是否存活
             var DeadOrAlive bool = CheckPlayersAlive()
             if DeadOrAlive == false {
-                //LogInfo("Boss波次中玩家死亡")
+                LogInfo("Boss波次中玩家死亡")
                 start OnGameOver()
                 return
             }

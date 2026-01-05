@@ -638,8 +638,6 @@ graph ChoiceOneOfThreeCard {
       }
       
       var cardInfo = cardDataMap[cardId]
-      LogInfo(cardInfo)
-      LogInfo(cardDataMap[cardId])
       if cardInfo != nil {
          var nature = Convert.ToString(cardInfo["Nature"])
          var value = cardInfo["Value"] as float
