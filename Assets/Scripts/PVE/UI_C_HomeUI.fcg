@@ -102,6 +102,18 @@ graph UI_HomeUI {
         var CurrentSkill = GetLocalPlayer()<PlayerJionGame>.CurrentSkill
         start GetLocalPlayer()<PlayerJionGame>.ChoiceHeroOver(level, CurrentSkill, ability1Level, ability2Level, ability3Level)
 
+        // 初始化已选卡牌的列表颜色
+        var ChoiceThreeCardUIEntity = GetLocalPlayer()<PlayerJionGame>.ChoiceThreeCardUI
+        for i = 1, 6, 1 {
+            // 按钮路径
+            var buttonPath = "/NowChoicePanel/List/Card (" + Convert.ToString(i) + ")"
+            // 获取图标控件
+            var buttonWidget = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUIEntity, buttonPath)
+            if buttonWidget != nil {
+                // 设置按钮的图标
+                buttonWidget<UIWidgetButton>.Color = #FFFFFF
+            }
+        }
         PVEController.PVELevelStartInitialization(level)
     }
 
