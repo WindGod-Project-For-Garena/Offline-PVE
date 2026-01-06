@@ -1,0 +1,125 @@
+{
+  "_entityName": "Item_HP",
+  "_tag": {
+    "type": "Prefab"
+  },
+  "_entityId": "vycDaD1b",
+  "children": [
+    {
+      "_entityName": "Under",
+      "_tag": {
+        "type": "SceneEditEntity",
+        "resourceId": "Primitive/Empty"
+      },
+      "_entityId": "rsbLOKWK",
+      "children": [],
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "scale": {
+        "x": 0.5,
+        "y": 0.5,
+        "z": 0.5
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "BTPath": [
+        null
+      ],
+      "visible": true,
+      "VisibilityLayer": 0,
+      "modelOptimization": 0,
+      "streamingLayer": "",
+      "attributes": [
+        2
+      ],
+      "isTrigger": false,
+      "collidable": true,
+      "physicalLayer": 0,
+      "physicalMaterial": null,
+      "aoiSetting": 0,
+      "initialTypes": {},
+      "componentList": [],
+      "entityTagData": {
+        "tagPointers": []
+      },
+      "tempIndex": 54,
+      "itemID": 224,
+      "seParent": null,
+      "ecaScripts": [
+        null
+      ],
+      "ecaProps": {
+        "EffectEntityGenerator": {},
+        "ItemContainerGenerator": {},
+        "Entity": {},
+        "EffectEntity": {},
+        "Playable": {},
+        "Loopable": {},
+        "LevelObject": {},
+        "Transform": {},
+        "Visibility": {}
+      },
+      "propsData": {
+        "effectColor": {
+          "r": 255,
+          "g": 255,
+          "b": 255,
+          "a": 1
+        },
+        "playSpeed": 100,
+        "autoPlay": true,
+        "effectTypeResId": "",
+        "effectTexture": "md9fud0zcgj-mjmkv8ha-1hosgb9d7bk",
+        "effectTextureRef": {
+          "fileId": "md9fud0zcgj-mjmkv8ha-1hosgb9d7bk",
+          "filePath": "Assets\\Image\\HeroIFM\\UI_Championship_Page_Block.png",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "texture"
+        },
+        "effectTypeRef": {
+          "fileId": "EffectType_UGC_T_34_LY_WS_VFX5",
+          "filePath": "lib://ffEffects/T_34_LY_WS_VFX5",
+          "_tag": {
+            "type": "GFileRefer"
+          },
+          "fileType": "effecttype"
+        },
+        "effectType": "UGC_T_34_LY_WS_VFX5",
+        "isLoop": 1
+      },
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "prefabVariant": null
+    }
+  ],
+  "prefabVariant": null,
+  "activeValue": {
+    "selfValue": true,
+    "valueTag": "activeValue"
+  },
+  "unlockedValue": {
+    "selfValue": true,
+    "valueTag": "unlockedValue"
+  },
+  "editorLockValue": false,
+  "editorVisibleValue": true,
+  "HintCraftlandCombineMesh": false,
+  "discriminator": "ISceneLike"
+}
+//"{FE:{"v":"0.2.4154796","c":{"FF":5001},"s":100}

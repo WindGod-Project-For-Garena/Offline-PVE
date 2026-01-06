@@ -17,6 +17,7 @@ import "Economy.fcc" as Economy
 import "../Home/GiftedPanel.fcg" as GiftedPanel
 import "../Static/FC_Config.fcg" as FC_Config
 import "../ChoiceOneOfThreeCard/ChoiceOneOfThreeCard.fcg" as ChoiceOneOfThreeCard
+import "../PVE/FC_PVEMonsterManager.fcg" as FC_PVEMonsterManager
 
 // 这里是RCT最新代码，WindGod & Holy巨献
 
@@ -1768,8 +1769,10 @@ graph PlayerJionGame {
         StepEntity<UIWidgetLabel>.Content = "第" + Convert.ToString(CurrentLevel) + "关"  
 
         var Time string = PVEController.FormatTimeMMSS(totalTime)
+        var BossTime int = FC_PVEMonsterManager.BossliveTime / 1000
+        var BossliveTime string = PVEController.FormatTimeMMSS(BossTime)
         PassTimeEntity<UIWidgetLabel>.Content = Convert.ToString(Time)
-        BossKillTimeEntity<UIWidgetLabel>.Content = Convert.ToString(Time)
+        BossKillTimeEntity<UIWidgetLabel>.Content = Convert.ToString(BossliveTime)
 
         GetMoneyEntity<UIWidgetLabel>.Content = 1000
 

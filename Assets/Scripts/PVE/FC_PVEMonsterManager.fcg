@@ -40,7 +40,8 @@ static graph FC_PVEMonsterManager {
     EliteCurrentCount Map<int, int> = Map<int, int>{}  // MonsterID -> 当前存在数量
 
     TotalKills int = 0
-    
+
+    BossliveTime int = 0        // 记录Boss存活时间
     
     // CSV缓存（仅缓存当前Level行、按需缓存怪物行）
     LevelRowInfos Map<int, Map<string, object>> = Map<int, Map<string, object>>{} //LevelID -> LevelInfo
@@ -536,6 +537,20 @@ static graph FC_PVEMonsterManager {
             monster<Mob>.WalkSpeed = calculatedSpeed
         }
 
+        // 在属性设置后检查是否是精英怪
+        if monsterInfo["IsElite"] as bool {
+            WaitForNextFrame()
+            // 调用精英怪专属函数
+            start ProcessEliteMonster(monster)
+        }
+
+        // 在属性设置后检查是否是Boss怪
+        if monsterInfo["IsBoss"] as bool {
+            WaitForNextFrame()
+            // 调用精英怪专属函数
+            start StartRecordBossLiveTime(monster)
+        }
+
         if monster<Mob>.MobName == "ShieldZombie_Gold" {
             LogInfo("ShieldZombie_Gold特殊处理")
             monster<Mob>.StatusDic["IsShield"] = true
@@ -572,7 +587,25 @@ static graph FC_PVEMonsterManager {
         start UpdateBossHPBar()
     }
 
+    // 给精英怪头上带标记
+    async func ProcessEliteMonster(monster entity<LevelObject>) {
+        LogInfo("给精英怪添加标记")
+        var Mark = monster<Transform>.Position
+    }
 
+    async func StartRecordBossLiveTime(monster entity<LevelObject>) {
+        LogInfo("开始记录Boss存活时间")
+        BossliveTime = 0
+        while monster != nil && monster<Mob>.HP > 0 {
+            WaitForMillisecond(1000)
+            BossliveTime = BossliveTime + 1000
+        }
+        if monster == nil || monster<Mob>.HP <= 0 {
+            LogInfo("Boss已死亡，存活时间记录结束，总存活时间: " + BossliveTime + "毫秒")
+            WaitForMillisecond(2000)
+            BossliveTime = 0
+        }
+    }
     
     func GetRandomSpawnPosition(monster entity<Mob>) Vector3 {
         // 简单的随机生成位置，实际应该根据地图设计
@@ -674,10 +707,19 @@ static graph FC_PVEMonsterManager {
         
     }
 
+    // 怪物死亡动画结束后调用此函数销毁怪物实体
     func OnMonsterKilledAnimationFinished(monster entity<LevelObject>) {
         if monster != nil {
+            // 死亡掉落妙妙工具
+            DropMiaomiaoTools(monster)
+            // 销毁怪物实体
             start myDestroyMonster(monster)
         }
+    }
+
+    // 死亡掉落妙妙工具
+    func DropMiaomiaoTools(monster entity<LevelObject>) {
+        
     }
     
     // 设置普通怪物生成CD
