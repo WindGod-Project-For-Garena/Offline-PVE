@@ -1186,126 +1186,21 @@
           "_entityId": "CI8GeDR3",
           "children": [
             {
-              "_entityName": "Hero1Logo",
+              "_entityName": "Ground",
               "_tag": {
                 "type": "UIImageEntity",
                 "resourceId": ""
               },
-              "_entityId": "oc3oKBMt",
+              "_entityId": "C4SiFyR6",
               "children": [
                 {
-                  "_entityName": "Ground",
+                  "_entityName": "Hero1Logo",
                   "_tag": {
                     "type": "UIImageEntity",
                     "resourceId": ""
                   },
-                  "_entityId": "C4SiFyR6",
-                  "children": [
-                    {
-                      "_entityName": "bglight",
-                      "_tag": {
-                        "type": "UIImageEntity",
-                        "resourceId": ""
-                      },
-                      "_entityId": "jCjRBBZI",
-                      "children": [],
-                      "prefabVariant": null,
-                      "activeValue": {
-                        "selfValue": true,
-                        "valueTag": "activeValue"
-                      },
-                      "unlockedValue": {
-                        "selfValue": true,
-                        "valueTag": "unlockedValue"
-                      },
-                      "editorLockValue": false,
-                      "editorVisibleValue": true,
-                      "propsData": {
-                        "activeSelf": true,
-                        "transform": {
-                          "rotate": 0,
-                          "anchorMin": {
-                            "x": 0.5,
-                            "y": 0.5
-                          },
-                          "anchorMax": {
-                            "x": 0.5,
-                            "y": 0.5
-                          },
-                          "pivot": {
-                            "x": 0.5,
-                            "y": 0.5
-                          },
-                          "anchoredPosition": {
-                            "x": 0,
-                            "y": 0
-                          },
-                          "sizeDelta": {
-                            "x": 328,
-                            "y": 100
-                          }
-                        },
-                        "alpha": 50,
-                        "priority": 0,
-                        "image": {
-                          "source": {
-                            "fileId": "ti1dp2mh1ke-mjmkv9am-wgk2izxh6uf",
-                            "filePath": "Assets\\Image\\Home\\FF_UI_HuntingGround_Bg_Light.png",
-                            "_tag": {
-                              "type": "GFileRefer"
-                            },
-                            "fileType": "texture"
-                          },
-                          "color": "#603aa5",
-                          "reverse": {
-                            "x": false,
-                            "y": false
-                          },
-                          "fillType": 1,
-                          "slicedBorder": {
-                            "left": 0,
-                            "right": 0,
-                            "top": 0,
-                            "bottom": 0
-                          },
-                          "tiledBorder": {
-                            "left": 0,
-                            "right": 0,
-                            "top": 0,
-                            "bottom": 0
-                          },
-                          "centerInvisible": false,
-                          "fillDir": 0,
-                          "fillAmount": 0,
-                          "invertFill": false,
-                          "flip": 0,
-                          "gradient": 1,
-                          "gradientTop": {
-                            "r": 255,
-                            "g": 255,
-                            "b": 255,
-                            "a": 1
-                          },
-                          "gradientBottom": {
-                            "r": 255,
-                            "g": 255,
-                            "b": 255,
-                            "a": 1
-                          }
-                        }
-                      },
-                      "ecaScripts": [],
-                      "ecaProps": {
-                        "HudImageWidget": {},
-                        "HudWidget": {},
-                        "Entity": {}
-                      },
-                      "componentList": [],
-                      "entityTagData": {
-                        "tagPointers": []
-                      }
-                    }
-                  ],
+                  "_entityId": "oc3oKBMt",
+                  "children": [],
                   "prefabVariant": null,
                   "activeValue": {
                     "selfValue": true,
@@ -1315,8 +1210,6 @@
                     "selfValue": true,
                     "valueTag": "unlockedValue"
                   },
-                  "editorLockValue": false,
-                  "editorVisibleValue": true,
                   "propsData": {
                     "activeSelf": true,
                     "transform": {
@@ -1335,19 +1228,19 @@
                       },
                       "anchoredPosition": {
                         "x": 0,
-                        "y": -85
+                        "y": 85
                       },
                       "sizeDelta": {
-                        "x": 328,
-                        "y": 100
+                        "x": 184,
+                        "y": 206
                       }
                     },
                     "alpha": 100,
                     "priority": 0,
                     "image": {
                       "source": {
-                        "fileId": "2715agayfhx-mjmkvabx-ee6zt99cjo5",
-                        "filePath": "Assets\\Image\\Home\\RankBg_Common.png",
+                        "fileId": "jsfxt1wgnd-mk2d0r6y-6orixmusnuk",
+                        "filePath": "Assets\\Image\\HeroIFM\\Hero1.png",
                         "_tag": {
                           "type": "GFileRefer"
                         },
@@ -1400,395 +1293,113 @@
                   "componentList": [],
                   "entityTagData": {
                     "tagPointers": []
+                  },
+                  "editorLockValue": false,
+                  "editorVisibleValue": true
+                },
+                {
+                  "_entityName": "bglight",
+                  "_tag": {
+                    "type": "UIImageEntity",
+                    "resourceId": ""
+                  },
+                  "_entityId": "jCjRBBZI",
+                  "children": [],
+                  "prefabVariant": null,
+                  "activeValue": {
+                    "selfValue": true,
+                    "valueTag": "activeValue"
+                  },
+                  "unlockedValue": {
+                    "selfValue": true,
+                    "valueTag": "unlockedValue"
+                  },
+                  "editorLockValue": false,
+                  "editorVisibleValue": true,
+                  "propsData": {
+                    "activeSelf": true,
+                    "transform": {
+                      "rotate": 0,
+                      "anchorMin": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "anchorMax": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "pivot": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "anchoredPosition": {
+                        "x": 0,
+                        "y": 0
+                      },
+                      "sizeDelta": {
+                        "x": 328,
+                        "y": 100
+                      }
+                    },
+                    "alpha": 50,
+                    "priority": 0,
+                    "image": {
+                      "source": {
+                        "fileId": "ti1dp2mh1ke-mjmkv9am-wgk2izxh6uf",
+                        "filePath": "Assets\\Image\\Home\\FF_UI_HuntingGround_Bg_Light.png",
+                        "_tag": {
+                          "type": "GFileRefer"
+                        },
+                        "fileType": "texture"
+                      },
+                      "color": "#603aa5",
+                      "reverse": {
+                        "x": false,
+                        "y": false
+                      },
+                      "fillType": 1,
+                      "slicedBorder": {
+                        "left": 0,
+                        "right": 0,
+                        "top": 0,
+                        "bottom": 0
+                      },
+                      "tiledBorder": {
+                        "left": 0,
+                        "right": 0,
+                        "top": 0,
+                        "bottom": 0
+                      },
+                      "centerInvisible": false,
+                      "fillDir": 0,
+                      "fillAmount": 0,
+                      "invertFill": false,
+                      "flip": 0,
+                      "gradient": 1,
+                      "gradientTop": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 1
+                      },
+                      "gradientBottom": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 1
+                      }
+                    }
+                  },
+                  "ecaScripts": [],
+                  "ecaProps": {
+                    "HudImageWidget": {},
+                    "HudWidget": {},
+                    "Entity": {}
+                  },
+                  "componentList": [],
+                  "entityTagData": {
+                    "tagPointers": []
                   }
-                },
-                {
-                  "_entityName": "NameBB",
-                  "_tag": {
-                    "type": "UIImageEntity",
-                    "resourceId": ""
-                  },
-                  "_entityId": "qROwVdWv",
-                  "children": [],
-                  "prefabVariant": null,
-                  "activeValue": {
-                    "selfValue": true,
-                    "valueTag": "activeValue"
-                  },
-                  "unlockedValue": {
-                    "selfValue": true,
-                    "valueTag": "unlockedValue"
-                  },
-                  "propsData": {
-                    "activeSelf": true,
-                    "transform": {
-                      "rotate": 0,
-                      "anchorMin": {
-                        "x": 0.5,
-                        "y": 0.5
-                      },
-                      "anchorMax": {
-                        "x": 0.5,
-                        "y": 0.5
-                      },
-                      "pivot": {
-                        "x": 0.5,
-                        "y": 0.5
-                      },
-                      "anchoredPosition": {
-                        "x": 0,
-                        "y": -120
-                      },
-                      "sizeDelta": {
-                        "x": 350,
-                        "y": 40
-                      }
-                    },
-                    "alpha": 30,
-                    "priority": 0,
-                    "image": {
-                      "source": {
-                        "fileId": "grvvcxhqt9a-mjmkva4n-t7rbv0ryswm",
-                        "filePath": "Assets\\Image\\Home\\Huntingground_Title_Specil_Line.png",
-                        "_tag": {
-                          "type": "GFileRefer"
-                        },
-                        "fileType": "texture"
-                      },
-                      "color": "#ffffff",
-                      "reverse": {
-                        "x": false,
-                        "y": false
-                      },
-                      "fillType": 1,
-                      "slicedBorder": {
-                        "left": 0,
-                        "right": 0,
-                        "top": 0,
-                        "bottom": 0
-                      },
-                      "tiledBorder": {
-                        "left": 0,
-                        "right": 0,
-                        "top": 0,
-                        "bottom": 0
-                      },
-                      "centerInvisible": false,
-                      "fillDir": 0,
-                      "fillAmount": 1,
-                      "invertFill": false,
-                      "flip": 0,
-                      "gradient": 1,
-                      "gradientTop": {
-                        "r": 255,
-                        "g": 255,
-                        "b": 255,
-                        "a": 1
-                      },
-                      "gradientBottom": {
-                        "r": 255,
-                        "g": 255,
-                        "b": 255,
-                        "a": 1
-                      }
-                    }
-                  },
-                  "ecaScripts": [],
-                  "ecaProps": {
-                    "HudImageWidget": {},
-                    "HudWidget": {},
-                    "Entity": {}
-                  },
-                  "componentList": [],
-                  "entityTagData": {
-                    "tagPointers": []
-                  },
-                  "editorLockValue": false,
-                  "editorVisibleValue": true
-                },
-                {
-                  "_entityName": "HeroName",
-                  "_tag": {
-                    "type": "UITextEntity",
-                    "resourceId": ""
-                  },
-                  "_entityId": "ixXrGEIo",
-                  "children": [],
-                  "prefabVariant": null,
-                  "activeValue": {
-                    "selfValue": true,
-                    "valueTag": "activeValue"
-                  },
-                  "unlockedValue": {
-                    "selfValue": true,
-                    "valueTag": "unlockedValue"
-                  },
-                  "propsData": {
-                    "activeSelf": true,
-                    "transform": {
-                      "rotate": 0,
-                      "anchorMin": {
-                        "x": 0.5,
-                        "y": 0.5
-                      },
-                      "anchorMax": {
-                        "x": 0.5,
-                        "y": 0.5
-                      },
-                      "pivot": {
-                        "x": 0.5,
-                        "y": 0.5
-                      },
-                      "anchoredPosition": {
-                        "x": 0,
-                        "y": -120
-                      },
-                      "sizeDelta": {
-                        "x": 350,
-                        "y": 26
-                      }
-                    },
-                    "alpha": 100,
-                    "priority": 0,
-                    "text": {
-                      "value": "近卫爆破手",
-                      "key": "",
-                      "font": "Default",
-                      "fontSize": 26,
-                      "fontStyle": {
-                        "bold": false,
-                        "italic": false,
-                        "underline": false
-                      },
-                      "color": "#ffffff",
-                      "alignment": {
-                        "h": "center",
-                        "v": "middle"
-                      },
-                      "lineSpacing": 0,
-                      "background": false,
-                      "backgroundColor": "#e7b200",
-                      "overflow": 0,
-                      "backgroundRGBA": {
-                        "r": 0,
-                        "g": 0,
-                        "b": 0,
-                        "a": 0
-                      },
-                      "shadow": true,
-                      "shadowColor": "#000000",
-                      "shadowOffset": {
-                        "x": 1,
-                        "y": 1
-                      }
-                    }
-                  },
-                  "ecaScripts": [],
-                  "ecaProps": {
-                    "HudLabelWidget": {},
-                    "HudWidget": {},
-                    "Entity": {}
-                  },
-                  "componentList": [],
-                  "entityTagData": {
-                    "tagPointers": []
-                  },
-                  "editorLockValue": false,
-                  "editorVisibleValue": true
-                },
-                {
-                  "_entityName": "Image",
-                  "_tag": {
-                    "type": "UIImageEntity",
-                    "resourceId": ""
-                  },
-                  "_entityId": "QPNfAWY6",
-                  "children": [],
-                  "prefabVariant": null,
-                  "activeValue": {
-                    "selfValue": true,
-                    "valueTag": "activeValue"
-                  },
-                  "unlockedValue": {
-                    "selfValue": true,
-                    "valueTag": "unlockedValue"
-                  },
-                  "propsData": {
-                    "activeSelf": true,
-                    "transform": {
-                      "rotate": 0,
-                      "anchorMin": {
-                        "x": 0.5,
-                        "y": 0.5
-                      },
-                      "anchorMax": {
-                        "x": 0.5,
-                        "y": 0.5
-                      },
-                      "pivot": {
-                        "x": 0.5,
-                        "y": 0.5
-                      },
-                      "anchoredPosition": {
-                        "x": -1,
-                        "y": -161
-                      },
-                      "sizeDelta": {
-                        "x": 350,
-                        "y": 26
-                      }
-                    },
-                    "alpha": 20,
-                    "priority": 0,
-                    "image": {
-                      "source": {
-                        "fileId": "grvvcxhqt9a-mjmkva4n-t7rbv0ryswm",
-                        "filePath": "Assets\\Image\\Home\\Huntingground_Title_Specil_Line.png",
-                        "_tag": {
-                          "type": "GFileRefer"
-                        },
-                        "fileType": "texture"
-                      },
-                      "color": "#ffffff",
-                      "reverse": {
-                        "x": false,
-                        "y": false
-                      },
-                      "fillType": 1,
-                      "slicedBorder": {
-                        "left": 0,
-                        "right": 0,
-                        "top": 0,
-                        "bottom": 0
-                      },
-                      "tiledBorder": {
-                        "left": 0,
-                        "right": 0,
-                        "top": 0,
-                        "bottom": 0
-                      },
-                      "centerInvisible": false,
-                      "fillDir": 0,
-                      "fillAmount": 1,
-                      "invertFill": false,
-                      "flip": 0,
-                      "gradient": 1,
-                      "gradientTop": {
-                        "r": 255,
-                        "g": 255,
-                        "b": 255,
-                        "a": 1
-                      },
-                      "gradientBottom": {
-                        "r": 255,
-                        "g": 255,
-                        "b": 255,
-                        "a": 1
-                      }
-                    }
-                  },
-                  "ecaScripts": [],
-                  "ecaProps": {
-                    "HudImageWidget": {},
-                    "HudWidget": {},
-                    "Entity": {}
-                  },
-                  "componentList": [],
-                  "entityTagData": {
-                    "tagPointers": []
-                  },
-                  "editorLockValue": false,
-                  "editorVisibleValue": true
-                },
-                {
-                  "_entityName": "Title",
-                  "_tag": {
-                    "type": "UITextEntity",
-                    "resourceId": ""
-                  },
-                  "_entityId": "ydhP3mw8",
-                  "children": [],
-                  "prefabVariant": null,
-                  "activeValue": {
-                    "selfValue": true,
-                    "valueTag": "activeValue"
-                  },
-                  "unlockedValue": {
-                    "selfValue": true,
-                    "valueTag": "unlockedValue"
-                  },
-                  "propsData": {
-                    "activeSelf": true,
-                    "transform": {
-                      "rotate": 0,
-                      "anchorMin": {
-                        "x": 0.5,
-                        "y": 0.5
-                      },
-                      "anchorMax": {
-                        "x": 0.5,
-                        "y": 0.5
-                      },
-                      "pivot": {
-                        "x": 0.5,
-                        "y": 0.5
-                      },
-                      "anchoredPosition": {
-                        "x": -1,
-                        "y": -160
-                      },
-                      "sizeDelta": {
-                        "x": 350,
-                        "y": 22
-                      }
-                    },
-                    "alpha": 100,
-                    "priority": 0,
-                    "text": {
-                      "value": "专属武器:M1887",
-                      "key": "",
-                      "font": "Default",
-                      "fontSize": 22,
-                      "fontStyle": {
-                        "bold": false,
-                        "italic": false,
-                        "underline": false
-                      },
-                      "color": "#ffffff",
-                      "alignment": {
-                        "h": "center",
-                        "v": "middle"
-                      },
-                      "lineSpacing": 0,
-                      "background": false,
-                      "backgroundColor": "#e7b200",
-                      "overflow": 0,
-                      "backgroundRGBA": {
-                        "r": 0,
-                        "g": 0,
-                        "b": 0,
-                        "a": 0
-                      },
-                      "shadow": false,
-                      "shadowColor": "#FFFFFF",
-                      "shadowOffset": {
-                        "x": 1,
-                        "y": 1
-                      }
-                    }
-                  },
-                  "ecaScripts": [],
-                  "ecaProps": {
-                    "HudLabelWidget": {},
-                    "HudWidget": {},
-                    "Entity": {}
-                  },
-                  "componentList": [],
-                  "entityTagData": {
-                    "tagPointers": []
-                  },
-                  "editorLockValue": false,
-                  "editorVisibleValue": true
                 }
               ],
               "prefabVariant": null,
@@ -1800,6 +1411,8 @@
                 "selfValue": true,
                 "valueTag": "unlockedValue"
               },
+              "editorLockValue": false,
+              "editorVisibleValue": true,
               "propsData": {
                 "activeSelf": true,
                 "transform": {
@@ -1818,19 +1431,19 @@
                   },
                   "anchoredPosition": {
                     "x": 0,
-                    "y": 260
+                    "y": 175
                   },
                   "sizeDelta": {
-                    "x": 150,
-                    "y": 150
+                    "x": 328,
+                    "y": 100
                   }
                 },
                 "alpha": 100,
                 "priority": 0,
                 "image": {
                   "source": {
-                    "fileId": "48348ca582e21034acb86c75a7306934",
-                    "filePath": "lib://fftextures/WorkshopIconLibrary/FF_ingame_hud_UGC_Dyeing_Campicon.png",
+                    "fileId": "2715agayfhx-mjmkvabx-ee6zt99cjo5",
+                    "filePath": "Assets\\Image\\Home\\RankBg_Common.png",
                     "_tag": {
                       "type": "GFileRefer"
                     },
@@ -1877,6 +1490,392 @@
               "ecaScripts": [],
               "ecaProps": {
                 "HudImageWidget": {},
+                "HudWidget": {},
+                "Entity": {}
+              },
+              "componentList": [],
+              "entityTagData": {
+                "tagPointers": []
+              }
+            },
+            {
+              "_entityName": "NameBB",
+              "_tag": {
+                "type": "UIImageEntity",
+                "resourceId": ""
+              },
+              "_entityId": "qROwVdWv",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "propsData": {
+                "activeSelf": true,
+                "transform": {
+                  "rotate": 0,
+                  "anchorMin": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchorMax": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "pivot": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchoredPosition": {
+                    "x": 0,
+                    "y": 140
+                  },
+                  "sizeDelta": {
+                    "x": 350,
+                    "y": 40
+                  }
+                },
+                "alpha": 30,
+                "priority": 0,
+                "image": {
+                  "source": {
+                    "fileId": "grvvcxhqt9a-mjmkva4n-t7rbv0ryswm",
+                    "filePath": "Assets\\Image\\Home\\Huntingground_Title_Specil_Line.png",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "texture"
+                  },
+                  "color": "#ffffff",
+                  "reverse": {
+                    "x": false,
+                    "y": false
+                  },
+                  "fillType": 1,
+                  "slicedBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "tiledBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "centerInvisible": false,
+                  "fillDir": 0,
+                  "fillAmount": 1,
+                  "invertFill": false,
+                  "flip": 0,
+                  "gradient": 1,
+                  "gradientTop": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  },
+                  "gradientBottom": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  }
+                }
+              },
+              "ecaScripts": [],
+              "ecaProps": {
+                "HudImageWidget": {},
+                "HudWidget": {},
+                "Entity": {}
+              },
+              "componentList": [],
+              "entityTagData": {
+                "tagPointers": []
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": true
+            },
+            {
+              "_entityName": "HeroName",
+              "_tag": {
+                "type": "UITextEntity",
+                "resourceId": ""
+              },
+              "_entityId": "ixXrGEIo",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "propsData": {
+                "activeSelf": true,
+                "transform": {
+                  "rotate": 0,
+                  "anchorMin": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchorMax": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "pivot": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchoredPosition": {
+                    "x": 0,
+                    "y": 140
+                  },
+                  "sizeDelta": {
+                    "x": 350,
+                    "y": 26
+                  }
+                },
+                "alpha": 100,
+                "priority": 0,
+                "text": {
+                  "value": "近卫爆破手",
+                  "key": "",
+                  "font": "Default",
+                  "fontSize": 26,
+                  "fontStyle": {
+                    "bold": false,
+                    "italic": false,
+                    "underline": false
+                  },
+                  "color": "#ffffff",
+                  "alignment": {
+                    "h": "center",
+                    "v": "middle"
+                  },
+                  "lineSpacing": 0,
+                  "background": false,
+                  "backgroundColor": "#e7b200",
+                  "overflow": 0,
+                  "backgroundRGBA": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 0
+                  },
+                  "shadow": true,
+                  "shadowColor": "#000000",
+                  "shadowOffset": {
+                    "x": 1,
+                    "y": 1
+                  }
+                }
+              },
+              "ecaScripts": [],
+              "ecaProps": {
+                "HudLabelWidget": {},
+                "HudWidget": {},
+                "Entity": {}
+              },
+              "componentList": [],
+              "entityTagData": {
+                "tagPointers": []
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": true
+            },
+            {
+              "_entityName": "Image",
+              "_tag": {
+                "type": "UIImageEntity",
+                "resourceId": ""
+              },
+              "_entityId": "QPNfAWY6",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "propsData": {
+                "activeSelf": true,
+                "transform": {
+                  "rotate": 0,
+                  "anchorMin": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchorMax": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "pivot": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchoredPosition": {
+                    "x": -1,
+                    "y": 99
+                  },
+                  "sizeDelta": {
+                    "x": 350,
+                    "y": 26
+                  }
+                },
+                "alpha": 20,
+                "priority": 0,
+                "image": {
+                  "source": {
+                    "fileId": "grvvcxhqt9a-mjmkva4n-t7rbv0ryswm",
+                    "filePath": "Assets\\Image\\Home\\Huntingground_Title_Specil_Line.png",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "texture"
+                  },
+                  "color": "#ffffff",
+                  "reverse": {
+                    "x": false,
+                    "y": false
+                  },
+                  "fillType": 1,
+                  "slicedBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "tiledBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "centerInvisible": false,
+                  "fillDir": 0,
+                  "fillAmount": 1,
+                  "invertFill": false,
+                  "flip": 0,
+                  "gradient": 1,
+                  "gradientTop": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  },
+                  "gradientBottom": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  }
+                }
+              },
+              "ecaScripts": [],
+              "ecaProps": {
+                "HudImageWidget": {},
+                "HudWidget": {},
+                "Entity": {}
+              },
+              "componentList": [],
+              "entityTagData": {
+                "tagPointers": []
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": true
+            },
+            {
+              "_entityName": "Title",
+              "_tag": {
+                "type": "UITextEntity",
+                "resourceId": ""
+              },
+              "_entityId": "ydhP3mw8",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "propsData": {
+                "activeSelf": true,
+                "transform": {
+                  "rotate": 0,
+                  "anchorMin": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchorMax": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "pivot": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchoredPosition": {
+                    "x": -1,
+                    "y": 100
+                  },
+                  "sizeDelta": {
+                    "x": 350,
+                    "y": 22
+                  }
+                },
+                "alpha": 100,
+                "priority": 0,
+                "text": {
+                  "value": "专属武器:M1887",
+                  "key": "",
+                  "font": "Default",
+                  "fontSize": 22,
+                  "fontStyle": {
+                    "bold": false,
+                    "italic": false,
+                    "underline": false
+                  },
+                  "color": "#ffffff",
+                  "alignment": {
+                    "h": "center",
+                    "v": "middle"
+                  },
+                  "lineSpacing": 0,
+                  "background": false,
+                  "backgroundColor": "#e7b200",
+                  "overflow": 0,
+                  "backgroundRGBA": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 0
+                  },
+                  "shadow": false,
+                  "shadowColor": "#FFFFFF",
+                  "shadowOffset": {
+                    "x": 1,
+                    "y": 1
+                  }
+                }
+              },
+              "ecaScripts": [],
+              "ecaProps": {
+                "HudLabelWidget": {},
                 "HudWidget": {},
                 "Entity": {}
               },
@@ -3378,126 +3377,21 @@
           "_entityId": "IqQ72mgm",
           "children": [
             {
-              "_entityName": "Hero2Logo",
+              "_entityName": "Ground",
               "_tag": {
                 "type": "UIImageEntity",
                 "resourceId": ""
               },
-              "_entityId": "Fom0ReAZ",
+              "_entityId": "znienHaL",
               "children": [
                 {
-                  "_entityName": "Ground",
+                  "_entityName": "Hero2Logo",
                   "_tag": {
                     "type": "UIImageEntity",
                     "resourceId": ""
                   },
-                  "_entityId": "znienHaL",
-                  "children": [
-                    {
-                      "_entityName": "bglight",
-                      "_tag": {
-                        "type": "UIImageEntity",
-                        "resourceId": ""
-                      },
-                      "_entityId": "DnMCr6ce",
-                      "children": [],
-                      "prefabVariant": null,
-                      "activeValue": {
-                        "selfValue": true,
-                        "valueTag": "activeValue"
-                      },
-                      "unlockedValue": {
-                        "selfValue": true,
-                        "valueTag": "unlockedValue"
-                      },
-                      "propsData": {
-                        "activeSelf": true,
-                        "transform": {
-                          "rotate": 0,
-                          "anchorMin": {
-                            "x": 0.5,
-                            "y": 0.5
-                          },
-                          "anchorMax": {
-                            "x": 0.5,
-                            "y": 0.5
-                          },
-                          "pivot": {
-                            "x": 0.5,
-                            "y": 0.5
-                          },
-                          "anchoredPosition": {
-                            "x": 0,
-                            "y": 0
-                          },
-                          "sizeDelta": {
-                            "x": 328,
-                            "y": 100
-                          }
-                        },
-                        "alpha": 50,
-                        "priority": 0,
-                        "image": {
-                          "source": {
-                            "fileId": "ti1dp2mh1ke-mjmkv9am-wgk2izxh6uf",
-                            "filePath": "Assets\\Image\\Home\\FF_UI_HuntingGround_Bg_Light.png",
-                            "_tag": {
-                              "type": "GFileRefer"
-                            },
-                            "fileType": "texture"
-                          },
-                          "color": "#603aa5",
-                          "reverse": {
-                            "x": false,
-                            "y": false
-                          },
-                          "fillType": 1,
-                          "slicedBorder": {
-                            "left": 0,
-                            "right": 0,
-                            "top": 0,
-                            "bottom": 0
-                          },
-                          "tiledBorder": {
-                            "left": 0,
-                            "right": 0,
-                            "top": 0,
-                            "bottom": 0
-                          },
-                          "centerInvisible": false,
-                          "fillDir": 0,
-                          "fillAmount": 0,
-                          "invertFill": false,
-                          "flip": 0,
-                          "gradient": 1,
-                          "gradientTop": {
-                            "r": 255,
-                            "g": 255,
-                            "b": 255,
-                            "a": 1
-                          },
-                          "gradientBottom": {
-                            "r": 255,
-                            "g": 255,
-                            "b": 255,
-                            "a": 1
-                          }
-                        }
-                      },
-                      "ecaScripts": [],
-                      "ecaProps": {
-                        "HudImageWidget": {},
-                        "HudWidget": {},
-                        "Entity": {}
-                      },
-                      "componentList": [],
-                      "entityTagData": {
-                        "tagPointers": []
-                      },
-                      "editorLockValue": false,
-                      "editorVisibleValue": false
-                    }
-                  ],
+                  "_entityId": "Fom0ReAZ",
+                  "children": [],
                   "prefabVariant": null,
                   "activeValue": {
                     "selfValue": true,
@@ -3525,19 +3419,19 @@
                       },
                       "anchoredPosition": {
                         "x": 0,
-                        "y": -85
+                        "y": 85
                       },
                       "sizeDelta": {
-                        "x": 328,
-                        "y": 100
+                        "x": 184,
+                        "y": 206
                       }
                     },
                     "alpha": 100,
                     "priority": 0,
                     "image": {
                       "source": {
-                        "fileId": "2715agayfhx-mjmkvabx-ee6zt99cjo5",
-                        "filePath": "Assets\\Image\\Home\\RankBg_Common.png",
+                        "fileId": "bkmb5u8nb06-mk2d0rak-75oe95r8ffx",
+                        "filePath": "Assets\\Image\\HeroIFM\\Hero2.png",
                         "_tag": {
                           "type": "GFileRefer"
                         },
@@ -3595,12 +3489,12 @@
                   "editorVisibleValue": false
                 },
                 {
-                  "_entityName": "NameBB",
+                  "_entityName": "bglight",
                   "_tag": {
                     "type": "UIImageEntity",
                     "resourceId": ""
                   },
-                  "_entityId": "EhwHsBqk",
+                  "_entityId": "DnMCr6ce",
                   "children": [],
                   "prefabVariant": null,
                   "activeValue": {
@@ -3629,25 +3523,25 @@
                       },
                       "anchoredPosition": {
                         "x": 0,
-                        "y": -120
+                        "y": 0
                       },
                       "sizeDelta": {
-                        "x": 350,
-                        "y": 40
+                        "x": 328,
+                        "y": 100
                       }
                     },
-                    "alpha": 30,
+                    "alpha": 50,
                     "priority": 0,
                     "image": {
                       "source": {
-                        "fileId": "grvvcxhqt9a-mjmkva4n-t7rbv0ryswm",
-                        "filePath": "Assets\\Image\\Home\\Huntingground_Title_Specil_Line.png",
+                        "fileId": "ti1dp2mh1ke-mjmkv9am-wgk2izxh6uf",
+                        "filePath": "Assets\\Image\\Home\\FF_UI_HuntingGround_Bg_Light.png",
                         "_tag": {
                           "type": "GFileRefer"
                         },
                         "fileType": "texture"
                       },
-                      "color": "#ffffff",
+                      "color": "#603aa5",
                       "reverse": {
                         "x": false,
                         "y": false
@@ -3667,7 +3561,7 @@
                       },
                       "centerInvisible": false,
                       "fillDir": 0,
-                      "fillAmount": 1,
+                      "fillAmount": 0,
                       "invertFill": false,
                       "flip": 0,
                       "gradient": 1,
@@ -3688,290 +3582,6 @@
                   "ecaScripts": [],
                   "ecaProps": {
                     "HudImageWidget": {},
-                    "HudWidget": {},
-                    "Entity": {}
-                  },
-                  "componentList": [],
-                  "entityTagData": {
-                    "tagPointers": []
-                  },
-                  "editorLockValue": false,
-                  "editorVisibleValue": false
-                },
-                {
-                  "_entityName": "HeroName",
-                  "_tag": {
-                    "type": "UITextEntity",
-                    "resourceId": ""
-                  },
-                  "_entityId": "VuRvucUG",
-                  "children": [],
-                  "prefabVariant": null,
-                  "activeValue": {
-                    "selfValue": true,
-                    "valueTag": "activeValue"
-                  },
-                  "unlockedValue": {
-                    "selfValue": true,
-                    "valueTag": "unlockedValue"
-                  },
-                  "propsData": {
-                    "activeSelf": true,
-                    "transform": {
-                      "rotate": 0,
-                      "anchorMin": {
-                        "x": 0.5,
-                        "y": 0.5
-                      },
-                      "anchorMax": {
-                        "x": 0.5,
-                        "y": 0.5
-                      },
-                      "pivot": {
-                        "x": 0.5,
-                        "y": 0.5
-                      },
-                      "anchoredPosition": {
-                        "x": 0,
-                        "y": -120
-                      },
-                      "sizeDelta": {
-                        "x": 350,
-                        "y": 26
-                      }
-                    },
-                    "alpha": 100,
-                    "priority": 0,
-                    "text": {
-                      "value": "风暴游击手",
-                      "key": "",
-                      "font": "Default",
-                      "fontSize": 26,
-                      "fontStyle": {
-                        "bold": false,
-                        "italic": false,
-                        "underline": false
-                      },
-                      "color": "#ffffff",
-                      "alignment": {
-                        "h": "center",
-                        "v": "middle"
-                      },
-                      "lineSpacing": 0,
-                      "background": false,
-                      "backgroundColor": "#e7b200",
-                      "overflow": 0,
-                      "backgroundRGBA": {
-                        "r": 0,
-                        "g": 0,
-                        "b": 0,
-                        "a": 0
-                      },
-                      "shadow": true,
-                      "shadowColor": "#000000",
-                      "shadowOffset": {
-                        "x": 1,
-                        "y": 1
-                      }
-                    }
-                  },
-                  "ecaScripts": [],
-                  "ecaProps": {
-                    "HudLabelWidget": {},
-                    "HudWidget": {},
-                    "Entity": {}
-                  },
-                  "componentList": [],
-                  "entityTagData": {
-                    "tagPointers": []
-                  },
-                  "editorLockValue": false,
-                  "editorVisibleValue": false
-                },
-                {
-                  "_entityName": "Image",
-                  "_tag": {
-                    "type": "UIImageEntity",
-                    "resourceId": ""
-                  },
-                  "_entityId": "m27kss4s",
-                  "children": [],
-                  "prefabVariant": null,
-                  "activeValue": {
-                    "selfValue": true,
-                    "valueTag": "activeValue"
-                  },
-                  "unlockedValue": {
-                    "selfValue": true,
-                    "valueTag": "unlockedValue"
-                  },
-                  "propsData": {
-                    "activeSelf": true,
-                    "transform": {
-                      "rotate": 0,
-                      "anchorMin": {
-                        "x": 0.5,
-                        "y": 0.5
-                      },
-                      "anchorMax": {
-                        "x": 0.5,
-                        "y": 0.5
-                      },
-                      "pivot": {
-                        "x": 0.5,
-                        "y": 0.5
-                      },
-                      "anchoredPosition": {
-                        "x": -1,
-                        "y": -161
-                      },
-                      "sizeDelta": {
-                        "x": 350,
-                        "y": 22
-                      }
-                    },
-                    "alpha": 20,
-                    "priority": 0,
-                    "image": {
-                      "source": {
-                        "fileId": "grvvcxhqt9a-mjmkva4n-t7rbv0ryswm",
-                        "filePath": "Assets\\Image\\Home\\Huntingground_Title_Specil_Line.png",
-                        "_tag": {
-                          "type": "GFileRefer"
-                        },
-                        "fileType": "texture"
-                      },
-                      "color": "#ffffff",
-                      "reverse": {
-                        "x": false,
-                        "y": false
-                      },
-                      "fillType": 1,
-                      "slicedBorder": {
-                        "left": 0,
-                        "right": 0,
-                        "top": 0,
-                        "bottom": 0
-                      },
-                      "tiledBorder": {
-                        "left": 0,
-                        "right": 0,
-                        "top": 0,
-                        "bottom": 0
-                      },
-                      "centerInvisible": false,
-                      "fillDir": 0,
-                      "fillAmount": 1,
-                      "invertFill": false,
-                      "flip": 0,
-                      "gradient": 1,
-                      "gradientTop": {
-                        "r": 255,
-                        "g": 255,
-                        "b": 255,
-                        "a": 1
-                      },
-                      "gradientBottom": {
-                        "r": 255,
-                        "g": 255,
-                        "b": 255,
-                        "a": 1
-                      }
-                    }
-                  },
-                  "ecaScripts": [],
-                  "ecaProps": {
-                    "HudImageWidget": {},
-                    "HudWidget": {},
-                    "Entity": {}
-                  },
-                  "componentList": [],
-                  "entityTagData": {
-                    "tagPointers": []
-                  },
-                  "editorLockValue": false,
-                  "editorVisibleValue": false
-                },
-                {
-                  "_entityName": "Title",
-                  "_tag": {
-                    "type": "UITextEntity",
-                    "resourceId": ""
-                  },
-                  "_entityId": "NNTt4hxt",
-                  "children": [],
-                  "prefabVariant": null,
-                  "activeValue": {
-                    "selfValue": true,
-                    "valueTag": "activeValue"
-                  },
-                  "unlockedValue": {
-                    "selfValue": true,
-                    "valueTag": "unlockedValue"
-                  },
-                  "propsData": {
-                    "activeSelf": true,
-                    "transform": {
-                      "rotate": 0,
-                      "anchorMin": {
-                        "x": 0.5,
-                        "y": 0.5
-                      },
-                      "anchorMax": {
-                        "x": 0.5,
-                        "y": 0.5
-                      },
-                      "pivot": {
-                        "x": 0.5,
-                        "y": 0.5
-                      },
-                      "anchoredPosition": {
-                        "x": -1,
-                        "y": -161
-                      },
-                      "sizeDelta": {
-                        "x": 350,
-                        "y": 22
-                      }
-                    },
-                    "alpha": 100,
-                    "priority": 0,
-                    "text": {
-                      "value": "专属武器:MP5",
-                      "key": "",
-                      "font": "Default",
-                      "fontSize": 22,
-                      "fontStyle": {
-                        "bold": false,
-                        "italic": false,
-                        "underline": false
-                      },
-                      "color": "#ffffff",
-                      "alignment": {
-                        "h": "center",
-                        "v": "middle"
-                      },
-                      "lineSpacing": 0,
-                      "background": false,
-                      "backgroundColor": "#e7b200",
-                      "overflow": 0,
-                      "backgroundRGBA": {
-                        "r": 0,
-                        "g": 0,
-                        "b": 0,
-                        "a": 0
-                      },
-                      "shadow": false,
-                      "shadowColor": "#FFFFFF",
-                      "shadowOffset": {
-                        "x": 1,
-                        "y": 1
-                      }
-                    }
-                  },
-                  "ecaScripts": [],
-                  "ecaProps": {
-                    "HudLabelWidget": {},
                     "HudWidget": {},
                     "Entity": {}
                   },
@@ -4010,19 +3620,19 @@
                   },
                   "anchoredPosition": {
                     "x": 0,
-                    "y": 260
+                    "y": 175
                   },
                   "sizeDelta": {
-                    "x": 150,
-                    "y": 150
+                    "x": 328,
+                    "y": 100
                   }
                 },
                 "alpha": 100,
                 "priority": 0,
                 "image": {
                   "source": {
-                    "fileId": "48348ca582e21034acb86c75a7306934",
-                    "filePath": "lib://fftextures/WorkshopIconLibrary/FF_ingame_hud_UGC_Dyeing_Campicon.png",
+                    "fileId": "2715agayfhx-mjmkvabx-ee6zt99cjo5",
+                    "filePath": "Assets\\Image\\Home\\RankBg_Common.png",
                     "_tag": {
                       "type": "GFileRefer"
                     },
@@ -4069,6 +3679,394 @@
               "ecaScripts": [],
               "ecaProps": {
                 "HudImageWidget": {},
+                "HudWidget": {},
+                "Entity": {}
+              },
+              "componentList": [],
+              "entityTagData": {
+                "tagPointers": []
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": false
+            },
+            {
+              "_entityName": "NameBB",
+              "_tag": {
+                "type": "UIImageEntity",
+                "resourceId": ""
+              },
+              "_entityId": "EhwHsBqk",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "propsData": {
+                "activeSelf": true,
+                "transform": {
+                  "rotate": 0,
+                  "anchorMin": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchorMax": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "pivot": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchoredPosition": {
+                    "x": 0,
+                    "y": 140
+                  },
+                  "sizeDelta": {
+                    "x": 350,
+                    "y": 40
+                  }
+                },
+                "alpha": 30,
+                "priority": 0,
+                "image": {
+                  "source": {
+                    "fileId": "grvvcxhqt9a-mjmkva4n-t7rbv0ryswm",
+                    "filePath": "Assets\\Image\\Home\\Huntingground_Title_Specil_Line.png",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "texture"
+                  },
+                  "color": "#ffffff",
+                  "reverse": {
+                    "x": false,
+                    "y": false
+                  },
+                  "fillType": 1,
+                  "slicedBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "tiledBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "centerInvisible": false,
+                  "fillDir": 0,
+                  "fillAmount": 1,
+                  "invertFill": false,
+                  "flip": 0,
+                  "gradient": 1,
+                  "gradientTop": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  },
+                  "gradientBottom": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  }
+                }
+              },
+              "ecaScripts": [],
+              "ecaProps": {
+                "HudImageWidget": {},
+                "HudWidget": {},
+                "Entity": {}
+              },
+              "componentList": [],
+              "entityTagData": {
+                "tagPointers": []
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": false
+            },
+            {
+              "_entityName": "HeroName",
+              "_tag": {
+                "type": "UITextEntity",
+                "resourceId": ""
+              },
+              "_entityId": "VuRvucUG",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "propsData": {
+                "activeSelf": true,
+                "transform": {
+                  "rotate": 0,
+                  "anchorMin": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchorMax": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "pivot": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchoredPosition": {
+                    "x": 0,
+                    "y": 140
+                  },
+                  "sizeDelta": {
+                    "x": 350,
+                    "y": 26
+                  }
+                },
+                "alpha": 100,
+                "priority": 0,
+                "text": {
+                  "value": "风暴游击手",
+                  "key": "",
+                  "font": "Default",
+                  "fontSize": 26,
+                  "fontStyle": {
+                    "bold": false,
+                    "italic": false,
+                    "underline": false
+                  },
+                  "color": "#ffffff",
+                  "alignment": {
+                    "h": "center",
+                    "v": "middle"
+                  },
+                  "lineSpacing": 0,
+                  "background": false,
+                  "backgroundColor": "#e7b200",
+                  "overflow": 0,
+                  "backgroundRGBA": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 0
+                  },
+                  "shadow": true,
+                  "shadowColor": "#000000",
+                  "shadowOffset": {
+                    "x": 1,
+                    "y": 1
+                  }
+                }
+              },
+              "ecaScripts": [],
+              "ecaProps": {
+                "HudLabelWidget": {},
+                "HudWidget": {},
+                "Entity": {}
+              },
+              "componentList": [],
+              "entityTagData": {
+                "tagPointers": []
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": false
+            },
+            {
+              "_entityName": "Image",
+              "_tag": {
+                "type": "UIImageEntity",
+                "resourceId": ""
+              },
+              "_entityId": "m27kss4s",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "propsData": {
+                "activeSelf": true,
+                "transform": {
+                  "rotate": 0,
+                  "anchorMin": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchorMax": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "pivot": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchoredPosition": {
+                    "x": -1,
+                    "y": 99
+                  },
+                  "sizeDelta": {
+                    "x": 350,
+                    "y": 22
+                  }
+                },
+                "alpha": 20,
+                "priority": 0,
+                "image": {
+                  "source": {
+                    "fileId": "grvvcxhqt9a-mjmkva4n-t7rbv0ryswm",
+                    "filePath": "Assets\\Image\\Home\\Huntingground_Title_Specil_Line.png",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "texture"
+                  },
+                  "color": "#ffffff",
+                  "reverse": {
+                    "x": false,
+                    "y": false
+                  },
+                  "fillType": 1,
+                  "slicedBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "tiledBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "centerInvisible": false,
+                  "fillDir": 0,
+                  "fillAmount": 1,
+                  "invertFill": false,
+                  "flip": 0,
+                  "gradient": 1,
+                  "gradientTop": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  },
+                  "gradientBottom": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  }
+                }
+              },
+              "ecaScripts": [],
+              "ecaProps": {
+                "HudImageWidget": {},
+                "HudWidget": {},
+                "Entity": {}
+              },
+              "componentList": [],
+              "entityTagData": {
+                "tagPointers": []
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": false
+            },
+            {
+              "_entityName": "Title",
+              "_tag": {
+                "type": "UITextEntity",
+                "resourceId": ""
+              },
+              "_entityId": "NNTt4hxt",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "propsData": {
+                "activeSelf": true,
+                "transform": {
+                  "rotate": 0,
+                  "anchorMin": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchorMax": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "pivot": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchoredPosition": {
+                    "x": -1,
+                    "y": 99
+                  },
+                  "sizeDelta": {
+                    "x": 350,
+                    "y": 22
+                  }
+                },
+                "alpha": 100,
+                "priority": 0,
+                "text": {
+                  "value": "专属武器:MP5",
+                  "key": "",
+                  "font": "Default",
+                  "fontSize": 22,
+                  "fontStyle": {
+                    "bold": false,
+                    "italic": false,
+                    "underline": false
+                  },
+                  "color": "#ffffff",
+                  "alignment": {
+                    "h": "center",
+                    "v": "middle"
+                  },
+                  "lineSpacing": 0,
+                  "background": false,
+                  "backgroundColor": "#e7b200",
+                  "overflow": 0,
+                  "backgroundRGBA": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 0
+                  },
+                  "shadow": false,
+                  "shadowColor": "#FFFFFF",
+                  "shadowOffset": {
+                    "x": 1,
+                    "y": 1
+                  }
+                }
+              },
+              "ecaScripts": [],
+              "ecaProps": {
+                "HudLabelWidget": {},
                 "HudWidget": {},
                 "Entity": {}
               },
