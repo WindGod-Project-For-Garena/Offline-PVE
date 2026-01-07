@@ -20,6 +20,13 @@ graph GiftedPanel {
           GiftedUIEntity<CustomUI>.IsVisible = false
      }
 
+     // Debug一键牛逼
+     func DebugOneKey(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+          for i = 0,50,1 {
+               GetLocalPlayer()<PlayerJionGame>.DrawGiftedCard()
+          }
+     }
+
      // 抽卡功能
      func DrawCard(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
           GetLocalPlayer()<PlayerJionGame>.DrawGiftedCard()

@@ -9,7 +9,7 @@ int,string,float,int,string,string,string
 7,WeaponBoomRange,3,3,榴弹爆炸范围+3,skillCard_Role_7,角色被动
 8,WeaponBoomProbability,0.5,3,普攻有50%概率触发榴弹,skillCard_Role_8,角色被动
 9,WeaponDoubleBoom,1,3,榴弹击败敌人后立刻原地爆炸1次,skillCard_Role_9,角色被动
-10,WeaponBoomDamage,1.5,3,榴弹伤害+150%,skillCard_Role_10,角色被动
+10,WeaponBoomDamage,1.5,3,绝命绝命榴弹伤害+150%,skillCard_Role_10,角色被动
 11,ReloadSpeed,0.75,3,换弹速度提升75%,skillCard_Role_11,角色被动
 12,movespeed,0.2,2,移动速度+20%,skillCard_Role_12,通用
 13,WeaponDamage,0.8,2,武器伤害+80%,skillCard_Role_13,通用
@@ -17,11 +17,11 @@ int,string,float,int,string,string,string
 15,SkillCD,0.3,2,爆裂轰炸冷却-30%,skillCard_Role_15,角色主动
 16,SkillDamage,0.8,2,爆裂轰炸伤害+80%,skillCard_Role_16,角色主动
 17,SkillFireDamage,1,2,爆裂轰炸附带3s燃烧伤害（中量）,skillCard_Role_17,角色主动
-18,ReloadNow,1,2,爆裂轰炸释放后立刻装弹。,skillCard_Role_18,角色主动
+18,ReloadNow,1,2,爆裂轰炸释放后立刻装弹,skillCard_Role_18,角色主动
 19,WeaponBoomRange,2,2,榴弹爆炸范围+2,skillCard_Role_19,角色被动
 20,WeaponMaxMagazine,2,2,最大弹匣容量+2,skillCard_Role_20,角色被动
 21,WeaponBoomProbability,0.25,2,普攻有25%概率触发榴弹,skillCard_Role_21,角色被动
-22,WeaponBoomDamage,0.8,2,榴弹伤害+80%,skillCard_Role_22,角色被动
+22,WeaponBoomDamage,0.8,2,绝命榴弹伤害+80%,skillCard_Role_22,角色被动
 23,ReloadSpeed,0.5,2,换弹速度提升50%,skillCard_Role_23,角色被动
 24,movespeed,0.1,1,移动速度+10% ,skillCard_Role_24,通用
 25,WeaponDamage,0.5,1,武器伤害+50%,skillCard_Role_25,通用
@@ -30,5 +30,5 @@ int,string,float,int,string,string,string
 28,SkillDamage,0.5,1,爆裂轰炸伤害+50%,skillCard_Role_28,角色主动
 29,SkillFireDamage,0.5,1,爆裂轰炸附带3s燃烧伤害（少量）,skillCard_Role_29,角色主动
 30,WeaponBoomRange,1,1,榴弹爆炸范围+1,skillCard_Role_30,角色被动
-31,WeaponBoomDamage,0.5,1,榴弹伤害+50%,skillCard_Role_31,角色被动
+31,WeaponBoomDamage,0.5,1,绝命榴弹伤害+50%,skillCard_Role_31,角色被动
 32,ReloadSpeed,0.25,1,换弹速度提升25%,skillCard_Role_32,角色被动

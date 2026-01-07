@@ -4,10 +4,10 @@ int,string,float,int,string,string,string
 2,WeaponDamage,1.5,3,武器伤害+150%,skillCard_Lightning_2,通用
 3,LightningAmount,3,3,电弧冲击闪电数量+3,skillCard_Lightning_3,角色主动
 4,SkillDamage,1.5,3,电弧冲击伤害+150%,skillCard_Lightning_4,角色主动
-5,SkillAmount,2,3,雷雀闪电连续释放2次,skillCard_Lightning_5,角色被动
+5,SkillAmount,2,3,闪电触发连续释放2次,skillCard_Lightning_5,角色被动
 6,LightningRange,3,3,电弧冲击爆炸范围+3m,skillCard_Lightning_6,角色主动
 7,LightningExplosion,1,3,电弧冲击命中产生100%伤害的大爆炸,skillCard_Lightning_7,角色主动
-8,WeaponLightningProb,0.15,3,雷雀闪电触发几率+15%,skillCard_Lightning_8,角色被动
+8,WeaponLightningProb,0.15,3,闪电触发几率+15%,skillCard_Lightning_8,角色被动
 9,ReloadBuff,0.3,3,每次换弹后短暂提升30%射速,skillCard_Lightning_9,角色被动
 10,ReloadSpeed,0.75,3,换弹速度提升75%,skillCard_Lightning_10,角色被动
 11,movespeed,0.2,2,移动速度+20%,skillCard_Lightning_11,通用
@@ -18,7 +18,7 @@ int,string,float,int,string,string,string
 16,LightningRange,2,2,电弧冲击爆炸范围+2m,skillCard_Lightning_16,角色主动
 17,LightningExplosion,0.5,2,电弧冲击命中产生50%伤害的小爆炸,skillCard_Lightning_17,角色主动
 18,ReloadNow,0,2,技能后立刻装弹,skillCard_Lightning_18,角色被动
-19,WeaponLightningProb,0.1,2,雷雀闪电触发几率+10%,skillCard_Lightning_19,角色被动
+19,WeaponLightningProb,0.1,2,闪电触发几率+10%,skillCard_Lightning_19,角色被动
 20,WeaponMaxMagazine,10,2,弹匣容量+10,skillCard_Lightning_20,角色被动
 21,AttackSpeed,0.2,2,攻击速度+20%,skillCard_Lightning_21,角色被动
 22,ReloadSpeed,0.5,2,换弹速度提升50%,skillCard_Lightning_22,角色被动
@@ -28,5 +28,5 @@ int,string,float,int,string,string,string
 26,SkillCD,0.15,1,技能冷却-15%,skillCard_Lightning_26,角色主动
 27,SkillDamage,0.5,1,电弧冲击伤害+50%,skillCard_Lightning_27,角色主动
 28,LightningRange,1,1,电弧冲击爆炸范围+1m,skillCard_Lightning_28,角色主动
-29,WeaponLightningProb,0.05,1,雷雀闪电触发几率+5%,skillCard_Lightning_29,角色被动
+29,WeaponLightningProb,0.05,1,闪电触发几率+5%,skillCard_Lightning_29,角色被动
 30,ReloadSpeed,0.25,1,换弹速度提升25%,skillCard_Lightning_30,角色被动

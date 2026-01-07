@@ -21,6 +21,10 @@ graph FinalStats {
         
         var ChoiceHeroUI = GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI
         ChoiceHeroUI<CustomUI>.IsVisible = true
+
+        // 更新按钮状态
+        GetLocalPlayer()<PlayerJionGame>.UpdateLevelDisplay()
+
         Offline.Revive()
     }
     
@@ -30,6 +34,9 @@ graph FinalStats {
 
         var ChoiceHeroUIEntity = GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI
         ChoiceHeroUIEntity<CustomUI>.IsVisible = true
+
+        // 更新按钮状态
+        GetLocalPlayer()<PlayerJionGame>.UpdateLevelDisplay()
 
         var skill1 entity<UIWidgetButton> = GetWidgetFromCustomUI(GetLocalPlayer(),ChoiceHeroUIEntity , EResUIChoiceHero.Hero_1) as entity<UIWidgetButton>
         var skill2 entity<UIWidgetButton> = GetWidgetFromCustomUI(GetLocalPlayer(),ChoiceHeroUIEntity , EResUIChoiceHero.Hero_2) as entity<UIWidgetButton>

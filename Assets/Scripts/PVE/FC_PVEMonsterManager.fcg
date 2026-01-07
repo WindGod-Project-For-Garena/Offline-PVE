@@ -601,9 +601,15 @@ static graph FC_PVEMonsterManager {
             BossliveTime = BossliveTime + 1000
         }
         if monster == nil || monster<Mob>.HP <= 0 {
-            LogInfo("Boss已死亡，存活时间记录结束，总存活时间: " + BossliveTime + "毫秒")
             WaitForMillisecond(2000)
             BossliveTime = 0
+            //解锁下一关
+            if CurrentLevel >= GetLocalPlayer()<PlayerJionGame>.NowLevel {
+                GetLocalPlayer()<PlayerJionGame>.NowLevel = GetLocalPlayer()<PlayerJionGame>.NowLevel + 1
+                LogInfo("Boss已死亡，解锁下一关: " + GetLocalPlayer()<PlayerJionGame>.NowLevel)
+            } else {
+                LogInfo("Boss已死亡,这是最后一关")
+            }
         }
     }
     
