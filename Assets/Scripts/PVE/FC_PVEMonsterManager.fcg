@@ -590,7 +590,10 @@ static graph FC_PVEMonsterManager {
     // 给精英怪头上带标记
     async func ProcessEliteMonster(monster entity<LevelObject>) {
         LogInfo("给精英怪添加标记")
-        var Mark = monster<Transform>.Position
+        var monsterPos = monster<Transform>.Position
+        CreateFromPrefab(out var MarkEntity, EResPrefab.Mark)
+        MarkEntity<Transform>.Position = monsterPos + Vector3{0, 2, 0}
+        SetParentClient(monster, MarkEntity as entity<Transform>, true)
     }
 
     async func StartRecordBossLiveTime(monster entity<LevelObject>) {

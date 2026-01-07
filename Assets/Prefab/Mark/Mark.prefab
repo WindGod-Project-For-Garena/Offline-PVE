@@ -18,7 +18,10 @@
         "selfValue": true,
         "valueTag": "activeValue"
       },
-      "unlockedValue": null,
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
       "editorLockValue": false,
       "editorVisibleValue": true,
       "position": {
@@ -27,9 +30,9 @@
         "z": 0
       },
       "scale": {
-        "x": 0.5,
-        "y": 0.000009999999747378752,
-        "z": 0.5
+        "x": 1,
+        "y": 1,
+        "z": 1
       },
       "rotation": {
         "x": 0,
@@ -56,7 +59,7 @@
       "entityTagData": {
         "tagPointers": []
       },
-      "tempIndex": 105,
+      "tempIndex": 51,
       "itemID": 223,
       "seParent": null,
       "ecaScripts": [
@@ -110,4 +113,4 @@
   "HintCraftlandCombineMesh": false,
   "discriminator": "ISceneLike"
 }
-//"{FE:{"v":"0.2.4154796","c":{"FF":5001},"s":100}
+//"{FE:{"v":"0.2.4165988","c":{"FF":5001},"s":100}
