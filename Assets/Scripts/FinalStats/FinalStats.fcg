@@ -26,6 +26,9 @@ graph FinalStats {
         GetLocalPlayer()<PlayerJionGame>.UpdateLevelDisplay()
 
         Offline.Revive()
+
+        // 更新选择英雄面板的金钱显示
+        GetLocalPlayer()<PlayerJionGame>.UpdateChoiceHeroPanelMoney()
     }
     
     func ContinueGame(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
@@ -48,5 +51,8 @@ graph FinalStats {
         GetLocalPlayer()<PlayerJionGame>.displaySkillByIndex(skillIndex)
 
         Offline.Revive()
+        
+         // 更新选择英雄面板的金钱显示
+        GetLocalPlayer()<PlayerJionGame>.UpdateChoiceHeroPanelMoney()
     }
 }

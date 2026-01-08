@@ -10,6 +10,7 @@ import "../CustomEvent.fcc" as CustomEvent
 import "Math.fcc" as Math
 import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
 import "../MobScripts/BossButcher.fcg" as C_BossButcher
+import "../PVE/FC_PVEMonsterManager.fcg" as FC_MonsterManager
 import "Hud.fcc" as Hud
 
 [platform_client]
@@ -46,8 +47,18 @@ static graph PVEController {
         CurrentWave = CurrentWave + 1
         StartWave(CurrentWave)
         // 显示波次和时间信息
-        var TimeInGameUIEntity = GetLocalPlayer()<PlayerJionGame>.TimeInGameUI
-        TimeInGameUIEntity<CustomUI>.IsVisible = true
+        GetLocalPlayer()<PlayerJionGame>.TimeInGameUI<CustomUI>.IsVisible = true
+        GetLocalPlayer()<PlayerJionGame>.RighTabIFMUI<CustomUI>.IsVisible = true
+        // 隐藏金钱UI
+        var MoneyEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.RighTabIFMUI, "/Money")
+        MoneyEntity<UIWidget>.IsVisible = false
+        // 更新金钱UI
+        var MoneyNumEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.RighTabIFMUI, "/Panel/Money/logo/Num")
+        MoneyNumEntity<UIWidgetLabel>.Content = GetLocalPlayer()<PlayerJionGame>.Money
+        // 更新总击杀数UI
+        var TotalKills = FC_MonsterManager.TotalKills
+        var TotalKillsEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.RighTabIFMUI, "/Panel/Killed/logo/Num")
+        TotalKillsEntity<UIWidgetLabel>.Content = TotalKills
     }
 
     // 开始PVE游戏（指定关卡）
@@ -293,12 +304,13 @@ static graph PVEController {
         var totalTime int = (currTime - GameStartTime) / 1000
         GetLocalPlayer()<PlayerJionGame>.ToClient_ShowFinalStats(currTime, GameStartTime, IsGameSuccess, totalTime, CurrentLevel)
         // 隐藏波次和时间信息
-        var TimeInGameUIEntity = GetLocalPlayer()<PlayerJionGame>.TimeInGameUI
-        TimeInGameUIEntity<CustomUI>.IsVisible = false
+        GetLocalPlayer()<PlayerJionGame>.TimeInGameUI<CustomUI>.IsVisible = false
+        GetLocalPlayer()<PlayerJionGame>.RighTabIFMUI<CustomUI>.IsVisible = false
         var BossHPBar = GetLocalPlayer()<PlayerJionGame>.BossHPBar
         if BossHPBar != nil {
             BossHPBar<CustomUI>.IsVisible = false
         }
+        FC_MonsterManager.TotalGold = 0
     }
     
     // 获取游戏状态

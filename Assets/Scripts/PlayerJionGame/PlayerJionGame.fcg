@@ -38,6 +38,7 @@ graph PlayerJionGame {
     SecondDownUI entity<CustomHud>          //倒计时页面
     GameOverFinalUI entity<CustomHud>       //結算页面
     TimeInGameUI entity<CustomHud>          //时间页面
+    RighTabIFMUI entity<CustomHud>          //右侧信息页面
     WaveCompleteUI entity<CustomHud>        //波次完成页面
     BossHPBar entity<CustomHud>             //Boss血条页面
     RankingListUI entity<CustomHud>        // 排行榜页面
@@ -191,6 +192,7 @@ graph PlayerJionGame {
             HeroButtonEntity1<UIWidget>.IsVisible = true
             HeroButtonEntity2<UIWidget>.IsVisible = false
             HeroButtonEntity3<UIWidget>.IsVisible = false
+            UpdateChoiceHeroPanelMoney()
             //默认选择第一个技能
             var skillIndex int = 1
             displaySkillByIndex(skillIndex)
@@ -225,6 +227,10 @@ graph PlayerJionGame {
             CreateCustomUIClient(out var TimeInGameUIEntity, EResUI.TimeInGame)
             TimeInGameUI = TimeInGameUIEntity
             TimeInGameUIEntity<CustomUI>.IsVisible = false
+
+            CreateCustomUIClient(out var RighTabIFMUIEntity, EResUI.RighTabIFM)
+            RighTabIFMUI = RighTabIFMUIEntity
+            RighTabIFMUIEntity<CustomUI>.IsVisible = false
 
             CreateCustomUIClient(out var WaveCompleteUIEntity, EResUI.WaveComplete)
             WaveCompleteUI = WaveCompleteUIEntity
@@ -1120,15 +1126,27 @@ graph PlayerJionGame {
         var commonProb = currentConfig["CommonProb"] as float * 100
         var rareProb = currentConfig["RareProb"] as float * 100
         var epicProb = currentConfig["EpicProb"] as float * 100
-        // 更新剩余价格显示
+        // 更新剩余金额显示
         var NowMoneyText = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/Func/MoneyPanel/Money/text")
         if NowMoneyText != nil {
             NowMoneyText<UIWidgetLabel>.Content = Convert.ToString(Money)
+        }
+        var MoneyText = GetWidgetByPath(GetLocalPlayer(), ChoiceHeroUI, "/Money/Money/text")
+        if MoneyText != nil {
+            MoneyText<UIWidgetLabel>.Content = Convert.ToString(Money)
         }
         // 更新当前阶段价格显示
         var priceText = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/DrawBadgePanel/Image/Money")
         if priceText != nil {
             priceText<UIWidgetLabel>.Content = Convert.ToString(currentPrice)
+        }
+        UpdateChoiceHeroPanelMoney()
+    }
+
+    func UpdateChoiceHeroPanelMoney() {
+        var MoneyText = GetWidgetByPath(GetLocalPlayer(), ChoiceHeroUI, "/Money/Money/text")
+        if MoneyText != nil {
+            MoneyText<UIWidgetLabel>.Content = Convert.ToString(Money)
         }
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
@@ -1778,7 +1796,7 @@ graph PlayerJionGame {
         PassTimeEntity<UIWidgetLabel>.Content = Convert.ToString(Time)
         BossKillTimeEntity<UIWidgetLabel>.Content = Convert.ToString(BossliveTime)
 
-        GetMoneyEntity<UIWidgetLabel>.Content = 1000
+        GetMoneyEntity<UIWidgetLabel>.Content = FC_PVEMonsterManager.TotalGold
 
         // ==================== 显示已选择的三选一卡牌 ====================
         // 获取已选择的卡牌列表

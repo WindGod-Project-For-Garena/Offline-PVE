@@ -211,6 +211,9 @@ graph SkillUI {
         
         for i = 0, tickCount, 1 {
             // 造成燃烧伤害
+            if monster == nil {
+                return
+            }
             DispatchEventToEntity(OnDamageMob, monster, PlatformType.Client, List<object>{monster, nil, damagePerTick, GetLocalPlayer()})
             GetLocalPlayer()<PlayerJionGame>.BurningDamage += damagePerTick
             CreateDamageNum(damagePerTick, 10, #ff6600, 500, monster as entity<Entity>, Vector3{0,1.2,0}, Vector2{50, 50}, true)

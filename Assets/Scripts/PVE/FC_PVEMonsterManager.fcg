@@ -15,6 +15,9 @@ import "LevelObject.fcc" as LevelObject
 import "Convert.fcc" as Convert
 import "Hud.fcc" as Hud
 import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
+import "Camera.fcc" as Camera
+import "Economy.fcc" as Economy
+import "List.fcc" as List
 import "../CustomEvent.fcc" as CustomEvent
 
 [platform_client]
@@ -39,9 +42,14 @@ static graph FC_PVEMonsterManager {
     BossSpawnedCount Map<int, int> = Map<int, int>{}  // MonsterID -> 已生成数量
     EliteCurrentCount Map<int, int> = Map<int, int>{}  // MonsterID -> 当前存在数量
 
-    TotalKills int = 0
+    CloneMoneyList List<entity<UIWidget>> = List<entity<UIWidget>>{} //存放克隆的金币
 
-    BossliveTime int = 0        // 记录Boss存活时间
+    // 总计杀怪数量
+    TotalKills int = 0
+    // 总计获得金币数量
+    TotalGold int = 0
+    // 记录Boss存活时间
+    BossliveTime int = 0        
     
     // CSV缓存（仅缓存当前Level行、按需缓存怪物行）
     LevelRowInfos Map<int, Map<string, object>> = Map<int, Map<string, object>>{} //LevelID -> LevelInfo
@@ -721,6 +729,8 @@ static graph FC_PVEMonsterManager {
         if monster != nil {
             // 死亡掉落妙妙工具
             DropMiaomiaoTools(monster)
+            // 死亡掉落货币
+            start DropMoney(monster)
             // 销毁怪物实体
             start myDestroyMonster(monster)
         }
@@ -729,6 +739,78 @@ static graph FC_PVEMonsterManager {
     // 死亡掉落妙妙工具
     func DropMiaomiaoTools(monster entity<LevelObject>) {
         
+    }
+
+    // 死亡掉落货币
+    async func DropMoney(monster entity<LevelObject>) {
+        var RighTabIFMUI = GetLocalPlayer()<PlayerJionGame>.RighTabIFMUI
+        var monsterPos = monster<Transform>.Position
+        var MoneyEntity = GetWidgetByPath(GetLocalPlayer(), RighTabIFMUI, "/Money")
+
+        var MoneyEntityClone entity<UIWidget> = nil
+        
+        // 关键修改：查找可用的（不可见的）克隆体
+        for i, clone in CloneMoneyList {
+            if clone<UIWidget>.IsVisible == false {
+                MoneyEntityClone = clone
+                break
+            }
+        }
+        
+        // 如果没有可用的，且池子未满，创建新的
+        if MoneyEntityClone == nil {
+            if List.Length(CloneMoneyList) < 20 {
+                std.Clone(out var newClone, MoneyEntity)
+                MoneyEntityClone = newClone as entity<UIWidget>
+                List.Append(CloneMoneyList, MoneyEntityClone)
+            } else {
+                // 池子满了，复用最旧的
+                return 
+            }
+        }
+
+        // 设置初始位置
+        WorldToScreenPoint(monsterPos, out var isMappedInScreen, out var mappedPosition)
+        var MoneyStartPos = Vector3{mappedPosition.X, mappedPosition.Y, 0}
+        var RighTabIFMMoneyEntity = GetWidgetByPath(GetLocalPlayer(), RighTabIFMUI, "/Panel/Money/logo")
+        var MoneyEndPos = RighTabIFMMoneyEntity<UIWidget>.ActualPosition
+        
+        MoneyEntityClone<UIWidget>.ActualPosition = MoneyStartPos
+        MoneyEntityClone<UIWidget>.IsVisible = true
+        
+        // 创建动画
+        CreateTween(
+            MoneyEntityClone,
+            UIWidget.ActualPosition,
+            MoneyStartPos,
+            MoneyEndPos,
+            TweenStyle.Once,
+            CreateCurve({0, 0, 0.58, 1}),
+            500,
+            out var MoneyTween,
+            true,
+        )
+        
+        // 等待动画完成
+        WaitForMillisecond(600)
+        Destroy(MoneyTween)
+        MoneyEntityClone<UIWidget>.IsVisible = false
+        // 增加玩家货币
+        GivePlayerMoney()  // 每个怪物掉落50货币
+        // 更新怪物总击杀数
+        TotalKills = TotalKills + 1
+    }
+
+    // RNM给钱
+    func GivePlayerMoney() {
+        // 增加玩家货币
+        GetLocalPlayer()<PlayerJionGame>.Money = GetLocalPlayer()<PlayerJionGame>.Money + 50
+        TotalGold = TotalGold + 50
+        var MoneyNumEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.RighTabIFMUI, "/Panel/Money/logo/Num")
+        MoneyNumEntity<UIWidgetLabel>.Content = GetLocalPlayer()<PlayerJionGame>.Money
+        // 更新总击杀数UI
+        var TotalKillsEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.RighTabIFMUI, "/Panel/Killed/logo/Num")
+        TotalKillsEntity<UIWidgetLabel>.Content = TotalKills
     }
     
     // 设置普通怪物生成CD
