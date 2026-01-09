@@ -183,7 +183,6 @@ graph PlayerJionGame {
     tempOriginalSkill1Damage = 0
     tempOriginalSkill2Damage = 0
     skillDamageBonusPercent = 0.0  // 记录技能伤害加成百分比
-    weaponDamageBonusPercent = 0.0 // 记录武器伤害加成百分比
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     IsCountdownActive bool = false
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
@@ -1995,7 +1994,7 @@ graph PlayerJionGame {
                 if weaponBuffTimer <= 0 {
                     weaponBuffTimerActive = false
                     LogInfo("武器伤害buff已过期")
-                    // 这里可以触发恢复逻辑
+                    // 触发恢复逻辑
                     start RemoveWeaponDamageBonus()
                 }
             }
@@ -2007,9 +2006,8 @@ graph PlayerJionGame {
                 if skillBuffTimer <= 0 {
                     skillBuffTimerActive = false
                     LogInfo("技能伤害buff已过期")
-                    // 这里可以触发恢复逻辑
+                    // 触发恢复逻辑
                     start RemoveSkillDamageBonus()
-                    
                 }
             }
             
@@ -2028,8 +2026,8 @@ graph PlayerJionGame {
 
     // 停止所有计时器并恢复伤害
     async func StopAllBuffsAndReset() {
-        LogInfo("停止所有buff并恢复伤害")
-        
+         LogInfo("停止所有buff并恢复伤害")
+    
         // 立即恢复所有伤害
         if weaponBuffTimerActive {
             start RemoveWeaponDamageBonus()
@@ -2041,7 +2039,12 @@ graph PlayerJionGame {
             start RemoveSkillDamageBonus()
             skillBuffTimerActive = false
             skillBuffTimer = 0
+            skillDamageBonusPercent = 0.0
         }
+        
+        // 重置所有临时存储
+        tempOriginalSkill1Damage = 0
+        tempOriginalSkill2Damage = 0
     }
 
     // 应用武器伤害加成
@@ -2069,25 +2072,51 @@ graph PlayerJionGame {
 
     // 应用技能伤害加成
     func ApplySkillDamageBonus(player entity<Player>, value float) {
-        // 应用技能伤害加成逻辑
+        // 记录加成百分比
+        skillDamageBonusPercent = value
+        
+        // 检查是否已经有buff在生效
+        if skillBuffTimerActive {
+            skillBuffTimer = 10000  // 10秒
+            return
+        }
+        
+        // 应用技能伤害加成逻辑（只有第一次才计算）
         if CurrentSkill == 1 {
+            // 获取当前的技能伤害
             var currentSkillDamage = Skill1DataInGame["SkillDamage"] as int
-            var finalSkillDamage = currentSkillDamage + Round(currentSkillDamage * value) as int
+            
+            // 如果是第一次应用buff，保存原始值
+            if tempOriginalSkill1Damage == 0 {
+                tempOriginalSkill1Damage = currentSkillDamage
+            }
+            
+            // 基于原始值计算加成后的伤害
+            var finalSkillDamage = tempOriginalSkill1Damage + Round(tempOriginalSkill1Damage * value) as int
             Skill1DataInGame["SkillDamage"] = finalSkillDamage
+            
         } else if CurrentSkill == 2 {
+            // 获取当前的技能伤害
             var currentSkillDamage = Skill2DataInGame["SkillDamage"] as int
-            var finalSkillDamage = currentSkillDamage + Round(currentSkillDamage * value) as int
+            
+            // 如果是第一次应用buff，保存原始值
+            if tempOriginalSkill2Damage == 0 {
+                tempOriginalSkill2Damage = currentSkillDamage
+            }
+            
+            // 基于原始值计算加成后的伤害
+            var finalSkillDamage = tempOriginalSkill2Damage + Round(tempOriginalSkill2Damage * value) as int
             Skill2DataInGame["SkillDamage"] = finalSkillDamage
         }
         
-        // 重置计时器（重新开始10秒）
-        skillBuffTimer = 10000  // 10秒
+        // 设置buff生效标志
         skillBuffTimerActive = true
+        skillBuffTimer = 10000  // 10秒
+        
         // 确保计时器循环运行
         if !buffTimerRunning {
             start BuffTimerLoop()
         }
-        LogInfo("技能伤害buff激活，持续10秒")
     }
 
     func ApplyHealthBonus(player entity<Player>,value float) {
@@ -2118,12 +2147,23 @@ graph PlayerJionGame {
     // 恢复技能伤害
     async func RemoveSkillDamageBonus() {
         if CurrentSkill == 1 {
-            var originalSkillDamage = Skill1DataInGame["SkillDamage"] as int
-            Skill1DataInGame["SkillDamage"] = originalSkillDamage
+            if tempOriginalSkill1Damage > 0 {
+                // 恢复到保存的原始值
+                Skill1DataInGame["SkillDamage"] = tempOriginalSkill1Damage
+                LogInfo("技能1伤害恢复为: " + Convert.ToString(tempOriginalSkill1Damage))
+                tempOriginalSkill1Damage = 0  // 重置以备下次使用
+            }
         } else if CurrentSkill == 2 {
-            var originalSkillDamage = Skill2DataInGame["SkillDamage"] as int
-            Skill2DataInGame["SkillDamage"] = originalSkillDamage
+            if tempOriginalSkill2Damage > 0 {
+                // 恢复到保存的原始值
+                Skill2DataInGame["SkillDamage"] = tempOriginalSkill2Damage
+                LogInfo("技能2伤害恢复为: " + Convert.ToString(tempOriginalSkill2Damage))
+                tempOriginalSkill2Damage = 0  // 重置以备下次使用
+            }
         }
+        
+        // 重置加成百分比
+        skillDamageBonusPercent = 0.0
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
