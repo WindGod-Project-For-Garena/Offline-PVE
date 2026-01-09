@@ -122,7 +122,6 @@ static graph FC_PVEMonsterManager {
     // 仅加载当前Level的LevelConfig行
     // 返回LevelID -> LevelInfo
     func LoadCurrentLevelRows(level int) {
-        LogInfo("LoadCurrentLevelRows: " + level)
         Map.Clear(LevelRowInfos)
         for i,rowV in ReadCSVColumn(EResCSV.LevelConfig,1) {
             var rowValue int = 0
@@ -156,7 +155,6 @@ static graph FC_PVEMonsterManager {
                 LevelRowInfos[levelInfo["WaveNumber"] as int] = levelInfo
             }
         }
-         LogInfo("LevelRowInfos: " + LevelRowInfos)
     }
     
     
@@ -251,7 +249,6 @@ static graph FC_PVEMonsterManager {
     
     // Boss生成循环：直接生成到MaxNum数量，同时满足MaxMonstersOnField限制
     async func SpawnBossLoop(bossQueue List<Map<string, object>>,spawnerIndex int) {
-        LogInfo("------SpawnBossLoop: " + bossQueue)
         while IsWaveActive && (spawnerIndex == currSpawnerIndex)  {
             // 检查是否所有Boss都已生成完成
             var allBossSpawned = true
@@ -318,7 +315,7 @@ static graph FC_PVEMonsterManager {
                 continue
             }else{
                 EliteLastSpawnTime = globalEntity<Global>.GameTimeCount
-                LogInfo("EliteCD已到, 开始生成Elite")
+                // LogInfo("EliteCD已到, 开始生成Elite")
             }
 
             //循环生成所有精英怪物到最大数量
@@ -491,7 +488,6 @@ static graph FC_PVEMonsterManager {
 
         //创建怪物
         var name_key = monsterInfo["Name_key"] as string
-        LogInfo("create single monster : " + name_key)
         var prefabID = Config.MobPrefabIDs[name_key]
         
         CreateFromPrefab(out var monsterEntity, prefabID)
@@ -509,10 +505,8 @@ static graph FC_PVEMonsterManager {
         if monsterInfo["IsElite"] as bool {
             list.Append(ActiveEliteMonsters, monster)
         } else if monsterInfo["IsBoss"] as bool {
-            LogInfo("生成Boss")
             list.Append(ActiveBossMonsters, monster)
             // Boss特殊处理：显示血条并标记为Boss
-            LogInfo("生成Boss血条并标记为Boss")
             var BossHPBar = GetLocalPlayer()<PlayerJionGame>.BossHPBar
             BossHPBar<CustomUI>.IsVisible = true
             BossHPBar<UIWidgetImage>.FillAmount = 1.0
@@ -529,7 +523,6 @@ static graph FC_PVEMonsterManager {
 
         // 设置怪物属性
         if HasComponent(monster, typeof(Mob)) {
-            LogInfo("设置怪物属性")
             monster<Mob>.MobName = monsterInfo["Name_key"] as string
             var baseHP = monsterInfo["BaseHP"] as int
             var baseDmg = monsterInfo["BaseDamage"] as int
@@ -727,8 +720,10 @@ static graph FC_PVEMonsterManager {
     // 怪物死亡动画结束后调用此函数销毁怪物实体
     func OnMonsterKilledAnimationFinished(monster entity<LevelObject>) {
         if monster != nil {
-            // 死亡掉落妙妙工具
-            DropMiaomiaoTools(monster)
+             // 八分之一的概率掉落妙妙工具
+            if RandomDropChance() {
+                DropMiaomiaoTools(monster)
+            }
             // 死亡掉落货币
             start DropMoney(monster)
             // 销毁怪物实体
@@ -736,9 +731,129 @@ static graph FC_PVEMonsterManager {
         }
     }
 
-    // 死亡掉落妙妙工具
+    // 随机掉落概率判断
+    func RandomDropChance() bool {
+        // 生成1-8的随机整数
+        var randomNum = RandomInt(1, 6)
+        // 如果随机到1（即1/8的概率），返回true
+        return randomNum == 1
+    }
+
+    // 死亡掉落妙妙道具（动态设置图标版本）
     func DropMiaomiaoTools(monster entity<LevelObject>) {
+        var MiaomiaoToolEntity entity<LevelObject> = nil
+        var monsterPos = monster<Transform>.Position
         
+        // 步骤1：随机决定道具大小（50%概率小道具，50%概率大道具）
+        var isSmallItem = false
+        var RD = RandomInt(0, 2) // 随机0或1
+        if RD == 0 {
+            isSmallItem = true
+        } else {
+            isSmallItem = false
+        }
+        
+        // 步骤2：根据大小随机选择具体道具类型
+        var itemType = RandomInt(0, 3) // 随机0,1,2（对应三种类型）
+        var iconResource = EResSprite.WeaponDamage // 默认武器伤害图标
+        var itemTypeName = ""
+        
+        // 设置图标类型
+        if itemType == 0 {
+            iconResource = EResSprite.WeaponDamage
+            itemTypeName = "武器伤害"
+        } else if itemType == 1 {
+            iconResource = EResSprite.SkillDamage
+            itemTypeName = "技能伤害"
+        } else {
+            iconResource = EResSprite.HP
+            itemTypeName = "生命值"
+        }
+        
+        // 创建基础道具
+        if isSmallItem {
+            CreateFromPrefab(out var smallItem, EResPrefab.ITEMSmall)
+            MiaomiaoToolEntity = smallItem as entity<LevelObject>
+            LogInfo("掉落小道具-" + itemTypeName)
+        } else {
+            CreateFromPrefab(out var largeItem, EResPrefab.ITEM)
+            MiaomiaoToolEntity = largeItem as entity<LevelObject>
+            LogInfo("掉落大道具-" + itemTypeName)
+        }
+        
+        if MiaomiaoToolEntity != nil {
+            // 设置初始位置
+            MiaomiaoToolEntity<Transform>.Position = monsterPos + Vector3{0, 0.1, 0}
+            
+            // 设置道具的图标
+            SetItemIcon(MiaomiaoToolEntity, iconResource)
+            
+            // 添加弹出动画
+            start AddItemPopAnimation(MiaomiaoToolEntity, monsterPos, isSmallItem)
+        }
+    }
+
+    // 设置道具图标
+    func SetItemIcon(item entity<LevelObject>, iconType EResSprite) {
+        // 根据你的Prefab结构获取图标组件并设置
+        var buff = GetChildren(item)
+        var light = GetChildren(buff[0])
+        var icon = light[0] as entity<LevelObject>
+        icon<Icon>.Resource = iconType
+    }
+
+    // 添加道具弹出动画
+    async func AddItemPopAnimation(item entity<LevelObject>, spawnPos Vector3, isSmallItem bool) {
+        // 根据道具大小调整弹出高度
+        var popHeight float = 1.0 // 默认高度
+        var duration int = 400    // 动画时长
+        if isSmallItem == 1 {
+            // 小道具：弹出低一点、快一点
+            popHeight = 0.7
+            duration = 350
+        } else {
+            // 大道具：弹出高一点、慢一点
+            popHeight = 1
+            duration = 450
+        }
+        // 初始位置
+        var startPos = spawnPos + Vector3{0, 0.1, 0}
+        // 计算随机偏移，让道具散落开来
+        var randomOffsetX = RandomFloat(-0.5, 0.5)
+        var randomOffsetZ = RandomFloat(-0.5, 0.5)
+        // 弹出目标位置
+        var popTargetPos = spawnPos + Vector3{randomOffsetX, popHeight, randomOffsetZ}
+        // 创建弹出动画
+        CreateTween(
+            item,
+            Transform.Position,
+            startPos,
+            popTargetPos,
+            TweenStyle.Once,
+            CreateCurve({0.25, 0.1, 0.75, 0.9}), // 弹跳曲线
+            duration,
+            out var popTween,
+            true,
+        )
+        // 等待弹出动画完成
+        WaitForMillisecond(duration + 50)
+        Destroy(popTween)
+        
+        // 添加落地弹跳效果
+        var finalPos = spawnPos + Vector3{randomOffsetX, 0.2, randomOffsetZ}
+        CreateTween(
+            item,
+            Transform.Position,
+            popTargetPos,
+            finalPos,
+            TweenStyle.Once,
+            CreateCurve({0.25, 0.1, 0.25, 1}), // 缓入缓出
+            200,
+            out var landTween,
+            true,
+        )
+        WaitForMillisecond(250)
+        Destroy(landTween)
     }
 
     // 死亡掉落货币
@@ -749,7 +864,7 @@ static graph FC_PVEMonsterManager {
 
         var MoneyEntityClone entity<UIWidget> = nil
         
-        // 关键修改：查找可用的（不可见的）克隆体
+        // 查找可用的（不可见的）克隆体
         for i, clone in CloneMoneyList {
             if clone<UIWidget>.IsVisible == false {
                 MoneyEntityClone = clone

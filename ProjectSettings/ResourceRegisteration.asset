@@ -663,13 +663,25 @@
         {
           "refer": {
             "fileId": "s5dkfupozv-mk3s016s-zeyd6x3x7pg",
-            "filePath": "Assets\\Prefab\\Money\\Money.prefab",
+            "filePath": "Assets\\Prefab\\ITEM\\ITEM.prefab",
             "_tag": {
               "type": "GFileRefer"
             },
             "fileType": "prefab"
           },
-          "scriptName": "Money",
+          "scriptName": "ITEM",
+          "children": []
+        },
+        {
+          "refer": {
+            "fileId": "e7jfj61zyr-mk6hn229-lhpkd62151",
+            "filePath": "Assets\\Prefab\\ITEM\\ITEMSmall.prefab",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "prefab"
+          },
+          "scriptName": "ITEMSmall",
           "children": []
         }
       ]

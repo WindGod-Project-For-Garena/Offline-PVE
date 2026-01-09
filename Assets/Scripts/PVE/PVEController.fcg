@@ -25,7 +25,7 @@ static graph PVEController {
     currPlayer entity<Player> = nil
     
     // 游戏配置
-    WaveTimeLimit int = 30000  // 每波次时间限制（ms）
+    WaveTimeLimit int = 60000  // 每波次时间限制（ms）
     
     // 统计信息
     GameStartTime int = 0
@@ -79,6 +79,10 @@ static graph PVEController {
         GameStartTime = globalEntity<Global>.GameTimeCount
         CurrentLevel = level
         CurrentWave = 0
+
+        // 重置玩家buff
+        start GetLocalPlayer()<PlayerJionGame>.StopAllBuffsAndReset()
+
         // 通知所有玩家
         Utilities.NotifyAllPlayers("PVE游戏开始！关卡: " + level, #00FF00FF, 5000)
 
@@ -141,6 +145,9 @@ static graph PVEController {
             IsCountdownActive = false
             monsterManager.ForceEndWave()
             
+            // 在进入三选一之前停止所有buff
+            start GetLocalPlayer()<PlayerJionGame>.StopAllBuffsAndReset()
+
             //显示通关小横幅
             var WaveCompleteUI = GetLocalPlayer()<PlayerJionGame>.WaveCompleteUI
             WaveCompleteUI<CustomUI>.IsVisible = true
@@ -199,6 +206,8 @@ static graph PVEController {
         // 强制结束当前波次
         monsterManager.ForceEndWave()
         
+        start GetLocalPlayer()<PlayerJionGame>.StopAllBuffsAndReset()
+
         //显示BOOYAH!横幅
         CreateBuiltInUIClient(out var resultBanner, BuiltInUIType.ResultBannerHud)
         resultBanner<UIWinOrLoseBanner>.Result = 1
@@ -342,7 +351,8 @@ static graph PVEController {
         LogInfo("PVE游戏失败！")
         IsGameSuccess = false
         EndPVEGame()
-
+        // 停止所有buff并恢复伤害
+        start GetLocalPlayer()<PlayerJionGame>.StopAllBuffsAndReset()
         //显示战败横幅
         CreateBuiltInUIClient(out var resultBanner, BuiltInUIType.ResultBannerHud)
         resultBanner<UIWinOrLoseBanner>.Result = 2
@@ -359,7 +369,9 @@ static graph PVEController {
     async func OnGameComplete() {
         LogInfo("PVE游戏完成！")
         IsGameSuccess = true
-        //GetAllPlayers()[0]<Player>
+        // 停止所有buff并恢复伤害
+        start GetLocalPlayer()<PlayerJionGame>.StopAllBuffsAndReset()
+
         var localPlayer entity<Player> = GetAllPlayers()[0]
         localPlayer<Player>.Invincible = true
         // 显示最终统计

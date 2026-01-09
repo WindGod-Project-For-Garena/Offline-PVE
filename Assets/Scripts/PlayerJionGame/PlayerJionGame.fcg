@@ -173,6 +173,18 @@ graph PlayerJionGame {
     healthMultiplier float = 1.0
     skillMultiplier float = 1.0
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+    // 计时器变量
+    weaponBuffTimerActive bool = false
+    weaponBuffTimer int = 0
+    skillBuffTimerActive bool = false
+    skillBuffTimer int = 0
+    buffTimerRunning = false  //计时器运行状态标志
+    // buff临时存储变量
+    tempOriginalSkill1Damage = 0
+    tempOriginalSkill2Damage = 0
+    skillDamageBonusPercent = 0.0  // 记录技能伤害加成百分比
+    weaponDamageBonusPercent = 0.0 // 记录武器伤害加成百分比
+    //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     IsCountdownActive bool = false
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     event OnPlayerJoin(player entity<Player>) {
@@ -1958,6 +1970,159 @@ graph PlayerJionGame {
                 // 不是第一关，恢复按钮状态
                 buttonLeft<UIWidgetButton>.Color = #FFBA00  // 橙色
             }
+        }
+    }
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+    // 主计时器循环
+    async func BuffTimerLoop() {
+        // 如果已经在运行，直接返回
+        if buffTimerRunning {
+            LogInfo("Buff计时器已在运行中")
+            return
+        }
+        
+        // 设置运行标志
+        buffTimerRunning = true
+        
+        while buffTimerRunning {
+            var hasActiveBuff = false
+            
+            // 更新武器buff计时器
+            if weaponBuffTimerActive && weaponBuffTimer > 0 {
+                weaponBuffTimer = weaponBuffTimer - 1000  // 每1000毫秒减少
+                hasActiveBuff = true
+                if weaponBuffTimer <= 0 {
+                    weaponBuffTimerActive = false
+                    LogInfo("武器伤害buff已过期")
+                    // 这里可以触发恢复逻辑
+                    start RemoveWeaponDamageBonus()
+                }
+            }
+            
+            // 更新技能buff计时器
+            if skillBuffTimerActive && skillBuffTimer > 0 {
+                skillBuffTimer = skillBuffTimer - 1000  // 每1000毫秒减少
+                hasActiveBuff = true
+                if skillBuffTimer <= 0 {
+                    skillBuffTimerActive = false
+                    LogInfo("技能伤害buff已过期")
+                    // 这里可以触发恢复逻辑
+                    start RemoveSkillDamageBonus()
+                    
+                }
+            }
+            
+            // 如果没有任何活动的buff，退出循环
+            if !hasActiveBuff {
+                buffTimerRunning = false
+                LogInfo("所有buff已过期，停止计时器")
+                break
+            }
+            
+            LogInfo("武器伤害buff剩余时间: " + weaponBuffTimer + "，技能伤害buff剩余时间: " + skillBuffTimer)
+            // 等待1秒
+            WaitForMillisecond(1000)
+        }
+    }
+
+    // 停止所有计时器并恢复伤害
+    async func StopAllBuffsAndReset() {
+        LogInfo("停止所有buff并恢复伤害")
+        
+        // 立即恢复所有伤害
+        if weaponBuffTimerActive {
+            start RemoveWeaponDamageBonus()
+            weaponBuffTimerActive = false
+            weaponBuffTimer = 0
+        }
+        
+        if skillBuffTimerActive {
+            start RemoveSkillDamageBonus()
+            skillBuffTimerActive = false
+            skillBuffTimer = 0
+        }
+    }
+
+    // 应用武器伤害加成
+    func ApplyWeaponDamageBonus(player entity<Player>, value float) {
+        // 应用伤害加成逻辑
+        if CurrentSkill == 1 {
+            var currentDamage = Skill1DataInGame["WeaponDamage"] as int
+            var finalDamage = currentDamage + Round(currentDamage * value) as int
+            currentWeapon<Weapon>.Damage = finalDamage
+        } else if CurrentSkill == 2 {
+            var currentDamage = Skill2DataInGame["WeaponDamage"] as int
+            var finalDamage = currentDamage + Round(currentDamage * value) as int
+            currentWeapon<Weapon>.Damage = finalDamage
+        }
+        
+        // 重置计时器（重新开始10秒）
+        weaponBuffTimer = 10000  // 10秒
+        weaponBuffTimerActive = true
+        // 确保计时器循环运行
+        if !buffTimerRunning {
+            start BuffTimerLoop()
+        }
+        LogInfo("武器伤害buff激活，持续10秒")
+    }
+
+    // 应用技能伤害加成
+    func ApplySkillDamageBonus(player entity<Player>, value float) {
+        // 应用技能伤害加成逻辑
+        if CurrentSkill == 1 {
+            var currentSkillDamage = Skill1DataInGame["SkillDamage"] as int
+            var finalSkillDamage = currentSkillDamage + Round(currentSkillDamage * value) as int
+            Skill1DataInGame["SkillDamage"] = finalSkillDamage
+        } else if CurrentSkill == 2 {
+            var currentSkillDamage = Skill2DataInGame["SkillDamage"] as int
+            var finalSkillDamage = currentSkillDamage + Round(currentSkillDamage * value) as int
+            Skill2DataInGame["SkillDamage"] = finalSkillDamage
+        }
+        
+        // 重置计时器（重新开始10秒）
+        skillBuffTimer = 10000  // 10秒
+        skillBuffTimerActive = true
+        // 确保计时器循环运行
+        if !buffTimerRunning {
+            start BuffTimerLoop()
+        }
+        LogInfo("技能伤害buff激活，持续10秒")
+    }
+
+    func ApplyHealthBonus(player entity<Player>,value float) {
+        // 生命值提升 - 瞬间回血百分比
+        var finalHealth = 0
+        var currentHealth = currPlayer<Player>.HP as int
+        finalHealth = currentHealth + Round(currentHealth * value) as int
+        if finalHealth > currPlayer<Player>.MaxHP {
+            finalHealth = currPlayer<Player>.MaxHP
+        }
+        currPlayer<Player>.HP = finalHealth
+    }
+
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+
+    // 恢复武器伤害
+    async func RemoveWeaponDamageBonus() {
+        if CurrentSkill == 1 {
+            var originalDamage = Skill1DataInGame["WeaponDamage"] as int
+            currentWeapon<Weapon>.Damage = originalDamage
+        } else if CurrentSkill == 2 {
+            var originalDamage = Skill2DataInGame["WeaponDamage"] as int
+            currentWeapon<Weapon>.Damage = originalDamage
+        }
+    }
+
+    // 恢复技能伤害
+    async func RemoveSkillDamageBonus() {
+        if CurrentSkill == 1 {
+            var originalSkillDamage = Skill1DataInGame["SkillDamage"] as int
+            Skill1DataInGame["SkillDamage"] = originalSkillDamage
+        } else if CurrentSkill == 2 {
+            var originalSkillDamage = Skill2DataInGame["SkillDamage"] as int
+            Skill2DataInGame["SkillDamage"] = originalSkillDamage
         }
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//

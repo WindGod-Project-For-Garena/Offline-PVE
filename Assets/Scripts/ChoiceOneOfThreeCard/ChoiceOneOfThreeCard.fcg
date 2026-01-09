@@ -109,6 +109,7 @@ graph ChoiceOneOfThreeCard {
       var currentSelectedCardIndex = SelectedCardIndex
       if currentSelectedCardIndex == 0 {
          LogInfo("没有选择卡牌，无法开始下一波")
+         IsOver = false
          return
       }
       
@@ -120,6 +121,7 @@ graph ChoiceOneOfThreeCard {
       LogInfo(currentRandomCards)
       if List.Length(currentRandomCards) < 3 {
          LogError("卡牌数据无效，无法获取卡牌ID")
+         IsOver = false
          return
       }
       
@@ -135,6 +137,7 @@ graph ChoiceOneOfThreeCard {
       
       if selectedCardId == 0 {
          LogError("卡牌ID无效，无法应用效果")
+         IsOver = false
          return
       }
       

@@ -5,16 +5,23 @@
   "_entityId": "2mKrbYrs",
   "children": [],
   "prefabVariant": null,
-  "activeValue": null,
-  "unlockedValue": null,
+  "activeValue": {
+    "selfValue": true,
+    "valueTag": "activeValue"
+  },
+  "unlockedValue": {
+    "selfValue": true,
+    "valueTag": "unlockedValue"
+  },
   "editorLockValue": false,
   "editorVisibleValue": true,
   "modId": 34,
-  "hideMinimap": false,
+  "hideMinimap": true,
   "useCustomMinimap": false,
   "enableDepthMap": false,
   "modOpen": true,
   "mapType": null,
-  "_entityName": "FE_40_XYL_CUSTOMMINIMAP"
+  "_entityName": "T_43_YU_WS_MODULE_MINIMAP",
+  "showSwitch": false
 }
-//"{FE:{"v":"1.14.3883376","c":{"FF":5001},"s":100}
+//"{FE:{"v":"0.2.4165988","c":{"FF":5001},"s":100}

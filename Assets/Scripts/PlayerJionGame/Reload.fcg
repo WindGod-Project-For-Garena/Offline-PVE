@@ -13,7 +13,6 @@ import "Combat.fcc" as Combat
 [platform_client]
 graph Reload {
     event OnReload(){
-        LogInfo("武器已重装")
         var SkillIndex = GetLocalPlayer()<PlayerJionGame>.CurrentSkill
         var currPlayer =  GetLocalPlayer()<PlayerJionGame>.currPlayer
         var currentWeapon =  GetLocalPlayer()<PlayerJionGame>.currentWeapon
