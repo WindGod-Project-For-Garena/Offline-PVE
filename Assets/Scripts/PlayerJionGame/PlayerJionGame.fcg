@@ -2072,26 +2072,44 @@ graph PlayerJionGame {
 
     // 应用技能伤害加成
     func ApplySkillDamageBonus(player entity<Player>, value float) {
-        // 记录加成百分比
-        skillDamageBonusPercent = value
-        
         // 检查是否已经有buff在生效
         if skillBuffTimerActive {
+            // 如果已有buff，比较加成值
+            if value > skillDamageBonusPercent {
+                
+                // 先恢复原始值
+                start RemoveSkillDamageBonus()
+                
+                // 然后应用新的buff
+                skillDamageBonusPercent = value
+                
+                // 重新计算伤害（基于原始值）
+                if CurrentSkill == 1 && tempOriginalSkill1Damage > 0 {
+                    var finalSkillDamage = tempOriginalSkill1Damage + Round(tempOriginalSkill1Damage * value) as int
+                    Skill1DataInGame["SkillDamage"] = finalSkillDamage
+                } else if CurrentSkill == 2 && tempOriginalSkill2Damage > 0 {
+                    var finalSkillDamage = tempOriginalSkill2Damage + Round(tempOriginalSkill2Damage * value) as int
+                    Skill2DataInGame["SkillDamage"] = finalSkillDamage
+                }
+            }
+            
+            // 重置计时器（重新开始10秒）
             skillBuffTimer = 10000  // 10秒
             return
         }
         
-        // 应用技能伤害加成逻辑（只有第一次才计算）
+        // 没有buff在生效，应用新的buff
+        skillDamageBonusPercent = value
+        
+        // 应用技能伤害加成逻辑
         if CurrentSkill == 1 {
             // 获取当前的技能伤害
             var currentSkillDamage = Skill1DataInGame["SkillDamage"] as int
             
-            // 如果是第一次应用buff，保存原始值
-            if tempOriginalSkill1Damage == 0 {
-                tempOriginalSkill1Damage = currentSkillDamage
-            }
+            // 保存原始值
+            tempOriginalSkill1Damage = currentSkillDamage
             
-            // 基于原始值计算加成后的伤害
+            // 计算加成后的伤害
             var finalSkillDamage = tempOriginalSkill1Damage + Round(tempOriginalSkill1Damage * value) as int
             Skill1DataInGame["SkillDamage"] = finalSkillDamage
             
@@ -2099,17 +2117,16 @@ graph PlayerJionGame {
             // 获取当前的技能伤害
             var currentSkillDamage = Skill2DataInGame["SkillDamage"] as int
             
-            // 如果是第一次应用buff，保存原始值
-            if tempOriginalSkill2Damage == 0 {
-                tempOriginalSkill2Damage = currentSkillDamage
-            }
+            // 保存原始值
+            tempOriginalSkill2Damage = currentSkillDamage
             
-            // 基于原始值计算加成后的伤害
+            // 计算加成后的伤害
             var finalSkillDamage = tempOriginalSkill2Damage + Round(tempOriginalSkill2Damage * value) as int
             Skill2DataInGame["SkillDamage"] = finalSkillDamage
+            
         }
         
-        // 设置buff生效标志
+        // 设置buff生效标志和计时器
         skillBuffTimerActive = true
         skillBuffTimer = 10000  // 10秒
         

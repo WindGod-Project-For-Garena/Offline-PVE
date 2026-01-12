@@ -743,16 +743,7 @@ static graph FC_PVEMonsterManager {
         var MiaomiaoToolEntity entity<LevelObject> = nil
         var monsterPos = monster<Transform>.Position
         
-        // 步骤1：随机决定道具大小（50%概率小道具，50%概率大道具）
-        var isSmallItem = false
-        var RD = RandomInt(0, 2) // 随机0或1
-        if RD == 0 {
-            isSmallItem = true
-        } else {
-            isSmallItem = false
-        }
-        
-        // 步骤2：根据大小随机选择具体道具类型
+        // 随机选择具体道具类型
         var itemType = RandomInt(0, 3) // 随机0,1,2（对应三种类型）
         var iconResource = EResSprite.WeaponDamage // 默认武器伤害图标
         var itemTypeName = ""
@@ -770,15 +761,9 @@ static graph FC_PVEMonsterManager {
         }
         
         // 创建基础道具
-        if isSmallItem {
-            CreateFromPrefab(out var smallItem, EResPrefab.ITEMSmall)
-            MiaomiaoToolEntity = smallItem as entity<LevelObject>
-            LogInfo("掉落小道具-" + itemTypeName)
-        } else {
-            CreateFromPrefab(out var largeItem, EResPrefab.ITEM)
-            MiaomiaoToolEntity = largeItem as entity<LevelObject>
-            LogInfo("掉落大道具-" + itemTypeName)
-        }
+        CreateFromPrefab(out var largeItem, EResPrefab.ITEM)
+        MiaomiaoToolEntity = largeItem as entity<LevelObject>
+        LogInfo("掉落道具-" + itemTypeName)
         
         if MiaomiaoToolEntity != nil {
             // 设置初始位置
@@ -788,7 +773,7 @@ static graph FC_PVEMonsterManager {
             SetItemIcon(MiaomiaoToolEntity, iconResource)
             
             // 添加弹出动画
-            start AddItemPopAnimation(MiaomiaoToolEntity, monsterPos, isSmallItem)
+            start AddItemPopAnimation(MiaomiaoToolEntity, monsterPos)
         }
     }
 
@@ -802,19 +787,10 @@ static graph FC_PVEMonsterManager {
     }
 
     // 添加道具弹出动画
-    async func AddItemPopAnimation(item entity<LevelObject>, spawnPos Vector3, isSmallItem bool) {
-        // 根据道具大小调整弹出高度
+    async func AddItemPopAnimation(item entity<LevelObject>, spawnPos Vector3) {
+        // 道具弹出高度
         var popHeight float = 1.0 // 默认高度
         var duration int = 400    // 动画时长
-        if isSmallItem == 1 {
-            // 小道具：弹出低一点、快一点
-            popHeight = 0.7
-            duration = 350
-        } else {
-            // 大道具：弹出高一点、慢一点
-            popHeight = 1
-            duration = 450
-        }
         // 初始位置
         var startPos = spawnPos + Vector3{0, 0.1, 0}
         // 计算随机偏移，让道具散落开来
