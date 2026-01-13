@@ -82,6 +82,8 @@ static graph PVEController {
 
         // 重置玩家buff
         start GetLocalPlayer()<PlayerJionGame>.StopAllBuffsAndReset()
+        // 删除所有掉落道具
+        GetLocalPlayer()<PlayerJionGame>.RemoveAllDrops()
 
         // 通知所有玩家
         Utilities.NotifyAllPlayers("PVE游戏开始！关卡: " + level, #00FF00FF, 5000)
@@ -147,6 +149,8 @@ static graph PVEController {
             
             // 在进入三选一之前停止所有buff
             start GetLocalPlayer()<PlayerJionGame>.StopAllBuffsAndReset()
+            // 删除所有掉落道具
+            GetLocalPlayer()<PlayerJionGame>.RemoveAllDrops()
 
             //显示通关小横幅
             var WaveCompleteUI = GetLocalPlayer()<PlayerJionGame>.WaveCompleteUI
@@ -207,6 +211,8 @@ static graph PVEController {
         monsterManager.ForceEndWave()
         
         start GetLocalPlayer()<PlayerJionGame>.StopAllBuffsAndReset()
+        // 删除所有掉落道具
+        GetLocalPlayer()<PlayerJionGame>.RemoveAllDrops()
 
         //显示BOOYAH!横幅
         CreateBuiltInUIClient(out var resultBanner, BuiltInUIType.ResultBannerHud)
@@ -353,6 +359,8 @@ static graph PVEController {
         EndPVEGame()
         // 停止所有buff并恢复伤害
         start GetLocalPlayer()<PlayerJionGame>.StopAllBuffsAndReset()
+        // 删除所有掉落道具
+        GetLocalPlayer()<PlayerJionGame>.RemoveAllDrops()
         //显示战败横幅
         CreateBuiltInUIClient(out var resultBanner, BuiltInUIType.ResultBannerHud)
         resultBanner<UIWinOrLoseBanner>.Result = 2
@@ -371,6 +379,8 @@ static graph PVEController {
         IsGameSuccess = true
         // 停止所有buff并恢复伤害
         start GetLocalPlayer()<PlayerJionGame>.StopAllBuffsAndReset()
+        // 删除所有掉落道具
+        GetLocalPlayer()<PlayerJionGame>.RemoveAllDrops()
 
         var localPlayer entity<Player> = GetAllPlayers()[0]
         localPlayer<Player>.Invincible = true
@@ -382,8 +392,8 @@ static graph PVEController {
         EndPVEGame()
     }
 
-     // 结束PVE游戏
-     func EndPVEGame() {
+    // 结束PVE游戏
+    func EndPVEGame() {
         LogInfo("结束PVE游戏")
         IsGameActive = false
         IsCountdownActive = false

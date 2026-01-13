@@ -5,6 +5,7 @@ import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
 import "../PVE/FC_PVEMonsterManager.fcg" as FC_PVEMonsterManager
 import "Math.fcc" as Math
 import "Items.fcc" as Items
+import "List.fcc" as List
 
 [platform_client]
 graph TouchItem {
@@ -43,6 +44,7 @@ graph TouchItem {
             GetLocalPlayer()<PlayerJionGame>.ApplyHealthBonus(player,value)
         }
         // 删除道具实体
+        List.Remove(GetLocalPlayer()<PlayerJionGame>.DropItemList, ITEM)
         Destroy(ITEM)
     }
 }

@@ -762,6 +762,8 @@ static graph FC_PVEMonsterManager {
         
         // 创建基础道具
         CreateFromPrefab(out var largeItem, EResPrefab.ITEM)
+        // 把道具添加到列表，方便删除
+        List.Append(GetLocalPlayer()<PlayerJionGame>.DropItemList, largeItem)
         MiaomiaoToolEntity = largeItem as entity<LevelObject>
         LogInfo("掉落道具-" + itemTypeName)
         
