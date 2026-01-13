@@ -19,6 +19,8 @@ import "../Static/FC_Config.fcg" as FC_Config
 import "../ChoiceOneOfThreeCard/ChoiceOneOfThreeCard.fcg" as ChoiceOneOfThreeCard
 import "../PVE/FC_PVEMonsterManager.fcg" as FC_PVEMonsterManager
 import "../PVE/UI_C_HomeUI.fcg" as UI_C_HomeUI
+import "Playable.fcc" as Playable
+import "Animation.fcc" as Animation
 
 // 这里是RCT最新代码，WindGod & Holy巨献
 
@@ -2077,6 +2079,21 @@ graph PlayerJionGame {
         for key,Value in DropItemList {
             Destroy(Value)
         }
+    }
+
+    // 拾取掉落物的特效效果
+    async func PickUpDropEffect(player entity<Player> , BuffColor Color) {
+        // 创建并且播放特效
+		CreateEffectClient(out var ItemEfect, VFXType.Line, LoopType.Loop, true)
+        var PlayerItemEfect = ItemEfect
+        var PlayerPos = player<Player>.Position
+        PlayerItemEfect<Transform>.Position = PlayerPos
+        PlayerItemEfect<Effect>.Color = BuffColor
+        SetParentClient(player,PlayerItemEfect,true)
+
+        // 销毁掉落物
+        WaitForMillisecond(2000)
+        Destroy(PlayerItemEfect)
     }
 
     // 应用技能伤害加成

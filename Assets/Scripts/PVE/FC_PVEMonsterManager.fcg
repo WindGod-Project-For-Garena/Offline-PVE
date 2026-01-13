@@ -747,17 +747,23 @@ static graph FC_PVEMonsterManager {
         var itemType = RandomInt(0, 3) // 随机0,1,2（对应三种类型）
         var iconResource = EResSprite.WeaponDamage // 默认武器伤害图标
         var itemTypeName = ""
+        var BuffColor = #000000
         
         // 设置图标类型
         if itemType == 0 {
             iconResource = EResSprite.WeaponDamage
             itemTypeName = "武器伤害"
+            BuffColor = #FF4848FF
+
         } else if itemType == 1 {
             iconResource = EResSprite.SkillDamage
             itemTypeName = "技能伤害"
+            BuffColor = #FFFF51FF
+
         } else {
             iconResource = EResSprite.HP
             itemTypeName = "生命值"
+            BuffColor = #00FF55FF
         }
         
         // 创建基础道具
@@ -765,6 +771,11 @@ static graph FC_PVEMonsterManager {
         // 把道具添加到列表，方便删除
         List.Append(GetLocalPlayer()<PlayerJionGame>.DropItemList, largeItem)
         MiaomiaoToolEntity = largeItem as entity<LevelObject>
+        // 设置地面圈圈颜色
+        MiaomiaoToolEntity<Icon>.Color = BuffColor
+        // 设置光效颜色
+        var light = GetChildren(MiaomiaoToolEntity)
+        light[0]<Icon>.Color = BuffColor
         LogInfo("掉落道具-" + itemTypeName)
         
         if MiaomiaoToolEntity != nil {

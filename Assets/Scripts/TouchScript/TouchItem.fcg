@@ -10,7 +10,6 @@ import "List.fcc" as List
 [platform_client]
 graph TouchItem {
     event OnPlayerEnter(player entity<Player>) { 
-        LogInfo(thisEntity<Transform>.Parent)
         var ITEM = thisEntity<Transform>.Parent
         // 启动buff计时（防止重复启动）
         if !GetLocalPlayer()<PlayerJionGame>.buffTimerRunning {
@@ -28,6 +27,7 @@ graph TouchItem {
         var ICON = light[0] as entity<LevelObject>
         // 根据道具类型应用不同效果
         var iconResource = ICON<Icon>.Resource
+        var BuffColor = buff[0]<Icon>.Color
         if iconResource == EResSprite.WeaponDamage {
             // 武器伤害加成
             var value = 0.5
@@ -43,6 +43,8 @@ graph TouchItem {
             var value = 0.5
             GetLocalPlayer()<PlayerJionGame>.ApplyHealthBonus(player,value)
         }
+        // 给玩家特效
+        start GetLocalPlayer()<PlayerJionGame>.PickUpDropEffect(player,BuffColor)
         // 删除道具实体
         List.Remove(GetLocalPlayer()<PlayerJionGame>.DropItemList, ITEM)
         Destroy(ITEM)

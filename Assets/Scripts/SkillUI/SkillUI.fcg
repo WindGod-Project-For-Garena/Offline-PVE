@@ -186,6 +186,8 @@ graph SkillUI {
             GetLocalPlayer()<PlayerJionGame>.Skill1Damage += damage
             CreateDamageNum(damage, 10, #dde511, 800, monster as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
         }
+        WaitForMillisecond(2000)
+        Destroy(NewcreatedEntity)
     }
 
     func Skill_1_FireReleased(SkillFireDamage int){
@@ -310,6 +312,9 @@ graph SkillUI {
         //造成伤害
         DispatchEventToEntity(OnDamageMob, targetMonster, PlatformType.Client, List<object>{targetMonster, nil, realDamage, GetLocalPlayer()})
         CreateDamageNum(realDamage, 10, #dde511, 800, targetMonster as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
+
+        WaitForMillisecond(2000)
+        Destroy(thunderEffect)
     }
 
     // 创建闪电爆炸
@@ -333,6 +338,9 @@ graph SkillUI {
             GetLocalPlayer()<PlayerJionGame>.LightningExplosionDamage += Boomdamage
             CreateDamageNum(Boomdamage, 10, #00FFF2FF, 800, monster as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
         }
+
+        WaitForMillisecond(2000)
+        Destroy(NewcreatedEntity)
     }
 
     // 从指定位置获取范围内的怪物（新函数）
