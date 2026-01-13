@@ -24,7 +24,7 @@
         "valueTag": "unlockedValue"
       },
       "editorLockValue": false,
-      "editorVisibleValue": false,
+      "editorVisibleValue": true,
       "propsData": {
         "activeSelf": true,
         "transform": {
@@ -46,7 +46,7 @@
             "y": 0
           },
           "sizeDelta": {
-            "x": 2000,
+            "x": 1800,
             "y": 1000
           }
         },
@@ -54,14 +54,14 @@
         "priority": 0,
         "image": {
           "source": {
-            "fileId": "b063b0439839b3d97a8fd2aa6a57ef8b",
-            "filePath": "lib://fftextures/WorkshopIconLibrary/T_34_M_WS_ICON_SQUARE.png",
+            "fileId": "eoqcvbsjxgc-mkcdhgyn-q5fma821gz",
+            "filePath": "Assets\\Image\\Home\\天赋面板.jpeg",
             "_tag": {
               "type": "GFileRefer"
             },
             "fileType": "texture"
           },
-          "color": "#1B2B51",
+          "color": "#FFFFFF",
           "reverse": {
             "x": false,
             "y": false
@@ -11851,7 +11851,7 @@
                   },
                   "anchoredPosition": {
                     "x": 0,
-                    "y": 25
+                    "y": 50
                   },
                   "sizeDelta": {
                     "x": 500,
@@ -12346,7 +12346,7 @@
                   },
                   "anchoredPosition": {
                     "x": 0,
-                    "y": 25
+                    "y": 50
                   },
                   "sizeDelta": {
                     "x": 150,
@@ -12664,21 +12664,21 @@
               },
               "sizeDelta": {
                 "x": 2000,
-                "y": 400
+                "y": 350
               }
             },
             "alpha": 100,
             "priority": 0,
             "image": {
               "source": {
-                "fileId": "b063b0439839b3d97a8fd2aa6a57ef8b",
-                "filePath": "lib://fftextures/WorkshopIconLibrary/T_34_M_WS_ICON_SQUARE.png",
+                "fileId": "1hxzuhvfu44-mkcdhhcz-51ha05qyycf",
+                "filePath": "Assets\\Image\\Home\\背景板.png",
                 "_tag": {
                   "type": "GFileRefer"
                 },
                 "fileType": "texture"
               },
-              "color": "#131313",
+              "color": "#FFFFFF",
               "reverse": {
                 "x": false,
                 "y": false
@@ -12698,7 +12698,7 @@
               },
               "centerInvisible": false,
               "fillDir": 0,
-              "fillAmount": 0,
+              "fillAmount": 1,
               "invertFill": false,
               "flip": 0,
               "gradient": 1,
@@ -13084,4 +13084,4 @@
   "discriminator": "ISceneLike",
   "version": 3
 }
-//"{FE:{"v":"0.2.4165988","c":{"FF":5001},"s":100}
+//"{FE:{"v":"0.2.4169441","c":{"FF":5001},"s":100}
