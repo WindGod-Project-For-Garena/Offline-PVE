@@ -36,6 +36,7 @@ graph ChoiceOneOfThreeCard {
       var card3BB = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/ChoiceThreeCardPanel/Card_3/IsChoice")
       card3BB<UIWidget>.IsVisible = false
       SetConfirmButtonTextColor()
+      CloseTextImage(button, triggerPlayer)
    }
    
    //选择卡牌2
@@ -50,6 +51,7 @@ graph ChoiceOneOfThreeCard {
       var card3BB = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/ChoiceThreeCardPanel/Card_3/IsChoice")
       card3BB<UIWidget>.IsVisible = false
       SetConfirmButtonTextColor()
+      CloseTextImage(button, triggerPlayer)
    }
 
    //选择卡牌3
@@ -64,6 +66,7 @@ graph ChoiceOneOfThreeCard {
       var card3BB = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/ChoiceThreeCardPanel/Card_3/IsChoice")
       card3BB<UIWidget>.IsVisible = true
       SetConfirmButtonTextColor()
+      CloseTextImage(button, triggerPlayer)
    }
 
    //设置选择后的颜色
@@ -103,6 +106,7 @@ graph ChoiceOneOfThreeCard {
 //————————————————————————————————————————————————————————————————————————————————————————————————//
    //下一波开始
    async func OnConfirmBtnClicked(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+      CloseTextImage(button, triggerPlayer)
       if  IsOver == true { return }
       WaitForNextFrame()
       IsOver = true
@@ -325,6 +329,7 @@ graph ChoiceOneOfThreeCard {
       var ability2Level = GetLocalPlayer()<PlayerJionGame>.ability2Level
       var ability3Level = GetLocalPlayer()<PlayerJionGame>.ability3Level
       RefreshCard(level, ability1Level, ability2Level, ability3Level)
+      CloseTextImage(button, triggerPlayer)
    }
 
    // 刷新卡牌
@@ -583,22 +588,41 @@ graph ChoiceOneOfThreeCard {
             var typeText = Convert.ToString(cardInfo["Typetext"])
             var sktchtext = Convert.ToString(cardInfo["Sktchtext"])
             
-            LogInfo("属性文本: " + translationText)
-            LogInfo("稀有度: " + Convert.ToString(rarity))
-            LogInfo("类型文本: " + typeText)
+            // 获取TextImage面板
+            var TextImageEntity = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/NowChoicePanel/TextImage")
             
-            // 根据不同技能显示技能说明
-            if currentSkill == 1 {
-               LogInfo("=== 技能1说明 ===")
-            } else if currentSkill == 2 {
-               LogInfo("=== 技能2说明 ===")
-            }
+            // 根据cardIndex计算目标位置
+            var targetY float = 0
+            // 每个卡牌控件之间距离95
+            var baseY = 175
+            // 基准位置 - (cardIndex - 1) * 95
+            // cardIndex是从1开始的，所以减1
+            targetY = baseY - 40 - (cardIndex - 1) * 95
+            
+            // 设置TextImage面板的位置
+            var currentPos = TextImageEntity<UIWidget>.ActualPosition
+            TextImageEntity<UIWidget>.ActualPosition = Vector3{currentPos.X, targetY,0}
+            
+            // 显示TextImage面板
+            TextImageEntity<UIWidget>.IsVisible = true
+            
+            // 根据不同技能设置技能说明文本
+            var textWidget = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/NowChoicePanel/TextImage/Text")
+            textWidget<UIWidgetLabel>.Content = translationText
          } else {
             LogInfo("未找到卡牌ID " + Convert.ToString(cardId) + " 的数据")
          }
       } else {
          LogInfo("该位置没有卡牌（位置 " + Convert.ToString(cardIndex) + "）")
+         // 隐藏TextImage面板
+         var TextImageEntity = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/NowChoicePanel/TextImage")
+         TextImageEntity<UIWidget>.IsVisible = false
       }
+   }
+   
+   func CloseTextImage(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+      var TextImageEntity = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/NowChoicePanel/TextImage")
+      TextImageEntity<UIWidget>.IsVisible = false
    }
    
    // 选择卡牌（当玩家选择某张卡牌时调用）
@@ -757,6 +781,8 @@ graph ChoiceOneOfThreeCard {
             LogWarning("找不到图标控件: " + iconPath)
          }
       }
+      var TextImageEntity = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/NowChoicePanel/TextImage")
+      TextImageEntity<UIWidget>.IsVisible = false
    }
    
    // 清空已选卡牌记录

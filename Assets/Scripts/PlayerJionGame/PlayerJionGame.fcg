@@ -407,6 +407,7 @@ graph PlayerJionGame {
         ability2Level = ability2Level
         ability3Level = ability3Level
         ChoiceThreeCardUI<CustomUI>.IsVisible = true
+        ChoiceThreeCardUI<ChoiceOneOfThreeCard>.CloseTextImage(nil,nil)
         //----------------------------------------------------------------------------------------------------------------//
         var card1BB = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/ChoiceThreeCardPanel/Card_1/IsChoice")
         card1BB<UIWidget>.IsVisible = false
@@ -2212,6 +2213,7 @@ graph PlayerJionGame {
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     func ToClient_DisplaySkillThreeChoiceOne() {
         ChoiceThreeCardUI<CustomUI>.IsVisible = true
+        ChoiceThreeCardUI<ChoiceOneOfThreeCard>.CloseTextImage(nil,nil)
         IsNextThreeChoiceOne = 1       //打开标志位
         ChoiceThreeCardUI<ChoiceOneOfThreeCard>.RefreshCard(level, ability1Level, ability2Level, ability3Level)
         // start ShowSecondDown(10000)
