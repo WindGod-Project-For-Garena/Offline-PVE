@@ -318,13 +318,10 @@ static graph PVEController {
         var currTime int = globalEntity<Global>.GameTimeCount as int
         var totalTime int = (currTime - GameStartTime) / 1000
         GetLocalPlayer()<PlayerJionGame>.ToClient_ShowFinalStats(currTime, GameStartTime, IsGameSuccess, totalTime, CurrentLevel)
-        // 隐藏波次和时间信息
+        // 隐藏波次,时间信息,HP条
         GetLocalPlayer()<PlayerJionGame>.TimeInGameUI<CustomUI>.IsVisible = false
         GetLocalPlayer()<PlayerJionGame>.RighTabIFMUI<CustomUI>.IsVisible = false
-        var BossHPBar = GetLocalPlayer()<PlayerJionGame>.BossHPBar
-        if BossHPBar != nil {
-            BossHPBar<CustomUI>.IsVisible = false
-        }
+        GetLocalPlayer()<PlayerJionGame>.BossHPBar<CustomUI>.IsVisible = false
         FC_MonsterManager.TotalGold = 0
     }
     

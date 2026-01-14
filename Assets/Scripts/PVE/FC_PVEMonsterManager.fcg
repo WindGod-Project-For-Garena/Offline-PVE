@@ -94,9 +94,14 @@ static graph FC_PVEMonsterManager {
             var hpPercent float = 0.0
             if maxHP > 0 {
                 hpPercent = IntToFloat(currentHP) / IntToFloat(maxHP)
+                // 获取血条UI并更新
+                BossHPBar<CustomUI>.IsVisible = true
             }
-            // 获取血条UI并更新
-            BossHPBar<CustomUI>.IsVisible = true
+            if currentHP <= 0 {
+                // 如果血量为0，隐藏血条并返回
+                BossHPBar<CustomUI>.IsVisible = false
+                break
+            }
             var BossHPNow = GetWidgetByPath(GetLocalPlayer(), BossHPBar, "/Panel/HP")
             BossHPNow<UIWidgetImage>.FillAmount = hpPercent
             WaitForNextFrame()
@@ -548,7 +553,7 @@ static graph FC_PVEMonsterManager {
         // 在属性设置后检查是否是Boss怪
         if monsterInfo["IsBoss"] as bool {
             WaitForNextFrame()
-            // 调用精英怪专属函数
+            // 调用Boss怪专属函数
             start StartRecordBossLiveTime(monster)
         }
 
@@ -606,7 +611,6 @@ static graph FC_PVEMonsterManager {
         }
         if monster == nil || monster<Mob>.HP <= 0 {
             WaitForMillisecond(2000)
-            BossliveTime = 0
             //解锁下一关
             if CurrentLevel >= GetLocalPlayer()<PlayerJionGame>.NowLevel {
                 GetLocalPlayer()<PlayerJionGame>.NowLevel = GetLocalPlayer()<PlayerJionGame>.NowLevel + 1

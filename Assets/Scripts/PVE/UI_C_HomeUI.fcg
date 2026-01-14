@@ -214,5 +214,7 @@ graph UI_HomeUI {
         // 判断是否有记录，如果没有则不显示（！！！！！！！！！！！！）
         var LevelAmountIFMPart3Entity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.RankingListUI, "/RankPanel/TitleBoard/IFMPanel/IFMPanelBB/LevelAmountIFM/TitleIFM/Part3")
         LevelAmountIFMPart3Entity<UIWidget>.IsVisible = false
+        // 初始化排行榜
+        GetLocalPlayer()<PlayerJionGame>.ShowRankingListUI()
     }
 }
