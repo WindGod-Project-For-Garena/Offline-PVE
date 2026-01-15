@@ -44,6 +44,7 @@ graph PlayerJionGame {
     WaveCompleteUI entity<CustomHud>        //波次完成页面
     BossHPBar entity<CustomHud>             //Boss血条页面
     RankingListUI entity<CustomHud>        // 排行榜页面
+    KillShowBoardUI entity<CustomHud>        // 击杀页面
     
     CurrentSkill int = 1
     currentSelectedCardId int = 0
@@ -196,6 +197,8 @@ graph PlayerJionGame {
     CurrentHeroName string = ""  // 当前使用的角色名称
     HighestLevel int = 0  // 最高关卡
     FastestTime int = 0  // 最快通关时间
+    // 击杀数
+    KillCount int = 0  // 杀敌数
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
@@ -267,6 +270,10 @@ graph PlayerJionGame {
             CreateCustomUIClient(out var bossHPBar, EResUI.BossHP)
             BossHPBar = bossHPBar
             bossHPBar<CustomUI>.IsVisible = false
+
+            CreateCustomUIClient(out var KillShowBoardUIEntity, EResUI.KillShowBoard)
+            KillShowBoardUI = KillShowBoardUIEntity
+            KillShowBoardUIEntity<CustomUI>.IsVisible = false
 
             var Skill_1Panel = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_1")
             Skill_1Panel<UIWidget>.IsVisible = false
@@ -2272,7 +2279,6 @@ graph PlayerJionGame {
         LightningDamage  = 0                 // 闪电伤害统计
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
-
     // 重置数据
     func ResetInGameData() {
         CopyToInGameData()
@@ -2295,7 +2301,72 @@ graph PlayerJionGame {
         currentJoyStick<UIWidget>.IsVisible = false
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+//————————————————————————————————————————————————————击杀显示功能—————————————————————————————————————————————————————————————//
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+    // 显示击杀信息
+    async func KillInfo(part string) {
+        var One = GetWidgetByPath(GetLocalPlayer(), KillShowBoardUI, "/Panel/One/One_Icon")
+        var Ten = GetWidgetByPath(GetLocalPlayer(), KillShowBoardUI, "/Panel/Ten/Ten_Icon")
+        // 显示爆头标志
+        if part == "Head" {
+            KillShowBoardUI<CustomUI>.IsVisible = true
+            One<UIWidget>.IsVisible = true
+            Ten<UIWidget>.IsVisible = false
+
+            One<UIWidgetImage>.Alpha = 0.0
+
+            wait OutKillTween(One)
+            
+            KillShowBoardUI<CustomUI>.IsVisible = false
+        }
+        // 显示十杀标志，计算击杀数+1
+        KillCount = KillCount + 1
+        if KillCount == 10 {
+            KillShowBoardUI<CustomUI>.IsVisible = true
+            One<UIWidget>.IsVisible = false
+            Ten<UIWidget>.IsVisible = true
+
+            Ten<UIWidgetImage>.Alpha = 0.0
+
+            wait OutKillTween(Ten)
+
+            KillCount = 0
+
+            KillShowBoardUI<CustomUI>.IsVisible = false
+        }
+    }
+
+    async func OutKillTween(num entity<UIWidget>) {
+        // 创建弹出动画
+        CreateTween(
+            num,
+            UIWidgetImage.Alpha,
+            0.0,
+            1.0,
+            TweenStyle.Once,
+            CreateCurve({0.0, 0.0, 1.0, 1.0}),
+            500,
+            out var OutTween,
+            true,
+        )
+        WaitForMillisecond(500)
+        Destroy(OutTween)
+        WaitForMillisecond(1000)
+        // 创建消失动画
+        CreateTween(
+            num,
+            UIWidgetImage.Alpha,
+            1.0,
+            0.0,
+            TweenStyle.Once,
+            CreateCurve({0.0, 0.0, 1.0, 1.0}),
+            500,
+            out var CloseTween,
+            true,
+        )
+        WaitForMillisecond(500)
+        Destroy(CloseTween)
+    }
 //————————————————————————————————————————————————————排行榜功能—————————————————————————————————————————————————————————————//
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//

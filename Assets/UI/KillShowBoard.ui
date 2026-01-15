@@ -51,7 +51,10 @@
                         "selfValue": true,
                         "valueTag": "activeValue"
                       },
-                      "unlockedValue": null,
+                      "unlockedValue": {
+                        "selfValue": true,
+                        "valueTag": "unlockedValue"
+                      },
                       "editorLockValue": false,
                       "editorVisibleValue": true,
                       "propsData": {
@@ -83,7 +86,7 @@
                         "priority": 0,
                         "text": {
                           "value": "Head Shot",
-                          "key": "",
+                          "key": "HEADSHOT",
                           "font": "Default",
                           "fontSize": 20,
                           "fontStyle": {
@@ -131,7 +134,10 @@
                     "selfValue": true,
                     "valueTag": "activeValue"
                   },
-                  "unlockedValue": null,
+                  "unlockedValue": {
+                    "selfValue": true,
+                    "valueTag": "unlockedValue"
+                  },
                   "editorLockValue": false,
                   "editorVisibleValue": true,
                   "propsData": {
@@ -225,7 +231,10 @@
                 "selfValue": true,
                 "valueTag": "activeValue"
               },
-              "unlockedValue": null,
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
               "editorLockValue": false,
               "editorVisibleValue": true,
               "propsData": {
@@ -319,7 +328,10 @@
             "selfValue": true,
             "valueTag": "activeValue"
           },
-          "unlockedValue": null,
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
           "editorLockValue": false,
           "editorVisibleValue": true,
           "propsData": {
@@ -412,14 +424,17 @@
                   "children": [],
                   "prefabVariant": null,
                   "activeValue": {
-                    "selfValue": true,
+                    "selfValue": false,
                     "valueTag": "activeValue"
                   },
-                  "unlockedValue": null,
+                  "unlockedValue": {
+                    "selfValue": true,
+                    "valueTag": "unlockedValue"
+                  },
                   "editorLockValue": false,
-                  "editorVisibleValue": false,
+                  "editorVisibleValue": true,
                   "propsData": {
-                    "activeSelf": true,
+                    "activeSelf": false,
                     "transform": {
                       "rotate": 0,
                       "anchorMin": {
@@ -510,7 +525,10 @@
                         "selfValue": true,
                         "valueTag": "activeValue"
                       },
-                      "unlockedValue": null,
+                      "unlockedValue": {
+                        "selfValue": true,
+                        "valueTag": "unlockedValue"
+                      },
                       "propsData": {
                         "activeSelf": true,
                         "transform": {
@@ -539,8 +557,8 @@
                         "alpha": 100,
                         "priority": 0,
                         "text": {
-                          "value": "Head Shot",
-                          "key": "",
+                          "value": "10杀",
+                          "key": "KILL_10",
                           "font": "Default",
                           "fontSize": 20,
                           "fontStyle": {
@@ -582,7 +600,7 @@
                         "tagPointers": []
                       },
                       "editorLockValue": false,
-                      "editorVisibleValue": false
+                      "editorVisibleValue": true
                     }
                   ],
                   "prefabVariant": null,
@@ -590,7 +608,10 @@
                     "selfValue": true,
                     "valueTag": "activeValue"
                   },
-                  "unlockedValue": null,
+                  "unlockedValue": {
+                    "selfValue": true,
+                    "valueTag": "unlockedValue"
+                  },
                   "propsData": {
                     "activeSelf": true,
                     "transform": {
@@ -609,7 +630,7 @@
                       },
                       "anchoredPosition": {
                         "x": 0,
-                        "y": -51.99998474121094
+                        "y": -52
                       },
                       "sizeDelta": {
                         "x": 134,
@@ -676,7 +697,7 @@
                     "tagPointers": []
                   },
                   "editorLockValue": false,
-                  "editorVisibleValue": false
+                  "editorVisibleValue": true
                 }
               ],
               "prefabVariant": null,
@@ -684,7 +705,10 @@
                 "selfValue": true,
                 "valueTag": "activeValue"
               },
-              "unlockedValue": null,
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
               "propsData": {
                 "activeSelf": true,
                 "transform": {
@@ -703,7 +727,7 @@
                   },
                   "anchoredPosition": {
                     "x": 0,
-                    "y": -0.0000152587890625
+                    "y": 0
                   },
                   "sizeDelta": {
                     "x": 160,
@@ -770,7 +794,7 @@
                 "tagPointers": []
               },
               "editorLockValue": false,
-              "editorVisibleValue": false
+              "editorVisibleValue": true
             }
           ],
           "prefabVariant": null,
@@ -778,9 +802,12 @@
             "selfValue": true,
             "valueTag": "activeValue"
           },
-          "unlockedValue": null,
+          "unlockedValue": {
+            "selfValue": true,
+            "valueTag": "unlockedValue"
+          },
           "editorLockValue": false,
-          "editorVisibleValue": false,
+          "editorVisibleValue": true,
           "propsData": {
             "activeSelf": true,
             "transform": {
@@ -851,7 +878,10 @@
         "selfValue": true,
         "valueTag": "activeValue"
       },
-      "unlockedValue": null,
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
       "editorLockValue": false,
       "editorVisibleValue": true,
       "propsData": {
@@ -924,7 +954,10 @@
     "selfValue": true,
     "valueTag": "activeValue"
   },
-  "unlockedValue": null,
+  "unlockedValue": {
+    "selfValue": true,
+    "valueTag": "unlockedValue"
+  },
   "editorLockValue": false,
   "editorVisibleValue": true,
   "propsData": {
@@ -968,4 +1001,4 @@
   "discriminator": "ISceneLike",
   "version": 3
 }
-//"{FE:{"v":"0.2.4113096","c":{"FF":5001},"s":100}
+//"{FE:{"v":"0.2.4170985","c":{"FF":5001},"s":100}

@@ -59,6 +59,7 @@ static graph PVEController {
         var TotalKills = FC_MonsterManager.TotalKills
         var TotalKillsEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.RighTabIFMUI, "/Panel/Killed/logo/Num")
         TotalKillsEntity<UIWidgetLabel>.Content = TotalKills
+        GetLocalPlayer()<PlayerJionGame>.KillCount = 0
     }
 
     // 开始PVE游戏（指定关卡）

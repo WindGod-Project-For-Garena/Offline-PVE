@@ -6,6 +6,7 @@ import "Camera.fcc" as Camera
 import "Math.fcc" as Math
 import "Combat.fcc" as Combat
 import "../CustomEvent.fcc" as CustomEvent
+import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
 import "../PVE/FC_PVEMonsterManager.fcg" as PVEMonsterManager
 import "Physics.fcc" as Physics
 import "../Global/FC_Global_MobSkillHandler.fcg" as MobSkillHandler
@@ -121,9 +122,12 @@ graph FC_NormalZombie {
 			mob<Mob>.HateGainTime = globalEntity<Global>.GameTimeCount
 		}
 		//处理血量，如果血量小于0，则死亡
-		mob<Mob>.HP = mob<Mob>.HP - damage
-		if (mob<Mob>.HP <= 0) {
-			mob<Mob>.HP = 0
+		if (mob<Mob>.HP > 0) {  // 只在活着的时候处理伤害
+			mob<Mob>.HP = mob<Mob>.HP - damage
+			if (mob<Mob>.HP <= 0) {
+				mob<Mob>.HP = 0
+				start GetLocalPlayer()<PlayerJionGame>.KillInfo(part)
+			}
 		}
 	}
 
