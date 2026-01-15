@@ -390,7 +390,7 @@ graph PlayerJionGame {
             cardInfo["Value"] = cardRow[2] as List<float>
             cardInfo["Rarity"] = cardRow[3] as List<int>
             cardInfo["TranslationText"] = cardRow[4]
-            cardInfo["Sktchtext"] = cardRow[5]
+            cardInfo["MathValue"] = cardRow[5]
             cardInfo["Typetext"] = cardRow[6]
             Skill_1_CardData[cardId] = cardInfo
             // 在显示时格式化浮点数，保留两位小数
@@ -412,7 +412,7 @@ graph PlayerJionGame {
             cardInfo["Value"] = cardRow[2] as List<float>
             cardInfo["Rarity"] = cardRow[3] as List<int>
             cardInfo["TranslationText"] = cardRow[4]
-            cardInfo["Sktchtext"] = cardRow[5]
+            cardInfo["MathValue"] = cardRow[5]
             cardInfo["Typetext"] = cardRow[6]
             Skill_2_CardData[cardId] = cardInfo
             // 在显示时格式化浮点数，保留两位小数
@@ -906,7 +906,7 @@ graph PlayerJionGame {
             cardInfo["Value"] = cardRow[2] as List<float>
             cardInfo["Rarity"] = cardRow[3] as List<int>
             cardInfo["TranslationText"] = cardRow[4]
-            cardInfo["Sktchtext"] = cardRow[5]
+            cardInfo["MathValue"] = cardRow[5]
             cardInfo["GiftedName"] = cardRow[6]
             Gifted_CardData[cardId] = cardInfo
             // 在显示时格式化浮点数，保留两位小数

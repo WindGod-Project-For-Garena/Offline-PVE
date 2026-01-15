@@ -262,7 +262,9 @@ static graph PVEController {
                 BossPanel<UIWidget>.IsVisible = true
             }
             if WaveText != nil {
-                WaveText<UIWidgetLabel>.Content = "波数：" + CurrentWave + "/5"
+                // 直接使用翻译文本
+                var WaveTexttt = LocString{"Wave", List<string>{}}
+                WaveText<UIWidgetLabel>.Content = WaveTexttt + ": " + CurrentWave + "/5"
             }
             if TimeText != nil {
                 TimeText<UIWidgetLabel>.Content = "--:--"  // Boss战没有时间限制
@@ -276,7 +278,9 @@ static graph PVEController {
                 BossPanel<UIWidget>.IsVisible = false
             }
             if WaveText != nil {
-                WaveText<UIWidgetLabel>.Content = "波数：" + CurrentWave + "/5"
+                // 直接使用翻译文本
+                var WaveTexttt = LocString{"Wave", List<string>{}}
+                WaveText<UIWidgetLabel>.Content = WaveTexttt + ": " + CurrentWave + "/5"
             }
             if TimeText != nil {
                 TimeText<UIWidgetLabel>.Content = FormatTimeMMSS(remainTime)

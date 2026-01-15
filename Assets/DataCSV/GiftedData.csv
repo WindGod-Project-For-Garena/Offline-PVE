@@ -1,12 +1,12 @@
-﻿CardID,Nature,Value,Rarity,TranslationText,Sktchtext,GiftedName
-int,string,float,int,string,string,string
-1,SkillDamage,0.2,1,技能伤害+20%,GiftedCard_Role_01,技能伤害 I
-2,WeaponDamage,0.2,1,武器伤害+20%,GiftedCard_Role_02,武器伤害 I
-3,SkillDamage,0.5,2,技能伤害+50%,GiftedCard_Role_03,技能伤害 II
-4,WeaponDamage,0.5,2,武器伤害+50%,GiftedCard_Role_04,武器伤害 II
-5,HP,5,2,血量+5,GiftedCard_Role_05,血量 I
-6,MoveSpeed,0.01,2,移速+1%,GiftedCard_Role_06,移速 I
-7,SkillDamage,1,3,技能伤害+100%,GiftedCard_Role_07,技能伤害 III
-8,WeaponDamage,1,3,武器伤害+100%,GiftedCard_Role_08,武器伤害 III
-9,HP,10,3,血量+10,GiftedCard_Role_09,血量 II
-10,MoveSpeed,0.02,3,移速+2%,GiftedCard_Role_10,移速 II
+﻿CardID,Nature,Value,Rarity,TranslationText,MathValue,GiftedName,,
+int,string,float,int,string,string,string,,
+1,SkillDamage,0.2,1,GIFT_SKILL_DAMAGE_ADD,20,技能伤害 I,,技能伤害+20%
+2,WeaponDamage,0.2,1,GIFT_WEAPON_DAMAGE_ADD,20,武器伤害 I,,武器伤害+20%
+3,SkillDamage,0.5,2,GIFT_SKILL_DAMAGE_ADD,50,技能伤害 II,,技能伤害+50%
+4,WeaponDamage,0.5,2,GIFT_WEAPON_DAMAGE_ADD,50,武器伤害 II,,武器伤害+50%
+5,HP,5,2,GIFT_HP_ADD,5,血量 I,,血量+5
+6,MoveSpeed,0.01,2,GIFT_MOVESPEED_ADD,1,移速 I,,移速+1%
+7,SkillDamage,1,3,GIFT_SKILL_DAMAGE_ADD,100,技能伤害 III,,技能伤害+100%
+8,WeaponDamage,1,3,GIFT_WEAPON_DAMAGE_ADD,100,武器伤害 III,,武器伤害+100%
+9,HP,10,3,GIFT_HP_ADD,10,血量 II,,血量+10
+10,MoveSpeed,0.02,3,GIFT_MOVESPEED_ADD,2,移速 II,,移速+2%

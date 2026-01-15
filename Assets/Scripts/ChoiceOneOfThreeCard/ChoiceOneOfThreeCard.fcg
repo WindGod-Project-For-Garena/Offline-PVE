@@ -187,11 +187,15 @@ graph ChoiceOneOfThreeCard {
 
 		createdEntity3<UIOpeningBanner>.Icon = EResSprite.UI_RuinSurvivor_Icon01
 
-      createdEntity3<UIOpeningBanner>.Title = "波数 " + (PVEController.CurrentWave + 1)
+      // 直接使用翻译文本
+      var WaveText = LocString{"Wave", List<string>{}}
+      createdEntity3<UIOpeningBanner>.Title = WaveText + " " + (PVEController.CurrentWave + 1)
       var createdEntity5 = createdEntity3<UIOpeningBanner>.Title as entity
       createdEntity5<UIWidgetLabel>.FontSize = 48
 
-      createdEntity3<UIOpeningBanner>.Description = "目标：存活" + "02:00"
+      // 直接使用翻译文本
+      var Objective_SurviveText = LocString{"Objective_Survive", List<string>{}}
+      createdEntity3<UIOpeningBanner>.Description = Objective_SurviveText + "02:00"
       var createdEntity6 = createdEntity3<UIOpeningBanner>.Description as entity
       createdEntity6<UIWidgetLabel>.FontSize = 36
       createdEntity6<UIWidgetLabel>.Color = #D1D1D1
@@ -495,21 +499,18 @@ graph ChoiceOneOfThreeCard {
    // 生成卡牌描述文本
    func GenerateCardDescription(card Map<string, object>) string {
       var translationText = Convert.ToString(card["TranslationText"])
-      // 如果有翻译文本，直接使用
-      if translationText != "" && translationText != "None" {
-         return translationText
-      }
-      return ""
+      var MathValue = Convert.ToString(card["MathValue"])
+      // 直接使用翻译文本
+      translationText = LocString{translationText, List<string>{MathValue}}
+      return translationText
    }
    
    // 生成卡牌类型文本
    func GenerateCardTypeText(card Map<string, object>) string {
       var translationText = Convert.ToString(card["Typetext"])
-      // 如果有翻译文本，直接使用
-      if translationText != "" && translationText != "None" {
-         return translationText
-      }
-      return ""
+      // 直接使用翻译文本
+      translationText = LocString{translationText, List<string>{}}
+      return translationText
    }
    
    // 更新卡牌稀有度显示（根据稀有度显示不同的边框颜色）
@@ -586,7 +587,7 @@ graph ChoiceOneOfThreeCard {
             var value = cardInfo["Value"] as float
             var rarity = cardInfo["Rarity"] as int
             var typeText = Convert.ToString(cardInfo["Typetext"])
-            var sktchtext = Convert.ToString(cardInfo["Sktchtext"])
+            var MathValue = Convert.ToString(cardInfo["MathValue"])
             
             // 获取TextImage面板
             var TextImageEntity = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/NowChoicePanel/TextImage")
