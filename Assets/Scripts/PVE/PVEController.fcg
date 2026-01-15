@@ -158,7 +158,9 @@ static graph PVEController {
             WaveCompleteUI<CustomUI>.IsVisible = true
             var WaveText = GetWidgetByPath(GetLocalPlayer(), WaveCompleteUI, "/WaveShow/Text")
             if WaveText != nil {
-                WaveText<UIWidgetLabel>.Content = "第" + CurrentWave + "波完成"
+                // 直接使用翻译文本
+                var CurrentWaveTTT = LocString{"WAVE_CLEAR", List<string>{CurrentWave}}
+                WaveText<UIWidgetLabel>.Content = CurrentWaveTTT
             }
 
             WaitForMillisecond(2000)

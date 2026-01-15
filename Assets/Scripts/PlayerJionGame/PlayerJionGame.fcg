@@ -1107,7 +1107,9 @@ graph PlayerJionGame {
         // 更新天赋卡牌说明
         var PopupText = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/PopupPanel/Bb/ICONBb/Text")
         if PopupText != nil {
-            PopupText<UIWidgetLabel>.Content = GiftedNameText
+            // 直接使用翻译文本
+            var PopupTextTTT = LocString{GiftedNameText, List<string>{}}
+            PopupText<UIWidgetLabel>.Content = PopupTextTTT
         }
 
         // 更具稀有度更新边框颜色
@@ -1502,7 +1504,9 @@ graph PlayerJionGame {
         // 更新天赋卡牌说明
         var textEntity = GetChildByName(HasCardPanelEntity, "IFMText")
         if textEntity != nil {
-            textEntity<UIWidgetLabel>.Content = GiftedNameText
+            // 直接使用翻译文本
+            var textTTT = LocString{GiftedNameText, List<string>{level}}
+            textEntity<UIWidgetLabel>.Content = textTTT
         }
         
         // 更新抽中次数显示

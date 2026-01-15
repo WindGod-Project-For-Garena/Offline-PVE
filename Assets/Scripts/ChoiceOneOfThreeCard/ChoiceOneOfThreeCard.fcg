@@ -609,7 +609,9 @@ graph ChoiceOneOfThreeCard {
             
             // 根据不同技能设置技能说明文本
             var textWidget = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/NowChoicePanel/TextImage/Text")
-            textWidget<UIWidgetLabel>.Content = translationText
+            // 直接使用翻译文本
+            var textWidgetTTT = LocString{translationText, List<string>{MathValue}}
+            textWidget<UIWidgetLabel>.Content = textWidgetTTT
          } else {
             LogInfo("未找到卡牌ID " + Convert.ToString(cardId) + " 的数据")
          }

@@ -96,6 +96,7 @@ graph GiftedPanel {
           // 获取卡牌信息
           var giftedNameText = Convert.ToString(cardInfo["GiftedName"])
           var translationText = Convert.ToString(cardInfo["TranslationText"])
+          var MathValue = Convert.ToString(cardInfo["MathValue"])
           var nature = Convert.ToString(cardInfo["Nature"])
           var rarity = cardInfo["Rarity"] as int
           // 获取当前卡牌已抽取次数
@@ -112,21 +113,24 @@ graph GiftedPanel {
           var skillDescText = ""
           if isCardCollected {
                // 已抽到过的情况
-               skillDescText = translationText
+               var skillNameTTT = LocString{translationText, List<string>{}}
+               var Have = LocString{"HOLDING_QUANTITY", List<string>{}}
+               var MaxTTT = LocString{"LIMIT_REACHED", List<string>{}}
+               skillDescText = skillNameTTT
                // 获取最大抽取次数
                var maxCount = GetLocalPlayer()<PlayerJionGame>.GetMaxDrawCount(nature)
                // 添加持有数量信息
                if maxCount != 99999999 {
                     // 有最大限制的情况
-                    skillDescText = skillDescText + "，持有数量" + Convert.ToString(currentCount)
+                    skillDescText = skillDescText + "，" + Have + Convert.ToString(currentCount)
                     if currentCount >= maxCount {
-                         skillDescText = skillDescText + "(已达上限)"
+                         skillDescText = skillDescText + MaxTTT
                     } else {
                          skillDescText = skillDescText + "/" + Convert.ToString(maxCount)
                     }
                } else {
                     // 无限制的情况
-                    skillDescText = skillDescText + "，持有数量" + Convert.ToString(currentCount)
+                    skillDescText = skillDescText + "，" + Have + Convert.ToString(currentCount)
                }
           } else {
                // 没有抽到过的情况
@@ -134,11 +138,11 @@ graph GiftedPanel {
                skillDescText = ""
           }
           // 显示到UI
-          UpdateCardDetailUI(skillNameText, skillDescText, rarity)
+          UpdateCardDetailUI(skillNameText, skillDescText, rarity , MathValue)
      }
     
     // 更新卡牌详情UI显示
-     func UpdateCardDetailUI(skillNameText string, skillDescText string, rarity int) {
+     func UpdateCardDetailUI(skillNameText string, skillDescText string, rarity int , MathValue string) {
           if skillNameText == "" && skillDescText == "" {
                LogInfo(skillNameText)
                // 如果名称和描述都是空，说明卡牌未解锁，直接返回
@@ -153,13 +157,17 @@ graph GiftedPanel {
           // 技能名称文本控件
           var skillNameWidget = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.GiftedUI, "/Panel/GiftIFMPanel/SubTitleCCCC/GiftIFMTitle")
           if skillNameWidget != nil {
-               skillNameWidget<UIWidgetLabel>.Content = skillNameText
+               // 直接使用翻译文本
+               var skillNameTTT = LocString{skillNameText, List<string>{}}
+               skillNameWidget<UIWidgetLabel>.Content = skillNameTTT
           }
           
           // 技能描述文本控件
           var skillDescWidget = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.GiftedUI, "/Panel/GiftIFMPanel/SubTitleCCCC/GiftIFMTitle/GiftIFMSubtitle")
           if skillDescWidget != nil {
-               skillDescWidget<UIWidgetLabel>.Content = skillDescText
+               // 直接使用翻译文本
+               var skillDescTTT = LocString{skillDescText, List<string>{MathValue}}
+               skillDescWidget<UIWidgetLabel>.Content = skillDescTTT
           }
           
           // 显示详情面板

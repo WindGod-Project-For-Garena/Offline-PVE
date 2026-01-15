@@ -70,8 +70,10 @@ graph UI_HomeUI {
 
     // 更新关卡显示和按钮状态
     func UpdateLevelDisplay() {
+        // 直接使用翻译文本
+        var levelNumTTT = LocString{"LEVEL_FORMAT", List<string>{level}}
         // 更新关卡文本
-        levelNum<UIWidgetLabel>.Content = "第 " + level + " 关"
+        levelNum<UIWidgetLabel>.Content = levelNumTTT
         // 保存到PlayerJionGame
         GetLocalPlayer()<PlayerJionGame>.level = level
         // 更新按钮状态
