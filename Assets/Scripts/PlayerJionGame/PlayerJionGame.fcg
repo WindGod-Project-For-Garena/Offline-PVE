@@ -21,6 +21,7 @@ import "../PVE/FC_PVEMonsterManager.fcg" as FC_PVEMonsterManager
 import "../PVE/UI_C_HomeUI.fcg" as UI_C_HomeUI
 import "Playable.fcc" as Playable
 import "Animation.fcc" as Animation
+import "Database.fcc" as Database
 
 // 这里是RCT最新代码，WindGod & Holy巨献
 
@@ -163,7 +164,7 @@ graph PlayerJionGame {
     //天赋卡牌属性库
     Gifted_CardData Map<int, Map<string, object>> = Map<int, Map<string, object>>{}
     //已抽到的天赋卡牌数量，记录什么卡牌什么数量
-    Gifted_Card_Count Map<int, int> = Map<int, int>{}
+    Gifted_Card_Count List<int> = List<int>{}
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     // 天赋卡牌概率库
     Gifted_CardProbability List<Map<string, object>> = List<Map<string, object>>{}
@@ -200,6 +201,17 @@ graph PlayerJionGame {
     // 击杀数
     KillCount int = 0  // 杀敌数
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+    // 数据存储相关
+    Gifted_Card_Count_KEY string = "Gifted_Card_Count"
+	TotalDrawCount_KEY string = "TotalDrawCount"
+	RankingList_KEY string = "RankingList"
+    // 已抽到的天赋卡牌数量
+    DATA_Gifted_Card_Count List<int> = List<int>{}
+    // 总抽卡次数
+    DATA_TotalDrawCount List<int> = List<int>{0}
+    // 排行榜数据结构
+    DATA_RankingList List<Map<string, object>> = List<Map<string, object>>{}
+    //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     event OnPlayerJoin(player entity<Player>) {
@@ -208,7 +220,44 @@ graph PlayerJionGame {
             // HomeUI = ui
 
             currPlayer = player
-   
+
+            var player_id UUID = currPlayer<Player>.UserUID
+            ReadFromLocalDataStore("Gifted_Card_Count", player_id, Gifted_Card_Count_KEY, out var result1, "", out var status_code_1)
+            ReadFromLocalDataStore("TotalDrawCount", player_id, TotalDrawCount_KEY, out var result2, "", out var status_code_2)
+            ReadFromLocalDataStore("RankingList", player_id, RankingList_KEY, out var result3, "", out var status_code_3)
+
+            if result1 == nil {
+                DATA_Gifted_Card_Count = List<int>{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+                Gifted_Card_Count = DATA_Gifted_Card_Count
+            } else {
+                DATA_Gifted_Card_Count = result1 as List<int>
+                // 确保长度足够
+                while List.Length(DATA_Gifted_Card_Count) < 11 {
+                    List.Append(DATA_Gifted_Card_Count, 0)
+                }
+                Gifted_Card_Count = DATA_Gifted_Card_Count
+            }
+            
+            if result2 == nil {
+                DATA_TotalDrawCount = List<int>{0}
+                TotalDrawCount = DATA_TotalDrawCount[0]
+            } else {
+                DATA_TotalDrawCount = result2 as List<int>
+                TotalDrawCount = DATA_TotalDrawCount[0]
+            }
+
+            if result3 == nil {
+                DATA_RankingList = List<Map<string, object>>{}
+                RankingList = DATA_RankingList
+            } else {
+                DATA_RankingList = result3 as List<Map<string, object>>
+                RankingList = DATA_RankingList
+            }
+
+            LogInfo("读取的天赋卡牌数量: " + ToString(Gifted_Card_Count))
+            LogInfo("读取的总抽卡次数: " + ToString(TotalDrawCount))
+            LogInfo("读取的排行榜数据: " + ToString(RankingList))
+            
             CreateCustomUIClient(out var ChoiceHeroUIEntity, EResUI.ChoiceHero)
             ChoiceHeroUI = ChoiceHeroUIEntity 
             ChoiceHeroUIEntity<CustomUI>.IsVisible = true
@@ -304,6 +353,8 @@ graph PlayerJionGame {
             // 初始化排行榜数据
             InitRankingList()
             LoadRankingListFromStorage()
+            // 重新应用所有已抽取卡牌的效果
+            ApplyAllSavedCardEffects()
             IsNextThreeChoiceOne = 0
         }
     }
@@ -342,7 +393,6 @@ graph PlayerJionGame {
         }
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
-
     // 复制基础数据到局外加成数据
     func CopyToOuterBonusData() {
         // 复制玩家基础数据
@@ -887,8 +937,6 @@ graph PlayerJionGame {
         UpdatePlayerAttributes()
         IsNextThreeChoiceOne = 0
     }
-
-
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
 //—————————————————————————————————————————————————以下为天赋卡片的数据————————————————————————————————————————————————————————//
 //—————————————————————————————————————————————————以下为天赋卡片的数据————————————————————————————————————————————————————————//
@@ -1063,13 +1111,24 @@ graph PlayerJionGame {
         var selectedCard = Gifted_CardData[selectedCardId]
         // 更新卡牌计数
         var currentCount = 0
-        if Gifted_Card_Count[selectedCardId] != nil {
+        if List.Length(Gifted_Card_Count) > selectedCardId {
             currentCount = Gifted_Card_Count[selectedCardId]
         }
+        // 确保List长度足够
+        while List.Length(Gifted_Card_Count) <= selectedCardId {
+            List.Append(Gifted_Card_Count, 0)
+        }
+        // 设置新的数量
         Gifted_Card_Count[selectedCardId] = currentCount + 1
+        DATA_Gifted_Card_Count = Gifted_Card_Count
+        LogInfo("DATA_Gifted_Card_Count: " + DATA_Gifted_Card_Count)
         
         // 更新总抽卡次数
         TotalDrawCount = TotalDrawCount + 1
+        DATA_TotalDrawCount[0] = TotalDrawCount
+
+        // 保存本地数据
+        SAVE_DATA_Gifted(DATA_Gifted_Card_Count, DATA_TotalDrawCount)
         
         // 应用卡牌效果
         ApplyGiftedCardEffect(selectedCardId)
@@ -1294,6 +1353,16 @@ graph PlayerJionGame {
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+    // 保存天赋卡牌数据
+    func SAVE_DATA_Gifted(DATA_Gifted_Card_Count List<int> , DATA_TotalDrawCount List<int>) {
+        LogInfo("开始保存天赋卡牌数据")
+        var player_id UUID = currPlayer<Player>.UserUID
+        // 天赋卡牌数据
+        WriteToLocalDataStore("Gifted_Card_Count", player_id, Gifted_Card_Count_KEY, DATA_Gifted_Card_Count, "", out var status_code1)
+        // 当前抽取数量
+        WriteToLocalDataStore("TotalDrawCount", player_id, TotalDrawCount_KEY, DATA_TotalDrawCount, "", out var status_code2)
+    }
+
     // 应用卡牌效果
     func ApplyGiftedCardEffect(cardId int) {
         var cardInfo = Gifted_CardData[cardId]
@@ -1579,8 +1648,10 @@ graph PlayerJionGame {
         for cardId = 1, 11, 1 {
             var cardInfo = Gifted_CardData[cardId]
             if cardInfo != nil {
-                // 根据当前计数更新UI状态
-                UpdateSingleGiftedCardUI(cardId, listParent)
+                // 获取当前卡牌的抽取次数
+                var currentCount = GetCardDrawCount(cardId)
+                // 更新单个卡牌UI
+                UpdateSingleGiftedCardUI(cardId, listParent, currentCount, cardInfo)
             }
         }
         var currentConfig = GetCurrentDrawConfig()
@@ -1615,25 +1686,76 @@ graph PlayerJionGame {
     }
 
     // 更新单个卡牌的UI状态
-    func UpdateSingleGiftedCardUI(cardId int, listParent entity<Entity>) {
-        var cardInfo = Gifted_CardData[cardId]
-        var currentCount = GetCardDrawCount(cardId)
+    func UpdateSingleGiftedCardUI(cardId int, listParent entity<Entity>, currentCount int, cardInfo Map<string, object>) {
         var cardIndex = Convert.ToString("Card (" + cardId + ")")
         var cardEntity = GetChildByName(listParent, cardIndex)
+        
+        if cardEntity == nil {
+            LogWarning("找不到卡牌UI: " + cardIndex)
+            return
+        }
+        
         if currentCount > 0 {
             // 已点亮的状态
             var iconImageEntity = GetChildByName(cardEntity, "IconImage")
             if iconImageEntity != nil {
                 iconImageEntity<UIWidget>.IsVisible = false
             }
+
+            var TextEntity = GetChildByName(cardEntity, "Text")
+            if TextEntity != nil {
+                TextEntity<UIWidget>.IsVisible = false
+            }
+            
             var hasCardPanelEntity = GetChildByName(cardEntity, "HasCardPanel")
             if hasCardPanelEntity != nil {
                 hasCardPanelEntity<UIWidget>.IsVisible = true
+                
+                // 设置卡牌图标
+                var iconImage = GetChildByName(hasCardPanelEntity, "icon")
+                if iconImage != nil {
+                    iconImage<UIWidget>.IsVisible = true
+                    var nature = cardInfo["Nature"]
+                    var iconKey = "Skill_Just_Do_It"
+                    
+                    // 设置图标稀有度颜色
+                    var rarity = cardInfo["Rarity"] as int
+                    var iconColor = FC_Config.CardRarityColor[rarity]
+                    iconImage<UIWidgetImage>.Color = iconColor
+                    
+                    // 检查配置中是否存在该nature对应的图标
+                    if (nature != nil && nature != "") {
+                        if (FC_Config.GiftedCardIDs[nature] != nil) {
+                            iconKey = nature
+                        }
+                    }
+                    iconImage<UIWidgetImage>.SpriteName = FC_Config.GiftedCardIDs[iconKey]
+                }
+                
+                // 更新卡牌描述
+                var textEntity = GetChildByName(hasCardPanelEntity, "IFMText")
+                if textEntity != nil {
+                    var GiftedNameText = Convert.ToString(cardInfo["GiftedName"])
+                    var textTTT = LocString{GiftedNameText, List<string>{level}}
+                    textEntity<UIWidgetLabel>.Content = textTTT
+                }
+                
+                // 更新边框颜色
+                var ICONBBEntity = GetChildByName(hasCardPanelEntity, "ICONBB")
+                if ICONBBEntity != nil {
+                    var rarity = cardInfo["Rarity"] as int
+                    var iconColor = FC_Config.CardRarityColor[rarity]
+                    ICONBBEntity<UIWidgetImage>.Color = iconColor
+                }
             }
+            
+            // 显示数量
             var NumTextEntity = GetChildByName(cardEntity, "NumText")
             if NumTextEntity != nil {
                 NumTextEntity<UIWidget>.IsVisible = true
+                NumTextEntity<UIWidgetLabel>.Content = "x" + Convert.ToString(currentCount)
             }
+            
             // 检查是否需要显示MAX
             var nature = Convert.ToString(cardInfo["Nature"])
             var maxCount = GetMaxDrawCount(nature)
@@ -1655,14 +1777,22 @@ graph PlayerJionGame {
             if iconImageEntity != nil {
                 iconImageEntity<UIWidget>.IsVisible = true
             }
+
+            var TextEntity = GetChildByName(cardEntity, "Text")
+            if TextEntity != nil {
+                TextEntity<UIWidget>.IsVisible = true
+            }
+            
             var hasCardPanelEntity = GetChildByName(cardEntity, "HasCardPanel")
             if hasCardPanelEntity != nil {
                 hasCardPanelEntity<UIWidget>.IsVisible = false
             }
+            
             var maxImageEntity = GetChildByName(cardEntity, "MaxText")
             if maxImageEntity != nil {
                 maxImageEntity<UIWidget>.IsVisible = false
             }
+            
             var NumTextEntity = GetChildByName(cardEntity, "NumText")
             if NumTextEntity != nil {
                 NumTextEntity<UIWidget>.IsVisible = false
@@ -1672,10 +1802,24 @@ graph PlayerJionGame {
 
     // 获取卡牌当前抽取次数
     func GetCardDrawCount(cardId int) int {
-        if Gifted_Card_Count[cardId] != nil {
-            return Gifted_Card_Count[cardId]
+        if DATA_Gifted_Card_Count == nil || List.Length(DATA_Gifted_Card_Count) <= cardId {
+            return 0
         }
-        return 0
+        return DATA_Gifted_Card_Count[cardId]
+    }
+
+    // 重新应用所有已抽取卡牌的效果
+    func ApplyAllSavedCardEffects() {
+        for cardId = 1, 11, 1 {
+            var currentCount = GetCardDrawCount(cardId)
+            if currentCount > 0 {
+                // 多次应用卡牌效果（根据抽取次数）
+                for i = 0, currentCount, 1 {
+                    ApplyGiftedCardEffect(cardId)
+                }
+            }
+        }
+        LogInfo("所有牌效果应用完成")
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
 //—————————————————————————————————————————————————以下为职业卡牌图鉴的数据————————————————————————————————————————————————————//
@@ -2476,6 +2620,7 @@ graph PlayerJionGame {
         if List.Length(RankingList) > MaxRankingEntries {
             List.RemoveAt(RankingList, MaxRankingEntries)
         }
+        LogInfo(RankingList)
     }
 
     // 更新最高记录
@@ -2494,8 +2639,13 @@ graph PlayerJionGame {
 
     // 保存排行榜到本地存储
     func SaveRankingListToStorage() {
-        // 临时日志
-        LogInfo("排行榜数据待保存，共" + List.Length(RankingList) + "条记录")
+        LogInfo("开始保存排行榜数据，共" + List.Length(RankingList) + "条记录")
+        var player_id UUID = currPlayer<Player>.UserUID
+        
+        // 排行榜数据
+        WriteToLocalDataStore("RankingList", player_id, RankingList_KEY, DATA_RankingList, "", out var status_code1)
+
+        LogInfo("数据存储完成，状态码: " + ToString(status_code1))
     }
 
     // 从本地存储加载排行榜

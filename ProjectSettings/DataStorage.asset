@@ -21,9 +21,21 @@
   "rankSheets": [],
   "dataSheets": [
     {
-      "sheetName": "Normal Data Table1",
-      "sheetId": "dPufskEc",
-      "type": "Int",
+      "sheetName": "DATA_RankingList",
+      "sheetId": "2LOhfpIg",
+      "type": "ListT_BaseData",
+      "keyType": "String"
+    },
+    {
+      "sheetName": "DATA_TotalDrawCount",
+      "sheetId": "SJoLSN30",
+      "type": "ListT_Int",
+      "keyType": "String"
+    },
+    {
+      "sheetName": "DATA_Gifted_Card_Count",
+      "sheetId": "VEoMQTBW",
+      "type": "ListT_Int",
       "keyType": "String"
     }
   ],
@@ -34,4 +46,4 @@
   "multicolumnSheetsClient": [],
   "dataSheetsClient": []
 }
-//"{FE:{"v":"0.2.4113096","c":{"FF":5001},"s":100}
+//"{FE:{"v":"0.2.4170985","c":{"FF":5001},"s":100}
