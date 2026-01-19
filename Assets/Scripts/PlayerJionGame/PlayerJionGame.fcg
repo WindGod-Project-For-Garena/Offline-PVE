@@ -17,6 +17,7 @@ import "Economy.fcc" as Economy
 import "../Home/GiftedPanel.fcg" as GiftedPanel
 import "../Static/FC_Config.fcg" as FC_Config
 import "../ChoiceOneOfThreeCard/ChoiceOneOfThreeCard.fcg" as ChoiceOneOfThreeCard
+import "../SoundFunc/SoundFunc.fcg" as SoundFunc
 import "../PVE/FC_PVEMonsterManager.fcg" as FC_PVEMonsterManager
 import "../PVE/UI_C_HomeUI.fcg" as UI_C_HomeUI
 import "Playable.fcc" as Playable
@@ -364,7 +365,10 @@ graph PlayerJionGame {
             InitRankingList()
             // 重新应用所有已抽取卡牌的效果
             ApplyAllSavedCardEffects()
+            // 更新排行榜
             UpdateHighestFromLoadedRanking()
+            // 播放背景音乐
+            SoundFunc.PlayTheSound("MainMenu")
             IsNextThreeChoiceOne = 0
         }
     }

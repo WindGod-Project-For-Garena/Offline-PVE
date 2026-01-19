@@ -1,0 +1,55 @@
+import "StdLibrary.fcc" as StdLib
+import "EditorGenLib.fcc" as EditorLib
+import "Animation.fcc" as Animation
+import "Playable.fcc" as Playable
+
+[platform_client]
+static graph SoundFunc {
+    GlobalSoundMap Map<string, EResSound> = {}
+
+    event OnAwake() {
+        GlobalSoundMap = {
+            // 背景音乐
+            "Battle_Boss_Stage1": EResSound.Battle_Boss_Stage1,
+            "Battle_Boss_Stage2": EResSound.Battle_Boss_Stage2,
+            "Battle_Normal": EResSound.Battle_Normal,
+            "MainMenu": EResSound.MainMenu,
+            "Menu_Pickup": EResSound.Menu_Pickup,
+            
+            // 技能音效
+            "Skill_Boming": EResSound.Skill_Boming,
+            "Skill_ElectricArc_A": EResSound.Skill_ElectricArc_A,
+            "Skill_ElectricArc_B": EResSound.Skill_ElectricArc_B,
+            "Skill_Grenade": EResSound.Skill_Grenade,
+            "Skill_Lighting": EResSound.Skill_Lighting,
+            
+            // UI音效
+            "Click_Common_Default": EResSound.Click_Common_Default,
+            "Page_Default_Open": EResSound.Page_Default_Open,
+            
+            // 提示音效
+            "Failuer": EResSound.Failuer,
+            "GetBuff": EResSound.GetBuff,
+            "Notice_Ace": EResSound.Notice_Ace,
+            "Notice_KnockedDown_01": EResSound.Notice_KnockedDown_01,
+            "Notice_KnockedDown_02": EResSound.Notice_KnockedDown_02,
+            "Notice_KnockedDown_03": EResSound.Notice_KnockedDown_03,
+            "Notice_KnockedDown_04": EResSound.Notice_KnockedDown_04,
+            "Victory": EResSound.Victory,
+            
+            // 僵尸音效
+            "ZombieVoice_1": EResSound.ZombieVoice_1,
+            "ZombieVoice_2": EResSound.ZombieVoice_2,
+            "ZombieVoice_3": EResSound.ZombieVoice_3,
+        }
+    }
+
+    // 播放音乐
+    func PlayTheSound(soundName string) {
+        var sound = GlobalSoundMap[soundName]
+        if sound != nil {
+            LogInfo("PlaySound: " + soundName)
+            CreateSoundClient(out var soundEntity, sound as SoundEffectType, LoopType.Loop, true)
+        }
+    }
+}
