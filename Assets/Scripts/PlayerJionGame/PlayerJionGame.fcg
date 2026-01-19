@@ -193,7 +193,8 @@ graph PlayerJionGame {
     IsCountdownActive bool = false
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     // 排行榜数据结构
-    RankingList List<Map<string, object>> = List<Map<string, object>>{}
+    RankingListMap List<Map<string, object>> = List<Map<string, object>>{}  // 用于内存操作的Map版本
+    RankingList List<string> = List<string>{}
     MaxRankingEntries int = 10  // 排行榜最大记录数
     CurrentHeroName string = ""  // 当前使用的角色名称
     HighestLevel int = 0  // 最高关卡
@@ -210,7 +211,7 @@ graph PlayerJionGame {
     // 总抽卡次数
     DATA_TotalDrawCount List<int> = List<int>{0}
     // 排行榜数据结构
-    DATA_RankingList List<Map<string, object>> = List<Map<string, object>>{}
+    DATA_RankingList List<string> = List<string>{}
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
@@ -247,11 +248,13 @@ graph PlayerJionGame {
             }
 
             if result3 == nil {
-                DATA_RankingList = List<Map<string, object>>{}
-                RankingList = DATA_RankingList
+                DATA_RankingList = List<string>{}
+                // 初始化空的排行榜列表
+                RankingListMap = List<Map<string, object>>{}
             } else {
-                DATA_RankingList = result3 as List<Map<string, object>>
-                RankingList = DATA_RankingList
+                DATA_RankingList = result3 as List<string>
+                // 解析string列表为Map结构
+                RankingListMap = ParseRankingList(DATA_RankingList)
             }
 
             LogInfo("读取的天赋卡牌数量: " + ToString(Gifted_Card_Count))
@@ -352,9 +355,9 @@ graph PlayerJionGame {
             CopyToInGameData()
             // 初始化排行榜数据
             InitRankingList()
-            LoadRankingListFromStorage()
             // 重新应用所有已抽取卡牌的效果
             ApplyAllSavedCardEffects()
+            UpdateHighestFromLoadedRanking()
             IsNextThreeChoiceOne = 0
         }
     }
@@ -2534,7 +2537,7 @@ graph PlayerJionGame {
         LogInfo("当前使用角色: " + CurrentHeroName)
     }
 
-    // 游戏胜利时处理排行榜（主要入口函数）
+    // 游戏胜利时处理排行榜
     func ProcessRankingOnVictory() {
         if !PVEController.IsGameSuccess {
             return  // 只有游戏胜利才记录
@@ -2548,19 +2551,20 @@ graph PlayerJionGame {
         LogInfo("游戏胜利: 关卡" + FC_PVEMonsterManager.CurrentLevel + ", 时间" + bossKillTimeStr + ", 角色" + CurrentHeroName)
         
         // 尝试添加到排行榜
-        TryAddToRankingList(FC_PVEMonsterManager.CurrentLevel, bossKillTimeStr, CurrentHeroName,BossKillTime)
+        TryAddToRankingList(FC_PVEMonsterManager.CurrentLevel, bossKillTimeStr, CurrentHeroName, BossKillTime)
         
         // 保存到本地存储
         SaveRankingListToStorage()
     }
-
+    
     // 尝试添加到排行榜
-    func TryAddToRankingList(level int, bossKillTimeStr string, heroName string,BossKillTime int) bool {
+    func TryAddToRankingList(level int, bossKillTimeStr string, heroName string, BossKillTime int) bool {
         // 创建新记录
         var newRecord = Map<string, object>{}
         newRecord["Level"] = level
         newRecord["bossKillTime"] = bossKillTimeStr
         newRecord["HeroName"] = heroName
+        newRecord["ClearTime"] = BossKillTime
         
         // 检查是否需要添加
         if !ShouldAddToRanking(newRecord) {
@@ -2580,30 +2584,58 @@ graph PlayerJionGame {
 
     // 检查是否需要添加到排行榜
     func ShouldAddToRanking(newRecord Map<string, object>) bool {
-        var newLevel = newRecord["Level"] as int
-        var newTime = newRecord["ClearTime"] as int
+        var newLevel = 0
+        var newTime = 0
+        if newRecord["Level"] != nil {
+            newLevel = newRecord["Level"] as int
+        }
+        if newRecord["ClearTime"] != nil {
+            newTime = newRecord["ClearTime"] as int
+        }
+        
         // 如果排行榜未满，直接加入
-        if List.Length(RankingList) < MaxRankingEntries {
+        if List.Length(RankingListMap) < MaxRankingEntries {
             return true
         }
+        
         // 排行榜已满，检查是否比最后一名好
-        var lastRecord = RankingList[List.Length(RankingList) - 1]
-        var lastLevel = lastRecord["Level"] as int
-        var lastTime = lastRecord["ClearTime"] as int
+        var lastRecord = RankingListMap[List.Length(RankingListMap) - 1]
+        var lastLevel = 0
+        var lastTime = 0
+        if lastRecord["Level"] != nil {
+            lastLevel = lastRecord["Level"] as int
+        }
+        if lastRecord["ClearTime"] != nil {
+            lastTime = lastRecord["ClearTime"] as int
+        }
+        
         // 比较规则：关卡越高越好，关卡相同时间越短越好
         return newLevel > lastLevel || (newLevel == lastLevel && newTime < lastTime)
     }
 
-    // 添加并排序到排行榜（核心排序逻辑）
+    // 添加并排序到排行榜
     func AddAndSortToRanking(newRecord Map<string, object>) {
-        var newLevel = newRecord["Level"] as int
-        var newTime = newRecord["ClearTime"] as int
+        var newLevel = 0
+        var newTime = 0
+        if newRecord["Level"] != nil {
+            newLevel = newRecord["Level"] as int
+        }
+        if newRecord["ClearTime"] != nil {
+            newTime = newRecord["ClearTime"] as int
+        }
+        
         // 查找插入位置
-        var insertIndex = List.Length(RankingList)
-        for i = 0, List.Length(RankingList), 1 {
-            var record = RankingList[i]
-            var recordLevel = record["Level"] as int
-            var recordTime = record["ClearTime"] as int
+        var insertIndex = List.Length(RankingListMap)
+        for i = 0, List.Length(RankingListMap), 1 {
+            var record = RankingListMap[i]
+            var recordLevel = 0
+            var recordTime = 0
+            if record["Level"] != nil {
+                recordLevel = record["Level"] as int
+            }
+            if record["ClearTime"] != nil {
+                recordTime = record["ClearTime"] as int
+            }
             
             // 排序规则：关卡降序，相同关卡时间升序
             if newLevel > recordLevel {
@@ -2614,13 +2646,16 @@ graph PlayerJionGame {
                 break
             }
         }
+        
         // 插入新记录
-        List.Insert(RankingList, insertIndex, newRecord)
+        List.Insert(RankingListMap, insertIndex, newRecord)
+        
         // 保持最大数量限制
-        if List.Length(RankingList) > MaxRankingEntries {
-            List.RemoveAt(RankingList, MaxRankingEntries)
+        if List.Length(RankingListMap) > MaxRankingEntries {
+            List.RemoveAt(RankingListMap, MaxRankingEntries)
         }
-        LogInfo(RankingList)
+        
+        LogInfo("当前排行榜记录数: " + List.Length(RankingListMap))
     }
 
     // 更新最高记录
@@ -2639,33 +2674,28 @@ graph PlayerJionGame {
 
     // 保存排行榜到本地存储
     func SaveRankingListToStorage() {
-        LogInfo("开始保存排行榜数据，共" + List.Length(RankingList) + "条记录")
+        LogInfo("开始保存排行榜数据，共" + List.Length(RankingListMap) + "条记录")
         var player_id UUID = currPlayer<Player>.UserUID
         
-        // 排行榜数据
+        // 序列化排行榜数据
+        DATA_RankingList = SerializeRankingList()
+        
+        // 保存序列化的string列表
         WriteToLocalDataStore("RankingList", player_id, RankingList_KEY, DATA_RankingList, "", out var status_code1)
-
         LogInfo("数据存储完成，状态码: " + ToString(status_code1))
-    }
-
-    // 从本地存储加载排行榜
-    func LoadRankingListFromStorage() {
-        // 如果没有数据，初始化空列表
-        if List.Length(RankingList) == 0 {
-            List.Clear(RankingList)
-            LogInfo("从本地存储加载排行榜数据（空列表）")
-        }
-        // 从排行榜数据中更新最高记录
-        UpdateHighestFromLoadedRanking()
     }
 
     // 从已加载的排行榜数据中更新最高记录
     func UpdateHighestFromLoadedRanking() {
-        if List.Length(RankingList) > 0 {
+        if List.Length(RankingListMap) > 0 {
             // 排行榜第一条就是最好的记录
-            var bestRecord = RankingList[0]
-            HighestLevel = bestRecord["Level"] as int
-            FastestTime = bestRecord["ClearTime"] as int
+            var bestRecord = RankingListMap[0]
+            if bestRecord["Level"] != nil {
+                HighestLevel = bestRecord["Level"] as int
+            }
+            if bestRecord["ClearTime"] != nil {
+                FastestTime = bestRecord["ClearTime"] as int
+            }
             LogInfo("从排行榜加载最高记录: 关卡" + HighestLevel + ", 时间" + FastestTime + "秒")
         }
     }
@@ -2684,14 +2714,16 @@ graph PlayerJionGame {
     // 更新排行榜数据显示
     func UpdateRankingListDisplay() {
         // 获取排行榜数据
-        var rankingData = RankingList
+        var rankingData = RankingListMap
         var dataCount = List.Length(rankingData)
         LogInfo("开始更新排行榜显示，共" + dataCount + "条记录")
+        
         // 如果没有数据，显示空状态
         if dataCount == 0 {
             UpdateEmptyRankingDisplay()
             return
         }
+        
         var Part2 = GetWidgetByPath(GetLocalPlayer(), RankingListUI, "/RankPanel/TitleBoard/IFMPanel/IFMPanelBB/LevelAmountIFM/TitleIFM/Part2")
         var Part3 = GetWidgetByPath(GetLocalPlayer(), RankingListUI, "/RankPanel/TitleBoard/IFMPanel/IFMPanelBB/LevelAmountIFM/TitleIFM/Part3")
         Part2<UIWidget>.IsVisible = true
@@ -2718,9 +2750,18 @@ graph PlayerJionGame {
     // 更新单个排名条目显示
     func UpdateRankingEntryDisplay(rank int, record Map<string, object>) {
         // 获取关卡、时间和角色名称
-        var level = record["Level"] as int
-        var bossKillTime = record["bossKillTime"] as string
-        var heroName = record["HeroName"] as string
+        var level = 0
+        var bossKillTime = ""
+        var heroName = ""
+        if record["Level"] != nil {
+            level = record["Level"] as int
+        }
+        if record["bossKillTime"] != nil {
+            bossKillTime = record["bossKillTime"] as string
+        }
+        if record["HeroName"] != nil {
+            heroName = record["HeroName"] as string
+        }
         // 根据排名构建路径后缀
         var rankSuffix = ""
         if rank == 1 {
@@ -2806,5 +2847,78 @@ graph PlayerJionGame {
         var Part3 = GetWidgetByPath(GetLocalPlayer(), RankingListUI, "/RankPanel/TitleBoard/IFMPanel/IFMPanelBB/LevelAmountIFM/TitleIFM/Part3")
         Part2<UIWidget>.IsVisible = false
         Part3<UIWidget>.IsVisible = true
+    }
+
+    // 序列化单条记录为string
+    func SerializeRankingRecord(level int, bossKillTime string, heroName string) string {
+        return Convert.ToString(level) + "|" + bossKillTime + "|" + heroName
+    }
+
+    // 解析string为排行榜记录
+    func ParseRankingRecord(recordStr string) Map<string, object> {
+        var parts = strings.Split(recordStr, "|")
+        var record = Map<string, object>{}
+        
+        if List.Length(parts) >= 3 {
+            // 使用Convert.StringToInt转换
+            Convert.StringToInt(parts[0], out var levelInt, out var isSuccess)
+            record["Level"] = levelInt
+            record["bossKillTime"] = parts[1]
+            record["HeroName"] = parts[2]
+            // 解析时间字符串为秒数（用于排序）
+            // 格式: "mm:ss"
+            var timeParts = strings.Split(parts[1], ":")
+            if List.Length(timeParts) >= 2 {
+                Convert.StringToInt(timeParts[0], out var minutes, out var success1)
+                Convert.StringToInt(timeParts[1], out var seconds, out var success2)
+                record["ClearTime"] = minutes * 60 + seconds
+            }
+        }
+        
+        return record
+    }
+
+    // 序列化整个排行榜
+    func SerializeRankingList() List<string> {
+        var serializedList = List<string>{}
+        
+        for i = 0, List.Length(RankingListMap), 1 {
+            var record = RankingListMap[i]
+            var level = 0
+            var bossKillTime = ""
+            var heroName = ""
+            
+            // 安全地获取值
+            if record["Level"] != nil {
+                level = record["Level"] as int
+            }
+            if record["bossKillTime"] != nil {
+                bossKillTime = record["bossKillTime"] as string
+            }
+            if record["HeroName"] != nil {
+                heroName = record["HeroName"] as string
+            }
+            
+            var serializedStr = SerializeRankingRecord(level, bossKillTime, heroName)
+            List.Append(serializedList, serializedStr)
+        }
+        
+        return serializedList
+    }
+
+    // 解析排行榜string列表
+    func ParseRankingList(serializedList List<string>) List<Map<string, object>> {
+        var parsedList = List<Map<string, object>>{}
+        
+        for i = 0, List.Length(serializedList), 1 {
+            var recordStr = serializedList[i]
+            var record = ParseRankingRecord(recordStr)
+            
+            if Map.Length(record) > 0 {
+                List.Append(parsedList, record)
+            }
+        }
+        
+        return parsedList
     }
 }
