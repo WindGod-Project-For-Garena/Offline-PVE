@@ -390,6 +390,8 @@ static graph PVEController {
         localPlayer<Player>.Invincible = true
         // 显示最终统计
         ShowFinalStats()
+        // 奖励金币
+        GetLocalPlayer()<PlayerJionGame>.GivePlayerWinnerMoney()
 
         // 等待一段时间后结束游戏
         WaitForMillisecond(1000)

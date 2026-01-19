@@ -614,6 +614,7 @@ static graph FC_PVEMonsterManager {
             //解锁下一关
             if CurrentLevel >= GetLocalPlayer()<PlayerJionGame>.NowLevel {
                 GetLocalPlayer()<PlayerJionGame>.NowLevel = GetLocalPlayer()<PlayerJionGame>.NowLevel + 1
+                GetLocalPlayer()<PlayerJionGame>.SaveLevel()
                 LogInfo("Boss已死亡，解锁下一关: " + GetLocalPlayer()<PlayerJionGame>.NowLevel)
             } else {
                 LogInfo("Boss已死亡,这是最后一关")

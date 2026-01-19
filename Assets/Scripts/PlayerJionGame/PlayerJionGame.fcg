@@ -204,12 +204,12 @@ graph PlayerJionGame {
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     // 数据存储相关
     Gifted_Card_Count_KEY string = "Gifted_Card_Count"
-	TotalDrawCount_KEY string = "TotalDrawCount"
+	TotalIFM_KEY string = "TotalIFM"
 	RankingList_KEY string = "RankingList"
     // 已抽到的天赋卡牌数量
     DATA_Gifted_Card_Count List<int> = List<int>{}
-    // 总抽卡次数
-    DATA_TotalDrawCount List<int> = List<int>{0}
+    // 总抽卡次数,金额，最高关卡
+    DATA_TotalIFM List<int> = List<int>{0,0,1}
     // 排行榜数据结构
     DATA_RankingList List<string> = List<string>{}
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
@@ -224,29 +224,35 @@ graph PlayerJionGame {
 
             var player_id UUID = currPlayer<Player>.UserUID
             ReadFromLocalDataStore("Gifted_Card_Count", player_id, Gifted_Card_Count_KEY, out var result1, "", out var status_code_1)
-            ReadFromLocalDataStore("TotalDrawCount", player_id, TotalDrawCount_KEY, out var result2, "", out var status_code_2)
+            ReadFromLocalDataStore("TotalIFM", player_id, TotalIFM_KEY, out var result2, "", out var status_code_2)
             ReadFromLocalDataStore("RankingList", player_id, RankingList_KEY, out var result3, "", out var status_code_3)
 
+            // 天赋卡牌数量
             if result1 == nil {
                 DATA_Gifted_Card_Count = List<int>{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
                 Gifted_Card_Count = DATA_Gifted_Card_Count
             } else {
                 DATA_Gifted_Card_Count = result1 as List<int>
-                // 确保长度足够
                 while List.Length(DATA_Gifted_Card_Count) < 11 {
                     List.Append(DATA_Gifted_Card_Count, 0)
                 }
                 Gifted_Card_Count = DATA_Gifted_Card_Count
             }
             
+            // 抽卡数量，金额，最高关卡
             if result2 == nil {
-                DATA_TotalDrawCount = List<int>{0}
-                TotalDrawCount = DATA_TotalDrawCount[0]
+                DATA_TotalIFM = List<int>{0,0,1}
+                TotalDrawCount = DATA_TotalIFM[0]
+                Money = DATA_TotalIFM[1]
+                NowLevel = DATA_TotalIFM[2]
             } else {
-                DATA_TotalDrawCount = result2 as List<int>
-                TotalDrawCount = DATA_TotalDrawCount[0]
+                DATA_TotalIFM = result2 as List<int>
+                TotalDrawCount = DATA_TotalIFM[0]
+                Money = DATA_TotalIFM[1]
+                NowLevel = DATA_TotalIFM[2]
             }
 
+            // 排行榜数据
             if result3 == nil {
                 DATA_RankingList = List<string>{}
                 // 初始化空的排行榜列表
@@ -259,6 +265,7 @@ graph PlayerJionGame {
 
             LogInfo("读取的天赋卡牌数量: " + ToString(Gifted_Card_Count))
             LogInfo("读取的总抽卡次数: " + ToString(TotalDrawCount))
+            LogInfo("读取的金额: " + ToString(Money))
             LogInfo("读取的排行榜数据: " + ToString(RankingList))
             
             CreateCustomUIClient(out var ChoiceHeroUIEntity, EResUI.ChoiceHero)
@@ -362,7 +369,12 @@ graph PlayerJionGame {
         }
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
-// 初始化已选卡牌展示面板图标
+// 存储当前最高关卡
+    func SaveLevel() {
+        // 保存本地数据
+        DATA_TotalIFM[2] = NowLevel
+        SAVE_DATA_Money(DATA_TotalIFM)
+    }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
 // 选择完角色
     async func ChoiceHeroOver(level int, skillIndex int, ability1Level int, ability2Level int, ability3Level int) {
@@ -1128,10 +1140,10 @@ graph PlayerJionGame {
         
         // 更新总抽卡次数
         TotalDrawCount = TotalDrawCount + 1
-        DATA_TotalDrawCount[0] = TotalDrawCount
+        DATA_TotalIFM[0] = TotalDrawCount
 
         // 保存本地数据
-        SAVE_DATA_Gifted(DATA_Gifted_Card_Count, DATA_TotalDrawCount)
+        SAVE_DATA_Gifted(DATA_Gifted_Card_Count, DATA_TotalIFM)
         
         // 应用卡牌效果
         ApplyGiftedCardEffect(selectedCardId)
@@ -1215,9 +1227,28 @@ graph PlayerJionGame {
         }
     }
 
+    // 玩家赢了给货币
+    func GivePlayerWinnerMoney() {
+        Money += 2500
+        // 保存本地数据
+        DATA_TotalIFM[1] = Money
+        SAVE_DATA_Money(DATA_TotalIFM)
+    }
+
     // 扣除玩家货币
     func DeductPlayerCurrency(price int) {
         Money = Money - price
+        // 保存本地数据
+        DATA_TotalIFM[1] = Money
+        SAVE_DATA_Money(DATA_TotalIFM)
+    }
+
+    // 保存玩家货币数据
+    func SAVE_DATA_Money(DATA_TotalIFM List<int>) {
+        LogInfo("开始玩家货币数据")
+        var player_id UUID = currPlayer<Player>.UserUID
+        // 当前抽取数量
+        WriteToLocalDataStore("TotalIFM", player_id, TotalIFM_KEY, DATA_TotalIFM, "", out var status_code2)
     }
 
     // 更新抽卡UI显示（价格、概率等信息）
@@ -1357,13 +1388,13 @@ graph PlayerJionGame {
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     // 保存天赋卡牌数据
-    func SAVE_DATA_Gifted(DATA_Gifted_Card_Count List<int> , DATA_TotalDrawCount List<int>) {
+    func SAVE_DATA_Gifted(DATA_Gifted_Card_Count List<int> , DATA_TotalIFM List<int>) {
         LogInfo("开始保存天赋卡牌数据")
         var player_id UUID = currPlayer<Player>.UserUID
         // 天赋卡牌数据
         WriteToLocalDataStore("Gifted_Card_Count", player_id, Gifted_Card_Count_KEY, DATA_Gifted_Card_Count, "", out var status_code1)
         // 当前抽取数量
-        WriteToLocalDataStore("TotalDrawCount", player_id, TotalDrawCount_KEY, DATA_TotalDrawCount, "", out var status_code2)
+        WriteToLocalDataStore("TotalIFM", player_id, TotalIFM_KEY, DATA_TotalIFM, "", out var status_code2)
     }
 
     // 应用卡牌效果
@@ -2113,7 +2144,7 @@ graph PlayerJionGame {
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
-// 更新按钮状态
+    // 更新按钮状态
     func UpdateLevelDisplay() {
         var buttonRight = GetWidgetByPath(GetLocalPlayer(), ChoiceHeroUI, "/ChoiceLevel/Button_right")
         var buttonLeft = GetWidgetByPath(GetLocalPlayer(), ChoiceHeroUI, "/ChoiceLevel/Button_left")
