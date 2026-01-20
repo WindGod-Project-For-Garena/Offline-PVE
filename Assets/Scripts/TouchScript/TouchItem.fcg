@@ -2,6 +2,7 @@ import "StdLibrary.fcc" as StdLib
 import "EditorGenLib.fcc" as EditorLib
 import "LevelObject.fcc" as LevelObject
 import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
+import "../SoundFunc/SoundFunc.fcg" as SoundFunc
 import "../PVE/FC_PVEMonsterManager.fcg" as FC_PVEMonsterManager
 import "Math.fcc" as Math
 import "Items.fcc" as Items
@@ -17,6 +18,8 @@ graph TouchItem {
         }
         // 应用妙妙道具效果
         start Effect_ITEM_Giving(player, ITEM)
+        // 播放拾取音效
+        SoundFunc.PlayCreatedSound("GetBuff")
     }
 
     // 妙妙道具效果实现

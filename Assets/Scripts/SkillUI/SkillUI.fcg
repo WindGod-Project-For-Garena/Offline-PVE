@@ -8,6 +8,7 @@ import "Playable.fcc" as Playable
 import "Animation.fcc" as Animation
 import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
 import "../SuperFcc/TransferList.fcc" as TransferList
+import "../SoundFunc/SoundFunc.fcg" as SoundFunc
 import "List.fcc" as List
 import "Items.fcc" as Items
 import "../CustomEvent.fcc" as CustomEvent
@@ -169,6 +170,9 @@ graph SkillUI {
         
         // 设置CD
         StartSkillCD(CurrentSkill, CurrentcdTime)
+        
+        // 音效
+        SoundFunc.PlayCreatedSound("Skill_Boming")
 
         // 释放特效 
         CreateEffectClient(out var NewcreatedEntity, VFXType.CurseExplosion, LoopType.Once, true)
@@ -285,6 +289,12 @@ graph SkillUI {
                     // 传递怪物位置给爆炸函数
                     var monsterPosition = randomMonster<Transform>.Position
                     start ThunderBoom(i, monsterPosition, damage, LightningRange, LightningExplosion)
+                }
+                // 随机A音效或B音效
+                if RandomInt(0, 1) == 0 {
+                    SoundFunc.PlayCreatedSound("Skill_ElectricArc_A")
+                } else {
+                    SoundFunc.PlayCreatedSound("Skill_ElectricArc_B")
                 }
                 WaitForMillisecond(200)
             }

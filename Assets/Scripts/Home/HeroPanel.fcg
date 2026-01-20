@@ -5,6 +5,7 @@ import "Hud.fcc" as Hud
 import "Math.fcc" as Math
 import "Camera.fcc" as Camera
 import "Playable.fcc" as Playable
+import "../SoundFunc/SoundFunc.fcg" as SoundFunc
 import "Animation.fcc" as Animation
 import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
 
@@ -13,6 +14,8 @@ import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
 graph HeroPanel {
     //前往选择角色开始游戏面板
      func ToNewHome(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+          SoundFunc.PlayCreatedSound("Click_Common_Default")
+
           var ChoiceHeroUIEntity = GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI
           ChoiceHeroUIEntity<CustomUI>.IsVisible = true
           var HeroUIEntity = GetLocalPlayer()<PlayerJionGame>.HeroUI
@@ -21,6 +24,8 @@ graph HeroPanel {
 
      //选择角色1
      func ToHero1(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+          SoundFunc.PlayCreatedSound("Click_Common_Default")
+
           var hero int = 1
           GetLocalPlayer()<PlayerJionGame>.InitAllCardBookUI(hero)
           var HeroEntity1 = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.HeroUI, "/HeroIFMPanel/HeroIFMPanel_1")
@@ -41,6 +46,8 @@ graph HeroPanel {
 
      //选择角色2
      func ToHero2(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+          SoundFunc.PlayCreatedSound("Click_Common_Default")
+
           var hero int = 2
           GetLocalPlayer()<PlayerJionGame>.InitAllCardBookUI(hero)
           var HeroEntity1 = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.HeroUI, "/HeroIFMPanel/HeroIFMPanel_1")

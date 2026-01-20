@@ -1,5 +1,6 @@
 import "StdLibrary.fcc" as StdLib
 import "EditorGenLib.fcc" as EditorLib
+import "../SoundFunc/SoundFunc.fcg" as SoundFunc
 import "Hud.fcc" as Hud
 import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
 
@@ -9,6 +10,8 @@ graph RankingList {
     NowChoiceRankType int = 0  // 0: 通关数排行，1: 伤害排行
     // 通关数排行信息
     func NumberOfPasses(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        SoundFunc.PlayCreatedSound("Click_Common_Default")
+
         CheckNoRecordDisplay()
         // 显示/隐藏对应的排行信息面板
         var LevelAmountIFMEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.RankingListUI, "/RankPanel/TitleBoard/IFMPanel/IFMPanelBB/LevelAmountIFM")
@@ -31,6 +34,8 @@ graph RankingList {
 
     // 伤害排行信息
     func Damage(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        SoundFunc.PlayCreatedSound("Click_Common_Default")
+
         CheckNoRecordDisplay()
         // 显示/隐藏对应的排行信息面板
         var DamageIFMEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.RankingListUI, "/RankPanel/TitleBoard/IFMPanel/IFMPanelBB/DamageIFM")
@@ -53,6 +58,8 @@ graph RankingList {
 
     //关闭排行榜面板
     func CloseRankingPanel(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        SoundFunc.PlayCreatedSound("Click_Common_Default")
+
         var RankingListUIEntity = GetLocalPlayer()<PlayerJionGame>.RankingListUI
         RankingListUIEntity<CustomUI>.IsVisible = false 
         NowChoiceRankType = 0

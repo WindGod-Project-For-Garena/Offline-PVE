@@ -7,6 +7,7 @@ import "../SkillUI/SkillUI.fcg" as SkillUI
 import "Math.fcc" as Math
 import "Map.fcc" as Map
 import "CSVData.fcc" as CSVData
+import "../SoundFunc/SoundFunc.fcg" as SoundFunc
 import "List.fcc" as List
 import "Convert.fcc" as Convert
 import "Strings.fcc" as strings
@@ -16,6 +17,10 @@ import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
 [platform_client]
 graph FinalStats {
     func BackNewHome(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        SoundFunc.PlayCreatedSound("Click_Common_Default")
+        // 播放主界面音效
+        SoundFunc.PlayCreatedSound("MainMenu")
+
         var GameOverFinalUI = GetLocalPlayer()<PlayerJionGame>.GameOverFinalUI
         GameOverFinalUI<CustomUI>.IsVisible = false
         
@@ -32,6 +37,11 @@ graph FinalStats {
     }
     
     func ContinueGame(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        SoundFunc.PlayCreatedSound("Click_Common_Default")
+
+        // 播放主界面音效
+        SoundFunc.PlayCreatedSound("MainMenu")
+
         var GameOverFinalUI = GetLocalPlayer()<PlayerJionGame>.GameOverFinalUI
         GameOverFinalUI<CustomUI>.IsVisible = false
 
@@ -52,7 +62,7 @@ graph FinalStats {
 
         Offline.Revive()
         
-         // 更新选择英雄面板的金钱显示
+        // 更新选择英雄面板的金钱显示
         GetLocalPlayer()<PlayerJionGame>.UpdateChoiceHeroPanelMoney()
     }
 }

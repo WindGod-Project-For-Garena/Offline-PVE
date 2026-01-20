@@ -202,6 +202,8 @@ graph PlayerJionGame {
     FastestTime int = 0  // 最快通关时间
     // 击杀数
     KillCount int = 0  // 杀敌数
+    KillCountTAG int = 0  // 杀敌数
+    KillCountSound int = 0  // 杀敌数
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     // 数据存储相关
     Gifted_Card_Count_KEY string = "Gifted_Card_Count"
@@ -368,7 +370,7 @@ graph PlayerJionGame {
             // 更新排行榜
             UpdateHighestFromLoadedRanking()
             // 播放背景音乐
-            SoundFunc.PlayTheSound("MainMenu")
+            SoundFunc.PlayCreatedSound("MainMenu")
             IsNextThreeChoiceOne = 0
         }
     }
@@ -1169,6 +1171,8 @@ graph PlayerJionGame {
     }
 
     func ShowDrawCardPopup(cardInfo Map<string, object>) {
+        SoundFunc.PlayCreatedSound("Page_Default_Open")
+
         // 弹出弹框显示抽到的卡牌
         var PopupPanel = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/PopupPanel")
         PopupPanel<UIWidget>.IsVisible = true
@@ -2152,9 +2156,13 @@ graph PlayerJionGame {
     func UpdateLevelDisplay() {
         var buttonRight = GetWidgetByPath(GetLocalPlayer(), ChoiceHeroUI, "/ChoiceLevel/Button_right")
         var buttonLeft = GetWidgetByPath(GetLocalPlayer(), ChoiceHeroUI, "/ChoiceLevel/Button_left")
+        var leveltext = GetWidgetByPath(GetLocalPlayer(), ChoiceHeroUI, "/ChoiceLevel/LevelNum")
         // 更新按钮状态
         UpdateLeftButtonState(buttonLeft)
         UpdateRightButtonState(buttonRight)
+        // 更新关卡显示
+        var levelNumTTT = LocString{"LEVEL_FORMAT", List<string>{level}}
+        leveltext<UIWidgetLabel>.Content = levelNumTTT
     }
 
     // 检测当前是否是最高的解锁关卡
@@ -2491,34 +2499,56 @@ graph PlayerJionGame {
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     // 显示击杀信息
     async func KillInfo(part string) {
+        KillCount = KillCount + 1
+        KillCountTAG = KillCountTAG + 1
+        KillCountSound = KillCountSound + 1
+
         var One = GetWidgetByPath(GetLocalPlayer(), KillShowBoardUI, "/Panel/One/One_Icon")
         var Ten = GetWidgetByPath(GetLocalPlayer(), KillShowBoardUI, "/Panel/Ten/Ten_Icon")
+        // 更新总击杀数UI
+        var TotalKillsEntity = GetWidgetByPath(GetLocalPlayer(), RighTabIFMUI, "/Panel/Killed/logo/Num")
+        TotalKillsEntity<UIWidgetLabel>.Content = KillCount
+
+        // 播放击杀音效
+        if KillCountSound == 1 {
+            SoundFunc.PlayCreatedSound("Notice_KnockedDown_01")
+        }
+        if KillCountSound == 2 {
+            SoundFunc.PlayCreatedSound("Notice_KnockedDown_02")
+        }
+        if KillCountSound == 3 {
+            SoundFunc.PlayCreatedSound("Notice_KnockedDown_03")
+        }
+        if KillCountSound == 4 {
+            SoundFunc.PlayCreatedSound("Notice_KnockedDown_04")
+        }
+        if KillCountSound == 5 {
+            SoundFunc.PlayCreatedSound("Notice_Ace")
+            KillCountSound = 0
+        }
+
         // 显示爆头标志
-        if part == "Head" {
+        if  part == "Head" {
             KillShowBoardUI<CustomUI>.IsVisible = true
             One<UIWidget>.IsVisible = true
             Ten<UIWidget>.IsVisible = false
 
             One<UIWidgetImage>.Alpha = 0.0
 
-            wait OutKillTween(One)
-            
-            KillShowBoardUI<CustomUI>.IsVisible = false
+            start OutKillTween(One)
         }
-        // 显示十杀标志，计算击杀数+1
-        KillCount = KillCount + 1
-        if KillCount == 10 {
+
+        // 显示十杀标志
+        if  KillCountTAG == 10 {
             KillShowBoardUI<CustomUI>.IsVisible = true
             One<UIWidget>.IsVisible = false
             Ten<UIWidget>.IsVisible = true
 
             Ten<UIWidgetImage>.Alpha = 0.0
+            
+            start OutKillTween(Ten)
 
-            wait OutKillTween(Ten)
-
-            KillCount = 0
-
-            KillShowBoardUI<CustomUI>.IsVisible = false
+            KillCountTAG = 0
         }
     }
 
@@ -2552,6 +2582,7 @@ graph PlayerJionGame {
         )
         WaitForMillisecond(500)
         Destroy(CloseTween)
+        KillShowBoardUI<CustomUI>.IsVisible = false
     }
 //————————————————————————————————————————————————————排行榜功能—————————————————————————————————————————————————————————————//
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//

@@ -8,6 +8,7 @@ import "Convert.fcc" as Convert
 import "Items.fcc" as Items
 import "../CustomEvent.fcc" as CustomEvent
 import "Math.fcc" as Math
+import "../SoundFunc/SoundFunc.fcg" as SoundFunc
 import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
 import "../MobScripts/BossButcher.fcg" as C_BossButcher
 import "../PVE/FC_PVEMonsterManager.fcg" as FC_MonsterManager
@@ -56,10 +57,11 @@ static graph PVEController {
         var MoneyNumEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.RighTabIFMUI, "/Panel/Money/logo/Num")
         MoneyNumEntity<UIWidgetLabel>.Content = GetLocalPlayer()<PlayerJionGame>.Money
         // 更新总击杀数UI
-        var TotalKills = FC_MonsterManager.TotalKills
-        var TotalKillsEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.RighTabIFMUI, "/Panel/Killed/logo/Num")
-        TotalKillsEntity<UIWidgetLabel>.Content = TotalKills
+        var KillCount = GetLocalPlayer()<PlayerJionGame>.KillCountTAG
+        var KillCountEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.RighTabIFMUI, "/Panel/Killed/logo/Num")
+        KillCountEntity<UIWidgetLabel>.Content = KillCount
         GetLocalPlayer()<PlayerJionGame>.KillCount = 0
+        GetLocalPlayer()<PlayerJionGame>.KillCountSound = 0
     }
 
     // 开始PVE游戏（指定关卡）
@@ -117,9 +119,11 @@ static graph PVEController {
         // 如果是普通波次，开始倒计时
         if !isBossWave {
             start WaveCountdownTimer()
+            SoundFunc.PlayCreatedSound("Battle_Normal")
         } else {
             // Boss波次：启动专门的存活检测
             start BossWaveSurvivalCheck()
+            SoundFunc.PlayCreatedSound("Battle_Boss")
         }
     }
 
@@ -162,6 +166,12 @@ static graph PVEController {
                 var CurrentWaveTTT = LocString{"WAVE_CLEAR", List<string>{CurrentWave}}
                 WaveText<UIWidgetLabel>.Content = CurrentWaveTTT
             }
+
+            // 停止关卡音效
+            SoundFunc.PauseTheSound("Battle_Normal")
+
+            // 播放通关音效
+            SoundFunc.PlayCreatedSound("Victory")
 
             WaitForMillisecond(2000)
             //隐藏通关小横幅
@@ -220,6 +230,11 @@ static graph PVEController {
         //显示BOOYAH!横幅
         CreateBuiltInUIClient(out var resultBanner, BuiltInUIType.ResultBannerHud)
         resultBanner<UIWinOrLoseBanner>.Result = 1
+
+        // 停止局内BOOS战背景音效
+        SoundFunc.PauseTheSound("Battle_Boss")
+        // 播放胜利音效
+        SoundFunc.PlayCreatedSound("Victory")
         
         WaitForMillisecond(2000)
         start OnGameComplete()
@@ -368,6 +383,13 @@ static graph PVEController {
         //显示战败横幅
         CreateBuiltInUIClient(out var resultBanner, BuiltInUIType.ResultBannerHud)
         resultBanner<UIWinOrLoseBanner>.Result = 2
+
+        // 停止关卡音效
+        SoundFunc.PauseTheSound("Battle_Normal")
+        // 停止BOSS音效
+        SoundFunc.PauseTheSound("Battle_Boss")
+        // 播放失败音效
+        SoundFunc.PlayCreatedSound("Failuer")
 
         WaitForMillisecond(2000)
 

@@ -4,6 +4,7 @@ import "Player.fcc" as Player
 import "Hud.fcc" as Hud
 import "Math.fcc" as Math
 import "Camera.fcc" as Camera
+import "../SoundFunc/SoundFunc.fcg" as SoundFunc
 import "Playable.fcc" as Playable
 import "Animation.fcc" as Animation
 import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
@@ -14,6 +15,8 @@ import "Convert.fcc" as Convert
 graph GiftedPanel {
      //前往选择角色开始游戏面板
      func ToNewHome(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+          SoundFunc.PlayCreatedSound("Click_Common_Default")
+
           var ChoiceHeroUIEntity = GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI
           ChoiceHeroUIEntity<CustomUI>.IsVisible = true
           var GiftedUIEntity = GetLocalPlayer()<PlayerJionGame>.GiftedUI
@@ -22,6 +25,8 @@ graph GiftedPanel {
 
      // Debug一键牛逼
      func DebugOneKey(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+          SoundFunc.PlayCreatedSound("Click_Common_Default")
+
           for i = 0,50,1 {
                GetLocalPlayer()<PlayerJionGame>.DrawGiftedCard()
           }
@@ -29,56 +34,78 @@ graph GiftedPanel {
 
      // 抽卡功能
      func DrawCard(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+          SoundFunc.PlayCreatedSound("Click_Common_Default")
+
           GetLocalPlayer()<PlayerJionGame>.DrawGiftedCard()
      }
 
      // 显示卡牌1详情
      func Card1(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+          SoundFunc.PlayCreatedSound("Click_Common_Default")
+
           ShowCardDetails(1)
      }
 
      // 显示卡牌2详情
      func Card2(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+          SoundFunc.PlayCreatedSound("Click_Common_Default")
+
           ShowCardDetails(2)
      }
 
      // 显示卡牌3详情
      func Card3(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+          SoundFunc.PlayCreatedSound("Click_Common_Default")
+
           ShowCardDetails(3)
      }
 
      // 显示卡牌4详情
      func Card4(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+          SoundFunc.PlayCreatedSound("Click_Common_Default")
+
           ShowCardDetails(4)
      }
 
      // 显示卡牌5详情
      func Card5(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+          SoundFunc.PlayCreatedSound("Click_Common_Default")
+
           ShowCardDetails(5)
      }
 
      // 显示卡牌6详情
      func Card6(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+          SoundFunc.PlayCreatedSound("Click_Common_Default")
+
           ShowCardDetails(6)
      }
 
      // 显示卡牌7详情
      func Card7(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+          SoundFunc.PlayCreatedSound("Click_Common_Default")
+
           ShowCardDetails(7)
      }
 
      // 显示卡牌8详情
      func Card8(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+          SoundFunc.PlayCreatedSound("Click_Common_Default")
+
           ShowCardDetails(8)
      }
 
      // 显示卡牌9详情
      func Card9(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+          SoundFunc.PlayCreatedSound("Click_Common_Default")
+
           ShowCardDetails(9)
      }
 
      // 显示卡牌10详情
      func Card10(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+          SoundFunc.PlayCreatedSound("Click_Common_Default")
+
           ShowCardDetails(10)
      }
 
@@ -179,6 +206,8 @@ graph GiftedPanel {
     
      // 关闭详情面板
      async func CloseDetailPanel(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+          SoundFunc.PlayCreatedSound("Click_Common_Default")
+
           var PopupPanel = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.GiftedUI, "/PopupPanel")
           PopupPanel<UIWidget>.IsVisible = false
           ShowCardDetails(GetLocalPlayer()<PlayerJionGame>.currentSelectedCardId)

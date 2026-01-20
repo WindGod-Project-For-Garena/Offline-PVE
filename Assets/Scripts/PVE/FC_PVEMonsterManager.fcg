@@ -44,8 +44,6 @@ static graph FC_PVEMonsterManager {
 
     CloneMoneyList List<entity<UIWidget>> = List<entity<UIWidget>>{} //存放克隆的金币
 
-    // 总计杀怪数量
-    TotalKills int = 0
     // 总计获得金币数量
     TotalGold int = 0
     // 记录Boss存活时间
@@ -665,7 +663,7 @@ static graph FC_PVEMonsterManager {
         //map.Clear(EliteLastSpawnTime)
         
         // 重置状态
-        TotalKills = 0
+        GetLocalPlayer()<PlayerJionGame>.KillCount = 0
         
         LogInfo("所有怪物已清理，状态已重置")
     }
@@ -710,16 +708,11 @@ static graph FC_PVEMonsterManager {
                         break
                     }
                 }
-
                 //LogInfo("Elite怪物死亡，CD开始: " + EliteSpawnCD + "ms")
             }else if list.Contain(ActiveBossMonsters, monster) {
                 list.Remove(ActiveBossMonsters, monster)
             }
-           
-            
-            
         }
-        
     }
 
     // 怪物死亡动画结束后调用此函数销毁怪物实体
@@ -905,8 +898,6 @@ static graph FC_PVEMonsterManager {
         MoneyEntityClone<UIWidget>.IsVisible = false
         // 增加玩家货币
         GivePlayerMoney()  // 每个怪物掉落50货币
-        // 更新怪物总击杀数
-        TotalKills = TotalKills + 1
     }
 
     // RNM给钱
@@ -916,9 +907,6 @@ static graph FC_PVEMonsterManager {
         TotalGold = TotalGold + 50
         var MoneyNumEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.RighTabIFMUI, "/Panel/Money/logo/Num")
         MoneyNumEntity<UIWidgetLabel>.Content = GetLocalPlayer()<PlayerJionGame>.Money
-        // 更新总击杀数UI
-        var TotalKillsEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.RighTabIFMUI, "/Panel/Killed/logo/Num")
-        TotalKillsEntity<UIWidgetLabel>.Content = TotalKills
     }
     
     // 设置普通怪物生成CD

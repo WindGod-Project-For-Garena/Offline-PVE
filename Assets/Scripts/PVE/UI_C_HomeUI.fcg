@@ -6,6 +6,7 @@ import "Math.fcc" as Math
 import "../CustomEvent.fcc" as CustomEvent
 import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
 import "../SkillUI/SkillUI.fcg" as SkillUI
+import "../SoundFunc/SoundFunc.fcg" as SoundFunc
 import "../PVE/PVEController.fcg" as PVEController
 
 
@@ -82,6 +83,8 @@ graph UI_HomeUI {
     }
 
     func onLeftButtonClick(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        SoundFunc.PlayCreatedSound("Click_Common_Default")
+
         buttonLeft = button
         level = level - 1
         
@@ -93,6 +96,8 @@ graph UI_HomeUI {
     }
 
     func onRightButtonClick(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        SoundFunc.PlayCreatedSound("Click_Common_Default")
+
         var buttonLeftEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI, "/ChoiceLevel/Button_left")
         buttonLeft = buttonLeftEntity as entity<UIWidgetButton>
         buttonRight = button
@@ -113,6 +118,8 @@ graph UI_HomeUI {
     }
 
     func OnSkill1Click(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        SoundFunc.PlayCreatedSound("Click_Common_Default")
+
         GetLocalPlayer()<PlayerJionGame>.CurrentSkill = 1
         var HeroButtonEntity1 = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI, "/ChoiceHero/Hero_1/BBIMAGE")
         var HeroButtonEntity2 = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI, "/ChoiceHero/Hero_2/BBIMAGE")
@@ -123,6 +130,8 @@ graph UI_HomeUI {
     }
 
     func OnSkill2Click(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        SoundFunc.PlayCreatedSound("Click_Common_Default")
+
         GetLocalPlayer()<PlayerJionGame>.CurrentSkill = 2
         var HeroButtonEntity1 = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI, "/ChoiceHero/Hero_1/BBIMAGE")
         var HeroButtonEntity2 = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI, "/ChoiceHero/Hero_2/BBIMAGE")
@@ -133,6 +142,8 @@ graph UI_HomeUI {
     }
 
     func OnSkill3Click(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        SoundFunc.PlayCreatedSound("Click_Common_Default")
+
         GetLocalPlayer()<PlayerJionGame>.CurrentSkill = 0
         var HeroButtonEntity1 = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI, "/ChoiceHero/Hero_1/BBIMAGE")
         var HeroButtonEntity2 = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI, "/ChoiceHero/Hero_2/BBIMAGE")
@@ -143,6 +154,8 @@ graph UI_HomeUI {
     }
 
     func OnStartButtonClick(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        SoundFunc.PlayCreatedSound("Click_Common_Default")
+
         //临时处理，因为客户端服务端不互通
         if GetLocalPlayer()<PlayerJionGame>.CurrentSkill == 0 {
             return
@@ -171,10 +184,18 @@ graph UI_HomeUI {
             }
         }
         PVEController.PVELevelStartInitialization(level)
+
+        // 停止主界面音效
+        SoundFunc.PauseTheSound("MainMenu")
+        // 播放三选一界面音效
+        SoundFunc.PlayCreatedSound("Menu_Pickup")
     }
 
     //前往天赋面板
     func ToGiftedPanel(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        SoundFunc.PlayCreatedSound("Click_Common_Default")
+        SoundFunc.PlayCreatedSound("Page_Default_Open")
+
         var GiftedUIEntity = GetLocalPlayer()<PlayerJionGame>.GiftedUI
         GiftedUIEntity<CustomUI>.IsVisible = true
         var ChoiceHeroUIEntity = GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI
@@ -188,6 +209,9 @@ graph UI_HomeUI {
 
     //前往角色面板
     func ToHeroPanel(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        SoundFunc.PlayCreatedSound("Click_Common_Default")
+        SoundFunc.PlayCreatedSound("Page_Default_Open")
+
         var HeroUIEntity = GetLocalPlayer()<PlayerJionGame>.HeroUI
         HeroUIEntity<CustomUI>.IsVisible = true
         var ChoiceHeroUIEntity = GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI
@@ -202,6 +226,9 @@ graph UI_HomeUI {
 
     //前往排行榜面板
     func ToRankingPanel(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        SoundFunc.PlayCreatedSound("Click_Common_Default")
+        SoundFunc.PlayCreatedSound("Page_Default_Open")
+
         var RankingListUIEntity = GetLocalPlayer()<PlayerJionGame>.RankingListUI
         RankingListUIEntity<CustomUI>.IsVisible = true
         // 默认显示通关数排行

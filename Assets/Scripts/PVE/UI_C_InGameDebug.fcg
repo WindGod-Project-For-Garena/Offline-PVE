@@ -2,12 +2,15 @@ import "StdLibrary.fcc" as StdLib
 import "EditorGenLib.fcc" as EditorLib
 import "Hud.fcc" as Hud
 import "../CustomEvent.fcc" as CustomEvent
+import "../SoundFunc/SoundFunc.fcg" as SoundFunc
 import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
 import "../PlayerJionGame/OnFire.fcg" as OnFire
 
 [platform_client]
 graph UI_HomeUI {
     func onNextWaveButtonClick(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        SoundFunc.PlayCreatedSound("Click_Common_Default")
+
         GetLocalPlayer()<PlayerJionGame>.S_Debug_NextWave()
     }
 }

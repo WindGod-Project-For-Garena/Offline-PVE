@@ -7,6 +7,7 @@ import "List.fcc" as List
 import "Camera.fcc" as Camera
 import "Playable.fcc" as Playable
 import "Animation.fcc" as Animation
+import "../SoundFunc/SoundFunc.fcg" as SoundFunc
 import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
 import "../PVE/UI_C_HomeUI.fcg" as UI_C_HomeUI
 import "../CustomEvent.fcc" as CustomEvent
@@ -26,6 +27,7 @@ graph ChoiceOneOfThreeCard {
    CurrentRandomCards List<int> = List<int>{}
    //选择卡牌1
    func Card_1(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+      SoundFunc.PlayCreatedSound("Click_Common_Default")
       if  IsOver == true { return }
       SelectedCardIndex = 1
       // 设置卡牌1的图标
@@ -41,6 +43,7 @@ graph ChoiceOneOfThreeCard {
    
    //选择卡牌2
    func Card_2(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+      SoundFunc.PlayCreatedSound("Click_Common_Default")
       if  IsOver == true { return }
       SelectedCardIndex = 2
       // 设置卡牌2的图标
@@ -56,6 +59,7 @@ graph ChoiceOneOfThreeCard {
 
    //选择卡牌3
    func Card_3(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+      SoundFunc.PlayCreatedSound("Click_Common_Default")
       if  IsOver == true { return }
       SelectedCardIndex = 3
       // 设置卡牌3的图标
@@ -79,26 +83,31 @@ graph ChoiceOneOfThreeCard {
 
    // 已选择卡牌位置1
    func Card_1_Choice(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+      SoundFunc.PlayCreatedSound("Click_Common_Default")
       OwnedCardIconClicked_SmallIcon(1)
    }
 
    // 已选择卡牌位置2
    func Card_2_Choice(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+      SoundFunc.PlayCreatedSound("Click_Common_Default")
       OwnedCardIconClicked_SmallIcon(2)
    }
 
    // 已选择卡牌位置3
    func Card_3_Choice(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+      SoundFunc.PlayCreatedSound("Click_Common_Default")
       OwnedCardIconClicked_SmallIcon(3)
    }
 
    // 已选择卡牌位置4
    func Card_4_Choice(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+      SoundFunc.PlayCreatedSound("Click_Common_Default")
       OwnedCardIconClicked_SmallIcon(4)
    }
 
    // 已选择卡牌位置5
    func Card_5_Choice(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+      SoundFunc.PlayCreatedSound("Click_Common_Default")
       OwnedCardIconClicked_SmallIcon(5)
    }  
 //————————————————————————————————————————————————————————————————————————————————————————————————//
@@ -106,6 +115,8 @@ graph ChoiceOneOfThreeCard {
 //————————————————————————————————————————————————————————————————————————————————————————————————//
    //下一波开始
    async func OnConfirmBtnClicked(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+      SoundFunc.PlayCreatedSound("Click_Common_Default")
+
       CloseTextImage(button, triggerPlayer)
       if  IsOver == true { return }
       WaitForNextFrame()
@@ -177,6 +188,9 @@ graph ChoiceOneOfThreeCard {
       
       // 关闭选择界面并发送下一波事件
       thisEntity<CustomUI>.IsVisible = false
+
+      // 停止三选一界面音效
+      SoundFunc.PauseTheSound("Menu_Pickup")
       
       // 调用Close函数更新技能数据
       CloseChooseCardUI(triggerPlayer)
@@ -328,6 +342,8 @@ graph ChoiceOneOfThreeCard {
 
    //刷新卡牌
    func OnRefreshCardsClicked(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+      SoundFunc.PlayCreatedSound("Click_Common_Default")
+
       var level = GetLocalPlayer()<PlayerJionGame>.level
       var ability1Level = GetLocalPlayer()<PlayerJionGame>.ability1Level
       var ability2Level = GetLocalPlayer()<PlayerJionGame>.ability2Level
@@ -691,8 +707,6 @@ graph ChoiceOneOfThreeCard {
       }
       return nil
    }
-   
-   
    
    // 自动选择最佳卡牌（根据稀有度）
    async func AutoChoiceBestOneCard() {

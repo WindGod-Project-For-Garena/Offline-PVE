@@ -12,6 +12,7 @@ import "Camera.fcc" as Camera
 import "List.fcc" as List
 import "Strings.fcc" as Strings
 import "../CustomEvent.fcc" as CustomEvent
+import "../SoundFunc/SoundFunc.fcg" as SoundFunc
 import "../PVE/FC_PVEMonsterManager.fcg" as PVEMonsterManager
 
 [platform_client]
@@ -94,6 +95,9 @@ graph OnFire {
         var Size = GetLocalPlayer()<PlayerJionGame>.Skill1DataInGame["WeaponBoomRange"] as int
         var CurrentDamage = GetLocalPlayer()<PlayerJionGame>.Skill1DataInGame["WeaponBoomDamage"] as int
         
+         // 音效
+        SoundFunc.PlayCreatedSound("Skill_Grenade")
+
         // 释放特效
         CreateEffectClient(out var NewcreatedEntity, VFXType.CurseExplosion, LoopType.Once, true)
         var effectEntity = NewcreatedEntity
@@ -201,6 +205,9 @@ graph OnFire {
             }
         }
 
+        // 音效
+        SoundFunc.PlayCreatedSound("Skill_Grenade")
+
         WaitForMillisecond(2000)
         Destroy(doubleBoomEffect)
     }
@@ -242,6 +249,9 @@ graph OnFire {
         var SkillAmount = GetLocalPlayer()<PlayerJionGame>.Skill2DataInGame["SkillAmount"] as int
         var CurrentDamage = GetLocalPlayer()<PlayerJionGame>.Skill2DataInGame["SkillDamage"] as int
 
+        // 音效
+        SoundFunc.PlayCreatedSound("Skill_Lighting")
+
         // 释放雷击
         start PlayThunderEffects(SkillAmount,CurrentDamage,hitEntity)
     }
@@ -261,7 +271,6 @@ graph OnFire {
             DispatchEventToEntity(OnDamageMob, hitEntity, PlatformType.Client, List<object>{hitEntity, nil, realDamage, GetLocalPlayer()})
             GetLocalPlayer()<PlayerJionGame>.LightningDamage += realDamage
             CreateDamageNum(realDamage, 10, #00EEFFFF, 800, hitEntity as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
-            
             WaitForMillisecond(2000)
             Destroy(thunderEffect)
         }

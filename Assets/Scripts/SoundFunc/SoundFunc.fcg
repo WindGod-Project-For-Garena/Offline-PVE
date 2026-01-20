@@ -6,12 +6,12 @@ import "Playable.fcc" as Playable
 [platform_client]
 static graph SoundFunc {
     GlobalSoundMap Map<string, EResSound> = {}
-
+    SoundEntityMap Map<string, entity<SoundEffect>> = {}
+    
     event OnAwake() {
         GlobalSoundMap = {
             // 背景音乐
-            "Battle_Boss_Stage1": EResSound.Battle_Boss_Stage1,
-            "Battle_Boss_Stage2": EResSound.Battle_Boss_Stage2,
+            "Battle_Boss": EResSound.Battle_Boss,
             "Battle_Normal": EResSound.Battle_Normal,
             "MainMenu": EResSound.MainMenu,
             "Menu_Pickup": EResSound.Menu_Pickup,
@@ -42,14 +42,75 @@ static graph SoundFunc {
             "ZombieVoice_2": EResSound.ZombieVoice_2,
             "ZombieVoice_3": EResSound.ZombieVoice_3,
         }
+        SoundEntityMap = {}
+        
+        // 创建所有音乐
+        for soundName, sound in GlobalSoundMap {
+            CreateTheSound(soundName)
+        }
     }
 
-    // 播放音乐
-    func PlayTheSound(soundName string) {
+    // 创建音乐（不自动播放）
+    func CreateTheSound(soundName string) {
         var sound = GlobalSoundMap[soundName]
         if sound != nil {
-            LogInfo("PlaySound: " + soundName)
-            CreateSoundClient(out var soundEntity, sound as SoundEffectType, LoopType.Loop, true)
+            LogInfo("CreateSound: " + soundName)
+            
+            // 判断是否是背景音乐
+            var isBGM = false
+            var loopType = LoopType.Once
+
+            if soundName == "Battle_Boss" || 
+               soundName == "Battle_Normal" || 
+               soundName == "MainMenu" || 
+               soundName == "Menu_Pickup" ||
+               soundName == "ZombieVoice_1" ||
+               soundName == "ZombieVoice_2" ||
+               soundName == "ZombieVoice_3" {
+                isBGM = true
+            }
+            
+            // 背景音乐循环，其他音效不循环
+            if isBGM {
+                loopType = LoopType.Loop
+            } else {
+                loopType = LoopType.Once
+            }
+            
+            // 创建但不自动播放
+            CreateSoundClient(out var soundEntity, sound as SoundEffectType, loopType, false)
+            
+            // 将音效实体记录到映射中
+            if soundEntity != nil {
+                SoundEntityMap[soundName] = soundEntity
+            }
+        }
+    }
+
+    // 播放已创建的音效
+    func PlayCreatedSound(soundName string) {
+        var soundEntity = SoundEntityMap[soundName]
+        if soundEntity != nil {
+            Play(soundEntity as PlayableOrPlayables, true)
+            LogInfo("Play created sound: " + soundName)
+        }
+    }
+
+    // 暂停指定名称的音效
+    func PauseTheSound(soundName string) {
+        var soundEntity = SoundEntityMap[soundName]
+        if soundEntity != nil {
+            Pause(soundEntity as PlayableOrPlayables)
+            LogInfo("Paused sound: " + soundName)
+        }
+    }
+
+    // 恢复指定音效
+    func ResumeTheSound(soundName string) {
+        var soundEntity = SoundEntityMap[soundName]
+        if soundEntity != nil {
+            Play(soundEntity as PlayableOrPlayables,true)
+            LogInfo("Resumed sound: " + soundName)
         }
     }
 }
