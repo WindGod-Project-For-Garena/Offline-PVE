@@ -88,9 +88,6 @@ static graph PVEController {
         // 删除所有掉落道具
         GetLocalPlayer()<PlayerJionGame>.RemoveAllDrops()
 
-        // 通知所有玩家
-        Utilities.NotifyAllPlayers("PVE游戏开始！关卡: " + level, #00FF00FF, 5000)
-
         // 通知怪物管理器开始关卡
         monsterManager.LevelInitialize(level)
     }

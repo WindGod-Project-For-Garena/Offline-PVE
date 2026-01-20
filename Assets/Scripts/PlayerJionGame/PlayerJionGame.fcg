@@ -2866,7 +2866,13 @@ graph PlayerJionGame {
         // 更新角色显示
         var rolePath = "/RankPanel/TitleBoard/IFMPanel/IFMPanelBB/LevelAmountIFM/TitleIFM/Part2/RollPanel" + rankSuffix + "/ROLE"
         var roleText = GetWidgetByPath(GetLocalPlayer(), RankingListUI, rolePath)
-        roleText<UIWidgetLabel>.Content = heroName
+        var heroNameText = ""
+        if  heroName == "风暴游击手" {
+            heroNameText = LocString{"HERO_RAIDER", List<string>{}}
+        } else {
+            heroNameText = LocString{"HERO_BREACHER", List<string>{}}
+        }
+        roleText<UIWidgetLabel>.Content = heroNameText
         // 更新时间显示
         var timePath = "/RankPanel/TitleBoard/IFMPanel/IFMPanelBB/LevelAmountIFM/TitleIFM/Part2/RollPanel" + rankSuffix + "/Time"
         var timeText = GetWidgetByPath(GetLocalPlayer(), RankingListUI, timePath)
