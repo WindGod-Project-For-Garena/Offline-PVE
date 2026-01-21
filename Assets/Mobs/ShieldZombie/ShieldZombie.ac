@@ -1504,7 +1504,7 @@
               {
                 "eventKeyValue": "AnimationControllerAble::signal_87958515",
                 "paramList": [],
-                "hideParam": true
+                "hideParam": false
               }
             ],
             "dsada": "Sphere",
@@ -1752,7 +1752,34 @@
           "resourceId": ""
         },
         "_entityId": "zd6iQVOk",
-        "children": [],
+        "children": [
+          {
+            "_entityName": "",
+            "_tag": {
+              "type": "EventFrameEntity"
+            },
+            "_entityId": "dcIFPLks",
+            "children": [],
+            "prefabVariant": null,
+            "activeValue": null,
+            "unlockedValue": null,
+            "editorLockValue": false,
+            "editorVisibleValue": true,
+            "from": "ACState",
+            "FrameIndex": 52,
+            "EventFrameName": "事件帧 1",
+            "startTime": 1.733,
+            "EventList": [
+              {
+                "eventKeyValue": "AnimationControllerAble::signal_87958515",
+                "paramList": [],
+                "hideParam": true
+              }
+            ],
+            "dsada": "Sphere",
+            "enable": false
+          }
+        ],
         "prefabVariant": null,
         "activeValue": {
           "selfValue": true,
@@ -1969,8 +1996,14 @@
             "_entityId": "HG7KlTlu",
             "children": [],
             "prefabVariant": null,
-            "activeValue": null,
-            "unlockedValue": null,
+            "activeValue": {
+              "selfValue": true,
+              "valueTag": "activeValue"
+            },
+            "unlockedValue": {
+              "selfValue": true,
+              "valueTag": "unlockedValue"
+            },
             "editorLockValue": false,
             "editorVisibleValue": true,
             "from": "ACState",
@@ -2263,4 +2296,4 @@
     "fileType": "fbx"
   }
 }
-//"{FE:{"v":"0.2.4113096","c":{"FF":5001},"s":100}
+//"{FE:{"v":"1.16.4170774","c":{"FF":5001},"s":100}

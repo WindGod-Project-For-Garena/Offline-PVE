@@ -21,9 +21,8 @@ graph FC_Act_Death {
 		if (isShield) {
 			PlayAnimation(Owner as entity<AnimationControllerAttachable>, "Dead", 1, LoopType.Once)
 		} else {
-			PlayAnimation(Owner as entity<AnimationControllerAttachable>, "Dead_noShield", 1, LoopType.Once)
+			PlayAnimation(Owner as entity<AnimationControllerAttachable>, "Dead_NoShield", 1, LoopType.Once)
 		}
-
 		
 		PVEMonsterManager.OnMonsterKilled(Owner as entity<LevelObject>)
 
