@@ -23,6 +23,7 @@ import "../PVE/UI_C_HomeUI.fcg" as UI_C_HomeUI
 import "Playable.fcc" as Playable
 import "Animation.fcc" as Animation
 import "Database.fcc" as Database
+import "Scene.fcc" as Scene
 
 // 这里是RCT最新代码，WindGod & Holy巨献
 
@@ -216,7 +217,8 @@ graph PlayerJionGame {
     // 排行榜数据结构
     DATA_RankingList List<string> = List<string>{}
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
-    //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+    // 当前随机地图
+    CurrentRandomMap string = ""
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     event OnPlayerJoin(player entity<Player>) {
         if GetLocalPlayer() == player {
@@ -373,6 +375,11 @@ graph PlayerJionGame {
             SoundFunc.PlayCreatedSound("MainMenu")
             IsNextThreeChoiceOne = 0
         }
+    }
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+// 随机地图
+    func ChangeRandomMap() {
+        LogInfo("切换随机地图中...")
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
 // 存储当前最高关卡

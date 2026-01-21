@@ -189,6 +189,9 @@ graph UI_HomeUI {
         SoundFunc.PauseTheSound("MainMenu")
         // 播放三选一界面音效
         SoundFunc.PlayCreatedSound("Menu_Pickup")
+
+        // 切换随机地图
+        GetLocalPlayer()<PlayerJionGame>.ChangeRandomMap()
     }
 
     //前往天赋面板

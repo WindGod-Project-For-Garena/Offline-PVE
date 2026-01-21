@@ -1,0 +1,254 @@
+{
+  "_entityName": "Scene",
+  "_tag": {
+    "type": "Scene"
+  },
+  "_entityId": "F7CvT8Fz",
+  "children": [
+    {
+      "_entityName": "FE_0_ZZ_SKYENV_SKY",
+      "_tag": {
+        "type": "EnvWeatherEntity",
+        "resourceId": "Primitive/Empty"
+      },
+      "_entityId": "RKSsXRbI",
+      "children": [],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": null,
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "position": {
+        "x": 0,
+        "y": 100,
+        "z": 0
+      },
+      "scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "rotation": {
+        "x": 45,
+        "y": -204,
+        "z": -9
+      },
+      "BTPath": [
+        null
+      ],
+      "visible": true,
+      "VisibilityLayer": 0,
+      "modelOptimization": 0,
+      "streamingLayer": "",
+      "attributes": [
+        2
+      ],
+      "isTrigger": false,
+      "collidable": true,
+      "physicalLayer": 0,
+      "physicalMaterial": null,
+      "aoiSetting": 0,
+      "initialTypes": {},
+      "componentList": [],
+      "curWeatherPresetID": 1,
+      "currentWeather": {
+        "lightColor": {
+          "r": 248,
+          "g": 248,
+          "b": 248,
+          "a": 1
+        },
+        "lightIntensity": 1.06,
+        "darkness": 0.03,
+        "shadowStrength": 0.6,
+        "terrainWetness": 0,
+        "lensFlare": 0.65,
+        "fogColor": {
+          "r": 123,
+          "g": 158,
+          "b": 192,
+          "a": 1
+        },
+        "ambientColor": {
+          "r": 149,
+          "g": 149,
+          "b": 149,
+          "a": 1
+        },
+        "nightMode": false,
+        "resId": "UGC_SKYENV_DAY",
+        "enableFog": true,
+        "fogType": 1,
+        "startDistance": 50,
+        "endDistance": 1000,
+        "density": 0.01,
+        "lightRotation": {
+          "x": 45,
+          "y": -204,
+          "z": -9
+        },
+        "skyMaterial": null
+      }
+    },
+    {
+      "_entityName": "WS_Plane",
+      "_tag": {
+        "type": "UGCSceneEntity",
+        "resourceId": ""
+      },
+      "_entityId": "kG6JZjZN",
+      "children": [],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": null,
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "scale": {
+        "x": 100,
+        "y": 1,
+        "z": 100
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "BTPath": [
+        null
+      ],
+      "visible": true,
+      "VisibilityLayer": 0,
+      "modelOptimization": 0,
+      "streamingLayer": "",
+      "attributes": [
+        2
+      ],
+      "isTrigger": false,
+      "collidable": true,
+      "physicalLayer": 0,
+      "physicalMaterial": null,
+      "aoiSetting": 0,
+      "initialTypes": {},
+      "componentList": [
+        "MeshRender",
+        "ColliderShape",
+        "Collider"
+      ],
+      "entityTagData": {
+        "tagPointers": []
+      },
+      "materials": [
+        null
+      ],
+      "colliders": [
+        {
+          "enable": true,
+          "colliderType": "MeshCollider",
+          "meshUUID": {
+            "fileId": "wehss29x://56937734-67d8-4e83-b175-17c2544b25b4-WS_Plane.~@FFFUB",
+            "filePath": "wehss29x://Meshes/plane.fbx/WS_Plane",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "mesh"
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "size": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "radius": 0.5,
+          "height": 1,
+          "isConvexIfMesh": false
+        }
+      ],
+      "IsNPC": false,
+      "isCreateAsEmpty": false,
+      "Rigidbody": {
+        "Type": 1,
+        "Mass": 1,
+        "CenterOfMass": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "UseGravity": true,
+        "Drag": 0.05,
+        "AngularDrag": 0.05,
+        "FreezePosX": false,
+        "FreezeRotX": false,
+        "FreezePosY": false,
+        "FreezeRotY": false,
+        "FreezePosZ": false,
+        "FreezeRotZ": false
+      },
+      "ecaScripts": [],
+      "ecaProps": {
+        "CustomLevelObject": {
+          "CustomLevelObject_81351029_custom": null
+        },
+        "LevelObject": {},
+        "Transform": {},
+        "Entity": {},
+        "Visibility": {},
+        "MeshRender": {},
+        "ColliderShape": {},
+        "Collider": {}
+      },
+      "propsData": {},
+      "entityVersion": 3,
+      "mesh": {
+        "fileId": "wehss29x://56937734-67d8-4e83-b175-17c2544b25b4-WS_Plane.~@FFFUB",
+        "filePath": "wehss29x://Meshes/plane.fbx/WS_Plane",
+        "_tag": {
+          "type": "GFileRefer"
+        },
+        "fileType": "mesh"
+      }
+    }
+  ],
+  "prefabVariant": null,
+  "activeValue": {
+    "selfValue": true,
+    "valueTag": "activeValue"
+  },
+  "unlockedValue": null,
+  "editorLockValue": false,
+  "editorVisibleValue": true,
+  "discriminator": "ISceneLike",
+  "mapID": 32,
+  "terrainInfo": {
+    "texture": [
+      {
+        "fileId": "e4c65232d3be1e92230bbcfdfd075038",
+        "filePath": "lib://fftextures/WorkshopItemTexture/SceneEdit_Cube_Texture_Grassland_01.png",
+        "_tag": {
+          "type": "GFileRefer"
+        },
+        "fileType": "texture"
+      }
+    ]
+  }
+}
+//"{FE:{"v":"1.16.4170774","c":{"FF":5001},"s":100}
