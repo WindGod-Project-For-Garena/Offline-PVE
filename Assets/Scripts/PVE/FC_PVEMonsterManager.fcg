@@ -624,25 +624,46 @@ static graph FC_PVEMonsterManager {
         // 简单的随机生成位置，实际应该根据地图设计
         //LogInfo("monster<Mob>.MobName: " + monster<Mob>.MobName)
         if monster<Mob>.MobName == "GrenadeZombie" || monster<Mob>.MobName == "GrenadeZombie_Red" {
-            //范围{12，-2}，{14，13}
-            var x float = RandomFloat(12, 14)
-            var z float = RandomFloat(-2, 13)
-            return Vector3{x, 2.3, z}
+            // 森林区域
+            if GetLocalPlayer()<PlayerJionGame>.CurrentRandomMap == "forest" {
+                var x float = RandomFloat(-1, 8)
+                var z float = RandomFloat(15, 11.5)
+                return Vector3{x, 3.5, z}
+            // 雪地区域
+            } else if GetLocalPlayer()<PlayerJionGame>.CurrentRandomMap == "snow" {
+                if RandomInt(0,1) == 0 {
+                    var x float = RandomFloat(10, 11)
+                    var z float = RandomFloat(0, 12)
+                    return Vector3{x, 3.3, z}
+                } else {
+                    var x float = RandomFloat(-12, -11)
+                    var z float = RandomFloat(-10, -2.5)
+                    return Vector3{x, 4.2, z}
+                }
+            // 拆迁大楼区域
+            } else if GetLocalPlayer()<PlayerJionGame>.CurrentRandomMap == "ruins" {
+                var x float = RandomFloat(2.5, -3.5)
+                var z float = RandomFloat(-13.5, -12)
+                return Vector3{x, 2.3, z}
+            }
         }else {
-            var x = RandomFloat(-8, 8)
-            var z = RandomFloat(-8, 8)
-            return Vector3{x, -0.3, z}
+            // 森林区域
+            if GetLocalPlayer()<PlayerJionGame>.CurrentRandomMap == "forest" {
+                var x = RandomFloat(-8, 8)
+                var z = RandomFloat(7, -7)
+                return Vector3{x, 0.5, z}
+            // 雪地区域
+            } else if GetLocalPlayer()<PlayerJionGame>.CurrentRandomMap == "snow" {
+                var x = RandomFloat(-7, 6.5)
+                var z = RandomFloat(-8.5, 11)
+                return Vector3{x, 0.5, z}
+            // 拆迁大楼区域
+            } else if GetLocalPlayer()<PlayerJionGame>.CurrentRandomMap == "ruins" {
+                var x = RandomFloat(-10, 8)
+                var z = RandomFloat(-10, 7)
+                return Vector3{x, -0.3, z}
+            }
         }
-
-
-
-
-
-
-
-
-
-        
     }
   
     

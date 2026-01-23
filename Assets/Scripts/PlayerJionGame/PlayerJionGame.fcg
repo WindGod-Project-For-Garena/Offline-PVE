@@ -24,6 +24,7 @@ import "Playable.fcc" as Playable
 import "Animation.fcc" as Animation
 import "Database.fcc" as Database
 import "Scene.fcc" as Scene
+import "LevelObject.fcc" as LevelObject
 
 // 这里是RCT最新代码，WindGod & Holy巨献
 
@@ -217,8 +218,8 @@ graph PlayerJionGame {
     // 排行榜数据结构
     DATA_RankingList List<string> = List<string>{}
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
-    // 当前随机地图
-    CurrentRandomMap string = ""
+    // 当前地图
+    CurrentRandomMap string = "ground"
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     event OnPlayerJoin(player entity<Player>) {
         if GetLocalPlayer() == player {
@@ -359,6 +360,7 @@ graph PlayerJionGame {
             InjectGifted_CardData()
             InjectGiftCardProbabilityData()
             InitAllGiftedCardUI()
+            InitMap()
             // 初始化已选卡牌展示面板
             ChoiceThreeCardUI<ChoiceOneOfThreeCard>.InitNowChoicePanelIcons()
             // 初始化局外天赋加成后数据（复制基础数据）
@@ -377,9 +379,51 @@ graph PlayerJionGame {
         }
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+// 初始化地图(只保留默认地图)
+    func InitMap() {
+        // 当前随机地图
+        var forestMap = EResSceneDefaultMap.forest as entity<Entity>
+        var ruinsMap = EResSceneDefaultMap.ruins as entity<Entity>
+        var snowMap = EResSceneDefaultMap.snow as entity<Entity>
+        var groundMap = EResSceneDefaultMap.ground as entity<Entity>
+        SetActive(forestMap, false)
+        SetActive(ruinsMap, false)
+        SetActive(snowMap, false)
+        SetActive(groundMap, true)
+    }
+    
 // 随机地图
     func ChangeRandomMap() {
-        LogInfo("切换随机地图中...")
+        // 随机选择一个地图索引 (0-3)
+        var randomIndex = RandomInt(0, 3)
+        var forestMap = EResSceneDefaultMap.forest as entity<Entity>
+        var ruinsMap = EResSceneDefaultMap.ruins as entity<Entity>
+        var snowMap = EResSceneDefaultMap.snow as entity<Entity>
+        var groundMap = EResSceneDefaultMap.ground as entity<Entity>
+        // 先隐藏所有地图
+        SetActive(forestMap, false)
+        SetActive(ruinsMap, false)
+        SetActive(snowMap, false)
+        // 激活随机选择的地图
+        if randomIndex == 0 {
+            SetActive(forestMap, true)
+            CurrentRandomMap = "forest"
+            SetActive(groundMap, false)
+        } else if randomIndex == 1 {
+            SetActive(ruinsMap, true)
+            CurrentRandomMap = "ruins"
+            SetActive(groundMap, false)
+        } else if randomIndex == 2 {
+            SetActive(snowMap, true)
+            CurrentRandomMap = "snow"
+            SetActive(groundMap, false)
+        }
+    }
+
+// 设置玩家位置
+    func SetPlayerPosition() {
+        var startPosition Vector3 = Vector3{0, 3, 0}
+        SetLocalPlayerPosition(startPosition)
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
 // 存储当前最高关卡

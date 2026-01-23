@@ -270,6 +270,35 @@
           },
           "scriptName": "snow",
           "children": []
+        },
+        {
+          "refer": {
+            "fileId": "1abdk36meg4-mknvcm3x-mm7q5r7mbo",
+            "filePath": "Assets\\Scene\\DefaultMap.scene",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "scene"
+          },
+          "scriptName": "DefaultMap",
+          "children": [
+            {
+              "id": "E83e1tbN",
+              "scriptName": "forest"
+            },
+            {
+              "id": "ncHVNBB9",
+              "scriptName": "ruins"
+            },
+            {
+              "id": "wsYVSWV8",
+              "scriptName": "snow"
+            },
+            {
+              "id": "kG6JZjZN",
+              "scriptName": "ground"
+            }
+          ]
         }
       ]
     },

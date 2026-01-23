@@ -32,6 +32,9 @@ graph FinalStats {
 
         Offline.Revive()
 
+        // 更新玩家位置
+        GetLocalPlayer()<PlayerJionGame>.SetPlayerPosition()
+
         // 更新选择英雄面板的金钱显示
         GetLocalPlayer()<PlayerJionGame>.UpdateChoiceHeroPanelMoney()
     }
@@ -61,6 +64,9 @@ graph FinalStats {
         GetLocalPlayer()<PlayerJionGame>.displaySkillByIndex(skillIndex)
 
         Offline.Revive()
+
+        // 更新玩家位置
+        GetLocalPlayer()<PlayerJionGame>.SetPlayerPosition()
         
         // 更新选择英雄面板的金钱显示
         GetLocalPlayer()<PlayerJionGame>.UpdateChoiceHeroPanelMoney()
