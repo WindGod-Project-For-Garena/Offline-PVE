@@ -12,10 +12,84 @@ import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
 
 [platform_client]
 graph ChoiceHero {
-    //退出游戏
-   func ToNewHome(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
-        SoundFunc.PlayCreatedSound("Click_Common_Default")
+     //退出游戏
+     func ToNewHome(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+          SoundFunc.PlayCreatedSound("Click_Common_Default")
 
-        QuitGameClient(true)
-   }
+          QuitGameClient(true)
+     }
+
+     // 角色1的两个技能介绍详情
+     func ShowHero1_Skill1_Detail(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+          SoundFunc.PlayCreatedSound("Click_Common_Default")
+
+          var Skill1_Detail_Entity = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/ChoiceHero/TextImage")
+          Skill1_Detail_Entity<UIWidget>.IsVisible = true
+          Skill1_Detail_Entity<UIWidget>.ActualPosition = Vector3{-140, -200,0} 
+          // 技能名字
+          var Skill1_Detail_TitleEntity = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/ChoiceHero/TextImage/Title")
+          var LocStrText1 = LocString{"SKILL_BOMBARD", List<string>{}}
+          Skill1_Detail_TitleEntity<UIWidgetLabel>.Content = LocStrText1
+          // 技能详情
+          var Skill1_Detail_TEXTEntity = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/ChoiceHero/TextImage/Title/Text")
+          var LocStrText2 = LocString{"SKILL_BOMB_DESC", List<string>{}}
+          Skill1_Detail_TEXTEntity<UIWidgetLabel>.Content = LocStrText2
+     }
+     
+     func ShowHero1_Skill2_Detail(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+          SoundFunc.PlayCreatedSound("Click_Common_Default")
+
+          var Skill1_Detail_Entity = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/ChoiceHero/TextImage")
+          Skill1_Detail_Entity<UIWidget>.IsVisible = true
+          Skill1_Detail_Entity<UIWidget>.ActualPosition = Vector3{-10, -200,0}
+          // 技能名字
+          var Skill1_Detail_TitleEntity = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/ChoiceHero/TextImage/Title")
+          var LocStrText1 = LocString{"SKILL_GRENADE", List<string>{}}
+          Skill1_Detail_TitleEntity<UIWidgetLabel>.Content = LocStrText1
+          // 技能详情
+          var Skill1_Detail_TEXTEntity = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/ChoiceHero/TextImage/Title/Text")
+          var LocStrText2 = LocString{"SKILL_GRENADE_DESC", List<string>{}}
+          Skill1_Detail_TEXTEntity<UIWidgetLabel>.Content = LocStrText2
+     }
+
+     // 角色2的两个技能介绍详情
+     func ShowHero2_Skill1_Detail(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+          SoundFunc.PlayCreatedSound("Click_Common_Default")
+
+          var Skill1_Detail_Entity = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/ChoiceHero/TextImage")
+          Skill1_Detail_Entity<UIWidget>.IsVisible = true
+          Skill1_Detail_Entity<UIWidget>.ActualPosition = Vector3{210, -200,0}
+          // 技能名字
+          var Skill2_Detail_TitleEntity = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/ChoiceHero/TextImage/Title")
+          var LocStrText1 = LocString{"SKILL_SHOCK", List<string>{}}
+          Skill2_Detail_TitleEntity<UIWidgetLabel>.Content = LocStrText1
+          // 技能详情
+          var Skill2_Detail_TEXTEntity = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/ChoiceHero/TextImage/Title/Text")
+          var LocStrText2 = LocString{"SKILL_SHOCK_DESC", List<string>{}}
+          Skill2_Detail_TEXTEntity<UIWidgetLabel>.Content = LocStrText2
+     }
+
+     func ShowHero2_Skill2_Detail(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+          SoundFunc.PlayCreatedSound("Click_Common_Default")
+
+          var Skill1_Detail_Entity = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/ChoiceHero/TextImage")
+          Skill1_Detail_Entity<UIWidget>.IsVisible = true
+          Skill1_Detail_Entity<UIWidget>.ActualPosition = Vector3{340, -200,0}
+          // 技能名字
+          var Skill2_Detail_TitleEntity = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/ChoiceHero/TextImage/Title")
+          var LocStrText1 = LocString{"SKILL_CHAIN", List<string>{}}
+          Skill2_Detail_TitleEntity<UIWidgetLabel>.Content = LocStrText1
+          // 技能详情
+          var Skill2_Detail_TEXTEntity = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/ChoiceHero/TextImage/Title/Text")
+          var LocStrText2 = LocString{"SKILL_CHAIN_DESC", List<string>{}}
+          Skill2_Detail_TEXTEntity<UIWidgetLabel>.Content = LocStrText2
+     }
+
+     // 隐藏技能介绍详情
+     func Hide_Skill_Detail(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+          SoundFunc.PlayCreatedSound("Click_Common_Default")
+
+          var Skill1_Detail_Entity = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/ChoiceHero/TextImage")
+          Skill1_Detail_Entity<UIWidget>.IsVisible = false
+     }
 }

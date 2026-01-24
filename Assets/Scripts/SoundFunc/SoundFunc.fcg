@@ -92,7 +92,6 @@ static graph SoundFunc {
         var soundEntity = SoundEntityMap[soundName]
         if soundEntity != nil {
             Play(soundEntity as PlayableOrPlayables, true)
-            LogInfo("Play created sound: " + soundName)
         }
     }
 
@@ -101,7 +100,6 @@ static graph SoundFunc {
         var soundEntity = SoundEntityMap[soundName]
         if soundEntity != nil {
             Pause(soundEntity as PlayableOrPlayables)
-            LogInfo("Paused sound: " + soundName)
         }
     }
 
@@ -110,7 +108,6 @@ static graph SoundFunc {
         var soundEntity = SoundEntityMap[soundName]
         if soundEntity != nil {
             Play(soundEntity as PlayableOrPlayables,true)
-            LogInfo("Resumed sound: " + soundName)
         }
     }
 }

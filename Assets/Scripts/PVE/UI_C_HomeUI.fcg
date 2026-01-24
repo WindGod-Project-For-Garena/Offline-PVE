@@ -190,6 +190,9 @@ graph UI_HomeUI {
         // 播放三选一界面音效
         SoundFunc.PlayCreatedSound("Menu_Pickup")
 
+        var Skill1_Detail_Entity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI, "/ChoiceHero/TextImage")
+        Skill1_Detail_Entity<UIWidget>.IsVisible = false
+
         // 切换随机地图
         GetLocalPlayer()<PlayerJionGame>.ChangeRandomMap()
     }

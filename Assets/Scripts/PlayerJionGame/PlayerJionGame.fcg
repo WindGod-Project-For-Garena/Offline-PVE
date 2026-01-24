@@ -289,6 +289,9 @@ graph PlayerJionGame {
             var skillIndex int = 1
             displaySkillByIndex(skillIndex)
 
+            var Skill1_Detail_Entity = GetWidgetByPath(GetLocalPlayer(), ChoiceHeroUI, "/ChoiceHero/TextImage")
+            Skill1_Detail_Entity<UIWidget>.IsVisible = false
+
             CreateCustomUIClient(out var inGameDebugUIEntity, EResUI.InGameDebug)
             inGameDebugUI = inGameDebugUIEntity
 
@@ -381,7 +384,6 @@ graph PlayerJionGame {
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
 // 初始化地图(只保留默认地图)
     func InitMap() {
-        // 当前随机地图
         var forestMap = EResSceneDefaultMap.forest as entity<Entity>
         var ruinsMap = EResSceneDefaultMap.ruins as entity<Entity>
         var snowMap = EResSceneDefaultMap.snow as entity<Entity>
