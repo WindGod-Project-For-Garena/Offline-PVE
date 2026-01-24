@@ -128,12 +128,20 @@ static graph PVEController {
     // 波次倒计时器
     async func WaveCountdownTimer() {
         var waveTime int = globalEntity<Global>.GameTimeCount - WaveStartTime
+        var hasShown5sWarning bool = false  // 标记是否已显示5秒警告
+        
         while IsCountdownActive && waveTime < WaveTimeLimit {
             waveTime = globalEntity<Global>.GameTimeCount - WaveStartTime
             var remainTime int = (WaveTimeLimit - waveTime)/1000
             
             // 更新UI
             UpdateTimeInGameUI(remainTime, false)
+            
+            // 检查是否需要显示5秒倒计时提示
+            if remainTime <= 5 && !hasShown5sWarning {
+                start ShowCountdownWarning(remainTime)
+                hasShown5sWarning = true
+            }
             
             WaitForMillisecond(WaveCountdownInterval)
             
@@ -176,6 +184,15 @@ static graph PVEController {
             //显示三选一
             GetLocalPlayer()<PlayerJionGame>.ToClient_DisplaySkillThreeChoiceOne()
         }
+    }
+
+    // 显示倒计时警告
+    async func ShowCountdownWarning(remainTime int) {
+        CreateBuiltInUIClient(out var createdEntity6, BuiltInUIType.FiveSecondCountDownHud)
+        createdEntity6<UICountDown5>.IsVisible = true
+        createdEntity6<UICountDown5>.LocalPosition = Vector3{0, -200, 0}
+        WaitForMillisecond(5500)
+        Destroy(createdEntity6)
     }
 
     // Boss波次存活检测
