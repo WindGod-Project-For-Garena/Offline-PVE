@@ -713,6 +713,110 @@
                       }
                     },
                     {
+                      "_entityName": "ISCHOICE",
+                      "_tag": {
+                        "type": "UIImageEntity",
+                        "resourceId": ""
+                      },
+                      "_entityId": "pg0ErUJY",
+                      "children": [],
+                      "prefabVariant": null,
+                      "activeValue": {
+                        "selfValue": true,
+                        "valueTag": "activeValue"
+                      },
+                      "unlockedValue": {
+                        "selfValue": true,
+                        "valueTag": "unlockedValue"
+                      },
+                      "propsData": {
+                        "activeSelf": true,
+                        "transform": {
+                          "rotate": 0,
+                          "anchorMin": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "anchorMax": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "pivot": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "anchoredPosition": {
+                            "x": 0,
+                            "y": 0
+                          },
+                          "sizeDelta": {
+                            "x": 105,
+                            "y": 105
+                          }
+                        },
+                        "alpha": 100,
+                        "priority": 0,
+                        "image": {
+                          "source": {
+                            "fileId": "ecqss6vocsa-mjmkv7fz-0syl07tzbe5g",
+                            "filePath": "Assets\\Image\\GiftIFM\\FF_ingame_hud_RandomBuff_IconBG01.png",
+                            "_tag": {
+                              "type": "GFileRefer"
+                            },
+                            "fileType": "texture"
+                          },
+                          "color": "#FFEB00",
+                          "reverse": {
+                            "x": false,
+                            "y": false
+                          },
+                          "fillType": 1,
+                          "slicedBorder": {
+                            "left": 0,
+                            "right": 0,
+                            "top": 0,
+                            "bottom": 0
+                          },
+                          "tiledBorder": {
+                            "left": 0,
+                            "right": 0,
+                            "top": 0,
+                            "bottom": 0
+                          },
+                          "centerInvisible": false,
+                          "fillDir": 0,
+                          "fillAmount": 0,
+                          "invertFill": false,
+                          "flip": 0,
+                          "gradient": 1,
+                          "gradientTop": {
+                            "r": 255,
+                            "g": 255,
+                            "b": 255,
+                            "a": 1
+                          },
+                          "gradientBottom": {
+                            "r": 255,
+                            "g": 255,
+                            "b": 255,
+                            "a": 1
+                          }
+                        }
+                      },
+                      "ecaScripts": [],
+                      "ecaProps": {
+                        "HudImageWidget": {},
+                        "HudWidget": {},
+                        "Entity": {}
+                      },
+                      "componentList": [],
+                      "entityTagData": {
+                        "tagPointers": []
+                      },
+                      "editorLockValue": false,
+                      "editorVisibleValue": false
+                    },
+                    {
                       "_entityName": "icon",
                       "_tag": {
                         "type": "UIImageEntity",
@@ -1197,7 +1301,7 @@
                 "type": "UIButtonEntity",
                 "resourceId": ""
               },
-              "_entityId": "mQJ2VHt1",
+              "_entityId": "TDsje3Y1",
               "children": [
                 {
                   "_entityName": "NumText",
@@ -1205,7 +1309,7 @@
                     "type": "UITextEntity",
                     "resourceId": ""
                   },
-                  "_entityId": "By3sDsLq",
+                  "_entityId": "RU95N7ib",
                   "children": [],
                   "prefabVariant": null,
                   "activeValue": {
@@ -1295,7 +1399,7 @@
                     "type": "UITextEntity",
                     "resourceId": ""
                   },
-                  "_entityId": "H383zwzD",
+                  "_entityId": "vpkczyCY",
                   "children": [],
                   "prefabVariant": null,
                   "activeValue": {
@@ -1385,7 +1489,7 @@
                     "type": "UIPanelEntityV3",
                     "resourceId": ""
                   },
-                  "_entityId": "KJJFMGbK",
+                  "_entityId": "NvoPzmpx",
                   "children": [
                     {
                       "_entityName": "ICONBB",
@@ -1393,7 +1497,7 @@
                         "type": "UIImageEntity",
                         "resourceId": ""
                       },
-                      "_entityId": "og5FqNPX",
+                      "_entityId": "e3sK7t2W",
                       "children": [],
                       "prefabVariant": null,
                       "activeValue": {
@@ -1492,12 +1596,116 @@
                       "editorVisibleValue": true
                     },
                     {
+                      "_entityName": "ISCHOICE",
+                      "_tag": {
+                        "type": "UIImageEntity",
+                        "resourceId": ""
+                      },
+                      "_entityId": "vaDH9wKq",
+                      "children": [],
+                      "prefabVariant": null,
+                      "activeValue": {
+                        "selfValue": true,
+                        "valueTag": "activeValue"
+                      },
+                      "unlockedValue": {
+                        "selfValue": true,
+                        "valueTag": "unlockedValue"
+                      },
+                      "propsData": {
+                        "activeSelf": true,
+                        "transform": {
+                          "rotate": 0,
+                          "anchorMin": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "anchorMax": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "pivot": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "anchoredPosition": {
+                            "x": 0,
+                            "y": 0
+                          },
+                          "sizeDelta": {
+                            "x": 105,
+                            "y": 105
+                          }
+                        },
+                        "alpha": 100,
+                        "priority": 0,
+                        "image": {
+                          "source": {
+                            "fileId": "ecqss6vocsa-mjmkv7fz-0syl07tzbe5g",
+                            "filePath": "Assets\\Image\\GiftIFM\\FF_ingame_hud_RandomBuff_IconBG01.png",
+                            "_tag": {
+                              "type": "GFileRefer"
+                            },
+                            "fileType": "texture"
+                          },
+                          "color": "#FFEB00",
+                          "reverse": {
+                            "x": false,
+                            "y": false
+                          },
+                          "fillType": 1,
+                          "slicedBorder": {
+                            "left": 0,
+                            "right": 0,
+                            "top": 0,
+                            "bottom": 0
+                          },
+                          "tiledBorder": {
+                            "left": 0,
+                            "right": 0,
+                            "top": 0,
+                            "bottom": 0
+                          },
+                          "centerInvisible": false,
+                          "fillDir": 0,
+                          "fillAmount": 0,
+                          "invertFill": false,
+                          "flip": 0,
+                          "gradient": 1,
+                          "gradientTop": {
+                            "r": 255,
+                            "g": 255,
+                            "b": 255,
+                            "a": 1
+                          },
+                          "gradientBottom": {
+                            "r": 255,
+                            "g": 255,
+                            "b": 255,
+                            "a": 1
+                          }
+                        }
+                      },
+                      "ecaScripts": [],
+                      "ecaProps": {
+                        "HudImageWidget": {},
+                        "HudWidget": {},
+                        "Entity": {}
+                      },
+                      "componentList": [],
+                      "entityTagData": {
+                        "tagPointers": []
+                      },
+                      "editorLockValue": false,
+                      "editorVisibleValue": true
+                    },
+                    {
                       "_entityName": "icon",
                       "_tag": {
                         "type": "UIImageEntity",
                         "resourceId": ""
                       },
-                      "_entityId": "efxeVTNW",
+                      "_entityId": "XoT56Epm",
                       "children": [],
                       "prefabVariant": null,
                       "activeValue": {
@@ -1601,7 +1809,7 @@
                         "type": "UITextEntity",
                         "resourceId": ""
                       },
-                      "_entityId": "eI3XcgcE",
+                      "_entityId": "WQA5RNbf",
                       "children": [],
                       "prefabVariant": null,
                       "activeValue": {
@@ -1767,7 +1975,7 @@
                     "type": "UITextEntity",
                     "resourceId": ""
                   },
-                  "_entityId": "emXkHekU",
+                  "_entityId": "pBDWNtF7",
                   "children": [],
                   "prefabVariant": null,
                   "activeValue": {
@@ -1976,7 +2184,7 @@
                 "type": "UIButtonEntity",
                 "resourceId": ""
               },
-              "_entityId": "u1MmeHOh",
+              "_entityId": "jKUaxmVo",
               "children": [
                 {
                   "_entityName": "NumText",
@@ -1984,7 +2192,7 @@
                     "type": "UITextEntity",
                     "resourceId": ""
                   },
-                  "_entityId": "vayTxja8",
+                  "_entityId": "DCUrB9NE",
                   "children": [],
                   "prefabVariant": null,
                   "activeValue": {
@@ -2074,7 +2282,7 @@
                     "type": "UITextEntity",
                     "resourceId": ""
                   },
-                  "_entityId": "DhhcwmnP",
+                  "_entityId": "TGQgoFTy",
                   "children": [],
                   "prefabVariant": null,
                   "activeValue": {
@@ -2164,7 +2372,7 @@
                     "type": "UIPanelEntityV3",
                     "resourceId": ""
                   },
-                  "_entityId": "kLRye0G9",
+                  "_entityId": "yIbeGWer",
                   "children": [
                     {
                       "_entityName": "ICONBB",
@@ -2172,7 +2380,7 @@
                         "type": "UIImageEntity",
                         "resourceId": ""
                       },
-                      "_entityId": "FOxSfrHd",
+                      "_entityId": "cXp5ZqAB",
                       "children": [],
                       "prefabVariant": null,
                       "activeValue": {
@@ -2271,12 +2479,116 @@
                       "editorVisibleValue": true
                     },
                     {
+                      "_entityName": "ISCHOICE",
+                      "_tag": {
+                        "type": "UIImageEntity",
+                        "resourceId": ""
+                      },
+                      "_entityId": "DghLZsng",
+                      "children": [],
+                      "prefabVariant": null,
+                      "activeValue": {
+                        "selfValue": true,
+                        "valueTag": "activeValue"
+                      },
+                      "unlockedValue": {
+                        "selfValue": true,
+                        "valueTag": "unlockedValue"
+                      },
+                      "propsData": {
+                        "activeSelf": true,
+                        "transform": {
+                          "rotate": 0,
+                          "anchorMin": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "anchorMax": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "pivot": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "anchoredPosition": {
+                            "x": 0,
+                            "y": 0
+                          },
+                          "sizeDelta": {
+                            "x": 105,
+                            "y": 105
+                          }
+                        },
+                        "alpha": 100,
+                        "priority": 0,
+                        "image": {
+                          "source": {
+                            "fileId": "ecqss6vocsa-mjmkv7fz-0syl07tzbe5g",
+                            "filePath": "Assets\\Image\\GiftIFM\\FF_ingame_hud_RandomBuff_IconBG01.png",
+                            "_tag": {
+                              "type": "GFileRefer"
+                            },
+                            "fileType": "texture"
+                          },
+                          "color": "#FFEB00",
+                          "reverse": {
+                            "x": false,
+                            "y": false
+                          },
+                          "fillType": 1,
+                          "slicedBorder": {
+                            "left": 0,
+                            "right": 0,
+                            "top": 0,
+                            "bottom": 0
+                          },
+                          "tiledBorder": {
+                            "left": 0,
+                            "right": 0,
+                            "top": 0,
+                            "bottom": 0
+                          },
+                          "centerInvisible": false,
+                          "fillDir": 0,
+                          "fillAmount": 0,
+                          "invertFill": false,
+                          "flip": 0,
+                          "gradient": 1,
+                          "gradientTop": {
+                            "r": 255,
+                            "g": 255,
+                            "b": 255,
+                            "a": 1
+                          },
+                          "gradientBottom": {
+                            "r": 255,
+                            "g": 255,
+                            "b": 255,
+                            "a": 1
+                          }
+                        }
+                      },
+                      "ecaScripts": [],
+                      "ecaProps": {
+                        "HudImageWidget": {},
+                        "HudWidget": {},
+                        "Entity": {}
+                      },
+                      "componentList": [],
+                      "entityTagData": {
+                        "tagPointers": []
+                      },
+                      "editorLockValue": false,
+                      "editorVisibleValue": true
+                    },
+                    {
                       "_entityName": "icon",
                       "_tag": {
                         "type": "UIImageEntity",
                         "resourceId": ""
                       },
-                      "_entityId": "xHEUVPhl",
+                      "_entityId": "WzYGH60r",
                       "children": [],
                       "prefabVariant": null,
                       "activeValue": {
@@ -2380,7 +2692,7 @@
                         "type": "UITextEntity",
                         "resourceId": ""
                       },
-                      "_entityId": "mW6nhAcx",
+                      "_entityId": "R1O4xvqU",
                       "children": [],
                       "prefabVariant": null,
                       "activeValue": {
@@ -2546,7 +2858,7 @@
                     "type": "UITextEntity",
                     "resourceId": ""
                   },
-                  "_entityId": "ynAmfJuE",
+                  "_entityId": "TJH1PF3p",
                   "children": [],
                   "prefabVariant": null,
                   "activeValue": {
@@ -2755,7 +3067,7 @@
                 "type": "UIButtonEntity",
                 "resourceId": ""
               },
-              "_entityId": "mrPUqI4p",
+              "_entityId": "nlXSNAeb",
               "children": [
                 {
                   "_entityName": "NumText",
@@ -2763,7 +3075,7 @@
                     "type": "UITextEntity",
                     "resourceId": ""
                   },
-                  "_entityId": "lLbEcYvr",
+                  "_entityId": "RslRyg7Y",
                   "children": [],
                   "prefabVariant": null,
                   "activeValue": {
@@ -2853,7 +3165,7 @@
                     "type": "UITextEntity",
                     "resourceId": ""
                   },
-                  "_entityId": "MKqXF0M6",
+                  "_entityId": "UjtCQgED",
                   "children": [],
                   "prefabVariant": null,
                   "activeValue": {
@@ -2943,7 +3255,7 @@
                     "type": "UIPanelEntityV3",
                     "resourceId": ""
                   },
-                  "_entityId": "Z0dCd0WA",
+                  "_entityId": "VvWURg3Q",
                   "children": [
                     {
                       "_entityName": "ICONBB",
@@ -2951,7 +3263,7 @@
                         "type": "UIImageEntity",
                         "resourceId": ""
                       },
-                      "_entityId": "sv2Vlssq",
+                      "_entityId": "o5DeGB4P",
                       "children": [],
                       "prefabVariant": null,
                       "activeValue": {
@@ -3050,12 +3362,116 @@
                       "editorVisibleValue": true
                     },
                     {
+                      "_entityName": "ISCHOICE",
+                      "_tag": {
+                        "type": "UIImageEntity",
+                        "resourceId": ""
+                      },
+                      "_entityId": "jVKqbAO0",
+                      "children": [],
+                      "prefabVariant": null,
+                      "activeValue": {
+                        "selfValue": true,
+                        "valueTag": "activeValue"
+                      },
+                      "unlockedValue": {
+                        "selfValue": true,
+                        "valueTag": "unlockedValue"
+                      },
+                      "propsData": {
+                        "activeSelf": true,
+                        "transform": {
+                          "rotate": 0,
+                          "anchorMin": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "anchorMax": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "pivot": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "anchoredPosition": {
+                            "x": 0,
+                            "y": 0
+                          },
+                          "sizeDelta": {
+                            "x": 105,
+                            "y": 105
+                          }
+                        },
+                        "alpha": 100,
+                        "priority": 0,
+                        "image": {
+                          "source": {
+                            "fileId": "ecqss6vocsa-mjmkv7fz-0syl07tzbe5g",
+                            "filePath": "Assets\\Image\\GiftIFM\\FF_ingame_hud_RandomBuff_IconBG01.png",
+                            "_tag": {
+                              "type": "GFileRefer"
+                            },
+                            "fileType": "texture"
+                          },
+                          "color": "#FFEB00",
+                          "reverse": {
+                            "x": false,
+                            "y": false
+                          },
+                          "fillType": 1,
+                          "slicedBorder": {
+                            "left": 0,
+                            "right": 0,
+                            "top": 0,
+                            "bottom": 0
+                          },
+                          "tiledBorder": {
+                            "left": 0,
+                            "right": 0,
+                            "top": 0,
+                            "bottom": 0
+                          },
+                          "centerInvisible": false,
+                          "fillDir": 0,
+                          "fillAmount": 0,
+                          "invertFill": false,
+                          "flip": 0,
+                          "gradient": 1,
+                          "gradientTop": {
+                            "r": 255,
+                            "g": 255,
+                            "b": 255,
+                            "a": 1
+                          },
+                          "gradientBottom": {
+                            "r": 255,
+                            "g": 255,
+                            "b": 255,
+                            "a": 1
+                          }
+                        }
+                      },
+                      "ecaScripts": [],
+                      "ecaProps": {
+                        "HudImageWidget": {},
+                        "HudWidget": {},
+                        "Entity": {}
+                      },
+                      "componentList": [],
+                      "entityTagData": {
+                        "tagPointers": []
+                      },
+                      "editorLockValue": false,
+                      "editorVisibleValue": true
+                    },
+                    {
                       "_entityName": "icon",
                       "_tag": {
                         "type": "UIImageEntity",
                         "resourceId": ""
                       },
-                      "_entityId": "UbobFhWE",
+                      "_entityId": "zzyevSaA",
                       "children": [],
                       "prefabVariant": null,
                       "activeValue": {
@@ -3159,7 +3575,7 @@
                         "type": "UITextEntity",
                         "resourceId": ""
                       },
-                      "_entityId": "gEHHacoe",
+                      "_entityId": "ok3LA5PL",
                       "children": [],
                       "prefabVariant": null,
                       "activeValue": {
@@ -3325,7 +3741,7 @@
                     "type": "UITextEntity",
                     "resourceId": ""
                   },
-                  "_entityId": "RXkAKlP5",
+                  "_entityId": "cDJTwkCR",
                   "children": [],
                   "prefabVariant": null,
                   "activeValue": {
@@ -3534,7 +3950,7 @@
                 "type": "UIButtonEntity",
                 "resourceId": ""
               },
-              "_entityId": "xw6yfACW",
+              "_entityId": "PbEA2Iaf",
               "children": [
                 {
                   "_entityName": "NumText",
@@ -3542,7 +3958,7 @@
                     "type": "UITextEntity",
                     "resourceId": ""
                   },
-                  "_entityId": "N9xiHfgf",
+                  "_entityId": "GYTnpuce",
                   "children": [],
                   "prefabVariant": null,
                   "activeValue": {
@@ -3632,7 +4048,7 @@
                     "type": "UITextEntity",
                     "resourceId": ""
                   },
-                  "_entityId": "m7kKUGqj",
+                  "_entityId": "yhogOpkp",
                   "children": [],
                   "prefabVariant": null,
                   "activeValue": {
@@ -3722,7 +4138,7 @@
                     "type": "UIPanelEntityV3",
                     "resourceId": ""
                   },
-                  "_entityId": "fmmcVdIR",
+                  "_entityId": "jWtgEFKC",
                   "children": [
                     {
                       "_entityName": "ICONBB",
@@ -3730,7 +4146,7 @@
                         "type": "UIImageEntity",
                         "resourceId": ""
                       },
-                      "_entityId": "VEZw0t4F",
+                      "_entityId": "bkykgphn",
                       "children": [],
                       "prefabVariant": null,
                       "activeValue": {
@@ -3829,12 +4245,116 @@
                       "editorVisibleValue": true
                     },
                     {
+                      "_entityName": "ISCHOICE",
+                      "_tag": {
+                        "type": "UIImageEntity",
+                        "resourceId": ""
+                      },
+                      "_entityId": "Zw7UYz84",
+                      "children": [],
+                      "prefabVariant": null,
+                      "activeValue": {
+                        "selfValue": true,
+                        "valueTag": "activeValue"
+                      },
+                      "unlockedValue": {
+                        "selfValue": true,
+                        "valueTag": "unlockedValue"
+                      },
+                      "propsData": {
+                        "activeSelf": true,
+                        "transform": {
+                          "rotate": 0,
+                          "anchorMin": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "anchorMax": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "pivot": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "anchoredPosition": {
+                            "x": 0,
+                            "y": 0
+                          },
+                          "sizeDelta": {
+                            "x": 105,
+                            "y": 105
+                          }
+                        },
+                        "alpha": 100,
+                        "priority": 0,
+                        "image": {
+                          "source": {
+                            "fileId": "ecqss6vocsa-mjmkv7fz-0syl07tzbe5g",
+                            "filePath": "Assets\\Image\\GiftIFM\\FF_ingame_hud_RandomBuff_IconBG01.png",
+                            "_tag": {
+                              "type": "GFileRefer"
+                            },
+                            "fileType": "texture"
+                          },
+                          "color": "#FFEB00",
+                          "reverse": {
+                            "x": false,
+                            "y": false
+                          },
+                          "fillType": 1,
+                          "slicedBorder": {
+                            "left": 0,
+                            "right": 0,
+                            "top": 0,
+                            "bottom": 0
+                          },
+                          "tiledBorder": {
+                            "left": 0,
+                            "right": 0,
+                            "top": 0,
+                            "bottom": 0
+                          },
+                          "centerInvisible": false,
+                          "fillDir": 0,
+                          "fillAmount": 0,
+                          "invertFill": false,
+                          "flip": 0,
+                          "gradient": 1,
+                          "gradientTop": {
+                            "r": 255,
+                            "g": 255,
+                            "b": 255,
+                            "a": 1
+                          },
+                          "gradientBottom": {
+                            "r": 255,
+                            "g": 255,
+                            "b": 255,
+                            "a": 1
+                          }
+                        }
+                      },
+                      "ecaScripts": [],
+                      "ecaProps": {
+                        "HudImageWidget": {},
+                        "HudWidget": {},
+                        "Entity": {}
+                      },
+                      "componentList": [],
+                      "entityTagData": {
+                        "tagPointers": []
+                      },
+                      "editorLockValue": false,
+                      "editorVisibleValue": true
+                    },
+                    {
                       "_entityName": "icon",
                       "_tag": {
                         "type": "UIImageEntity",
                         "resourceId": ""
                       },
-                      "_entityId": "fFJ2jBMO",
+                      "_entityId": "OkpeCRnY",
                       "children": [],
                       "prefabVariant": null,
                       "activeValue": {
@@ -3938,7 +4458,7 @@
                         "type": "UITextEntity",
                         "resourceId": ""
                       },
-                      "_entityId": "G1YZX3hE",
+                      "_entityId": "Fd6l8OZp",
                       "children": [],
                       "prefabVariant": null,
                       "activeValue": {
@@ -4104,7 +4624,7 @@
                     "type": "UITextEntity",
                     "resourceId": ""
                   },
-                  "_entityId": "vDf6UChF",
+                  "_entityId": "uoT6TawR",
                   "children": [],
                   "prefabVariant": null,
                   "activeValue": {
@@ -4313,7 +4833,7 @@
                 "type": "UIButtonEntity",
                 "resourceId": ""
               },
-              "_entityId": "rQtFXPfD",
+              "_entityId": "F1tvtkQy",
               "children": [
                 {
                   "_entityName": "NumText",
@@ -4321,7 +4841,7 @@
                     "type": "UITextEntity",
                     "resourceId": ""
                   },
-                  "_entityId": "rTiDqDb3",
+                  "_entityId": "ytAF1a7b",
                   "children": [],
                   "prefabVariant": null,
                   "activeValue": {
@@ -4411,7 +4931,7 @@
                     "type": "UITextEntity",
                     "resourceId": ""
                   },
-                  "_entityId": "S9HTnKSS",
+                  "_entityId": "Zzt4DOAw",
                   "children": [],
                   "prefabVariant": null,
                   "activeValue": {
@@ -4501,7 +5021,7 @@
                     "type": "UIPanelEntityV3",
                     "resourceId": ""
                   },
-                  "_entityId": "cL4S6ccT",
+                  "_entityId": "CTfV8Hdr",
                   "children": [
                     {
                       "_entityName": "ICONBB",
@@ -4509,7 +5029,7 @@
                         "type": "UIImageEntity",
                         "resourceId": ""
                       },
-                      "_entityId": "YFkQ7Whi",
+                      "_entityId": "OUeHB9Jo",
                       "children": [],
                       "prefabVariant": null,
                       "activeValue": {
@@ -4608,12 +5128,116 @@
                       "editorVisibleValue": true
                     },
                     {
+                      "_entityName": "ISCHOICE",
+                      "_tag": {
+                        "type": "UIImageEntity",
+                        "resourceId": ""
+                      },
+                      "_entityId": "ZdgBEEJ0",
+                      "children": [],
+                      "prefabVariant": null,
+                      "activeValue": {
+                        "selfValue": true,
+                        "valueTag": "activeValue"
+                      },
+                      "unlockedValue": {
+                        "selfValue": true,
+                        "valueTag": "unlockedValue"
+                      },
+                      "propsData": {
+                        "activeSelf": true,
+                        "transform": {
+                          "rotate": 0,
+                          "anchorMin": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "anchorMax": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "pivot": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "anchoredPosition": {
+                            "x": 0,
+                            "y": 0
+                          },
+                          "sizeDelta": {
+                            "x": 105,
+                            "y": 105
+                          }
+                        },
+                        "alpha": 100,
+                        "priority": 0,
+                        "image": {
+                          "source": {
+                            "fileId": "ecqss6vocsa-mjmkv7fz-0syl07tzbe5g",
+                            "filePath": "Assets\\Image\\GiftIFM\\FF_ingame_hud_RandomBuff_IconBG01.png",
+                            "_tag": {
+                              "type": "GFileRefer"
+                            },
+                            "fileType": "texture"
+                          },
+                          "color": "#FFEB00",
+                          "reverse": {
+                            "x": false,
+                            "y": false
+                          },
+                          "fillType": 1,
+                          "slicedBorder": {
+                            "left": 0,
+                            "right": 0,
+                            "top": 0,
+                            "bottom": 0
+                          },
+                          "tiledBorder": {
+                            "left": 0,
+                            "right": 0,
+                            "top": 0,
+                            "bottom": 0
+                          },
+                          "centerInvisible": false,
+                          "fillDir": 0,
+                          "fillAmount": 0,
+                          "invertFill": false,
+                          "flip": 0,
+                          "gradient": 1,
+                          "gradientTop": {
+                            "r": 255,
+                            "g": 255,
+                            "b": 255,
+                            "a": 1
+                          },
+                          "gradientBottom": {
+                            "r": 255,
+                            "g": 255,
+                            "b": 255,
+                            "a": 1
+                          }
+                        }
+                      },
+                      "ecaScripts": [],
+                      "ecaProps": {
+                        "HudImageWidget": {},
+                        "HudWidget": {},
+                        "Entity": {}
+                      },
+                      "componentList": [],
+                      "entityTagData": {
+                        "tagPointers": []
+                      },
+                      "editorLockValue": false,
+                      "editorVisibleValue": true
+                    },
+                    {
                       "_entityName": "icon",
                       "_tag": {
                         "type": "UIImageEntity",
                         "resourceId": ""
                       },
-                      "_entityId": "BYeKogxU",
+                      "_entityId": "c1WsPmJZ",
                       "children": [],
                       "prefabVariant": null,
                       "activeValue": {
@@ -4717,7 +5341,7 @@
                         "type": "UITextEntity",
                         "resourceId": ""
                       },
-                      "_entityId": "ah0q10Lv",
+                      "_entityId": "twV1JnaE",
                       "children": [],
                       "prefabVariant": null,
                       "activeValue": {
@@ -4883,7 +5507,7 @@
                     "type": "UITextEntity",
                     "resourceId": ""
                   },
-                  "_entityId": "roCWTIul",
+                  "_entityId": "iry68XBT",
                   "children": [],
                   "prefabVariant": null,
                   "activeValue": {
@@ -5092,7 +5716,7 @@
                 "type": "UIButtonEntity",
                 "resourceId": ""
               },
-              "_entityId": "Z3bhWNv5",
+              "_entityId": "rLpPCY0E",
               "children": [
                 {
                   "_entityName": "NumText",
@@ -5100,7 +5724,7 @@
                     "type": "UITextEntity",
                     "resourceId": ""
                   },
-                  "_entityId": "iEbnjI4K",
+                  "_entityId": "QJGWistR",
                   "children": [],
                   "prefabVariant": null,
                   "activeValue": {
@@ -5190,7 +5814,7 @@
                     "type": "UITextEntity",
                     "resourceId": ""
                   },
-                  "_entityId": "ItUowKVg",
+                  "_entityId": "y19YTv8s",
                   "children": [],
                   "prefabVariant": null,
                   "activeValue": {
@@ -5280,7 +5904,7 @@
                     "type": "UIPanelEntityV3",
                     "resourceId": ""
                   },
-                  "_entityId": "jTCBccJu",
+                  "_entityId": "d6TSQbXb",
                   "children": [
                     {
                       "_entityName": "ICONBB",
@@ -5288,7 +5912,7 @@
                         "type": "UIImageEntity",
                         "resourceId": ""
                       },
-                      "_entityId": "cU3G9JhJ",
+                      "_entityId": "XNIne9tq",
                       "children": [],
                       "prefabVariant": null,
                       "activeValue": {
@@ -5387,12 +6011,116 @@
                       "editorVisibleValue": true
                     },
                     {
+                      "_entityName": "ISCHOICE",
+                      "_tag": {
+                        "type": "UIImageEntity",
+                        "resourceId": ""
+                      },
+                      "_entityId": "XnjpFaqK",
+                      "children": [],
+                      "prefabVariant": null,
+                      "activeValue": {
+                        "selfValue": true,
+                        "valueTag": "activeValue"
+                      },
+                      "unlockedValue": {
+                        "selfValue": true,
+                        "valueTag": "unlockedValue"
+                      },
+                      "propsData": {
+                        "activeSelf": true,
+                        "transform": {
+                          "rotate": 0,
+                          "anchorMin": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "anchorMax": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "pivot": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "anchoredPosition": {
+                            "x": 0,
+                            "y": 0
+                          },
+                          "sizeDelta": {
+                            "x": 105,
+                            "y": 105
+                          }
+                        },
+                        "alpha": 100,
+                        "priority": 0,
+                        "image": {
+                          "source": {
+                            "fileId": "ecqss6vocsa-mjmkv7fz-0syl07tzbe5g",
+                            "filePath": "Assets\\Image\\GiftIFM\\FF_ingame_hud_RandomBuff_IconBG01.png",
+                            "_tag": {
+                              "type": "GFileRefer"
+                            },
+                            "fileType": "texture"
+                          },
+                          "color": "#FFEB00",
+                          "reverse": {
+                            "x": false,
+                            "y": false
+                          },
+                          "fillType": 1,
+                          "slicedBorder": {
+                            "left": 0,
+                            "right": 0,
+                            "top": 0,
+                            "bottom": 0
+                          },
+                          "tiledBorder": {
+                            "left": 0,
+                            "right": 0,
+                            "top": 0,
+                            "bottom": 0
+                          },
+                          "centerInvisible": false,
+                          "fillDir": 0,
+                          "fillAmount": 0,
+                          "invertFill": false,
+                          "flip": 0,
+                          "gradient": 1,
+                          "gradientTop": {
+                            "r": 255,
+                            "g": 255,
+                            "b": 255,
+                            "a": 1
+                          },
+                          "gradientBottom": {
+                            "r": 255,
+                            "g": 255,
+                            "b": 255,
+                            "a": 1
+                          }
+                        }
+                      },
+                      "ecaScripts": [],
+                      "ecaProps": {
+                        "HudImageWidget": {},
+                        "HudWidget": {},
+                        "Entity": {}
+                      },
+                      "componentList": [],
+                      "entityTagData": {
+                        "tagPointers": []
+                      },
+                      "editorLockValue": false,
+                      "editorVisibleValue": true
+                    },
+                    {
                       "_entityName": "icon",
                       "_tag": {
                         "type": "UIImageEntity",
                         "resourceId": ""
                       },
-                      "_entityId": "QhNuk7qb",
+                      "_entityId": "FYh8tCUp",
                       "children": [],
                       "prefabVariant": null,
                       "activeValue": {
@@ -5496,7 +6224,7 @@
                         "type": "UITextEntity",
                         "resourceId": ""
                       },
-                      "_entityId": "PDiek0DY",
+                      "_entityId": "AuBrCoqB",
                       "children": [],
                       "prefabVariant": null,
                       "activeValue": {
@@ -5662,7 +6390,7 @@
                     "type": "UITextEntity",
                     "resourceId": ""
                   },
-                  "_entityId": "VP8qAGRa",
+                  "_entityId": "jrq0dC5c",
                   "children": [],
                   "prefabVariant": null,
                   "activeValue": {
@@ -5871,7 +6599,7 @@
                 "type": "UIButtonEntity",
                 "resourceId": ""
               },
-              "_entityId": "EAQxFM5c",
+              "_entityId": "FZYLKB6Z",
               "children": [
                 {
                   "_entityName": "NumText",
@@ -5879,7 +6607,7 @@
                     "type": "UITextEntity",
                     "resourceId": ""
                   },
-                  "_entityId": "kvxysvrb",
+                  "_entityId": "tlXrxdAd",
                   "children": [],
                   "prefabVariant": null,
                   "activeValue": {
@@ -5969,7 +6697,7 @@
                     "type": "UITextEntity",
                     "resourceId": ""
                   },
-                  "_entityId": "aeaLyDoX",
+                  "_entityId": "ALEAX7vH",
                   "children": [],
                   "prefabVariant": null,
                   "activeValue": {
@@ -6059,7 +6787,7 @@
                     "type": "UIPanelEntityV3",
                     "resourceId": ""
                   },
-                  "_entityId": "zeGAjkTk",
+                  "_entityId": "urotQioM",
                   "children": [
                     {
                       "_entityName": "ICONBB",
@@ -6067,7 +6795,7 @@
                         "type": "UIImageEntity",
                         "resourceId": ""
                       },
-                      "_entityId": "mHexPDhC",
+                      "_entityId": "lPj9AApl",
                       "children": [],
                       "prefabVariant": null,
                       "activeValue": {
@@ -6166,12 +6894,116 @@
                       "editorVisibleValue": true
                     },
                     {
+                      "_entityName": "ISCHOICE",
+                      "_tag": {
+                        "type": "UIImageEntity",
+                        "resourceId": ""
+                      },
+                      "_entityId": "Lwp76udY",
+                      "children": [],
+                      "prefabVariant": null,
+                      "activeValue": {
+                        "selfValue": true,
+                        "valueTag": "activeValue"
+                      },
+                      "unlockedValue": {
+                        "selfValue": true,
+                        "valueTag": "unlockedValue"
+                      },
+                      "propsData": {
+                        "activeSelf": true,
+                        "transform": {
+                          "rotate": 0,
+                          "anchorMin": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "anchorMax": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "pivot": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "anchoredPosition": {
+                            "x": 0,
+                            "y": 0
+                          },
+                          "sizeDelta": {
+                            "x": 105,
+                            "y": 105
+                          }
+                        },
+                        "alpha": 100,
+                        "priority": 0,
+                        "image": {
+                          "source": {
+                            "fileId": "ecqss6vocsa-mjmkv7fz-0syl07tzbe5g",
+                            "filePath": "Assets\\Image\\GiftIFM\\FF_ingame_hud_RandomBuff_IconBG01.png",
+                            "_tag": {
+                              "type": "GFileRefer"
+                            },
+                            "fileType": "texture"
+                          },
+                          "color": "#FFEB00",
+                          "reverse": {
+                            "x": false,
+                            "y": false
+                          },
+                          "fillType": 1,
+                          "slicedBorder": {
+                            "left": 0,
+                            "right": 0,
+                            "top": 0,
+                            "bottom": 0
+                          },
+                          "tiledBorder": {
+                            "left": 0,
+                            "right": 0,
+                            "top": 0,
+                            "bottom": 0
+                          },
+                          "centerInvisible": false,
+                          "fillDir": 0,
+                          "fillAmount": 0,
+                          "invertFill": false,
+                          "flip": 0,
+                          "gradient": 1,
+                          "gradientTop": {
+                            "r": 255,
+                            "g": 255,
+                            "b": 255,
+                            "a": 1
+                          },
+                          "gradientBottom": {
+                            "r": 255,
+                            "g": 255,
+                            "b": 255,
+                            "a": 1
+                          }
+                        }
+                      },
+                      "ecaScripts": [],
+                      "ecaProps": {
+                        "HudImageWidget": {},
+                        "HudWidget": {},
+                        "Entity": {}
+                      },
+                      "componentList": [],
+                      "entityTagData": {
+                        "tagPointers": []
+                      },
+                      "editorLockValue": false,
+                      "editorVisibleValue": true
+                    },
+                    {
                       "_entityName": "icon",
                       "_tag": {
                         "type": "UIImageEntity",
                         "resourceId": ""
                       },
-                      "_entityId": "dOszD3GO",
+                      "_entityId": "WcJn50qn",
                       "children": [],
                       "prefabVariant": null,
                       "activeValue": {
@@ -6275,7 +7107,7 @@
                         "type": "UITextEntity",
                         "resourceId": ""
                       },
-                      "_entityId": "MCnidGhe",
+                      "_entityId": "tW41dDc2",
                       "children": [],
                       "prefabVariant": null,
                       "activeValue": {
@@ -6441,7 +7273,7 @@
                     "type": "UITextEntity",
                     "resourceId": ""
                   },
-                  "_entityId": "EyXpVZqo",
+                  "_entityId": "bMW73xVQ",
                   "children": [],
                   "prefabVariant": null,
                   "activeValue": {
@@ -6650,7 +7482,7 @@
                 "type": "UIButtonEntity",
                 "resourceId": ""
               },
-              "_entityId": "cPNpLKLb",
+              "_entityId": "weIcRczg",
               "children": [
                 {
                   "_entityName": "NumText",
@@ -6658,7 +7490,7 @@
                     "type": "UITextEntity",
                     "resourceId": ""
                   },
-                  "_entityId": "JCmekWxp",
+                  "_entityId": "WCICMfnx",
                   "children": [],
                   "prefabVariant": null,
                   "activeValue": {
@@ -6748,7 +7580,7 @@
                     "type": "UITextEntity",
                     "resourceId": ""
                   },
-                  "_entityId": "MaFZxfFh",
+                  "_entityId": "vpvbERan",
                   "children": [],
                   "prefabVariant": null,
                   "activeValue": {
@@ -6838,7 +7670,7 @@
                     "type": "UIPanelEntityV3",
                     "resourceId": ""
                   },
-                  "_entityId": "I2Xy8I8u",
+                  "_entityId": "SMqRU0nB",
                   "children": [
                     {
                       "_entityName": "ICONBB",
@@ -6846,7 +7678,7 @@
                         "type": "UIImageEntity",
                         "resourceId": ""
                       },
-                      "_entityId": "W8KoPqyZ",
+                      "_entityId": "ImKIcMWS",
                       "children": [],
                       "prefabVariant": null,
                       "activeValue": {
@@ -6945,12 +7777,116 @@
                       "editorVisibleValue": true
                     },
                     {
+                      "_entityName": "ISCHOICE",
+                      "_tag": {
+                        "type": "UIImageEntity",
+                        "resourceId": ""
+                      },
+                      "_entityId": "MNxLzsDf",
+                      "children": [],
+                      "prefabVariant": null,
+                      "activeValue": {
+                        "selfValue": true,
+                        "valueTag": "activeValue"
+                      },
+                      "unlockedValue": {
+                        "selfValue": true,
+                        "valueTag": "unlockedValue"
+                      },
+                      "propsData": {
+                        "activeSelf": true,
+                        "transform": {
+                          "rotate": 0,
+                          "anchorMin": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "anchorMax": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "pivot": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "anchoredPosition": {
+                            "x": 0,
+                            "y": 0
+                          },
+                          "sizeDelta": {
+                            "x": 105,
+                            "y": 105
+                          }
+                        },
+                        "alpha": 100,
+                        "priority": 0,
+                        "image": {
+                          "source": {
+                            "fileId": "ecqss6vocsa-mjmkv7fz-0syl07tzbe5g",
+                            "filePath": "Assets\\Image\\GiftIFM\\FF_ingame_hud_RandomBuff_IconBG01.png",
+                            "_tag": {
+                              "type": "GFileRefer"
+                            },
+                            "fileType": "texture"
+                          },
+                          "color": "#FFEB00",
+                          "reverse": {
+                            "x": false,
+                            "y": false
+                          },
+                          "fillType": 1,
+                          "slicedBorder": {
+                            "left": 0,
+                            "right": 0,
+                            "top": 0,
+                            "bottom": 0
+                          },
+                          "tiledBorder": {
+                            "left": 0,
+                            "right": 0,
+                            "top": 0,
+                            "bottom": 0
+                          },
+                          "centerInvisible": false,
+                          "fillDir": 0,
+                          "fillAmount": 0,
+                          "invertFill": false,
+                          "flip": 0,
+                          "gradient": 1,
+                          "gradientTop": {
+                            "r": 255,
+                            "g": 255,
+                            "b": 255,
+                            "a": 1
+                          },
+                          "gradientBottom": {
+                            "r": 255,
+                            "g": 255,
+                            "b": 255,
+                            "a": 1
+                          }
+                        }
+                      },
+                      "ecaScripts": [],
+                      "ecaProps": {
+                        "HudImageWidget": {},
+                        "HudWidget": {},
+                        "Entity": {}
+                      },
+                      "componentList": [],
+                      "entityTagData": {
+                        "tagPointers": []
+                      },
+                      "editorLockValue": false,
+                      "editorVisibleValue": true
+                    },
+                    {
                       "_entityName": "icon",
                       "_tag": {
                         "type": "UIImageEntity",
                         "resourceId": ""
                       },
-                      "_entityId": "AitTZNqx",
+                      "_entityId": "dgTdItT6",
                       "children": [],
                       "prefabVariant": null,
                       "activeValue": {
@@ -7054,7 +7990,7 @@
                         "type": "UITextEntity",
                         "resourceId": ""
                       },
-                      "_entityId": "giOPdwHB",
+                      "_entityId": "Us70FPWc",
                       "children": [],
                       "prefabVariant": null,
                       "activeValue": {
@@ -7220,7 +8156,7 @@
                     "type": "UITextEntity",
                     "resourceId": ""
                   },
-                  "_entityId": "yJwQ2dSk",
+                  "_entityId": "P6vlWEm6",
                   "children": [],
                   "prefabVariant": null,
                   "activeValue": {
@@ -7429,7 +8365,7 @@
                 "type": "UIButtonEntity",
                 "resourceId": ""
               },
-              "_entityId": "l295GGpp",
+              "_entityId": "qxk7vxi3",
               "children": [
                 {
                   "_entityName": "NumText",
@@ -7437,7 +8373,7 @@
                     "type": "UITextEntity",
                     "resourceId": ""
                   },
-                  "_entityId": "TEBiissn",
+                  "_entityId": "N7deM37j",
                   "children": [],
                   "prefabVariant": null,
                   "activeValue": {
@@ -7527,7 +8463,7 @@
                     "type": "UITextEntity",
                     "resourceId": ""
                   },
-                  "_entityId": "eTY6twXu",
+                  "_entityId": "eTXW9ACT",
                   "children": [],
                   "prefabVariant": null,
                   "activeValue": {
@@ -7617,7 +8553,7 @@
                     "type": "UIPanelEntityV3",
                     "resourceId": ""
                   },
-                  "_entityId": "M4oFDa5n",
+                  "_entityId": "zOVjvsV2",
                   "children": [
                     {
                       "_entityName": "ICONBB",
@@ -7625,7 +8561,7 @@
                         "type": "UIImageEntity",
                         "resourceId": ""
                       },
-                      "_entityId": "TpK18K4I",
+                      "_entityId": "NpFREwoF",
                       "children": [],
                       "prefabVariant": null,
                       "activeValue": {
@@ -7724,12 +8660,116 @@
                       "editorVisibleValue": true
                     },
                     {
+                      "_entityName": "ISCHOICE",
+                      "_tag": {
+                        "type": "UIImageEntity",
+                        "resourceId": ""
+                      },
+                      "_entityId": "Gcxgw2ot",
+                      "children": [],
+                      "prefabVariant": null,
+                      "activeValue": {
+                        "selfValue": true,
+                        "valueTag": "activeValue"
+                      },
+                      "unlockedValue": {
+                        "selfValue": true,
+                        "valueTag": "unlockedValue"
+                      },
+                      "propsData": {
+                        "activeSelf": true,
+                        "transform": {
+                          "rotate": 0,
+                          "anchorMin": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "anchorMax": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "pivot": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "anchoredPosition": {
+                            "x": 0,
+                            "y": 0
+                          },
+                          "sizeDelta": {
+                            "x": 105,
+                            "y": 105
+                          }
+                        },
+                        "alpha": 100,
+                        "priority": 0,
+                        "image": {
+                          "source": {
+                            "fileId": "ecqss6vocsa-mjmkv7fz-0syl07tzbe5g",
+                            "filePath": "Assets\\Image\\GiftIFM\\FF_ingame_hud_RandomBuff_IconBG01.png",
+                            "_tag": {
+                              "type": "GFileRefer"
+                            },
+                            "fileType": "texture"
+                          },
+                          "color": "#FFEB00",
+                          "reverse": {
+                            "x": false,
+                            "y": false
+                          },
+                          "fillType": 1,
+                          "slicedBorder": {
+                            "left": 0,
+                            "right": 0,
+                            "top": 0,
+                            "bottom": 0
+                          },
+                          "tiledBorder": {
+                            "left": 0,
+                            "right": 0,
+                            "top": 0,
+                            "bottom": 0
+                          },
+                          "centerInvisible": false,
+                          "fillDir": 0,
+                          "fillAmount": 0,
+                          "invertFill": false,
+                          "flip": 0,
+                          "gradient": 1,
+                          "gradientTop": {
+                            "r": 255,
+                            "g": 255,
+                            "b": 255,
+                            "a": 1
+                          },
+                          "gradientBottom": {
+                            "r": 255,
+                            "g": 255,
+                            "b": 255,
+                            "a": 1
+                          }
+                        }
+                      },
+                      "ecaScripts": [],
+                      "ecaProps": {
+                        "HudImageWidget": {},
+                        "HudWidget": {},
+                        "Entity": {}
+                      },
+                      "componentList": [],
+                      "entityTagData": {
+                        "tagPointers": []
+                      },
+                      "editorLockValue": false,
+                      "editorVisibleValue": true
+                    },
+                    {
                       "_entityName": "icon",
                       "_tag": {
                         "type": "UIImageEntity",
                         "resourceId": ""
                       },
-                      "_entityId": "AYv8h4Q7",
+                      "_entityId": "dY8cRhYA",
                       "children": [],
                       "prefabVariant": null,
                       "activeValue": {
@@ -7833,7 +8873,7 @@
                         "type": "UITextEntity",
                         "resourceId": ""
                       },
-                      "_entityId": "KvRDffUn",
+                      "_entityId": "ayXH7OQE",
                       "children": [],
                       "prefabVariant": null,
                       "activeValue": {
@@ -7999,7 +9039,7 @@
                     "type": "UITextEntity",
                     "resourceId": ""
                   },
-                  "_entityId": "P4bPzxhM",
+                  "_entityId": "llAVAsrh",
                   "children": [],
                   "prefabVariant": null,
                   "activeValue": {

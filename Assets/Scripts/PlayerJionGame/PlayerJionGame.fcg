@@ -1776,6 +1776,22 @@ graph PlayerJionGame {
         if skillPanelWidget != nil {
             skillPanelWidget<UIWidget>.IsVisible = false
         }
+        // 重置所有卡牌的选中状态
+        for cardId = 1, 11, 1 {
+            var listParent = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/Panel/List")
+            var cardIndex = Convert.ToString("Card (" + cardId + ")")
+            var cardEntity = GetChildByName(listParent, cardIndex)
+            
+            if cardEntity != nil {
+                var HasCardPanelEntity = GetChildByName(cardEntity, "HasCardPanel")
+                if HasCardPanelEntity != nil {
+                        var isChoiceEntity = GetChildByName(HasCardPanelEntity, "ISCHOICE")
+                        if isChoiceEntity != nil {
+                            isChoiceEntity<UIWidget>.IsVisible = false
+                        }
+                }
+            }
+        }
         // 初始化时显示天赋加成百分比
         DisplayGiftedCardBonusesInUI()
     }
