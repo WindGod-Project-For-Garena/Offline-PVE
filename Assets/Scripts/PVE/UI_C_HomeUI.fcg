@@ -39,8 +39,8 @@ graph UI_HomeUI {
 
     // 检测当前是否是最高的解锁关卡
     func IsMaxUnlockedLevel() bool {
-        var NowLevel int = GetLocalPlayer()<PlayerJionGame>.NowLevel
-        if level >= NowLevel {
+        var MaxLevel int = GetLocalPlayer()<PlayerJionGame>.MaxLevel
+        if level >= MaxLevel {
             return true
         } else {
             return false
@@ -101,12 +101,12 @@ graph UI_HomeUI {
         var buttonLeftEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI, "/ChoiceLevel/Button_left")
         buttonLeft = buttonLeftEntity as entity<UIWidgetButton>
         buttonRight = button
-        var NowLevel int = GetLocalPlayer()<PlayerJionGame>.NowLevel
+        var MaxLevel int = GetLocalPlayer()<PlayerJionGame>.MaxLevel
         level = level + 1
         
         // 不能超过已解锁的关卡
-        if level > NowLevel {
-            level = NowLevel
+        if level > MaxLevel {
+            level = MaxLevel
         }
         
         // 也不能超过最大关卡数10
@@ -160,16 +160,17 @@ graph UI_HomeUI {
         if GetLocalPlayer()<PlayerJionGame>.CurrentSkill == 0 {
             return
         }
+        var currentLevel = GetLocalPlayer()<PlayerJionGame>.level
         var skillMultiplier float = 1.0 * ability3Level + 1
         GetLocalPlayer()<PlayerJionGame>.SkillUI<SkillUI>.skillMultiplier = skillMultiplier
         thisEntity<CustomUI>.IsVisible = false
 
         start GetLocalPlayer()<PlayerJionGame>.displaySkillByIndex(GetLocalPlayer()<PlayerJionGame>.CurrentSkill)
-        start GetLocalPlayer()<PlayerJionGame>.ShowChoiceThreeCardUI(level)
+        start GetLocalPlayer()<PlayerJionGame>.ShowChoiceThreeCardUI(currentLevel)
         
         // 发送角色选择完毕事件
         var CurrentSkill = GetLocalPlayer()<PlayerJionGame>.CurrentSkill
-        start GetLocalPlayer()<PlayerJionGame>.ChoiceHeroOver(level, CurrentSkill)
+        start GetLocalPlayer()<PlayerJionGame>.ChoiceHeroOver(currentLevel, CurrentSkill)
 
         // 初始化已选卡牌的列表颜色
         var ChoiceThreeCardUIEntity = GetLocalPlayer()<PlayerJionGame>.ChoiceThreeCardUI
@@ -183,7 +184,7 @@ graph UI_HomeUI {
                 buttonWidget<UIWidgetButton>.Color = #FFFFFF
             }
         }
-        PVEController.PVELevelStartInitialization(level)
+        PVEController.PVELevelStartInitialization(currentLevel)
 
         // 停止主界面音效
         SoundFunc.PauseTheSound("MainMenu")

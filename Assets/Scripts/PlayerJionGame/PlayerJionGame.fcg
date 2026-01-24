@@ -69,8 +69,8 @@ graph PlayerJionGame {
     ability1Level int = 0
     ability2Level int = 0
     ability3Level int = 0
-    // 当前关卡
-    NowLevel int = 1
+    // 最高关卡
+    MaxLevel int = 1
     // 伤害统计
     AllDamage int = 0       // 伤害统计
 
@@ -250,12 +250,12 @@ graph PlayerJionGame {
                 DATA_TotalIFM = List<int>{0,0,1}
                 TotalDrawCount = DATA_TotalIFM[0]
                 Money = DATA_TotalIFM[1]
-                NowLevel = DATA_TotalIFM[2]
+                MaxLevel = DATA_TotalIFM[2]
             } else {
                 DATA_TotalIFM = result2 as List<int>
                 TotalDrawCount = DATA_TotalIFM[0]
                 Money = DATA_TotalIFM[1]
-                NowLevel = DATA_TotalIFM[2]
+                MaxLevel = DATA_TotalIFM[2]
             }
 
             // 排行榜数据
@@ -277,6 +277,7 @@ graph PlayerJionGame {
             CreateCustomUIClient(out var ChoiceHeroUIEntity, EResUI.ChoiceHero)
             ChoiceHeroUI = ChoiceHeroUIEntity 
             ChoiceHeroUIEntity<CustomUI>.IsVisible = true
+            level = 1
             UpdateLevelDisplay()
             var HeroButtonEntity1 = GetWidgetByPath(GetLocalPlayer(), ChoiceHeroUI, "/ChoiceHero/Hero_1/BBIMAGE")
             var HeroButtonEntity2 = GetWidgetByPath(GetLocalPlayer(), ChoiceHeroUI, "/ChoiceHero/Hero_2/BBIMAGE")
@@ -430,8 +431,24 @@ graph PlayerJionGame {
 // 存储当前最高关卡
     func SaveLevel() {
         // 保存本地数据
-        DATA_TotalIFM[2] = NowLevel
+        DATA_TotalIFM[2] = MaxLevel
         SAVE_DATA_Money(DATA_TotalIFM)
+    }
+// 更新主界面关卡显示为已解锁的最高关卡
+    func UpdateHomeLevelDisplay() {
+        // 更新主界面的当前关卡显示为MaxLevel（已解锁的最高关卡）
+        var leveltext = GetWidgetByPath(GetLocalPlayer(), ChoiceHeroUI, "/ChoiceLevel/LevelNum")
+        if leveltext != nil {
+            // 将当前选择的关卡设置为最高解锁关卡
+            level = MaxLevel
+            var levelNumTTT = LocString{"LEVEL_FORMAT", List<string>{MaxLevel}}
+            leveltext<UIWidgetLabel>.Content = levelNumTTT
+        }
+        
+        // 更新按钮状态
+        UpdateLevelDisplay()
+        
+        LogInfo("主界面关卡显示已更新为: 第" + MaxLevel + "关")
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
 // 选择完角色
@@ -2225,14 +2242,13 @@ graph PlayerJionGame {
         // 更新按钮状态
         UpdateLeftButtonState(buttonLeft)
         UpdateRightButtonState(buttonRight)
-        // 更新关卡显示
         var levelNumTTT = LocString{"LEVEL_FORMAT", List<string>{level}}
         leveltext<UIWidgetLabel>.Content = levelNumTTT
     }
 
     // 检测当前是否是最高的解锁关卡
     func IsMaxUnlockedLevel() bool {
-        return level >= NowLevel
+        return level >= MaxLevel
     }
 
     // 更新右按钮状态

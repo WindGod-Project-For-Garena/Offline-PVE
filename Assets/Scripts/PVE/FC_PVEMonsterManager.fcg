@@ -609,17 +609,25 @@ static graph FC_PVEMonsterManager {
         }
         if monster == nil || monster<Mob>.HP <= 0 {
             WaitForMillisecond(2000)
-            //解锁下一关
-            if CurrentLevel >= GetLocalPlayer()<PlayerJionGame>.NowLevel {
-                GetLocalPlayer()<PlayerJionGame>.NowLevel = GetLocalPlayer()<PlayerJionGame>.NowLevel + 1
+            
+            // 获取当前玩家数据
+            var currentHighestLevel = GetLocalPlayer()<PlayerJionGame>.MaxLevel  // 已解锁的最高关卡
+            
+            // 只有当当前关卡等于最高解锁关卡时才解锁下一关
+            if  CurrentLevel == currentHighestLevel {
+                // 解锁下一关
+                GetLocalPlayer()<PlayerJionGame>.MaxLevel = GetLocalPlayer()<PlayerJionGame>.MaxLevel + 1
                 GetLocalPlayer()<PlayerJionGame>.SaveLevel()
-                LogInfo("Boss已死亡，解锁下一关: " + GetLocalPlayer()<PlayerJionGame>.NowLevel)
+                LogInfo("击败最高关卡BOSS，解锁新关卡: " + GetLocalPlayer()<PlayerJionGame>.MaxLevel)
+                
+                // 更新主界面的关卡显示
+                GetLocalPlayer()<PlayerJionGame>.UpdateHomeLevelDisplay()
             } else {
-                LogInfo("Boss已死亡,这是最后一关")
+                LogInfo("击败已通关关卡BOSS，不更新最高关卡。当前关卡:" + CurrentLevel + "，最高关卡:" + currentHighestLevel)
             }
         }
     }
-    
+        
     func GetRandomSpawnPosition(monster entity<Mob>) Vector3 {
         // 简单的随机生成位置，实际应该根据地图设计
         //LogInfo("monster<Mob>.MobName: " + monster<Mob>.MobName)

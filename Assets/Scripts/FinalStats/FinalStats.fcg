@@ -52,7 +52,7 @@ graph FinalStats {
         thisEntity<CustomUI>.IsVisible = false
 
         start GetLocalPlayer()<PlayerJionGame>.displaySkillByIndex(GetLocalPlayer()<PlayerJionGame>.CurrentSkill)
-        var level = GetLocalPlayer()<PlayerJionGame>.NowLevel
+        var level = GetLocalPlayer()<PlayerJionGame>.MaxLevel
         start GetLocalPlayer()<PlayerJionGame>.ShowChoiceThreeCardUI(level)
         
         // 发送角色选择完毕事件
