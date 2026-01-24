@@ -312,5 +312,8 @@ graph GiftedPanel {
           
           // 重置选中状态
           ResetSelection()
+
+          // 更新主页面金额
+          GetLocalPlayer()<PlayerJionGame>.UpdateChoiceHeroPanelMoney()
      }
 }

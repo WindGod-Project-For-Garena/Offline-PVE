@@ -376,6 +376,8 @@ graph PlayerJionGame {
             ApplyAllSavedCardEffects()
             // 更新排行榜
             UpdateHighestFromLoadedRanking()
+            // 更新抽卡UI显示（价格、概率等信息）
+            UpdateDrawCardUI()
             // 播放背景音乐
             SoundFunc.PlayCreatedSound("MainMenu")
             IsNextThreeChoiceOne = 0
@@ -1146,6 +1148,8 @@ graph PlayerJionGame {
         // 检查玩家是否有足够的货币
         if  Money < currentPrice {
             LogWarning("货币不足，需要" + Convert.ToString(currentPrice))
+            // 确保UI状态正确更新
+            UpdateDrawButtonState(currentPrice)
             return
         }
         
@@ -1307,6 +1311,13 @@ graph PlayerJionGame {
         // 保存本地数据
         DATA_TotalIFM[1] = Money
         SAVE_DATA_Money(DATA_TotalIFM)
+        
+        // 更新UI显示
+        UpdateChoiceHeroPanelMoney()
+        
+        // 更新抽卡按钮状态
+        var currentPrice = GetCurrentDrawPrice()
+        UpdateDrawButtonState(currentPrice)
     }
 
     // 扣除玩家货币
@@ -1315,6 +1326,10 @@ graph PlayerJionGame {
         // 保存本地数据
         DATA_TotalIFM[1] = Money
         SAVE_DATA_Money(DATA_TotalIFM)
+        
+        // 更新抽卡按钮状态
+        var currentPrice = GetCurrentDrawPrice()
+        UpdateDrawButtonState(currentPrice)
     }
 
     // 保存玩家货币数据
@@ -1332,22 +1347,50 @@ graph PlayerJionGame {
         var commonProb = currentConfig["CommonProb"] as float * 100
         var rareProb = currentConfig["RareProb"] as float * 100
         var epicProb = currentConfig["EpicProb"] as float * 100
+        
         // 更新剩余金额显示
-        var NowMoneyText = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/Func/MoneyPanel/Money/text")
-        if NowMoneyText != nil {
-            NowMoneyText<UIWidgetLabel>.Content = Convert.ToString(Money)
-        }
-        var MoneyText = GetWidgetByPath(GetLocalPlayer(), ChoiceHeroUI, "/Money/Money/text")
+        var MoneyText = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/Func/MoneyPanel/Money/text")
         if MoneyText != nil {
             MoneyText<UIWidgetLabel>.Content = Convert.ToString(Money)
         }
-        // 更新当前阶段价格显示
-        var priceText = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/DrawBadgePanel/Image/Money")
-        if priceText != nil {
-            priceText<UIWidgetLabel>.Content = Convert.ToString(currentPrice)
+
+        // 更新价格显示
+        var NowMoneyText = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/DrawBadgePanel/Image/Money")
+        if NowMoneyText != nil {
+            NowMoneyText<UIWidgetLabel>.Content = Convert.ToString(Money)
+            
+            // 检查金钱是否足够
+            if Money < currentPrice {
+                // 金钱不足，文字变红色
+                NowMoneyText<UIWidgetLabel>.Color = #FF0000  // 红色
+            } else {
+                // 金钱足够，文字恢复白色
+                NowMoneyText<UIWidgetLabel>.Color = #FFFFFF  // 白色
+            }
         }
-        UpdateChoiceHeroPanelMoney()
+        
+        // 更新当前阶段价格显示
+        NowMoneyText<UIWidgetLabel>.Content = Convert.ToString(currentPrice)
+        
+        // 更新抽卡按钮状态
+        UpdateDrawButtonState(currentPrice)
     }
+
+    // 更新抽卡按钮状态
+    func UpdateDrawButtonState(currentPrice int) {
+        // 获取抽卡按钮
+        var drawButton = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/DrawBadgePanel/DrawCard")
+        if drawButton != nil {
+            if Money < currentPrice {
+                // 金钱不足，按钮变灰色
+                drawButton<UIWidgetButton>.SpriteResource = EResSprite.guryButton
+            } else {
+                // 金钱足够，按钮恢复原色
+                drawButton<UIWidgetButton>.SpriteResource = EResSprite.yellowButton
+            }
+        }
+    }
+
 
     func UpdateChoiceHeroPanelMoney() {
         var MoneyText = GetWidgetByPath(GetLocalPlayer(), ChoiceHeroUI, "/Money/Money/text")
@@ -1807,6 +1850,9 @@ graph PlayerJionGame {
         }
         // 初始化时显示天赋加成百分比
         DisplayGiftedCardBonusesInUI()
+        // 初始化时更新抽卡按钮状态
+        var currentPrice1 = GetCurrentDrawPrice()
+        UpdateDrawButtonState(currentPrice1)
     }
 
     // 更新单个卡牌的UI状态

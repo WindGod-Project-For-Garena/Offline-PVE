@@ -212,6 +212,8 @@ graph UI_HomeUI {
         PopupPanel<UIWidget>.IsVisible = false
         //初始化天赋面板
         GetLocalPlayer()<PlayerJionGame>.InitAllGiftedCardUI()
+        // 更新抽卡UI显示（价格、概率等信息）
+        GetLocalPlayer()<PlayerJionGame>.UpdateDrawCardUI()
     }
 
     //前往角色面板
