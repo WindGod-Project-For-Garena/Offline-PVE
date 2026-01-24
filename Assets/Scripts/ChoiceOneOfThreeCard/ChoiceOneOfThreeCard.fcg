@@ -348,12 +348,12 @@ graph ChoiceOneOfThreeCard {
       var ability1Level = GetLocalPlayer()<PlayerJionGame>.ability1Level
       var ability2Level = GetLocalPlayer()<PlayerJionGame>.ability2Level
       var ability3Level = GetLocalPlayer()<PlayerJionGame>.ability3Level
-      RefreshCard(level, ability1Level, ability2Level, ability3Level)
+      RefreshCard(level)
       CloseTextImage(button, triggerPlayer)
    }
 
    // 刷新卡牌
-   func RefreshCard(level int, ability1Level int, ability2Level int, ability3Level int) {
+   func RefreshCard(level int) {
       thisEntity<CustomUI>.IsVisible = true
       //----------------------------------------------------------------------------------------------------------------//
       var card1BB = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/ChoiceThreeCardPanel/Card_1/IsChoice")
@@ -363,13 +363,13 @@ graph ChoiceOneOfThreeCard {
       var card3BB = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/ChoiceThreeCardPanel/Card_3/IsChoice")
       card3BB<UIWidget>.IsVisible = false
       //----------------------------------------------------------------------------------------------------------------//
-      StartThreeChooseOne(level, GetLocalPlayer()<PlayerJionGame>.CurrentSkill, ability1Level, ability2Level, ability3Level)
+      StartThreeChooseOne(level, GetLocalPlayer()<PlayerJionGame>.CurrentSkill)
    }
 //————————————————————————————————————————————————————————————————————————————————————————————————//
 //————————————————————————————————————————————————————————————————————————————————————————————————//
 //————————————————————————————————————————————————————————————————————————————————————————————————//
    // 开始三选一卡牌流程
-   func StartThreeChooseOne(level int, currentSkill int, ability1Level int, ability2Level int, ability3Level int) {
+   func StartThreeChooseOne(level int, currentSkill int) {
       // 生成三个不重复的随机卡牌
       var cards = List<Map<string, object>>{}
       while List.Length(cards) < 3 {

@@ -287,7 +287,6 @@ graph PlayerJionGame {
             UpdateChoiceHeroPanelMoney()
             //默认选择第一个技能
             var skillIndex int = 1
-            displaySkillByIndex(skillIndex)
 
             var Skill1_Detail_Entity = GetWidgetByPath(GetLocalPlayer(), ChoiceHeroUI, "/ChoiceHero/TextImage")
             Skill1_Detail_Entity<UIWidget>.IsVisible = false
@@ -436,10 +435,7 @@ graph PlayerJionGame {
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
 // 选择完角色
-    async func ChoiceHeroOver(level int, skillIndex int, ability1Level int, ability2Level int, ability3Level int) {
-        weaponMultiplier = 1.0 * ability1Level + 1
-        healthMultiplier = 1.0 * ability2Level + 1
-        skillMultiplier = 1.0 * ability3Level + 1
+    async func ChoiceHeroOver(level int, skillIndex int) {
         CurrentSkill = skillIndex
         // 记录角色名称
         SetCurrentHeroName(skillIndex)
@@ -546,7 +542,7 @@ graph PlayerJionGame {
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     //显示三选一卡牌界面
-    async func ShowChoiceThreeCardUI(level int, ability1Level int, ability2Level int, ability3Level int){
+    async func ShowChoiceThreeCardUI(level int){
         level = level
         ability1Level = ability1Level
         ability2Level = ability2Level
@@ -562,7 +558,7 @@ graph PlayerJionGame {
         card3BB<UIWidget>.IsVisible = false
         //----------------------------------------------------------------------------------------------------------------//
         IsNextThreeChoiceOne = 0       //关闭标志位
-        ChoiceThreeCardUI<ChoiceOneOfThreeCard>.StartThreeChooseOne(level, CurrentSkill, ability1Level, ability2Level, ability3Level)
+        ChoiceThreeCardUI<ChoiceOneOfThreeCard>.StartThreeChooseOne(level, CurrentSkill)
         // start ShowSecondDown(10000)
     }
 
@@ -2503,7 +2499,7 @@ graph PlayerJionGame {
         ChoiceThreeCardUI<CustomUI>.IsVisible = true
         ChoiceThreeCardUI<ChoiceOneOfThreeCard>.CloseTextImage(nil,nil)
         IsNextThreeChoiceOne = 1       //打开标志位
-        ChoiceThreeCardUI<ChoiceOneOfThreeCard>.RefreshCard(level, ability1Level, ability2Level, ability3Level)
+        ChoiceThreeCardUI<ChoiceOneOfThreeCard>.RefreshCard(level)
         // start ShowSecondDown(10000)
         // 隐藏波次和时间信息
         TimeInGameUI<CustomUI>.IsVisible = false
@@ -2548,20 +2544,21 @@ graph PlayerJionGame {
         LogInfo("局内数据已重置为局外天赋加成数据")
     }
 
-    func displaySkillByIndex(index int) {
+    async func displaySkillByIndex(index int) {
         // 隐藏所有技能面板
         for i = 1, 3,1{
-            var skillPanel = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_" + i)
+            var skillJoyStik = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_" + i)
             var joyStickAmount = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_" + i + "/JoyStickFillAmount")
-            skillPanel<UIWidget>.IsVisible = false
+            skillJoyStik<UIWidget>.IsVisible = false
             joyStickAmount<UIWidget>.IsVisible = false
         }
-        
+        WaitForNextFrame()
         // 显示当前选中的技能
-        var currentSkillPanel = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_" + index)
-        var currentJoyStick = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_" + index + "/JoyStickFillAmount")
-        currentSkillPanel<UIWidget>.IsVisible = true
-        currentJoyStick<UIWidget>.IsVisible = false
+        LogInfo("显示技能面板索引: " + Convert.ToString(index))
+        var skillJoyStik = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_" + index)
+        var joyStickAmount = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_" + index + "/JoyStickFillAmount")
+        skillJoyStik<UIWidget>.IsVisible = true
+        joyStickAmount<UIWidget>.IsVisible = false
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
 //————————————————————————————————————————————————————击杀显示功能—————————————————————————————————————————————————————————————//

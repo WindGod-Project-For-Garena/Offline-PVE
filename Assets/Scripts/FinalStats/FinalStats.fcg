@@ -12,6 +12,7 @@ import "List.fcc" as List
 import "Convert.fcc" as Convert
 import "Strings.fcc" as strings
 import "Offline.fcc" as Offline
+import "../PVE/PVEController.fcg" as PVEController
 import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
 
 [platform_client]
@@ -39,36 +40,46 @@ graph FinalStats {
         GetLocalPlayer()<PlayerJionGame>.UpdateChoiceHeroPanelMoney()
     }
     
-    func ContinueGame(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+    async func ContinueGame(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
         SoundFunc.PlayCreatedSound("Click_Common_Default")
-
-        // 播放主界面音效
-        SoundFunc.PlayCreatedSound("MainMenu")
-
-        var GameOverFinalUI = GetLocalPlayer()<PlayerJionGame>.GameOverFinalUI
-        GameOverFinalUI<CustomUI>.IsVisible = false
-
-        var ChoiceHeroUIEntity = GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI
-        ChoiceHeroUIEntity<CustomUI>.IsVisible = true
-
-        // 更新按钮状态
-        GetLocalPlayer()<PlayerJionGame>.UpdateLevelDisplay()
-
-        var skill1 entity<UIWidgetButton> = GetWidgetFromCustomUI(GetLocalPlayer(),ChoiceHeroUIEntity , EResUIChoiceHero.Hero_1) as entity<UIWidgetButton>
-        var skill2 entity<UIWidgetButton> = GetWidgetFromCustomUI(GetLocalPlayer(),ChoiceHeroUIEntity , EResUIChoiceHero.Hero_2) as entity<UIWidgetButton>
-        skill1<UIWidgetButton>.Color = #FF8900
-        skill2<UIWidgetButton>.Color = #F2A245
-        
-        //默认选择第一个技能
-        var skillIndex int = 1
-        GetLocalPlayer()<PlayerJionGame>.displaySkillByIndex(skillIndex)
-
         Offline.Revive()
+        //临时处理，因为客户端服务端不互通
+        if GetLocalPlayer()<PlayerJionGame>.CurrentSkill == 0 {
+            return
+        }
+        var skillMultiplier float = 1.0 * 0 + 1
+        GetLocalPlayer()<PlayerJionGame>.SkillUI<SkillUI>.skillMultiplier = skillMultiplier
+        thisEntity<CustomUI>.IsVisible = false
 
-        // 更新玩家位置
-        GetLocalPlayer()<PlayerJionGame>.SetPlayerPosition()
+        start GetLocalPlayer()<PlayerJionGame>.displaySkillByIndex(GetLocalPlayer()<PlayerJionGame>.CurrentSkill)
+        var level = GetLocalPlayer()<PlayerJionGame>.NowLevel
+        start GetLocalPlayer()<PlayerJionGame>.ShowChoiceThreeCardUI(level)
         
-        // 更新选择英雄面板的金钱显示
-        GetLocalPlayer()<PlayerJionGame>.UpdateChoiceHeroPanelMoney()
+        // 发送角色选择完毕事件
+        var CurrentSkill = GetLocalPlayer()<PlayerJionGame>.CurrentSkill
+        start GetLocalPlayer()<PlayerJionGame>.ChoiceHeroOver(level, CurrentSkill)
+
+        // 初始化已选卡牌的列表颜色
+        var ChoiceThreeCardUIEntity = GetLocalPlayer()<PlayerJionGame>.ChoiceThreeCardUI
+        for i = 1, 6, 1 {
+            // 按钮路径
+            var buttonPath = "/NowChoicePanel/List/Card (" + Convert.ToString(i) + ")"
+            // 获取图标控件
+            var buttonWidget = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUIEntity, buttonPath)
+            if buttonWidget != nil {
+                // 设置按钮的图标
+                buttonWidget<UIWidgetButton>.Color = #FFFFFF
+            }
+        }
+        PVEController.PVELevelStartInitialization(level)
+
+        // 播放三选一界面音效
+        SoundFunc.PlayCreatedSound("Menu_Pickup")
+
+        var Skill1_Detail_Entity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI, "/ChoiceHero/TextImage")
+        Skill1_Detail_Entity<UIWidget>.IsVisible = false
+
+        // 切换随机地图
+        GetLocalPlayer()<PlayerJionGame>.ChangeRandomMap()
     }
 }

@@ -164,12 +164,12 @@ graph UI_HomeUI {
         GetLocalPlayer()<PlayerJionGame>.SkillUI<SkillUI>.skillMultiplier = skillMultiplier
         thisEntity<CustomUI>.IsVisible = false
 
-        GetLocalPlayer()<PlayerJionGame>.displaySkillByIndex(GetLocalPlayer()<PlayerJionGame>.CurrentSkill)
-        start GetLocalPlayer()<PlayerJionGame>.ShowChoiceThreeCardUI(level,ability1Level,ability2Level,ability3Level)
+        start GetLocalPlayer()<PlayerJionGame>.displaySkillByIndex(GetLocalPlayer()<PlayerJionGame>.CurrentSkill)
+        start GetLocalPlayer()<PlayerJionGame>.ShowChoiceThreeCardUI(level)
         
         // 发送角色选择完毕事件
         var CurrentSkill = GetLocalPlayer()<PlayerJionGame>.CurrentSkill
-        start GetLocalPlayer()<PlayerJionGame>.ChoiceHeroOver(level, CurrentSkill, ability1Level, ability2Level, ability3Level)
+        start GetLocalPlayer()<PlayerJionGame>.ChoiceHeroOver(level, CurrentSkill)
 
         // 初始化已选卡牌的列表颜色
         var ChoiceThreeCardUIEntity = GetLocalPlayer()<PlayerJionGame>.ChoiceThreeCardUI
