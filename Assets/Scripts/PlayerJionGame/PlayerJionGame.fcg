@@ -2565,6 +2565,8 @@ graph PlayerJionGame {
         // start ShowSecondDown(10000)
         // 隐藏波次和时间信息
         TimeInGameUI<CustomUI>.IsVisible = false
+        // 取消玩家移动
+        SetBehaviorStatus(currPlayer, PlayerBehaviorType.Move, PlayerBehaviorStatusType.Disable)
     }
 
     func ToClient_GameComplete() {

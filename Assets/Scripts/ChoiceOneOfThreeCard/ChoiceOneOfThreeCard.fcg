@@ -176,6 +176,9 @@ graph ChoiceOneOfThreeCard {
       SelectCard(selectedCardId, currentSkill)
       ApplyCardEffect(selectedCardId, currentSkill)
 
+      // 恢复玩家移动
+      SetBehaviorStatus(GetLocalPlayer()<PlayerJionGame>.currPlayer, PlayerBehaviorType.Move, PlayerBehaviorStatusType.Enable)
+
       // 更新已选卡牌展示面板的图标
       UpdateSelectedCardIcons(selectedCardId, currentSkill)
 
