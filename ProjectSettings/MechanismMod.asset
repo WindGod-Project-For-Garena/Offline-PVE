@@ -6,12 +6,18 @@
   "_entityId": "8wS8WgtL",
   "children": [],
   "prefabVariant": null,
-  "activeValue": null,
-  "unlockedValue": null,
+  "activeValue": {
+    "selfValue": true,
+    "valueTag": "activeValue"
+  },
+  "unlockedValue": {
+    "selfValue": true,
+    "valueTag": "unlockedValue"
+  },
   "editorLockValue": false,
   "editorVisibleValue": true,
   "modId": 42,
-  "EnableDeathObserve": true,
+  "EnableDeathObserve": false,
   "HideObserverDropButton": false,
   "ObserverMode": 0,
   "UGCObserverCameraMode": 1,
@@ -209,9 +215,17 @@
     "playerskill_teleporter_cd_percent": 100,
     "playerskill_fireboyflame_cd_percent": 100,
     "EnableInventoryDrop": false,
-    "playerskill_autopathbomb_cd_percent": 100
+    "playerskill_autopathbomb_cd_percent": 100,
+    "EnableAOIFilter": false,
+    "CameraViewingAngleRestrictionType": 0,
+    "playerskill_cityhero_cd_percent": 100,
+    "playerskill_electricgirl_cd_percent": 100,
+    "playerskill_auroraboy_cd_percent": 100,
+    "DisableEnemyFootstepVibrate": false
   },
   "modOpen": true,
-  "_entityName": "Mechanism模组"
+  "_entityName": "T_43_YU_WS_MODULE_MECHANISM",
+  "EnableInternalWorkflowLogic": true,
+  "showSwitch": false
 }
-//"{FE:{"v":"0.1.2974255","c":{"FF":4404},"s":100}
+//"{FE:{"v":"1.16.4170774","c":{"FF":5001},"s":100}
