@@ -76,7 +76,7 @@ graph ChoiceOneOfThreeCard {
    //设置选择后的颜色
    func SetConfirmButtonTextColor() {
       var Next = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/Next")
-      Next<UIWidgetButton>.Color = #FFFFFF
+      Next<UIWidgetButton>.SpriteResource = EResSprite.guryButton
       var NextText = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/Next/Text")
       NextText<UIWidgetLabel>.Color = #000000
    }
@@ -344,10 +344,22 @@ graph ChoiceOneOfThreeCard {
    func OnRefreshCardsClicked(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
       SoundFunc.PlayCreatedSound("Click_Common_Default")
 
+      var refreshCost = 50 // 刷新卡牌所需金币
+      var playerMoney = GetLocalPlayer()<PlayerJionGame>.Money
+      if playerMoney < refreshCost {
+         // 金币不足，不执行刷新操作
+         return
+      }
+
+
       var level = GetLocalPlayer()<PlayerJionGame>.level
       var ability1Level = GetLocalPlayer()<PlayerJionGame>.ability1Level
       var ability2Level = GetLocalPlayer()<PlayerJionGame>.ability2Level
       var ability3Level = GetLocalPlayer()<PlayerJionGame>.ability3Level
+
+      // 扣除金币
+      GetLocalPlayer()<PlayerJionGame>.Money = playerMoney - refreshCost
+
       RefreshCard(level)
       CloseTextImage(button, triggerPlayer)
    }
@@ -364,6 +376,40 @@ graph ChoiceOneOfThreeCard {
       card3BB<UIWidget>.IsVisible = false
       //----------------------------------------------------------------------------------------------------------------//
       StartThreeChooseOne(level, GetLocalPlayer()<PlayerJionGame>.CurrentSkill)
+      // 刷新后再次更新按钮状态
+      UpdateRefreshButtonState()
+   }
+
+   // 更新刷新按钮状态
+   func UpdateRefreshButtonState() {
+      var refreshCost = 50 // 刷新卡牌所需金币
+      var playerMoney = GetLocalPlayer()<PlayerJionGame>.Money
+      
+      var refreshButton = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/RefreshCards")
+      var priceText = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/RefreshCards/Image/Money")
+      var buttonText = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/RefreshCards/Text")
+      
+      if refreshButton != nil && priceText != nil {
+         if playerMoney < refreshCost {
+               // 金币不足，按钮置灰
+               refreshButton<UIWidgetButton>.SpriteResource = EResSprite.DisableButton
+               // 价格文字变红色
+               priceText<UIWidgetLabel>.Color = #FF0000
+               // 按钮文字变白色
+               buttonText<UIWidgetLabel>.Color = #FFFFFF
+         } else {
+               // 金币足够，按钮正常显示
+               refreshButton<UIWidgetButton>.SpriteResource = EResSprite.guryButton
+               // 价格文字白色
+               priceText<UIWidgetLabel>.Color = #FFFFFF
+               // 按钮文字黑色
+               buttonText<UIWidgetLabel>.Color = #000000
+         }
+      }
+
+      // 更新金钱UI
+      var MoneyNumEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.RighTabIFMUI, "/Panel/Money/logo/Num")
+      MoneyNumEntity<UIWidgetLabel>.Content = GetLocalPlayer()<PlayerJionGame>.Money
    }
 //————————————————————————————————————————————————————————————————————————————————————————————————//
 //————————————————————————————————————————————————————————————————————————————————————————————————//
@@ -412,6 +458,9 @@ graph ChoiceOneOfThreeCard {
 
       // 重置已经选择的卡牌
       SelectedCardIndex = 0
+
+       // 更新刷新按钮状态
+      UpdateRefreshButtonState()
    }
    
    // 生成随机卡牌（不允许重复选择）
@@ -478,10 +527,9 @@ graph ChoiceOneOfThreeCard {
       
       // 设置没选择时按钮的颜色
       var next = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/Next")
-      next<UIWidgetButton>.Color = #575757FF
+      next<UIWidgetButton>.SpriteResource = EResSprite.DisableButton
       var nextText = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/Next/Text")
       nextText<UIWidgetLabel>.Color = #FFFFFF
-      LogInfo("卡牌UI更新完成")
    }
 
    // 更新单个卡牌外观（大图标）

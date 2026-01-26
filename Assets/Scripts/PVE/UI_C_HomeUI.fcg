@@ -167,7 +167,20 @@ graph UI_HomeUI {
 
         start GetLocalPlayer()<PlayerJionGame>.displaySkillByIndex(GetLocalPlayer()<PlayerJionGame>.CurrentSkill)
         start GetLocalPlayer()<PlayerJionGame>.ShowChoiceThreeCardUI(currentLevel)
-        
+        GetLocalPlayer()<PlayerJionGame>.RighTabIFMUI<CustomUI>.IsVisible = true
+        // 隐藏金钱UI
+        var MoneyEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.RighTabIFMUI, "/Money")
+        MoneyEntity<UIWidget>.IsVisible = false
+        // 更新金钱UI
+        var MoneyNumEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.RighTabIFMUI, "/Panel/Money/logo/Num")
+        MoneyNumEntity<UIWidgetLabel>.Content = GetLocalPlayer()<PlayerJionGame>.Money
+        // 更新总击杀数UI
+        var KillCountEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.RighTabIFMUI, "/Panel/Killed/logo/Num")
+        KillCountEntity<UIWidgetLabel>.Content = 0
+        GetLocalPlayer()<PlayerJionGame>.KillCount = 0
+        GetLocalPlayer()<PlayerJionGame>.KillCountTAG = 0
+        GetLocalPlayer()<PlayerJionGame>.KillCountSound = 0
+
         // 发送角色选择完毕事件
         var CurrentSkill = GetLocalPlayer()<PlayerJionGame>.CurrentSkill
         start GetLocalPlayer()<PlayerJionGame>.ChoiceHeroOver(currentLevel, CurrentSkill)
