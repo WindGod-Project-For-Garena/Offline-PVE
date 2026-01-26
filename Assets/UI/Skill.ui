@@ -15,6 +15,93 @@
       "_entityId": "gT7qrceb",
       "children": [
         {
+          "_entityName": "Name",
+          "_tag": {
+            "type": "UITextEntity",
+            "resourceId": ""
+          },
+          "_entityId": "ednh39UG",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": null,
+          "editorLockValue": false,
+          "editorVisibleValue": false,
+          "propsData": {
+            "activeSelf": true,
+            "transform": {
+              "rotate": 0,
+              "anchorMin": {
+                "x": 0.5,
+                "y": 0
+              },
+              "anchorMax": {
+                "x": 0.5,
+                "y": 0
+              },
+              "pivot": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "anchoredPosition": {
+                "x": 0,
+                "y": -10
+              },
+              "sizeDelta": {
+                "x": 100,
+                "y": 22
+              }
+            },
+            "alpha": 100,
+            "priority": 0,
+            "text": {
+              "value": "爆裂轰炸",
+              "key": "SKILL_BOMBARD",
+              "font": "Default",
+              "fontSize": 22,
+              "fontStyle": {
+                "bold": false,
+                "italic": false,
+                "underline": false
+              },
+              "color": "#ffffff",
+              "alignment": {
+                "h": "center",
+                "v": "middle"
+              },
+              "lineSpacing": 0,
+              "background": false,
+              "backgroundColor": "#e7b200",
+              "overflow": 0,
+              "backgroundRGBA": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
+              "shadow": false,
+              "shadowColor": "#000000",
+              "shadowOffset": {
+                "x": 1,
+                "y": 1
+              }
+            }
+          },
+          "ecaScripts": [],
+          "ecaProps": {
+            "HudLabelWidget": {},
+            "HudWidget": {},
+            "Entity": {}
+          },
+          "componentList": [],
+          "entityTagData": {
+            "tagPointers": []
+          }
+        },
+        {
           "_entityName": "SkillJoyStik",
           "_tag": {
             "type": "UIJoystickEntity",
@@ -440,6 +527,93 @@
       },
       "_entityId": "oGzWPGnt",
       "children": [
+        {
+          "_entityName": "Name",
+          "_tag": {
+            "type": "UITextEntity",
+            "resourceId": ""
+          },
+          "_entityId": "wVMxkDyK",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": null,
+          "propsData": {
+            "activeSelf": true,
+            "transform": {
+              "rotate": 0,
+              "anchorMin": {
+                "x": 0.5,
+                "y": 0
+              },
+              "anchorMax": {
+                "x": 0.5,
+                "y": 0
+              },
+              "pivot": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "anchoredPosition": {
+                "x": 0,
+                "y": -10
+              },
+              "sizeDelta": {
+                "x": 100,
+                "y": 22
+              }
+            },
+            "alpha": 100,
+            "priority": 0,
+            "text": {
+              "value": "电弧冲击",
+              "key": "SKILL_SHOCK",
+              "font": "Default",
+              "fontSize": 22,
+              "fontStyle": {
+                "bold": false,
+                "italic": false,
+                "underline": false
+              },
+              "color": "#ffffff",
+              "alignment": {
+                "h": "center",
+                "v": "middle"
+              },
+              "lineSpacing": 0,
+              "background": false,
+              "backgroundColor": "#e7b200",
+              "overflow": 0,
+              "backgroundRGBA": {
+                "r": 0,
+                "g": 0,
+                "b": 0,
+                "a": 0
+              },
+              "shadow": false,
+              "shadowColor": "#000000",
+              "shadowOffset": {
+                "x": 1,
+                "y": 1
+              }
+            }
+          },
+          "ecaScripts": [],
+          "ecaProps": {
+            "HudLabelWidget": {},
+            "HudWidget": {},
+            "Entity": {}
+          },
+          "componentList": [],
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": false
+        },
         {
           "_entityName": "SkillJoyStik",
           "_tag": {
