@@ -1295,7 +1295,7 @@
                     "tagPointers": []
                   },
                   "editorLockValue": false,
-                  "editorVisibleValue": false
+                  "editorVisibleValue": true
                 },
                 {
                   "_entityName": "bglight",
@@ -1315,7 +1315,7 @@
                     "valueTag": "unlockedValue"
                   },
                   "editorLockValue": false,
-                  "editorVisibleValue": false,
+                  "editorVisibleValue": true,
                   "propsData": {
                     "activeSelf": true,
                     "transform": {
@@ -1412,7 +1412,7 @@
                 "valueTag": "unlockedValue"
               },
               "editorLockValue": false,
-              "editorVisibleValue": false,
+              "editorVisibleValue": true,
               "propsData": {
                 "activeSelf": true,
                 "transform": {
@@ -1600,7 +1600,7 @@
                 "tagPointers": []
               },
               "editorLockValue": false,
-              "editorVisibleValue": false
+              "editorVisibleValue": true
             },
             {
               "_entityName": "HeroName",
@@ -1690,7 +1690,7 @@
                 "tagPointers": []
               },
               "editorLockValue": false,
-              "editorVisibleValue": false
+              "editorVisibleValue": true
             },
             {
               "_entityName": "Image",
@@ -1794,7 +1794,7 @@
                 "tagPointers": []
               },
               "editorLockValue": false,
-              "editorVisibleValue": false
+              "editorVisibleValue": true
             },
             {
               "_entityName": "Title",
@@ -1884,7 +1884,7 @@
                 "tagPointers": []
               },
               "editorLockValue": false,
-              "editorVisibleValue": false
+              "editorVisibleValue": true
             },
             {
               "_entityName": "Hero_1_WeaponIFM",
@@ -1996,7 +1996,7 @@
                     "tagPointers": []
                   },
                   "editorLockValue": false,
-                  "editorVisibleValue": false
+                  "editorVisibleValue": true
                 },
                 {
                   "_entityName": "WeaponImage",
@@ -2100,7 +2100,7 @@
                     "tagPointers": []
                   },
                   "editorLockValue": false,
-                  "editorVisibleValue": false
+                  "editorVisibleValue": true
                 },
                 {
                   "_entityName": "Image",
@@ -2204,7 +2204,7 @@
                     "tagPointers": []
                   },
                   "editorLockValue": false,
-                  "editorVisibleValue": false
+                  "editorVisibleValue": true
                 },
                 {
                   "_entityName": "Title",
@@ -2294,7 +2294,7 @@
                     "tagPointers": []
                   },
                   "editorLockValue": false,
-                  "editorVisibleValue": false
+                  "editorVisibleValue": true
                 }
               ],
               "prefabVariant": null,
@@ -2370,7 +2370,7 @@
               },
               "version": "UIPanelEntityV3",
               "editorLockValue": false,
-              "editorVisibleValue": false
+              "editorVisibleValue": true
             },
             {
               "_entityName": "Hero_1_Skill_IFM",
@@ -2396,6 +2396,107 @@
                       },
                       "_entityId": "K7sbCw5w",
                       "children": [
+                        {
+                          "_entityName": "bb",
+                          "_tag": {
+                            "type": "UIImageEntity",
+                            "resourceId": ""
+                          },
+                          "_entityId": "EJC2Krlu",
+                          "children": [],
+                          "prefabVariant": null,
+                          "activeValue": {
+                            "selfValue": true,
+                            "valueTag": "activeValue"
+                          },
+                          "unlockedValue": null,
+                          "propsData": {
+                            "activeSelf": true,
+                            "transform": {
+                              "rotate": 0,
+                              "anchorMin": {
+                                "x": 0.5,
+                                "y": 0.5
+                              },
+                              "anchorMax": {
+                                "x": 0.5,
+                                "y": 0.5
+                              },
+                              "pivot": {
+                                "x": 0.5,
+                                "y": 0.5
+                              },
+                              "anchoredPosition": {
+                                "x": 0,
+                                "y": 0
+                              },
+                              "sizeDelta": {
+                                "x": 80,
+                                "y": 80
+                              }
+                            },
+                            "alpha": 100,
+                            "priority": 0,
+                            "image": {
+                              "source": {
+                                "fileId": "tka8rtnvqr-mjmkvb6w-hklw3d7ay0m",
+                                "filePath": "Assets\\Image\\Home\\技能底框.png",
+                                "_tag": {
+                                  "type": "GFileRefer"
+                                },
+                                "fileType": "texture"
+                              },
+                              "color": "#ffffff",
+                              "reverse": {
+                                "x": false,
+                                "y": false
+                              },
+                              "fillType": 1,
+                              "slicedBorder": {
+                                "left": 0,
+                                "right": 0,
+                                "top": 0,
+                                "bottom": 0
+                              },
+                              "tiledBorder": {
+                                "left": 0,
+                                "right": 0,
+                                "top": 0,
+                                "bottom": 0
+                              },
+                              "centerInvisible": false,
+                              "fillDir": 0,
+                              "fillAmount": 0,
+                              "invertFill": false,
+                              "flip": 0,
+                              "gradient": 1,
+                              "gradientTop": {
+                                "r": 255,
+                                "g": 255,
+                                "b": 255,
+                                "a": 1
+                              },
+                              "gradientBottom": {
+                                "r": 255,
+                                "g": 255,
+                                "b": 255,
+                                "a": 1
+                              }
+                            }
+                          },
+                          "ecaScripts": [],
+                          "ecaProps": {
+                            "HudImageWidget": {},
+                            "HudWidget": {},
+                            "Entity": {}
+                          },
+                          "componentList": [],
+                          "entityTagData": {
+                            "tagPointers": []
+                          },
+                          "editorLockValue": false,
+                          "editorVisibleValue": true
+                        },
                         {
                           "_entityName": "SKill",
                           "_tag": {
@@ -2492,7 +2593,7 @@
                                 "tagPointers": []
                               },
                               "editorLockValue": false,
-                              "editorVisibleValue": false
+                              "editorVisibleValue": true
                             }
                           ],
                           "prefabVariant": null,
@@ -2505,7 +2606,7 @@
                             "valueTag": "unlockedValue"
                           },
                           "editorLockValue": false,
-                          "editorVisibleValue": false,
+                          "editorVisibleValue": true,
                           "propsData": {
                             "activeSelf": true,
                             "transform": {
@@ -2523,7 +2624,7 @@
                                 "y": 0.5
                               },
                               "anchoredPosition": {
-                                "x": 70,
+                                "x": 80,
                                 "y": 15
                               },
                               "sizeDelta": {
@@ -2595,7 +2696,7 @@
                             "valueTag": "unlockedValue"
                           },
                           "editorLockValue": false,
-                          "editorVisibleValue": false,
+                          "editorVisibleValue": true,
                           "propsData": {
                             "activeSelf": true,
                             "transform": {
@@ -2614,11 +2715,11 @@
                               },
                               "anchoredPosition": {
                                 "x": 116,
-                                "y": -30
+                                "y": -35
                               },
                               "sizeDelta": {
                                 "x": 290,
-                                "y": 50
+                                "y": 40
                               }
                             },
                             "alpha": 100,
@@ -2678,7 +2779,7 @@
                         "valueTag": "unlockedValue"
                       },
                       "editorLockValue": false,
-                      "editorVisibleValue": false,
+                      "editorVisibleValue": true,
                       "propsData": {
                         "activeSelf": true,
                         "transform": {
@@ -2700,8 +2801,8 @@
                             "y": 40
                           },
                           "sizeDelta": {
-                            "x": 60,
-                            "y": 60
+                            "x": 50,
+                            "y": 50
                           }
                         },
                         "alpha": 100,
@@ -2772,6 +2873,107 @@
                       },
                       "_entityId": "aJryNWGR",
                       "children": [
+                        {
+                          "_entityName": "bb",
+                          "_tag": {
+                            "type": "UIImageEntity",
+                            "resourceId": ""
+                          },
+                          "_entityId": "mnCEHCTn",
+                          "children": [],
+                          "prefabVariant": null,
+                          "activeValue": {
+                            "selfValue": true,
+                            "valueTag": "activeValue"
+                          },
+                          "unlockedValue": null,
+                          "propsData": {
+                            "activeSelf": true,
+                            "transform": {
+                              "rotate": 0,
+                              "anchorMin": {
+                                "x": 0.5,
+                                "y": 0.5
+                              },
+                              "anchorMax": {
+                                "x": 0.5,
+                                "y": 0.5
+                              },
+                              "pivot": {
+                                "x": 0.5,
+                                "y": 0.5
+                              },
+                              "anchoredPosition": {
+                                "x": 0,
+                                "y": 0
+                              },
+                              "sizeDelta": {
+                                "x": 80,
+                                "y": 80
+                              }
+                            },
+                            "alpha": 100,
+                            "priority": 0,
+                            "image": {
+                              "source": {
+                                "fileId": "tka8rtnvqr-mjmkvb6w-hklw3d7ay0m",
+                                "filePath": "Assets\\Image\\Home\\技能底框.png",
+                                "_tag": {
+                                  "type": "GFileRefer"
+                                },
+                                "fileType": "texture"
+                              },
+                              "color": "#ffffff",
+                              "reverse": {
+                                "x": false,
+                                "y": false
+                              },
+                              "fillType": 1,
+                              "slicedBorder": {
+                                "left": 0,
+                                "right": 0,
+                                "top": 0,
+                                "bottom": 0
+                              },
+                              "tiledBorder": {
+                                "left": 0,
+                                "right": 0,
+                                "top": 0,
+                                "bottom": 0
+                              },
+                              "centerInvisible": false,
+                              "fillDir": 0,
+                              "fillAmount": 0,
+                              "invertFill": false,
+                              "flip": 0,
+                              "gradient": 1,
+                              "gradientTop": {
+                                "r": 255,
+                                "g": 255,
+                                "b": 255,
+                                "a": 1
+                              },
+                              "gradientBottom": {
+                                "r": 255,
+                                "g": 255,
+                                "b": 255,
+                                "a": 1
+                              }
+                            }
+                          },
+                          "ecaScripts": [],
+                          "ecaProps": {
+                            "HudImageWidget": {},
+                            "HudWidget": {},
+                            "Entity": {}
+                          },
+                          "componentList": [],
+                          "entityTagData": {
+                            "tagPointers": []
+                          },
+                          "editorLockValue": false,
+                          "editorVisibleValue": true
+                        },
                         {
                           "_entityName": "SKill",
                           "_tag": {
@@ -2868,7 +3070,7 @@
                                 "tagPointers": []
                               },
                               "editorLockValue": false,
-                              "editorVisibleValue": false
+                              "editorVisibleValue": true
                             }
                           ],
                           "prefabVariant": null,
@@ -2897,7 +3099,7 @@
                                 "y": 0.5
                               },
                               "anchoredPosition": {
-                                "x": 70,
+                                "x": 80,
                                 "y": 15
                               },
                               "sizeDelta": {
@@ -2951,7 +3153,7 @@
                             "tagPointers": []
                           },
                           "editorLockValue": false,
-                          "editorVisibleValue": false
+                          "editorVisibleValue": true
                         },
                         {
                           "_entityName": "SkillIFMText",
@@ -2988,11 +3190,11 @@
                               },
                               "anchoredPosition": {
                                 "x": 115,
-                                "y": -30
+                                "y": -35
                               },
                               "sizeDelta": {
                                 "x": 290,
-                                "y": 50
+                                "y": 40
                               }
                             },
                             "alpha": 100,
@@ -3041,7 +3243,7 @@
                             "tagPointers": []
                           },
                           "editorLockValue": false,
-                          "editorVisibleValue": false
+                          "editorVisibleValue": true
                         }
                       ],
                       "prefabVariant": null,
@@ -3074,8 +3276,8 @@
                             "y": -80
                           },
                           "sizeDelta": {
-                            "x": 60,
-                            "y": 60
+                            "x": 50,
+                            "y": 50
                           }
                         },
                         "alpha": 100,
@@ -3138,7 +3340,7 @@
                         "tagPointers": []
                       },
                       "editorLockValue": false,
-                      "editorVisibleValue": false
+                      "editorVisibleValue": true
                     }
                   ],
                   "prefabVariant": null,
@@ -3151,7 +3353,7 @@
                     "valueTag": "unlockedValue"
                   },
                   "editorLockValue": false,
-                  "editorVisibleValue": false,
+                  "editorVisibleValue": true,
                   "propsData": {
                     "activeSelf": true,
                     "transform": {
@@ -3227,7 +3429,7 @@
                 "valueTag": "unlockedValue"
               },
               "editorLockValue": false,
-              "editorVisibleValue": false,
+              "editorVisibleValue": true,
               "propsData": {
                 "activeSelf": true,
                 "transform": {
@@ -3366,7 +3568,7 @@
           },
           "version": "UIPanelEntityV3",
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": true
         },
         {
           "_entityName": "HeroIFMPanel_2",
@@ -3486,7 +3688,7 @@
                     "tagPointers": []
                   },
                   "editorLockValue": false,
-                  "editorVisibleValue": true
+                  "editorVisibleValue": false
                 },
                 {
                   "_entityName": "bglight",
@@ -3590,7 +3792,7 @@
                     "tagPointers": []
                   },
                   "editorLockValue": false,
-                  "editorVisibleValue": true
+                  "editorVisibleValue": false
                 }
               ],
               "prefabVariant": null,
@@ -3687,7 +3889,7 @@
                 "tagPointers": []
               },
               "editorLockValue": false,
-              "editorVisibleValue": true
+              "editorVisibleValue": false
             },
             {
               "_entityName": "NameBB",
@@ -3791,7 +3993,7 @@
                 "tagPointers": []
               },
               "editorLockValue": false,
-              "editorVisibleValue": true
+              "editorVisibleValue": false
             },
             {
               "_entityName": "HeroName",
@@ -3881,7 +4083,7 @@
                 "tagPointers": []
               },
               "editorLockValue": false,
-              "editorVisibleValue": true
+              "editorVisibleValue": false
             },
             {
               "_entityName": "Image",
@@ -3985,7 +4187,7 @@
                 "tagPointers": []
               },
               "editorLockValue": false,
-              "editorVisibleValue": true
+              "editorVisibleValue": false
             },
             {
               "_entityName": "Title",
@@ -4075,7 +4277,7 @@
                 "tagPointers": []
               },
               "editorLockValue": false,
-              "editorVisibleValue": true
+              "editorVisibleValue": false
             },
             {
               "_entityName": "Hero_2_WeaponIFM",
@@ -4187,7 +4389,7 @@
                     "tagPointers": []
                   },
                   "editorLockValue": false,
-                  "editorVisibleValue": true
+                  "editorVisibleValue": false
                 },
                 {
                   "_entityName": "WeaponImage",
@@ -4291,7 +4493,7 @@
                     "tagPointers": []
                   },
                   "editorLockValue": false,
-                  "editorVisibleValue": true
+                  "editorVisibleValue": false
                 },
                 {
                   "_entityName": "Image",
@@ -4395,7 +4597,7 @@
                     "tagPointers": []
                   },
                   "editorLockValue": false,
-                  "editorVisibleValue": true
+                  "editorVisibleValue": false
                 },
                 {
                   "_entityName": "Title",
@@ -4485,7 +4687,7 @@
                     "tagPointers": []
                   },
                   "editorLockValue": false,
-                  "editorVisibleValue": true
+                  "editorVisibleValue": false
                 }
               ],
               "prefabVariant": null,
@@ -4561,7 +4763,7 @@
               },
               "version": "UIPanelEntityV3",
               "editorLockValue": false,
-              "editorVisibleValue": true
+              "editorVisibleValue": false
             },
             {
               "_entityName": "Hero_2_Skill_IFM",
@@ -4587,6 +4789,107 @@
                       },
                       "_entityId": "l3FB0QUr",
                       "children": [
+                        {
+                          "_entityName": "bb",
+                          "_tag": {
+                            "type": "UIImageEntity",
+                            "resourceId": ""
+                          },
+                          "_entityId": "vKu0CH6M",
+                          "children": [],
+                          "prefabVariant": null,
+                          "activeValue": {
+                            "selfValue": true,
+                            "valueTag": "activeValue"
+                          },
+                          "unlockedValue": null,
+                          "propsData": {
+                            "activeSelf": true,
+                            "transform": {
+                              "rotate": 0,
+                              "anchorMin": {
+                                "x": 0.5,
+                                "y": 0.5
+                              },
+                              "anchorMax": {
+                                "x": 0.5,
+                                "y": 0.5
+                              },
+                              "pivot": {
+                                "x": 0.5,
+                                "y": 0.5
+                              },
+                              "anchoredPosition": {
+                                "x": 0,
+                                "y": 0
+                              },
+                              "sizeDelta": {
+                                "x": 80,
+                                "y": 80
+                              }
+                            },
+                            "alpha": 100,
+                            "priority": 0,
+                            "image": {
+                              "source": {
+                                "fileId": "tka8rtnvqr-mjmkvb6w-hklw3d7ay0m",
+                                "filePath": "Assets\\Image\\Home\\技能底框.png",
+                                "_tag": {
+                                  "type": "GFileRefer"
+                                },
+                                "fileType": "texture"
+                              },
+                              "color": "#ffffff",
+                              "reverse": {
+                                "x": false,
+                                "y": false
+                              },
+                              "fillType": 1,
+                              "slicedBorder": {
+                                "left": 0,
+                                "right": 0,
+                                "top": 0,
+                                "bottom": 0
+                              },
+                              "tiledBorder": {
+                                "left": 0,
+                                "right": 0,
+                                "top": 0,
+                                "bottom": 0
+                              },
+                              "centerInvisible": false,
+                              "fillDir": 0,
+                              "fillAmount": 0,
+                              "invertFill": false,
+                              "flip": 0,
+                              "gradient": 1,
+                              "gradientTop": {
+                                "r": 255,
+                                "g": 255,
+                                "b": 255,
+                                "a": 1
+                              },
+                              "gradientBottom": {
+                                "r": 255,
+                                "g": 255,
+                                "b": 255,
+                                "a": 1
+                              }
+                            }
+                          },
+                          "ecaScripts": [],
+                          "ecaProps": {
+                            "HudImageWidget": {},
+                            "HudWidget": {},
+                            "Entity": {}
+                          },
+                          "componentList": [],
+                          "entityTagData": {
+                            "tagPointers": []
+                          },
+                          "editorLockValue": false,
+                          "editorVisibleValue": false
+                        },
                         {
                           "_entityName": "SKill",
                           "_tag": {
@@ -4683,7 +4986,7 @@
                                 "tagPointers": []
                               },
                               "editorLockValue": false,
-                              "editorVisibleValue": true
+                              "editorVisibleValue": false
                             }
                           ],
                           "prefabVariant": null,
@@ -4712,7 +5015,7 @@
                                 "y": 0.5
                               },
                               "anchoredPosition": {
-                                "x": 70,
+                                "x": 80,
                                 "y": 15
                               },
                               "sizeDelta": {
@@ -4766,7 +5069,7 @@
                             "tagPointers": []
                           },
                           "editorLockValue": false,
-                          "editorVisibleValue": true
+                          "editorVisibleValue": false
                         },
                         {
                           "_entityName": "SkillIFMText",
@@ -4803,11 +5106,11 @@
                               },
                               "anchoredPosition": {
                                 "x": 116,
-                                "y": -30
+                                "y": -35
                               },
                               "sizeDelta": {
                                 "x": 290,
-                                "y": 50
+                                "y": 40
                               }
                             },
                             "alpha": 100,
@@ -4856,7 +5159,7 @@
                             "tagPointers": []
                           },
                           "editorLockValue": false,
-                          "editorVisibleValue": true
+                          "editorVisibleValue": false
                         }
                       ],
                       "prefabVariant": null,
@@ -4889,8 +5192,8 @@
                             "y": 40
                           },
                           "sizeDelta": {
-                            "x": 60,
-                            "y": 60
+                            "x": 50,
+                            "y": 50
                           }
                         },
                         "alpha": 100,
@@ -4953,7 +5256,7 @@
                         "tagPointers": []
                       },
                       "editorLockValue": false,
-                      "editorVisibleValue": true
+                      "editorVisibleValue": false
                     },
                     {
                       "_entityName": "SKILL_2_LOGO",
@@ -4963,6 +5266,107 @@
                       },
                       "_entityId": "HT6WsibW",
                       "children": [
+                        {
+                          "_entityName": "bb",
+                          "_tag": {
+                            "type": "UIImageEntity",
+                            "resourceId": ""
+                          },
+                          "_entityId": "ZwTLRmTR",
+                          "children": [],
+                          "prefabVariant": null,
+                          "activeValue": {
+                            "selfValue": true,
+                            "valueTag": "activeValue"
+                          },
+                          "unlockedValue": null,
+                          "propsData": {
+                            "activeSelf": true,
+                            "transform": {
+                              "rotate": 0,
+                              "anchorMin": {
+                                "x": 0.5,
+                                "y": 0.5
+                              },
+                              "anchorMax": {
+                                "x": 0.5,
+                                "y": 0.5
+                              },
+                              "pivot": {
+                                "x": 0.5,
+                                "y": 0.5
+                              },
+                              "anchoredPosition": {
+                                "x": 0,
+                                "y": 0
+                              },
+                              "sizeDelta": {
+                                "x": 80,
+                                "y": 80
+                              }
+                            },
+                            "alpha": 100,
+                            "priority": 0,
+                            "image": {
+                              "source": {
+                                "fileId": "tka8rtnvqr-mjmkvb6w-hklw3d7ay0m",
+                                "filePath": "Assets\\Image\\Home\\技能底框.png",
+                                "_tag": {
+                                  "type": "GFileRefer"
+                                },
+                                "fileType": "texture"
+                              },
+                              "color": "#ffffff",
+                              "reverse": {
+                                "x": false,
+                                "y": false
+                              },
+                              "fillType": 1,
+                              "slicedBorder": {
+                                "left": 0,
+                                "right": 0,
+                                "top": 0,
+                                "bottom": 0
+                              },
+                              "tiledBorder": {
+                                "left": 0,
+                                "right": 0,
+                                "top": 0,
+                                "bottom": 0
+                              },
+                              "centerInvisible": false,
+                              "fillDir": 0,
+                              "fillAmount": 0,
+                              "invertFill": false,
+                              "flip": 0,
+                              "gradient": 1,
+                              "gradientTop": {
+                                "r": 255,
+                                "g": 255,
+                                "b": 255,
+                                "a": 1
+                              },
+                              "gradientBottom": {
+                                "r": 255,
+                                "g": 255,
+                                "b": 255,
+                                "a": 1
+                              }
+                            }
+                          },
+                          "ecaScripts": [],
+                          "ecaProps": {
+                            "HudImageWidget": {},
+                            "HudWidget": {},
+                            "Entity": {}
+                          },
+                          "componentList": [],
+                          "entityTagData": {
+                            "tagPointers": []
+                          },
+                          "editorLockValue": false,
+                          "editorVisibleValue": false
+                        },
                         {
                           "_entityName": "SKill",
                           "_tag": {
@@ -5059,7 +5463,7 @@
                                 "tagPointers": []
                               },
                               "editorLockValue": false,
-                              "editorVisibleValue": true
+                              "editorVisibleValue": false
                             }
                           ],
                           "prefabVariant": null,
@@ -5088,7 +5492,7 @@
                                 "y": 0.5
                               },
                               "anchoredPosition": {
-                                "x": 70,
+                                "x": 80,
                                 "y": 15
                               },
                               "sizeDelta": {
@@ -5142,7 +5546,7 @@
                             "tagPointers": []
                           },
                           "editorLockValue": false,
-                          "editorVisibleValue": true
+                          "editorVisibleValue": false
                         },
                         {
                           "_entityName": "SkillIFMText",
@@ -5179,11 +5583,11 @@
                               },
                               "anchoredPosition": {
                                 "x": 115,
-                                "y": -30
+                                "y": -35
                               },
                               "sizeDelta": {
                                 "x": 290,
-                                "y": 50
+                                "y": 40
                               }
                             },
                             "alpha": 100,
@@ -5232,7 +5636,7 @@
                             "tagPointers": []
                           },
                           "editorLockValue": false,
-                          "editorVisibleValue": true
+                          "editorVisibleValue": false
                         }
                       ],
                       "prefabVariant": null,
@@ -5265,8 +5669,8 @@
                             "y": -80
                           },
                           "sizeDelta": {
-                            "x": 60,
-                            "y": 60
+                            "x": 50,
+                            "y": 50
                           }
                         },
                         "alpha": 100,
@@ -5329,7 +5733,7 @@
                         "tagPointers": []
                       },
                       "editorLockValue": false,
-                      "editorVisibleValue": true
+                      "editorVisibleValue": false
                     }
                   ],
                   "prefabVariant": null,
@@ -5405,7 +5809,7 @@
                   },
                   "version": "UIPanelEntityV3",
                   "editorLockValue": false,
-                  "editorVisibleValue": true
+                  "editorVisibleValue": false
                 }
               ],
               "prefabVariant": null,
@@ -5481,7 +5885,7 @@
               },
               "version": "UIPanelEntityV3",
               "editorLockValue": false,
-              "editorVisibleValue": true
+              "editorVisibleValue": false
             }
           ],
           "prefabVariant": null,
@@ -5557,7 +5961,7 @@
           },
           "version": "UIPanelEntityV3",
           "editorLockValue": false,
-          "editorVisibleValue": true
+          "editorVisibleValue": false
         }
       ],
       "prefabVariant": null,
