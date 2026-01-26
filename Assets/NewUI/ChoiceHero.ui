@@ -213,7 +213,10 @@
         "selfValue": true,
         "valueTag": "activeValue"
       },
-      "unlockedValue": null,
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
       "editorLockValue": false,
       "editorVisibleValue": true,
       "propsData": {
@@ -2217,7 +2220,10 @@
                     "selfValue": true,
                     "valueTag": "activeValue"
                   },
-                  "unlockedValue": null,
+                  "unlockedValue": {
+                    "selfValue": true,
+                    "valueTag": "unlockedValue"
+                  },
                   "editorLockValue": false,
                   "editorVisibleValue": true,
                   "propsData": {
@@ -2521,7 +2527,10 @@
                     "selfValue": true,
                     "valueTag": "activeValue"
                   },
-                  "unlockedValue": null,
+                  "unlockedValue": {
+                    "selfValue": true,
+                    "valueTag": "unlockedValue"
+                  },
                   "editorLockValue": false,
                   "editorVisibleValue": true,
                   "propsData": {
@@ -2727,7 +2736,10 @@
                     "selfValue": true,
                     "valueTag": "activeValue"
                   },
-                  "unlockedValue": null,
+                  "unlockedValue": {
+                    "selfValue": true,
+                    "valueTag": "unlockedValue"
+                  },
                   "propsData": {
                     "activeSelf": true,
                     "transform": {
@@ -3031,7 +3043,10 @@
                     "selfValue": true,
                     "valueTag": "activeValue"
                   },
-                  "unlockedValue": null,
+                  "unlockedValue": {
+                    "selfValue": true,
+                    "valueTag": "unlockedValue"
+                  },
                   "propsData": {
                     "activeSelf": true,
                     "transform": {
@@ -5060,7 +5075,10 @@
                     "selfValue": true,
                     "valueTag": "activeValue"
                   },
-                  "unlockedValue": null,
+                  "unlockedValue": {
+                    "selfValue": true,
+                    "valueTag": "unlockedValue"
+                  },
                   "propsData": {
                     "activeSelf": true,
                     "transform": {
@@ -5364,7 +5382,10 @@
                     "selfValue": true,
                     "valueTag": "activeValue"
                   },
-                  "unlockedValue": null,
+                  "unlockedValue": {
+                    "selfValue": true,
+                    "valueTag": "unlockedValue"
+                  },
                   "propsData": {
                     "activeSelf": true,
                     "transform": {
@@ -5570,7 +5591,10 @@
                     "selfValue": true,
                     "valueTag": "activeValue"
                   },
-                  "unlockedValue": null,
+                  "unlockedValue": {
+                    "selfValue": true,
+                    "valueTag": "unlockedValue"
+                  },
                   "propsData": {
                     "activeSelf": true,
                     "transform": {
@@ -5874,7 +5898,10 @@
                     "selfValue": true,
                     "valueTag": "activeValue"
                   },
-                  "unlockedValue": null,
+                  "unlockedValue": {
+                    "selfValue": true,
+                    "valueTag": "unlockedValue"
+                  },
                   "propsData": {
                     "activeSelf": true,
                     "transform": {
@@ -7236,7 +7263,10 @@
                 "selfValue": true,
                 "valueTag": "activeValue"
               },
-              "unlockedValue": null,
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
               "editorLockValue": false,
               "editorVisibleValue": true,
               "propsData": {
@@ -8297,11 +8327,11 @@
                     "transform": {
                       "rotate": 0,
                       "anchorMin": {
-                        "x": 1,
+                        "x": 0.5,
                         "y": 0.5
                       },
                       "anchorMax": {
-                        "x": 1,
+                        "x": 0.5,
                         "y": 0.5
                       },
                       "pivot": {
@@ -8309,7 +8339,7 @@
                         "y": 0.5
                       },
                       "anchoredPosition": {
-                        "x": 55,
+                        "x": 100,
                         "y": 0
                       },
                       "sizeDelta": {
@@ -8382,11 +8412,11 @@
                 "transform": {
                   "rotate": 0,
                   "anchorMin": {
-                    "x": 0.5,
+                    "x": 0,
                     "y": 0.5
                   },
                   "anchorMax": {
-                    "x": 0.5,
+                    "x": 0,
                     "y": 0.5
                   },
                   "pivot": {
@@ -8394,7 +8424,7 @@
                     "y": 0.5
                   },
                   "anchoredPosition": {
-                    "x": -30,
+                    "x": 40,
                     "y": 0
                   },
                   "sizeDelta": {
@@ -8807,11 +8837,11 @@
                     "transform": {
                       "rotate": 0,
                       "anchorMin": {
-                        "x": 1,
+                        "x": 0.5,
                         "y": 0.5
                       },
                       "anchorMax": {
-                        "x": 1,
+                        "x": 0.5,
                         "y": 0.5
                       },
                       "pivot": {
@@ -8819,7 +8849,7 @@
                         "y": 0.5
                       },
                       "anchoredPosition": {
-                        "x": 65,
+                        "x": 100,
                         "y": 0
                       },
                       "sizeDelta": {
@@ -8890,11 +8920,11 @@
                 "transform": {
                   "rotate": 0,
                   "anchorMin": {
-                    "x": 0.5,
+                    "x": 0,
                     "y": 0.5
                   },
                   "anchorMax": {
-                    "x": 0.5,
+                    "x": 0,
                     "y": 0.5
                   },
                   "pivot": {
@@ -8902,7 +8932,7 @@
                     "y": 0.5
                   },
                   "anchoredPosition": {
-                    "x": -30,
+                    "x": 40,
                     "y": 0
                   },
                   "sizeDelta": {
@@ -9213,11 +9243,11 @@
                     "transform": {
                       "rotate": 0,
                       "anchorMin": {
-                        "x": 1,
+                        "x": 0.5,
                         "y": 0.5
                       },
                       "anchorMax": {
-                        "x": 1,
+                        "x": 0.5,
                         "y": 0.5
                       },
                       "pivot": {
@@ -9225,7 +9255,7 @@
                         "y": 0.5
                       },
                       "anchoredPosition": {
-                        "x": 65,
+                        "x": 100,
                         "y": 0
                       },
                       "sizeDelta": {
@@ -9296,11 +9326,11 @@
                 "transform": {
                   "rotate": 0,
                   "anchorMin": {
-                    "x": 0.5,
+                    "x": 0,
                     "y": 0.5
                   },
                   "anchorMax": {
-                    "x": 0.5,
+                    "x": 0,
                     "y": 0.5
                   },
                   "pivot": {
@@ -9308,7 +9338,7 @@
                     "y": 0.5
                   },
                   "anchoredPosition": {
-                    "x": -30,
+                    "x": 40,
                     "y": 0
                   },
                   "sizeDelta": {
