@@ -103,7 +103,7 @@ graph OnFire {
         var effectEntity = NewcreatedEntity
         effectEntity<Transform>.Position = ReleasedEffectPosition
         effectEntity<Transform>.Scale = Vector3{Size, Size, Size}
-        BoomColor(effectEntity, Size)
+        BoomColor(effectEntity, 5)
         
         // 获取榴弹昫爆次数
         var WeaponDoubleBoom = GetLocalPlayer()<PlayerJionGame>.Skill1DataInGame["WeaponDoubleBoom"] as int
@@ -122,7 +122,7 @@ graph OnFire {
             // 发送伤害到服务器
             DispatchEventToEntity(OnDamageMob, monster, PlatformType.Client, List<object>{monster, nil, damage, GetLocalPlayer()})
             GetLocalPlayer()<PlayerJionGame>.GrenadeDamage += damage
-            CreateDamageNum(damage, 10, #dde511, 800, monster as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
+            CreateDamageNum(damage, 10, #FF9898FF, 800, monster as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
             
             // 记录被击中的怪物信息
             var hitInfo = Map<string, object>{}
@@ -182,7 +182,7 @@ graph OnFire {
         CreateEffectClient(out var doubleBoomEffect, VFXType.CurseExplosion, LoopType.Once, true)
         doubleBoomEffect<Transform>.Position = explosionPosition
         doubleBoomEffect<Transform>.Scale = Vector3{2, 2, 2}  // 昫爆范围较小
-        BoomColor(doubleBoomEffect, 2)
+        BoomColor(doubleBoomEffect, 5)
         
         // 昫爆伤害（主爆炸的50%）
         var mainDamage = GetLocalPlayer()<PlayerJionGame>.Skill1DataInGame["WeaponBoomDamage"] as int
@@ -201,7 +201,7 @@ graph OnFire {
                 DispatchEventToEntity(OnDamageMob, monster, PlatformType.Client, List<object>{monster, nil, mainDamage, GetLocalPlayer()})
                 GetLocalPlayer()<PlayerJionGame>.Skill1Damage += mainDamage
                 // 显示昫爆伤害数字（用不同颜色区分）
-                CreateDamageNum(mainDamage, 10, #FF4500, 800, monster as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
+                CreateDamageNum(mainDamage, 10, #dde511, 800, monster as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
             }
         }
 
@@ -264,13 +264,12 @@ graph OnFire {
             thunderEffect<Transform>.Position = thunderPosition
             thunderEffect<Transform>.Scale = Vector3{0.8,2,0.8}
             SetParentClient(hitEntity as entity<LevelObject>, thunderEffect, true)
-            var CountLevel = 1
-            BoomColor(thunderEffect, CountLevel)
+            BoomColor(thunderEffect, 3)
             //造成伤害
             var realDamage int = Math.Ceil(damage * skillMultiplier)
             DispatchEventToEntity(OnDamageMob, hitEntity, PlatformType.Client, List<object>{hitEntity, nil, realDamage, GetLocalPlayer()})
             GetLocalPlayer()<PlayerJionGame>.LightningDamage += realDamage
-            CreateDamageNum(realDamage, 10, #00EEFFFF, 800, hitEntity as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
+            CreateDamageNum(realDamage, 10, #98FF98FF, 800, hitEntity as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
             WaitForMillisecond(2000)
             Destroy(thunderEffect)
         }
