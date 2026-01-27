@@ -1648,7 +1648,7 @@
                   },
                   "sizeDelta": {
                     "x": 320,
-                    "y": 22
+                    "y": 35
                   }
                 },
                 "alpha": 20,
@@ -2395,7 +2395,7 @@
                             "italic": false,
                             "underline": false
                           },
-                          "color": "#D1D1D1",
+                          "color": "#999999",
                           "alignment": {
                             "h": "center",
                             "v": "middle"
@@ -2911,7 +2911,7 @@
                             "italic": false,
                             "underline": false
                           },
-                          "color": "#D1D1D1",
+                          "color": "#999999",
                           "alignment": {
                             "h": "center",
                             "v": "middle"
@@ -4503,7 +4503,7 @@
                   },
                   "sizeDelta": {
                     "x": 320,
-                    "y": 22
+                    "y": 35
                   }
                 },
                 "alpha": 20,
@@ -5250,7 +5250,7 @@
                             "italic": false,
                             "underline": false
                           },
-                          "color": "#D1D1D1",
+                          "color": "#999999",
                           "alignment": {
                             "h": "center",
                             "v": "middle"
@@ -5766,7 +5766,7 @@
                             "italic": false,
                             "underline": false
                           },
-                          "color": "#D1D1D1",
+                          "color": "#999999",
                           "alignment": {
                             "h": "center",
                             "v": "middle"
@@ -6526,6 +6526,215 @@
               "editorVisibleValue": false
             },
             {
+              "_entityName": "Ground",
+              "_tag": {
+                "type": "UIImageEntity",
+                "resourceId": ""
+              },
+              "_entityId": "SHdsGBwm",
+              "children": [
+                {
+                  "_entityName": "bglight",
+                  "_tag": {
+                    "type": "UIImageEntity",
+                    "resourceId": ""
+                  },
+                  "_entityId": "T67TDhBn",
+                  "children": [],
+                  "prefabVariant": null,
+                  "activeValue": {
+                    "selfValue": true,
+                    "valueTag": "activeValue"
+                  },
+                  "unlockedValue": {
+                    "selfValue": true,
+                    "valueTag": "unlockedValue"
+                  },
+                  "propsData": {
+                    "activeSelf": true,
+                    "transform": {
+                      "rotate": 0,
+                      "anchorMin": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "anchorMax": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "pivot": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "anchoredPosition": {
+                        "x": 0,
+                        "y": 0
+                      },
+                      "sizeDelta": {
+                        "x": 328,
+                        "y": 100
+                      }
+                    },
+                    "alpha": 50,
+                    "priority": 0,
+                    "image": {
+                      "source": {
+                        "fileId": "ti1dp2mh1ke-mjmkv9am-wgk2izxh6uf",
+                        "filePath": "Assets\\Image\\Home\\FF_UI_HuntingGround_Bg_Light.png",
+                        "_tag": {
+                          "type": "GFileRefer"
+                        },
+                        "fileType": "texture"
+                      },
+                      "color": "#603aa5",
+                      "reverse": {
+                        "x": false,
+                        "y": false
+                      },
+                      "fillType": 1,
+                      "slicedBorder": {
+                        "left": 0,
+                        "right": 0,
+                        "top": 0,
+                        "bottom": 0
+                      },
+                      "tiledBorder": {
+                        "left": 0,
+                        "right": 0,
+                        "top": 0,
+                        "bottom": 0
+                      },
+                      "centerInvisible": false,
+                      "fillDir": 0,
+                      "fillAmount": 0,
+                      "invertFill": false,
+                      "flip": 0,
+                      "gradient": 1,
+                      "gradientTop": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 1
+                      },
+                      "gradientBottom": {
+                        "r": 255,
+                        "g": 255,
+                        "b": 255,
+                        "a": 1
+                      }
+                    }
+                  },
+                  "ecaScripts": [],
+                  "ecaProps": {
+                    "HudImageWidget": {},
+                    "HudWidget": {},
+                    "Entity": {}
+                  },
+                  "componentList": [],
+                  "entityTagData": {
+                    "tagPointers": []
+                  },
+                  "editorLockValue": false,
+                  "editorVisibleValue": true
+                }
+              ],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "propsData": {
+                "activeSelf": true,
+                "transform": {
+                  "rotate": 0,
+                  "anchorMin": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchorMax": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "pivot": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchoredPosition": {
+                    "x": 0,
+                    "y": 95
+                  },
+                  "sizeDelta": {
+                    "x": 328,
+                    "y": 100
+                  }
+                },
+                "alpha": 100,
+                "priority": 0,
+                "image": {
+                  "source": {
+                    "fileId": "2715agayfhx-mjmkvabx-ee6zt99cjo5",
+                    "filePath": "Assets\\Image\\Home\\RankBg_Common.png",
+                    "_tag": {
+                      "type": "GFileRefer"
+                    },
+                    "fileType": "texture"
+                  },
+                  "color": "#ffffff",
+                  "reverse": {
+                    "x": false,
+                    "y": false
+                  },
+                  "fillType": 1,
+                  "slicedBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "tiledBorder": {
+                    "left": 0,
+                    "right": 0,
+                    "top": 0,
+                    "bottom": 0
+                  },
+                  "centerInvisible": false,
+                  "fillDir": 0,
+                  "fillAmount": 0,
+                  "invertFill": false,
+                  "flip": 0,
+                  "gradient": 1,
+                  "gradientTop": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  },
+                  "gradientBottom": {
+                    "r": 255,
+                    "g": 255,
+                    "b": 255,
+                    "a": 1
+                  }
+                }
+              },
+              "ecaScripts": [],
+              "ecaProps": {
+                "HudImageWidget": {},
+                "HudWidget": {},
+                "Entity": {}
+              },
+              "componentList": [],
+              "entityTagData": {
+                "tagPointers": []
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": true
+            },
+            {
               "_entityName": "ICON",
               "_tag": {
                 "type": "UIImageEntity",
@@ -6662,7 +6871,7 @@
                       },
                       "sizeDelta": {
                         "x": 320,
-                        "y": 22
+                        "y": 35
                       }
                     },
                     "alpha": 20,
@@ -6758,16 +6967,16 @@
                     "y": 190
                   },
                   "sizeDelta": {
-                    "x": 150,
-                    "y": 150
+                    "x": 184,
+                    "y": 226
                   }
                 },
                 "alpha": 100,
                 "priority": 0,
                 "image": {
                   "source": {
-                    "fileId": "48348ca582e21034acb86c75a7306934",
-                    "filePath": "lib://fftextures/WorkshopIconLibrary/FF_ingame_hud_UGC_Dyeing_Campicon.png",
+                    "fileId": "h7o4bvui6jl-mkw8sq9t-swcr2dgkn8",
+                    "filePath": "Assets\\Image\\Home\\noman.png",
                     "_tag": {
                       "type": "GFileRefer"
                     },
@@ -7512,6 +7721,107 @@
         "tagPointers": []
       },
       "version": "UIPanelEntityV3"
+    },
+    {
+      "_entityName": "ChoiceLevelbb",
+      "_tag": {
+        "type": "UIImageEntity",
+        "resourceId": ""
+      },
+      "_entityId": "Pxqvfjyj",
+      "children": [],
+      "prefabVariant": null,
+      "activeValue": {
+        "selfValue": true,
+        "valueTag": "activeValue"
+      },
+      "unlockedValue": null,
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "propsData": {
+        "activeSelf": true,
+        "transform": {
+          "rotate": 0,
+          "anchorMin": {
+            "x": 1,
+            "y": 0.5
+          },
+          "anchorMax": {
+            "x": 1,
+            "y": 0.5
+          },
+          "pivot": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "anchoredPosition": {
+            "x": -400,
+            "y": -320
+          },
+          "sizeDelta": {
+            "x": 200,
+            "y": 70
+          }
+        },
+        "alpha": 67,
+        "priority": 0,
+        "image": {
+          "source": {
+            "fileId": "b063b0439839b3d97a8fd2aa6a57ef8b",
+            "filePath": "lib://fftextures/WorkshopIconLibrary/T_34_M_WS_ICON_SQUARE.png",
+            "_tag": {
+              "type": "GFileRefer"
+            },
+            "fileType": "texture"
+          },
+          "color": "#181428",
+          "reverse": {
+            "x": false,
+            "y": false
+          },
+          "fillType": 1,
+          "slicedBorder": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "tiledBorder": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          },
+          "centerInvisible": false,
+          "fillDir": 0,
+          "fillAmount": 0,
+          "invertFill": false,
+          "flip": 0,
+          "gradient": 1,
+          "gradientTop": {
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 1
+          },
+          "gradientBottom": {
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 1
+          }
+        }
+      },
+      "ecaScripts": [],
+      "ecaProps": {
+        "HudImageWidget": {},
+        "HudWidget": {},
+        "Entity": {}
+      },
+      "componentList": [],
+      "entityTagData": {
+        "tagPointers": []
+      }
     },
     {
       "_entityName": "ChoiceLevel",

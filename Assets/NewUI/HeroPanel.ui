@@ -1295,7 +1295,7 @@
                     "tagPointers": []
                   },
                   "editorLockValue": false,
-                  "editorVisibleValue": true
+                  "editorVisibleValue": false
                 },
                 {
                   "_entityName": "bglight",
@@ -1315,7 +1315,7 @@
                     "valueTag": "unlockedValue"
                   },
                   "editorLockValue": false,
-                  "editorVisibleValue": true,
+                  "editorVisibleValue": false,
                   "propsData": {
                     "activeSelf": true,
                     "transform": {
@@ -1412,7 +1412,7 @@
                 "valueTag": "unlockedValue"
               },
               "editorLockValue": false,
-              "editorVisibleValue": true,
+              "editorVisibleValue": false,
               "propsData": {
                 "activeSelf": true,
                 "transform": {
@@ -1533,7 +1533,7 @@
                   },
                   "anchoredPosition": {
                     "x": 0,
-                    "y": 140
+                    "y": 130
                   },
                   "sizeDelta": {
                     "x": 350,
@@ -1600,7 +1600,7 @@
                 "tagPointers": []
               },
               "editorLockValue": false,
-              "editorVisibleValue": true
+              "editorVisibleValue": false
             },
             {
               "_entityName": "HeroName",
@@ -1637,7 +1637,7 @@
                   },
                   "anchoredPosition": {
                     "x": 0,
-                    "y": 140
+                    "y": 130
                   },
                   "sizeDelta": {
                     "x": 350,
@@ -1690,7 +1690,7 @@
                 "tagPointers": []
               },
               "editorLockValue": false,
-              "editorVisibleValue": true
+              "editorVisibleValue": false
             },
             {
               "_entityName": "Image",
@@ -1727,7 +1727,7 @@
                   },
                   "anchoredPosition": {
                     "x": -1,
-                    "y": 99
+                    "y": 90
                   },
                   "sizeDelta": {
                     "x": 350,
@@ -1794,7 +1794,7 @@
                 "tagPointers": []
               },
               "editorLockValue": false,
-              "editorVisibleValue": true
+              "editorVisibleValue": false
             },
             {
               "_entityName": "Title",
@@ -1831,7 +1831,7 @@
                   },
                   "anchoredPosition": {
                     "x": -1,
-                    "y": 100
+                    "y": 90
                   },
                   "sizeDelta": {
                     "x": 350,
@@ -1884,7 +1884,7 @@
                 "tagPointers": []
               },
               "editorLockValue": false,
-              "editorVisibleValue": true
+              "editorVisibleValue": false
             },
             {
               "_entityName": "Hero_1_WeaponIFM",
@@ -1996,7 +1996,7 @@
                     "tagPointers": []
                   },
                   "editorLockValue": false,
-                  "editorVisibleValue": true
+                  "editorVisibleValue": false
                 },
                 {
                   "_entityName": "WeaponImage",
@@ -2100,7 +2100,7 @@
                     "tagPointers": []
                   },
                   "editorLockValue": false,
-                  "editorVisibleValue": true
+                  "editorVisibleValue": false
                 },
                 {
                   "_entityName": "Image",
@@ -2204,7 +2204,7 @@
                     "tagPointers": []
                   },
                   "editorLockValue": false,
-                  "editorVisibleValue": true
+                  "editorVisibleValue": false
                 },
                 {
                   "_entityName": "Title",
@@ -2294,7 +2294,7 @@
                     "tagPointers": []
                   },
                   "editorLockValue": false,
-                  "editorVisibleValue": true
+                  "editorVisibleValue": false
                 }
               ],
               "prefabVariant": null,
@@ -2370,7 +2370,7 @@
               },
               "version": "UIPanelEntityV3",
               "editorLockValue": false,
-              "editorVisibleValue": true
+              "editorVisibleValue": false
             },
             {
               "_entityName": "Hero_1_Skill_IFM",
@@ -2409,7 +2409,10 @@
                             "selfValue": true,
                             "valueTag": "activeValue"
                           },
-                          "unlockedValue": null,
+                          "unlockedValue": {
+                            "selfValue": true,
+                            "valueTag": "unlockedValue"
+                          },
                           "propsData": {
                             "activeSelf": true,
                             "transform": {
@@ -2495,7 +2498,7 @@
                             "tagPointers": []
                           },
                           "editorLockValue": false,
-                          "editorVisibleValue": true
+                          "editorVisibleValue": false
                         },
                         {
                           "_entityName": "SKill",
@@ -2593,7 +2596,7 @@
                                 "tagPointers": []
                               },
                               "editorLockValue": false,
-                              "editorVisibleValue": true
+                              "editorVisibleValue": false
                             }
                           ],
                           "prefabVariant": null,
@@ -2606,7 +2609,7 @@
                             "valueTag": "unlockedValue"
                           },
                           "editorLockValue": false,
-                          "editorVisibleValue": true,
+                          "editorVisibleValue": false,
                           "propsData": {
                             "activeSelf": true,
                             "transform": {
@@ -2696,7 +2699,7 @@
                             "valueTag": "unlockedValue"
                           },
                           "editorLockValue": false,
-                          "editorVisibleValue": true,
+                          "editorVisibleValue": false,
                           "propsData": {
                             "activeSelf": true,
                             "transform": {
@@ -2779,7 +2782,7 @@
                         "valueTag": "unlockedValue"
                       },
                       "editorLockValue": false,
-                      "editorVisibleValue": true,
+                      "editorVisibleValue": false,
                       "propsData": {
                         "activeSelf": true,
                         "transform": {
@@ -2886,7 +2889,10 @@
                             "selfValue": true,
                             "valueTag": "activeValue"
                           },
-                          "unlockedValue": null,
+                          "unlockedValue": {
+                            "selfValue": true,
+                            "valueTag": "unlockedValue"
+                          },
                           "propsData": {
                             "activeSelf": true,
                             "transform": {
@@ -2972,7 +2978,7 @@
                             "tagPointers": []
                           },
                           "editorLockValue": false,
-                          "editorVisibleValue": true
+                          "editorVisibleValue": false
                         },
                         {
                           "_entityName": "SKill",
@@ -3070,7 +3076,7 @@
                                 "tagPointers": []
                               },
                               "editorLockValue": false,
-                              "editorVisibleValue": true
+                              "editorVisibleValue": false
                             }
                           ],
                           "prefabVariant": null,
@@ -3153,7 +3159,7 @@
                             "tagPointers": []
                           },
                           "editorLockValue": false,
-                          "editorVisibleValue": true
+                          "editorVisibleValue": false
                         },
                         {
                           "_entityName": "SkillIFMText",
@@ -3243,7 +3249,7 @@
                             "tagPointers": []
                           },
                           "editorLockValue": false,
-                          "editorVisibleValue": true
+                          "editorVisibleValue": false
                         }
                       ],
                       "prefabVariant": null,
@@ -3340,7 +3346,7 @@
                         "tagPointers": []
                       },
                       "editorLockValue": false,
-                      "editorVisibleValue": true
+                      "editorVisibleValue": false
                     }
                   ],
                   "prefabVariant": null,
@@ -3353,7 +3359,7 @@
                     "valueTag": "unlockedValue"
                   },
                   "editorLockValue": false,
-                  "editorVisibleValue": true,
+                  "editorVisibleValue": false,
                   "propsData": {
                     "activeSelf": true,
                     "transform": {
@@ -3429,7 +3435,7 @@
                 "valueTag": "unlockedValue"
               },
               "editorLockValue": false,
-              "editorVisibleValue": true,
+              "editorVisibleValue": false,
               "propsData": {
                 "activeSelf": true,
                 "transform": {
@@ -3568,7 +3574,7 @@
           },
           "version": "UIPanelEntityV3",
           "editorLockValue": false,
-          "editorVisibleValue": true
+          "editorVisibleValue": false
         },
         {
           "_entityName": "HeroIFMPanel_2",
@@ -3688,7 +3694,7 @@
                     "tagPointers": []
                   },
                   "editorLockValue": false,
-                  "editorVisibleValue": false
+                  "editorVisibleValue": true
                 },
                 {
                   "_entityName": "bglight",
@@ -3792,7 +3798,7 @@
                     "tagPointers": []
                   },
                   "editorLockValue": false,
-                  "editorVisibleValue": false
+                  "editorVisibleValue": true
                 }
               ],
               "prefabVariant": null,
@@ -3889,7 +3895,7 @@
                 "tagPointers": []
               },
               "editorLockValue": false,
-              "editorVisibleValue": false
+              "editorVisibleValue": true
             },
             {
               "_entityName": "NameBB",
@@ -3926,7 +3932,7 @@
                   },
                   "anchoredPosition": {
                     "x": 0,
-                    "y": 140
+                    "y": 130
                   },
                   "sizeDelta": {
                     "x": 350,
@@ -3993,7 +3999,7 @@
                 "tagPointers": []
               },
               "editorLockValue": false,
-              "editorVisibleValue": false
+              "editorVisibleValue": true
             },
             {
               "_entityName": "HeroName",
@@ -4030,7 +4036,7 @@
                   },
                   "anchoredPosition": {
                     "x": 0,
-                    "y": 140
+                    "y": 130
                   },
                   "sizeDelta": {
                     "x": 350,
@@ -4083,7 +4089,7 @@
                 "tagPointers": []
               },
               "editorLockValue": false,
-              "editorVisibleValue": false
+              "editorVisibleValue": true
             },
             {
               "_entityName": "Image",
@@ -4120,7 +4126,7 @@
                   },
                   "anchoredPosition": {
                     "x": -1,
-                    "y": 99
+                    "y": 90
                   },
                   "sizeDelta": {
                     "x": 350,
@@ -4187,7 +4193,7 @@
                 "tagPointers": []
               },
               "editorLockValue": false,
-              "editorVisibleValue": false
+              "editorVisibleValue": true
             },
             {
               "_entityName": "Title",
@@ -4224,7 +4230,7 @@
                   },
                   "anchoredPosition": {
                     "x": -1,
-                    "y": 99
+                    "y": 90
                   },
                   "sizeDelta": {
                     "x": 350,
@@ -4277,7 +4283,7 @@
                 "tagPointers": []
               },
               "editorLockValue": false,
-              "editorVisibleValue": false
+              "editorVisibleValue": true
             },
             {
               "_entityName": "Hero_2_WeaponIFM",
@@ -4389,7 +4395,7 @@
                     "tagPointers": []
                   },
                   "editorLockValue": false,
-                  "editorVisibleValue": false
+                  "editorVisibleValue": true
                 },
                 {
                   "_entityName": "WeaponImage",
@@ -4493,7 +4499,7 @@
                     "tagPointers": []
                   },
                   "editorLockValue": false,
-                  "editorVisibleValue": false
+                  "editorVisibleValue": true
                 },
                 {
                   "_entityName": "Image",
@@ -4597,7 +4603,7 @@
                     "tagPointers": []
                   },
                   "editorLockValue": false,
-                  "editorVisibleValue": false
+                  "editorVisibleValue": true
                 },
                 {
                   "_entityName": "Title",
@@ -4687,7 +4693,7 @@
                     "tagPointers": []
                   },
                   "editorLockValue": false,
-                  "editorVisibleValue": false
+                  "editorVisibleValue": true
                 }
               ],
               "prefabVariant": null,
@@ -4763,7 +4769,7 @@
               },
               "version": "UIPanelEntityV3",
               "editorLockValue": false,
-              "editorVisibleValue": false
+              "editorVisibleValue": true
             },
             {
               "_entityName": "Hero_2_Skill_IFM",
@@ -4802,7 +4808,10 @@
                             "selfValue": true,
                             "valueTag": "activeValue"
                           },
-                          "unlockedValue": null,
+                          "unlockedValue": {
+                            "selfValue": true,
+                            "valueTag": "unlockedValue"
+                          },
                           "propsData": {
                             "activeSelf": true,
                             "transform": {
@@ -4888,7 +4897,7 @@
                             "tagPointers": []
                           },
                           "editorLockValue": false,
-                          "editorVisibleValue": false
+                          "editorVisibleValue": true
                         },
                         {
                           "_entityName": "SKill",
@@ -4986,7 +4995,7 @@
                                 "tagPointers": []
                               },
                               "editorLockValue": false,
-                              "editorVisibleValue": false
+                              "editorVisibleValue": true
                             }
                           ],
                           "prefabVariant": null,
@@ -5069,7 +5078,7 @@
                             "tagPointers": []
                           },
                           "editorLockValue": false,
-                          "editorVisibleValue": false
+                          "editorVisibleValue": true
                         },
                         {
                           "_entityName": "SkillIFMText",
@@ -5159,7 +5168,7 @@
                             "tagPointers": []
                           },
                           "editorLockValue": false,
-                          "editorVisibleValue": false
+                          "editorVisibleValue": true
                         }
                       ],
                       "prefabVariant": null,
@@ -5256,7 +5265,7 @@
                         "tagPointers": []
                       },
                       "editorLockValue": false,
-                      "editorVisibleValue": false
+                      "editorVisibleValue": true
                     },
                     {
                       "_entityName": "SKILL_2_LOGO",
@@ -5279,7 +5288,10 @@
                             "selfValue": true,
                             "valueTag": "activeValue"
                           },
-                          "unlockedValue": null,
+                          "unlockedValue": {
+                            "selfValue": true,
+                            "valueTag": "unlockedValue"
+                          },
                           "propsData": {
                             "activeSelf": true,
                             "transform": {
@@ -5365,7 +5377,7 @@
                             "tagPointers": []
                           },
                           "editorLockValue": false,
-                          "editorVisibleValue": false
+                          "editorVisibleValue": true
                         },
                         {
                           "_entityName": "SKill",
@@ -5463,7 +5475,7 @@
                                 "tagPointers": []
                               },
                               "editorLockValue": false,
-                              "editorVisibleValue": false
+                              "editorVisibleValue": true
                             }
                           ],
                           "prefabVariant": null,
@@ -5546,7 +5558,7 @@
                             "tagPointers": []
                           },
                           "editorLockValue": false,
-                          "editorVisibleValue": false
+                          "editorVisibleValue": true
                         },
                         {
                           "_entityName": "SkillIFMText",
@@ -5636,7 +5648,7 @@
                             "tagPointers": []
                           },
                           "editorLockValue": false,
-                          "editorVisibleValue": false
+                          "editorVisibleValue": true
                         }
                       ],
                       "prefabVariant": null,
@@ -5733,7 +5745,7 @@
                         "tagPointers": []
                       },
                       "editorLockValue": false,
-                      "editorVisibleValue": false
+                      "editorVisibleValue": true
                     }
                   ],
                   "prefabVariant": null,
@@ -5809,7 +5821,7 @@
                   },
                   "version": "UIPanelEntityV3",
                   "editorLockValue": false,
-                  "editorVisibleValue": false
+                  "editorVisibleValue": true
                 }
               ],
               "prefabVariant": null,
@@ -5885,7 +5897,7 @@
               },
               "version": "UIPanelEntityV3",
               "editorLockValue": false,
-              "editorVisibleValue": false
+              "editorVisibleValue": true
             }
           ],
           "prefabVariant": null,
@@ -5961,7 +5973,7 @@
           },
           "version": "UIPanelEntityV3",
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": true
         }
       ],
       "prefabVariant": null,
