@@ -2637,7 +2637,6 @@ graph PlayerJionGame {
     async func KillInfo(part string) {
         KillCount = KillCount + 1
         KillCountTAG = KillCountTAG + 1
-        KillCountSound = KillCountSound + 1
 
         var One = GetWidgetByPath(GetLocalPlayer(), KillShowBoardUI, "/Panel/One/One_Icon")
         var Ten = GetWidgetByPath(GetLocalPlayer(), KillShowBoardUI, "/Panel/Ten/Ten_Icon")
@@ -2646,22 +2645,7 @@ graph PlayerJionGame {
         TotalKillsEntity<UIWidgetLabel>.Content = KillCount
 
         // 播放击杀音效
-        if KillCountSound == 1 {
-            SoundFunc.PlayCreatedSound("Notice_KnockedDown_01")
-        }
-        if KillCountSound == 2 {
-            SoundFunc.PlayCreatedSound("Notice_KnockedDown_02")
-        }
-        if KillCountSound == 3 {
-            SoundFunc.PlayCreatedSound("Notice_KnockedDown_03")
-        }
-        if KillCountSound == 4 {
-            SoundFunc.PlayCreatedSound("Notice_KnockedDown_04")
-        }
-        if KillCountSound == 5 {
-            SoundFunc.PlayCreatedSound("Notice_Ace")
-            KillCountSound = 0
-        }
+        SoundFunc.PlayCreatedSound("Notice_KnockedDown_01")
 
         // 显示爆头标志
         if  part == "Head" {
@@ -2672,6 +2656,8 @@ graph PlayerJionGame {
             One<UIWidgetImage>.Alpha = 0.0
 
             start OutKillTween(One)
+
+            SoundFunc.PlayCreatedSound("Notice_KnockedDown_02")
         }
 
         // 显示十杀标志
@@ -2683,6 +2669,8 @@ graph PlayerJionGame {
             Ten<UIWidgetImage>.Alpha = 0.0
             
             start OutKillTween(Ten)
+
+            SoundFunc.PlayCreatedSound("Notice_KnockedDown_03")
 
             KillCountTAG = 0
         }
