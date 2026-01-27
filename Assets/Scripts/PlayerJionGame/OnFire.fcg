@@ -35,7 +35,7 @@ graph OnFire {
         } else if value == 4 {
             color = #98CDFFFF 
         } else if value == 5 {
-            color = #FF9898FF 
+            color = #FF5B5BFF 
         } else if value == 6 {
             color = #FFF098FF 
         }
@@ -122,7 +122,7 @@ graph OnFire {
             // 发送伤害到服务器
             DispatchEventToEntity(OnDamageMob, monster, PlatformType.Client, List<object>{monster, nil, damage, GetLocalPlayer()})
             GetLocalPlayer()<PlayerJionGame>.GrenadeDamage += damage
-            CreateDamageNum(damage, 10, #FF9898FF, 800, monster as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
+            CreateDamageNum(damage, 10, #FF5B5BFF, 800, monster as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
             
             // 记录被击中的怪物信息
             var hitInfo = Map<string, object>{}

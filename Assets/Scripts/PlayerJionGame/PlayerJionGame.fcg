@@ -347,16 +347,22 @@ graph PlayerJionGame {
             Skill_1Panel<UIWidget>.IsVisible = false
             var JoyStickButton_1 = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_1/JoyStickFillAmount")
             JoyStickButton_1<UIWidget>.IsVisible = false
+            var JoyStickEffect_1 = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_1/Effect")
+            JoyStickEffect_1<UIWidget>.IsVisible = false
 
             var Skill_2Panel = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_2")
             Skill_2Panel<UIWidget>.IsVisible = false
             var JoyStickButton_2 = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_2/JoyStickFillAmount")
             JoyStickButton_2<UIWidget>.IsVisible = false
+            var JoyStickEffect_2 = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_2/Effect")
+            JoyStickEffect_2<UIWidget>.IsVisible = false
 
             var Skill_3Panel = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_3")
             Skill_3Panel<UIWidget>.IsVisible = false
             var JoyStickButton_3 = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_3/JoyStickFillAmount")
             JoyStickButton_3<UIWidget>.IsVisible = false
+            var JoyStickEffect_3 = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_3/Effect")
+            JoyStickEffect_3<UIWidget>.IsVisible = false
 
             InjectSkill_1_CardData()
             InjectSkill_2_CardData()

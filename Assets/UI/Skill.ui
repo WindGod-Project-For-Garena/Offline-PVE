@@ -15,93 +15,6 @@
       "_entityId": "gT7qrceb",
       "children": [
         {
-          "_entityName": "Name",
-          "_tag": {
-            "type": "UITextEntity",
-            "resourceId": ""
-          },
-          "_entityId": "ednh39UG",
-          "children": [],
-          "prefabVariant": null,
-          "activeValue": {
-            "selfValue": true,
-            "valueTag": "activeValue"
-          },
-          "unlockedValue": null,
-          "editorLockValue": false,
-          "editorVisibleValue": true,
-          "propsData": {
-            "activeSelf": true,
-            "transform": {
-              "rotate": 0,
-              "anchorMin": {
-                "x": 0.5,
-                "y": 0
-              },
-              "anchorMax": {
-                "x": 0.5,
-                "y": 0
-              },
-              "pivot": {
-                "x": 0.5,
-                "y": 0.5
-              },
-              "anchoredPosition": {
-                "x": 0,
-                "y": -10
-              },
-              "sizeDelta": {
-                "x": 100,
-                "y": 22
-              }
-            },
-            "alpha": 100,
-            "priority": 0,
-            "text": {
-              "value": "爆裂轰炸",
-              "key": "SKILL_BOMBARD",
-              "font": "Default",
-              "fontSize": 22,
-              "fontStyle": {
-                "bold": false,
-                "italic": false,
-                "underline": false
-              },
-              "color": "#ffffff",
-              "alignment": {
-                "h": "center",
-                "v": "middle"
-              },
-              "lineSpacing": 0,
-              "background": false,
-              "backgroundColor": "#e7b200",
-              "overflow": 0,
-              "backgroundRGBA": {
-                "r": 0,
-                "g": 0,
-                "b": 0,
-                "a": 0
-              },
-              "shadow": false,
-              "shadowColor": "#000000",
-              "shadowOffset": {
-                "x": 1,
-                "y": 1
-              }
-            }
-          },
-          "ecaScripts": [],
-          "ecaProps": {
-            "HudLabelWidget": {},
-            "HudWidget": {},
-            "Entity": {}
-          },
-          "componentList": [],
-          "entityTagData": {
-            "tagPointers": []
-          }
-        },
-        {
           "_entityName": "SkillJoyStik",
           "_tag": {
             "type": "UIJoystickEntity",
@@ -442,6 +355,107 @@
           "entityTagData": {
             "tagPointers": []
           }
+        },
+        {
+          "_entityName": "Effect",
+          "_tag": {
+            "type": "UIImageEntity",
+            "resourceId": ""
+          },
+          "_entityId": "FHF0a6T5",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": null,
+          "editorLockValue": false,
+          "editorVisibleValue": true,
+          "propsData": {
+            "activeSelf": true,
+            "transform": {
+              "rotate": 0,
+              "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "pivot": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "anchoredPosition": {
+                "x": 0,
+                "y": 0.00000762939453125
+              },
+              "sizeDelta": {
+                "x": 0,
+                "y": 0
+              }
+            },
+            "alpha": 100,
+            "priority": 0,
+            "image": {
+              "source": {
+                "fileId": "b52f5152f3ba24c3862caf14c2253e82",
+                "filePath": "lib://fftextures/WorkshopIconLibrary/FF_UI_Profile_Web_Point.png",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "texture"
+              },
+              "color": "#FFEB00",
+              "reverse": {
+                "x": false,
+                "y": false
+              },
+              "fillType": 1,
+              "slicedBorder": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              },
+              "tiledBorder": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              },
+              "centerInvisible": false,
+              "fillDir": 0,
+              "fillAmount": 0,
+              "invertFill": false,
+              "flip": 0,
+              "gradient": 1,
+              "gradientTop": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 1
+              },
+              "gradientBottom": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 1
+              }
+            }
+          },
+          "ecaScripts": [],
+          "ecaProps": {
+            "HudImageWidget": {},
+            "HudWidget": {},
+            "Entity": {}
+          },
+          "componentList": [],
+          "entityTagData": {
+            "tagPointers": []
+          }
         }
       ],
       "prefabVariant": null,
@@ -527,93 +541,6 @@
       },
       "_entityId": "oGzWPGnt",
       "children": [
-        {
-          "_entityName": "Name",
-          "_tag": {
-            "type": "UITextEntity",
-            "resourceId": ""
-          },
-          "_entityId": "wVMxkDyK",
-          "children": [],
-          "prefabVariant": null,
-          "activeValue": {
-            "selfValue": true,
-            "valueTag": "activeValue"
-          },
-          "unlockedValue": null,
-          "propsData": {
-            "activeSelf": true,
-            "transform": {
-              "rotate": 0,
-              "anchorMin": {
-                "x": 0.5,
-                "y": 0
-              },
-              "anchorMax": {
-                "x": 0.5,
-                "y": 0
-              },
-              "pivot": {
-                "x": 0.5,
-                "y": 0.5
-              },
-              "anchoredPosition": {
-                "x": 0,
-                "y": -10
-              },
-              "sizeDelta": {
-                "x": 100,
-                "y": 22
-              }
-            },
-            "alpha": 100,
-            "priority": 0,
-            "text": {
-              "value": "电弧冲击",
-              "key": "SKILL_SHOCK",
-              "font": "Default",
-              "fontSize": 22,
-              "fontStyle": {
-                "bold": false,
-                "italic": false,
-                "underline": false
-              },
-              "color": "#ffffff",
-              "alignment": {
-                "h": "center",
-                "v": "middle"
-              },
-              "lineSpacing": 0,
-              "background": false,
-              "backgroundColor": "#e7b200",
-              "overflow": 0,
-              "backgroundRGBA": {
-                "r": 0,
-                "g": 0,
-                "b": 0,
-                "a": 0
-              },
-              "shadow": false,
-              "shadowColor": "#000000",
-              "shadowOffset": {
-                "x": 1,
-                "y": 1
-              }
-            }
-          },
-          "ecaScripts": [],
-          "ecaProps": {
-            "HudLabelWidget": {},
-            "HudWidget": {},
-            "Entity": {}
-          },
-          "componentList": [],
-          "entityTagData": {
-            "tagPointers": []
-          },
-          "editorLockValue": false,
-          "editorVisibleValue": false
-        },
         {
           "_entityName": "SkillJoyStik",
           "_tag": {
@@ -938,6 +865,107 @@
           "ecaScripts": [],
           "ecaProps": {
             "HudButtonWidget": {},
+            "HudWidget": {},
+            "Entity": {}
+          },
+          "componentList": [],
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": false
+        },
+        {
+          "_entityName": "Effect",
+          "_tag": {
+            "type": "UIImageEntity",
+            "resourceId": ""
+          },
+          "_entityId": "BJzn5FhP",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": null,
+          "propsData": {
+            "activeSelf": true,
+            "transform": {
+              "rotate": 0,
+              "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "pivot": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "anchoredPosition": {
+                "x": 0,
+                "y": 0
+              },
+              "sizeDelta": {
+                "x": 0,
+                "y": 0
+              }
+            },
+            "alpha": 100,
+            "priority": 0,
+            "image": {
+              "source": {
+                "fileId": "b52f5152f3ba24c3862caf14c2253e82",
+                "filePath": "lib://fftextures/WorkshopIconLibrary/FF_UI_Profile_Web_Point.png",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "texture"
+              },
+              "color": "#ffffff",
+              "reverse": {
+                "x": false,
+                "y": false
+              },
+              "fillType": 1,
+              "slicedBorder": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              },
+              "tiledBorder": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              },
+              "centerInvisible": false,
+              "fillDir": 0,
+              "fillAmount": 0,
+              "invertFill": false,
+              "flip": 0,
+              "gradient": 1,
+              "gradientTop": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 1
+              },
+              "gradientBottom": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 1
+              }
+            }
+          },
+          "ecaScripts": [],
+          "ecaProps": {
+            "HudImageWidget": {},
             "HudWidget": {},
             "Entity": {}
           },
@@ -1373,6 +1401,107 @@
           },
           "editorLockValue": false,
           "editorVisibleValue": false
+        },
+        {
+          "_entityName": "Effect",
+          "_tag": {
+            "type": "UIImageEntity",
+            "resourceId": ""
+          },
+          "_entityId": "FanQRa0E",
+          "children": [],
+          "prefabVariant": null,
+          "activeValue": {
+            "selfValue": true,
+            "valueTag": "activeValue"
+          },
+          "unlockedValue": null,
+          "propsData": {
+            "activeSelf": true,
+            "transform": {
+              "rotate": 0,
+              "anchorMin": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "anchorMax": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "pivot": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "anchoredPosition": {
+                "x": 0,
+                "y": 0
+              },
+              "sizeDelta": {
+                "x": 85,
+                "y": 85
+              }
+            },
+            "alpha": 100,
+            "priority": 0,
+            "image": {
+              "source": {
+                "fileId": "b52f5152f3ba24c3862caf14c2253e82",
+                "filePath": "lib://fftextures/WorkshopIconLibrary/FF_UI_Profile_Web_Point.png",
+                "_tag": {
+                  "type": "GFileRefer"
+                },
+                "fileType": "texture"
+              },
+              "color": "#ffffff",
+              "reverse": {
+                "x": false,
+                "y": false
+              },
+              "fillType": 1,
+              "slicedBorder": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              },
+              "tiledBorder": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              },
+              "centerInvisible": false,
+              "fillDir": 0,
+              "fillAmount": 0,
+              "invertFill": false,
+              "flip": 0,
+              "gradient": 1,
+              "gradientTop": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 1
+              },
+              "gradientBottom": {
+                "r": 255,
+                "g": 255,
+                "b": 255,
+                "a": 1
+              }
+            }
+          },
+          "ecaScripts": [],
+          "ecaProps": {
+            "HudImageWidget": {},
+            "HudWidget": {},
+            "Entity": {}
+          },
+          "componentList": [],
+          "entityTagData": {
+            "tagPointers": []
+          },
+          "editorLockValue": false,
+          "editorVisibleValue": false
         }
       ],
       "prefabVariant": null,
@@ -1461,7 +1590,7 @@
     "valueTag": "unlockedValue"
   },
   "editorLockValue": false,
-  "editorVisibleValue": false,
+  "editorVisibleValue": true,
   "propsData": {
     "activeSelf": true,
     "transform": {
