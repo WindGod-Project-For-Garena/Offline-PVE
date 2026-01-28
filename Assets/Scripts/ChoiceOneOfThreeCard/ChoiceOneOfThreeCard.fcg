@@ -76,7 +76,7 @@ graph ChoiceOneOfThreeCard {
    //设置选择后的颜色
    func SetConfirmButtonTextColor() {
       var Next = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/Next")
-      Next<UIWidgetButton>.SpriteResource = EResSprite.guryButton
+      Next<UIWidgetButton>.SpriteResource = EResSprite.yellowButton
       var NextText = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/Next/Text")
       NextText<UIWidgetLabel>.Color = #000000
    }
@@ -204,18 +204,19 @@ graph ChoiceOneOfThreeCard {
 
 		createdEntity3<UIOpeningBanner>.Icon = EResSprite.UI_RuinSurvivor_Icon01
 
-      // 直接使用翻译文本
+      // 标题翻译文本
       var WaveText = LocString{"Wave", List<string>{}}
-      createdEntity3<UIOpeningBanner>.Title = WaveText + " " + (PVEController.CurrentWave + 1)
+      var Objective_SurviveText = LocString{"Objective_Survive", List<string>{}}
+      createdEntity3<UIOpeningBanner>.Title = WaveText + " " + (PVEController.CurrentWave + 1 + "\n" + Objective_SurviveText + "02:00")
       var createdEntity5 = createdEntity3<UIOpeningBanner>.Title as entity
       createdEntity5<UIWidgetLabel>.FontSize = 48
 
-      // 直接使用翻译文本
-      var Objective_SurviveText = LocString{"Objective_Survive", List<string>{}}
-      createdEntity3<UIOpeningBanner>.Description = Objective_SurviveText + "02:00"
-      var createdEntity6 = createdEntity3<UIOpeningBanner>.Description as entity
-      createdEntity6<UIWidgetLabel>.FontSize = 36
-      createdEntity6<UIWidgetLabel>.Color = #D1D1D1
+      // 详情翻译文本
+      // var Objective_SurviveText = LocString{"Objective_Survive", List<string>{}}
+      // createdEntity3<UIOpeningBanner>.Description = Objective_SurviveText + "02:00"
+      // var createdEntity6 = createdEntity3<UIOpeningBanner>.Description as entity
+      // createdEntity6<UIWidgetLabel>.FontSize = 36
+      // createdEntity6<UIWidgetLabel>.Color = #D1D1D1
 
       // 等待UI更新
       WaitForMillisecond(4000)
@@ -224,7 +225,7 @@ graph ChoiceOneOfThreeCard {
       PVEController.StartNextWave()
 
       GetLocalPlayer()<PlayerJionGame>.ShowDownSixLogo()
-      
+
       IsOver = false
    }
 //————————————————————————————————————————————————————————————————————————————————————————————————//

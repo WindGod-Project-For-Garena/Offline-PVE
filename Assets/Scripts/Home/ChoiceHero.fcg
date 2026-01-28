@@ -87,8 +87,6 @@ graph ChoiceHero {
 
      // 隐藏技能介绍详情
      func Hide_Skill_Detail(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
-          SoundFunc.PlayCreatedSound("Click_Common_Default")
-
           var Skill1_Detail_Entity = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/ChoiceHero/TextImage")
           Skill1_Detail_Entity<UIWidget>.IsVisible = false
      }
