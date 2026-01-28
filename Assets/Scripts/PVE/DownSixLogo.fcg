@@ -70,9 +70,9 @@ graph DownSixLogo {
         }
 
         // Card1：当前被动技能图标
-        SetCardIcon(1, EResSprite.Skill_General, #FFFFFFFF, true)
+        SetCardIcon(1, EResSprite.Hero1_Skill2, #FFFFFFFF, true)
         if currentSkill == 2 {
-            SetCardIcon(1, EResSprite.SkillRange, #FFFFFFFF, true)
+            SetCardIcon(1, EResSprite.Hero2_Skill2, #FFFFFFFF, true)
         }
 
         // Card2、Card3：掉落物效果图标（武器伤害 / 技能伤害），无效果时由已选卡牌填充
