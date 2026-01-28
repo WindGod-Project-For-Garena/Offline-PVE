@@ -109,10 +109,11 @@ graph DownSixLogo {
                 var iconKey = info["Nature"]
                 var iconSprite = FC_Config.CardIconSprites[iconKey]
                 var rarityColor = FC_Config.CardRarityColor[rarity]
+                var buttonSprite = FC_Config.CardRaritySprite[rarity]
                 if iconSprite == nil {
                     iconSprite = EResSprite.Skill_General
                 }
-                SetCardIcon(slot, iconSprite, rarityColor, true)
+                SetSelectedCardIcon(slot, iconSprite, rarityColor, buttonSprite, true)
             }
         }
         for slot = cardsStartSlot + displayCardCount, 9, 1 {
@@ -132,6 +133,26 @@ graph DownSixLogo {
             iconWidget<UIWidget>.IsVisible = visible
             iconWidget<UIWidgetImage>.SpriteName = sprite
             iconWidget<UIWidgetImage>.Color = color
+        }
+    }
+
+    // 已选卡牌：设置按钮边框图（稀有度）+ 图标
+    func SetSelectedCardIcon(slotIndex int, iconSprite EResSprite, rarityColor Color, buttonSprite EResSprite, visible bool) {
+        var cardPath = "/SixLogo/List/Card" + Convert.ToString(slotIndex)
+        var imagePath = cardPath + "/Image"
+        var cardWidget = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, cardPath)
+        var iconWidget = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, imagePath)
+        if cardWidget != nil {
+            cardWidget<UIWidget>.IsVisible = visible
+            cardWidget<UIWidgetButton>.Color = rarityColor
+            if buttonSprite != nil {
+                cardWidget<UIWidgetButton>.SpriteResource = buttonSprite
+            }
+        }
+        if iconWidget != nil {
+            iconWidget<UIWidget>.IsVisible = visible
+            iconWidget<UIWidgetImage>.SpriteName = iconSprite
+            iconWidget<UIWidgetImage>.Color = rarityColor
         }
     }
 
