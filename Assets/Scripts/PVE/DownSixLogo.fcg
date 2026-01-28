@@ -3,11 +3,14 @@ import "EditorGenLib.fcc" as EditorLib
 import "Hud.fcc" as Hud
 import "Convert.fcc" as Convert
 import "Math.fcc" as Math
+import "List.fcc" as List
 import "../CustomEvent.fcc" as CustomEvent
 import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
 import "../SkillUI/SkillUI.fcg" as SkillUI
 import "../SoundFunc/SoundFunc.fcg" as SoundFunc
 import "../PVE/PVEController.fcg" as PVEController
+import "../ChoiceOneOfThreeCard/ChoiceOneOfThreeCard.fcg" as ChoiceOneOfThreeCard
+import "../Static/FC_Config.fcg" as FC_Config
 
 [platform_client]
 graph DownSixLogo {
@@ -26,6 +29,112 @@ graph DownSixLogo {
     }
     func Card7Click(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
     }
+    func Card8Click(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+    }
     //———————————————————————————————————————————————————————————————————————————//
 
+    event OnAwake() {
+        start RefreshLoop()
+    }
+
+    // 定时刷新图标（掉落物效果、已选卡牌变化时更新）
+    async func RefreshLoop() {
+        while true {
+            if thisEntity<CustomUI>.IsVisible {
+                RefreshAllIcons()
+            }
+            WaitForMillisecond(800)
+        }
+    }
+
+    // 刷新全部 8 个卡位：Card1=被动技能，Card2/3=掉落物效果，Card2～8=已选卡牌（按效果数量前移）
+    func RefreshAllIcons() {
+        var choiceUI = GetLocalPlayer()<PlayerJionGame>.ChoiceThreeCardUI
+        var currentSkill = GetLocalPlayer()<PlayerJionGame>.CurrentSkill
+        var nSelected int = 0
+        if choiceUI != nil {
+            if currentSkill == 1 {
+                nSelected = List.Length(GetLocalPlayer()<PlayerJionGame>.ChoiceThreeCardUI<ChoiceOneOfThreeCard>.SelectedCards_1) as int
+            } else if currentSkill == 2 {
+                nSelected = List.Length(GetLocalPlayer()<PlayerJionGame>.ChoiceThreeCardUI<ChoiceOneOfThreeCard>.SelectedCards_2) as int
+            }
+        }
+
+        // 掉落物效果数量：0 / 1 / 2
+        var nEffect = 0
+        if GetLocalPlayer()<PlayerJionGame>.weaponBuffTimerActive {
+            nEffect = nEffect + 1
+        }
+        if GetLocalPlayer()<PlayerJionGame>.skillBuffTimerActive {
+            nEffect = nEffect + 1
+        }
+
+        // Card1：当前被动技能图标
+        SetCardIcon(1, EResSprite.Skill_General, #FFFFFFFF, true)
+        if currentSkill == 2 {
+            SetCardIcon(1, EResSprite.SkillRange, #FFFFFFFF, true)
+        }
+
+        // Card2、Card3：掉落物效果图标（武器伤害 / 技能伤害），无效果时由已选卡牌填充
+        var cardsStartSlot = 2 + nEffect
+        var maxCardSlots = 8 - cardsStartSlot + 1
+        if maxCardSlots < 0 {
+            maxCardSlots = 0
+        }
+        var displayCardCount = Math.Min(nSelected, maxCardSlots)
+
+        if nEffect >= 1 {
+            if GetLocalPlayer()<PlayerJionGame>.weaponBuffTimerActive {
+                SetCardIcon(2, EResSprite.WeaponDamage, #FFFFFFFF, true)
+            } else if GetLocalPlayer()<PlayerJionGame>.skillBuffTimerActive {
+                SetCardIcon(2, EResSprite.SkillDamage, #FFFFFFFF, true)
+            }
+        }
+        if nEffect >= 2 {
+            SetCardIcon(2, EResSprite.WeaponDamage, #FFFFFFFF, true)
+            SetCardIcon(3, EResSprite.SkillDamage, #FFFFFFFF, true)
+        }
+
+        for i = 0, displayCardCount, 1 {
+            var slot = cardsStartSlot + i
+            var id int = 0
+            if currentSkill == 1 {
+                id = choiceUI<ChoiceOneOfThreeCard>.SelectedCards_1[i] as int
+            } else if currentSkill == 2 {
+                id = choiceUI<ChoiceOneOfThreeCard>.SelectedCards_2[i] as int
+            }
+            var info = choiceUI<ChoiceOneOfThreeCard>.GetCardInfoById(id, currentSkill)
+            if info != nil {
+                var rarity = info["Rarity"] as int
+                var iconKey = info["Nature"]
+                var iconSprite = FC_Config.CardIconSprites[iconKey]
+                var rarityColor = FC_Config.CardRarityColor[rarity]
+                if iconSprite == nil {
+                    iconSprite = EResSprite.Skill_General
+                }
+                SetCardIcon(slot, iconSprite, rarityColor, true)
+            }
+        }
+        for slot = cardsStartSlot + displayCardCount, 9, 1 {
+            SetCardVisible(slot, false)
+        }
+    }
+
+    func SetCardIcon(slotIndex int, sprite EResSprite, color Color, visible bool) {
+        var path = "/SixLogo/List/Card" + Convert.ToString(slotIndex) + "/Image"
+        var iconWidget = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, path)
+        if iconWidget != nil {
+            iconWidget<UIWidget>.IsVisible = visible
+            iconWidget<UIWidgetImage>.SpriteName = sprite
+            iconWidget<UIWidgetImage>.Color = color
+        }
+    }
+
+    func SetCardVisible(slotIndex int, visible bool) {
+        var path = "/SixLogo/List/Card" + Convert.ToString(slotIndex) + "/Image"
+        var iconWidget = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, path)
+        if iconWidget != nil {
+            iconWidget<UIWidget>.IsVisible = visible
+        }
+    }
 }
