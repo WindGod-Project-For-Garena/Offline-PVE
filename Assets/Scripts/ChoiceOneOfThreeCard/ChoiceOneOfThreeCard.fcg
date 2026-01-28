@@ -223,6 +223,8 @@ graph ChoiceOneOfThreeCard {
       // 开始下一波事件
       PVEController.StartNextWave()
 
+      GetLocalPlayer()<PlayerJionGame>.ShowDownSixLogo()
+      
       IsOver = false
    }
 //————————————————————————————————————————————————————————————————————————————————————————————————//

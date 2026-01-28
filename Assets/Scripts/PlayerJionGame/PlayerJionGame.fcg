@@ -49,6 +49,7 @@ graph PlayerJionGame {
     BossHPBar entity<CustomHud>             //Boss血条页面
     RankingListUI entity<CustomHud>        // 排行榜页面
     KillShowBoardUI entity<CustomHud>        // 击杀页面
+    DownSixLogoUI entity<CustomHud>             //六小logo页面
     
     CurrentSkill int = 1
     currentSelectedCardId int = 0
@@ -342,6 +343,10 @@ graph PlayerJionGame {
             CreateCustomUIClient(out var KillShowBoardUIEntity, EResUI.KillShowBoard)
             KillShowBoardUI = KillShowBoardUIEntity
             KillShowBoardUIEntity<CustomUI>.IsVisible = false
+
+            CreateCustomUIClient(out var DownSixLogoUIEntity, EResUI.DownSixLogo)
+            DownSixLogoUI = DownSixLogoUIEntity
+            DownSixLogoUIEntity<CustomUI>.IsVisible = false
 
             var Skill_1Panel = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_1")
             Skill_1Panel<UIWidget>.IsVisible = false
@@ -2139,6 +2144,9 @@ graph PlayerJionGame {
             Hero2Entity<UIWidget>.IsVisible = true
             HeroDamage2Entity<UIWidget>.IsVisible = true
         }
+        
+        // 关闭六小logo页面
+        CloseDownSixLogo()
 
         //  通關顯示
         if  IsGameSuccess == true {
@@ -2674,6 +2682,14 @@ graph PlayerJionGame {
 
             KillCountTAG = 0
         }
+    }
+
+    func ShowDownSixLogo() {
+        DownSixLogoUI<CustomUI>.IsVisible = true
+    }
+
+    func CloseDownSixLogo() {
+        DownSixLogoUI<CustomUI>.IsVisible = false
     }
 
     async func OutKillTween(num entity<UIWidget>) {
