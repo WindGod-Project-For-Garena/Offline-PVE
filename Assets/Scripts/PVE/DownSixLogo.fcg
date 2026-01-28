@@ -121,8 +121,13 @@ graph DownSixLogo {
     }
 
     func SetCardIcon(slotIndex int, sprite EResSprite, color Color, visible bool) {
-        var path = "/SixLogo/List/Card" + Convert.ToString(slotIndex) + "/Image"
-        var iconWidget = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, path)
+        var cardPath = "/SixLogo/List/Card" + Convert.ToString(slotIndex)
+        var imagePath = cardPath + "/Image"
+        var cardWidget = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, cardPath)
+        var iconWidget = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, imagePath)
+        if cardWidget != nil {
+            cardWidget<UIWidget>.IsVisible = visible
+        }
         if iconWidget != nil {
             iconWidget<UIWidget>.IsVisible = visible
             iconWidget<UIWidgetImage>.SpriteName = sprite
@@ -131,8 +136,13 @@ graph DownSixLogo {
     }
 
     func SetCardVisible(slotIndex int, visible bool) {
-        var path = "/SixLogo/List/Card" + Convert.ToString(slotIndex) + "/Image"
-        var iconWidget = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, path)
+        var cardPath = "/SixLogo/List/Card" + Convert.ToString(slotIndex)
+        var imagePath = cardPath + "/Image"
+        var cardWidget = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, cardPath)
+        var iconWidget = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, imagePath)
+        if cardWidget != nil {
+            cardWidget<UIWidget>.IsVisible = visible
+        }
         if iconWidget != nil {
             iconWidget<UIWidget>.IsVisible = visible
         }
