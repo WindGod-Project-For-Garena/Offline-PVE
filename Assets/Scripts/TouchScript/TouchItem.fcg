@@ -51,5 +51,7 @@ graph TouchItem {
         // 删除道具实体
         List.Remove(GetLocalPlayer()<PlayerJionGame>.DropItemList, ITEM)
         Destroy(ITEM)
+        // 拾取掉落物后刷新六小 Logo
+        GetLocalPlayer()<PlayerJionGame>.RefreshAllIcons()
     }
 }

@@ -395,6 +395,127 @@ graph PlayerJionGame {
         }
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+    // 刷新全部 8 个卡位：Card1=被动技能，Card2/3=掉落物效果，Card2～8=已选卡牌（按效果数量前移）
+    func RefreshAllIcons() {
+        var choiceUI = ChoiceThreeCardUI
+        var currentSkill = CurrentSkill
+        var nSelected int = 0
+        if choiceUI != nil {
+            if currentSkill == 1 {
+                nSelected = List.Length(ChoiceThreeCardUI<ChoiceOneOfThreeCard>.SelectedCards_1) as int
+            } else if currentSkill == 2 {
+                nSelected = List.Length(ChoiceThreeCardUI<ChoiceOneOfThreeCard>.SelectedCards_2) as int
+            }
+        }
+
+        // 掉落物效果数量：0 / 1 / 2
+        var nEffect = 0
+        if weaponBuffTimerActive {
+            nEffect = nEffect + 1
+        }
+        if skillBuffTimerActive {
+            nEffect = nEffect + 1
+        }
+
+        // Card1：当前被动技能图标
+        SetCardIcon(1, EResSprite.Hero1_Skill2, #FFFFFFFF, true)
+        if currentSkill == 2 {
+            SetCardIcon(1, EResSprite.Hero2_Skill2, #FFFFFFFF, true)
+        }
+
+        // Card2、Card3：掉落物效果图标（武器伤害 / 技能伤害），无效果时由已选卡牌填充
+        var cardsStartSlot = 2 + nEffect
+        var maxCardSlots = 8 - cardsStartSlot + 1
+        if maxCardSlots < 0 {
+            maxCardSlots = 0
+        }
+        var displayCardCount = Math.Min(nSelected, maxCardSlots)
+
+        if nEffect >= 1 {
+            if weaponBuffTimerActive {
+                SetCardIcon(2, EResSprite.WeaponDamage, #FFFFFFFF, true)
+            } else if skillBuffTimerActive {
+                SetCardIcon(2, EResSprite.SkillDamage, #FFFFFFFF, true)
+            }
+        }
+        if nEffect >= 2 {
+            SetCardIcon(2, EResSprite.WeaponDamage, #FFFFFFFF, true)
+            SetCardIcon(3, EResSprite.SkillDamage, #FFFFFFFF, true)
+        }
+
+        for i = 0, displayCardCount, 1 {
+            var slot = cardsStartSlot + i
+            var id int = 0
+            if currentSkill == 1 {
+                id = choiceUI<ChoiceOneOfThreeCard>.SelectedCards_1[i] as int
+            } else if currentSkill == 2 {
+                id = choiceUI<ChoiceOneOfThreeCard>.SelectedCards_2[i] as int
+            }
+            var info = choiceUI<ChoiceOneOfThreeCard>.GetCardInfoById(id, currentSkill)
+            if info != nil {
+                var rarity = info["Rarity"] as int
+                var iconKey = info["Nature"]
+                var iconSprite = FC_Config.CardIconSprites[iconKey]
+                var rarityColor = FC_Config.CardRarityColor[rarity]
+                var buttonSprite = FC_Config.CardRaritySprite[rarity]
+                if iconSprite == nil {
+                    iconSprite = EResSprite.Skill_General
+                }
+                SetSelectedCardIcon(slot, iconSprite, rarityColor, buttonSprite, true)
+            }
+        }
+        for slot = cardsStartSlot + displayCardCount, 9, 1 {
+            SetCardVisible(slot, false)
+        }
+    }
+
+    func SetCardIcon(slotIndex int, sprite EResSprite, color Color, visible bool) {
+        var cardPath = "/SixLogo/List/Card" + Convert.ToString(slotIndex)
+        var imagePath = cardPath + "/Image"
+        var cardWidget = GetWidgetByPath(GetLocalPlayer(), DownSixLogoUI, cardPath)
+        var iconWidget = GetWidgetByPath(GetLocalPlayer(), DownSixLogoUI, imagePath)
+        if cardWidget != nil {
+            cardWidget<UIWidget>.IsVisible = visible
+        }
+        if iconWidget != nil {
+            iconWidget<UIWidget>.IsVisible = visible
+            iconWidget<UIWidgetImage>.SpriteName = sprite
+            iconWidget<UIWidgetImage>.Color = color
+        }
+    }
+
+    // 已选卡牌：设置按钮边框图（稀有度）+ 图标
+    func SetSelectedCardIcon(slotIndex int, iconSprite EResSprite, rarityColor Color, buttonSprite EResSprite, visible bool) {
+        var cardPath = "/SixLogo/List/Card" + Convert.ToString(slotIndex)
+        var imagePath = cardPath + "/Image"
+        var cardWidget = GetWidgetByPath(GetLocalPlayer(), DownSixLogoUI, cardPath)
+        var iconWidget = GetWidgetByPath(GetLocalPlayer(), DownSixLogoUI, imagePath)
+        if cardWidget != nil {
+            cardWidget<UIWidget>.IsVisible = visible
+            cardWidget<UIWidgetButton>.Color = rarityColor
+            if buttonSprite != nil {
+                cardWidget<UIWidgetButton>.SpriteResource = buttonSprite
+            }
+        }
+        if iconWidget != nil {
+            iconWidget<UIWidget>.IsVisible = visible
+            iconWidget<UIWidgetImage>.SpriteName = iconSprite
+            iconWidget<UIWidgetImage>.Color = rarityColor
+        }
+    }
+
+    func SetCardVisible(slotIndex int, visible bool) {
+        var cardPath = "/SixLogo/List/Card" + Convert.ToString(slotIndex)
+        var imagePath = cardPath + "/Image"
+        var cardWidget = GetWidgetByPath(GetLocalPlayer(), DownSixLogoUI, cardPath)
+        var iconWidget = GetWidgetByPath(GetLocalPlayer(), DownSixLogoUI, imagePath)
+        if cardWidget != nil {
+            cardWidget<UIWidget>.IsVisible = visible
+        }
+        if iconWidget != nil {
+            iconWidget<UIWidget>.IsVisible = visible
+        }
+    }
 // 初始化地图(只保留默认地图)
     func InitMap() {
         var forestMap = EResSceneDefaultMap.forest as entity<Entity>
@@ -2145,7 +2266,8 @@ graph PlayerJionGame {
             HeroDamage2Entity<UIWidget>.IsVisible = true
         }
         
-        // 关闭六小logo页面
+        // 游戏结束前刷新六小 logo 再关闭
+        RefreshAllIcons()
         CloseDownSixLogo()
 
         //  通關顯示
@@ -2359,8 +2481,8 @@ graph PlayerJionGame {
                 if weaponBuffTimer <= 0 {
                     weaponBuffTimerActive = false
                     LogInfo("武器伤害buff已过期")
-                    // 触发恢复逻辑
                     start RemoveWeaponDamageBonus()
+                    RefreshAllIcons()
                 }
             }
             
@@ -2371,8 +2493,8 @@ graph PlayerJionGame {
                 if skillBuffTimer <= 0 {
                     skillBuffTimerActive = false
                     LogInfo("技能伤害buff已过期")
-                    // 触发恢复逻辑
                     start RemoveSkillDamageBonus()
+                    RefreshAllIcons()
                 }
             }
             
@@ -2380,6 +2502,7 @@ graph PlayerJionGame {
             if !hasActiveBuff {
                 buffTimerRunning = false
                 LogInfo("所有buff已过期，停止计时器")
+                RefreshAllIcons()
                 break
             }
             
@@ -2686,6 +2809,7 @@ graph PlayerJionGame {
 
     func ShowDownSixLogo() {
         DownSixLogoUI<CustomUI>.IsVisible = true
+        RefreshAllIcons()
     }
 
     func CloseDownSixLogo() {
