@@ -16,20 +16,38 @@ import "../Static/FC_Config.fcg" as FC_Config
 graph DownSixLogo {
     //———————————————————————————————————————————————————————————————————————————//
     func Card1Click(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        OpenIFM()
     }
     func Card2Click(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        OpenIFM()
     }
     func Card3Click(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        OpenIFM()
     }
     func Card4Click(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        OpenIFM()
     }
     func Card5Click(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        OpenIFM()
     }
     func Card6Click(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        OpenIFM()
     }
     func Card7Click(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        OpenIFM()
     }
     func Card8Click(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        OpenIFM()
     }
-    //———————————————————————————————————————————————————————————————————————————//
+//———————————————————————————————————————————————————————————————————————————//
+    // 打开详情页面
+    func OpenIFM() {
+        var IFMLogoPanel = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.DownSixLogoUI, "/SixLogoIFM")
+        IFMLogoPanel<UIWidget>.IsVisible = true
+    }
+    // 关闭详情页面
+    func CloseIFM(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        var IFMLogoPanel = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.DownSixLogoUI, "/SixLogoIFM")
+        IFMLogoPanel<UIWidget>.IsVisible = false
+    }
 }

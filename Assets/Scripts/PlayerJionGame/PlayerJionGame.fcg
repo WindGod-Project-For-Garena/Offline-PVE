@@ -347,6 +347,8 @@ graph PlayerJionGame {
             CreateCustomUIClient(out var DownSixLogoUIEntity, EResUI.DownSixLogo)
             DownSixLogoUI = DownSixLogoUIEntity
             DownSixLogoUIEntity<CustomUI>.IsVisible = false
+            var IFMLogoPanel = GetWidgetByPath(GetLocalPlayer(), DownSixLogoUI, "/SixLogoIFM")
+            IFMLogoPanel<UIWidget>.IsVisible = false
 
             var Skill_1Panel = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_1")
             Skill_1Panel<UIWidget>.IsVisible = false
@@ -516,6 +518,12 @@ graph PlayerJionGame {
             iconWidget<UIWidget>.IsVisible = visible
         }
     }
+    
+// 刷新详情页面信息
+    func RefreshSixLogoIFM() {
+
+    }
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
 // 初始化地图(只保留默认地图)
     func InitMap() {
         var forestMap = EResSceneDefaultMap.forest as entity<Entity>
