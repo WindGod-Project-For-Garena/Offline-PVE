@@ -435,14 +435,14 @@ graph PlayerJionGame {
 
         if nEffect >= 1 {
             if weaponBuffTimerActive {
-                SetCardIcon(2, EResSprite.WeaponDamage, #FFFFFFFF, true)
+                SetCardIcon(2, EResSprite.WeaponDamage, #E38CEE, true)
             } else if skillBuffTimerActive {
-                SetCardIcon(2, EResSprite.SkillDamage, #FFFFFFFF, true)
+                SetCardIcon(2, EResSprite.SkillDamage, #E38CEE, true)
             }
         }
         if nEffect >= 2 {
-            SetCardIcon(2, EResSprite.WeaponDamage, #FFFFFFFF, true)
-            SetCardIcon(3, EResSprite.SkillDamage, #FFFFFFFF, true)
+            SetCardIcon(2, EResSprite.WeaponDamage, #E38CEE, true)
+            SetCardIcon(3, EResSprite.SkillDamage, #E38CEE, true)
         }
 
         for i = 0, displayCardCount, 1 {
@@ -479,6 +479,8 @@ graph PlayerJionGame {
         var iconWidget = GetWidgetByPath(GetLocalPlayer(), DownSixLogoUI, imagePath)
         if cardWidget != nil {
             cardWidget<UIWidget>.IsVisible = visible
+            cardWidget<UIWidgetButton>.SpriteResource = FC_Config.CardRaritySprite[0]
+            cardWidget<UIWidgetButton>.Color = color
         }
         if iconWidget != nil {
             iconWidget<UIWidget>.IsVisible = visible
@@ -519,8 +521,8 @@ graph PlayerJionGame {
             iconWidget<UIWidget>.IsVisible = visible
         }
     }
-
-// 刷新详情页面信息：/SixLogoIFM/RollList/List/Card (n)、Card (n)/Image、Card (n)/Image/IFMTEXT
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+// 刷新详情页面信息：
     func RefreshSixLogoIFM() {
         var choiceUI = ChoiceThreeCardUI
         var currentSkill = CurrentSkill
@@ -555,17 +557,17 @@ graph PlayerJionGame {
 
         if nEffect >= 1 {
             if weaponBuffTimerActive {
-                SetSixLogoIFMCardIcon(2, EResSprite.WeaponDamage, #FFFFFFFF, true)
+                SetSixLogoIFMCardIcon(2, EResSprite.WeaponDamage, #E38CEE, true)
                 SetSixLogoIFMText(2, "武器伤害+50%")
             } else if skillBuffTimerActive {
-                SetSixLogoIFMCardIcon(2, EResSprite.SkillDamage, #FFFFFFFF, true)
+                SetSixLogoIFMCardIcon(2, EResSprite.SkillDamage, #E38CEE, true)
                 SetSixLogoIFMText(2, "技能伤害+50%")
             }
         }
         if nEffect >= 2 {
-            SetSixLogoIFMCardIcon(2, EResSprite.WeaponDamage, #FFFFFFFF, true)
+            SetSixLogoIFMCardIcon(2, EResSprite.WeaponDamage, #E38CEE, true)
             SetSixLogoIFMText(2, "武器伤害+50%")
-            SetSixLogoIFMCardIcon(3, EResSprite.SkillDamage, #FFFFFFFF, true)
+            SetSixLogoIFMCardIcon(3, EResSprite.SkillDamage, #E38CEE, true)
             SetSixLogoIFMText(3, "技能伤害+50%")
         }
 
@@ -606,7 +608,7 @@ graph PlayerJionGame {
         if cardWidget != nil {
             cardWidget<UIWidget>.IsVisible = visible
             cardWidget<UIWidgetImage>.SpriteName = FC_Config.CardRaritySprite[0]
-            cardWidget<UIWidgetImage>.Color = #FFFFFFFF
+            cardWidget<UIWidgetImage>.Color = color
         }
         if iconWidget != nil {
             iconWidget<UIWidget>.IsVisible = visible
