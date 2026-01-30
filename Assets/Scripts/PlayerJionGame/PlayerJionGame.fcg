@@ -397,11 +397,11 @@ graph PlayerJionGame {
         }
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
-    // 刷新全部 8 个卡位：Card1=被动技能，Card2/3=掉落物效果，Card2～8=已选卡牌（按效果数量前移）
-    func RefreshAllIcons() {
+    // 统一计算卡牌展示参数：已选数量、掉落物效果数、卡牌起始槽位、可展示数量等
+    func GetCardDisplayParams(out var nSelected int, out var nEffect int, out var cardsStartSlot int, out var maxCardSlots int, out var displayCardCount int) {
         var choiceUI = ChoiceThreeCardUI
         var currentSkill = CurrentSkill
-        var nSelected int = 0
+        nSelected = 0
         if choiceUI != nil {
             if currentSkill == 1 {
                 nSelected = List.Length(ChoiceThreeCardUI<ChoiceOneOfThreeCard>.SelectedCards_1) as int
@@ -409,15 +409,45 @@ graph PlayerJionGame {
                 nSelected = List.Length(ChoiceThreeCardUI<ChoiceOneOfThreeCard>.SelectedCards_2) as int
             }
         }
-
-        // 掉落物效果数量：0 / 1 / 2
-        var nEffect = 0
+        nEffect = 0
         if weaponBuffTimerActive {
             nEffect = nEffect + 1
         }
         if skillBuffTimerActive {
             nEffect = nEffect + 1
         }
+        cardsStartSlot = 2 + nEffect
+        maxCardSlots = 8 - cardsStartSlot + 1
+        if maxCardSlots < 0 {
+            maxCardSlots = 0
+        }
+        displayCardCount = Math.Min(nSelected, maxCardSlots) as int
+    }
+
+    func GetSelectedCardIdAtIndex(choiceUI entity<CustomHud>, currentSkill int, index int) int {
+        if currentSkill == 1 {
+            return choiceUI<ChoiceOneOfThreeCard>.SelectedCards_1[index] as int
+        }
+        return choiceUI<ChoiceOneOfThreeCard>.SelectedCards_2[index] as int
+    }
+
+    // 从卡牌 info 中取出图标、稀有度颜色、边框图
+    func GetCardIconRarityFromInfo(info Map<string, object>, out var iconSprite EResSprite, out var rarityColor Color, out var buttonSprite EResSprite) {
+        var rarity = info["Rarity"] as int
+        var iconKey = info["Nature"]
+        iconSprite = FC_Config.CardIconSprites[iconKey]
+        rarityColor = FC_Config.CardRarityColor[rarity]
+        buttonSprite = FC_Config.CardRaritySprite[rarity]
+        if iconSprite == nil {
+            iconSprite = EResSprite.Skill_General
+        }
+    }
+
+    // 刷新全部 8 个卡位：Card1=被动技能，Card2/3=掉落物效果，Card2～8=已选卡牌（按效果数量前移）
+    func RefreshAllIcons() {
+        GetCardDisplayParams(out var nSelected, out var nEffect, out var cardsStartSlot, out var maxCardSlots, out var displayCardCount)
+        var choiceUI = ChoiceThreeCardUI
+        var currentSkill = CurrentSkill
 
         // Card1：当前被动技能图标
         SetCardIcon(1, EResSprite.Hero1_Skill2, #FFFFFFFF, true)
@@ -425,14 +455,7 @@ graph PlayerJionGame {
             SetCardIcon(1, EResSprite.Hero2_Skill2, #FFFFFFFF, true)
         }
 
-        // Card2、Card3：掉落物效果图标（武器伤害 / 技能伤害），无效果时由已选卡牌填充
-        var cardsStartSlot = 2 + nEffect
-        var maxCardSlots = 8 - cardsStartSlot + 1
-        if maxCardSlots < 0 {
-            maxCardSlots = 0
-        }
-        var displayCardCount = Math.Min(nSelected, maxCardSlots)
-
+        // Card2、Card3：掉落物效果图标
         if nEffect >= 1 {
             if weaponBuffTimerActive {
                 SetCardIcon(2, EResSprite.WeaponDamage, #E38CEE, true)
@@ -447,22 +470,10 @@ graph PlayerJionGame {
 
         for i = 0, displayCardCount, 1 {
             var slot = cardsStartSlot + i
-            var id int = 0
-            if currentSkill == 1 {
-                id = choiceUI<ChoiceOneOfThreeCard>.SelectedCards_1[i] as int
-            } else if currentSkill == 2 {
-                id = choiceUI<ChoiceOneOfThreeCard>.SelectedCards_2[i] as int
-            }
+            var id = GetSelectedCardIdAtIndex(choiceUI, currentSkill, i)
             var info = choiceUI<ChoiceOneOfThreeCard>.GetCardInfoById(id, currentSkill)
             if info != nil {
-                var rarity = info["Rarity"] as int
-                var iconKey = info["Nature"]
-                var iconSprite = FC_Config.CardIconSprites[iconKey]
-                var rarityColor = FC_Config.CardRarityColor[rarity]
-                var buttonSprite = FC_Config.CardRaritySprite[rarity]
-                if iconSprite == nil {
-                    iconSprite = EResSprite.Skill_General
-                }
+                GetCardIconRarityFromInfo(info, out var iconSprite, out var rarityColor, out var buttonSprite)
                 SetSelectedCardIcon(slot, iconSprite, rarityColor, buttonSprite, true)
             }
         }
@@ -524,29 +535,9 @@ graph PlayerJionGame {
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
 // 刷新详情页面信息：
     func RefreshSixLogoIFM() {
+        GetCardDisplayParams(out var nSelected, out var nEffect, out var cardsStartSlot, out var maxCardSlots, out var displayCardCount)
         var choiceUI = ChoiceThreeCardUI
         var currentSkill = CurrentSkill
-        var nSelected int = 0
-        if choiceUI != nil {
-            if currentSkill == 1 {
-                nSelected = List.Length(ChoiceThreeCardUI<ChoiceOneOfThreeCard>.SelectedCards_1) as int
-            } else if currentSkill == 2 {
-                nSelected = List.Length(ChoiceThreeCardUI<ChoiceOneOfThreeCard>.SelectedCards_2) as int
-            }
-        }
-        var nEffect = 0
-        if weaponBuffTimerActive {
-            nEffect = nEffect + 1
-        }
-        if skillBuffTimerActive {
-            nEffect = nEffect + 1
-        }
-        var cardsStartSlot = 2 + nEffect
-        var maxCardSlots = 8 - cardsStartSlot + 1
-        if maxCardSlots < 0 {
-            maxCardSlots = 0
-        }
-        var displayCardCount = Math.Min(nSelected, maxCardSlots)
 
         SetSixLogoIFMCardIcon(1, EResSprite.Hero1_Skill2, #FFFFFFFF, true)
         SetSixLogoIFMText(1, LocString{"SKILL_BOMBARD", List<string>{}})
@@ -573,22 +564,10 @@ graph PlayerJionGame {
 
         for i = 0, displayCardCount, 1 {
             var slot = cardsStartSlot + i
-            var id int = 0
-            if currentSkill == 1 {
-                id = choiceUI<ChoiceOneOfThreeCard>.SelectedCards_1[i] as int
-            } else if currentSkill == 2 {
-                id = choiceUI<ChoiceOneOfThreeCard>.SelectedCards_2[i] as int
-            }
+            var id = GetSelectedCardIdAtIndex(choiceUI, currentSkill, i)
             var info = choiceUI<ChoiceOneOfThreeCard>.GetCardInfoById(id, currentSkill)
             if info != nil {
-                var rarity = info["Rarity"] as int
-                var iconKey = info["Nature"]
-                var iconSprite = FC_Config.CardIconSprites[iconKey]
-                var rarityColor = FC_Config.CardRarityColor[rarity]
-                var buttonSprite = FC_Config.CardRaritySprite[rarity]
-                if iconSprite == nil {
-                    iconSprite = EResSprite.Skill_General
-                }
+                GetCardIconRarityFromInfo(info, out var iconSprite, out var rarityColor, out var buttonSprite)
                 SetSixLogoIFMSelectedCardIcon(slot, iconSprite, rarityColor, buttonSprite, true)
                 var desc = choiceUI<ChoiceOneOfThreeCard>.GenerateCardDescription(info)
                 SetSixLogoIFMText(slot, desc)
