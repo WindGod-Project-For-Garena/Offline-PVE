@@ -4671,7 +4671,14 @@
               "disabled": "#494949",
               "onClicks": [],
               "enableBorderImage": true,
-              "clickHandlers": [],
+              "clickHandlers": [
+                {
+                  "eventName": "OnClick",
+                  "funcKey": "CloseIFM",
+                  "type": "ugcscript",
+                  "fileID": "73oo55kfg8x-mkxqafj6-vq3dd91zo8k"
+                }
+              ],
               "disableCollider": false,
               "fillType": 0,
               "slicedBorder": {

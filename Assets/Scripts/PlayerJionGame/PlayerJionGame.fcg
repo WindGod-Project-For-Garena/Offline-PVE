@@ -469,6 +469,7 @@ graph PlayerJionGame {
         for slot = cardsStartSlot + displayCardCount, 9, 1 {
             SetCardVisible(slot, false)
         }
+        RefreshSixLogoIFM()
     }
 
     func SetCardIcon(slotIndex int, sprite EResSprite, color Color, visible bool) {
@@ -518,10 +519,75 @@ graph PlayerJionGame {
             iconWidget<UIWidget>.IsVisible = visible
         }
     }
-    
-// 刷新详情页面信息
-    func RefreshSixLogoIFM() {
 
+// 刷新详情页面信息：/SixLogoIFM/RollList/List/Card (n)/Image/IFMTEXT
+    func RefreshSixLogoIFM() {
+        var choiceUI = ChoiceThreeCardUI
+        var currentSkill = CurrentSkill
+        var nSelected int = 0
+        if choiceUI != nil {
+            if currentSkill == 1 {
+                nSelected = List.Length(ChoiceThreeCardUI<ChoiceOneOfThreeCard>.SelectedCards_1) as int
+            } else if currentSkill == 2 {
+                nSelected = List.Length(ChoiceThreeCardUI<ChoiceOneOfThreeCard>.SelectedCards_2) as int
+            }
+        }
+        var nEffect = 0
+        if weaponBuffTimerActive {
+            nEffect = nEffect + 1
+        }
+        if skillBuffTimerActive {
+            nEffect = nEffect + 1
+        }
+        var cardsStartSlot = 2 + nEffect
+        var maxCardSlots = 8 - cardsStartSlot + 1
+        if maxCardSlots < 0 {
+            maxCardSlots = 0
+        }
+        var displayCardCount = Math.Min(nSelected, maxCardSlots)
+
+        SetSixLogoIFMText(1, LocString{"SKILL_BOMBARD", List<string>{}})
+        if currentSkill == 2 {
+            SetSixLogoIFMText(1, LocString{"SKILL_SHOCK", List<string>{}})
+        }
+
+        if nEffect >= 1 {
+            if weaponBuffTimerActive {
+                SetSixLogoIFMText(2, "武器伤害+50%")
+            } else if skillBuffTimerActive {
+                SetSixLogoIFMText(2, "技能伤害+50%")
+            }
+        }
+        if nEffect >= 2 {
+            SetSixLogoIFMText(2, "武器伤害+50%")
+            SetSixLogoIFMText(3, "技能伤害+50%")
+        }
+
+        for i = 0, displayCardCount, 1 {
+            var slot = cardsStartSlot + i
+            var id int = 0
+            if currentSkill == 1 {
+                id = choiceUI<ChoiceOneOfThreeCard>.SelectedCards_1[i] as int
+            } else if currentSkill == 2 {
+                id = choiceUI<ChoiceOneOfThreeCard>.SelectedCards_2[i] as int
+            }
+            var info = choiceUI<ChoiceOneOfThreeCard>.GetCardInfoById(id, currentSkill)
+            if info != nil {
+                var desc = choiceUI<ChoiceOneOfThreeCard>.GenerateCardDescription(info)
+                SetSixLogoIFMText(slot, desc)
+            }
+        }
+        for slot = cardsStartSlot + displayCardCount, 9, 1 {
+            SetSixLogoIFMText(slot, "")
+        }
+    }
+
+    func SetSixLogoIFMText(slotIndex int, text object) {
+        var path = "/SixLogoIFM/RollList/List/Card (" + Convert.ToString(slotIndex) + ")/Image/IFMTEXT"
+        var textWidget = GetWidgetByPath(GetLocalPlayer(), DownSixLogoUI, path)
+        if textWidget != nil {
+            textWidget<UIWidgetLabel>.Content = text
+        }
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
 // 初始化地图(只保留默认地图)
