@@ -2933,6 +2933,8 @@ graph PlayerJionGame {
     }
 
     func CloseDownSixLogo() {
+        var IFMLogoPanel = GetWidgetByPath(GetLocalPlayer(), DownSixLogoUI, "/SixLogoIFM")
+        IFMLogoPanel<UIWidget>.IsVisible = false
         DownSixLogoUI<CustomUI>.IsVisible = false
     }
 
