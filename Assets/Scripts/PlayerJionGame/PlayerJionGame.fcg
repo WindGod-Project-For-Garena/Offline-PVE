@@ -520,7 +520,7 @@ graph PlayerJionGame {
         }
     }
 
-// 刷新详情页面信息：/SixLogoIFM/RollList/List/Card (n)/Image/IFMTEXT
+// 刷新详情页面信息：/SixLogoIFM/RollList/List/Card (n)、Card (n)/Image、Card (n)/Image/IFMTEXT
     func RefreshSixLogoIFM() {
         var choiceUI = ChoiceThreeCardUI
         var currentSkill = CurrentSkill
@@ -546,20 +546,26 @@ graph PlayerJionGame {
         }
         var displayCardCount = Math.Min(nSelected, maxCardSlots)
 
+        SetSixLogoIFMCardIcon(1, EResSprite.Hero1_Skill2, #FFFFFFFF, true)
         SetSixLogoIFMText(1, LocString{"SKILL_BOMBARD", List<string>{}})
         if currentSkill == 2 {
+            SetSixLogoIFMCardIcon(1, EResSprite.Hero2_Skill2, #FFFFFFFF, true)
             SetSixLogoIFMText(1, LocString{"SKILL_SHOCK", List<string>{}})
         }
 
         if nEffect >= 1 {
             if weaponBuffTimerActive {
+                SetSixLogoIFMCardIcon(2, EResSprite.WeaponDamage, #FFFFFFFF, true)
                 SetSixLogoIFMText(2, "武器伤害+50%")
             } else if skillBuffTimerActive {
+                SetSixLogoIFMCardIcon(2, EResSprite.SkillDamage, #FFFFFFFF, true)
                 SetSixLogoIFMText(2, "技能伤害+50%")
             }
         }
         if nEffect >= 2 {
+            SetSixLogoIFMCardIcon(2, EResSprite.WeaponDamage, #FFFFFFFF, true)
             SetSixLogoIFMText(2, "武器伤害+50%")
+            SetSixLogoIFMCardIcon(3, EResSprite.SkillDamage, #FFFFFFFF, true)
             SetSixLogoIFMText(3, "技能伤害+50%")
         }
 
@@ -573,12 +579,71 @@ graph PlayerJionGame {
             }
             var info = choiceUI<ChoiceOneOfThreeCard>.GetCardInfoById(id, currentSkill)
             if info != nil {
+                var rarity = info["Rarity"] as int
+                var iconKey = info["Nature"]
+                var iconSprite = FC_Config.CardIconSprites[iconKey]
+                var rarityColor = FC_Config.CardRarityColor[rarity]
+                var buttonSprite = FC_Config.CardRaritySprite[rarity]
+                if iconSprite == nil {
+                    iconSprite = EResSprite.Skill_General
+                }
+                SetSixLogoIFMSelectedCardIcon(slot, iconSprite, rarityColor, buttonSprite, true)
                 var desc = choiceUI<ChoiceOneOfThreeCard>.GenerateCardDescription(info)
                 SetSixLogoIFMText(slot, desc)
             }
         }
         for slot = cardsStartSlot + displayCardCount, 9, 1 {
+            SetSixLogoIFMCardVisible(slot, false)
             SetSixLogoIFMText(slot, "")
+        }
+    }
+
+    func SetSixLogoIFMCardIcon(slotIndex int, sprite EResSprite, color Color, visible bool) {
+        var cardPath = "/SixLogoIFM/RollList/List/Card (" + Convert.ToString(slotIndex) + ")"
+        var imagePath = cardPath + "/Image"
+        var cardWidget = GetWidgetByPath(GetLocalPlayer(), DownSixLogoUI, cardPath)
+        var iconWidget = GetWidgetByPath(GetLocalPlayer(), DownSixLogoUI, imagePath)
+        if cardWidget != nil {
+            cardWidget<UIWidget>.IsVisible = visible
+            cardWidget<UIWidgetImage>.SpriteName = FC_Config.CardRaritySprite[0]
+            cardWidget<UIWidgetImage>.Color = #FFFFFFFF
+        }
+        if iconWidget != nil {
+            iconWidget<UIWidget>.IsVisible = visible
+            iconWidget<UIWidgetImage>.SpriteName = sprite
+            iconWidget<UIWidgetImage>.Color = color
+        }
+    }
+
+    func SetSixLogoIFMSelectedCardIcon(slotIndex int, iconSprite EResSprite, rarityColor Color, buttonSprite EResSprite, visible bool) {
+        var cardPath = "/SixLogoIFM/RollList/List/Card (" + Convert.ToString(slotIndex) + ")"
+        var imagePath = cardPath + "/Image"
+        var cardWidget = GetWidgetByPath(GetLocalPlayer(), DownSixLogoUI, cardPath)
+        var iconWidget = GetWidgetByPath(GetLocalPlayer(), DownSixLogoUI, imagePath)
+        if cardWidget != nil {
+            cardWidget<UIWidget>.IsVisible = visible
+            cardWidget<UIWidgetImage>.Color = rarityColor
+            if buttonSprite != nil {
+                cardWidget<UIWidgetImage>.SpriteName = buttonSprite
+            }
+        }
+        if iconWidget != nil {
+            iconWidget<UIWidget>.IsVisible = visible
+            iconWidget<UIWidgetImage>.SpriteName = iconSprite
+            iconWidget<UIWidgetImage>.Color = rarityColor
+        }
+    }
+
+    func SetSixLogoIFMCardVisible(slotIndex int, visible bool) {
+        var cardPath = "/SixLogoIFM/RollList/List/Card (" + Convert.ToString(slotIndex) + ")"
+        var imagePath = cardPath + "/Image"
+        var cardWidget = GetWidgetByPath(GetLocalPlayer(), DownSixLogoUI, cardPath)
+        var iconWidget = GetWidgetByPath(GetLocalPlayer(), DownSixLogoUI, imagePath)
+        if cardWidget != nil {
+            cardWidget<UIWidget>.IsVisible = visible
+        }
+        if iconWidget != nil {
+            iconWidget<UIWidget>.IsVisible = visible
         }
     }
 
