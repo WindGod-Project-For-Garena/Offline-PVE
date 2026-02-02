@@ -205,7 +205,14 @@ static graph FC_PVEMonsterManager {
         } 
 
         CurrentDamageModifier = waveRowInfo["DamageModifier"] as float
-        CurrentHPModifier = waveRowInfo["HPModifier"] as float   
+        CurrentHPModifier = waveRowInfo["HPModifier"] as float
+        // 使用 InjectLevelData 中当前关卡的 HPMultiplying 作为所有怪物的血量倍率
+        if ContainKey(GetLocalPlayer()<PlayerJionGame>.LevelData, CurrentLevel) {
+            var levelRow = GetLocalPlayer()<PlayerJionGame>.LevelData[CurrentLevel]
+            if ContainKey(levelRow, "HPMultiplying") {
+                CurrentHPModifier = levelRow["HPMultiplying"] as float
+            }
+        }
        
         // 构建优先队列（Boss -> Elite -> Normal）
         var bossQueue List<Map<string, object>> = List<Map<string, object>>{}
