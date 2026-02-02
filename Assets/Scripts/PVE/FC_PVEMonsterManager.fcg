@@ -19,6 +19,7 @@ import "Camera.fcc" as Camera
 import "Economy.fcc" as Economy
 import "List.fcc" as List
 import "../CustomEvent.fcc" as CustomEvent
+import "../SoundFunc/SoundFunc.fcg" as SoundFunc
 
 [platform_client]
 static graph FC_PVEMonsterManager {
@@ -524,6 +525,17 @@ static graph FC_PVEMonsterManager {
         } else {
             list.Append(ActiveNormalMonsters, monster)
         }
+        // 场上怪物数量达到3个及以上时，随机播放僵尸音效
+        if list.Length(ActiveMonsters) >= 3 {
+            var voiceIndex = math.RandomInt(1, 4)
+            if voiceIndex == 1 {
+                SoundFunc.PlayCreatedSound("ZombieVoice_1")
+            } else if voiceIndex == 2 {
+                SoundFunc.PlayCreatedSound("ZombieVoice_2")
+            } else {
+                SoundFunc.PlayCreatedSound("ZombieVoice_3")
+            }
+        }
         SetParentClient(ActiveMonsterParentNode<Transform>, monsterEntity<Transform>, true) 
 
         //对应怪物外观组
@@ -708,6 +720,11 @@ static graph FC_PVEMonsterManager {
         NormalLastSpawnTime = 0
         //map.Clear(EliteLastSpawnTime)
         
+        // 怪物少于3个时停止播放僵尸音效
+        SoundFunc.PauseTheSound("ZombieVoice_1")
+        SoundFunc.PauseTheSound("ZombieVoice_2")
+        SoundFunc.PauseTheSound("ZombieVoice_3")
+        
         // 重置状态
         GetLocalPlayer()<PlayerJionGame>.KillCount = 0
         
@@ -757,6 +774,12 @@ static graph FC_PVEMonsterManager {
                 //LogInfo("Elite怪物死亡，CD开始: " + EliteSpawnCD + "ms")
             }else if list.Contain(ActiveBossMonsters, monster) {
                 list.Remove(ActiveBossMonsters, monster)
+            }
+            // 怪物少于3个时停止播放僵尸音效
+            if list.Length(ActiveMonsters) < 3 {
+                SoundFunc.PauseTheSound("ZombieVoice_1")
+                SoundFunc.PauseTheSound("ZombieVoice_2")
+                SoundFunc.PauseTheSound("ZombieVoice_3")
             }
         }
     }
