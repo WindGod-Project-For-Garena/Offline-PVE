@@ -1951,6 +1951,22 @@ graph PlayerJionGame {
         Offline.DestroyItem(ItemIDType.SGAmmo, 999)
     }
 
+    // 玩家退出时保存所有数据存储
+    event OnPlayerQuit(player entity<Player>) {
+        // 同步当前运行时数据到存储结构
+        DATA_TotalIFM[0] = TotalDrawCount
+        DATA_TotalIFM[1] = Money
+        DATA_TotalIFM[2] = MaxLevel
+        DATA_Gifted_Card_Count = Gifted_Card_Count
+        // 保存最高关卡与货币（TotalIFM）
+        SaveLevel()
+        // 保存排行榜
+        SaveRankingListToStorage()
+        // 保存天赋卡牌与 TotalIFM
+        SAVE_DATA_Gifted(DATA_Gifted_Card_Count, DATA_TotalIFM)
+        LogInfo("玩家退出，所有数据存储已保存")
+    }
+
     // DEbug的初始化
     func S_Debug_NextWave() {
         IsCountdownActive = false
