@@ -1573,8 +1573,18 @@ graph PlayerJionGame {
     }
 
     // 玩家赢了给货币
-    func GivePlayerWinnerMoney() {
-        Money += 2500
+    func GivePlayerWinnerMoney(level int) {
+        var passMoney int = 100
+        if ContainKey(LevelData, level) {
+            var row = LevelData[level]
+            if ContainKey(row, "PassMoney") {
+                passMoney = row["PassMoney"] as int
+            }
+        }
+        Money = Money + passMoney
+
+        FC_PVEMonsterManager.TotalGold = FC_PVEMonsterManager.TotalGold + passMoney
+
         // 保存本地数据
         DATA_TotalIFM[1] = Money
         SAVE_DATA_Money(DATA_TotalIFM)
