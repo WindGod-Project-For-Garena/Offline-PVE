@@ -42,7 +42,8 @@ static graph FC_PVEUtilities {
 		var list List<int> = List<int>{}
 		var strList List<string> = strings.Split(str, ",")
 		for i = 0, List.Length(strList), 1 {
-			StringToInt(strList[i],out var result, out var error)
+			var part string = strings.Strip(strList[i])
+			StringToInt(part,out var result, out var error)
 			List.Append(list,result)
 		}
 		return list
@@ -52,7 +53,8 @@ static graph FC_PVEUtilities {
 		var list List<float> = List<float>{}
 		var strList List<string> = strings.Split(str, ",")
 		for i = 0, List.Length(strList), 1 {
-			StringToFloat(strList[i],out var result, out var error)
+			var part string = strings.Strip(strList[i])
+			StringToFloat(part,out var result, out var error)
 			List.Append(list,result)
 		}
 		return list

@@ -85,7 +85,7 @@ graph PlayerJionGame {
     LightningExplosionDamage int = 0        // 闪电爆炸伤害统计
     LightningDamage int = 0                 // 闪电伤害统计
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
-    Money int = 999999
+    Money int = 0
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     // 结束波次后出现卡牌的标志位
     IsNextThreeChoiceOne int = 0
@@ -2279,11 +2279,7 @@ graph PlayerJionGame {
         if DATA_Gifted_Card_Count == nil || List.Length(DATA_Gifted_Card_Count) <= cardId {
             return 0
         }
-        var v = DATA_Gifted_Card_Count[cardId]
-        if v == nil {
-            return 0
-        }
-        return v
+        return DATA_Gifted_Card_Count[cardId]
     }
 
     // 重新应用所有已抽取卡牌的效果
