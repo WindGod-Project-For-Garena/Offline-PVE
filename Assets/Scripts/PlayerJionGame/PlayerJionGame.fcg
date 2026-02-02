@@ -1308,7 +1308,7 @@ graph PlayerJionGame {
     func InjectGiftCardProbabilityData() {
         // 解析CSV
         List.Clear(Gifted_CardProbability)
-        for rowIndex = 1, 11, 1 {
+        for rowIndex = 1, 41, 1 {
             var configInfo = Map<string, object>{}
             // 从CSV读取概率数据，从第三行开始读取
             var configRow = CSVData.ReadCSVRow(EResCSV.GiftCardProbabilityData, rowIndex + 2)
