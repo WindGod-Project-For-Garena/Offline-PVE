@@ -20,6 +20,7 @@ import "Economy.fcc" as Economy
 import "List.fcc" as List
 import "../CustomEvent.fcc" as CustomEvent
 import "../SoundFunc/SoundFunc.fcg" as SoundFunc
+import "Items.fcc" as Items
 
 [platform_client]
 static graph FC_PVEMonsterManager {
@@ -770,6 +771,15 @@ static graph FC_PVEMonsterManager {
         }
     }
 
+    func NoItemDropDeath(monster entity<LevelObject>) {
+        if monster != nil {
+            // 死亡掉落货币
+            start DropMoney(monster)
+            // 销毁怪物实体
+            start myDestroyMonster(monster)
+        }
+    }
+
     // 随机掉落概率判断
     func RandomDropChance() bool {
         var randomNum = RandomInt(1, 3)
@@ -969,8 +979,5 @@ static graph FC_PVEMonsterManager {
             WaitForMillisecond(1500)
             Destroy(effect)
         }
-    }
-
-
-    
+    }  
 }

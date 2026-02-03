@@ -89,7 +89,7 @@ graph FC_NormalZombie {
 	}
 
 	event MobDeathEvent_AC() {
-		// PVEMonsterManager.OnMonsterKilledAnimationFinished(thisEntity as entity<LevelObject>)
+		PVEMonsterManager.NoItemDropDeath(thisEntity as entity<LevelObject>)
 	}
 
 	event OnDamageMob(mob entity<Entity>, part string, damage int, player entity<Player>) {
