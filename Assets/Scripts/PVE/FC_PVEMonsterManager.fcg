@@ -628,44 +628,43 @@ static graph FC_PVEMonsterManager {
             if GetLocalPlayer()<PlayerJionGame>.CurrentRandomMap == "forest" {
                 var x float = RandomFloat(-1, 8)
                 var z float = RandomFloat(15, 11.5)
-                return Vector3{x, 3.5, z}
+                return Vector3{x, 2.87, z}
             // 雪地区域
             } else if GetLocalPlayer()<PlayerJionGame>.CurrentRandomMap == "snow" {
                 if RandomInt(0,1) == 0 {
                     var x float = RandomFloat(10, 11)
                     var z float = RandomFloat(0, 12)
-                    return Vector3{x, 3.3, z}
+                    return Vector3{x, 2.8, z}
                 } else {
                     var x float = RandomFloat(-12, -11)
                     var z float = RandomFloat(-10, -2.5)
-                    return Vector3{x, 4.2, z}
+                    return Vector3{x, 3.3, z}
                 }
             // 拆迁大楼区域
             } else if GetLocalPlayer()<PlayerJionGame>.CurrentRandomMap == "ruins" {
                 var x float = RandomFloat(2.5, -3.5)
                 var z float = RandomFloat(-13.5, -12)
-                return Vector3{x, 2.3, z}
+                return Vector3{x, 1.76, z}
             }
         }else {
             // 森林区域
             if GetLocalPlayer()<PlayerJionGame>.CurrentRandomMap == "forest" {
                 var x = RandomFloat(-8, 8)
                 var z = RandomFloat(7, -7)
-                return Vector3{x, 0.5, z}
+                return Vector3{x, -0.003616458, z}
             // 雪地区域
             } else if GetLocalPlayer()<PlayerJionGame>.CurrentRandomMap == "snow" {
                 var x = RandomFloat(-7, 6.5)
                 var z = RandomFloat(-8.5, 11)
-                return Vector3{x, 0.5, z}
+                return Vector3{x, 0.1774065, z}
             // 拆迁大楼区域
             } else if GetLocalPlayer()<PlayerJionGame>.CurrentRandomMap == "ruins" {
                 var x = RandomFloat(-10, 8)
                 var z = RandomFloat(-10, 7)
-                return Vector3{x, -0.3, z}
+                return Vector3{x, 0.01, z}
             }
         }
     }
-  
     
     // 清理所有怪物（必需的基础方程）
     func ClearAllMonsters() {
@@ -968,14 +967,14 @@ static graph FC_PVEMonsterManager {
 
 
     async func myDestroyMonster(monster entity<LevelObject>) {
-        
-       // LogInfo("monster: " + monster)
+        LogInfo("11111111111111111" + monster)
         if monster != nil {
             //LogInfo("-------------------------Destroy Monster 3-------------------------")
             CreateFromPrefab(out var effect, EResPrefab.ElemationAsh)
             effect<Transform>.Position = monster<Transform>.Position - Vector3{0,0.3,0}
           
             Destroy(monster)
+            LogInfo("22222222222222222" + monster)
             WaitForMillisecond(1500)
             Destroy(effect)
         }

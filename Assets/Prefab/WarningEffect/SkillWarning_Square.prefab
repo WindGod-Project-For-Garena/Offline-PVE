@@ -1,5 +1,5 @@
 {
-  "_entityName": "SkillWaring_Circle (1)",
+  "_entityName": "SkillWarning_Square",
   "_tag": {
     "type": "Prefab"
   },
@@ -18,7 +18,10 @@
         "selfValue": true,
         "valueTag": "activeValue"
       },
-      "unlockedValue": null,
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
       "editorLockValue": false,
       "editorVisibleValue": true,
       "position": {
@@ -28,7 +31,7 @@
       },
       "scale": {
         "x": 10,
-        "y": 0.02,
+        "y": 0.00002,
         "z": 1.0000004768371582
       },
       "rotation": {
@@ -44,8 +47,7 @@
       "modelOptimization": 0,
       "streamingLayer": "",
       "attributes": [
-        2,
-        4
+        2
       ],
       "isTrigger": false,
       "collidable": true,
@@ -57,7 +59,7 @@
       "entityTagData": {
         "tagPointers": []
       },
-      "tempIndex": 133,
+      "tempIndex": 139,
       "itemID": 224,
       "seParent": null,
       "ecaScripts": [
@@ -112,4 +114,4 @@
   "editorVisibleValue": true,
   "discriminator": "ISceneLike"
 }
-//"{FE:{"v":"1.15.4008519","c":{"FF":5001},"s":100}
+//"{FE:{"v":"1.16.4187991","c":{"FF":5001},"s":100}
