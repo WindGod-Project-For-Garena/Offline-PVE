@@ -16,7 +16,7 @@ graph Trigger_ButherBossSlashEffect {
     }
 
     event OnPlayerEnter(player entity<Player>) {
-        LogInfo("Trigger_ButherBossSlashEffect OnTriggerEnter")
+        // LogInfo("Trigger_ButherBossSlashEffect OnTriggerEnter")
         start MobSkillHandler.skill_ButcherBoss_OnBallEffectHitPlayer(_damage,_effect,player)
         
     }

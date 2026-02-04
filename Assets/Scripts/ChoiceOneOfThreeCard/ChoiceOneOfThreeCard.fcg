@@ -123,7 +123,7 @@ graph ChoiceOneOfThreeCard {
       IsOver = true
       var currentSelectedCardIndex = SelectedCardIndex
       if currentSelectedCardIndex == 0 {
-         LogInfo("没有选择卡牌，无法开始下一波")
+         // LogInfo("没有选择卡牌，无法开始下一波")
          IsOver = false
          return
       }
@@ -133,7 +133,7 @@ graph ChoiceOneOfThreeCard {
       var currentRandomCards = CurrentRandomCards
       
       // 验证数据有效性
-      LogInfo(currentRandomCards)
+      // LogInfo(currentRandomCards)
       if List.Length(currentRandomCards) < 3 {
          LogError("卡牌数据无效，无法获取卡牌ID")
          IsOver = false
@@ -242,7 +242,7 @@ graph ChoiceOneOfThreeCard {
       
       // 获取已选卡牌总数
       var totalCards = List.Length(selectedCards)
-      LogInfo("已选卡牌总数: " + Convert.ToString(totalCards))
+      // LogInfo("已选卡牌总数: " + Convert.ToString(totalCards))
       
       // 只显示最近5张卡牌，计算要更新的位置
       var displayPosition = 0
@@ -301,7 +301,7 @@ graph ChoiceOneOfThreeCard {
          iconWidget<UIWidgetImage>.Color = rarityColor
          // 根据卡牌ID设置不同的图标
          // iconWidget<UIWidgetImage>.SetImage("CardIcon_" + Convert.ToString(cardId))
-         LogInfo("已更新位置 " + Convert.ToString(position) + " 的图标")
+         // LogInfo("已更新位置 " + Convert.ToString(position) + " 的图标")
       } else {
          LogError("找不到按钮控件: " + buttonPath)
       }
@@ -313,7 +313,7 @@ graph ChoiceOneOfThreeCard {
       var iconWidget = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, iconPath)
       if iconWidget != nil {
          iconWidget<UIWidget>.IsVisible = false
-         LogInfo("已清空位置 " + Convert.ToString(position) + " 的图标")
+         // LogInfo("已清空位置 " + Convert.ToString(position) + " 的图标")
       }
    }
 //————————————————————————————————————————————————————————————————————————————————————————————————//
@@ -436,10 +436,10 @@ graph ChoiceOneOfThreeCard {
             }
             if isDuplicate == false {
                List.Append(cards, newCard)
-               LogInfo("生成卡牌:" + Convert.ToString(newCard["CardID"]) + "-" + Convert.ToString(newCard["Nature"]))
+               // LogInfo("生成卡牌:" + Convert.ToString(newCard["CardID"]) + "-" + Convert.ToString(newCard["Nature"]))
             }
          } else {
-            LogInfo("技能" + Convert.ToString(currentSkill) + "的所有卡牌都已选择过")
+            // LogInfo("技能" + Convert.ToString(currentSkill) + "的所有卡牌都已选择过")
             break
          }
       }
@@ -584,11 +584,11 @@ graph ChoiceOneOfThreeCard {
    
    // 更新卡牌稀有度显示（根据稀有度显示不同的边框颜色）
    func UpdateCardRarityUI(cardIndex int, rarity int) {
-      LogInfo("更新卡牌稀有度显示: " + Convert.ToString(cardIndex) + " " + Convert.ToString(rarity))
+      // LogInfo("更新卡牌稀有度显示: " + Convert.ToString(cardIndex) + " " + Convert.ToString(rarity))
       var rarityPath = "/ChoiceThreeCardPanel/Card_" + Convert.ToString(cardIndex)
       var rarityWidget = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, rarityPath)
       var spriteName = FC_Config.CardRaritySprite[rarity]
-      LogInfo("EresourceSprite: " + Convert.ToString(spriteName))
+      // LogInfo("EresourceSprite: " + Convert.ToString(spriteName))
       if rarityWidget != nil {
          rarityWidget<UIWidgetButton>.SpriteResource = spriteName
       }
@@ -598,7 +598,7 @@ graph ChoiceOneOfThreeCard {
 //————————————————————————————————————————————————————————————————————————————————————————————————//
    // 更新UI显示选择的牌
    func updateHighlightUI(selectedCardIndex int) {
-      LogInfo("选择了第 " + Convert.ToString(selectedCardIndex) + " 张牌")
+      // LogInfo("选择了第 " + Convert.ToString(selectedCardIndex) + " 张牌")
       
       // 重置所有选择标记
       var card1BB = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/ChoiceThreeCardPanel/Card_1/IsChoice")
@@ -621,7 +621,7 @@ graph ChoiceOneOfThreeCard {
    
    // 更新已选卡牌列表数据等操作
    func OwnedCardIconClicked_SmallIcon(cardIndex int) {
-      LogInfo("点击位置: 第 " + Convert.ToString(cardIndex) + " 张卡牌")
+      // LogInfo("点击位置: 第 " + Convert.ToString(cardIndex) + " 张卡牌")
       
       var currentSkill = GetLocalPlayer()<PlayerJionGame>.CurrentSkill
       // 根据当前技能获取对应的已选卡牌列表
@@ -631,7 +631,7 @@ graph ChoiceOneOfThreeCard {
       } else if currentSkill == 2 {
          selectedCards = SelectedCards_2
       } else {
-         LogInfo("当前技能: 未知技能")
+         // LogInfo("当前技能: 未知技能")
          return
       }
       
@@ -639,8 +639,8 @@ graph ChoiceOneOfThreeCard {
       var totalCards = List.Length(selectedCards)
       var displayCount int = Round(Math.Min(totalCards, 5) as int)
       
-      LogInfo("已选卡牌总数: " + Convert.ToString(totalCards))
-      LogInfo("显示数量: " + Convert.ToString(displayCount))
+      // LogInfo("已选卡牌总数: " + Convert.ToString(totalCards))
+      // LogInfo("显示数量: " + Convert.ToString(displayCount))
       
       // 检查点击的位置是否有卡牌
       if cardIndex <= displayCount && cardIndex > 0 {
@@ -685,7 +685,7 @@ graph ChoiceOneOfThreeCard {
             LogInfo("未找到卡牌ID " + Convert.ToString(cardId) + " 的数据")
          }
       } else {
-         LogInfo("该位置没有卡牌（位置 " + Convert.ToString(cardIndex) + "）")
+         // LogInfo("该位置没有卡牌（位置 " + Convert.ToString(cardIndex) + "）")
          // 隐藏TextImage面板
          var TextImageEntity = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/NowChoicePanel/TextImage")
          TextImageEntity<UIWidget>.IsVisible = false
@@ -721,8 +721,8 @@ graph ChoiceOneOfThreeCard {
       
       if alreadySelected == false {
          List.Append(selectedCards, cardId)
-         LogInfo("卡牌" + Convert.ToString(cardId) + "已添加到已选列表，技能" + Convert.ToString(currentSkill))
-         LogInfo("当前已选卡牌数量:" + Convert.ToString(List.Length(selectedCards)))
+         // LogInfo("卡牌" + Convert.ToString(cardId) + "已添加到已选列表，技能" + Convert.ToString(currentSkill))
+         // LogInfo("当前已选卡牌数量:" + Convert.ToString(List.Length(selectedCards)))
       }
    }
    
@@ -741,10 +741,10 @@ graph ChoiceOneOfThreeCard {
          var nature = Convert.ToString(cardInfo["Nature"])
          var value = cardInfo["Value"] as float
          
-         LogInfo("应用卡牌效果 - 技能" + Convert.ToString(currentSkill) + 
-                 " ID:" + Convert.ToString(cardId) + 
-                 " 属性:" + nature + 
-                 " 数值:" + Convert.ToString(value))
+         // LogInfo("应用卡牌效果 - 技能" + Convert.ToString(currentSkill) + 
+         //         " ID:" + Convert.ToString(cardId) + 
+         //         " 属性:" + nature + 
+         //         " 数值:" + Convert.ToString(value))
          
          // 根据当前技能和属性应用效果
          GetLocalPlayer()<PlayerJionGame>.ApplySkillCardEffect(currentSkill, nature, value)
@@ -790,8 +790,8 @@ graph ChoiceOneOfThreeCard {
       
       var highestRarity = Math.Max(rarity1, Math.Max(rarity2, rarity3))
       
-      LogInfo("三张卡牌稀有度: " + Convert.ToString(rarity1) + ", " + Convert.ToString(rarity2) + ", " + Convert.ToString(rarity3))
-      LogInfo("最高稀有度: " + Convert.ToString(highestRarity))
+      // LogInfo("三张卡牌稀有度: " + Convert.ToString(rarity1) + ", " + Convert.ToString(rarity2) + ", " + Convert.ToString(rarity3))
+      // LogInfo("最高稀有度: " + Convert.ToString(highestRarity))
       
       // 找出所有最高稀有度的卡牌索引
       var bestCardIndices = List<int>{}
@@ -812,16 +812,16 @@ graph ChoiceOneOfThreeCard {
       if List.Length(bestCardIndices) == 1 {
          // 只有一张最高稀有度
          selectedIndex = bestCardIndices[0]
-         LogInfo("唯一最高稀有度，选择卡牌" + Convert.ToString(selectedIndex))
+         // LogInfo("唯一最高稀有度，选择卡牌" + Convert.ToString(selectedIndex))
       } else {
          // 多张相同最高稀有度，随机选一个
          var randomIndexInList = RandomInt(0, List.Length(bestCardIndices))
          selectedIndex = bestCardIndices[randomIndexInList]
-         LogInfo("多张相同最高稀有度，随机选择卡牌" + Convert.ToString(selectedIndex))
+         // LogInfo("多张相同最高稀有度，随机选择卡牌" + Convert.ToString(selectedIndex))
       }
       
       var selectedCardId = currentRandomCards[selectedIndex - 1]  // 减1因为数组从0开始
-      LogInfo("最终选择 - 位置:" + Convert.ToString(selectedIndex) + " ID:" + Convert.ToString(selectedCardId) + " 稀有度:" + Convert.ToString(highestRarity))
+      // LogInfo("最终选择 - 位置:" + Convert.ToString(selectedIndex) + " ID:" + Convert.ToString(selectedCardId) + " 稀有度:" + Convert.ToString(highestRarity))
       
       // 选择逻辑
       SelectCard(selectedCardId, currentSkill)
@@ -869,6 +869,6 @@ graph ChoiceOneOfThreeCard {
       GetLocalPlayer()<PlayerJionGame>.IsNextThreeChoiceOne = 0
       // 隐藏所有已选卡牌图标
       InitNowChoicePanelIcons()
-      LogInfo("已清空所有已选卡牌记录")
+      // LogInfo("已清空所有已选卡牌记录")
    }
 }

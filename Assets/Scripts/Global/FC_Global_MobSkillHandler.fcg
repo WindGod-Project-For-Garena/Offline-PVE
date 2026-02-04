@@ -354,7 +354,7 @@ static graph FC_Global_MobSkillHandler {
                 if (mob<Mob>.HP <= 0) {
                     return
                 }
-                LogInfo("i: " + i)
+                // LogInfo("i: " + i)
                 // var w = Math.Cos(angle/2)
                 // var y = Math.Sin(angle/2)
 
@@ -486,7 +486,7 @@ static graph FC_Global_MobSkillHandler {
             trigger<Trigger_ButherBossSlashEffect>._damage = damage
 
             var duration float= skillRange/speed*1000
-            LogInfo("duration: " + duration)
+            // LogInfo("duration: " + duration)
             // 创建移动tween
             CreateTween(
                 skillEffect,

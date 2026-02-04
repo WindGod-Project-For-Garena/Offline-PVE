@@ -7,6 +7,7 @@ import "../PVE/FC_PVEMonsterManager.fcg" as FC_PVEMonsterManager
 import "Math.fcc" as Math
 import "Items.fcc" as Items
 import "List.fcc" as List
+import "Hud.fcc" as Hud
 
 [platform_client]
 graph TouchItem {
@@ -35,23 +36,41 @@ graph TouchItem {
             // 武器伤害加成
             var value = 0.5
             GetLocalPlayer()<PlayerJionGame>.ApplyWeaponDamageBonus(player,value)
-            
+            SetIFMShowText("武器伤害+50%")
+            // SetIFMShowText(LocString{"SKILL_BOMBARD", List<string>{}})
+
         } else if iconResource == EResSprite.SkillDamage {
             // 技能伤害提升
             var value = 0.5
             GetLocalPlayer()<PlayerJionGame>.ApplySkillDamageBonus(player,value)
+            SetIFMShowText("技能伤害+50%")
+            // SetIFMShowText(LocString{"SKILL_SHOCK", List<string>{}})
 
         } else if iconResource == EResSprite.HP {
             // 生命值提升
             var value = 0.5
             GetLocalPlayer()<PlayerJionGame>.ApplyHealthBonus(player,value)
+            SetIFMShowText("生命值+50%")
+            // SetIFMShowText(LocString{"SKILL_BOMBARD", List<string>{}})
         }
+
         // 给玩家特效
         start GetLocalPlayer()<PlayerJionGame>.PickUpDropEffect(player,BuffColor)
+
+        // 拾取掉落物后刷新六小 Logo
+        start GetLocalPlayer()<PlayerJionGame>.RefreshAllIcons()
+        // 拾取掉落物后显示提示
+        start GetLocalPlayer()<PlayerJionGame>.SetIFMShowText()
+
         // 删除道具实体
         List.Remove(GetLocalPlayer()<PlayerJionGame>.DropItemList, ITEM)
         Destroy(ITEM)
-        // 拾取掉落物后刷新六小 Logo
-        GetLocalPlayer()<PlayerJionGame>.RefreshAllIcons()
+    }
+
+    func SetIFMShowText(text string) {
+        var IFMShow = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.DownSixLogoUI, "/TextBBImage/Text")
+        if IFMShow != nil {
+            IFMShow<UIWidgetLabel>.Content = text
+        }
     }
 }

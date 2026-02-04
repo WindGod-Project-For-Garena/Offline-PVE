@@ -115,7 +115,7 @@ graph SkillUI {
         if CurrentSkill == 1 {     
             // 燃烧伤害
             var SkillFireDamage int = Round(GetLocalPlayer()<PlayerJionGame>.Skill1DataInGame["SkillFireDamage"] as int)
-            LogInfo("燃烧伤害"+SkillFireDamage)
+            // LogInfo("燃烧伤害"+SkillFireDamage)
             // 技能数量
             var SkillAmount int = Round(GetLocalPlayer()<PlayerJionGame>.Skill1DataInGame["SkillAmount"] as int)
             // 技能释放立刻装弹
@@ -151,7 +151,7 @@ graph SkillUI {
             //————————————————————————————————————————————————//
             // 立刻装弹
             if ReloadNow == 1{
-                LogInfo("立刻装弹")
+                // LogInfo("立刻装弹")
                 // 更新玩家当前武器属性（使用局内数据）
                 GetLocalPlayer()<PlayerJionGame>.OnWeaponUpdate()
             }

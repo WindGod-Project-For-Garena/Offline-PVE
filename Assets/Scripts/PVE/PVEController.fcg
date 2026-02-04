@@ -77,7 +77,7 @@ static graph PVEController {
             return
         }
         
-        LogInfo("开始PVE游戏 - 关卡: " + level)
+        // LogInfo("开始PVE游戏 - 关卡: " + level)
         IsGameActive = true
         GameStartTime = globalEntity<Global>.GameTimeCount
         CurrentLevel = level
@@ -98,7 +98,7 @@ static graph PVEController {
         WaveStartTime = globalEntity<Global>.GameTimeCount
         IsCountdownActive = true
         
-        LogInfo("开始关卡 " + CurrentLevel + " 波次 " + wave + "，时间限制: " + WaveTimeLimit/1000 + "秒")
+        // LogInfo("开始关卡 " + CurrentLevel + " 波次 " + wave + "，时间限制: " + WaveTimeLimit/1000 + "秒")
         
         // 通知怪物管理器开始波次
         monsterManager.StartWave(wave)
@@ -197,7 +197,7 @@ static graph PVEController {
 
     // Boss波次存活检测
     async func BossWaveSurvivalCheck() {
-        LogInfo("开始玩家Boss波次存活检测")
+        // LogInfo("开始玩家Boss波次存活检测")
         
         // 记录当前波次
         var currentBossWave = CurrentWave
@@ -207,7 +207,7 @@ static graph PVEController {
             // 检查玩家是否存活
             var DeadOrAlive bool = CheckPlayersAlive()
             if DeadOrAlive == false {
-                LogInfo("Boss波次中玩家死亡")
+                // LogInfo("Boss波次中玩家死亡")
                 start OnGameOver()
                 return
             }
@@ -216,7 +216,7 @@ static graph PVEController {
             var hasAliveBoss = list.Length(monsterManager.ActiveBossMonsters) > 0
            // LogInfo("存活Boss数量: " + list.Length(monsterManager.ActiveBossMonsters))
             if !hasAliveBoss {
-                LogInfo("Boss已被击败")
+                // LogInfo("Boss已被击败")
                 OnBossDefeated()
                 return
             }
@@ -225,14 +225,14 @@ static graph PVEController {
             WaitForMillisecond(WaveCountdownInterval)
         }
         
-        LogInfo("Boss波次存活检测结束")
+        // LogInfo("Boss波次存活检测结束")
     }
 
 
 
     // Boss被击败后的处理
     async func OnBossDefeated() {
-        LogInfo("Boss被击败，进入下一波")
+        // LogInfo("Boss被击败，进入下一波")
         
         // 强制结束当前波次
         monsterManager.ForceEndWave()
@@ -387,7 +387,7 @@ static graph PVEController {
     
     // 游戏失败
     async func OnGameOver() {
-        LogInfo("PVE游戏失败！")
+        // LogInfo("PVE游戏失败！")
         IsGameSuccess = false
         EndPVEGame()
         // 停止所有buff并恢复伤害
@@ -415,7 +415,7 @@ static graph PVEController {
     
     // 游戏完成
     async func OnGameComplete() {
-        LogInfo("PVE游戏完成！")
+        // LogInfo("PVE游戏完成！")
         IsGameSuccess = true
         // 停止所有buff并恢复伤害
         start GetLocalPlayer()<PlayerJionGame>.StopAllBuffsAndReset()
@@ -438,7 +438,7 @@ static graph PVEController {
 
     // 结束PVE游戏
     func EndPVEGame() {
-        LogInfo("结束PVE游戏")
+        // LogInfo("结束PVE游戏")
         IsGameActive = false
         IsCountdownActive = false
 

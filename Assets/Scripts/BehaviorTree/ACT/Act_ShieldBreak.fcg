@@ -15,7 +15,6 @@ graph FC_Act_Death {
 	func PlayAction(Owner entity<BevTreeAttachableForClient>) BTreeNodeState {
 		if globalEntity<Global>.GameTimeCount >= _AnimationBeginTime + _Duration {
 			Owner<Mob>.StatusDic["InShieldBreak"] = false
-			LogInfo("Act_ShieldBreak Finish")
 			return BevTreeNodeStatus.Finish
 		}else{
 			return BevTreeNodeStatus.Running
@@ -25,7 +24,6 @@ graph FC_Act_Death {
 
 	//eventID: 42//s8004_dup_block
 	event OnNodeEnterForClient(NodeName string, Owner entity<BevTreeAttachableForClient>) {
-		LogInfo("OnNodeEnterForClient: Act_ShieldBreak")
 		PlayAnimation(Owner as entity<AnimationControllerAttachable>, "ShiledBreak", 1, LoopType.Once)
 		_AnimationBeginTime = globalEntity<Global>.GameTimeCount
 	}

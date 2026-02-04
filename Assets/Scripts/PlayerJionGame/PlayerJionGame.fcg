@@ -278,10 +278,10 @@ graph PlayerJionGame {
                 RankingListMap = ParseRankingList(DATA_RankingList)
             }
 
-            LogInfo("读取的天赋卡牌数量: " + ToString(Gifted_Card_Count))
-            LogInfo("读取的总抽卡次数: " + ToString(TotalDrawCount))
-            LogInfo("读取的金额: " + ToString(Money))
-            LogInfo("读取的排行榜数据: " + ToString(RankingList))
+            // LogInfo("读取的天赋卡牌数量: " + ToString(Gifted_Card_Count))
+            // LogInfo("读取的总抽卡次数: " + ToString(TotalDrawCount))
+            // LogInfo("读取的金额: " + ToString(Money))
+            // LogInfo("读取的排行榜数据: " + ToString(RankingList))
             
             CreateCustomUIClient(out var ChoiceHeroUIEntity, EResUI.ChoiceHero)
             ChoiceHeroUI = ChoiceHeroUIEntity 
@@ -357,6 +357,8 @@ graph PlayerJionGame {
             DownSixLogoUIEntity<CustomUI>.IsVisible = false
             var IFMLogoPanel = GetWidgetByPath(GetLocalPlayer(), DownSixLogoUI, "/SixLogoIFM")
             IFMLogoPanel<UIWidget>.IsVisible = false
+            var IFMShow = GetWidgetByPath(GetLocalPlayer(), DownSixLogoUI, "/TextBBImage")
+            IFMShow<UIWidget>.IsVisible = false
 
             var Skill_1Panel = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_1")
             Skill_1Panel<UIWidget>.IsVisible = false
@@ -452,8 +454,18 @@ graph PlayerJionGame {
         }
     }
 
+    async func SetIFMShowText() {
+        // 拾取掉落物后显示提示
+        var IFMShow = GetWidgetByPath(GetLocalPlayer(), DownSixLogoUI, "/TextBBImage")
+        IFMShow<UIWidget>.IsVisible = false
+        IFMShow<UIWidget>.IsVisible = true
+        // 显示1秒后隐藏
+        WaitForMillisecond(1000)
+        IFMShow<UIWidget>.IsVisible = false
+    }
+
     // 刷新全部 8 个卡位：Card1=被动技能，Card2/3=掉落物效果，Card2～8=已选卡牌（按效果数量前移）
-    func RefreshAllIcons() {
+    async func RefreshAllIcons() {
         GetCardDisplayParams(out var nSelected, out var nEffect, out var cardsStartSlot, out var maxCardSlots, out var displayCardCount)
         var choiceUI = ChoiceThreeCardUI
         var currentSkill = CurrentSkill
@@ -762,7 +774,7 @@ graph PlayerJionGame {
         // 更新按钮状态
         UpdateLevelDisplay()
         
-        LogInfo("主界面关卡显示已更新为: 第" + MaxLevel + "关")
+        // LogInfo("主界面关卡显示已更新为: 第" + MaxLevel + "关")
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
 // 选择完角色
@@ -810,7 +822,7 @@ graph PlayerJionGame {
         for key, value in Skill2Data {
             Skill2DataWithOuterBonus[key] = value
         }
-        LogInfo("局外天赋加成数据已初始化（复制基础数据）")
+        // LogInfo("局外天赋加成数据已初始化（复制基础数据）")
     }
 
     // 复制局外数据到局内数据
@@ -827,7 +839,7 @@ graph PlayerJionGame {
         for key, value in Skill2DataWithOuterBonus {
             Skill2DataInGame[key] = value
         }
-        LogInfo("局内数据已初始化（复制局外数据）")
+        // LogInfo("局内数据已初始化（复制局外数据）")
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     // 注入技能1的卡牌数据
@@ -940,7 +952,7 @@ graph PlayerJionGame {
                 finalSpeed = currentSpeed + (outerSpeed * value)
             }
             PlayerDataInGame["MoveSpeed"] = finalSpeed
-            LogInfo("局内移速: " + Convert.ToString(PlayerDataInGame["MoveSpeed"]))
+            // LogInfo("局内移速: " + Convert.ToString(PlayerDataInGame["MoveSpeed"]))
         }
         
         // 技能1专属属性
@@ -956,7 +968,7 @@ graph PlayerJionGame {
                     finalRange = currentRange + value
                 }
                 Skill1DataInGame["SkillRange"] = finalRange
-                LogInfo("技能1范围: " + Convert.ToString(Skill1DataInGame["SkillRange"]))
+                // LogInfo("技能1范围: " + Convert.ToString(Skill1DataInGame["SkillRange"]))
                 
             } else if attributeName == "SkillCD" {
                 // 爆裂轰炸冷却减少 - 百分比
@@ -980,7 +992,7 @@ graph PlayerJionGame {
                     Skill1DataInGame["SkillCD_Reduction"] = totalReduction
                 }
                 Skill1DataInGame["SkillCD"] = finalCD
-                LogInfo("技能1冷却: " + Convert.ToString(Skill1DataInGame["SkillCD"]))
+                // LogInfo("技能1冷却: " + Convert.ToString(Skill1DataInGame["SkillCD"]))
 
             } else if attributeName == "SkillDamage" {
                 // 爆裂轰炸伤害加成 - 百分比
@@ -994,7 +1006,7 @@ graph PlayerJionGame {
                     finalDamage = currentDamage + Round(outerDamage * value) as int
                 }
                 Skill1DataInGame["SkillDamage"] = finalDamage
-                LogInfo("技能1伤害: " + Convert.ToString(Skill1DataInGame["SkillDamage"]))
+                // LogInfo("技能1伤害: " + Convert.ToString(Skill1DataInGame["SkillDamage"]))
                 
             } else if attributeName == "SkillAmount" {
                 // 爆裂轰炸连续释放次数 - 固定值
@@ -1005,7 +1017,7 @@ graph PlayerJionGame {
                     finalAmount = Round(value) as int
                 }
                 Skill1DataInGame["SkillAmount"] = finalAmount
-                LogInfo("技能1释放次数: " + Convert.ToString(Skill1DataInGame["SkillAmount"]))
+                // LogInfo("技能1释放次数: " + Convert.ToString(Skill1DataInGame["SkillAmount"]))
                 
             } else if attributeName == "SkillFireDamage" {
                 // 爆裂轰炸燃烧伤害 - 百分比
@@ -1019,7 +1031,7 @@ graph PlayerJionGame {
                     finalFireDamage = currentFireDamage + Round(outerFireDamage * value) as int
                 }
                 Skill1DataInGame["SkillFireDamage"] = finalFireDamage
-                LogInfo("技能1燃烧伤害: " + Convert.ToString(Skill1DataInGame["SkillFireDamage"]))
+                // LogInfo("技能1燃烧伤害: " + Convert.ToString(Skill1DataInGame["SkillFireDamage"]))
                 
             } else if attributeName == "WeaponBoomRange" {
                 // 榴弹爆炸范围 - 固定值
@@ -1032,7 +1044,7 @@ graph PlayerJionGame {
                     finalBoomRange =  Round(currentBoomRange + value) as int
                 }
                 Skill1DataInGame["WeaponBoomRange"] = finalBoomRange
-                LogInfo("榴弹爆炸范围: " + Convert.ToString(Skill1DataInGame["WeaponBoomRange"]))
+                // LogInfo("榴弹爆炸范围: " + Convert.ToString(Skill1DataInGame["WeaponBoomRange"]))
                 
             } else if attributeName == "WeaponBoomProbability" {
                 // 普攻触发榴弹概率 - 固定值（百分比）
@@ -1045,7 +1057,7 @@ graph PlayerJionGame {
                     finalProbability = Math.Min(1.0, currentProbability + value) as int
                 }
                 Skill1DataInGame["WeaponBoomProbability"] = finalProbability
-                LogInfo("榴弹触发概率: " + Convert.ToString(Skill1DataInGame["WeaponBoomProbability"] as float * 100) + "%")
+                // LogInfo("榴弹触发概率: " + Convert.ToString(Skill1DataInGame["WeaponBoomProbability"] as float * 100) + "%")
                 
             } else if attributeName == "WeaponDoubleBoom" {
                 // 榴弹二次爆炸 - 固定值
@@ -1056,7 +1068,7 @@ graph PlayerJionGame {
                     finalDoubleBoom = Round(value) as int
                 }
                 Skill1DataInGame["WeaponDoubleBoom"] = finalDoubleBoom
-                LogInfo("榴弹二次爆炸: " + Convert.ToString(Skill1DataInGame["WeaponDoubleBoom"]))
+                // LogInfo("榴弹二次爆炸: " + Convert.ToString(Skill1DataInGame["WeaponDoubleBoom"]))
                 
             } else if attributeName == "WeaponBoomDamage" {
                 // 榴弹伤害加成 - 百分比
@@ -1070,12 +1082,12 @@ graph PlayerJionGame {
                     finalBoomDamage = currentBoomDamage + Round(outerBoomDamage * value) as int
                 }
                 Skill1DataInGame["WeaponBoomDamage"] = finalBoomDamage
-                LogInfo("榴弹伤害: " + Convert.ToString(Skill1DataInGame["WeaponBoomDamage"]))
+                // LogInfo("榴弹伤害: " + Convert.ToString(Skill1DataInGame["WeaponBoomDamage"]))
                 
             } else if attributeName == "ReloadNow" {
                 // 技能后立即装弹
                 Skill1DataInGame["ReloadNow"] = 1
-                LogInfo("获得技能后立即装弹效果")
+                // LogInfo("获得技能后立即装弹效果")
                 
             // 以下为武器相关属性更新==============================================================================//
             } else if attributeName == "WeaponDamage" {
@@ -1090,7 +1102,7 @@ graph PlayerJionGame {
                     finalDamage = currentDamage + Round(outerDamage * value) as int
                 }
                 Skill1DataInGame["WeaponDamage"] = finalDamage
-                LogInfo("局内武器伤害: " + Convert.ToString(Skill1DataInGame["WeaponDamage"]))
+                // LogInfo("局内武器伤害: " + Convert.ToString(Skill1DataInGame["WeaponDamage"]))
                 
             } else if attributeName == "AttackSpeed" {
                 // 攻击速度加成 - 百分比
@@ -1104,7 +1116,7 @@ graph PlayerJionGame {
                     finalSpeed = currentSpeed + (outerSpeed * value)
                 }
                 Skill1DataInGame["AttackSpeed"] = finalSpeed
-                LogInfo("攻击速度: " + Convert.ToString(Skill1DataInGame["AttackSpeed"]))
+                // LogInfo("攻击速度: " + Convert.ToString(Skill1DataInGame["AttackSpeed"]))
                 
             } else if attributeName == "ReloadSpeed" {
                 // 换弹速度加成（减少换弹时间）- 百分比
@@ -1127,7 +1139,7 @@ graph PlayerJionGame {
                     Skill1DataInGame["ReloadSpeed_Reduction"] = totalReduction
                 }
                 Skill1DataInGame["ReloadSpeed"] = finalSpeed
-                LogInfo("换弹速度: " + Convert.ToString(Skill1DataInGame["ReloadSpeed"]))
+                // LogInfo("换弹速度: " + Convert.ToString(Skill1DataInGame["ReloadSpeed"]))
 
             } else if attributeName == "WeaponMaxMagazine" {
                 // 弹匣容量加成 - 固定值
@@ -1140,7 +1152,7 @@ graph PlayerJionGame {
                     finalMagazine = currentMagazine + Round(value) as int
                 }
                 Skill1DataInGame["WeaponMaxMagazine"] = finalMagazine
-                LogInfo("弹匣容量: " + Convert.ToString(Skill1DataInGame["WeaponMaxMagazine"]))
+                // LogInfo("弹匣容量: " + Convert.ToString(Skill1DataInGame["WeaponMaxMagazine"]))
             }
             // 更新玩家技能一属性（使用局内数据）
             UpdateSkill1Data()
@@ -1159,7 +1171,7 @@ graph PlayerJionGame {
                     finalAmount = currentAmount + Round(value) as int
                 }
                 Skill2DataInGame["LightningAmount"] = finalAmount
-                LogInfo("闪电数量: " + Convert.ToString(Skill2DataInGame["LightningAmount"]))
+                // LogInfo("闪电数量: " + Convert.ToString(Skill2DataInGame["LightningAmount"]))
 
             } else if attributeName == "SkillAmount"{
                 // 闪电连续数量 - 固定值
@@ -1172,7 +1184,7 @@ graph PlayerJionGame {
                     finalAmount = currentAmount + Round(value) as int
                 }
                 Skill2DataInGame["SkillAmount"] = finalAmount
-                LogInfo("闪电连续数量: " + Convert.ToString(Skill2DataInGame["SkillAmount"]))
+                // LogInfo("闪电连续数量: " + Convert.ToString(Skill2DataInGame["SkillAmount"]))
                   
             } else if attributeName == "SkillCD" {
                 // 闪电冷却减少 - 百分比
@@ -1196,7 +1208,7 @@ graph PlayerJionGame {
                     Skill2DataInGame["SkillCD_Reduction"] = totalReduction
                 }
                 Skill2DataInGame["SkillCD"] = finalCD
-                LogInfo("技能2冷却: " + Convert.ToString(Skill2DataInGame["SkillCD"]))
+                // LogInfo("技能2冷却: " + Convert.ToString(Skill2DataInGame["SkillCD"]))
                 
             } else if attributeName == "SkillDamage" {
                 // 闪电伤害加成 - 百分比
@@ -1210,7 +1222,7 @@ graph PlayerJionGame {
                     finalDamage = currentDamage + Round(outerDamage * value) as int
                 }
                 Skill2DataInGame["SkillDamage"] = finalDamage
-                LogInfo("闪电伤害: " + Convert.ToString(Skill2DataInGame["SkillDamage"]))
+                // LogInfo("闪电伤害: " + Convert.ToString(Skill2DataInGame["SkillDamage"]))
                 
             } else if attributeName == "LightningRange"{
                 // 闪电爆炸范围 - 固定值
@@ -1223,7 +1235,7 @@ graph PlayerJionGame {
                     finalRange = currentRange + value
                 }
                 Skill2DataInGame["LightningRange"] = finalRange
-                LogInfo("闪电爆炸范围: " + Convert.ToString(Skill2DataInGame["LightningRange"]))
+                // LogInfo("闪电爆炸范围: " + Convert.ToString(Skill2DataInGame["LightningRange"]))
                 
             } else if attributeName == "LightningExplosion"{
                 // 闪电爆炸效果 - 固定值（百分比）
@@ -1249,7 +1261,7 @@ graph PlayerJionGame {
                     finalProbability = currentProbability + (value * 100) as float
                 }
                 Skill2DataInGame["WeaponLightningProb"] = Math.Min(100.0, finalProbability) as float
-                LogInfo("武器闪电触发概率: " + Convert.ToString(Skill2DataInGame["WeaponLightningProb"]) + "%")
+                // LogInfo("武器闪电触发概率: " + Convert.ToString(Skill2DataInGame["WeaponLightningProb"]) + "%")
                 
             } else if attributeName == "ReloadBuff" {
                 // 换弹后射速提升 - 百分比
@@ -1259,12 +1271,12 @@ graph PlayerJionGame {
                     finalBuff = outerBuff - value
                 }
                 Skill2DataInGame["ReloadBuff"] = finalBuff
-                LogInfo("换弹后射速提升: " + Convert.ToString(Skill2DataInGame["ReloadBuff"] as float * 100) + "%")  
+                // LogInfo("换弹后射速提升: " + Convert.ToString(Skill2DataInGame["ReloadBuff"] as float * 100) + "%")  
 
             } else if attributeName == "ReloadNow" {
                 // 技能后立即装弹
                 Skill2DataInGame["ReloadNow"] = 1
-                LogInfo("获得技能后立即装弹效果")
+                // LogInfo("获得技能后立即装弹效果")
 
             // 以下为武器相关属性更新==============================================================================//
             } else if attributeName == "WeaponDamage" {
@@ -1279,7 +1291,7 @@ graph PlayerJionGame {
                     finalDamage = currentDamage + Round(outerDamage * value) as int
                 }
                 Skill2DataInGame["WeaponDamage"] = finalDamage
-                LogInfo("局内武器伤害: " + Convert.ToString(Skill2DataInGame["WeaponDamage"]))
+                // LogInfo("局内武器伤害: " + Convert.ToString(Skill2DataInGame["WeaponDamage"]))
                 
             } else if attributeName == "AttackSpeed" {
                 // 攻击速度加成 - 百分比
@@ -1293,7 +1305,7 @@ graph PlayerJionGame {
                     finalSpeed = currentSpeed + (outerSpeed * value)
                 }
                 Skill2DataInGame["AttackSpeed"] = finalSpeed
-                LogInfo("攻击速度: " + Convert.ToString(Skill2DataInGame["AttackSpeed"]))
+                // LogInfo("攻击速度: " + Convert.ToString(Skill2DataInGame["AttackSpeed"]))
                 
             } else if attributeName == "ReloadSpeed" {
                 // 换弹速度加成（减少换弹时间）- 百分比
@@ -1316,7 +1328,7 @@ graph PlayerJionGame {
                     Skill2DataInGame["ReloadSpeed_Reduction"] = totalReduction
                 }
                 Skill2DataInGame["ReloadSpeed"] = finalSpeed
-                LogInfo("换弹速度: " + Convert.ToString(Skill2DataInGame["ReloadSpeed"]))
+                // LogInfo("换弹速度: " + Convert.ToString(Skill2DataInGame["ReloadSpeed"]))
 
             } else if attributeName == "WeaponMaxMagazine" {
                 // 弹匣容量加成 - 固定值
@@ -1329,7 +1341,7 @@ graph PlayerJionGame {
                     finalMagazine = currentMagazine + Round(value) as int
                 }
                 Skill2DataInGame["WeaponMaxMagazine"] = finalMagazine
-                LogInfo("弹匣容量: " + Convert.ToString(Skill2DataInGame["WeaponMaxMagazine"]))
+                // LogInfo("弹匣容量: " + Convert.ToString(Skill2DataInGame["WeaponMaxMagazine"]))
             }
             // 更新玩家技能二属性（使用局内数据）
             UpdateSkill2Data()
@@ -1413,7 +1425,7 @@ graph PlayerJionGame {
         var commonProb = config["CommonProb"] as float
         var rareProb = config["RareProb"] as float
         var epicProb = config["EpicProb"] as float
-        LogInfo("当前概率 - 普通:" + Convert.ToString(commonProb) + " 稀有:" + Convert.ToString(rareProb) + " 史诗:" + Convert.ToString(epicProb))
+        // LogInfo("当前概率 - 普通:" + Convert.ToString(commonProb) + " 稀有:" + Convert.ToString(rareProb) + " 史诗:" + Convert.ToString(epicProb))
         if randomValue < commonProb {
             return 1  // 普通
         } else if randomValue < commonProb + rareProb {
@@ -1522,7 +1534,7 @@ graph PlayerJionGame {
         // 设置新的数量
         Gifted_Card_Count[selectedCardId] = currentCount + 1
         DATA_Gifted_Card_Count = Gifted_Card_Count
-        LogInfo("DATA_Gifted_Card_Count: " + DATA_Gifted_Card_Count)
+        // LogInfo("DATA_Gifted_Card_Count: " + DATA_Gifted_Card_Count)
         
         // 更新总抽卡次数
         TotalDrawCount = TotalDrawCount + 1
@@ -1654,7 +1666,7 @@ graph PlayerJionGame {
 
     // 保存玩家货币数据
     func SAVE_DATA_Money(DATA_TotalIFM List<int>) {
-        LogInfo("开始玩家货币数据")
+        // LogInfo("开始玩家货币数据")
         var player_id UUID = currPlayer<Player>.UserUID
         // 当前抽取数量
         WriteToLocalDataStore("TotalIFM", player_id, TotalIFM_KEY, DATA_TotalIFM, "", out var status_code2)
@@ -1809,7 +1821,7 @@ graph PlayerJionGame {
             }
             skillDamageBonusWidget<UIWidgetLabel>.Content = "+"+Convert.ToString(Math.Round(skillDamageBonus)) + "%"
         }
-        LogInfo("天赋卡牌加成百分比已更新到UI")
+        // LogInfo("天赋卡牌加成百分比已更新到UI")
     }
 
     // 获取卡牌最大抽取次数
@@ -1826,7 +1838,7 @@ graph PlayerJionGame {
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     // 保存天赋卡牌数据（写入前规范：没有的用 0 表示，与 LocalNormalTable 存储格式一致，避免报错）
     func SAVE_DATA_Gifted(DATA_Gifted_Card_Count List<int> , DATA_TotalIFM List<int>) {
-        LogInfo("开始保存天赋卡牌数据")
+        // LogInfo("开始保存天赋卡牌数据")
         var player_id UUID = currPlayer<Player>.UserUID
         var normalizedList = List.New(0, List.Length(DATA_Gifted_Card_Count))
         for i = 0, List.Length(DATA_Gifted_Card_Count), 1 {
@@ -1849,7 +1861,7 @@ graph PlayerJionGame {
         var nature = Convert.ToString(cardInfo["Nature"])
         var value = cardInfo["Value"] as float
         
-        LogInfo("应用天赋卡牌效果: " + nature + " 值: " + Convert.ToString(value))
+        // LogInfo("应用天赋卡牌效果: " + nature + " 值: " + Convert.ToString(value))
         
         // 局外天赋加成：基于原始基础数据计算
         if nature == "HP" {
@@ -1862,7 +1874,7 @@ graph PlayerJionGame {
                 currentOuterHP = baseHP
             }
             PlayerDataWithOuterBonus["HP"] = currentOuterHP + value as int
-            LogInfo("局外HP: 基础" + Convert.ToString(baseHP) + " + " + Convert.ToString(value) + " = " + Convert.ToString(PlayerDataWithOuterBonus["HP"]))
+            // LogInfo("局外HP: 基础" + Convert.ToString(baseHP) + " + " + Convert.ToString(value) + " = " + Convert.ToString(PlayerDataWithOuterBonus["HP"]))
         
         } else if nature == "MoveSpeed" {
             // 移速：百分比加成
@@ -1873,7 +1885,7 @@ graph PlayerJionGame {
             }
             PlayerDataWithOuterBonus["MoveSpeed_Multiplier"] = currentMultiplier + value
             PlayerDataWithOuterBonus["MoveSpeed"] = baseSpeed * PlayerDataWithOuterBonus["MoveSpeed_Multiplier"] as float
-            LogInfo("局外移速: 基础" + Convert.ToString(baseSpeed) + " × " + Convert.ToString(PlayerDataWithOuterBonus["MoveSpeed_Multiplier"]) + " = " + Convert.ToString(PlayerDataWithOuterBonus["MoveSpeed"]))
+            // LogInfo("局外移速: 基础" + Convert.ToString(baseSpeed) + " × " + Convert.ToString(PlayerDataWithOuterBonus["MoveSpeed_Multiplier"]) + " = " + Convert.ToString(PlayerDataWithOuterBonus["MoveSpeed"]))
 
         } else if nature == "WeaponDamage" {
             // 武器伤害：百分比加成
@@ -1887,7 +1899,7 @@ graph PlayerJionGame {
             }
             Skill1DataWithOuterBonus["WeaponDamage_Multiplier"] = currentMultiplier + value
             Skill1DataWithOuterBonus["WeaponDamage"] = Round(baseDamage1 * Skill1DataWithOuterBonus["WeaponDamage_Multiplier"] as float) as int
-            LogInfo("局外武器1伤害: 基础" + Convert.ToString(baseDamage1) + " × " + Convert.ToString(Skill1DataWithOuterBonus["WeaponDamage_Multiplier"]) + " = " + Convert.ToString(Skill1DataWithOuterBonus["WeaponDamage"]))
+            // LogInfo("局外武器1伤害: 基础" + Convert.ToString(baseDamage1) + " × " + Convert.ToString(Skill1DataWithOuterBonus["WeaponDamage_Multiplier"]) + " = " + Convert.ToString(Skill1DataWithOuterBonus["WeaponDamage"]))
 
             // 技能2
             if Skill2DataWithOuterBonus["WeaponDamage_Multiplier"] != nil {
@@ -1895,7 +1907,7 @@ graph PlayerJionGame {
             }
             Skill2DataWithOuterBonus["WeaponDamage_Multiplier"] = currentMultiplier + value
             Skill2DataWithOuterBonus["WeaponDamage"] = Round(baseDamage2 * Skill2DataWithOuterBonus["WeaponDamage_Multiplier"] as float) as int
-            LogInfo("局外武器2伤害: 基础" + Convert.ToString(baseDamage2) + " × " + Convert.ToString(Skill2DataWithOuterBonus["WeaponDamage_Multiplier"]) + " = " + Convert.ToString(Skill2DataWithOuterBonus["WeaponDamage"]))
+            // LogInfo("局外武器2伤害: 基础" + Convert.ToString(baseDamage2) + " × " + Convert.ToString(Skill2DataWithOuterBonus["WeaponDamage_Multiplier"]) + " = " + Convert.ToString(Skill2DataWithOuterBonus["WeaponDamage"]))
 
         } else if nature == "SkillDamage" {
             // 技能伤害：同时影响技能1和技能2
@@ -1909,7 +1921,7 @@ graph PlayerJionGame {
             }
             Skill1DataWithOuterBonus["SkillDamage_Multiplier"] = currentMultiplier1 + value
             Skill1DataWithOuterBonus["SkillDamage"] = Round(baseSkill1Damage * Skill1DataWithOuterBonus["SkillDamage_Multiplier"] as float) as int
-            LogInfo("局外技能伤害: 技能1 基础" + Convert.ToString(baseSkill1Damage) + " × " + Convert.ToString(Skill1DataWithOuterBonus["SkillDamage_Multiplier"]) + " = " + Convert.ToString(Skill1DataWithOuterBonus["SkillDamage"]))
+            // LogInfo("局外技能伤害: 技能1 基础" + Convert.ToString(baseSkill1Damage) + " × " + Convert.ToString(Skill1DataWithOuterBonus["SkillDamage_Multiplier"]) + " = " + Convert.ToString(Skill1DataWithOuterBonus["SkillDamage"]))
             
             // 技能2
             var currentMultiplier2 = 1.0
@@ -1918,7 +1930,7 @@ graph PlayerJionGame {
             }
             Skill2DataWithOuterBonus["SkillDamage_Multiplier"] = currentMultiplier2 + value
             Skill2DataWithOuterBonus["SkillDamage"] = Round(baseSkill2Damage * Skill2DataWithOuterBonus["SkillDamage_Multiplier"] as float) as int
-            LogInfo("局外技能伤害: 技能2 基础" + Convert.ToString(baseSkill2Damage) + " × " + Convert.ToString(Skill2DataWithOuterBonus["SkillDamage_Multiplier"]) + " = " + Convert.ToString(Skill2DataWithOuterBonus["SkillDamage"]))
+            // LogInfo("局外技能伤害: 技能2 基础" + Convert.ToString(baseSkill2Damage) + " × " + Convert.ToString(Skill2DataWithOuterBonus["SkillDamage_Multiplier"]) + " = " + Convert.ToString(Skill2DataWithOuterBonus["SkillDamage"]))
         }
         
         // 将局外数据复制到局内数据（开始游戏时）
@@ -1938,7 +1950,7 @@ graph PlayerJionGame {
     // 更新技能1数据
     func UpdateSkill1Data() {
         if CurrentSkill == 1 {
-            LogInfo(currentWeapon)
+            // LogInfo(currentWeapon)
             //设置武器伤害
             var weaponDamage = Round(Skill1DataInGame["WeaponDamage"] as int)
             currentWeapon<Weapon>.Damage = weaponDamage
@@ -1957,7 +1969,7 @@ graph PlayerJionGame {
     // 更新技能2数据
     func UpdateSkill2Data() {
         if CurrentSkill == 2 {
-            LogInfo(currentWeapon)
+            // LogInfo(currentWeapon)
             //设置武器伤害
             var weaponDamage = Round(Skill2DataInGame["WeaponDamage"] as int)
             currentWeapon<Weapon>.Damage = weaponDamage
@@ -2002,7 +2014,7 @@ graph PlayerJionGame {
         SaveRankingListToStorage()
         // 保存天赋卡牌与 TotalIFM
         SAVE_DATA_Gifted(DATA_Gifted_Card_Count, DATA_TotalIFM)
-        LogInfo("玩家退出，所有数据存储已保存")
+        // LogInfo("玩家退出，所有数据存储已保存")
     }
 
     // DEbug的初始化
@@ -2028,22 +2040,22 @@ graph PlayerJionGame {
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     // 显示当前所有属性
     func ShowAllAttributes() {
-        LogInfo("=== 当前所有属性 ===")
-        LogInfo("--- 玩家基础属性 ---")
+        // LogInfo("=== 当前所有属性 ===")
+        // LogInfo("--- 玩家基础属性 ---")
         for key, value in PlayerData {
-            LogInfo(key + ": " + Convert.ToString(value))
+            // LogInfo(key + ": " + Convert.ToString(value))
         }
         
-        LogInfo("--- 技能1属性 ---")
+        // LogInfo("--- 技能1属性 ---")
         for key, value in Skill1Data {
-            LogInfo(key + ": " + Convert.ToString(value))
+            // LogInfo(key + ": " + Convert.ToString(value))
         }
         
-        LogInfo("--- 技能2属性 ---")
+        // LogInfo("--- 技能2属性 ---")
         for key, value in Skill2Data {
-            LogInfo(key + ": " + Convert.ToString(value))
+            // LogInfo(key + ": " + Convert.ToString(value))
         }
-        LogInfo("==================")
+        // LogInfo("==================")
     }
 
     // 更新天赋卡牌UI显示
@@ -2337,7 +2349,7 @@ graph PlayerJionGame {
                 }
             }
         }
-        LogInfo("所有牌效果应用完成")
+        // LogInfo("所有牌效果应用完成")
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
 //—————————————————————————————————————————————————以下为职业卡牌图鉴的数据————————————————————————————————————————————————————//
@@ -2483,7 +2495,7 @@ graph PlayerJionGame {
         }
         
         // 游戏结束前刷新六小 logo 再关闭
-        RefreshAllIcons()
+        start RefreshAllIcons()
         CloseDownSixLogo()
 
         //  通關顯示
@@ -2680,7 +2692,7 @@ graph PlayerJionGame {
     async func BuffTimerLoop() {
         // 如果已经在运行，直接返回
         if buffTimerRunning {
-            LogInfo("Buff计时器已在运行中")
+            // LogInfo("Buff计时器已在运行中")
             return
         }
         
@@ -2696,7 +2708,7 @@ graph PlayerJionGame {
                 hasActiveBuff = true
                 if weaponBuffTimer <= 0 {
                     weaponBuffTimerActive = false
-                    LogInfo("武器伤害buff已过期")
+                    // LogInfo("武器伤害buff已过期")
                     start RemoveWeaponDamageBonus()
                     RefreshAllIcons()
                 }
@@ -2708,7 +2720,7 @@ graph PlayerJionGame {
                 hasActiveBuff = true
                 if skillBuffTimer <= 0 {
                     skillBuffTimerActive = false
-                    LogInfo("技能伤害buff已过期")
+                    // LogInfo("技能伤害buff已过期")
                     start RemoveSkillDamageBonus()
                     RefreshAllIcons()
                 }
@@ -2717,12 +2729,12 @@ graph PlayerJionGame {
             // 如果没有任何活动的buff，退出循环
             if !hasActiveBuff {
                 buffTimerRunning = false
-                LogInfo("所有buff已过期，停止计时器")
+                // LogInfo("所有buff已过期，停止计时器")
                 RefreshAllIcons()
                 break
             }
             
-            LogInfo("武器伤害buff剩余时间: " + weaponBuffTimer + "，技能伤害buff剩余时间: " + skillBuffTimer)
+            // LogInfo("武器伤害buff剩余时间: " + weaponBuffTimer + "，技能伤害buff剩余时间: " + skillBuffTimer)
             // 等待1秒
             WaitForMillisecond(1000)
         }
@@ -2730,7 +2742,7 @@ graph PlayerJionGame {
 
     // 停止所有计时器并恢复伤害
     async func StopAllBuffsAndReset() {
-         LogInfo("停止所有buff并恢复伤害")
+         // LogInfo("停止所有buff并恢复伤害")
     
         // 立即恢复所有伤害
         if weaponBuffTimerActive {
@@ -2771,7 +2783,7 @@ graph PlayerJionGame {
         if !buffTimerRunning {
             start BuffTimerLoop()
         }
-        LogInfo("武器伤害buff激活，持续10秒")
+        // LogInfo("武器伤害buff激活，持续10秒")
     }
 
     // 删除所有掉落道具
@@ -2866,7 +2878,7 @@ graph PlayerJionGame {
         // 生命值提升 - 瞬间回血百分比
         var finalHealth = 0
         var currentHealth = currPlayer<Player>.HP as int
-        finalHealth = currentHealth + Round(currentHealth * value) as int
+        finalHealth = currentHealth + Round(finalHealth * value) as int
         if finalHealth > currPlayer<Player>.MaxHP {
             finalHealth = currPlayer<Player>.MaxHP
         }
@@ -2893,14 +2905,14 @@ graph PlayerJionGame {
             if tempOriginalSkill1Damage > 0 {
                 // 恢复到保存的原始值
                 Skill1DataInGame["SkillDamage"] = tempOriginalSkill1Damage
-                LogInfo("技能1伤害恢复为: " + Convert.ToString(tempOriginalSkill1Damage))
+                // LogInfo("技能1伤害恢复为: " + Convert.ToString(tempOriginalSkill1Damage))
                 tempOriginalSkill1Damage = 0  // 重置以备下次使用
             }
         } else if CurrentSkill == 2 {
             if tempOriginalSkill2Damage > 0 {
                 // 恢复到保存的原始值
                 Skill2DataInGame["SkillDamage"] = tempOriginalSkill2Damage
-                LogInfo("技能2伤害恢复为: " + Convert.ToString(tempOriginalSkill2Damage))
+                // LogInfo("技能2伤害恢复为: " + Convert.ToString(tempOriginalSkill2Damage))
                 tempOriginalSkill2Damage = 0  // 重置以备下次使用
             }
         }
@@ -2958,7 +2970,7 @@ graph PlayerJionGame {
     // 重置数据
     func ResetInGameData() {
         CopyToInGameData()
-        LogInfo("局内数据已重置为局外天赋加成数据")
+        // LogInfo("局内数据已重置为局外天赋加成数据")
     }
 
     async func displaySkillByIndex(index int) {
@@ -2971,7 +2983,7 @@ graph PlayerJionGame {
         }
         WaitForNextFrame()
         // 显示当前选中的技能
-        LogInfo("显示技能面板索引: " + Convert.ToString(index))
+        // LogInfo("显示技能面板索引: " + Convert.ToString(index))
         var skillJoyStik = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_" + index)
         var joyStickAmount = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_" + index + "/JoyStickFillAmount")
         skillJoyStik<UIWidget>.IsVisible = true
@@ -3025,7 +3037,7 @@ graph PlayerJionGame {
 
     func ShowDownSixLogo() {
         DownSixLogoUI<CustomUI>.IsVisible = true
-        RefreshAllIcons()
+        start RefreshAllIcons()
     }
 
     func CloseDownSixLogo() {
@@ -3072,7 +3084,7 @@ graph PlayerJionGame {
     // 初始化排行榜
     func InitRankingList() {
         List.Clear(RankingList)
-        LogInfo("排行榜数据已初始化")
+        // LogInfo("排行榜数据已初始化")
     }
 
     // 设置当前角色名称（在选择角色时调用）
@@ -3082,7 +3094,7 @@ graph PlayerJionGame {
         } else if skillIndex == 2 {
             CurrentHeroName = "风暴游击手"
         }
-        LogInfo("当前使用角色: " + CurrentHeroName)
+        // LogInfo("当前使用角色: " + CurrentHeroName)
     }
 
     // 游戏胜利时处理排行榜
@@ -3096,7 +3108,7 @@ graph PlayerJionGame {
         var BossKillTime = BossliveTime / 1000  // 转换为秒
         var bossKillTimeStr string = PVEController.FormatTimeMMSS(BossKillTime)
         
-        LogInfo("游戏胜利: 关卡" + FC_PVEMonsterManager.CurrentLevel + ", 时间" + bossKillTimeStr + ", 角色" + CurrentHeroName)
+        // LogInfo("游戏胜利: 关卡" + FC_PVEMonsterManager.CurrentLevel + ", 时间" + bossKillTimeStr + ", 角色" + CurrentHeroName)
         
         // 尝试添加到排行榜
         TryAddToRankingList(FC_PVEMonsterManager.CurrentLevel, bossKillTimeStr, CurrentHeroName, BossKillTime)
@@ -3116,7 +3128,7 @@ graph PlayerJionGame {
         
         // 检查是否需要添加
         if !ShouldAddToRanking(newRecord) {
-            LogInfo("记录未达到排行榜要求，不添加")
+            // LogInfo("记录未达到排行榜要求，不添加")
             return false
         }
         
@@ -3126,7 +3138,7 @@ graph PlayerJionGame {
         // 更新最高记录
         UpdateHighestRecords(level, BossKillTime)
         
-        LogInfo("成功添加到排行榜")
+        // LogInfo("成功添加到排行榜")
         return true
     }
 
@@ -3203,7 +3215,7 @@ graph PlayerJionGame {
             List.RemoveAt(RankingListMap, MaxRankingEntries)
         }
         
-        LogInfo("当前排行榜记录数: " + List.Length(RankingListMap))
+        // LogInfo("当前排行榜记录数: " + List.Length(RankingListMap))
     }
 
     // 更新最高记录
@@ -3212,17 +3224,17 @@ graph PlayerJionGame {
         if level > HighestLevel {
             HighestLevel = level
             FastestTime = BossKillTime  // 新关卡的最快时间
-            LogInfo("更新最高关卡: " + HighestLevel)
+            // LogInfo("更新最高关卡: " + HighestLevel)
         // 如果是同一关卡且时间更短，更新最快时间
         } else if level == HighestLevel && (FastestTime == 0 || BossKillTime < FastestTime) {
             FastestTime = BossKillTime
-            LogInfo("更新最快通关时间: " + FastestTime + "秒")
+            // LogInfo("更新最快通关时间: " + FastestTime + "秒")
         }
     }
 
     // 保存排行榜到本地存储
     func SaveRankingListToStorage() {
-        LogInfo("开始保存排行榜数据，共" + List.Length(RankingListMap) + "条记录")
+        // LogInfo("开始保存排行榜数据，共" + List.Length(RankingListMap) + "条记录")
         var player_id UUID = currPlayer<Player>.UserUID
         
         // 序列化排行榜数据
@@ -3230,7 +3242,7 @@ graph PlayerJionGame {
         
         // 保存序列化的string列表
         WriteToLocalDataStore("RankingList", player_id, RankingList_KEY, DATA_RankingList, "", out var status_code1)
-        LogInfo("数据存储完成，状态码: " + ToString(status_code1))
+        // LogInfo("数据存储完成，状态码: " + ToString(status_code1))
     }
 
     // 从已加载的排行榜数据中更新最高记录
@@ -3244,7 +3256,7 @@ graph PlayerJionGame {
             if bestRecord["ClearTime"] != nil {
                 FastestTime = bestRecord["ClearTime"] as int
             }
-            LogInfo("从排行榜加载最高记录: 关卡" + HighestLevel + ", 时间" + FastestTime + "秒")
+            // LogInfo("从排行榜加载最高记录: 关卡" + HighestLevel + ", 时间" + FastestTime + "秒")
         }
     }
 
@@ -3253,7 +3265,7 @@ graph PlayerJionGame {
     func ShowRankingListUI() {
         // 显示排行榜UI
         RankingListUI<CustomUI>.IsVisible = true
-        LogInfo("显示排行榜UI")
+        // LogInfo("显示排行榜UI")
         
         // 更新排行榜数据显示
         UpdateRankingListDisplay()
@@ -3264,7 +3276,7 @@ graph PlayerJionGame {
         // 获取排行榜数据
         var rankingData = RankingListMap
         var dataCount = List.Length(rankingData)
-        LogInfo("开始更新排行榜显示，共" + dataCount + "条记录")
+        // LogInfo("开始更新排行榜显示，共" + dataCount + "条记录")
         
         // 如果没有数据，显示空状态
         if dataCount == 0 {
@@ -3292,7 +3304,7 @@ graph PlayerJionGame {
             HideRankingEntry(i + 1)
         }
         
-        LogInfo("排行榜显示更新完成，显示了" + displayCount + "条记录")
+        // LogInfo("排行榜显示更新完成，显示了" + displayCount + "条记录")
     }
 
     // 更新单个排名条目显示
@@ -3359,7 +3371,7 @@ graph PlayerJionGame {
         var timePath = "/RankPanel/TitleBoard/IFMPanel/IFMPanelBB/LevelAmountIFM/TitleIFM/Part2/RollPanel" + rankSuffix + "/Time"
         var timeText = GetWidgetByPath(GetLocalPlayer(), RankingListUI, timePath)
         timeText<UIWidgetLabel>.Content = bossKillTime
-        LogInfo("排名" + rank + "更新: 关卡" + level + ", 角色" + heroName + ", 时间" + bossKillTime)
+        // LogInfo("排名" + rank + "更新: 关卡" + level + ", 角色" + heroName + ", 时间" + bossKillTime)
     }
 
     // 隐藏排名条目
@@ -3396,7 +3408,7 @@ graph PlayerJionGame {
 
     // 更新空排行榜显示
     func UpdateEmptyRankingDisplay() {
-        LogInfo("排行榜无数据，显示空状态")
+        // LogInfo("排行榜无数据，显示空状态")
         var Part2 = GetWidgetByPath(GetLocalPlayer(), RankingListUI, "/RankPanel/TitleBoard/IFMPanel/IFMPanelBB/LevelAmountIFM/TitleIFM/Part2")
         var Part3 = GetWidgetByPath(GetLocalPlayer(), RankingListUI, "/RankPanel/TitleBoard/IFMPanel/IFMPanelBB/LevelAmountIFM/TitleIFM/Part3")
         Part2<UIWidget>.IsVisible = false

@@ -175,7 +175,7 @@ static graph FC_PVEMonsterManager {
     // 开始新的波次：波次 1–4 用 LevelConfig（MonsterCup）；波次 5 固定为 Boss 波（按当前场景生成 Boss）
     func StartWave(wave int) {
         CurrentWave = wave
-        LogInfo("开始关卡 " + CurrentLevel + " 波次 " + wave)
+        // LogInfo("开始关卡 " + CurrentLevel + " 波次 " + wave)
         if wave == 5 {
             StartWaveBossOnly()
             return
@@ -303,7 +303,7 @@ static graph FC_PVEMonsterManager {
         start SpawnBossLoop(bossQueue, currSpawnerIndex)
         start SpawnEliteLoop(eliteQueue, currSpawnerIndex)
         start SpawnNormalLoop(normalQueue, currSpawnerIndex)
-        LogInfo("波次怪物生成循环已启动")
+        // LogInfo("波次怪物生成循环已启动")
     }
 
     async func SpawnBossLoop(bossQueue List<Map<string, object>>, spawnerIndex int) {
@@ -548,7 +548,7 @@ static graph FC_PVEMonsterManager {
         }
 
         if monster<Mob>.MobName == "ShieldZombie_Gold" {
-            LogInfo("ShieldZombie_Gold特殊处理")
+            // LogInfo("ShieldZombie_Gold特殊处理")
             monster<Mob>.StatusDic["IsShield"] = true
             monster<Transform>.Scale = Vector3{2, 2, 2}
             monster<Mob>.StatusDic["ShieldHP"] = math.Ceil(0.5*monster<Mob>.MaxHP)
@@ -585,7 +585,7 @@ static graph FC_PVEMonsterManager {
 
     // 给精英怪头上带标记
     async func ProcessEliteMonster(monster entity<LevelObject>) {
-        LogInfo("给精英怪添加标记")
+        // LogInfo("给精英怪添加标记")
         var monsterPos = monster<Transform>.Position
         CreateFromPrefab(out var MarkEntity, EResPrefab.Mark)
         MarkEntity<Transform>.Position = monsterPos + Vector3{0, 2, 0}
@@ -593,7 +593,7 @@ static graph FC_PVEMonsterManager {
     }
 
     async func StartRecordBossLiveTime(monster entity<LevelObject>) {
-        LogInfo("开始记录Boss存活时间")
+        // LogInfo("开始记录Boss存活时间")
         BossliveTime = 0
         while monster != nil && monster<Mob>.HP > 0 {
             WaitForMillisecond(1000)
@@ -610,12 +610,12 @@ static graph FC_PVEMonsterManager {
                 // 解锁下一关
                 GetLocalPlayer()<PlayerJionGame>.MaxLevel = GetLocalPlayer()<PlayerJionGame>.MaxLevel + 1
                 GetLocalPlayer()<PlayerJionGame>.SaveLevel()
-                LogInfo("击败最高关卡BOSS，解锁新关卡: " + GetLocalPlayer()<PlayerJionGame>.MaxLevel)
+                // LogInfo("击败最高关卡BOSS，解锁新关卡: " + GetLocalPlayer()<PlayerJionGame>.MaxLevel)
                 
                 // 更新主界面的关卡显示
                 GetLocalPlayer()<PlayerJionGame>.UpdateHomeLevelDisplay()
             } else {
-                LogInfo("击败已通关关卡BOSS，不更新最高关卡。当前关卡:" + CurrentLevel + "，最高关卡:" + currentHighestLevel)
+                // LogInfo("击败已通关关卡BOSS，不更新最高关卡。当前关卡:" + CurrentLevel + "，最高关卡:" + currentHighestLevel)
             }
         }
     }
@@ -668,7 +668,7 @@ static graph FC_PVEMonsterManager {
     
     // 清理所有怪物（必需的基础方程）
     func ClearAllMonsters() {
-        LogInfo("清理所有怪物")
+        // LogInfo("清理所有怪物")
         
         // 停止生成
         IsWaveActive = false
@@ -700,7 +700,7 @@ static graph FC_PVEMonsterManager {
         // 重置状态
         GetLocalPlayer()<PlayerJionGame>.KillCount = 0
         
-        LogInfo("所有怪物已清理，状态已重置")
+        // LogInfo("所有怪物已清理，状态已重置")
     }
     
     // 获取活跃怪物数量
@@ -717,7 +717,7 @@ static graph FC_PVEMonsterManager {
     
     // 强制结束当前波次（必需的基础方程）
     func ForceEndWave() {
-        LogInfo("强制结束当前波次")
+        // LogInfo("强制结束当前波次")
         ClearAllMonsters()
     }
     
@@ -824,7 +824,7 @@ static graph FC_PVEMonsterManager {
         // 设置光效颜色
         var light = GetChildren(MiaomiaoToolEntity)
         light[0]<Icon>.Color = BuffColor
-        LogInfo("掉落道具-" + itemTypeName)
+        // LogInfo("掉落道具-" + itemTypeName)
         
         if MiaomiaoToolEntity != nil {
             // 设置初始位置
@@ -962,19 +962,17 @@ static graph FC_PVEMonsterManager {
     // 设置普通怪物生成CD
     func SetNormalSpawnCD(cd int) {
         NormalSpawnCD = cd
-        LogInfo("普通怪物生成CD设置为: " + cd + "毫秒")
+        // LogInfo("普通怪物生成CD设置为: " + cd + "毫秒")
     }
 
 
     async func myDestroyMonster(monster entity<LevelObject>) {
-        LogInfo("11111111111111111" + monster)
         if monster != nil {
             //LogInfo("-------------------------Destroy Monster 3-------------------------")
             CreateFromPrefab(out var effect, EResPrefab.ElemationAsh)
             effect<Transform>.Position = monster<Transform>.Position - Vector3{0,0.3,0}
           
             Destroy(monster)
-            LogInfo("22222222222222222" + monster)
             WaitForMillisecond(1500)
             Destroy(effect)
         }

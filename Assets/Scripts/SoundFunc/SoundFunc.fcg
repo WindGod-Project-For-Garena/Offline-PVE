@@ -54,7 +54,7 @@ static graph SoundFunc {
     func CreateTheSound(soundName string) {
         var sound = GlobalSoundMap[soundName]
         if sound != nil {
-            LogInfo("CreateSound: " + soundName)
+            // LogInfo("CreateSound: " + soundName)
             
             // 判断是否是背景音乐
             var isBGM = false
