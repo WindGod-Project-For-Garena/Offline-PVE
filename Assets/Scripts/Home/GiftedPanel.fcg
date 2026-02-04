@@ -303,12 +303,17 @@ graph GiftedPanel {
           }
      }
     
-     // 关闭详情面板
+     // 关闭详情面板（确定获得后，仅此时显示该卡牌下的 Effect：透明度 0→1）
      async func CloseDetailPanel(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
           SoundFunc.PlayCreatedSound("Click_Common_Default")
 
+          var cardId = GetLocalPlayer()<PlayerJionGame>.currentSelectedCardId
           var PopupPanel = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.GiftedUI, "/PopupPanel")
           PopupPanel<UIWidget>.IsVisible = false
+          
+          if cardId >= 1 && cardId <= 10 {
+               start GetLocalPlayer()<PlayerJionGame>.PlayGiftedCardObtainEffect(cardId)
+          }
           
           // 重置选中状态
           ResetSelection()

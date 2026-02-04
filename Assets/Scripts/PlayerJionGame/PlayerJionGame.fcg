@@ -1627,6 +1627,75 @@ graph PlayerJionGame {
         }
     }
 
+    // 点击确定获得后：仅此时显示该卡牌下的 Effect，透明度 0→1，显示 200ms 后再 1→0 淡出，最后隐藏
+    async func PlayGiftedCardObtainEffect(cardId int) {
+        if cardId < 1 || cardId > 10 {
+            return
+        }
+        var listParent = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/Panel/List")
+        var cardIndex = Convert.ToString("Card (" + cardId + ")")
+        var cardEntity = GetChildByName(listParent, cardIndex)
+        var HasCardPanelEntity = GetChildByName(cardEntity, "HasCardPanel")
+        var EffectEntity = GetChildByName(HasCardPanelEntity, "Effect")
+        EffectEntity<UIWidget>.IsVisible = true
+        CreateTween(
+            EffectEntity,
+            UIWidgetImage.Alpha,
+            0,
+            1,
+            TweenStyle.Once,
+            CreateCurve({0, 0, 1, 1}),
+            200,
+            out var EffectOut,
+            true,
+        )
+        CreateTween(
+            EffectEntity,
+            UIWidget.SizeDelta,
+            Vector2{0, 0},
+            Vector2{200, 200},
+            TweenStyle.Once,
+            CreateCurve({0, 0, 1, 1}),
+            200,
+            out var EffectBig,
+            true,
+        )
+        Play(EffectOut, true)
+        Play(EffectBig, true)
+        WaitForMillisecond(300)
+        Destroy(EffectOut)
+        Destroy(EffectBig)
+        CreateTween(
+            EffectEntity,
+            UIWidgetImage.Alpha,
+            1,
+            0,
+            TweenStyle.Once,
+            CreateCurve({0, 0, 1, 1}),
+            200,
+            out var EffectFadeOut,
+            true,
+        )
+        CreateTween(
+            EffectEntity,
+            UIWidget.SizeDelta,
+            Vector2{200, 200},
+            Vector2{0, 0},
+            TweenStyle.Once,
+            CreateCurve({0, 0, 1, 1}),
+            200,
+            out var EffectSmall,
+            true,
+        )
+        Play(EffectFadeOut, true)
+        Play(EffectSmall, true)
+        WaitForMillisecond(200)
+        Destroy(EffectFadeOut)
+        Destroy(EffectSmall)
+        EffectEntity<UIWidget>.SizeDelta = Vector2{0, 0}
+        EffectEntity<UIWidget>.IsVisible = false
+    }
+
     // 玩家赢了给货币
     func GivePlayerWinnerMoney(level int) {
         var passMoney int = 100
@@ -2192,7 +2261,7 @@ graph PlayerJionGame {
         if skillPanelWidget != nil {
             skillPanelWidget<UIWidget>.IsVisible = false
         }
-        // 重置所有卡牌的选中状态
+        // 重置所有卡牌的选中状态，并隐藏每张卡下的 Effect（仅确定获得时再显示）
         for cardId = 1, 11, 1 {
             var listParent = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/Panel/List")
             var cardIndex = Convert.ToString("Card (" + cardId + ")")
@@ -2204,6 +2273,11 @@ graph PlayerJionGame {
                         var isChoiceEntity = GetChildByName(HasCardPanelEntity, "ISCHOICE")
                         if isChoiceEntity != nil {
                             isChoiceEntity<UIWidget>.IsVisible = false
+                        }
+                        var EffectEntity = GetChildByName(HasCardPanelEntity, "Effect")
+                        if EffectEntity != nil {
+                            EffectEntity<UIWidget>.IsVisible = false
+                            EffectEntity<UIWidget>.SizeDelta = Vector2{0, 0}
                         }
                 }
             }
