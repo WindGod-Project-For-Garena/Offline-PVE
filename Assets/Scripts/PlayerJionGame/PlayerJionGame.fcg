@@ -458,10 +458,10 @@ graph PlayerJionGame {
         var choiceUI = ChoiceThreeCardUI
         var currentSkill = CurrentSkill
 
-        // Card1：当前被动技能图标
-        SetCardIcon(1, EResSprite.Hero1_Skill2, #FFFFFFFF, true)
+        // Card1：只改技能图标，底板不变
+        SetCardIconImageOnly(1, EResSprite.Hero1_Skill2, #FFFFFFFF, true)
         if currentSkill == 2 {
-            SetCardIcon(1, EResSprite.Hero2_Skill2, #FFFFFFFF, true)
+            SetCardIconImageOnly(1, EResSprite.Hero2_Skill2, #FFFFFFFF, true)
         }
 
         // Card2、Card3：掉落物效果图标
@@ -479,6 +479,9 @@ graph PlayerJionGame {
 
         for i = 0, displayCardCount, 1 {
             var slot = cardsStartSlot + i
+            if slot == 1 {
+                continue
+            }
             var id = GetSelectedCardIdAtIndex(choiceUI, currentSkill, i)
             var info = choiceUI<ChoiceOneOfThreeCard>.GetCardInfoById(id, currentSkill)
             if info != nil {
@@ -487,6 +490,9 @@ graph PlayerJionGame {
             }
         }
         for slot = cardsStartSlot + displayCardCount, 9, 1 {
+            if slot == 1 {
+                continue
+            }
             SetCardVisible(slot, false)
         }
         RefreshSixLogoIFM()
@@ -502,6 +508,18 @@ graph PlayerJionGame {
             cardWidget<UIWidgetButton>.SpriteResource = FC_Config.CardRaritySprite[0]
             cardWidget<UIWidgetButton>.Color = color
         }
+        if iconWidget != nil {
+            iconWidget<UIWidget>.IsVisible = visible
+            iconWidget<UIWidgetImage>.SpriteName = sprite
+            iconWidget<UIWidgetImage>.Color = color
+        }
+    }
+
+    // 只改卡位内的图标图片，不改底板（用于 Card1 技能图标）
+    func SetCardIconImageOnly(slotIndex int, sprite EResSprite, color Color, visible bool) {
+        var cardPath = "/SixLogo/List/Card" + Convert.ToString(slotIndex)
+        var imagePath = cardPath + "/Image"
+        var iconWidget = GetWidgetByPath(GetLocalPlayer(), DownSixLogoUI, imagePath)
         if iconWidget != nil {
             iconWidget<UIWidget>.IsVisible = visible
             iconWidget<UIWidgetImage>.SpriteName = sprite
@@ -542,16 +560,16 @@ graph PlayerJionGame {
         }
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
-// 刷新详情页面信息：
+// 刷新详情页面信息：Card1 只改技能图标和文案，底板不变
     func RefreshSixLogoIFM() {
         GetCardDisplayParams(out var nSelected, out var nEffect, out var cardsStartSlot, out var maxCardSlots, out var displayCardCount)
         var choiceUI = ChoiceThreeCardUI
         var currentSkill = CurrentSkill
 
-        SetSixLogoIFMCardIcon(1, EResSprite.Hero1_Skill2, #FFFFFFFF, true)
+        SetSixLogoIFMCardIconImageOnly(1, EResSprite.Hero1_Skill2, #FFFFFFFF, true)
         SetSixLogoIFMText(1, LocString{"SKILL_BOMBARD", List<string>{}})
         if currentSkill == 2 {
-            SetSixLogoIFMCardIcon(1, EResSprite.Hero2_Skill2, #FFFFFFFF, true)
+            SetSixLogoIFMCardIconImageOnly(1, EResSprite.Hero2_Skill2, #FFFFFFFF, true)
             SetSixLogoIFMText(1, LocString{"SKILL_SHOCK", List<string>{}})
         }
 
@@ -573,6 +591,9 @@ graph PlayerJionGame {
 
         for i = 0, displayCardCount, 1 {
             var slot = cardsStartSlot + i
+            if slot == 1 {
+                continue
+            }
             var id = GetSelectedCardIdAtIndex(choiceUI, currentSkill, i)
             var info = choiceUI<ChoiceOneOfThreeCard>.GetCardInfoById(id, currentSkill)
             if info != nil {
@@ -583,6 +604,9 @@ graph PlayerJionGame {
             }
         }
         for slot = cardsStartSlot + displayCardCount, 9, 1 {
+            if slot == 1 {
+                continue
+            }
             SetSixLogoIFMCardVisible(slot, false)
             SetSixLogoIFMText(slot, "")
         }
@@ -598,6 +622,18 @@ graph PlayerJionGame {
             cardWidget<UIWidgetImage>.SpriteName = FC_Config.CardRaritySprite[0]
             cardWidget<UIWidgetImage>.Color = color
         }
+        if iconWidget != nil {
+            iconWidget<UIWidget>.IsVisible = visible
+            iconWidget<UIWidgetImage>.SpriteName = sprite
+            iconWidget<UIWidgetImage>.Color = color
+        }
+    }
+
+    // 详情页 Card1：只改图标，不改底板
+    func SetSixLogoIFMCardIconImageOnly(slotIndex int, sprite EResSprite, color Color, visible bool) {
+        var cardPath = "/SixLogoIFM/RollList/List/Card (" + Convert.ToString(slotIndex) + ")"
+        var imagePath = cardPath + "/Image"
+        var iconWidget = GetWidgetByPath(GetLocalPlayer(), DownSixLogoUI, imagePath)
         if iconWidget != nil {
             iconWidget<UIWidget>.IsVisible = visible
             iconWidget<UIWidgetImage>.SpriteName = sprite
