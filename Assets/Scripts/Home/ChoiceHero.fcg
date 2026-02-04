@@ -15,6 +15,7 @@ graph ChoiceHero {
      //退出游戏
      func ToNewHome(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
           SoundFunc.PlayCreatedSound("Click_Common_Default")
+          GetLocalPlayer()<PlayerJionGame>.Hide_Skill_Detail()
           // SetPlayerCanQuitMidway(GetLocalPlayer()<PlayerJionGame>.currPlayer, true)
           QuitGameClient(true)
      }

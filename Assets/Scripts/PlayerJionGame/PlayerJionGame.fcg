@@ -739,8 +739,9 @@ graph PlayerJionGame {
         //发放武器
         if  skillIndex == 1 {
             Offline.DestroyItem(ItemIDType.M1887X, 1)
-            Offline.DestroyItem(ItemIDType.SMGAmmo, 30)
-            Offline.DestroyItem(ItemIDType.SGAmmo, 30)
+            Offline.DestroyItem(ItemIDType.GoldMP5_III, 1)
+            Offline.DestroyItem(ItemIDType.SMGAmmo, 999)
+            Offline.DestroyItem(ItemIDType.SGAmmo, 999)
             WaitForNextFrame()
             Offline.AddItem(ItemIDType.M1887X, 1, out var itemList)
             Offline.AddItem(ItemIDType.SGAmmo, 30, out var createdEntity)
@@ -748,9 +749,10 @@ graph PlayerJionGame {
         }
 
         if skillIndex == 2 {
+            Offline.DestroyItem(ItemIDType.M1887X, 1)
             Offline.DestroyItem(ItemIDType.GoldMP5_III, 1)
-            Offline.DestroyItem(ItemIDType.SGAmmo, 30)
-            Offline.DestroyItem(ItemIDType.SMGAmmo, 30)
+            Offline.DestroyItem(ItemIDType.SGAmmo, 999)
+            Offline.DestroyItem(ItemIDType.SMGAmmo, 999)
             WaitForNextFrame()
             Offline.AddItem(ItemIDType.GoldMP5_III, 1, out var itemList)
             Offline.AddItem(ItemIDType.SMGAmmo, 30, out var createdEntity)
