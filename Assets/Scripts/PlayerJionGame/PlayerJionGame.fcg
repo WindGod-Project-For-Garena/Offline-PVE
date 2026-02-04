@@ -1982,6 +1982,12 @@ graph PlayerJionGame {
         ChoiceThreeCardUI<CustomUI>.IsVisible = false
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+    // 隐藏技能介绍详情
+    func Hide_Skill_Detail() {
+        var Skill1_Detail_Entity = GetWidgetByPath(GetLocalPlayer(), ChoiceHeroUI, "/ChoiceHero/TextImage")
+        Skill1_Detail_Entity<UIWidget>.IsVisible = false
+    }
+//———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     // 显示当前所有属性
     func ShowAllAttributes() {
         LogInfo("=== 当前所有属性 ===")

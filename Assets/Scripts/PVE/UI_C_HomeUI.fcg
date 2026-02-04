@@ -84,6 +84,7 @@ graph UI_HomeUI {
 
     func onLeftButtonClick(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
         SoundFunc.PlayCreatedSound("Click_Common_Default")
+        GetLocalPlayer()<PlayerJionGame>.Hide_Skill_Detail()
 
         buttonLeft = button
         level = level - 1
@@ -97,6 +98,7 @@ graph UI_HomeUI {
 
     func onRightButtonClick(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
         SoundFunc.PlayCreatedSound("Click_Common_Default")
+        GetLocalPlayer()<PlayerJionGame>.Hide_Skill_Detail()
 
         var buttonLeftEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI, "/ChoiceLevel/Button_left")
         buttonLeft = buttonLeftEntity as entity<UIWidgetButton>
@@ -119,6 +121,7 @@ graph UI_HomeUI {
 
     func OnSkill1Click(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
         SoundFunc.PlayCreatedSound("Click_Common_Default")
+        GetLocalPlayer()<PlayerJionGame>.Hide_Skill_Detail()
 
         GetLocalPlayer()<PlayerJionGame>.CurrentSkill = 1
         var HeroButtonEntity1 = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI, "/ChoiceHero/Hero_1/BBIMAGE")
@@ -131,6 +134,7 @@ graph UI_HomeUI {
 
     func OnSkill2Click(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
         SoundFunc.PlayCreatedSound("Click_Common_Default")
+        GetLocalPlayer()<PlayerJionGame>.Hide_Skill_Detail()
 
         GetLocalPlayer()<PlayerJionGame>.CurrentSkill = 2
         var HeroButtonEntity1 = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI, "/ChoiceHero/Hero_1/BBIMAGE")
@@ -143,6 +147,7 @@ graph UI_HomeUI {
 
     func OnSkill3Click(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
         SoundFunc.PlayCreatedSound("Click_Common_Default")
+        GetLocalPlayer()<PlayerJionGame>.Hide_Skill_Detail()
 
         GetLocalPlayer()<PlayerJionGame>.CurrentSkill = 0
         var HeroButtonEntity1 = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI, "/ChoiceHero/Hero_1/BBIMAGE")
@@ -155,6 +160,7 @@ graph UI_HomeUI {
 
     func OnStartButtonClick(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
         SoundFunc.PlayCreatedSound("Click_Common_Default")
+        GetLocalPlayer()<PlayerJionGame>.Hide_Skill_Detail()
 
         //临时处理，因为客户端服务端不互通
         if GetLocalPlayer()<PlayerJionGame>.CurrentSkill == 0 {
@@ -215,6 +221,7 @@ graph UI_HomeUI {
     func ToGiftedPanel(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
         SoundFunc.PlayCreatedSound("Click_Common_Default")
         SoundFunc.PlayCreatedSound("Page_Default_Open")
+        GetLocalPlayer()<PlayerJionGame>.Hide_Skill_Detail()
 
         var GiftedUIEntity = GetLocalPlayer()<PlayerJionGame>.GiftedUI
         GiftedUIEntity<CustomUI>.IsVisible = true
@@ -233,6 +240,7 @@ graph UI_HomeUI {
     func ToHeroPanel(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
         SoundFunc.PlayCreatedSound("Click_Common_Default")
         SoundFunc.PlayCreatedSound("Page_Default_Open")
+        GetLocalPlayer()<PlayerJionGame>.Hide_Skill_Detail()
 
         var HeroUIEntity = GetLocalPlayer()<PlayerJionGame>.HeroUI
         HeroUIEntity<CustomUI>.IsVisible = true
@@ -250,6 +258,7 @@ graph UI_HomeUI {
     func ToRankingPanel(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
         SoundFunc.PlayCreatedSound("Click_Common_Default")
         SoundFunc.PlayCreatedSound("Page_Default_Open")
+        GetLocalPlayer()<PlayerJionGame>.Hide_Skill_Detail()
 
         var RankingListUIEntity = GetLocalPlayer()<PlayerJionGame>.RankingListUI
         RankingListUIEntity<CustomUI>.IsVisible = true
