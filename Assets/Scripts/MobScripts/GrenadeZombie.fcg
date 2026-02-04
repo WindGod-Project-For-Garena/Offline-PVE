@@ -77,7 +77,7 @@ graph FC_NormalZombie {
 	event MobAttackEvent_AC(attackName string) {
 		var curTarget = thisEntity<Mob>.CurrTarget
 		var zombieName string = thisEntity<Mob>.MobName
-		LogInfo("MobAttackEvent_AC: attackName: " + attackName)
+		// LogInfo("MobAttackEvent_AC: attackName: " + attackName)
 		if (attackName == "NormalAttack") {
 			if (zombieName == "GrenadeZombie") {
 				start MobSkillHandler.releaseSkill_GrenadeZombieNormalAttack(thisEntity as entity<Mob>,hitPos,1.5)

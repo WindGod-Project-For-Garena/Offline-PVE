@@ -117,7 +117,7 @@ graph FC_NormalZombie {
 	event MobAttackEvent_AC(attackName string) {
 		var curTarget = thisEntity<Mob>.CurrTarget
 		var zombieName string = thisEntity<Mob>.MobName
-		LogInfo("MobAttackEvent_AC: attackName: " + attackName)
+		// LogInfo("MobAttackEvent_AC: attackName: " + attackName)
 
 		if (attackName == "NormalAttack") {
 			if (curTarget != nil && (Distance(curTarget as entity<Player><Player>.Position, thisEntity as entity<LevelObject><Transform>.Position) <= 5.0)) {		

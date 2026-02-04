@@ -82,14 +82,14 @@ graph FC_NormalZombie {
 		SingleRaycast(curTarget<Player>.Position + Vector3{0, 2, 0}, Vector3{0, -10, 0}, 10, List<int>{0}, false, out var groundHitEntities, out var groundHitPoint, out var groundHitDistances, out var groundHitNormals)
 		TargetPos = groundHitPoint
 		TargetPos = SetYClient(TargetPos,-0.2)
-		LogInfo("startBossButcherSkill_Slash - TargetPos: " + TargetPos)
+		// LogInfo("startBossButcherSkill_Slash - TargetPos: " + TargetPos)
 		
 		start MobSkillHandler.releaseSkill_ButcherBossSlash(thisEntity as entity<Mob>, TargetPos)
 		
 	}
 
 	func OnPlayerEnterSlashEffect(player entity<Player>) {
-		LogInfo("OnPlayerEnterSlashEffect")
+		// LogInfo("OnPlayerEnterSlashEffect")
 		Offline.DealDamage(player as entity<Combatable>, nil, DamageType.Monster, GetDamage())
 	}
 

@@ -307,7 +307,7 @@ graph FC_NormalZombie {
 	}
 
 	event OnZombieShieldBreak() {
-		LogInfo("-----hide shiled")
+		// LogInfo("-----hide shiled")
 		HideAppearanceGroup(thisEntity as entity<Appearance>,"Shield")
 		thisEntity<Mob>.StatusDic["IsShield"] = false
 		Destroy(shieldHitboxEntity)
