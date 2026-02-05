@@ -81,7 +81,7 @@ graph FC_NormalZombie {
 		// 射线检测确保目标位置有效
 		SingleRaycast(curTarget<Player>.Position + Vector3{0, 2, 0}, Vector3{0, -10, 0}, 10, List<int>{0}, false, out var groundHitEntities, out var groundHitPoint, out var groundHitDistances, out var groundHitNormals)
 		TargetPos = groundHitPoint
-		TargetPos = SetYClient(TargetPos,-0.2)
+		TargetPos = SetYClient(TargetPos,0.1)
 		// LogInfo("startBossButcherSkill_Slash - TargetPos: " + TargetPos)
 		
 		start MobSkillHandler.releaseSkill_ButcherBossSlash(thisEntity as entity<Mob>, TargetPos)

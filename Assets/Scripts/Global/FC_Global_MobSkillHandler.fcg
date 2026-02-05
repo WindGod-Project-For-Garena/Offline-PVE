@@ -295,7 +295,7 @@ static graph FC_Global_MobSkillHandler {
         var direction Vector3 = Normalize(curTarget<Player>.Position - mob<Transform>.Position)
         direction = SetYClient(direction,0)
         var centerPos Vector3 = mob<Transform>.Position
-        centerPos = SetYClient(centerPos,-0.2)
+        centerPos = SetYClient(centerPos,0.1)
         
     }
 
@@ -322,10 +322,10 @@ static graph FC_Global_MobSkillHandler {
                     return
                 }
                 var centerPos Vector3 = curTarget<Player>.Position
-                centerPos = SetYClient(centerPos,-0.2)
+                centerPos = SetYClient(centerPos,0.1)
                 //获取随机点位
                 var randPos Vector3 = centerPos + Vector3{RandomFloat(-randRange, randRange), 0, RandomFloat(-randRange, randRange)}
-                randPos = SetYClient(randPos,-0.2)
+                randPos = SetYClient(randPos,0.1)
                 var dist = Distance(randPos, centerPos)
                 var direction = Normalize(randPos - centerPos)
                 //中心朝向打射线,打到射线为墙壁则返回墙前的点位
@@ -333,7 +333,7 @@ static graph FC_Global_MobSkillHandler {
                 if hitEntities != nil {
                     //LogInfo("hitEntities: "+hitEntities)
                     randPos = hitPoint - direction * 0.5
-                    randPos = SetYClient(randPos,-0.2)
+                    randPos = SetYClient(randPos,0.1)
                 }
                 //LogInfo("after randPos: " + randPos)
                 start releaseSkill_FlowerBossShootAttack(mob as entity<Mob>,randPos,2)
@@ -346,7 +346,7 @@ static graph FC_Global_MobSkillHandler {
             direction = SetYClient(direction,0)
             var centerPos Vector3 = mob<Transform>.Position
             var distanceIncrement float = 3.0
-            centerPos = SetYClient(centerPos,-0.2)
+            centerPos = SetYClient(centerPos,0.1)
             var direction1 Vector3 = RotateVector(direction,Quaternion{0, 0.2164, 0,0.9763})
             var direction2 Vector3 = RotateVector(direction,Quaternion{0, -0.2164, 0,0.9763})
 
@@ -469,7 +469,7 @@ static graph FC_Global_MobSkillHandler {
 
         var effectOffset float = warningLength/2+1 // 特效在怪物前方的偏移距离
 		var effectPos = mob<Transform>.Position + mob<Transform>.Forward * effectOffset
-		effectPos = SetYClient(effectPos,-0.2)
+		effectPos = SetYClient(effectPos,0.1)       //设置特效位置在怪物上方0.1米
 
 		var rotation Vector3 = mob<Transform>.Rotation + Vector3{0, 90, 0}
 
