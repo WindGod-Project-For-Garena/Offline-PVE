@@ -779,18 +779,18 @@ graph PlayerJionGame {
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
 // 选择完角色
     async func ChoiceHeroOver(level int, skillIndex int) {
+        WaitForNextFrame()
         CurrentSkill = skillIndex
-        // 记录角色名称
         SetCurrentHeroName(skillIndex)
-        //删除武器
         Destroy(currentWeapon)
-        //发放武器
+        WaitForNextFrame()
         if  skillIndex == 1 {
             Offline.DestroyItem(ItemIDType.M1887X, 1)
             Offline.DestroyItem(ItemIDType.GoldMP5_III, 1)
             Offline.DestroyItem(ItemIDType.SMGAmmo, 999)
             Offline.DestroyItem(ItemIDType.SGAmmo, 999)
             WaitForNextFrame()
+            WaitForMillisecond(50)
             Offline.AddItem(ItemIDType.M1887X, 1, out var itemList)
             Offline.AddItem(ItemIDType.SGAmmo, 30, out var createdEntity)
             currentWeapon = itemList[0] as entity<Weapon>
@@ -802,6 +802,7 @@ graph PlayerJionGame {
             Offline.DestroyItem(ItemIDType.SGAmmo, 999)
             Offline.DestroyItem(ItemIDType.SMGAmmo, 999)
             WaitForNextFrame()
+            WaitForMillisecond(50)
             Offline.AddItem(ItemIDType.GoldMP5_III, 1, out var itemList)
             Offline.AddItem(ItemIDType.SMGAmmo, 30, out var createdEntity)
             currentWeapon = itemList[0] as entity<Weapon>

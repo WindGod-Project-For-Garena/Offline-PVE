@@ -416,6 +416,8 @@ static graph PVEController {
     // 游戏完成
     async func OnGameComplete() {
         // LogInfo("PVE游戏完成！")
+        EndPVEGame()
+
         IsGameSuccess = true
         // 停止所有buff并恢复伤害
         start GetLocalPlayer()<PlayerJionGame>.StopAllBuffsAndReset()
@@ -428,12 +430,11 @@ static graph PVEController {
         // 奖励金币
         GetLocalPlayer()<PlayerJionGame>.GivePlayerWinnerMoney(CurrentLevel)
 
+        // 等待一段时间后显示最终统计
+        WaitForMillisecond(1000)
+
         // 显示最终统计
         ShowFinalStats()
-
-        // 等待一段时间后结束游戏
-        WaitForMillisecond(1000)
-        EndPVEGame()
     }
 
     // 结束PVE游戏

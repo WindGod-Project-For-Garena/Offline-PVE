@@ -869,6 +869,6 @@ graph ChoiceOneOfThreeCard {
       GetLocalPlayer()<PlayerJionGame>.IsNextThreeChoiceOne = 0
       // 隐藏所有已选卡牌图标
       InitNowChoicePanelIcons()
-      // LogInfo("已清空所有已选卡牌记录")
+      LogInfo("已清空所有已选卡牌记录")
    }
 }
