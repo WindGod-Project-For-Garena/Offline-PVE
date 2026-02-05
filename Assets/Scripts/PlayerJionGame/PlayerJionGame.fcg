@@ -2586,7 +2586,8 @@ graph PlayerJionGame {
             ProcessRankingOnVictory()
         }
 
-        StepEntity<UIWidgetLabel>.Content = "第" + Convert.ToString(CurrentLevel) + "关"  
+        var CurrentLevelText = LocString{"LEVEL_FORMAT", List<string>{CurrentLevel}}
+        StepEntity<UIWidgetLabel>.Content = CurrentLevelText
 
         var Time string = PVEController.FormatTimeMMSS(totalTime)
         var BossTime int = FC_PVEMonsterManager.BossliveTime / 1000
