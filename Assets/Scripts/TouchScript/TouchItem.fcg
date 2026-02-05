@@ -36,22 +36,19 @@ graph TouchItem {
             // 武器伤害加成
             var value = 0.5
             GetLocalPlayer()<PlayerJionGame>.ApplyWeaponDamageBonus(player,value)
-            SetIFMShowText("武器伤害+50%")
-            // SetIFMShowText(LocString{"SKILL_BOMBARD", List<string>{}})
+            SetIFMShowText(LocString{"GIFT_WEAPON_DAMAGE_ADD", List<string>{50}})
 
         } else if iconResource == EResSprite.SkillDamage {
             // 技能伤害提升
             var value = 0.5
             GetLocalPlayer()<PlayerJionGame>.ApplySkillDamageBonus(player,value)
-            SetIFMShowText("技能伤害+50%")
-            // SetIFMShowText(LocString{"SKILL_SHOCK", List<string>{}})
+            SetIFMShowText(LocString{"GIFT_SKILL_DAMAGE_ADD", List<string>{50}})
 
         } else if iconResource == EResSprite.HP {
             // 生命值提升
             var value = 0.5
             GetLocalPlayer()<PlayerJionGame>.ApplyHealthBonus(player,value)
-            SetIFMShowText("生命值+50%")
-            // SetIFMShowText(LocString{"SKILL_BOMBARD", List<string>{}})
+            SetIFMShowText((LocString{"GIFT_HP_ADD", List<string>{50}}) + "%")
         }
 
         // 给玩家特效

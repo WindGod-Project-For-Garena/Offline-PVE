@@ -588,17 +588,17 @@ graph PlayerJionGame {
         if nEffect >= 1 {
             if weaponBuffTimerActive {
                 SetSixLogoIFMCardIcon(2, EResSprite.WeaponDamage, #E38CEE, true)
-                SetSixLogoIFMText(2, "武器伤害+50%")
+                SetSixLogoIFMText(2, LocString{"GIFT_WEAPON_DAMAGE_ADD", List<string>{50}})
             } else if skillBuffTimerActive {
                 SetSixLogoIFMCardIcon(2, EResSprite.SkillDamage, #E38CEE, true)
-                SetSixLogoIFMText(2, "技能伤害+50%")
+                SetSixLogoIFMText(2, LocString{"GIFT_SKILL_DAMAGE_ADD", List<string>{50}})
             }
         }
         if nEffect >= 2 {
             SetSixLogoIFMCardIcon(2, EResSprite.WeaponDamage, #E38CEE, true)
-            SetSixLogoIFMText(2, "武器伤害+50%")
+            SetSixLogoIFMText(2, LocString{"GIFT_WEAPON_DAMAGE_ADD", List<string>{50}})
             SetSixLogoIFMCardIcon(3, EResSprite.SkillDamage, #E38CEE, true)
-            SetSixLogoIFMText(3, "技能伤害+50%")
+            SetSixLogoIFMText(3, LocString{"GIFT_SKILL_DAMAGE_ADD", List<string>{50}})
         }
 
         for i = 0, displayCardCount, 1 {
