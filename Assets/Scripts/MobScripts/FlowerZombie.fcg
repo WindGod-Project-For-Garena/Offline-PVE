@@ -130,7 +130,7 @@ graph FC_NormalZombie {
 	}
 
 	event MobDeathEvent_AC() {
-		PVEMonsterManager.OnMonsterKilledAnimationFinished(thisEntity as entity<LevelObject>)
+		PVEMonsterManager.DestroyDeath(thisEntity as entity<LevelObject>)
 	}
 
 	event ZombieAnimationEvent_AC(eventName string) {
@@ -175,6 +175,7 @@ graph FC_NormalZombie {
 			mob<Mob>.HP = mob<Mob>.HP - damage
 			if (mob<Mob>.HP <= 0) {
 				mob<Mob>.HP = 0
+				PVEMonsterManager.NoItemDropDeath(thisEntity as entity<LevelObject>)
 				start GetLocalPlayer()<PlayerJionGame>.KillInfo(part)
 			}
 		}

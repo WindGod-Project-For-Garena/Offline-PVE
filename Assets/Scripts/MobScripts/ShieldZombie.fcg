@@ -267,7 +267,7 @@ graph FC_NormalZombie {
 		}
 	}
 	event MobDeathEvent_AC() {
-		PVEMonsterManager.OnMonsterKilledAnimationFinished(thisEntity as entity<LevelObject>)
+		PVEMonsterManager.DestroyDeath(thisEntity as entity<LevelObject>)
 	}
 
 	event OnDamageMob(mob entity<Entity>, part string, damage int, player entity<Player>) {
@@ -292,16 +292,14 @@ graph FC_NormalZombie {
 				thisEntity<Mob>.StatusDic["InShieldBreak"] = true
 				thisEntity<Mob>.StatusDic["InAttack"] = false
 			}
-		}else{
-			//处理血量，如果血量小于0，则死亡
+		}
+		//处理血量，如果血量小于0，则死亡
+		if (mob<Mob>.HP > 0) {
 			mob<Mob>.HP = mob<Mob>.HP - damage
-			
-			if (mob<Mob>.HP > 0) {  // 只在活着的时候处理伤害
-				mob<Mob>.HP = mob<Mob>.HP - damage
-				if (mob<Mob>.HP <= 0) {
-					mob<Mob>.HP = 0
-					start GetLocalPlayer()<PlayerJionGame>.KillInfo(part)
-				}
+			if (mob<Mob>.HP <= 0) {
+				mob<Mob>.HP = 0
+				PVEMonsterManager.NoItemDropDeath(thisEntity as entity<LevelObject>)
+				start GetLocalPlayer()<PlayerJionGame>.KillInfo(part)
 			}
 		}
 	}
@@ -314,8 +312,6 @@ graph FC_NormalZombie {
 		//NormalAttack CD和Duration调整
 		thisEntity<Mob>.StatusDic["CD_NormalAttack"] = 1800 as int
 		thisEntity<Mob>.StatusDic["Duration_NormalAttack"] = 1550 as int
-		
-		
 	}
 
 	//funcID: GetDamage

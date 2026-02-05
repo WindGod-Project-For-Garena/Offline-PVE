@@ -1696,19 +1696,8 @@ graph PlayerJionGame {
         EffectEntity<UIWidget>.IsVisible = false
     }
 
-    // 玩家赢了给货币
+    // 玩家赢了：保存与刷新 UI，不再额外加钱
     func GivePlayerWinnerMoney(level int) {
-        var passMoney int = 100
-        if ContainKey(LevelData, level) {
-            var row = LevelData[level]
-            if ContainKey(row, "PassMoney") {
-                passMoney = row["PassMoney"] as int
-            }
-        }
-        Money = Money + passMoney
-
-        FC_PVEMonsterManager.TotalGold = FC_PVEMonsterManager.TotalGold + passMoney
-
         // 保存本地数据
         DATA_TotalIFM[1] = Money
         SAVE_DATA_Money(DATA_TotalIFM)
@@ -2586,8 +2575,10 @@ graph PlayerJionGame {
             ProcessRankingOnVictory()
         }
 
+        LogInfo("CurrentLevel: " + CurrentLevel)
         var CurrentLevelText = LocString{"LEVEL_FORMAT", List<string>{CurrentLevel}}
-        StepEntity<UIWidgetLabel>.Content = CurrentLevelText
+        LogInfo("CurrentLevel: " + CurrentLevelText)
+        StepEntity<UIWidgetLabel>.Content = CurrentLevelText as string
 
         var Time string = PVEController.FormatTimeMMSS(totalTime)
         var BossTime int = FC_PVEMonsterManager.BossliveTime / 1000

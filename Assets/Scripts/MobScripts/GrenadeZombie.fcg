@@ -90,6 +90,7 @@ graph FC_NormalZombie {
 
 	event MobDeathEvent_AC() {
 		PVEMonsterManager.NoItemDropDeath(thisEntity as entity<LevelObject>)
+		PVEMonsterManager.DestroyDeath(thisEntity as entity<LevelObject>)
 	}
 
 	event OnDamageMob(mob entity<Entity>, part string, damage int, player entity<Player>) {

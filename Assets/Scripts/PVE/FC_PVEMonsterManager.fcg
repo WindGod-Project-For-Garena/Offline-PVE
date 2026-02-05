@@ -32,6 +32,8 @@ static graph FC_PVEMonsterManager {
     // 当前状态
     CurrentLevel int = 1
     CurrentWave int = 1
+    CurrentWaveMonsterCount int = 0  // 当前波次怪物总数量（用于掉钱计算）
+    WaveMonsterDroppedMoney int = 0  // 当前关卡小怪已掉钱累计，最多为通关奖励的50%，掉满不再掉
     IsWaveActive bool = false
     currSpawnerIndex int = 0 //当前生成器索引
     
@@ -113,6 +115,18 @@ static graph FC_PVEMonsterManager {
         }
     }
     
+    // 获取当前关卡通关奖励（PassMoney），用于怪物掉钱计算
+    func GetPassMoneyForCurrentLevel() int {
+        var passMoney int = 100
+        if ContainKey(GetLocalPlayer()<PlayerJionGame>.LevelData, CurrentLevel) {
+            var row = GetLocalPlayer()<PlayerJionGame>.LevelData[CurrentLevel]
+            if ContainKey(row, "PassMoney") {
+                passMoney = row["PassMoney"] as int
+            }
+        }
+        return passMoney
+    }
+
     // 检查当前波次配置中是否有Boss（波次 5 固定为 Boss 波）
     func HasBossInWave(wave int) bool {
         if wave == 5 {
@@ -164,6 +178,7 @@ static graph FC_PVEMonsterManager {
     func LevelInitialize(level int) {
         CurrentLevel = level
         CurrentWave = 1
+        WaveMonsterDroppedMoney = 0  // 新关卡重置小怪掉钱累计
 
         // 仅读取该Level的LevelConfig
         LoadCurrentLevelRows(level)
@@ -224,6 +239,11 @@ static graph FC_PVEMonsterManager {
             monsterInfo["Possibility"] = 1.0
             list.Append(WaveMonsterInfos, monsterInfo)
         }
+        // 当前波次怪物总数量（用于掉钱：每关波次小怪掉钱 = 通关奖励/2/4/当前波次怪物数）
+        CurrentWaveMonsterCount = 0
+        for i = 0, list.Length(WaveMonsterInfos), 1 {
+            CurrentWaveMonsterCount = CurrentWaveMonsterCount + WaveMonsterInfos[i]["MaxNum"] as int
+        }
 
         CurrentDamageModifier = waveRowInfo["DamageModifier"] as float
         CurrentHPModifier = waveRowInfo["HPModifier"] as float
@@ -271,6 +291,7 @@ static graph FC_PVEMonsterManager {
         monsterInfo["IsBoss"] = monsterRow[6]
         monsterInfo["Possibility"] = 1.0
         list.Append(WaveMonsterInfos, monsterInfo)
+        CurrentWaveMonsterCount = 1  // Boss 波只有 1 只怪
 
         var wave4Row Map<string, object> = LevelRowInfos[4]
         if wave4Row != nil {
@@ -774,6 +795,11 @@ static graph FC_PVEMonsterManager {
         if monster != nil {
             // 死亡掉落货币
             start DropMoney(monster)
+        }
+    }
+
+    func DestroyDeath(monster entity<LevelObject>) {
+        if monster != nil {
             // 销毁怪物实体
             start myDestroyMonster(monster)
         }
@@ -894,6 +920,36 @@ static graph FC_PVEMonsterManager {
 
     // 死亡掉落货币
     async func DropMoney(monster entity<LevelObject>) {
+        // 先计算掉钱数量：Boss = 通关奖励/2；小怪 = 通关奖励/2/4/当前波次怪物数，且当前关卡小怪总掉钱不超过通关奖励50%，掉满不再掉
+        var passMoney int = GetPassMoneyForCurrentLevel()
+        var amount int = 0
+        if list.Contain(ActiveBossMonsters, monster) || CurrentWave == 5 {
+            amount = passMoney / 2
+            if amount < 1 {
+                amount = 1
+            }
+        } else {
+            var cap int = passMoney / 2  // 当前关卡小怪最多掉50%
+            if WaveMonsterDroppedMoney >= cap {
+                return  // 已掉满，不再掉
+            }
+            var waveCount int = CurrentWaveMonsterCount
+            if waveCount < 1 {
+                waveCount = 1
+            }
+            amount = passMoney / 2 / 4 / waveCount
+            if amount < 1 {
+                amount = 1
+            }
+            var remaining int = cap - WaveMonsterDroppedMoney
+            if amount > remaining {
+                amount = remaining
+            }
+        }
+        if amount <= 0 {
+            return
+        }
+
         var RighTabIFMUI = GetLocalPlayer()<PlayerJionGame>.RighTabIFMUI
         var monsterPos = monster<Transform>.Position
         var MoneyEntity = GetWidgetByPath(GetLocalPlayer(), RighTabIFMUI, "/Money")
@@ -946,15 +1002,17 @@ static graph FC_PVEMonsterManager {
         WaitForMillisecond(600)
         Destroy(MoneyTween)
         MoneyEntityClone<UIWidget>.IsVisible = false
-        // 增加玩家货币
-        GivePlayerMoney()  // 每个怪物掉落50货币
+        GivePlayerMoney(amount)
+        if !list.Contain(ActiveBossMonsters, monster) && CurrentWave != 5 {
+            WaveMonsterDroppedMoney = WaveMonsterDroppedMoney + amount
+        }
     }
 
-    // RNM给钱
-    func GivePlayerMoney() {
+    // RNM给钱（amount：本次掉落金币数，取整至少为1）
+    func GivePlayerMoney(amount int) {
         // 增加玩家货币
-        GetLocalPlayer()<PlayerJionGame>.Money = GetLocalPlayer()<PlayerJionGame>.Money + 50
-        TotalGold = TotalGold + 50
+        GetLocalPlayer()<PlayerJionGame>.Money = GetLocalPlayer()<PlayerJionGame>.Money + amount
+        TotalGold = TotalGold + amount
         var MoneyNumEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.RighTabIFMUI, "/Panel/Money/logo/Num")
         MoneyNumEntity<UIWidgetLabel>.Content = GetLocalPlayer()<PlayerJionGame>.Money
     }
