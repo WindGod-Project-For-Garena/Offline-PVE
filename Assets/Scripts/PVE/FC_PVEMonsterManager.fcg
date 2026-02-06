@@ -228,7 +228,7 @@ static graph FC_PVEMonsterManager {
             monsterInfo["MaxNum"] = amountList[i]
             monsterInfo["SpawnIntervalSec"] = timeintervalList[i]
 
-            var monsterRow List<object> = CSVData.ReadCSVRow(EResCSV.MonsterInfo, monsterInfo["MonsterID"] as int+2)
+            var monsterRow List<object> = CSVData.ReadCSVRow(EResCSV.MonsterInfo, GetMonsterInfoRowID(monsterInfo["MonsterID"] as int)+2)
             monsterInfo["Name_key"] = monsterRow[1]
             monsterInfo["BaseHP"] = monsterRow[2]
             monsterInfo["BaseDamage"] = monsterRow[3]
@@ -278,7 +278,7 @@ static graph FC_PVEMonsterManager {
     func StartWaveBossOnly() {
         list.Clear(WaveMonsterInfos)
         var sceneBossID int = GetSceneBossMonsterID()
-        var monsterRow List<object> = CSVData.ReadCSVRow(EResCSV.MonsterInfo, sceneBossID + 2)
+        var monsterRow List<object> = CSVData.ReadCSVRow(EResCSV.MonsterInfo, GetMonsterInfoRowID(sceneBossID)+2)
         var monsterInfo Map<string, object> = Map<string, object>{}
         monsterInfo["MonsterID"] = sceneBossID
         monsterInfo["MaxNum"] = 1
@@ -324,7 +324,6 @@ static graph FC_PVEMonsterManager {
         start SpawnBossLoop(bossQueue, currSpawnerIndex)
         start SpawnEliteLoop(eliteQueue, currSpawnerIndex)
         start SpawnNormalLoop(normalQueue, currSpawnerIndex)
-        // LogInfo("波次怪物生成循环已启动")
     }
 
     async func SpawnBossLoop(bossQueue List<Map<string, object>>, spawnerIndex int) {
@@ -386,6 +385,23 @@ static graph FC_PVEMonsterManager {
         }
     }
 
+    // 按 MonsterCup 单个 slot：延迟 Timeinterval 秒后生成 Amount(MaxNum) 只
+    async func SpawnNormalSlotDelayed(monsterInfo Map<string, object>, spawnerIndex int) {
+        var delaySec float = monsterInfo["SpawnIntervalSec"] as float
+        var delayMs int = math.Floor(delaySec * 1000.0)
+        if delayMs > 0 {
+            WaitForMillisecond(delayMs)
+        }
+        if !IsWaveActive || spawnerIndex != currSpawnerIndex { return }
+        var amount int = monsterInfo["MaxNum"] as int
+        for j = 0, amount, 1 {
+            if !IsWaveActive || spawnerIndex != currSpawnerIndex { break }
+            while GetActiveMonsterCount() >= MaxMonstersOnField && IsWaveActive { WaitForMillisecond(500) }
+            if GetActiveMonsterCount() >= MaxMonstersOnField { break }
+            start CreateSingleMonster(monsterInfo)
+        }
+    }
+
     async func SpawnNormalLoop(normalQueue List<Map<string, object>>, spawnerIndex int) {
         while IsWaveActive && (spawnerIndex == currSpawnerIndex) {
             var now int = globalEntity<Global>.GameTimeCount
@@ -407,7 +423,7 @@ static graph FC_PVEMonsterManager {
                     continue
                 }
                 var availableSlots = MaxMonstersOnField - GetActiveMonsterCount()
-                var spawnCount = NormalSpawnBatchSize
+                var spawnCount = selectedMonster["MaxNum"] as int
                 if spawnCount > availableSlots { spawnCount = availableSlots }
                 for j = 0, spawnCount, 1 {
                     if !IsWaveActive || (spawnerIndex != currSpawnerIndex) { break }
@@ -444,6 +460,14 @@ static graph FC_PVEMonsterManager {
         return normalQueue[list.Length(normalQueue) - 1]
     }
 
+    // 第一关使用残废属性怪物(MonsterInfo ID 11-20)，第二关及以后使用正常属性(ID 1-10)
+    func GetMonsterInfoRowID(monsterID int) int {
+        if CurrentLevel == 1 && monsterID >= 1 && monsterID <= 10 {
+            return monsterID + 10
+        }
+        return monsterID
+    }
+
     // 根据当前场景返回本场景 Boss 的 MonsterInfo 表 ID：森林=Boss9(ID9)，雪地=Boss8(ID8)，拆迁大楼=Boss7(ID7)
     func GetSceneBossMonsterID() int {
         var mapName string = GetLocalPlayer()<PlayerJionGame>.CurrentRandomMap
@@ -461,7 +485,7 @@ static graph FC_PVEMonsterManager {
     async func CreateSingleMonster(monsterInfo Map<string, object>) {
         if monsterInfo["IsBoss"] as bool {
             var sceneBossID int = GetSceneBossMonsterID()
-            var sceneBossRow List<object> = CSVData.ReadCSVRow(EResCSV.MonsterInfo, sceneBossID + 2)
+            var sceneBossRow List<object> = CSVData.ReadCSVRow(EResCSV.MonsterInfo, GetMonsterInfoRowID(sceneBossID)+2)
             monsterInfo["MonsterID"] = sceneBossID
             monsterInfo["Name_key"] = sceneBossRow[1]
             monsterInfo["BaseHP"] = sceneBossRow[2]
