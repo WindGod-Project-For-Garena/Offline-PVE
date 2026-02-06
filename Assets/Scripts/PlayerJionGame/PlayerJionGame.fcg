@@ -381,6 +381,9 @@ graph PlayerJionGame {
             var JoyStickEffect_3 = GetWidgetByPath(GetLocalPlayer(), SkillUI, "/Skill_3/Effect")
             JoyStickEffect_3<UIWidget>.IsVisible = false
 
+            SetDefaultUIStatus(currPlayer, PlayerUISwitchType.MiniMap, CommonUISwitchValue.Close)
+            SetDefaultUIStatus(currPlayer, PlayerUISwitchType.BagHUD, CommonUISwitchValue.Close)
+            SetDefaultUIStatus(currPlayer, PlayerUISwitchType.MedicalProps, CommonUISwitchValue.Close)
             InjectSkill_1_CardData()
             InjectSkill_2_CardData()
             InjectGifted_CardData()
