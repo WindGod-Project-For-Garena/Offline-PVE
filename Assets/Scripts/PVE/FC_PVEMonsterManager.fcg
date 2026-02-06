@@ -145,7 +145,7 @@ static graph FC_PVEMonsterManager {
     // LevelRowInfos: WaveNumber -> { MonsterCupIds, DamageModifier, HPModifier }
     func LoadCurrentLevelRows(level int) {
         Map.Clear(LevelRowInfos)
-        for rowIndex = 3, 43, 1 {
+        for rowIndex = 3, 163, 1 {
             var rowInfo List<object> = CSVData.ReadCSVRow(EResCSV.LevelConfig, rowIndex)
             var levelID int = 0
             if GetType(rowInfo[0]) == typeof(string) {
