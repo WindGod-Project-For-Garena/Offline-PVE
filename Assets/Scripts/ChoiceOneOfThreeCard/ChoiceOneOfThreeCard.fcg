@@ -217,7 +217,7 @@ graph ChoiceOneOfThreeCard {
          createdEntity3<UIOpeningBanner>.Description = LocString{"KILL_BOSS_TEXT", List<string>{}}
       } else {
          var Objective_SurviveText = LocString{"Objective_Survive", List<string>{}}
-         createdEntity3<UIOpeningBanner>.Description = Objective_SurviveText + " 01:00"
+         createdEntity3<UIOpeningBanner>.Description = Objective_SurviveText + " 00:40"
       }
 
       // 等待UI更新
