@@ -2940,14 +2940,15 @@ graph PlayerJionGame {
     }
 
     func ApplyHealthBonus(player entity<Player>,value float) {
-        // 生命值提升 - 瞬间回血百分比
-        var finalHealth = 0
-        var currentHealth = currPlayer<Player>.HP as int
-        finalHealth = currentHealth + Round(finalHealth * value) as int
-        if finalHealth > currPlayer<Player>.MaxHP {
-            finalHealth = currPlayer<Player>.MaxHP
+        // 生命值提升 - 增加「当前最大生命值×value」点生命（例：最大100、50%则+50点；当前30则变为30+50=80）
+        var currentHealth = player<Player>.HP as int
+        var maxHP = player<Player>.MaxHP as int
+        var healAmount = Round(maxHP * value) as int
+        var finalHealth = currentHealth + healAmount
+        if finalHealth > maxHP {
+            finalHealth = maxHP
         }
-        currPlayer<Player>.HP = finalHealth
+        player<Player>.HP = finalHealth
     }
 
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
