@@ -13,11 +13,14 @@ import "../PVE/UI_C_HomeUI.fcg" as UI_C_HomeUI
 import "../CustomEvent.fcc" as CustomEvent
 import "../PVE/PVEController.fcg" as PVEController
 import "Convert.fcc" as Convert
+import "Map.fcc" as Map
 import "../Static/FC_Config.fcg" as FC_Config
 
 [platform_client]
 graph ChoiceOneOfThreeCard {
    IsOver bool = false
+   // 当前三选一界面已刷新次数（每次打开三选一界面时重置为 0）
+   RefreshCount int = 0
    // 当前选择的卡牌第几张1-3
    SelectedCardIndex int = 0
    // 已选卡牌记录
@@ -345,25 +348,41 @@ graph ChoiceOneOfThreeCard {
       // ClearSelectedCards()
    }
 
-   //刷新卡牌
+   // 获取当前关卡通关奖励（PassMoney），用于刷新费用计算
+   func GetPassMoneyForLevel(level int) int {
+      var passMoney int = 100
+      if Map.ContainKey(GetLocalPlayer()<PlayerJionGame>.LevelData, level) {
+         var row = GetLocalPlayer()<PlayerJionGame>.LevelData[level]
+         if Map.ContainKey(row, "PassMoney") {
+            passMoney = row["PassMoney"] as int
+         }
+      }
+      return passMoney
+   }
+
+   // 打开三选一界面时调用，重置刷新次数
+   func ResetRefreshCount() {
+      RefreshCount = 0
+   }
+
+   //刷新卡牌；费用 = 通关奖励/2 * 刷新次数（第1次刷新=通关奖励/2，第2次=通关奖励，依此类推）
    func OnRefreshCardsClicked(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
       SoundFunc.PlayCreatedSound("Click_Common_Default")
 
-      var refreshCost = 50 // 刷新卡牌所需金币
+      var level = GetLocalPlayer()<PlayerJionGame>.level
+      var passMoney = GetPassMoneyForLevel(level)
+      RefreshCount = RefreshCount + 1
+      var refreshCost = (passMoney / 2) * RefreshCount
+
       var playerMoney = GetLocalPlayer()<PlayerJionGame>.Money
       if playerMoney < refreshCost {
-         // 金币不足，不执行刷新操作
+         // 金币不足，不执行刷新操作；回退刷新次数
+         RefreshCount = RefreshCount - 1
          return
       }
 
-
-      var level = GetLocalPlayer()<PlayerJionGame>.level
-      var ability1Level = GetLocalPlayer()<PlayerJionGame>.ability1Level
-      var ability2Level = GetLocalPlayer()<PlayerJionGame>.ability2Level
-      var ability3Level = GetLocalPlayer()<PlayerJionGame>.ability3Level
-
-      // 扣除金币
-      GetLocalPlayer()<PlayerJionGame>.Money = playerMoney - refreshCost
+      // 扣除金币并写入本地存储（DATA_TotalIFM、SAVE_DATA_Money）
+      GetLocalPlayer()<PlayerJionGame>.DeductPlayerCurrency(refreshCost)
 
       RefreshCard(level)
       CloseTextImage(button, triggerPlayer)
@@ -385,17 +404,22 @@ graph ChoiceOneOfThreeCard {
       UpdateRefreshButtonState()
    }
 
-   // 更新刷新按钮状态
+   // 更新刷新按钮状态；下次刷新费用 = 通关奖励/2 * (当前刷新次数+1)
    func UpdateRefreshButtonState() {
-      var refreshCost = 50 // 刷新卡牌所需金币
+      var level = GetLocalPlayer()<PlayerJionGame>.level
+      var passMoney = GetPassMoneyForLevel(level)
+      var nextRefreshCost = (passMoney / 2) * (RefreshCount + 1)
       var playerMoney = GetLocalPlayer()<PlayerJionGame>.Money
-      
+
       var refreshButton = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/RefreshCards")
       var priceText = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/RefreshCards/Image/Money")
       var buttonText = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/RefreshCards/Text")
-      
+
+      if priceText != nil {
+         priceText<UIWidgetLabel>.Content = Convert.ToString(nextRefreshCost)
+      }
       if refreshButton != nil && priceText != nil {
-         if playerMoney < refreshCost {
+         if playerMoney < nextRefreshCost {
                // 金币不足，按钮置灰
                refreshButton<UIWidgetButton>.SpriteResource = EResSprite.DisableButton
                // 价格文字变红色

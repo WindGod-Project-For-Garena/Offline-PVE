@@ -2576,9 +2576,7 @@ graph PlayerJionGame {
             ProcessRankingOnVictory()
         }
 
-        LogInfo("CurrentLevel: " + CurrentLevel)
         var CurrentLevelText = LocString{"LEVEL_FORMAT", List<string>{CurrentLevel}}
-        LogInfo("CurrentLevel: " + CurrentLevelText)
         StepEntity<UIWidgetLabel>.Content = CurrentLevelText as string
 
         var Time string = PVEController.FormatTimeMMSS(totalTime)
@@ -2993,6 +2991,7 @@ graph PlayerJionGame {
         ChoiceThreeCardUI<CustomUI>.IsVisible = true
         ChoiceThreeCardUI<ChoiceOneOfThreeCard>.CloseTextImage(nil,nil)
         IsNextThreeChoiceOne = 1       //打开标志位
+        ChoiceThreeCardUI<ChoiceOneOfThreeCard>.ResetRefreshCount()
         ChoiceThreeCardUI<ChoiceOneOfThreeCard>.RefreshCard(level)
         // start ShowSecondDown(10000)
         // 隐藏波次和时间信息
