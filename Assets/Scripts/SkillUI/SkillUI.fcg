@@ -38,7 +38,7 @@ graph SkillUI {
         } else if value == 2 {
             color = #98FFFFFF 
         } else if value == 3 {
-            color = #98FF98FF
+            color = #D400FFFF
         } else if value == 4 {
             color = #98CDFFFF 
         } else if value == 5 {
@@ -355,7 +355,7 @@ graph SkillUI {
         var realDamage int = Math.Ceil(damage * skillMultiplier)
         //造成伤害
         DispatchEventToEntity(OnDamageMob, targetMonster, PlatformType.Client, List<object>{targetMonster, nil, realDamage, GetLocalPlayer()})
-        CreateDamageNum(realDamage, 10, #98FF98FF, 800, targetMonster as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
+        CreateDamageNum(realDamage, 10, #D400FFFF, 800, targetMonster as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
 
         WaitForMillisecond(2000)
         Destroy(thunderEffect)
@@ -380,7 +380,7 @@ graph SkillUI {
             var monster = monsters[j]
             DispatchEventToEntity(OnDamageMob, monster, PlatformType.Client, List<object>{monster, nil, Boomdamage, GetLocalPlayer()})
             GetLocalPlayer()<PlayerJionGame>.LightningExplosionDamage += Boomdamage
-            CreateDamageNum(Boomdamage, 10, #98FF98FF, 800, monster as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
+            CreateDamageNum(Boomdamage, 10, #D400FFFF, 800, monster as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
         }
 
         WaitForMillisecond(2000)
