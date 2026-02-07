@@ -113,7 +113,7 @@ graph PlayerJionGame {
         "WeaponBoomRange": 2,           // 榴弹爆炸范围
         "WeaponBoomProbability": 0,     // 普攻触发榴弹概率
         "WeaponDoubleBoom": 0,          // 榴弹击败后二次爆炸次数
-        "WeaponBoomDamage": 25,         // 榴弹伤害
+        "WeaponBoomDamage": 25,         // 榴弹伤害（=技能一伤害的一半，实际按 SkillDamage/2 计算）
         
         // 技能1特殊效果
         "ReloadNow": 0,                 // 技能后立即装弹
@@ -839,6 +839,8 @@ graph PlayerJionGame {
         for key, value in Skill1DataWithOuterBonus {
             Skill1DataInGame[key] = value
         }
+        // 榴弹伤害 = 技能一伤害的一半
+        Skill1DataInGame["WeaponBoomDamage"] = (Skill1DataInGame["SkillDamage"] as int) / 2
         // 复制局外技能2数据到局内
         for key, value in Skill2DataWithOuterBonus {
             Skill2DataInGame[key] = value
@@ -1010,6 +1012,7 @@ graph PlayerJionGame {
                     finalDamage = currentDamage + Round(outerDamage * value) as int
                 }
                 Skill1DataInGame["SkillDamage"] = finalDamage
+                Skill1DataInGame["WeaponBoomDamage"] = (Skill1DataInGame["SkillDamage"] as int) / 2
                 // LogInfo("技能1伤害: " + Convert.ToString(Skill1DataInGame["SkillDamage"]))
                 
             } else if attributeName == "SkillAmount" {
@@ -1075,17 +1078,8 @@ graph PlayerJionGame {
                 // LogInfo("榴弹二次爆炸: " + Convert.ToString(Skill1DataInGame["WeaponDoubleBoom"]))
                 
             } else if attributeName == "WeaponBoomDamage" {
-                // 榴弹伤害加成 - 百分比
-                var finalBoomDamage = 0
-                if IsNextThreeChoiceOne == 0 {
-                    var outerBoomDamage = Skill1DataWithOuterBonus["WeaponBoomDamage"] as int
-                    finalBoomDamage = Round(outerBoomDamage * (1.0 + value)) as int
-                } else if IsNextThreeChoiceOne == 1 {
-                    var currentBoomDamage = Skill1DataInGame["WeaponBoomDamage"] as int
-                    var outerBoomDamage = Skill1DataWithOuterBonus["WeaponBoomDamage"] as int
-                    finalBoomDamage = currentBoomDamage + Round(outerBoomDamage * value) as int
-                }
-                Skill1DataInGame["WeaponBoomDamage"] = finalBoomDamage
+                // 榴弹伤害固定为技能一伤害的一半
+                Skill1DataInGame["WeaponBoomDamage"] = (Skill1DataInGame["SkillDamage"] as int) / 2
                 // LogInfo("榴弹伤害: " + Convert.ToString(Skill1DataInGame["WeaponBoomDamage"]))
                 
             } else if attributeName == "ReloadNow" {
@@ -2893,6 +2887,7 @@ graph PlayerJionGame {
                 if CurrentSkill == 1 && tempOriginalSkill1Damage > 0 {
                     var finalSkillDamage = tempOriginalSkill1Damage + Round(tempOriginalSkill1Damage * value) as int
                     Skill1DataInGame["SkillDamage"] = finalSkillDamage
+                    Skill1DataInGame["WeaponBoomDamage"] = (Skill1DataInGame["SkillDamage"] as int) / 2
                 } else if CurrentSkill == 2 && tempOriginalSkill2Damage > 0 {
                     var finalSkillDamage = tempOriginalSkill2Damage + Round(tempOriginalSkill2Damage * value) as int
                     Skill2DataInGame["SkillDamage"] = finalSkillDamage
@@ -2918,6 +2913,7 @@ graph PlayerJionGame {
             // 计算加成后的伤害
             var finalSkillDamage = tempOriginalSkill1Damage + Round(tempOriginalSkill1Damage * value) as int
             Skill1DataInGame["SkillDamage"] = finalSkillDamage
+            Skill1DataInGame["WeaponBoomDamage"] = (Skill1DataInGame["SkillDamage"] as int) / 2
             
         } else if CurrentSkill == 2 {
             // 获取当前的技能伤害
@@ -2974,6 +2970,7 @@ graph PlayerJionGame {
             if tempOriginalSkill1Damage > 0 {
                 // 恢复到保存的原始值
                 Skill1DataInGame["SkillDamage"] = tempOriginalSkill1Damage
+                Skill1DataInGame["WeaponBoomDamage"] = (Skill1DataInGame["SkillDamage"] as int) / 2
                 // LogInfo("技能1伤害恢复为: " + Convert.ToString(tempOriginalSkill1Damage))
                 tempOriginalSkill1Damage = 0  // 重置以备下次使用
             }

@@ -93,7 +93,9 @@ graph OnFire {
         }
 
         var Size = GetLocalPlayer()<PlayerJionGame>.Skill1DataInGame["WeaponBoomRange"] as int
-        var CurrentDamage = GetLocalPlayer()<PlayerJionGame>.Skill1DataInGame["WeaponBoomDamage"] as int
+        // 榴弹伤害 = 技能一（爆裂轰炸）伤害的一半
+        var skill1Damage = GetLocalPlayer()<PlayerJionGame>.Skill1DataInGame["SkillDamage"] as int
+        var CurrentDamage = skill1Damage / 2
         
          // 音效
         SoundFunc.PlayCreatedSound("Skill_Grenade")
@@ -184,8 +186,8 @@ graph OnFire {
         doubleBoomEffect<Transform>.Scale = Vector3{2, 2, 2}  // 昫爆范围较小
         BoomColor(doubleBoomEffect, 5)
         
-        // 昫爆伤害（主爆炸的50%）
-        var mainDamage = GetLocalPlayer()<PlayerJionGame>.Skill1DataInGame["WeaponBoomDamage"] as int
+        // 昫爆伤害（主爆炸的50%，即 技能一伤害/4）
+        var mainDamage = (GetLocalPlayer()<PlayerJionGame>.Skill1DataInGame["SkillDamage"] as int) / 4
         var doubleBoomRange = GetLocalPlayer()<PlayerJionGame>.Skill1DataInGame["WeaponBoomRange"] as int
         
         // 获取昫爆范围内的怪物
