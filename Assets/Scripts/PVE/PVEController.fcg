@@ -20,7 +20,7 @@ static graph PVEController {
     IsGameActive bool = false
     CurrentLevel int = 1
     CurrentWave int = 0
-    MaxLevels int = 10
+    MaxLevels int = 40
     MaxWaves int = 4
 
     currPlayer entity<Player> = nil

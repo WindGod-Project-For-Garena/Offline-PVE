@@ -33,7 +33,7 @@ graph GiftedPanel {
      func DebugOneKey(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
           SoundFunc.PlayCreatedSound("Click_Common_Default")
 
-          for i = 0,50,1 {
+          for i = 0,51,1 {
                GetLocalPlayer()<PlayerJionGame>.DrawGiftedCard()
           }
      }

@@ -247,10 +247,11 @@ static graph FC_PVEMonsterManager {
 
         CurrentDamageModifier = waveRowInfo["DamageModifier"] as float
         CurrentHPModifier = waveRowInfo["HPModifier"] as float
+        // 关卡血量倍率（LevelStatus）与波次倍率（LevelConfig）相乘，而不是覆盖
         if ContainKey(GetLocalPlayer()<PlayerJionGame>.LevelData, CurrentLevel) {
             var levelRow = GetLocalPlayer()<PlayerJionGame>.LevelData[CurrentLevel]
             if ContainKey(levelRow, "HPMultiplying") {
-                CurrentHPModifier = levelRow["HPMultiplying"] as float
+                CurrentHPModifier = CurrentHPModifier * (levelRow["HPMultiplying"] as float)
             }
         }
 
@@ -301,10 +302,11 @@ static graph FC_PVEMonsterManager {
             CurrentDamageModifier = 1.0
             CurrentHPModifier = 1.0
         }
+        // 关卡血量倍率与波次倍率相乘（Boss 波使用第 4 波倍率）
         if ContainKey(GetLocalPlayer()<PlayerJionGame>.LevelData, CurrentLevel) {
             var levelRow = GetLocalPlayer()<PlayerJionGame>.LevelData[CurrentLevel]
             if ContainKey(levelRow, "HPMultiplying") {
-                CurrentHPModifier = levelRow["HPMultiplying"] as float
+                CurrentHPModifier = CurrentHPModifier * (levelRow["HPMultiplying"] as float)
             }
         }
 

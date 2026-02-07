@@ -112,8 +112,8 @@ graph UI_HomeUI {
         }
         
         // 也不能超过最大关卡数10
-        if level > 10 {
-            level = 10
+        if level > 40 {
+            level = 40
         }
         
         UpdateLevelDisplay()
