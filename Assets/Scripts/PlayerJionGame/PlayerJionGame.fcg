@@ -783,6 +783,9 @@ graph PlayerJionGame {
 // 选择完角色
     async func ChoiceHeroOver(level int, skillIndex int) {
         WaitForNextFrame()
+        // 每局开始前重置局内数据为局外数据，避免上一局三选一卡牌（如弹匣容量）残留到新局
+        CopyToInGameData()
+        UpdatePlayerAttributes()
         CurrentSkill = skillIndex
         SetCurrentHeroName(skillIndex)
         Destroy(currentWeapon)
