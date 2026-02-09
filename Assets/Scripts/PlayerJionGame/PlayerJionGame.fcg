@@ -327,6 +327,9 @@ graph PlayerJionGame {
             CreateCustomUIClient(out var ChoiceThreeCardUIEntity, EResUI.ChoiceThreeCard)
             ChoiceThreeCardUI = ChoiceThreeCardUIEntity
             ChoiceThreeCardUIEntity<CustomUI>.IsVisible = false
+            //EndLessTitle
+            var EndLessTitleEntity = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/EndLessTitle")
+            EndLessTitleEntity<UIWidget>.IsVisible = false
 
             CreateCustomUIClient(out var SecondDownUIEntity, EResUI.SecondDown)
             SecondDownUI = SecondDownUIEntity
@@ -500,23 +503,33 @@ graph PlayerJionGame {
             SetCardIcon(3, EResSprite.SkillDamage, #E38CEE, true)
         }
 
-        for i = 0, displayCardCount, 1 {
-            var slot = cardsStartSlot + i
-            if slot == 1 {
-                continue
+        if EndlessToggle {
+            // 无尽模式：只显示当前技能和掉落道具，不显示卡牌
+            for slot = cardsStartSlot, 9, 1 {
+                if slot == 1 {
+                    continue
+                }
+                SetCardVisible(slot, false)
             }
-            var id = GetSelectedCardIdAtIndex(choiceUI, currentSkill, i)
-            var info = choiceUI<ChoiceOneOfThreeCard>.GetCardInfoById(id, currentSkill)
-            if info != nil {
-                GetCardIconRarityFromInfo(info, out var iconSprite, out var rarityColor, out var buttonSprite)
-                SetSelectedCardIcon(slot, iconSprite, rarityColor, buttonSprite, true)
+        } else {
+            for i = 0, displayCardCount, 1 {
+                var slot = cardsStartSlot + i
+                if slot == 1 {
+                    continue
+                }
+                var id = GetSelectedCardIdAtIndex(choiceUI, currentSkill, i)
+                var info = choiceUI<ChoiceOneOfThreeCard>.GetCardInfoById(id, currentSkill)
+                if info != nil {
+                    GetCardIconRarityFromInfo(info, out var iconSprite, out var rarityColor, out var buttonSprite)
+                    SetSelectedCardIcon(slot, iconSprite, rarityColor, buttonSprite, true)
+                }
             }
-        }
-        for slot = cardsStartSlot + displayCardCount, 9, 1 {
-            if slot == 1 {
-                continue
+            for slot = cardsStartSlot + displayCardCount, 9, 1 {
+                if slot == 1 {
+                    continue
+                }
+                SetCardVisible(slot, false)
             }
-            SetCardVisible(slot, false)
         }
         RefreshSixLogoIFM()
     }
@@ -612,26 +625,37 @@ graph PlayerJionGame {
             SetSixLogoIFMText(3, LocString{"GIFT_SKILL_DAMAGE_ADD", List<string>{50}})
         }
 
-        for i = 0, displayCardCount, 1 {
-            var slot = cardsStartSlot + i
-            if slot == 1 {
-                continue
+        if EndlessToggle {
+            // 无尽模式：只显示当前技能和掉落道具，不显示卡牌
+            for slot = cardsStartSlot, 9, 1 {
+                if slot == 1 {
+                    continue
+                }
+                SetSixLogoIFMCardVisible(slot, false)
+                SetSixLogoIFMText(slot, "")
             }
-            var id = GetSelectedCardIdAtIndex(choiceUI, currentSkill, i)
-            var info = choiceUI<ChoiceOneOfThreeCard>.GetCardInfoById(id, currentSkill)
-            if info != nil {
-                GetCardIconRarityFromInfo(info, out var iconSprite, out var rarityColor, out var buttonSprite)
-                SetSixLogoIFMSelectedCardIcon(slot, iconSprite, rarityColor, buttonSprite, true)
-                var desc = choiceUI<ChoiceOneOfThreeCard>.GenerateCardDescription(info)
-                SetSixLogoIFMText(slot, desc)
+        } else {
+            for i = 0, displayCardCount, 1 {
+                var slot = cardsStartSlot + i
+                if slot == 1 {
+                    continue
+                }
+                var id = GetSelectedCardIdAtIndex(choiceUI, currentSkill, i)
+                var info = choiceUI<ChoiceOneOfThreeCard>.GetCardInfoById(id, currentSkill)
+                if info != nil {
+                    GetCardIconRarityFromInfo(info, out var iconSprite, out var rarityColor, out var buttonSprite)
+                    SetSixLogoIFMSelectedCardIcon(slot, iconSprite, rarityColor, buttonSprite, true)
+                    var desc = choiceUI<ChoiceOneOfThreeCard>.GenerateCardDescription(info)
+                    SetSixLogoIFMText(slot, desc)
+                }
             }
-        }
-        for slot = cardsStartSlot + displayCardCount, 9, 1 {
-            if slot == 1 {
-                continue
+            for slot = cardsStartSlot + displayCardCount, 9, 1 {
+                if slot == 1 {
+                    continue
+                }
+                SetSixLogoIFMCardVisible(slot, false)
+                SetSixLogoIFMText(slot, "")
             }
-            SetSixLogoIFMCardVisible(slot, false)
-            SetSixLogoIFMText(slot, "")
         }
     }
 
@@ -901,6 +925,14 @@ graph PlayerJionGame {
         }
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
+    // 根据无尽模式更新「当前已选卡牌」面板(NowChoicePanel)的显示状态，无尽模式下隐藏
+    func UpdateNowChoicePanelVisibility() {
+        var nowChoicePanel = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/NowChoicePanel")
+        if nowChoicePanel != nil {
+            nowChoicePanel<UIWidget>.IsVisible = !EndlessToggle
+        }
+    }
+
     //显示三选一卡牌界面
     async func ShowChoiceThreeCardUI(level int){
         level = level
@@ -909,6 +941,8 @@ graph PlayerJionGame {
         ability3Level = ability3Level
         ChoiceThreeCardUI<CustomUI>.IsVisible = true
         ChoiceThreeCardUI<ChoiceOneOfThreeCard>.CloseTextImage(nil,nil)
+        // 无尽模式下隐藏「当前已选卡牌」面板
+        UpdateNowChoicePanelVisibility()
         //----------------------------------------------------------------------------------------------------------------//
         var card1BB = GetWidgetByPath(GetLocalPlayer(), ChoiceThreeCardUI, "/ChoiceThreeCardPanel/Card_1/IsChoice")
         card1BB<UIWidget>.IsVisible = false
@@ -3002,6 +3036,8 @@ graph PlayerJionGame {
     func ToClient_DisplaySkillThreeChoiceOne() {
         ChoiceThreeCardUI<CustomUI>.IsVisible = true
         ChoiceThreeCardUI<ChoiceOneOfThreeCard>.CloseTextImage(nil,nil)
+        // 无尽模式下隐藏「当前已选卡牌」面板
+        UpdateNowChoicePanelVisibility()
         IsNextThreeChoiceOne = 1       //打开标志位
         ChoiceThreeCardUI<ChoiceOneOfThreeCard>.ResetRefreshCount()
         ChoiceThreeCardUI<ChoiceOneOfThreeCard>.RefreshCard(level)

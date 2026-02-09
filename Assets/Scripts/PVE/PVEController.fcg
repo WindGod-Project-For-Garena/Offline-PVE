@@ -22,11 +22,13 @@ static graph PVEController {
     CurrentWave int = 0
     MaxLevels int = 40
     MaxWaves int = 4
+    // 无尽模式累计波次（用于显示第几波，随 StartNextWave 递增）
+    EndlessWaveCount int = 0
 
     currPlayer entity<Player> = nil
     
     // 游戏配置
-    WaveTimeLimit int = 40000  // 每波次时间限制（ms）
+    WaveTimeLimit int = 5000  // 每波次时间限制（ms）
     
     // 统计信息
     GameStartTime int = 0
@@ -43,8 +45,21 @@ static graph PVEController {
         currPlayer = player
     }
 
+    // 无尽模式下即将开始的波次（用于横幅显示），仅在无尽时有效
+    func GetNextEndlessWaveDisplay() int {
+        if !GetLocalPlayer()<PlayerJionGame>.EndlessToggle { return 0 }
+        return EndlessWaveCount + 1
+    }
+
     //开始下一波事件
     func StartNextWave() {
+        // 无尽模式：Boss 波次(5)结束后循环回第 1 波，并累计波次用于显示
+        if GetLocalPlayer()<PlayerJionGame>.EndlessToggle {
+            if CurrentWave >= 5 {
+                CurrentWave = 0
+            }
+            EndlessWaveCount = EndlessWaveCount + 1
+        }
         CurrentWave = CurrentWave + 1
         StartWave(CurrentWave)
         // 显示波次和时间信息
@@ -82,6 +97,9 @@ static graph PVEController {
         GameStartTime = globalEntity<Global>.GameTimeCount
         CurrentLevel = level
         CurrentWave = 0
+        if GetLocalPlayer()<PlayerJionGame>.EndlessToggle {
+            EndlessWaveCount = 0
+        }
 
         // 重置玩家buff
         start GetLocalPlayer()<PlayerJionGame>.StopAllBuffsAndReset()
@@ -162,13 +180,16 @@ static graph PVEController {
             // 删除所有掉落道具
             GetLocalPlayer()<PlayerJionGame>.RemoveAllDrops()
 
-            //显示通关小横幅
+            //显示通关小横幅（无尽模式显示累计波次）
             var WaveCompleteUI = GetLocalPlayer()<PlayerJionGame>.WaveCompleteUI
             WaveCompleteUI<CustomUI>.IsVisible = true
             var WaveText = GetWidgetByPath(GetLocalPlayer(), WaveCompleteUI, "/WaveShow/Text")
             if WaveText != nil {
-                // 直接使用翻译文本
-                var CurrentWaveTTT = LocString{"WAVE_CLEAR", List<string>{CurrentWave}}
+                var waveNum = CurrentWave
+                if GetLocalPlayer()<PlayerJionGame>.EndlessToggle {
+                    waveNum = EndlessWaveCount
+                }
+                var CurrentWaveTTT = LocString{"WAVE_CLEAR", List<string>{waveNum}}
                 WaveText<UIWidgetLabel>.Content = CurrentWaveTTT
             }
 
@@ -251,8 +272,13 @@ static graph PVEController {
         SoundFunc.PlayCreatedSound("Victory")
         
         WaitForMillisecond(2000)
-        start OnGameComplete()
         Destroy(resultBanner)
+        // 无尽模式：不结算关卡，显示三选一后继续循环当前关卡波次
+        if GetLocalPlayer()<PlayerJionGame>.EndlessToggle {
+            GetLocalPlayer()<PlayerJionGame>.ToClient_DisplaySkillThreeChoiceOne()
+            return
+        }
+        start OnGameComplete()
         // // 显示通关小横幅
         // var WaveCompleteUI = GetLocalPlayer()<PlayerJionGame>.WaveCompleteUI
         // WaveCompleteUI<CustomUI>.IsVisible = true

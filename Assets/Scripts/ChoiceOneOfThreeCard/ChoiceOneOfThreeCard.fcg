@@ -28,6 +28,8 @@ graph ChoiceOneOfThreeCard {
    SelectedCards_2 List<int> = List<int>{}  // 技能2已选掉的卡牌
    // 当前随机出来的卡牌
    CurrentRandomCards List<int> = List<int>{}
+   // 无尽模式下已选完所有卡牌时为 true，此时只显示「继续」不显示卡牌
+   AllCardsChosenForEndless bool = false
    //选择卡牌1
    func Card_1(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
       SoundFunc.PlayCreatedSound("Click_Common_Default")
@@ -126,6 +128,31 @@ graph ChoiceOneOfThreeCard {
       IsOver = true
       var currentSelectedCardIndex = SelectedCardIndex
       if currentSelectedCardIndex == 0 {
+         // 无尽模式且已选完所有卡牌：点击「继续」直接进入下一波
+         if GetLocalPlayer()<PlayerJionGame>.EndlessToggle && AllCardsChosenForEndless {
+            SetBehaviorStatus(GetLocalPlayer()<PlayerJionGame>.currPlayer, PlayerBehaviorType.Move, PlayerBehaviorStatusType.Enable)
+            thisEntity<CustomUI>.IsVisible = false
+            SoundFunc.PauseTheSound("Menu_Pickup")
+            CloseChooseCardUI(triggerPlayer)
+            var nextWave = PVEController.GetNextEndlessWaveDisplay()
+            CreateBuiltInUIClient(out var createdEntity3, BuiltInUIType.OpeningBannerHud)
+            createdEntity3<UIOpeningBanner>.IsVisible = true
+            createdEntity3<UIOpeningBanner>.ThemeColor = #00FFD5FF
+            createdEntity3<UIOpeningBanner>.Icon = EResSprite.UI_RuinSurvivor_Icon01
+            var WaveText = LocString{"Wave", List<string>{}}
+            createdEntity3<UIOpeningBanner>.Title = WaveText + " " + nextWave
+            if nextWave % 5 == 0 {
+               createdEntity3<UIOpeningBanner>.Description = LocString{"KILL_BOSS_TEXT", List<string>{}}
+            } else {
+               var Objective_SurviveText = LocString{"Objective_Survive", List<string>{}}
+               createdEntity3<UIOpeningBanner>.Description = Objective_SurviveText + " 00:40"
+            }
+            WaitForMillisecond(4000)
+            PVEController.StartNextWave()
+            GetLocalPlayer()<PlayerJionGame>.ShowDownSixLogo()
+            IsOver = false
+            return
+         }
          // LogInfo("没有选择卡牌，无法开始下一波")
          IsOver = false
          return
@@ -134,24 +161,17 @@ graph ChoiceOneOfThreeCard {
       // 获取当前技能和随机卡牌
       var currentSkill = GetLocalPlayer()<PlayerJionGame>.CurrentSkill
       var currentRandomCards = CurrentRandomCards
+      var cardCount = List.Length(currentRandomCards)
       
-      // 验证数据有效性
-      // LogInfo(currentRandomCards)
-      if List.Length(currentRandomCards) < 3 {
-         LogError("卡牌数据无效，无法获取卡牌ID")
+      // 验证：本次展示的卡牌数 1～3 张，选择的下标必须在范围内
+      if cardCount < 1 || currentSelectedCardIndex < 1 || currentSelectedCardIndex > cardCount {
+         LogError("卡牌数据无效或选择下标越界")
          IsOver = false
          return
       }
       
-      // 根据选择的牌位置获取对应的卡牌ID
-      var selectedCardId = 0
-      if currentSelectedCardIndex == 1 {
-         selectedCardId = currentRandomCards[0]
-      } else if currentSelectedCardIndex == 2 {
-         selectedCardId = currentRandomCards[1]
-      } else if currentSelectedCardIndex == 3 {
-         selectedCardId = currentRandomCards[2]
-      }
+      // 根据选择的牌位置获取对应的卡牌ID（支持一选一、二选一、三选一）
+      var selectedCardId = currentRandomCards[currentSelectedCardIndex - 1]
       
       if selectedCardId == 0 {
          LogError("卡牌ID无效，无法应用效果")
@@ -207,13 +227,25 @@ graph ChoiceOneOfThreeCard {
 
 		createdEntity3<UIOpeningBanner>.Icon = EResSprite.UI_RuinSurvivor_Icon01
 
-      // 目标标题：波次
-      var nextWave = PVEController.CurrentWave + 1
+      // 目标标题：波次（无尽模式显示累计波次）
+      var nextWave = 0
+      if GetLocalPlayer()<PlayerJionGame>.EndlessToggle {
+         nextWave = PVEController.GetNextEndlessWaveDisplay()
+      } else {
+         nextWave = PVEController.CurrentWave + 1
+      }
       var WaveText = LocString{"Wave", List<string>{}}
       createdEntity3<UIOpeningBanner>.Title = WaveText + " " + nextWave
 
-      // 目标详情：1～4 波存活一分钟，第 5 波显示击杀 BOSS
-      if nextWave == 5 {
+      // 目标详情：无尽模式每 5 波为 Boss，否则 1～4 存活
+      if GetLocalPlayer()<PlayerJionGame>.EndlessToggle {
+         if nextWave % 5 == 0 {
+            createdEntity3<UIOpeningBanner>.Description = LocString{"KILL_BOSS_TEXT", List<string>{}}
+         } else {
+            var Objective_SurviveText = LocString{"Objective_Survive", List<string>{}}
+            createdEntity3<UIOpeningBanner>.Description = Objective_SurviveText + " 00:40"
+         }
+      } else if nextWave == 5 {
          createdEntity3<UIOpeningBanner>.Description = LocString{"KILL_BOSS_TEXT", List<string>{}}
       } else {
          var Objective_SurviveText = LocString{"Objective_Survive", List<string>{}}
@@ -468,21 +500,54 @@ graph ChoiceOneOfThreeCard {
          }
       }
       
-      // 显示生成的三个卡牌
-      if List.Length(cards) >= 3 {
-         var card1 = cards[0]
-         var card2 = cards[1]
-         var card3 = cards[2]
-         // 保存卡牌ID到 CurrentRandomCards
+      // 显示生成的卡牌：支持 1 张（一选一）、2 张（二选一）、3 张（三选一）
+      if List.Length(cards) >= 1 {
+         AllCardsChosenForEndless = false
+         var card1 Map<string, object> = nil
+         var card2 Map<string, object> = nil
+         var card3 Map<string, object> = nil
+         if List.Length(cards) >= 1 { card1 = cards[0] }
+         if List.Length(cards) >= 2 { card2 = cards[1] }
+         if List.Length(cards) >= 3 { card3 = cards[2] }
+         // 保存卡牌ID到 CurrentRandomCards（数量与本次展示的卡牌数一致）
          List.Clear(CurrentRandomCards)
-         List.Append(CurrentRandomCards, card1["CardID"] as int)
-         List.Append(CurrentRandomCards, card2["CardID"] as int)
-         List.Append(CurrentRandomCards, card3["CardID"] as int)
+         if card1 != nil { List.Append(CurrentRandomCards, card1["CardID"] as int) }
+         if card2 != nil { List.Append(CurrentRandomCards, card2["CardID"] as int) }
+         if card3 != nil { List.Append(CurrentRandomCards, card3["CardID"] as int) }
          
-         // 卡牌数据显示到UI
+         // 卡牌数据显示到UI（无卡位会隐藏）
          UpdateCardUI(card1, card2, card3)
+         // 确保卡牌面板显示（无尽模式从「已选完」返回时需重新显示）
+         var choicePanel = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/ChoiceThreeCardPanel")
+         if choicePanel != nil {
+            choicePanel<UIWidget>.IsVisible = true
+         }
+         // 隐藏无尽「已选完」面板，避免与选牌界面同时出现
+         var endLessTitle = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/EndLessTitle")
+         if endLessTitle != nil {
+            endLessTitle<UIWidget>.IsVisible = false
+         }
       } else {
-         LogError("卡牌生成数量不足，只有" + Convert.ToString(List.Length(cards)) + "张")
+         // 无尽模式：已选完所有卡牌时只显示 /EndLessTitle，其余面板隐藏
+         if GetLocalPlayer()<PlayerJionGame>.EndlessToggle {
+            AllCardsChosenForEndless = true
+            var titlePanel = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/TitlePanel")
+            if titlePanel != nil { titlePanel<UIWidget>.IsVisible = false }
+            var choicePanel = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/ChoiceThreeCardPanel")
+            if choicePanel != nil { choicePanel<UIWidget>.IsVisible = false }
+            var nowChoicePanel = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/NowChoicePanel")
+            if nowChoicePanel != nil { nowChoicePanel<UIWidget>.IsVisible = false }
+            var nextBtn = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/Next")
+            if nextBtn != nil { nextBtn<UIWidget>.IsVisible = false }
+            var refreshBtn = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/RefreshCards")
+            if refreshBtn != nil { refreshBtn<UIWidget>.IsVisible = false }
+            var endLessTitle = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/EndLessTitle")
+            if endLessTitle != nil {
+               endLessTitle<UIWidget>.IsVisible = true
+            }
+         } else {
+            LogError("卡牌生成数量不足，只有" + Convert.ToString(List.Length(cards)) + "张")
+         }
       }
 
       // 重置已经选择的卡牌
@@ -538,20 +603,28 @@ graph ChoiceOneOfThreeCard {
       return cardDataMap[randomCardId]
    }
    
-   // 更新卡牌UI（大图标）
+   // 更新卡牌UI（大图标）；支持 1/2/3 张牌，未传入的卡位会隐藏
    func UpdateCardUI(card1 Map<string, object>, card2 Map<string, object>, card3 Map<string, object>) {
-      // 更新卡牌1的UI
       var card1Widget entity<UIWidget> = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/ChoiceThreeCardPanel/Card_1")
       var card2Widget entity<UIWidget> = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/ChoiceThreeCardPanel/Card_2")
       var card3Widget entity<UIWidget> = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/ChoiceThreeCardPanel/Card_3")
       if card1 != nil {
+         card1Widget<UIWidget>.IsVisible = true
          UpdateSingleCardAppearance(card1Widget, card1)
+      } else if card1Widget != nil {
+         card1Widget<UIWidget>.IsVisible = false
       }
       if card2 != nil {
+         card2Widget<UIWidget>.IsVisible = true
          UpdateSingleCardAppearance(card2Widget, card2)
+      } else if card2Widget != nil {
+         card2Widget<UIWidget>.IsVisible = false
       }
       if card3 != nil {
+         card3Widget<UIWidget>.IsVisible = true
          UpdateSingleCardAppearance(card3Widget, card3)
+      } else if card3Widget != nil {
+         card3Widget<UIWidget>.IsVisible = false
       }
       
       // 设置没选择时按钮的颜色
