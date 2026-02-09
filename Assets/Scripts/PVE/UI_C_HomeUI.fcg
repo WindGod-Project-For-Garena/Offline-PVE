@@ -277,4 +277,21 @@ graph UI_HomeUI {
         // 初始化排行榜
         GetLocalPlayer()<PlayerJionGame>.ShowRankingListUI()
     }
+
+    // 无尽模式开关Toggle(每点一下切换显示状态)
+    func OnEndlessToggle(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        SoundFunc.PlayCreatedSound("Click_Common_Default")
+        GetLocalPlayer()<PlayerJionGame>.Hide_Skill_Detail()
+        var EndlessButtonYesEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI, "/Endless/Yes")
+        var EndlessButtonNoEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI, "/Endless/No")
+        if EndlessButtonYesEntity<UIWidget>.IsVisible {
+            EndlessButtonYesEntity<UIWidget>.IsVisible = false
+            EndlessButtonNoEntity<UIWidget>.IsVisible = true
+            GetLocalPlayer()<PlayerJionGame>.EndlessToggle = false
+        } else {
+            EndlessButtonYesEntity<UIWidget>.IsVisible = true
+            EndlessButtonNoEntity<UIWidget>.IsVisible = false
+            GetLocalPlayer()<PlayerJionGame>.EndlessToggle = true
+        }
+    }
 }
