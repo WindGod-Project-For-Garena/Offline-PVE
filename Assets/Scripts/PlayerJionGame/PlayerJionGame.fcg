@@ -298,10 +298,8 @@ graph PlayerJionGame {
             HeroButtonEntity1<UIWidget>.IsVisible = true
             HeroButtonEntity2<UIWidget>.IsVisible = false
             HeroButtonEntity3<UIWidget>.IsVisible = false        
-            var EndlessButtonYes = GetWidgetByPath(GetLocalPlayer(), ChoiceHeroUI, "/Endless/Yes")
-            var EndlessButtonNo = GetWidgetByPath(GetLocalPlayer(), ChoiceHeroUI, "/Endless/No")
+            var EndlessButtonYes = GetWidgetByPath(GetLocalPlayer(), ChoiceHeroUI, "/Endless/BB/Yes")
             EndlessButtonYes<UIWidget>.IsVisible = false
-            EndlessButtonNo<UIWidget>.IsVisible = true
             UpdateChoiceHeroPanelMoney()
             //默认选择第一个技能
             var skillIndex int = 1

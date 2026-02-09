@@ -278,20 +278,20 @@ graph UI_HomeUI {
         GetLocalPlayer()<PlayerJionGame>.ShowRankingListUI()
     }
 
-    // 无尽模式开关Toggle(每点一下切换显示状态)
+    // 无尽模式开关：/Endless/YesOrNo 点击切换，并更新 BB 颜色与 Yes 显示
     func OnEndlessToggle(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
         SoundFunc.PlayCreatedSound("Click_Common_Default")
         GetLocalPlayer()<PlayerJionGame>.Hide_Skill_Detail()
-        var EndlessButtonYesEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI, "/Endless/Yes")
-        var EndlessButtonNoEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI, "/Endless/No")
-        if EndlessButtonYesEntity<UIWidget>.IsVisible {
-            EndlessButtonYesEntity<UIWidget>.IsVisible = false
-            EndlessButtonNoEntity<UIWidget>.IsVisible = true
-            GetLocalPlayer()<PlayerJionGame>.EndlessToggle = false
+        GetLocalPlayer()<PlayerJionGame>.EndlessToggle = !GetLocalPlayer()<PlayerJionGame>.EndlessToggle
+        var choiceUI = GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI
+        var bb1 = GetWidgetByPath(GetLocalPlayer(), choiceUI, "/Endless/BB/BB1")
+        var yesWidget = GetWidgetByPath(GetLocalPlayer(), choiceUI, "/Endless/BB/Yes")
+        if GetLocalPlayer()<PlayerJionGame>.EndlessToggle {
+            if bb1 != nil { bb1<UIWidgetImage>.Color = #FFEB00 }
+            if yesWidget != nil { yesWidget<UIWidget>.IsVisible = true }
         } else {
-            EndlessButtonYesEntity<UIWidget>.IsVisible = true
-            EndlessButtonNoEntity<UIWidget>.IsVisible = false
-            GetLocalPlayer()<PlayerJionGame>.EndlessToggle = true
+            if bb1 != nil { bb1<UIWidgetImage>.Color = #151515 }
+            if yesWidget != nil { yesWidget<UIWidget>.IsVisible = false }
         }
     }
 }
