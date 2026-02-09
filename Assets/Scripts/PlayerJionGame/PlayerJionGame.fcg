@@ -2636,11 +2636,11 @@ graph PlayerJionGame {
             selectedCards = ChoiceThreeCardUI<ChoiceOneOfThreeCard>.SelectedCards_2
         }
         
-        // 获取NowCard列表的父节点
-        var nowCardListParent = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/NowCard/List")
+        // 获取NowCard滚动列表的父节点：/Panel/NowCard/Roll_List/List，最多32张 Card (1)～Card (32)
+        var nowCardListParent = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/NowCard/Roll_List/List")
         
-        // 隐藏所有的卡牌位置（最多显示5个）
-        for i = 1, 6, 1 {
+        // 隐藏所有的卡牌位置（共32个）
+        for i = 1, 33, 1 {
             var cardPath = "Card (" + Convert.ToString(i) + ")"
             var cardEntity = GetChildByName(nowCardListParent, cardPath)
             if cardEntity != nil {
@@ -2648,8 +2648,8 @@ graph PlayerJionGame {
             }
         }
         
-        // 显示实际已选择的卡牌（最多显示5张）
-        var displayCount = Math.Min(List.Length(selectedCards), 6)
+        // 显示实际已选择的卡牌（最多32张）
+        var displayCount = Math.Min(List.Length(selectedCards), 33)
 
         for i = 0, displayCount, 1 {
             var cardIndex = i + 1
