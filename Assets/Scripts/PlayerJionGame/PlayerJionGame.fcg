@@ -2744,7 +2744,12 @@ graph PlayerJionGame {
         LightningExplosionDamageEntity<UIWidgetLabel>.Content = Convert.ToString(LightningExplosionDamage)
         LightningDamageEntity<UIWidgetLabel>.Content = Convert.ToString(LightningDamage)
         //============================================================//
+        // 先隐藏再回满，避免隐藏前闪一下
         BossHPBar<CustomUI>.IsVisible = false
+        var BossHPFill = GetWidgetByPath(GetLocalPlayer(), BossHPBar, "/Panel/HP")
+        if BossHPFill != nil {
+            BossHPFill<UIWidgetImage>.FillAmount = 1.0
+        }
         ToClient_GameComplete()
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//

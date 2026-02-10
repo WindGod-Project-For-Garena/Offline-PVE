@@ -104,8 +104,12 @@ static graph FC_PVEMonsterManager {
                 BossHPBar<CustomUI>.IsVisible = true
             }
             if currentHP <= 0 {
-                // 如果血量为0，隐藏血条并返回
+                // 先隐藏再回满，避免隐藏前闪一下
                 BossHPBar<CustomUI>.IsVisible = false
+                var BossHPNow = GetWidgetByPath(GetLocalPlayer(), BossHPBar, "/Panel/HP")
+                if BossHPNow != nil {
+                    BossHPNow<UIWidgetImage>.FillAmount = 1.0
+                }
                 break
             }
             var BossHPNow = GetWidgetByPath(GetLocalPlayer(), BossHPBar, "/Panel/HP")
@@ -114,8 +118,12 @@ static graph FC_PVEMonsterManager {
         }
 
         if boss == nil {
-            // 如果没有找到Boss，隐藏血条并返回
+            // 先隐藏再回满，避免隐藏前闪一下
             BossHPBar<CustomUI>.IsVisible = false
+            var BossHPNow = GetWidgetByPath(GetLocalPlayer(), BossHPBar, "/Panel/HP")
+            if BossHPNow != nil {
+                BossHPNow<UIWidgetImage>.FillAmount = 1.0
+            }
         }
     }
     
