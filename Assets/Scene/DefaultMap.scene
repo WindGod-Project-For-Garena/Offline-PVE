@@ -3517,9 +3517,9 @@
                 "valueTag": "unlockedValue"
               },
               "position": {
-                "x": 12.061230659484863,
+                "x": 12.12841796875,
                 "y": 0,
-                "z": -0.8090000152587891
+                "z": 2.5686442852020264
               },
               "scale": {
                 "x": 6.500999927520752,
@@ -3528,7 +3528,7 @@
               },
               "rotation": {
                 "x": 0,
-                "y": 8.888999938964844,
+                "y": 5.335853576660156,
                 "z": 0
               },
               "BTPath": [
@@ -3552,6 +3552,108 @@
                 "tagPointers": []
               },
               "tempIndex": 46,
+              "itemID": 91,
+              "seParent": null,
+              "ecaScripts": [
+                null
+              ],
+              "ecaProps": {
+                "BasicScalableItem": {},
+                "LevelObject": {},
+                "Transform": {},
+                "Entity": {},
+                "Visibility": {},
+                "Appearance": {},
+                "Collider": {}
+              },
+              "objColor": {
+                "surfaceColor": {
+                  "r": 255,
+                  "g": 255,
+                  "b": 255,
+                  "a": 1
+                },
+                "borderColor": {
+                  "r": 255,
+                  "g": 255,
+                  "b": 255,
+                  "a": 0
+                }
+              },
+              "objTex": {
+                "surfaceTexRef": {
+                  "fileId": "d1dd7ce0d51780846795c1e56406ea66",
+                  "filePath": "lib://fftextures/WorkshopItemTexture/SCENEEDIT_CUBE_TEXTURE_COLORFULCUBE001_D.png",
+                  "_tag": {
+                    "type": "GFileRefer"
+                  },
+                  "fileType": "texture"
+                },
+                "borderTexRef": null
+              },
+              "propsData": {
+                "scale": {
+                  "x": 1,
+                  "y": 1,
+                  "z": 1
+                }
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": true
+            },
+            {
+              "_entityName": "空气墙 (4)",
+              "_tag": {
+                "type": "SceneEditEntity",
+                "resourceId": "Primitive/Empty"
+              },
+              "_entityId": "cmrf3eWm",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "position": {
+                "x": 12.060999870300293,
+                "y": 0,
+                "z": -4.826868057250977
+              },
+              "scale": {
+                "x": 6.500999927520752,
+                "y": 6.956999778747559,
+                "z": 35.433998107910156
+              },
+              "rotation": {
+                "x": 0,
+                "y": 10.308430671691895,
+                "z": 0
+              },
+              "BTPath": [
+                null
+              ],
+              "visible": false,
+              "VisibilityLayer": 0,
+              "modelOptimization": 0,
+              "streamingLayer": "",
+              "attributes": [
+                2
+              ],
+              "isTrigger": false,
+              "collidable": true,
+              "physicalLayer": 0,
+              "physicalMaterial": null,
+              "aoiSetting": 0,
+              "initialTypes": {},
+              "componentList": [],
+              "entityTagData": {
+                "tagPointers": []
+              },
+              "tempIndex": 138,
               "itemID": 91,
               "seParent": null,
               "ecaScripts": [

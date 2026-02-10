@@ -34,7 +34,7 @@ static graph PVEController {
     
     // 波次倒计时
     WaveStartTime int = 0  // 波次开始时间/ms
-    WaveCountdownInterval int = 1000  // 倒计时更新间隔（毫秒）
+    WaveCountdownInterval int = 40000  // 倒计时更新间隔（毫秒）
     IsCountdownActive bool = false
 
     // 游戲成功或失敗
