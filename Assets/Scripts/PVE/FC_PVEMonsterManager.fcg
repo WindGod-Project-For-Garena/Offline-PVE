@@ -61,6 +61,8 @@ static graph FC_PVEMonsterManager {
     // 当前波次信息 - 使用基础类型
     CurrentHPModifier float = 1.0
     CurrentDamageModifier float = 1.0
+    // 无尽模式每波次倍率（由 PVEController 在 StartNextWave 时设置为 1.3^EndlessWaveCount）
+    EndlessWaveScale float = 1.0
     
     // 普通怪物生成CD
     NormalSpawnCD int = 5000  // 毫秒
@@ -254,6 +256,9 @@ static graph FC_PVEMonsterManager {
                 CurrentHPModifier = CurrentHPModifier * (levelRow["HPMultiplying"] as float)
             }
         }
+        // 无尽模式：每波次伤害与血量再乘 1.3^EndlessWaveCount（由 PVEController 设置 EndlessWaveScale）
+        CurrentDamageModifier = CurrentDamageModifier * EndlessWaveScale
+        CurrentHPModifier = CurrentHPModifier * EndlessWaveScale
 
         var bossQueue List<Map<string, object>> = List<Map<string, object>>{}
         var eliteQueue List<Map<string, object>> = List<Map<string, object>>{}
@@ -309,6 +314,9 @@ static graph FC_PVEMonsterManager {
                 CurrentHPModifier = CurrentHPModifier * (levelRow["HPMultiplying"] as float)
             }
         }
+        // 无尽模式：Boss 波同样应用每波次 1.3 倍率
+        CurrentDamageModifier = CurrentDamageModifier * EndlessWaveScale
+        CurrentHPModifier = CurrentHPModifier * EndlessWaveScale
 
         var bossQueue List<Map<string, object>> = List<Map<string, object>>{}
         var eliteQueue List<Map<string, object>> = List<Map<string, object>>{}
