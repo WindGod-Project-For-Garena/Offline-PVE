@@ -300,6 +300,15 @@ graph PlayerJionGame {
             HeroButtonEntity3<UIWidget>.IsVisible = false        
             var EndlessButtonYes = GetWidgetByPath(GetLocalPlayer(), ChoiceHeroUI, "/Endless/BB/Yes")
             EndlessButtonYes<UIWidget>.IsVisible = false
+            // 根据无尽模式设置 ChoiceLevel 颜色：无尽=红，非无尽=白
+            var choiceLevelEntity = GetWidgetByPath(GetLocalPlayer(), ChoiceHeroUI, "/ChoiceLevel")
+            if choiceLevelEntity != nil {
+                if EndlessToggle {
+                    choiceLevelEntity<UIWidgetImage>.Color = #FF0000
+                } else {
+                    choiceLevelEntity<UIWidgetImage>.Color = #FFFFFF
+                }
+            }
             UpdateChoiceHeroPanelMoney()
             //默认选择第一个技能
             var skillIndex int = 1

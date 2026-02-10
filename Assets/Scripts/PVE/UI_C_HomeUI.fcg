@@ -293,5 +293,14 @@ graph UI_HomeUI {
             if bb1 != nil { bb1<UIWidgetImage>.Color = #151515 }
             if yesWidget != nil { yesWidget<UIWidget>.IsVisible = false }
         }
+        // 无尽模式时 ChoiceLevel 红色，非无尽时白色
+        var choiceLevel = GetWidgetByPath(GetLocalPlayer(), choiceUI, "/ChoiceLevel")
+        if choiceLevel != nil {
+            if GetLocalPlayer()<PlayerJionGame>.EndlessToggle {
+                choiceLevel<UIWidgetImage>.Color = #FF0000
+            } else {
+                choiceLevel<UIWidgetImage>.Color = #FFFFFF
+            }
+        }
     }
 }

@@ -8222,7 +8222,7 @@
             },
             "fileType": "texture"
           },
-          "color": "#ffffff",
+          "color": "#FFFFFF",
           "reverse": {
             "x": true,
             "y": false
@@ -10391,7 +10391,7 @@
                     "y": 0.5
                   },
                   "anchoredPosition": {
-                    "x": -0.00000762939453125,
+                    "x": 0,
                     "y": 0
                   },
                   "sizeDelta": {
@@ -10474,7 +10474,10 @@
                 "selfValue": true,
                 "valueTag": "activeValue"
               },
-              "unlockedValue": null,
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
               "editorLockValue": false,
               "editorVisibleValue": false,
               "propsData": {
@@ -10575,7 +10578,10 @@
                 "selfValue": true,
                 "valueTag": "activeValue"
               },
-              "unlockedValue": null,
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
               "editorLockValue": false,
               "editorVisibleValue": true,
               "propsData": {
@@ -10901,7 +10907,7 @@
             "y": 0.5
           },
           "anchoredPosition": {
-            "x": 0,
+            "x": 10,
             "y": -320
           },
           "sizeDelta": {
