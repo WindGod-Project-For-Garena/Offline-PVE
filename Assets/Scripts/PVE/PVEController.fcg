@@ -95,6 +95,15 @@ static graph PVEController {
             return
         }
         
+        // 非无尽模式：未通过上一关最后一轮BOSS战不能进入下一关，请求关卡不得超过已解锁最高关
+        if !GetLocalPlayer()<PlayerJionGame>.EndlessToggle {
+            var maxUnlocked int = GetLocalPlayer()<PlayerJionGame>.MaxLevel
+            if level > maxUnlocked {
+                LogWarning("未通关当前最高关BOSS，无法进入第" + level + "关，已限制为第" + maxUnlocked + "关")
+                level = maxUnlocked
+            }
+        }
+        
         // LogInfo("开始PVE游戏 - 关卡: " + level)
         IsGameActive = true
         GameStartTime = globalEntity<Global>.GameTimeCount

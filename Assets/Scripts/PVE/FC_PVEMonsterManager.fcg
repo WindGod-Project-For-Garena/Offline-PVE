@@ -51,7 +51,9 @@ static graph FC_PVEMonsterManager {
     // 总计获得金币数量
     TotalGold int = 0
     // 记录Boss存活时间
-    BossliveTime int = 0        
+    BossliveTime int = 0
+    // 本波BOSS是否被玩家击杀（仅当在 OnMonsterKilled 中移除时置 true；失败时 ClearAllMonsters 不触发，不解锁下一关）
+    BossKilledByPlayerThisWave bool = false
     
     // CSV缓存（仅缓存当前Level行、按需缓存怪物行）
     LevelRowInfos Map<int, Map<string, object>> = Map<int, Map<string, object>>{} //LevelID -> LevelInfo
@@ -650,6 +652,7 @@ static graph FC_PVEMonsterManager {
     async func StartRecordBossLiveTime(monster entity<LevelObject>) {
         // LogInfo("开始记录Boss存活时间")
         BossliveTime = 0
+        BossKilledByPlayerThisWave = false  // 仅当 OnMonsterKilled 中移除本波 BOSS 时才置 true，失败清场不解锁
         while monster != nil && monster<Mob>.HP > 0 {
             WaitForMillisecond(1000)
             BossliveTime = BossliveTime + 1000
@@ -657,6 +660,10 @@ static graph FC_PVEMonsterManager {
         if monster == nil || monster<Mob>.HP <= 0 {
             WaitForMillisecond(2000)
             
+            // 只有本波 BOSS 被玩家击杀（OnMonsterKilled 中移除）才解锁；失败时 ClearAllMonsters 不会触发 OnMonsterKilled，不会误解锁
+            if !BossKilledByPlayerThisWave {
+                return
+            }
             // 获取当前玩家数据
             var currentHighestLevel = GetLocalPlayer()<PlayerJionGame>.MaxLevel  // 已解锁的最高关卡
             
@@ -801,6 +808,7 @@ static graph FC_PVEMonsterManager {
                 //LogInfo("Elite怪物死亡，CD开始: " + EliteSpawnCD + "ms")
             }else if list.Contain(ActiveBossMonsters, monster) {
                 list.Remove(ActiveBossMonsters, monster)
+                BossKilledByPlayerThisWave = true  // 本波 BOSS 被玩家击杀，允许解锁下一关
             }
             // 怪物少于3个时停止播放僵尸音效
             if list.Length(ActiveMonsters) < 3 {
