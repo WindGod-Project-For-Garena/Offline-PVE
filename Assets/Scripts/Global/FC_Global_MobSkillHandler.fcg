@@ -438,9 +438,8 @@ static graph FC_Global_MobSkillHandler {
         explosionEffect = eEffect as entity<Effect>
         explosionEffect<Transform>.Position = position
         explosionEffect<Transform>.Scale = Vector3{scale,scale,scale}
-       
-
-        var players = getPlayersInRange(position,scale)
+        // 仅按水平距离(XZ)判定，与地面指示圈一致；避免 3D 距离导致范围大于指示
+        var players = getPlayersInRangeXZ(position, scale)
         for i, player in players {
             Offline.DealDamage(player as entity<Combatable>, nil, DamageType.Monster, skillDamage)
         }
@@ -577,6 +576,23 @@ static graph FC_Global_MobSkillHandler {
         var players List<entity<Player>> = List<entity<Player>>{}
         for i, player in GetAllPlayers() {
             if (Math.Distance(player<Player>.Position, position) <= range) {
+                List.Append(players, player)
+            }
+        }
+        return players
+     }
+
+    // 仅按水平面(XZ)距离判定，用于地面圆形范围技能，使伤害范围与地面指示圈一致
+     func getPlayersInRangeXZ(position Vector3, range float) List<entity<Player>> {
+        var players List<entity<Player>> = List<entity<Player>>{}
+        var px float = position.X
+        var pz float = position.Z
+        for i, player in GetAllPlayers() {
+            var pos = player<Player>.Position
+            var dx float = pos.X - px
+            var dz float = pos.Z - pz
+            var distXZ float = Math.Sqrt(dx * dx + dz * dz)
+            if distXZ <= range {
                 List.Append(players, player)
             }
         }
