@@ -10,6 +10,7 @@ import "../PlayerJionGame/PlayerJionGame.fcg" as PlayerJionGame
 import "../SuperFcc/TransferList.fcc" as TransferList
 import "../SoundFunc/SoundFunc.fcg" as SoundFunc
 import "List.fcc" as List
+import "Convert.fcc" as Convert
 import "Items.fcc" as Items
 import "../CustomEvent.fcc" as CustomEvent
 import "../PVE/FC_PVEMonsterManager.fcg" as PVEMonsterManager
@@ -249,31 +250,73 @@ graph SkillUI {
         var buttonPath = "/Skill_" + skillNum + "/JoyStickFillAmount"
         JoyStickButton = GetWidgetByPath(GetLocalPlayer(), SkillUI, buttonPath)
         JoyStickButton<UIWidget>.IsVisible = true
-        JoyStickButton<UIWidgetButton>.FillAmount = 0
-        
-        if FillAmountTween == nil{
+        JoyStickButton<UIWidgetButton>.FillAmount = 1
+
+        // 显示并初始化冷却时间文本（保留一位小数）
+        var timePath = "/Skill_" + skillNum + "/JoyStickFillAmount/Time"
+        var TimeWidget = GetWidgetByPath(GetLocalPlayer(), SkillUI, timePath)
+        if TimeWidget != nil {
+            TimeWidget<UIWidget>.IsVisible = true
+            TimeWidget<UIWidgetLabel>.Content = FormatSecToOneDecimal(cdTime * 1.0 / 1000.0)
+        }
+
+        if FillAmountTween == nil {
             CreateTween(
                 JoyStickButton,
                 UIWidgetButton.FillAmount,
-                0,
                 1,
+                0,
                 TweenStyle.Once,
                 CreateCurve({0, 0, 1, 1}),
-                cdTime, 
+                cdTime,
                 out var FillAmountTweenEntity,
                 true)
             FillAmountTween = FillAmountTweenEntity
-            start HandleSkillCD(skillNum,cdTime)
+            start HandleSkillCD(skillNum, cdTime)
         }
     }
 
-    // 处理技能CD
-    async func HandleSkillCD(skillNum int ,cdTime int) {
-        WaitForMillisecond(cdTime)
+    // 将秒数格式化为一位小数字符串（如 4.9、5.0），用 Floor 避免剩余时间被四舍五入
+    func FormatSecToOneDecimal(sec float) string {
+        var totalTenths int = Math.Floor(sec * 10)
+        if totalTenths < 0 {
+            totalTenths = 0
+        }
+        var intPart int = totalTenths / 10
+        var tenths int = totalTenths - intPart * 10
+        return Convert.ToString(intPart) + "." + Convert.ToString(tenths)
+    }
+
+    // 处理技能CD：倒计时跟 FillAmount 同步；以 FillAmount<=0 为结束条件，结束瞬间立刻执行炸光与收尾
+    async func HandleSkillCD(skillNum int, cdTime int) {
+        var SkillUI entity<CustomUI> = GetLocalPlayer()<PlayerJionGame>.SkillUI
+        var timePath = "/Skill_" + skillNum + "/JoyStickFillAmount/Time"
+        var TimeWidget = GetWidgetByPath(GetLocalPlayer(), SkillUI, timePath)
+
+        while true {
+            if JoyStickButton != nil {
+                var fill float = JoyStickButton<UIWidgetButton>.FillAmount
+                if TimeWidget != nil {
+                    var remainingSec float = fill * cdTime * 1.0 / 1000.0
+                    TimeWidget<UIWidgetLabel>.Content = FormatSecToOneDecimal(remainingSec)
+                }
+                if fill <= 0 {
+                    break
+                }
+            }
+            WaitForNextFrame()
+        }
+
+        if TimeWidget != nil {
+            TimeWidget<UIWidgetLabel>.Content = "0.0"
+            TimeWidget<UIWidget>.IsVisible = false
+        }
+
         Destroy(FillAmountTween)
 
+        // 显示技能可按动按钮
+        JoyStickButton<UIWidget>.IsVisible = false
 
-        var SkillUI entity<CustomUI> = GetLocalPlayer()<PlayerJionGame>.SkillUI
         var buttonPath = "/Skill_" + skillNum + "/Effect"
         var JoyStickEffect_1 = GetWidgetByPath(GetLocalPlayer(), SkillUI, buttonPath)
         JoyStickEffect_1<UIWidget>.IsVisible = true
@@ -291,7 +334,7 @@ graph SkillUI {
             JoyStickEffect_1,
             UIWidget.SizeDelta,
             Vector2{0, 0},
-            Vector2{85, 85},
+            Vector2{150, 150},
             TweenStyle.Once,
             CreateCurve({0, 0, 1, 1}),
             200, 
@@ -302,10 +345,6 @@ graph SkillUI {
         Destroy(EffectBig)
         JoyStickEffect_1<UIWidget>.SizeDelta = Vector2{0, 0}
         JoyStickEffect_1<UIWidget>.IsVisible = false
-
-
-        // 显示技能可按动按钮
-        JoyStickButton<UIWidget>.IsVisible = false
     }
 
     // 播放雷击特效

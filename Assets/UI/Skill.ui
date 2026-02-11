@@ -141,22 +141,19 @@
           "_entityId": "HDKgz51F",
           "children": [
             {
-              "_entityName": "Image",
+              "_entityName": "Time",
               "_tag": {
-                "type": "UIImageEntity",
+                "type": "UITextEntity",
                 "resourceId": ""
               },
-              "_entityId": "BauWd1ry",
+              "_entityId": "W55CXXEC",
               "children": [],
               "prefabVariant": null,
               "activeValue": {
                 "selfValue": true,
                 "valueTag": "activeValue"
               },
-              "unlockedValue": {
-                "selfValue": true,
-                "valueTag": "unlockedValue"
-              },
+              "unlockedValue": null,
               "editorLockValue": false,
               "editorVisibleValue": true,
               "propsData": {
@@ -180,62 +177,48 @@
                     "y": 0
                   },
                   "sizeDelta": {
-                    "x": 50,
-                    "y": 50
+                    "x": 90,
+                    "y": 90
                   }
                 },
                 "alpha": 100,
                 "priority": 0,
-                "image": {
-                  "source": {
-                    "fileId": "irqbq8w5519-mjs3u7o8-o8cffn6io3a",
-                    "filePath": "Assets\\Image\\SkillIcon\\爆裂轰炸.png",
-                    "_tag": {
-                      "type": "GFileRefer"
-                    },
-                    "fileType": "texture"
+                "text": {
+                  "value": "0.0",
+                  "key": "",
+                  "font": "Default",
+                  "fontSize": 30,
+                  "fontStyle": {
+                    "bold": false,
+                    "italic": false,
+                    "underline": false
                   },
-                  "color": "#8C8D8F",
-                  "reverse": {
-                    "x": false,
-                    "y": false
+                  "color": "#ffffff",
+                  "alignment": {
+                    "h": "center",
+                    "v": "middle"
                   },
-                  "fillType": 3,
-                  "slicedBorder": {
-                    "left": 0,
-                    "right": 0,
-                    "top": 0,
-                    "bottom": 0
+                  "lineSpacing": 0,
+                  "background": false,
+                  "backgroundColor": "#e7b200",
+                  "overflow": 0,
+                  "backgroundRGBA": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 0
                   },
-                  "tiledBorder": {
-                    "left": 0,
-                    "right": 0,
-                    "top": 0,
-                    "bottom": 0
-                  },
-                  "centerInvisible": false,
-                  "fillDir": 4,
-                  "fillAmount": 1,
-                  "invertFill": false,
-                  "flip": 0,
-                  "gradient": 1,
-                  "gradientTop": {
-                    "r": 255,
-                    "g": 255,
-                    "b": 255,
-                    "a": 1
-                  },
-                  "gradientBottom": {
-                    "r": 255,
-                    "g": 255,
-                    "b": 255,
-                    "a": 1
+                  "shadow": false,
+                  "shadowColor": "#000000",
+                  "shadowOffset": {
+                    "x": 1,
+                    "y": 1
                   }
                 }
               },
               "ecaScripts": [],
               "ecaProps": {
-                "HudImageWidget": {},
+                "HudLabelWidget": {},
                 "HudWidget": {},
                 "Entity": {}
               },
@@ -292,9 +275,9 @@
                 },
                 "fileType": "texture"
               },
-              "normal": "#626262",
+              "normal": "#FFFFFF",
               "highlight": "#e2a222",
-              "pressed": "#626262",
+              "pressed": "#FFFFFF",
               "disabled": "#494949",
               "onClicks": [],
               "enableBorderImage": true,
@@ -316,7 +299,7 @@
               "centerInvisible": false,
               "fillDir": 4,
               "fillAmount": 1,
-              "invertFill": false,
+              "invertFill": true,
               "reverse": {
                 "x": false,
                 "y": false
@@ -671,22 +654,19 @@
           "_entityId": "JYXWuUw2",
           "children": [
             {
-              "_entityName": "Image",
+              "_entityName": "Time",
               "_tag": {
-                "type": "UIImageEntity",
+                "type": "UITextEntity",
                 "resourceId": ""
               },
-              "_entityId": "f9ubUvGo",
+              "_entityId": "qrOi2Ntk",
               "children": [],
               "prefabVariant": null,
               "activeValue": {
                 "selfValue": true,
                 "valueTag": "activeValue"
               },
-              "unlockedValue": {
-                "selfValue": true,
-                "valueTag": "unlockedValue"
-              },
+              "unlockedValue": null,
               "propsData": {
                 "activeSelf": true,
                 "transform": {
@@ -705,65 +685,51 @@
                   },
                   "anchoredPosition": {
                     "x": 0,
-                    "y": 0
+                    "y": 0.00000762939453125
                   },
                   "sizeDelta": {
-                    "x": 50,
-                    "y": 50
+                    "x": 90,
+                    "y": 90
                   }
                 },
                 "alpha": 100,
                 "priority": 0,
-                "image": {
-                  "source": {
-                    "fileId": "wpgm7dl65lq-mjs3u7pz-sjpxgb06jjo",
-                    "filePath": "Assets\\Image\\SkillIcon\\电弧冲击.png",
-                    "_tag": {
-                      "type": "GFileRefer"
-                    },
-                    "fileType": "texture"
+                "text": {
+                  "value": "0.0",
+                  "key": "",
+                  "font": "Default",
+                  "fontSize": 30,
+                  "fontStyle": {
+                    "bold": false,
+                    "italic": false,
+                    "underline": false
                   },
-                  "color": "#8C8D8F",
-                  "reverse": {
-                    "x": false,
-                    "y": false
+                  "color": "#ffffff",
+                  "alignment": {
+                    "h": "center",
+                    "v": "middle"
                   },
-                  "fillType": 3,
-                  "slicedBorder": {
-                    "left": 0,
-                    "right": 0,
-                    "top": 0,
-                    "bottom": 0
+                  "lineSpacing": 0,
+                  "background": false,
+                  "backgroundColor": "#e7b200",
+                  "overflow": 0,
+                  "backgroundRGBA": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 0
                   },
-                  "tiledBorder": {
-                    "left": 0,
-                    "right": 0,
-                    "top": 0,
-                    "bottom": 0
-                  },
-                  "centerInvisible": false,
-                  "fillDir": 4,
-                  "fillAmount": 1,
-                  "invertFill": false,
-                  "flip": 0,
-                  "gradient": 1,
-                  "gradientTop": {
-                    "r": 255,
-                    "g": 255,
-                    "b": 255,
-                    "a": 1
-                  },
-                  "gradientBottom": {
-                    "r": 255,
-                    "g": 255,
-                    "b": 255,
-                    "a": 1
+                  "shadow": false,
+                  "shadowColor": "#000000",
+                  "shadowOffset": {
+                    "x": 1,
+                    "y": 1
                   }
                 }
               },
               "ecaScripts": [],
               "ecaProps": {
-                "HudImageWidget": {},
+                "HudLabelWidget": {},
                 "HudWidget": {},
                 "Entity": {}
               },
@@ -772,7 +738,7 @@
                 "tagPointers": []
               },
               "editorLockValue": false,
-              "editorVisibleValue": false
+              "editorVisibleValue": true
             }
           ],
           "prefabVariant": null,
@@ -820,9 +786,9 @@
                 },
                 "fileType": "texture"
               },
-              "normal": "#626262",
+              "normal": "#FFFFFF",
               "highlight": "#e2a222",
-              "pressed": "#626262",
+              "pressed": "#FFFFFF",
               "disabled": "#494949",
               "onClicks": [],
               "enableBorderImage": true,
@@ -844,7 +810,7 @@
               "centerInvisible": false,
               "fillDir": 4,
               "fillAmount": 1,
-              "invertFill": false,
+              "invertFill": true,
               "reverse": {
                 "x": false,
                 "y": false
@@ -867,7 +833,15 @@
           },
           "ecaScripts": [],
           "ecaProps": {
-            "HudButtonWidget": {},
+            "HudButtonWidget": {
+              "HudButtonWidget_15026837_custom": null,
+              "HudButtonWidget_67680512_custom": null,
+              "HudButtonWidget_33700402_custom": 0,
+              "HudButtonWidget_52340716_custom": null,
+              "HudButtonWidget_47946058_custom": 0,
+              "HudButtonWidget_73587085_custom": "",
+              "HudButtonWidget_39454785_custom": true
+            },
             "HudWidget": {},
             "Entity": {}
           },
@@ -1193,22 +1167,19 @@
           "_entityId": "RbbkFma5",
           "children": [
             {
-              "_entityName": "Image",
+              "_entityName": "Time",
               "_tag": {
-                "type": "UIImageEntity",
+                "type": "UITextEntity",
                 "resourceId": ""
               },
-              "_entityId": "meG4embQ",
+              "_entityId": "E1Rq8s99",
               "children": [],
               "prefabVariant": null,
               "activeValue": {
                 "selfValue": true,
                 "valueTag": "activeValue"
               },
-              "unlockedValue": {
-                "selfValue": true,
-                "valueTag": "unlockedValue"
-              },
+              "unlockedValue": null,
               "propsData": {
                 "activeSelf": true,
                 "transform": {
@@ -1227,65 +1198,51 @@
                   },
                   "anchoredPosition": {
                     "x": 0,
-                    "y": 0
+                    "y": 0.00000762939453125
                   },
                   "sizeDelta": {
-                    "x": 50,
-                    "y": 50
+                    "x": 90,
+                    "y": 90
                   }
                 },
                 "alpha": 100,
                 "priority": 0,
-                "image": {
-                  "source": {
-                    "fileId": "4ca1d2b3c898be4295468b280eeb3588",
-                    "filePath": "lib://fftextures/WorkshopIconLibrary/UI_icon_buff_01.png",
-                    "_tag": {
-                      "type": "GFileRefer"
-                    },
-                    "fileType": "texture"
+                "text": {
+                  "value": "0.0",
+                  "key": "",
+                  "font": "Default",
+                  "fontSize": 30,
+                  "fontStyle": {
+                    "bold": false,
+                    "italic": false,
+                    "underline": false
                   },
-                  "color": "#8C8D8F",
-                  "reverse": {
-                    "x": false,
-                    "y": false
+                  "color": "#ffffff",
+                  "alignment": {
+                    "h": "center",
+                    "v": "middle"
                   },
-                  "fillType": 3,
-                  "slicedBorder": {
-                    "left": 0,
-                    "right": 0,
-                    "top": 0,
-                    "bottom": 0
+                  "lineSpacing": 0,
+                  "background": false,
+                  "backgroundColor": "#e7b200",
+                  "overflow": 0,
+                  "backgroundRGBA": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 0
                   },
-                  "tiledBorder": {
-                    "left": 0,
-                    "right": 0,
-                    "top": 0,
-                    "bottom": 0
-                  },
-                  "centerInvisible": false,
-                  "fillDir": 4,
-                  "fillAmount": 1,
-                  "invertFill": false,
-                  "flip": 0,
-                  "gradient": 1,
-                  "gradientTop": {
-                    "r": 255,
-                    "g": 255,
-                    "b": 255,
-                    "a": 1
-                  },
-                  "gradientBottom": {
-                    "r": 255,
-                    "g": 255,
-                    "b": 255,
-                    "a": 1
+                  "shadow": false,
+                  "shadowColor": "#000000",
+                  "shadowOffset": {
+                    "x": 1,
+                    "y": 1
                   }
                 }
               },
               "ecaScripts": [],
               "ecaProps": {
-                "HudImageWidget": {},
+                "HudLabelWidget": {},
                 "HudWidget": {},
                 "Entity": {}
               },
@@ -1294,7 +1251,7 @@
                 "tagPointers": []
               },
               "editorLockValue": false,
-              "editorVisibleValue": false
+              "editorVisibleValue": true
             }
           ],
           "prefabVariant": null,
@@ -1342,9 +1299,9 @@
                 },
                 "fileType": "texture"
               },
-              "normal": "#626262",
+              "normal": "#FFFFFF",
               "highlight": "#e2a222",
-              "pressed": "#626262",
+              "pressed": "#FFFFFF",
               "disabled": "#494949",
               "onClicks": [],
               "enableBorderImage": true,
@@ -1366,7 +1323,7 @@
               "centerInvisible": false,
               "fillDir": 4,
               "fillAmount": 1,
-              "invertFill": false,
+              "invertFill": true,
               "reverse": {
                 "x": false,
                 "y": false
@@ -1650,4 +1607,4 @@
   "discriminator": "ISceneLike",
   "version": 3
 }
-//"{FE:{"v":"1.16.4187991","c":{"FF":5001},"s":100}
+//"{FE:{"v":"1.16.4197289","c":{"FF":5001},"s":100}
