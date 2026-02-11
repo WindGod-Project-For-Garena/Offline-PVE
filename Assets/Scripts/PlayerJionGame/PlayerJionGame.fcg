@@ -492,59 +492,40 @@ graph PlayerJionGame {
         IFMShow<UIWidget>.IsVisible = false
     }
 
-    // 刷新全部 8 个卡位：Card1=被动技能，Card2/3=掉落物效果，Card2～8=已选卡牌（按效果数量前移）
+    // 刷新全部 8 个卡位：Card1/2=掉落物效果，Card3～7=不显示，Card8=主动技能（三选一卡牌不显示）
     async func RefreshAllIcons() {
         GetCardDisplayParams(out var nSelected, out var nEffect, out var cardsStartSlot, out var maxCardSlots, out var displayCardCount)
-        var choiceUI = ChoiceThreeCardUI
         var currentSkill = CurrentSkill
 
-        // Card1：只改技能图标，底板不变
-        SetCardIconImageOnly(1, EResSprite.Hero1_Skill2, #FFFFFFFF, true)
-        if currentSkill == 2 {
-            SetCardIconImageOnly(1, EResSprite.Hero2_Skill2, #FFFFFFFF, true)
-        }
-
-        // Card2、Card3：掉落物效果图标
+        // Card1、Card2：掉落物效果图标
         if nEffect >= 1 {
             if weaponBuffTimerActive {
-                SetCardIcon(2, EResSprite.WeaponDamage, #E38CEE, true)
+                SetCardIcon(1, EResSprite.WeaponDamage, #E38CEE, true)
             } else if skillBuffTimerActive {
-                SetCardIcon(2, EResSprite.SkillDamage, #E38CEE, true)
-            }
-        }
-        if nEffect >= 2 {
-            SetCardIcon(2, EResSprite.WeaponDamage, #E38CEE, true)
-            SetCardIcon(3, EResSprite.SkillDamage, #E38CEE, true)
-        }
-
-        if EndlessToggle {
-            // 无尽模式：只显示当前技能和掉落道具，不显示卡牌
-            for slot = cardsStartSlot, 9, 1 {
-                if slot == 1 {
-                    continue
-                }
-                SetCardVisible(slot, false)
+                SetCardIcon(1, EResSprite.SkillDamage, #E38CEE, true)
             }
         } else {
-            for i = 0, displayCardCount, 1 {
-                var slot = cardsStartSlot + i
-                if slot == 1 {
-                    continue
-                }
-                var id = GetSelectedCardIdAtIndex(choiceUI, currentSkill, i)
-                var info = choiceUI<ChoiceOneOfThreeCard>.GetCardInfoById(id, currentSkill)
-                if info != nil {
-                    GetCardIconRarityFromInfo(info, out var iconSprite, out var rarityColor, out var buttonSprite)
-                    SetSelectedCardIcon(slot, iconSprite, rarityColor, buttonSprite, true)
-                }
-            }
-            for slot = cardsStartSlot + displayCardCount, 9, 1 {
-                if slot == 1 {
-                    continue
-                }
-                SetCardVisible(slot, false)
-            }
+            SetCardVisible(1, false)
         }
+        if nEffect >= 2 {
+            SetCardIcon(1, EResSprite.WeaponDamage, #E38CEE, true)
+            SetCardIcon(2, EResSprite.SkillDamage, #E38CEE, true)
+        } else {
+            SetCardVisible(2, false)
+        }
+
+        // Card3～7：不显示三选一卡牌，全部隐藏
+        for slot = 3, 8, 1 {
+            SetCardVisible(slot, false)
+        }
+
+        // Card8：主动技能（固定放最右边）
+        SetCardVisible(8, true)
+        SetCardIconImageOnly(8, EResSprite.Hero1_Skill2, #FFFFFFFF, true)
+        if currentSkill == 2 {
+            SetCardIconImageOnly(8, EResSprite.Hero2_Skill2, #FFFFFFFF, true)
+        }
+
         RefreshSixLogoIFM()
     }
 
@@ -610,66 +591,49 @@ graph PlayerJionGame {
         }
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
-// 刷新详情页面信息：Card1 只改技能图标和文案，底板不变
+// 刷新详情页面信息：主动技能默认第一位，有掉落物时道具优先、技能排后，效果消失后技能回第一位（三选一不显示）
     func RefreshSixLogoIFM() {
         GetCardDisplayParams(out var nSelected, out var nEffect, out var cardsStartSlot, out var maxCardSlots, out var displayCardCount)
-        var choiceUI = ChoiceThreeCardUI
         var currentSkill = CurrentSkill
+        var skillSlot = 1 + nEffect
 
-        SetSixLogoIFMCardIconImageOnly(1, EResSprite.Hero1_Skill2, #FFFFFFFF, true)
-        SetSixLogoIFMText(1, LocString{"SKILL_BOMBARD", List<string>{}})
-        if currentSkill == 2 {
-            SetSixLogoIFMCardIconImageOnly(1, EResSprite.Hero2_Skill2, #FFFFFFFF, true)
-            SetSixLogoIFMText(1, LocString{"SKILL_SHOCK", List<string>{}})
-        }
-
+        // Card1～3：有掉落物时先显示道具，再在后面显示主动技能；无掉落物时技能在第一位
         if nEffect >= 1 {
             if weaponBuffTimerActive {
-                SetSixLogoIFMCardIcon(2, EResSprite.WeaponDamage, #E38CEE, true)
-                SetSixLogoIFMText(2, LocString{"GIFT_WEAPON_DAMAGE_ADD", List<string>{50}})
+                SetSixLogoIFMCardIcon(1, EResSprite.WeaponDamage, #E38CEE, true)
+                SetSixLogoIFMText(1, LocString{"GIFT_WEAPON_DAMAGE_ADD", List<string>{50}})
             } else if skillBuffTimerActive {
-                SetSixLogoIFMCardIcon(2, EResSprite.SkillDamage, #E38CEE, true)
-                SetSixLogoIFMText(2, LocString{"GIFT_SKILL_DAMAGE_ADD", List<string>{50}})
+                SetSixLogoIFMCardIcon(1, EResSprite.SkillDamage, #E38CEE, true)
+                SetSixLogoIFMText(1, LocString{"GIFT_SKILL_DAMAGE_ADD", List<string>{50}})
             }
         }
         if nEffect >= 2 {
-            SetSixLogoIFMCardIcon(2, EResSprite.WeaponDamage, #E38CEE, true)
-            SetSixLogoIFMText(2, LocString{"GIFT_WEAPON_DAMAGE_ADD", List<string>{50}})
-            SetSixLogoIFMCardIcon(3, EResSprite.SkillDamage, #E38CEE, true)
-            SetSixLogoIFMText(3, LocString{"GIFT_SKILL_DAMAGE_ADD", List<string>{50}})
+            SetSixLogoIFMCardIcon(1, EResSprite.WeaponDamage, #E38CEE, true)
+            SetSixLogoIFMText(1, LocString{"GIFT_WEAPON_DAMAGE_ADD", List<string>{50}})
+            SetSixLogoIFMCardIcon(2, EResSprite.SkillDamage, #E38CEE, true)
+            SetSixLogoIFMText(2, LocString{"GIFT_SKILL_DAMAGE_ADD", List<string>{50}})
         }
 
-        if EndlessToggle {
-            // 无尽模式：只显示当前技能和掉落道具，不显示卡牌
-            for slot = cardsStartSlot, 9, 1 {
-                if slot == 1 {
-                    continue
-                }
-                SetSixLogoIFMCardVisible(slot, false)
-                SetSixLogoIFMText(slot, "")
+        // 主动技能：无掉落物在 Card(1)，有 1 个在 Card(2)，有 2 个在 Card(3)；同时更新底板
+        SetSixLogoIFMCardVisible(skillSlot, true)
+        SetSixLogoIFMCardBackground(skillSlot, EResSprite.SkillBackBoard, #FFFFFFFF, true)
+        SetSixLogoIFMCardIconImageOnly(skillSlot, EResSprite.Hero1_Skill2, #FFFFFFFF, true)
+        SetSixLogoIFMText(skillSlot, LocString{"SKILL_BOMBARD", List<string>{}})
+        if currentSkill == 2 {
+            SetSixLogoIFMCardIconImageOnly(skillSlot, EResSprite.Hero2_Skill2, #FFFFFFFF, true)
+            SetSixLogoIFMText(skillSlot, LocString{"SKILL_SHOCK", List<string>{}})
+        }
+
+        // 未用于技能和道具的槽位全部隐藏（显示过的只有 1～nEffect 的道具位和 skillSlot 技能位）
+        for slot = 1, 9, 1 {
+            if slot <= nEffect {
+                continue
             }
-        } else {
-            for i = 0, displayCardCount, 1 {
-                var slot = cardsStartSlot + i
-                if slot == 1 {
-                    continue
-                }
-                var id = GetSelectedCardIdAtIndex(choiceUI, currentSkill, i)
-                var info = choiceUI<ChoiceOneOfThreeCard>.GetCardInfoById(id, currentSkill)
-                if info != nil {
-                    GetCardIconRarityFromInfo(info, out var iconSprite, out var rarityColor, out var buttonSprite)
-                    SetSixLogoIFMSelectedCardIcon(slot, iconSprite, rarityColor, buttonSprite, true)
-                    var desc = choiceUI<ChoiceOneOfThreeCard>.GenerateCardDescription(info)
-                    SetSixLogoIFMText(slot, desc)
-                }
+            if slot == skillSlot {
+                continue
             }
-            for slot = cardsStartSlot + displayCardCount, 9, 1 {
-                if slot == 1 {
-                    continue
-                }
-                SetSixLogoIFMCardVisible(slot, false)
-                SetSixLogoIFMText(slot, "")
-            }
+            SetSixLogoIFMCardVisible(slot, false)
+            SetSixLogoIFMText(slot, "")
         }
     }
 
@@ -699,6 +663,17 @@ graph PlayerJionGame {
             iconWidget<UIWidget>.IsVisible = visible
             iconWidget<UIWidgetImage>.SpriteName = sprite
             iconWidget<UIWidgetImage>.Color = color
+        }
+    }
+
+    // 只更新详情页卡位底板（SpriteName、Color、可见），用于从掉落物切回技能时恢复底板样式
+    func SetSixLogoIFMCardBackground(slotIndex int, sprite EResSprite, color Color, visible bool) {
+        var cardPath = "/SixLogoIFM/RollList/List/Card (" + Convert.ToString(slotIndex) + ")"
+        var cardWidget = GetWidgetByPath(GetLocalPlayer(), DownSixLogoUI, cardPath)
+        if cardWidget != nil {
+            cardWidget<UIWidget>.IsVisible = visible
+            cardWidget<UIWidgetImage>.SpriteName = sprite
+            cardWidget<UIWidgetImage>.Color = color
         }
     }
 
@@ -2656,91 +2631,13 @@ graph PlayerJionGame {
 
         GetMoneyEntity<UIWidgetLabel>.Content = FC_PVEMonsterManager.TotalGold
 
-        // ==================== 显示已选择的三选一卡牌 ====================
-        // 获取已选择的卡牌列表
-        var selectedCards = List<int>{}
-        if CurrentSkill == 1 {
-            selectedCards = ChoiceThreeCardUI<ChoiceOneOfThreeCard>.SelectedCards_1
-        } else if CurrentSkill == 2 {
-            selectedCards = ChoiceThreeCardUI<ChoiceOneOfThreeCard>.SelectedCards_2
-        }
-        
-        // 获取NowCard滚动列表的父节点：/Panel/NowCard/Roll_List/List，最多32张 Card (1)～Card (32)
+        // ==================== 详情页不显示三选一卡牌，全部隐藏 ====================
         var nowCardListParent = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/NowCard/Roll_List/List")
-        
-        // 隐藏所有的卡牌位置（共32个）
         for i = 1, 33, 1 {
             var cardPath = "Card (" + Convert.ToString(i) + ")"
             var cardEntity = GetChildByName(nowCardListParent, cardPath)
             if cardEntity != nil {
                 cardEntity<UIWidget>.IsVisible = false
-            }
-        }
-        
-        // 显示实际已选择的卡牌（最多32张）
-        var displayCount = Math.Min(List.Length(selectedCards), 33)
-
-        for i = 0, displayCount, 1 {
-            var cardIndex = i + 1
-            var cardId = selectedCards[i]
-            
-            var cardPath = "Card (" + Convert.ToString(cardIndex) + ")"
-            var cardEntity = GetChildByName(nowCardListParent, cardPath)
-            
-            if cardEntity != nil {
-                // 显示卡牌位置
-                cardEntity<UIWidget>.IsVisible = true
-                
-                // 获取卡牌信息
-                var cardInfo = ChoiceThreeCardUI<ChoiceOneOfThreeCard>.GetCardInfoById(cardId, CurrentSkill)
-                if cardInfo != nil {
-                    // 获取HasCardPanel
-                    var hasCardPanel = GetChildByName(cardEntity, "HasCardPanel")
-                    if hasCardPanel != nil {
-                        // 设置技能文字
-                        var ifmText = GetChildByName(hasCardPanel, "IFMText")
-                        if ifmText != nil {
-                            var description = ChoiceThreeCardUI<ChoiceOneOfThreeCard>.GenerateCardDescription(cardInfo)
-                            ifmText<UIWidgetLabel>.Content = description
-                        }
-                        
-                        // 设置图标
-                        var iconImageEntity = GetChildByName(hasCardPanel, "icon")
-                        if iconImageEntity != nil {
-                            iconImageEntity<UIWidget>.IsVisible = true
-                            var nature = cardInfo["Nature"]
-                            var iconKey = "Skill_Just_Do_It"  // 通用默认值
-
-                            // 设置图标稀有度颜色
-                            var rarity = cardInfo["Rarity"] as int
-                            var iconColor = FC_Config.CardRarityColor[rarity]
-                            iconImageEntity<UIWidgetImage>.Color = iconColor
-                            
-                            // 检查配置中是否存在该nature对应的图标
-                            if (nature != nil && nature != "") {
-                                if (FC_Config.CardIconSprites[nature] != nil) {
-                                    iconKey = nature  // 如果配置中有，直接使用nature作为key
-                                }
-                            }
-                            
-                            iconImageEntity<UIWidgetImage>.SpriteName = FC_Config.CardIconSprites[iconKey]
-                        }
-
-                        // 更具稀有度更新边框颜色
-                        var rarity = cardInfo["Rarity"] as int
-                        var ICONBBEntity = GetChildByName(hasCardPanel, "BackBoard")
-                        var tableftEntity = GetChildByName(ICONBBEntity, "tableft")
-                        var tabrightEntity = GetChildByName(ICONBBEntity, "tabright")
-                        var iconColor = FC_Config.CardRarityColor[rarity]
-                        tableftEntity<UIWidgetImage>.Color = iconColor
-                        tabrightEntity<UIWidgetImage>.Color = iconColor
-                        ICONBBEntity<UIWidgetImage>.Color = iconColor
-                    }
-                } else {
-                    LogWarning("未找到卡牌ID " + Convert.ToString(cardId) + " 的信息")
-                }
-            } else {
-                LogWarning("找不到卡牌UI位置: " + cardPath)
             }
         }
         //=======================显示相关伤害统计======================//

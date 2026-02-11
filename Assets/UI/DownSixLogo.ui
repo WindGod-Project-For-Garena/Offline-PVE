@@ -78,8 +78,8 @@
                     "priority": 0,
                     "image": {
                       "source": {
-                        "fileId": "irqbq8w5519-mjs3u7o8-o8cffn6io3a",
-                        "filePath": "Assets\\Image\\SkillIcon\\爆裂轰炸.png",
+                        "fileId": "ju2yqotgzyn-mjs3u7bu-i7z4ob7a3r",
+                        "filePath": "Assets\\Image\\SkillIcon\\技能伤害.png",
                         "_tag": {
                           "type": "GFileRefer"
                         },
@@ -175,8 +175,8 @@
                 "priority": 0,
                 "button": {
                   "spriteName": {
-                    "fileId": "tka8rtnvqr-mjmkvb6w-hklw3d7ay0m",
-                    "filePath": "Assets\\Image\\Home\\技能底框.png",
+                    "fileId": "ndg1xrzorrc-mjten0ls-7d21lwrh7oa",
+                    "filePath": "Assets\\Image\\HeroIFM\\FF_ingame_hud_RandomBuff_Blue.png",
                     "_tag": {
                       "type": "GFileRefer"
                     },
@@ -1693,8 +1693,8 @@
                     "priority": 0,
                     "image": {
                       "source": {
-                        "fileId": "ju2yqotgzyn-mjs3u7bu-i7z4ob7a3r",
-                        "filePath": "Assets\\Image\\SkillIcon\\技能伤害.png",
+                        "fileId": "irqbq8w5519-mjs3u7o8-o8cffn6io3a",
+                        "filePath": "Assets\\Image\\SkillIcon\\爆裂轰炸.png",
                         "_tag": {
                           "type": "GFileRefer"
                         },
@@ -1790,8 +1790,8 @@
                 "priority": 0,
                 "button": {
                   "spriteName": {
-                    "fileId": "ndg1xrzorrc-mjten0ls-7d21lwrh7oa",
-                    "filePath": "Assets\\Image\\HeroIFM\\FF_ingame_hud_RandomBuff_Blue.png",
+                    "fileId": "tka8rtnvqr-mjmkvb6w-hklw3d7ay0m",
+                    "filePath": "Assets\\Image\\Home\\技能底框.png",
                     "_tag": {
                       "type": "GFileRefer"
                     },
@@ -5140,7 +5140,10 @@
         "selfValue": true,
         "valueTag": "activeValue"
       },
-      "unlockedValue": null,
+      "unlockedValue": {
+        "selfValue": true,
+        "valueTag": "unlockedValue"
+      },
       "editorLockValue": false,
       "editorVisibleValue": true,
       "propsData": {
