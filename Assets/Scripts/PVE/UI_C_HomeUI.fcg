@@ -87,6 +87,7 @@ graph UI_HomeUI {
         GetLocalPlayer()<PlayerJionGame>.Hide_Skill_Detail()
 
         buttonLeft = button
+        level = GetLocalPlayer()<PlayerJionGame>.level
         level = level - 1
         
         if level < 1 {
@@ -104,6 +105,7 @@ graph UI_HomeUI {
         buttonLeft = buttonLeftEntity as entity<UIWidgetButton>
         buttonRight = button
         var MaxLevel int = GetLocalPlayer()<PlayerJionGame>.MaxLevel
+        level = GetLocalPlayer()<PlayerJionGame>.level
         level = level + 1
         
         // 不能超过已解锁的关卡

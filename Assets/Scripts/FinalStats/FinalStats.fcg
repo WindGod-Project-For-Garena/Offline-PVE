@@ -20,8 +20,8 @@ import "../ChoiceOneOfThreeCard/ChoiceOneOfThreeCard.fcg" as ChoiceOneOfThreeCar
 graph FinalStats {
     func BackNewHome(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
         SoundFunc.PlayCreatedSound("Click_Common_Default")
-        // 播放主界面音效
         SoundFunc.PlayCreatedSound("MainMenu")
+        GetLocalPlayer()<PlayerJionGame>.SaveAllLocalData()
 
         var GameOverFinalUI = GetLocalPlayer()<PlayerJionGame>.GameOverFinalUI
         GameOverFinalUI<CustomUI>.IsVisible = false
@@ -51,6 +51,7 @@ graph FinalStats {
             return
         }
         var playerEntity entity<Player> = allPlayers[0]
+        playerEntity<PlayerJionGame>.SaveAllLocalData()
 
         playerEntity<PlayerJionGame>.Hide_Skill_Detail()
 

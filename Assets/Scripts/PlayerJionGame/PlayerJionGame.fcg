@@ -259,17 +259,24 @@ graph PlayerJionGame {
                 Gifted_Card_Count = DATA_Gifted_Card_Count
             }
             
-            // 抽卡数量，金额，最高关卡
+            // 抽卡数量，金额，最高关卡，上次选择的关卡（退出时保存，进入时恢复；无则默认第1关）
             if result2 == nil {
                 DATA_TotalIFM = List<int>{0,0,1}
                 TotalDrawCount = DATA_TotalIFM[0]
                 Money = DATA_TotalIFM[1]
                 MaxLevel = DATA_TotalIFM[2]
+                level = 1
             } else {
                 DATA_TotalIFM = result2 as List<int>
                 TotalDrawCount = DATA_TotalIFM[0]
                 Money = DATA_TotalIFM[1]
                 MaxLevel = DATA_TotalIFM[2]
+                if List.Length(DATA_TotalIFM) >= 4 {
+                    level = DATA_TotalIFM[3] as int
+                    level = Math.Clamp(level, 1, MaxLevel) as int
+                } else {
+                    level = 1
+                }
             }
 
             // 排行榜数据
@@ -291,7 +298,6 @@ graph PlayerJionGame {
             CreateCustomUIClient(out var ChoiceHeroUIEntity, EResUI.ChoiceHero)
             ChoiceHeroUI = ChoiceHeroUIEntity 
             ChoiceHeroUIEntity<CustomUI>.IsVisible = true
-            level = 1
             UpdateLevelDisplay()
             var HeroButtonEntity1 = GetWidgetByPath(GetLocalPlayer(), ChoiceHeroUI, "/ChoiceHero/Hero_1/BBIMAGE")
             var HeroButtonEntity2 = GetWidgetByPath(GetLocalPlayer(), ChoiceHeroUI, "/ChoiceHero/Hero_2/BBIMAGE")
@@ -797,10 +803,14 @@ graph PlayerJionGame {
         }
     }
 //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
-// 存储当前最高关卡
+// 存储当前最高关卡与上次选择的关卡
     func SaveLevel() {
-        // 保存本地数据
         DATA_TotalIFM[2] = MaxLevel
+        if List.Length(DATA_TotalIFM) < 4 {
+            List.Append(DATA_TotalIFM, level)
+        } else {
+            DATA_TotalIFM[3] = level
+        }
         SAVE_DATA_Money(DATA_TotalIFM)
     }
 // 更新主界面关卡显示为已解锁的最高关卡
@@ -823,6 +833,13 @@ graph PlayerJionGame {
 // 选择完角色
     async func ChoiceHeroOver(level int, skillIndex int) {
         WaitForNextFrame()
+        // 保存本次选择的关卡，下次进入时恢复
+        if List.Length(DATA_TotalIFM) < 4 {
+            List.Append(DATA_TotalIFM, level)
+        } else {
+            DATA_TotalIFM[3] = level
+        }
+        SAVE_DATA_Money(DATA_TotalIFM)
         // 每局开始前重置局内数据为局外数据，避免上一局三选一卡牌（如弹匣容量）残留到新局
         CopyToInGameData()
         UpdatePlayerAttributes()
@@ -2110,9 +2127,8 @@ graph PlayerJionGame {
         Offline.DestroyItem(ItemIDType.SGAmmo, 999)
     }
 
-    // 玩家退出时保存所有数据存储
-    event OnPlayerQuit(player entity<Player>) {
-        // 同步当前运行时数据到存储结构
+    // 立刻保存所有本地数据（点击退出/Back 或玩家退出时调用）
+    func SaveAllLocalData() {
         DATA_TotalIFM[0] = TotalDrawCount
         DATA_TotalIFM[1] = Money
         DATA_TotalIFM[2] = MaxLevel
@@ -2123,7 +2139,10 @@ graph PlayerJionGame {
         SaveRankingListToStorage()
         // 保存天赋卡牌与 TotalIFM
         SAVE_DATA_Gifted(DATA_Gifted_Card_Count, DATA_TotalIFM)
-        // LogInfo("玩家退出，所有数据存储已保存")
+    }
+
+    event OnPlayerQuit(player entity<Player>) {
+        SaveAllLocalData()
     }
 
     // DEbug的初始化
