@@ -153,7 +153,10 @@
                 "selfValue": true,
                 "valueTag": "activeValue"
               },
-              "unlockedValue": null,
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
               "editorLockValue": false,
               "editorVisibleValue": true,
               "propsData": {
@@ -299,7 +302,7 @@
               "centerInvisible": false,
               "fillDir": 4,
               "fillAmount": 1,
-              "invertFill": true,
+              "invertFill": false,
               "reverse": {
                 "x": false,
                 "y": false
@@ -666,7 +669,10 @@
                 "selfValue": true,
                 "valueTag": "activeValue"
               },
-              "unlockedValue": null,
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
               "propsData": {
                 "activeSelf": true,
                 "transform": {
@@ -810,7 +816,7 @@
               "centerInvisible": false,
               "fillDir": 4,
               "fillAmount": 1,
-              "invertFill": true,
+              "invertFill": false,
               "reverse": {
                 "x": false,
                 "y": false
@@ -1179,7 +1185,10 @@
                 "selfValue": true,
                 "valueTag": "activeValue"
               },
-              "unlockedValue": null,
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
               "propsData": {
                 "activeSelf": true,
                 "transform": {
@@ -1323,7 +1332,7 @@
               "centerInvisible": false,
               "fillDir": 4,
               "fillAmount": 1,
-              "invertFill": true,
+              "invertFill": false,
               "reverse": {
                 "x": false,
                 "y": false
