@@ -2473,8 +2473,8 @@ graph PlayerJionGame {
             for cardId = 1, 33, 1 {
                 var cardInfo = Skill_1_CardData[cardId]
                 if cardInfo != nil {
-                    // 根据当前计数更新UI状态
-                    UpdateSingleCardBookUI(cardId, listParent ,cardInfo)
+                    // 根据当前计数更新UI状态（传入 hero 以使用对应角色的主动/被动图标）
+                    UpdateSingleCardBookUI(cardId, listParent, cardInfo, 1)
                 }
             }
             // 隐藏多余的卡牌（如果有的话）
@@ -2490,8 +2490,8 @@ graph PlayerJionGame {
             for cardId = 1, 31, 1 {
                 var cardInfo = Skill_2_CardData[cardId]
                 if cardInfo != nil {
-                    // 根据当前计数更新UI状态
-                    UpdateSingleCardBookUI(cardId, listParent ,cardInfo)
+                    // 根据当前计数更新UI状态（传入 hero 以使用对应角色的主动/被动图标）
+                    UpdateSingleCardBookUI(cardId, listParent, cardInfo, 2)
                 }
             }
             // 隐藏多余的卡牌（31-33张）
@@ -2504,8 +2504,8 @@ graph PlayerJionGame {
         }
     }
 
-    // 更新单个卡牌的UI状态
-    func UpdateSingleCardBookUI(cardId int, listParent entity<Entity> ,cardInfo Map<string, object>) {
+    // 更新单个卡牌的UI状态（hero：当前职业 1 或 2，用于选用该角色对应的主动/被动技能图标）
+    func UpdateSingleCardBookUI(cardId int, listParent entity<Entity>, cardInfo Map<string, object>, hero int) {
         var cardEntity = GetChildByName(listParent, "Card (" + Convert.ToString(cardId) + ")")
         if cardEntity == nil {
             LogWarning("卡牌实体不存在: Card (" + Convert.ToString(cardId) + ")")
@@ -2523,25 +2523,30 @@ graph PlayerJionGame {
             hasCardPanelEntity<UIWidget>.IsVisible = true
         }
         //——————————————————————————————————————————————————————————————————————————————————————————————//
-        // 显示图标
+        // 显示图标：与角色对应，主动技能用同一主动图标、被动技能用同一被动图标
         var iconImageEntity = GetChildByName(hasCardPanelEntity, "icon")
         if iconImageEntity != nil {
             iconImageEntity<UIWidget>.IsVisible = true
-            var nature = cardInfo["Nature"]
-            var iconKey = "Skill_Just_Do_It"  // 通用默认值
+            var typetext = Convert.ToString(cardInfo["Typetext"])
+            var iconKey = "Skill_Just_Do_It"  // 通用默认（General 等）
+
+            if typetext == "ACTIVE_SKILL" {
+                iconKey = "ActiveSkill_" + Convert.ToString(hero)
+            } else if typetext == "PASSIVE_SKILL" {
+                iconKey = "PassiveSkill_" + Convert.ToString(hero)
+            } else {
+                var nature = cardInfo["Nature"]
+                if (nature != nil && nature != "") {
+                    if (FC_Config.CardIconSprites[nature] != nil) {
+                        iconKey = nature
+                    }
+                }
+            }
 
             // 设置图标稀有度颜色
             var rarity = cardInfo["Rarity"] as int
             var iconColor = FC_Config.CardRarityColor[rarity]
             iconImageEntity<UIWidgetImage>.Color = iconColor
-            
-            // 检查配置中是否存在该nature对应的图标
-            if (nature != nil && nature != "") {
-                if (FC_Config.CardIconSprites[nature] != nil) {
-                    iconKey = nature  // 如果配置中有，直接使用nature作为key
-                }
-            }
-            
             iconImageEntity<UIWidgetImage>.SpriteName = FC_Config.CardIconSprites[iconKey]
         }
         //——————————————————————————————————————————————————————————————————————————————————————————————//
