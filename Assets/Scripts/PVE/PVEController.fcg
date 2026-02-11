@@ -27,7 +27,7 @@ static graph PVEController {
     currPlayer entity<Player> = nil
     
     // 游戏配置
-    WaveTimeLimit int = 40000  // 每波次时间限制（ms）
+    WaveTimeLimit int = 1000  // 每波次时间限制（ms）
     
     // 统计信息
     GameStartTime int = 0

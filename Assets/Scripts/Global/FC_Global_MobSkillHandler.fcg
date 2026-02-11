@@ -378,10 +378,10 @@ static graph FC_Global_MobSkillHandler {
 
     }
 
-    //Flowerboss射击攻击
+    //Flowerboss射击攻击（仅钻出地面FBossWarn在FlowerZombie.fcg中单独延长）
     async func releaseSkill_FlowerBossShootAttack(mob entity<Mob>,position Vector3,scale float) {
-        var castingTime int = 1150
-        var dropTime int = 1000
+        var castingTime int = 1150   // 射击攻击：球出现时间
+        var dropTime int = 1000      // 射击攻击：球下落时间
         var skillDamage int = mob<Mob>.Damage
 
         //球特效创建

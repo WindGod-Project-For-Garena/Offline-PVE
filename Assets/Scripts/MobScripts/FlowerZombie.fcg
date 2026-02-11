@@ -22,6 +22,9 @@ graph FC_NormalZombie {
 	LastHitPlayer entity<Player> = nil
 	hitPos Vector3 = Vector3{0,0,0}
     tickInterval int = 1
+	// 钻出地面预警时长(ms)，与 DisplayWarningCircle 一致，用于延迟伤害到预警结束
+	DrillWarnDuration int = 2000
+	DrillWarnStartTime int = 0
 
 
 	event OnAwake() {
@@ -139,21 +142,33 @@ graph FC_NormalZombie {
 			thisEntity<Mob>.StatusDic["InDrill"] = true
 		}else if (eventName == "FBossWarn") {
 			hitPos = Vector3{0,-0.2,0}
+			DrillWarnStartTime = globalEntity<Global>.GameTimeCount
 			var curTarget = thisEntity<Mob>.CurrTarget
 			if (curTarget != nil) {
 				SingleRaycast(curTarget<Player>.Position + Vector3{0,0.5,0}, Vector3{0,-3,0}, 5, List<int>{0}, false, out var hitEntities, out var hitPoint, out var hitDistances, out var hitNormals)
 				hitPos = hitPoint
 				hitPos = SetYClient(hitPos,0.1)
 			}
-			start MobSkillHandler.DisplayWarningCircle(hitPos,1.5,1000)
+			// 地面预警时长(DrillWarnDuration)，伤害会在预警结束后才结算
+			start MobSkillHandler.DisplayWarningCircle(hitPos,1.5,DrillWarnDuration)
 		}else if (eventName == "FBossDrillOut") {
-			thisEntity<Transform>.Position = hitPos
-			thisEntity<Mob>.StatusDic["InDrill"] = false
-			//伤害
-			var players = getPlayersInRange(thisEntity<Transform>.Position, 30.0)
-			for i, player in players {
-				Offline.DealDamage(player as entity<Combatable>, nil, DamageType.Monster, GetDamage())
-			}
+			// 等预警时长结束后再钻出并造成伤害，与地面圈一致
+			start DelayedDrillOutDamage()
+		}
+	}
+
+	// 延迟到预警结束后再钻出并结算伤害（动画里 DrillOut 比 Warn 早约1秒，需补齐剩余预警时间）
+	async func DelayedDrillOutDamage() {
+		var elapsed int = globalEntity<Global>.GameTimeCount - DrillWarnStartTime
+		var remaining int = DrillWarnDuration - elapsed
+		if remaining > 0 {
+			WaitForMillisecond(remaining)
+		}
+		thisEntity<Transform>.Position = hitPos
+		thisEntity<Mob>.StatusDic["InDrill"] = false
+		var players = getPlayersInRange(thisEntity<Transform>.Position, 30.0)
+		for i, player in players {
+			Offline.DealDamage(player as entity<Combatable>, nil, DamageType.Monster, GetDamage())
 		}
 	}
 
