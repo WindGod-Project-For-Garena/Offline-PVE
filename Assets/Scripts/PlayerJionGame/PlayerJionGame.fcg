@@ -196,6 +196,7 @@ graph PlayerJionGame {
     skillBuffTimerActive bool = false
     skillBuffTimer int = 0
     buffTimerRunning = false  //计时器运行状态标志
+    BuffEffectEntity entity<LevelObject> = nil  // 拾取buff时挂在玩家身上的持续特效，buff结束后销毁
     // buff临时存储变量
     tempOriginalSkill1Damage = 0
     tempOriginalSkill2Damage = 0
@@ -2845,9 +2846,13 @@ graph PlayerJionGame {
                 }
             }
             
-            // 如果没有任何活动的buff，退出循环
+            // 如果没有任何活动的buff，退出循环并销毁buff特效
             if !hasActiveBuff {
                 buffTimerRunning = false
+                if BuffEffectEntity != nil {
+                    Destroy(BuffEffectEntity)
+                    BuffEffectEntity = nil
+                }
                 // LogInfo("所有buff已过期，停止计时器")
                 RefreshAllIcons()
                 break
@@ -2880,6 +2885,11 @@ graph PlayerJionGame {
         // 重置所有临时存储
         tempOriginalSkill1Damage = 0
         tempOriginalSkill2Damage = 0
+        // 销毁buff持续特效
+        if BuffEffectEntity != nil {
+            Destroy(BuffEffectEntity)
+            BuffEffectEntity = nil
+        }
     }
 
     // 应用武器伤害加成
@@ -2912,19 +2922,21 @@ graph PlayerJionGame {
         }
     }
 
-    // 拾取掉落物的特效效果
+    // 拾取掉落物的特效效果（生效期间持续显示，buff结束后销毁）
     async func PickUpDropEffect(player entity<Player> , BuffColor Color) {
-        // 创建并且播放特效
-		CreateEffectClient(out var ItemEfect, VFXType.Line, LoopType.Loop, true)
+        // 若已有buff特效则先销毁，再创建新的
+        if BuffEffectEntity != nil {
+            Destroy(BuffEffectEntity)
+            BuffEffectEntity = nil
+        }
+        // 创建并播放循环特效，挂在玩家身上
+        CreateEffectClient(out var ItemEfect, VFXType.Line, LoopType.Loop, true)
         var PlayerItemEfect = ItemEfect
         var PlayerPos = player<Player>.Position
         PlayerItemEfect<Transform>.Position = PlayerPos
         PlayerItemEfect<Effect>.Color = BuffColor
-        SetParentClient(player,PlayerItemEfect,true)
-
-        // 销毁掉落物
-        WaitForMillisecond(2000)
-        Destroy(PlayerItemEfect)
+        SetParentClient(player, PlayerItemEfect, true)
+        BuffEffectEntity = PlayerItemEfect as entity<LevelObject>
     }
 
     // 应用技能伤害加成
