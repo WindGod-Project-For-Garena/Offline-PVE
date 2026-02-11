@@ -64,7 +64,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 511,
+          "tempIndex": 144,
           "itemID": 224,
           "seParent": null,
           "ecaScripts": [
@@ -84,8 +84,8 @@
           "propsData": {
             "effectColor": {
               "r": 255,
-              "g": 218,
-              "b": 138,
+              "g": 0,
+              "b": 0,
               "a": 1
             },
             "playSpeed": 72,
@@ -159,7 +159,7 @@
       "entityTagData": {
         "tagPointers": []
       },
-      "tempIndex": 512,
+      "tempIndex": 145,
       "itemID": 224,
       "seParent": null,
       "ecaScripts": [
@@ -179,8 +179,8 @@
       "propsData": {
         "effectColor": {
           "r": 255,
-          "g": 218,
-          "b": 138,
+          "g": 0,
+          "b": 0,
           "a": 1
         },
         "playSpeed": 70,
@@ -216,10 +216,13 @@
     "selfValue": true,
     "valueTag": "activeValue"
   },
-  "unlockedValue": null,
+  "unlockedValue": {
+    "selfValue": true,
+    "valueTag": "unlockedValue"
+  },
   "editorLockValue": false,
   "editorVisibleValue": true,
   "HintCraftlandCombineMesh": false,
   "discriminator": "ISceneLike"
 }
-//"{FE:{"v":"0.2.4113096","c":{"FF":5001},"s":100}
+//"{FE:{"v":"1.16.4197289","c":{"FF":5001},"s":100}
