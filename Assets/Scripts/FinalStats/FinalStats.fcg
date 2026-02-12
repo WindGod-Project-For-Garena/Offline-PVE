@@ -25,6 +25,9 @@ graph FinalStats {
 
         var GameOverFinalUI = GetLocalPlayer()<PlayerJionGame>.GameOverFinalUI
         GameOverFinalUI<CustomUI>.IsVisible = false
+
+        // 离开结算时清空已选卡牌，避免下一局残留
+        GetLocalPlayer()<PlayerJionGame>.ChoiceThreeCardUI<ChoiceOneOfThreeCard>.ClearSelectedCards()
         
         var ChoiceHeroUI = GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI
         ChoiceHeroUI<CustomUI>.IsVisible = true

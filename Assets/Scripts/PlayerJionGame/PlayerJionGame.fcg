@@ -2636,13 +2636,66 @@ graph PlayerJionGame {
 
         GetMoneyEntity<UIWidgetLabel>.Content = FC_PVEMonsterManager.TotalGold
 
-        // ==================== 详情页不显示三选一卡牌，全部隐藏 ====================
+        // ==================== 结算页显示本局选择的三选一卡牌 ====================
         var nowCardListParent = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/NowCard/Roll_List/List")
+        var selectedCards = List<int>{}
+        if CurrentSkill == 1 {
+            selectedCards = ChoiceThreeCardUI<ChoiceOneOfThreeCard>.SelectedCards_1
+        } else if CurrentSkill == 2 {
+            selectedCards = ChoiceThreeCardUI<ChoiceOneOfThreeCard>.SelectedCards_2
+        }
+        var nSelected = List.Length(selectedCards) as int
         for i = 1, 33, 1 {
             var cardPath = "Card (" + Convert.ToString(i) + ")"
             var cardEntity = GetChildByName(nowCardListParent, cardPath)
             if cardEntity != nil {
-                cardEntity<UIWidget>.IsVisible = false
+                if i <= nSelected {
+                    var cardId = selectedCards[i - 1] as int
+                    var cardInfo = ChoiceThreeCardUI<ChoiceOneOfThreeCard>.GetCardInfoById(cardId, CurrentSkill)
+                    if cardInfo != nil {
+                        cardEntity<UIWidget>.IsVisible = true
+                        var hasCardPanelEntity = GetChildByName(cardEntity, "HasCardPanel")
+                        if hasCardPanelEntity != nil {
+                            hasCardPanelEntity<UIWidget>.IsVisible = true
+                            var iconImageEntity = GetChildByName(hasCardPanelEntity, "icon")
+                            if iconImageEntity != nil {
+                                var typetext = Convert.ToString(cardInfo["Typetext"])
+                                var iconKey = "Skill_Just_Do_It"
+                                if typetext == "ACTIVE_SKILL" {
+                                    iconKey = "ActiveSkill_" + Convert.ToString(CurrentSkill)
+                                } else if typetext == "PASSIVE_SKILL" {
+                                    iconKey = "PassiveSkill_" + Convert.ToString(CurrentSkill)
+                                } else {
+                                    var nature = cardInfo["Nature"]
+                                    if nature != nil && nature != "" && (FC_Config.CardIconSprites[nature] != nil) {
+                                        iconKey = nature
+                                    }
+                                }
+                                var rarity = cardInfo["Rarity"] as int
+                                var iconColor = FC_Config.CardRarityColor[rarity]
+                                var iconSprite = FC_Config.CardIconSprites[iconKey]
+                                if iconSprite == nil {
+                                    iconSprite = EResSprite.Skill_General
+                                }
+                                iconImageEntity<UIWidget>.IsVisible = true
+                                iconImageEntity<UIWidgetImage>.Color = iconColor
+                                iconImageEntity<UIWidgetImage>.SpriteName = iconSprite
+                            }
+                            UpdateCardBookRarityUI(hasCardPanelEntity, cardInfo["Rarity"] as int)
+                            // 更新技能/卡牌详情文案（IFMText）
+                            var IFMTextEntity = GetChildByName(hasCardPanelEntity, "IFMText")
+                            if IFMTextEntity != nil {
+                                var description = ChoiceThreeCardUI<ChoiceOneOfThreeCard>.GenerateCardDescription(cardInfo)
+                                IFMTextEntity<UIWidgetLabel>.Content = description
+                                IFMTextEntity<UIWidget>.IsVisible = true
+                            }
+                        }
+                    } else {
+                        cardEntity<UIWidget>.IsVisible = false
+                    }
+                } else {
+                    cardEntity<UIWidget>.IsVisible = false
+                }
             }
         }
         //=======================显示相关伤害统计======================//
@@ -3003,8 +3056,8 @@ graph PlayerJionGame {
         }
         // 重置数据
         ResetInGameData()
-        // 清空已选卡牌记录
-        ChoiceThreeCardUI<ChoiceOneOfThreeCard>.ClearSelectedCards()
+        // 不在结算时清空已选卡牌，保留给结算页「本局已选卡牌」显示；在点击「返回」或「再来一局」时再清空
+        // ChoiceThreeCardUI<ChoiceOneOfThreeCard>.ClearSelectedCards()
         // 重置伤害数据
         ResetDamageData()
         // 重置子弹判定
