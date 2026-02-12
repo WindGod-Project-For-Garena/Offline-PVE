@@ -859,8 +859,8 @@ static graph FC_PVEMonsterManager {
 
     // 随机掉落概率判断
     func RandomDropChance() bool {
-        var randomNum = RandomInt(1, 6)
-        // 如果随机到1（即1/5的概率），返回true
+        var randomNum = RandomInt(1, 11)
+        // 如果随机到1（即1/10的概率），返回true
         return randomNum == 1
     }
 
