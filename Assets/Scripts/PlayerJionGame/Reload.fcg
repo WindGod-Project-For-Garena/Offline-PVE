@@ -17,12 +17,15 @@ graph Reload {
         var currPlayer =  GetLocalPlayer()<PlayerJionGame>.currPlayer
         var currentWeapon =  GetLocalPlayer()<PlayerJionGame>.currentWeapon
         GetLocalPlayer()<PlayerJionGame>.AmmoJudgement = 0
+        // 按当前武器弹匣容量补充备弹，避免弹匣+10等卡牌导致每次换弹多消耗备弹最终打光
         if (SkillIndex == 1) {
-            Offline.AddItem(ItemIDType.SGAmmo, 5, out var createdEntity)
+            var magSize = currentWeapon<Weapon>.AmmoMagSize
+            Offline.AddItem(ItemIDType.SGAmmo, magSize, out var createdEntity)
         }
 
         if (SkillIndex == 2) {
-            Offline.AddItem(ItemIDType.SMGAmmo, 30, out var createdEntity)
+            var magSize = currentWeapon<Weapon>.AmmoMagSize
+            Offline.AddItem(ItemIDType.SMGAmmo, magSize, out var createdEntity)
             var ReloadBuff = GetLocalPlayer()<PlayerJionGame>.Skill2DataInGame["ReloadBuff"] as float
             if  ReloadBuff < 1 {
                 var ReloadForward = 0.0648
