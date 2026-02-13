@@ -121,4 +121,86 @@ graph FinalStats {
         SoundFunc.PauseTheSound("MainMenu")
         SoundFunc.PlayCreatedSound("Menu_Pickup")
     }
+
+    // 下一关：从当前关卡+1 开始，流程与「再来一局」类似
+    async func NextGame(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+        SoundFunc.PlayCreatedSound("Click_Common_Default")
+
+        var allPlayers = GetAllPlayers()
+        if List.Length(allPlayers) < 1 {
+            return
+        }
+        var playerEntity entity<Player> = allPlayers[0]
+        playerEntity<PlayerJionGame>.SaveAllLocalData()
+
+        playerEntity<PlayerJionGame>.Hide_Skill_Detail()
+
+        var currentLevel = playerEntity<PlayerJionGame>.level
+        var nextLevel = currentLevel + 1
+        var maxLevel = playerEntity<PlayerJionGame>.MaxLevel
+        if nextLevel > maxLevel {
+            nextLevel = maxLevel
+        }
+        if nextLevel < 1 {
+            nextLevel = 1
+        }
+        var currentSkill = playerEntity<PlayerJionGame>.CurrentSkill
+        if currentSkill == 0 {
+            currentSkill = 1
+        }
+
+        var GameOverFinalUI = playerEntity<PlayerJionGame>.GameOverFinalUI
+        GameOverFinalUI<CustomUI>.IsVisible = false
+
+        WaitForNextFrame()
+
+        Offline.Revive()
+        playerEntity<PlayerJionGame>.SetPlayerPosition()
+
+        WaitForNextFrame()
+        WaitForMillisecond(100)
+
+        playerEntity<PlayerJionGame>.level = nextLevel
+        playerEntity<PlayerJionGame>.CurrentSkill = currentSkill
+        wait playerEntity<PlayerJionGame>.ChoiceHeroOver(nextLevel, currentSkill)
+
+        WaitForNextFrame()
+        WaitForMillisecond(50)
+
+        playerEntity<PlayerJionGame>.ChoiceThreeCardUI<ChoiceOneOfThreeCard>.ClearSelectedCards()
+        playerEntity<PlayerJionGame>.ResetInGameData()
+        playerEntity<PlayerJionGame>.ResetDamageData()
+        playerEntity<PlayerJionGame>.AmmoJudgement = 0
+
+        playerEntity<PlayerJionGame>.CurrentSkill = currentSkill
+        var skillMultiplier float = 1.0 * playerEntity<PlayerJionGame>.ability3Level + 1
+        playerEntity<PlayerJionGame>.SkillUI<SkillUI>.skillMultiplier = skillMultiplier
+        start playerEntity<PlayerJionGame>.displaySkillByIndex(currentSkill)
+
+        playerEntity<PlayerJionGame>.RighTabIFMUI<CustomUI>.IsVisible = true
+        var MoneyEntity = GetWidgetByPath(playerEntity, playerEntity<PlayerJionGame>.RighTabIFMUI, "/Money")
+        MoneyEntity<UIWidget>.IsVisible = false
+        var MoneyNumEntity = GetWidgetByPath(playerEntity, playerEntity<PlayerJionGame>.RighTabIFMUI, "/Panel/Money/logo/Num")
+        MoneyNumEntity<UIWidgetLabel>.Content = playerEntity<PlayerJionGame>.Money
+        var KillCountEntity = GetWidgetByPath(playerEntity, playerEntity<PlayerJionGame>.RighTabIFMUI, "/Panel/Killed/logo/Num")
+        KillCountEntity<UIWidgetLabel>.Content = 0
+        playerEntity<PlayerJionGame>.KillCount = 0
+        playerEntity<PlayerJionGame>.KillCountTAG = 0
+        playerEntity<PlayerJionGame>.KillCountSound = 0
+
+        var ChoiceThreeCardUIEntity = playerEntity<PlayerJionGame>.ChoiceThreeCardUI
+        for i = 1, 6, 1 {
+            var buttonPath = "/NowChoicePanel/List/Card (" + Convert.ToString(i) + ")"
+            var buttonWidget = GetWidgetByPath(playerEntity, ChoiceThreeCardUIEntity, buttonPath)
+            if buttonWidget != nil {
+                buttonWidget<UIWidgetButton>.Color = #FFFFFF
+            }
+        }
+
+        PVEController.PVELevelStartInitialization(nextLevel)
+        start playerEntity<PlayerJionGame>.ShowChoiceThreeCardUI(nextLevel)
+
+        SoundFunc.PauseTheSound("MainMenu")
+        SoundFunc.PlayCreatedSound("Menu_Pickup")
+    }
 }

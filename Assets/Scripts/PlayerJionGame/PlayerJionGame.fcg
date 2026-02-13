@@ -2625,6 +2625,19 @@ graph PlayerJionGame {
             ProcessRankingOnVictory()
         }
 
+        // 根据胜负控制「下一关」与「再来一局」的显示与位置
+        var NextGameEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/FuncPanel/NextGame")
+        var ContinueGameEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/FuncPanel/ContinueGame")
+        if NextGameEntity != nil && ContinueGameEntity != nil {
+            if IsGameSuccess {
+                NextGameEntity<UIWidget>.IsVisible = true
+                ContinueGameEntity<UIWidget>.ActualPosition = Vector3{130, -310, 0}
+            } else {
+                NextGameEntity<UIWidget>.IsVisible = false
+                ContinueGameEntity<UIWidget>.ActualPosition = Vector3{330, -310, 0}
+            }
+        }
+
         var CurrentLevelText = LocString{"LEVEL_FORMAT", List<string>{CurrentLevel}}
         StepEntity<UIWidgetLabel>.Content = CurrentLevelText as string
 
