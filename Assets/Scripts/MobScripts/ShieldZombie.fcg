@@ -133,6 +133,12 @@ graph FC_NormalZombie {
 		start MobSkillHandler.DisplayWarningSquare(effectPos, rotation,warningLength, warningWidth, warningDuration)
 		WaitForMillisecond(warningDuration)
 
+		// 预警期间若已被击杀，不再播跑步、不创建位移，避免覆盖死亡动画
+		if thisEntity<Mob>.HP <= 0 {
+			thisEntity<Mob>.StatusDic["InAttack"] = false
+			return
+		}
+
 		// 播放冲击动画
 		if thisEntity<Mob>.StatusDic["IsShield"] as bool {
 			PlayAnimation(TargetEntity, "Run", 2.0, LoopType.Once)
@@ -162,8 +168,7 @@ graph FC_NormalZombie {
 		createDashingMoveTween(finalTargetPos, actualDuration)
 		// 设置碰撞检测 - 使用start启动异步函数
 		start startDashingCollisionCheck(curTarget, actualDuration, hitObstacle)
-		// 等待移动完成// 移动结束后播放Idle动画
-
+		// 冲刺期间若被击杀，不再播放 Idle，避免覆盖死亡动画
 	}
 
 
@@ -171,8 +176,12 @@ graph FC_NormalZombie {
 
 
 
-	// 技能期间碰撞检测 - 需要是async函数
+	// 技能期间碰撞检测 - 需要是async函数；冲刺期间若僵尸被击杀(HP<=0)则不再播放 Idle，避免覆盖死亡动画
 	async func startDashingCollisionCheck(target entity<Player>, skillDuration float, hitObstacle bool) {
+		if thisEntity<Mob>.HP <= 0 {
+			thisEntity<Mob>.StatusDic["InAttack"] = false
+			return
+		}
 		var startTime int = globalEntity<Global>.GameTimeCount
 		var endTime int = startTime + Floor(skillDuration)
 		var hasHit bool = false
@@ -180,33 +189,29 @@ graph FC_NormalZombie {
 		if thisEntity<Mob>.MobName == "ShieldZombie_Gold" {
 			warningDistance = 2
 		}
-		//LogInfo("开始碰撞检测，持续时间: " + skillDuration + "ms")
-		while globalEntity<Global>.GameTimeCount < endTime && !hasHit && (thisEntity<Mob>.StatusDic["InAttack"] as bool){
-			// 检测与目标的距离
+		while globalEntity<Global>.GameTimeCount < endTime && !hasHit && (thisEntity<Mob>.StatusDic["InAttack"] as bool) && thisEntity<Mob>.HP > 0 {
 			var currentDistance = Distance(thisEntity<Transform>.Position, target<Player>.Position)
 			//LogInfo("检测距离: " + currentDistance)
 			if currentDistance <= warningDistance {
 				// 命中玩家，造成伤害和击退效果
 				if !hasHit {
-					//LogInfo("触发伤害，距离: " + currentDistance)
-					Offline.DealDamage(target as entity<Combatable>, nil, DamageType.Monster, Math.Ceil(1.5*GetDamage() )) // 技能双倍伤害
-					// 添加击退效果
+					Offline.DealDamage(target as entity<Combatable>, nil, DamageType.Monster, Math.Ceil(1.5*GetDamage() ))
 					hasHit = true
-					// 碰撞到玩家后立即播放Idle动画
-					thisEntity<Mob>.StatusDic["InAttack"] = false 
-					myPlayIdleAnimation()
-					break // 跳出循环
+					thisEntity<Mob>.StatusDic["InAttack"] = false
+					if thisEntity<Mob>.HP > 0 {
+						myPlayIdleAnimation()
+					}
+					break
 				}
 			}
-			WaitForNextFrame() 
+			WaitForNextFrame()
 		}
-		
-		
-		// 如果一开始就检测到障碍物，在技能开始时播放Idle动画
-
-		Pause(dashingMoveTween)
-		//myPlayIdleAnimation()
-		
+		if dashingMoveTween != nil {
+			Pause(dashingMoveTween)
+		}
+		if thisEntity<Mob>.HP > 0 {
+			myPlayIdleAnimation()
+		}
 	}
 
 	// 创建技能移动tween
@@ -236,6 +241,9 @@ graph FC_NormalZombie {
 	}
 
 	func myPlayIdleAnimation() {
+		if thisEntity<Mob>.HP <= 0 {
+			return
+		}
 		if thisEntity<Mob>.StatusDic["IsShield"] as bool {
 			PlayAnimation(thisEntity as entity<AnimationControllerAttachable>, "Idle", 1.0, LoopType.Once)
 		} else {

@@ -309,7 +309,7 @@ graph PlayerJionGame {
             HeroButtonEntity3<UIWidget>.IsVisible = false
             // 无尽模式显示由 UpdateLevelDisplay -> UpdateEndlessVisibility 根据关卡控制（第一关不显示）
             UpdateChoiceHeroPanelMoney()
-            //默认选择第一个技能
+            //默认选择第一个技能   
             var skillIndex int = 1
 
             var Skill1_Detail_Entity = GetWidgetByPath(GetLocalPlayer(), ChoiceHeroUI, "/ChoiceHero/TextImage")
@@ -320,7 +320,7 @@ graph PlayerJionGame {
             var currentUIDStr = Convert.ToString(GetLocalPlayer()<Player>.UserUID)
             var isDebugAllowed = List.Contain(DebugAllowedUserUIDList, currentUIDStr)
             inGameDebugUIEntity<CustomUI>.IsVisible = isDebugAllowed
-
+  
             CreateCustomUIClient(out var SkillUIEntity, EResUI.SkillUI)
             SkillUI = SkillUIEntity
             SkillUIEntity<CustomUI>.IsVisible = true
