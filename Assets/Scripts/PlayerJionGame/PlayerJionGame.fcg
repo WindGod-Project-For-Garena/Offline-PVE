@@ -304,18 +304,8 @@ graph PlayerJionGame {
             var HeroButtonEntity3 = GetWidgetByPath(GetLocalPlayer(), ChoiceHeroUI, "/ChoiceHero/Hero_3/BBIMAGE")
             HeroButtonEntity1<UIWidget>.IsVisible = true
             HeroButtonEntity2<UIWidget>.IsVisible = false
-            HeroButtonEntity3<UIWidget>.IsVisible = false        
-            var EndlessButtonYes = GetWidgetByPath(GetLocalPlayer(), ChoiceHeroUI, "/Endless/BB/Yes")
-            EndlessButtonYes<UIWidget>.IsVisible = false
-            // 根据无尽模式设置 ChoiceLevel 颜色：无尽=红，非无尽=白
-            var choiceLevelEntity = GetWidgetByPath(GetLocalPlayer(), ChoiceHeroUI, "/ChoiceLevel")
-            if choiceLevelEntity != nil {
-                if EndlessToggle {
-                    choiceLevelEntity<UIWidgetImage>.Color = #FF0000
-                } else {
-                    choiceLevelEntity<UIWidgetImage>.Color = #FFFFFF
-                }
-            }
+            HeroButtonEntity3<UIWidget>.IsVisible = false
+            // 无尽模式显示由 UpdateLevelDisplay -> UpdateEndlessVisibility 根据关卡控制（第一关不显示）
             UpdateChoiceHeroPanelMoney()
             //默认选择第一个技能
             var skillIndex int = 1
@@ -2761,6 +2751,35 @@ graph PlayerJionGame {
         UpdateRightButtonState(buttonRight)
         var levelNumTTT = LocString{"LEVEL_FORMAT", List<string>{level}}
         leveltext<UIWidgetLabel>.Content = levelNumTTT
+        UpdateEndlessVisibility()
+    }
+
+    // 第一关不显示无尽模式，仅第二关及以后显示
+    func UpdateEndlessVisibility() {
+        var endlessPanel = GetWidgetByPath(GetLocalPlayer(), ChoiceHeroUI, "/Endless")
+        if endlessPanel == nil {
+            return
+        }
+        if level <= 1 {
+            endlessPanel<UIWidget>.IsVisible = false
+            EndlessToggle = false
+            var yesWidget = GetWidgetByPath(GetLocalPlayer(), ChoiceHeroUI, "/Endless/BB/Yes")
+            if yesWidget != nil { yesWidget<UIWidget>.IsVisible = false }
+            var bb1 = GetWidgetByPath(GetLocalPlayer(), ChoiceHeroUI, "/Endless/BB/BB1")
+            if bb1 != nil { bb1<UIWidgetImage>.Color = #151515 }
+            var choiceLevelEntity = GetWidgetByPath(GetLocalPlayer(), ChoiceHeroUI, "/ChoiceLevel")
+            if choiceLevelEntity != nil { choiceLevelEntity<UIWidgetImage>.Color = #FFFFFF }
+        } else {
+            endlessPanel<UIWidget>.IsVisible = true
+            var choiceLevelEntity = GetWidgetByPath(GetLocalPlayer(), ChoiceHeroUI, "/ChoiceLevel")
+            if choiceLevelEntity != nil {
+                if EndlessToggle {
+                    choiceLevelEntity<UIWidgetImage>.Color = #FF0000
+                } else {
+                    choiceLevelEntity<UIWidgetImage>.Color = #FFFFFF
+                }
+            }
+        }
     }
 
     // 检测当前是否是最高的解锁关卡

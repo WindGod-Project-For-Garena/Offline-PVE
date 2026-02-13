@@ -80,6 +80,8 @@ graph UI_HomeUI {
         // 更新按钮状态
         UpdateLeftButtonState()
         UpdateRightButtonState()
+        // 第一关不显示无尽模式，切换关卡后同步显示状态
+        GetLocalPlayer()<PlayerJionGame>.UpdateEndlessVisibility()
     }
 
     func onLeftButtonClick(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
