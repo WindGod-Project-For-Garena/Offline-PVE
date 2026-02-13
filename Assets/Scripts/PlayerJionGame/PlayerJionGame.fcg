@@ -50,6 +50,8 @@ graph PlayerJionGame {
     RankingListUI entity<CustomHud>        // 排行榜页面
     KillShowBoardUI entity<CustomHud>        // 击杀页面
     DownSixLogoUI entity<CustomHud>             //六小logo页面
+    // Debug 按钮仅对列表内的 UID 显示（全局定义）
+    DebugAllowedUserUIDList List<string> = List<string>{"13565682830", "7023448462", "6998174604", "9591845250"}
     //———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————//
     // 无尽模式开关
     EndlessToggle bool = false
@@ -315,6 +317,9 @@ graph PlayerJionGame {
 
             CreateCustomUIClient(out var inGameDebugUIEntity, EResUI.InGameDebug)
             inGameDebugUI = inGameDebugUIEntity
+            var currentUIDStr = Convert.ToString(GetLocalPlayer()<Player>.UserUID)
+            var isDebugAllowed = List.Contain(DebugAllowedUserUIDList, currentUIDStr)
+            inGameDebugUIEntity<CustomUI>.IsVisible = isDebugAllowed
 
             CreateCustomUIClient(out var SkillUIEntity, EResUI.SkillUI)
             SkillUI = SkillUIEntity
