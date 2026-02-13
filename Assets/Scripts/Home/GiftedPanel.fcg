@@ -29,11 +29,11 @@ graph GiftedPanel {
           ResetSelection()
      }
 
-     // Debug一键牛逼
-     func DebugOneKey(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
+     // 十连抽
+     func TenDrawCard(button entity<UIWidgetButton>, triggerPlayer entity<Player>) {
           SoundFunc.PlayCreatedSound("Click_Common_Default")
 
-          for i = 0,51,1 {
+          for i = 0,10,1 {
                GetLocalPlayer()<PlayerJionGame>.DrawGiftedCard()
           }
      }

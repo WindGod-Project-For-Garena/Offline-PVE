@@ -1451,6 +1451,32 @@ graph PlayerJionGame {
         return config["Price"] as int
     }
 
+    // 获取指定抽卡次数时对应的阶段配置（用于计算多连抽总价）
+    func GetDrawConfigAtCount(drawCount int) Map<string, object> {
+        for i, config in Gifted_CardProbability {
+            if drawCount >= config["MinCount"] as int {
+                if i == List.Length(Gifted_CardProbability) - 1 {
+                    return config
+                }
+                var nextConfig = Gifted_CardProbability[i + 1]
+                if drawCount < nextConfig["MinCount"] as int {
+                    return config
+                }
+            }
+        }
+        return Gifted_CardProbability[0]
+    }
+
+    // 十连抽总价：按接下来 10 次各自所处的阶段单价累加
+    func GetTenDrawTotalPrice() int {
+        var total int = 0
+        for i = 0, 10, 1 {
+            var config = GetDrawConfigAtCount(TotalDrawCount + i)
+            total = total + (config["Price"] as int)
+        }
+        return total
+    }
+
     // 根据概率随机选择卡牌稀有度
     func SelectCardByProbability() int {
         var config = GetCurrentDrawConfig()
@@ -1792,8 +1818,20 @@ graph PlayerJionGame {
             }
         }
         
-        // 更新当前阶段价格显示
+        // 更新当前阶段价格显示（单抽）
         NowMoneyText<UIWidgetLabel>.Content = Convert.ToString(currentPrice)
+
+        // 更新十连抽总价显示（按接下来 10 次各自阶段单价累加）
+        var tenDrawTotal = GetTenDrawTotalPrice()
+        var TenDrawMoneyText = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/TenDrawCard/Image/Money")
+        if TenDrawMoneyText != nil {
+            TenDrawMoneyText<UIWidgetLabel>.Content = Convert.ToString(tenDrawTotal)
+            if Money < tenDrawTotal {
+                TenDrawMoneyText<UIWidgetLabel>.Color = #FF0000
+            } else {
+                TenDrawMoneyText<UIWidgetLabel>.Color = #FFFFFF
+            }
+        }
         
         // 更新抽卡按钮状态
         UpdateDrawButtonState(currentPrice)
@@ -2265,14 +2303,26 @@ graph PlayerJionGame {
         if NowMoneyText != nil {
             NowMoneyText<UIWidgetLabel>.Content = Convert.ToString(Money)
         }
-        // 更新当前阶段价格显示
+        // 更新当前阶段价格显示（单抽）
         var priceText = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/DrawBadgePanel/Image/Money")
         if priceText != nil {
             priceText<UIWidgetLabel>.Content = Convert.ToString(currentPrice)
         }
+        // 更新十连抽总价显示（按接下来 10 次各自阶段单价累加）
+        var tenDrawTotal = GetTenDrawTotalPrice()
+        var TenDrawMoneyText = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/TenDrawCard/Image/Money")
+        if TenDrawMoneyText != nil {
+            TenDrawMoneyText<UIWidgetLabel>.Content = Convert.ToString(tenDrawTotal)
+            if Money < tenDrawTotal {
+                TenDrawMoneyText<UIWidgetLabel>.Color = #FF0000
+            } else {
+                TenDrawMoneyText<UIWidgetLabel>.Color = #FFFFFF
+            }
+          }
         // 技能名称文本控件
         var skillNameWidget = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/Panel/GiftIFMPanel/SubTitleCCCC/GiftIFMTitle")
         if skillNameWidget != nil {
+            
             skillNameWidget<UIWidgetLabel>.Content = ""
         }
         // 技能描述文本控件
