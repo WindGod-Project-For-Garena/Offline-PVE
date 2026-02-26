@@ -80,9 +80,168 @@ static graph FC_PVEMonsterManager {
     spawnEffectPool List<entity<Effect>> = List<entity<Effect>>{}
     spawnTweenPool List<entity<Tween>> = List<entity<Tween>>{}
 
+    // 怪物对象池（定义见 MonsterInfo.csv）：
+    // - key = 实体ID，即 MonsterInfo 的 Name_key，如 NormalZombie、NormalZombie_Blue、GrenadeZombie_Red
+    // - value = 该实体类型对应的未在场怪物实体列表（三选一环节创建，波次内从池取/归还，波次结束清空）
+    MonsterPool Map<string, List<entity<LevelObject>>> = Map<string, List<entity<LevelObject>>>{}
+    MonsterPoolParentNode entity<Entity> = nil  // 池中怪物挂载节点（与 PendingRemoveMobs 共用，池中怪物在此节点下且 IsActive=false）
+
     event OnAwake() {
         ActiveMonsterParentNode = EResSceneIsleLand.ActiveMobs as entity<Entity>
         PendingRemoveMonsterParentNode = EResSceneIsleLand.PendingRemoveMobs as entity<Entity>
+        MonsterPoolParentNode = PendingRemoveMonsterParentNode
+    }
+
+    // 三选一卡牌环节调用：清空旧池并预创建下一波所需怪物（Active 关掉），用的时候从池取并设 Active=true
+    func InitializeMonsterPool() {
+        ClearMonsterPool()
+        var nextWave int = CurrentWave + 1
+        if nextWave > 5 {
+            nextWave = 1
+        }
+        PreWarmMonsterPool(nextWave)
+    }
+
+    // 预创建下一波怪物并放入池（CreateFromPrefab 后 IsActive=false，挂到池节点下）
+    func PreWarmMonsterPool(nextWave int) {
+        if nextWave == 5 {
+            var sceneBossID int = GetSceneBossMonsterID()
+            var monsterRow List<object> = CSVData.ReadCSVRow(EResCSV.MonsterInfo, GetMonsterInfoRowID(sceneBossID)+2)
+            var name_key string = monsterRow[1] as string
+            var prefabID = Config.MobPrefabIDs[name_key]
+            CreateFromPrefab(out var bossEntity, prefabID)
+            var monster = bossEntity as entity<LevelObject>
+            if monster != nil && HasComponent(monster, typeof(Mob)) {
+                monster<Mob>.MobName = name_key
+                monster<Mob>.IsActive = false
+                monster<Transform>.Position = Vector3{0, -1000, 0}
+                SetParentClient(MonsterPoolParentNode<Transform>, monster<Transform>, true)
+                if !Map.ContainKey(MonsterPool, name_key) {
+                    MonsterPool[name_key] = list.New(0, 0)
+                }
+                list.Append(MonsterPool[name_key], monster)
+            }
+            return
+        }
+        var waveRowInfo Map<string, object> = LevelRowInfos[nextWave]
+        if waveRowInfo == nil {
+            LoadCurrentLevelRows(CurrentLevel)
+            waveRowInfo = LevelRowInfos[nextWave]
+        }
+        if waveRowInfo == nil {
+            return
+        }
+        var monsterCupIds List<int> = waveRowInfo["MonsterCupIds"] as List<int>
+        if monsterCupIds == nil || list.Length(monsterCupIds) == 0 {
+            return
+        }
+        var nameKeyToCount Map<string, int> = Map<string, int>{}
+        for cupIdx = 0, list.Length(monsterCupIds), 1 {
+            var cupId int = monsterCupIds[cupIdx]
+            var cupRow List<object> = CSVData.ReadCSVRow(EResCSV.MonsterCup, cupId + 2)
+            var monsterIdsStr string = cupRow[1] as string
+            var amountStr string = cupRow[2] as string
+            var monsterIdList List<int> = Utilities.SplitStringToInt(monsterIdsStr)
+            var amountList List<int> = Utilities.SplitStringToInt(amountStr)
+            for i = 0, list.Length(monsterIdList), 1 {
+                var monsterID int = monsterIdList[i]
+                var amount int = amountList[i]
+                var monsterRow List<object> = CSVData.ReadCSVRow(EResCSV.MonsterInfo, GetMonsterInfoRowID(monsterID)+2)
+                var name_key string = monsterRow[1] as string
+                var existing int = 0
+                if Map.ContainKey(nameKeyToCount, name_key) {
+                    existing = nameKeyToCount[name_key]
+                }
+                if amount > existing {
+                    nameKeyToCount[name_key] = amount
+                }
+            }
+        }
+        var keys = Map.GetAllKeys(nameKeyToCount)
+        for ki = 0, list.Length(keys), 1 {
+            var name_key string = keys[ki]
+            var count int = nameKeyToCount[name_key]
+            var prefabID = Config.MobPrefabIDs[name_key]
+            if !Map.ContainKey(MonsterPool, name_key) {
+                MonsterPool[name_key] = list.New(0, 0)
+            }
+            for c = 0, count, 1 {
+                CreateFromPrefab(out var newEntity, prefabID)
+                var monster = newEntity as entity<LevelObject>
+                if monster != nil && HasComponent(monster, typeof(Mob)) {
+                    monster<Mob>.MobName = name_key
+                    monster<Mob>.IsActive = false
+                    monster<Transform>.Position = Vector3{0, -1000, 0}
+                    SetParentClient(MonsterPoolParentNode<Transform>, monster<Transform>, true)
+                    list.Append(MonsterPool[name_key], monster)
+                }
+            }
+        }
+    }
+
+    // 从对象池取出一只怪物（key = 实体ID，即 MonsterInfo.Name_key），池中无则返回 nil
+    func GetMonsterFromPool(name_key string) entity<LevelObject> {
+        if !Map.ContainKey(MonsterPool, name_key) {
+            return nil
+        }
+        var poolList = MonsterPool[name_key]
+        if list.Length(poolList) <= 0 {
+            return nil
+        }
+        var monster = poolList[0]
+        list.Remove(poolList, monster)
+        return monster
+    }
+
+    // 判断是否为 Boss（Boss 死亡后先播完动画再放回对象池）
+    func IsBossMonster(monster entity<LevelObject>) bool {
+        if monster == nil || !HasComponent(monster, typeof(Mob)) {
+            return false
+        }
+        var name_key string = monster<Mob>.MobName
+        return name_key == "BossButcher" || name_key == "BossFlower"
+    }
+
+    // Boss 死亡动画播放后再放回对象池（延迟回收，避免直接消失不播动画）
+    async func DelayedReturnBossToPool(monster entity<LevelObject>) {
+        WaitForMillisecond(3500)
+        if monster != nil {
+            ReturnMonsterToPool(monster)
+        }
+    }
+
+    // 将怪物回收到对象池（不 Destroy，移入池节点并设为未激活；按 MobName 即实体ID 归入对应 value 列表）
+    func ReturnMonsterToPool(monster entity<LevelObject>) {
+        if monster == nil || !HasComponent(monster, typeof(Mob)) {
+            return
+        }
+        var name_key string = monster<Mob>.MobName  // 实体ID，与 MonsterInfo.Name_key 一致
+        if name_key == "" {
+            return
+        }
+        monster<Mob>.IsActive = false
+        monster<Transform>.Position = Vector3{0, -1000, 0}
+        SetParentClient(MonsterPoolParentNode<Transform>, monster<Transform>, true)
+        if !Map.ContainKey(MonsterPool, name_key) {
+            MonsterPool[name_key] = list.New(0, 0)
+        }
+        list.Append(MonsterPool[name_key], monster)
+    }
+
+    // 清空对象池：销毁池中所有怪物并清空池（波次结束或 ClearAllMonsters 时调用）
+    func ClearMonsterPool() {
+        var keys = Map.GetAllKeys(MonsterPool)
+        for i = 0, list.Length(keys), 1 {
+            var name_key = keys[i]
+            var poolList = MonsterPool[name_key]
+            for j = 0, list.Length(poolList), 1 {
+                var monster = poolList[j]
+                if monster != nil {
+                    start myDestroyMonster(monster)
+                }
+            }
+        }
+        Map.Clear(MonsterPool)
     }
 
     // 更新Boss血条的函数 - 实时获取怪物血量并更新UI
@@ -537,13 +696,14 @@ static graph FC_PVEMonsterManager {
         }
 
 
-        //创建怪物
+        // 创建怪物：优先从对象池取，池中无则新建
         var name_key = monsterInfo["Name_key"] as string
         var prefabID = Config.MobPrefabIDs[name_key]
-        
-        CreateFromPrefab(out var monsterEntity, prefabID)
-        var monster = monsterEntity as entity<LevelObject>
-
+        var monster entity<LevelObject> = GetMonsterFromPool(name_key)
+        if monster == nil {
+            CreateFromPrefab(out var newEntity, prefabID)
+            monster = newEntity as entity<LevelObject>
+        }
 
         //初始化到指定位置
         monster<Transform>.Position = Vector3{30, 0, 0}
@@ -576,12 +736,12 @@ static graph FC_PVEMonsterManager {
                 SoundFunc.PlayCreatedSound("ZombieVoice_3")
             }
         }
-        SetParentClient(ActiveMonsterParentNode<Transform>, monsterEntity<Transform>, true) 
+        SetParentClient(ActiveMonsterParentNode<Transform>, monster<Transform>, true) 
 
         //对应怪物外观组
 
         WaitForNextFrame()             
-        ShowAppearanceGroup(monsterEntity as entity<Appearance>,name_key)
+        ShowAppearanceGroup(monster as entity<Appearance>, name_key)
 
         // 设置怪物属性
         if HasComponent(monster, typeof(Mob)) {
@@ -620,7 +780,7 @@ static graph FC_PVEMonsterManager {
             monster<Transform>.Scale = Vector3{2, 2, 2}
             monster<Mob>.StatusDic["ShieldHP"] = math.Ceil(0.5*monster<Mob>.MaxHP)
             monster<Mob>.StatusDic["ShieldMaxHP"] = math.Ceil(0.5*monster<Mob>.MaxHP)
-            ShowAppearanceGroup(monsterEntity as entity<Appearance>,"Shield")
+            ShowAppearanceGroup(monster as entity<Appearance>, "Shield")
             
         }
         //设置怪物位置
@@ -745,7 +905,10 @@ static graph FC_PVEMonsterManager {
         // 停止生成
         IsWaveActive = false
 
-        // 销毁所有怪物
+        // 清空对象池（波次结束销毁池中怪物）
+        ClearMonsterPool()
+
+        // 销毁所有在场怪物
         for i = 0, list.Length(ActiveMonsters), 1 {
             var monster = ActiveMonsters[i]
             if monster != nil {
@@ -796,7 +959,7 @@ static graph FC_PVEMonsterManager {
     func OnMonsterKilled(monster entity<LevelObject>) {
         if monster != nil && HasComponent(monster, typeof(Mob)) {
             //LogInfo("-------------------------OnMonsterKilled-------------------------")
-            SetParentClient(PendingRemoveMonsterParentNode<Transform>, monster<Transform>, true)
+            // 所有怪都不在此处移走，留在原位播死亡动画，等动画触发 DestroyDeath / OnMonsterKilledAnimationFinished 再回池
             list.Remove(ActiveMonsters, monster)
             list.Remove(ActiveNormalMonsters, monster)
             // 处理Elite死亡与CD记录
@@ -829,7 +992,7 @@ static graph FC_PVEMonsterManager {
         }
     }
 
-    // 怪物死亡动画结束后调用此函数销毁怪物实体
+    // 怪物死亡动画结束后：掉落处理，再回池（所有怪都等动画播完才消失）
     func OnMonsterKilledAnimationFinished(monster entity<LevelObject>) {
         if monster != nil {
              // 八分之一的概率掉落妙妙工具
@@ -838,22 +1001,26 @@ static graph FC_PVEMonsterManager {
             }
             // 死亡掉落货币
             start DropMoney(monster)
-            // 销毁怪物实体
-            start myDestroyMonster(monster)
+            ReturnMonsterToPool(monster)
         }
     }
 
     func NoItemDropDeath(monster entity<LevelObject>) {
         if monster != nil {
+            OnMonsterKilled(monster)
             // 死亡掉落货币
             start DropMoney(monster)
+            // 所有怪都不在此处回池，等死亡动画播到指定位置触发 DestroyDeath 或 OnMonsterKilledAnimationFinished 再回池
         }
     }
 
+    // 死亡动画播到指定位置时由动画事件触发，此时才回池
     func DestroyDeath(monster entity<LevelObject>) {
         if monster != nil {
-            // 销毁怪物实体
-            start myDestroyMonster(monster)
+            if list.Contain(ActiveMonsters, monster) {
+                OnMonsterKilled(monster)
+            }
+            ReturnMonsterToPool(monster)
         }
     }
 
@@ -975,7 +1142,8 @@ static graph FC_PVEMonsterManager {
         // 先计算掉钱数量：Boss = 通关奖励/2；小怪 = 通关奖励/2/4/当前波次怪物数，且当前关卡小怪总掉钱不超过通关奖励50%，掉满不再掉
         var passMoney int = GetPassMoneyForCurrentLevel()
         var amount int = 0
-        if list.Contain(ActiveBossMonsters, monster) || CurrentWave == 5 {
+        var isBossDrop bool = IsBossMonster(monster) || CurrentWave == 5
+        if isBossDrop {
             amount = passMoney / 2
             if amount < 1 {
                 amount = 1
@@ -997,6 +1165,10 @@ static graph FC_PVEMonsterManager {
             if amount > remaining {
                 amount = remaining
             }
+            if amount <= 0 {
+                return
+            }
+            WaveMonsterDroppedMoney = WaveMonsterDroppedMoney + amount
         }
         if amount <= 0 {
             return
@@ -1055,9 +1227,6 @@ static graph FC_PVEMonsterManager {
         Destroy(MoneyTween)
         MoneyEntityClone<UIWidget>.IsVisible = false
         GivePlayerMoney(amount)
-        if !list.Contain(ActiveBossMonsters, monster) && CurrentWave != 5 {
-            WaveMonsterDroppedMoney = WaveMonsterDroppedMoney + amount
-        }
     }
 
     // RNM给钱（amount：本次掉落金币数，取整至少为1）

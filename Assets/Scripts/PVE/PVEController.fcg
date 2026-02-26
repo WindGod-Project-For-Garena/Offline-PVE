@@ -212,6 +212,8 @@ static graph PVEController {
             WaitForMillisecond(2000)
             //隐藏通关小横幅
             WaveCompleteUI<CustomUI>.IsVisible = false
+            // 三选一环节创建好怪物对象池（清空旧池，供下一波使用）
+            monsterManager.InitializeMonsterPool()
             //显示三选一
             GetLocalPlayer()<PlayerJionGame>.ToClient_DisplaySkillThreeChoiceOne()
         }
@@ -285,6 +287,7 @@ static graph PVEController {
         Destroy(resultBanner)
         // 无尽模式：不结算关卡，显示三选一后继续循环当前关卡波次
         if GetLocalPlayer()<PlayerJionGame>.EndlessToggle {
+            monsterManager.InitializeMonsterPool()
             GetLocalPlayer()<PlayerJionGame>.ToClient_DisplaySkillThreeChoiceOne()
             return
         }
