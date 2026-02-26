@@ -228,7 +228,7 @@ static graph FC_PVEMonsterManager {
         list.Append(MonsterPool[name_key], monster)
     }
 
-    // 清空对象池：销毁池中所有怪物并清空池（波次结束或 ClearAllMonsters 时调用）
+    // 清空对象池：先同步销毁池中所有怪物实体，再清空池数据（波次结束或 ClearAllMonsters 时调用）
     func ClearMonsterPool() {
         var keys = Map.GetAllKeys(MonsterPool)
         for i = 0, list.Length(keys), 1 {
@@ -237,7 +237,7 @@ static graph FC_PVEMonsterManager {
             for j = 0, list.Length(poolList), 1 {
                 var monster = poolList[j]
                 if monster != nil {
-                    start myDestroyMonster(monster)
+                    Destroy(monster)
                 }
             }
         }
@@ -356,6 +356,9 @@ static graph FC_PVEMonsterManager {
 
         // 清理所有怪物
         ClearAllMonsters()
+
+        // 预填第一波对象池（否则第一波生成时池为空，会当场 CreateFromPrefab 导致卡顿）
+        PreWarmMonsterPool(1)
     }
     
     // 开始新的波次：波次 1–4 用 LevelConfig（MonsterCup）；波次 5 固定为 Boss 波（按当前场景生成 Boss）
