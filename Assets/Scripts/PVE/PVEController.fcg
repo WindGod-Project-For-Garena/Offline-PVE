@@ -155,30 +155,28 @@ static graph PVEController {
     }
 
 
-    // 波次倒计时器
+    // 波次倒计时器：用本地秒数逐秒递减，不依赖 GameTimeCount
     async func WaveCountdownTimer() {
-        var waveTime int = globalEntity<Global>.GameTimeCount - WaveStartTime
-        var hasShown5sWarning bool = false  // 标记是否已显示5秒警告
+        var displaySeconds int = WaveTimeLimit/1000   // 初始 40，StartWave 已显示过 40
+        var hasShown5sWarning bool = false
         
-        while IsCountdownActive && waveTime < WaveTimeLimit {
-            waveTime = globalEntity<Global>.GameTimeCount - WaveStartTime
-            var remainTime int = (WaveTimeLimit - waveTime)/1000
+        while IsCountdownActive && displaySeconds > 0 {
+            WaitForMillisecond(WaveCountdownInterval)
+            displaySeconds = displaySeconds - 1
             
-            // 更新UI
-            UpdateTimeInGameUI(remainTime, false)
-            
-            // 检查是否需要显示5秒倒计时提示
-            if remainTime <= 5 && !hasShown5sWarning {
-                start ShowCountdownWarning(remainTime)
+            UpdateTimeInGameUI(displaySeconds, false)  // 包含 0，让倒计时能显示到 0
+            if displaySeconds <= 5 && displaySeconds >= 0 && !hasShown5sWarning {
+                start ShowCountdownWarning(displaySeconds)
                 hasShown5sWarning = true
             }
             
-            WaitForMillisecond(WaveCountdownInterval)
-            
-            var DeadOrAlive bool = CheckPlayersAlive() // 检查玩家存活状态
+            var DeadOrAlive bool = CheckPlayersAlive()
             if DeadOrAlive == false {
                 start OnGameOver()
                 return
+            }
+            if displaySeconds <= 0 {
+                break
             }
         }
         
