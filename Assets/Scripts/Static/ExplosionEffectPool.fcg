@@ -1,0 +1,107 @@
+import "StdLibrary.fcc" as StdLib
+import "EditorGenLib.fcc" as EditorLib
+import "List.fcc" as list
+import "Convert.fcc" as Convert
+import "Playable.fcc" as Playable
+import "Animation.fcc" as Animation
+
+// 爆炸/雷击特效对象池：取用时从池中拿，没有则创建；消失时归还池。
+// 池大小不会无限增长：只有“需要时池为空”才会新建；归还时若池已满则 Destroy，避免堆积。
+[platform_client]
+static graph ExplosionEffectPool {
+    Pool List<entity<Effect>> = List<entity<Effect>>{}
+    MaxPoolSize int = 12  // 爆炸池上限（约等于多道闪电爆炸+榴弹+昫爆的峰值）
+
+    ThunderPool List<entity<Effect>> = List<entity<Effect>>{}
+    MaxThunderPoolSize int = 8  // 雷击池上限（SkillAmount 连续多道雷）
+
+    LightBeamPreviewPool List<entity<Effect>> = List<entity<Effect>>{}
+    MaxLightBeamPreviewPoolSize int = 4  // 技能1范围预览（同时最多一个在显示，少量备用）
+
+    LineEffectPool List<entity<Effect>> = List<entity<Effect>>{}
+    MaxLineEffectPoolSize int = 4  // 拾取掉落物 buff 环绕线特效（同时最多一个在玩家身上）
+
+    // ---- 爆炸特效（CurseExplosion） ----
+    func GetFromPool(out var effect entity<Effect>) {
+        if list.Length(Pool) > 0 {
+            effect = Pool[0]
+            list.Remove(Pool, effect)
+        } else {
+            CreateEffectClient(out var newEffect, VFXType.CurseExplosion, LoopType.Once, true)
+            effect = newEffect
+        }
+    }
+
+    func ReturnToPool(e entity<Effect>) {
+        if e == nil { return }
+        SetActive(e, false)
+        if list.Length(Pool) < MaxPoolSize {
+            list.Append(Pool, e)
+        } else {
+            Destroy(e)
+        }
+    }
+
+    // ---- 雷击特效（Thunder） ----
+    func GetThunderFromPool(out var effect entity<Effect>) {
+        if list.Length(ThunderPool) > 0 {
+            effect = ThunderPool[0]
+            list.Remove(ThunderPool, effect)
+        } else {
+            CreateEffectClient(out var newEffect, VFXType.Thunder, LoopType.Once, true)
+            effect = newEffect
+        }
+    }
+
+    func ReturnThunderToPool(e entity<Effect>) {
+        if e == nil { return }
+        SetActive(e, false)
+        if list.Length(ThunderPool) < MaxThunderPoolSize {
+            list.Append(ThunderPool, e)
+        } else {
+            Destroy(e)
+        }
+    }
+
+    // ---- 技能1范围预览（LightBeamPreDiscarded） ----
+    func GetLightBeamPreviewFromPool(out var effect entity<Effect>) {
+        if list.Length(LightBeamPreviewPool) > 0 {
+            effect = LightBeamPreviewPool[0]
+            list.Remove(LightBeamPreviewPool, effect)
+        } else {
+            CreateEffectClient(out var newEffect, VFXType.LightBeamPreDiscarded, LoopType.Once, true)
+            effect = newEffect
+        }
+    }
+
+    func ReturnLightBeamPreviewToPool(e entity<Effect>) {
+        if e == nil { return }
+        SetActive(e, false)
+        if list.Length(LightBeamPreviewPool) < MaxLightBeamPreviewPoolSize {
+            list.Append(LightBeamPreviewPool, e)
+        } else {
+            Destroy(e)
+        }
+    }
+
+    // ---- 拾取掉落物 buff 线特效（VFXType.Line Loop） ----
+    func GetLineEffectFromPool(out var effect entity<Effect>) {
+        if list.Length(LineEffectPool) > 0 {
+            effect = LineEffectPool[0]
+            list.Remove(LineEffectPool, effect)
+        } else {
+            CreateEffectClient(out var newEffect, VFXType.Line, LoopType.Loop, true)
+            effect = newEffect
+        }
+    }
+
+    func ReturnLineEffectToPool(e entity<Effect>) {
+        if e == nil { return }
+        SetActive(e, false)
+        if list.Length(LineEffectPool) < MaxLineEffectPoolSize {
+            list.Append(LineEffectPool, e)
+        } else {
+            Destroy(e)
+        }
+    }
+}

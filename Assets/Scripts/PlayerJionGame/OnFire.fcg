@@ -14,6 +14,7 @@ import "Strings.fcc" as Strings
 import "../CustomEvent.fcc" as CustomEvent
 import "../SoundFunc/SoundFunc.fcg" as SoundFunc
 import "../PVE/FC_PVEMonsterManager.fcg" as PVEMonsterManager
+import "../Static/ExplosionEffectPool.fcg" as ExplosionEffectPool
 
 [platform_client]
 graph OnFire {
@@ -100,12 +101,14 @@ graph OnFire {
          // 音效
         SoundFunc.PlayCreatedSound("Skill_Grenade")
 
-        // 释放特效
-        CreateEffectClient(out var NewcreatedEntity, VFXType.CurseExplosion, LoopType.Once, true)
-        var effectEntity = NewcreatedEntity
+        // 从对象池取爆炸特效
+        ExplosionEffectPool.GetFromPool(out var explosionEffect)
+        var effectEntity = explosionEffect
         effectEntity<Transform>.Position = ReleasedEffectPosition
         effectEntity<Transform>.Scale = Vector3{Size, Size, Size}
         BoomColor(effectEntity, 5)
+        SetActive(explosionEffect, true)
+        Play(explosionEffect, true)
         
         // 获取榴弹昫爆次数
         var WeaponDoubleBoom = GetLocalPlayer()<PlayerJionGame>.Skill1DataInGame["WeaponDoubleBoom"] as int
@@ -143,7 +146,7 @@ graph OnFire {
         }
 
         WaitForMillisecond(2000)
-        Destroy(NewcreatedEntity)
+        ExplosionEffectPool.ReturnToPool(explosionEffect)
     }
 
     // 检查并触发昫爆
@@ -177,14 +180,14 @@ graph OnFire {
         }
     }
 
-    // 触发昫爆（在被杀死怪物的位置）
+    // 触发昫爆（在被杀死怪物的位置，从对象池取爆炸特效）
     async func TriggerDoubleBoom(explosionPosition Vector3) {
-        
-        // 创建昫爆特效
-        CreateEffectClient(out var doubleBoomEffect, VFXType.CurseExplosion, LoopType.Once, true)
+        ExplosionEffectPool.GetFromPool(out var doubleBoomEffect)
         doubleBoomEffect<Transform>.Position = explosionPosition
         doubleBoomEffect<Transform>.Scale = Vector3{2, 2, 2}  // 昫爆范围较小
         BoomColor(doubleBoomEffect, 5)
+        SetActive(doubleBoomEffect, true)
+        Play(doubleBoomEffect, true)
         
         // 昫爆伤害（主爆炸的50%，即 技能一伤害/4）
         var mainDamage = (GetLocalPlayer()<PlayerJionGame>.Skill1DataInGame["SkillDamage"] as int) / 4
@@ -211,7 +214,7 @@ graph OnFire {
         SoundFunc.PlayCreatedSound("Skill_Grenade")
 
         WaitForMillisecond(2000)
-        Destroy(doubleBoomEffect)
+        ExplosionEffectPool.ReturnToPool(doubleBoomEffect)
     }
 
     // 获取指定位置和距离内的怪物
@@ -258,22 +261,24 @@ graph OnFire {
         start PlayThunderEffects(SkillAmount,CurrentDamage,hitEntity)
     }
 
-    // 播放雷击特效
+    // 播放雷击特效（从对象池取/还，不 Destroy）
     async func PlayThunderEffects(SkillAmount int,damage int,hitEntity entity<Entity>) {
         for i = 0, SkillAmount, 1 {
+            ExplosionEffectPool.GetThunderFromPool(out var thunderEffect)
             var thunderPosition = hitEntity<Transform>.Position
-            CreateEffectClient(out var thunderEffect, VFXType.Thunder, LoopType.Once, true)
             thunderEffect<Transform>.Position = thunderPosition
             thunderEffect<Transform>.Scale = Vector3{0.8,2,0.8}
-            SetParentClient(hitEntity as entity<LevelObject>, thunderEffect, true)
+            // 不挂到实体上，避免实体被销毁时雷特效一起销毁导致归还池时 nil
             BoomColor(thunderEffect, 3)
+            SetActive(thunderEffect, true)
+            Play(thunderEffect, true)
             //造成伤害
             var realDamage int = Math.Ceil(damage * skillMultiplier)
             DispatchEventToEntity(OnDamageMob, hitEntity, PlatformType.Client, List<object>{hitEntity, nil, realDamage, GetLocalPlayer()})
             GetLocalPlayer()<PlayerJionGame>.LightningDamage += realDamage
             CreateDamageNum(realDamage, 10, #D400FFFF, 800, hitEntity as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
             WaitForMillisecond(2000)
-            Destroy(thunderEffect)
+            ExplosionEffectPool.ReturnThunderToPool(thunderEffect)
         }
     }
 }

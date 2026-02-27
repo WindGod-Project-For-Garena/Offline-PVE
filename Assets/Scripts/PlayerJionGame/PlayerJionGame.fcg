@@ -16,6 +16,7 @@ import "../PVE/PVEController.fcg" as PVEController
 import "Economy.fcc" as Economy
 import "../Home/GiftedPanel.fcg" as GiftedPanel
 import "../Static/FC_Config.fcg" as FC_Config
+import "../Static/ExplosionEffectPool.fcg" as ExplosionEffectPool
 import "../ChoiceOneOfThreeCard/ChoiceOneOfThreeCard.fcg" as ChoiceOneOfThreeCard
 import "../SoundFunc/SoundFunc.fcg" as SoundFunc
 import "../PVE/FC_PVEMonsterManager.fcg" as FC_PVEMonsterManager
@@ -2911,7 +2912,7 @@ graph PlayerJionGame {
             if !hasActiveBuff {
                 buffTimerRunning = false
                 if BuffEffectEntity != nil {
-                    Destroy(BuffEffectEntity)
+                    ExplosionEffectPool.ReturnLineEffectToPool(BuffEffectEntity as entity<Effect>)
                     BuffEffectEntity = nil
                 }
                 // LogInfo("所有buff已过期，停止计时器")
@@ -2946,9 +2947,9 @@ graph PlayerJionGame {
         // 重置所有临时存储
         tempOriginalSkill1Damage = 0
         tempOriginalSkill2Damage = 0
-        // 销毁buff持续特效
+        // 归还buff持续特效到对象池
         if BuffEffectEntity != nil {
-            Destroy(BuffEffectEntity)
+            ExplosionEffectPool.ReturnLineEffectToPool(BuffEffectEntity as entity<Effect>)
             BuffEffectEntity = nil
         }
     }
@@ -2983,20 +2984,21 @@ graph PlayerJionGame {
         }
     }
 
-    // 拾取掉落物的特效效果（生效期间持续显示，buff结束后销毁）
+    // 拾取掉落物的特效效果（从对象池取/还，生效期间持续显示，buff结束后归还池）
     async func PickUpDropEffect(player entity<Player> , BuffColor Color) {
-        // 若已有buff特效则先销毁，再创建新的
+        // 若已有buff特效则先归还池，再取新的
         if BuffEffectEntity != nil {
-            Destroy(BuffEffectEntity)
+            ExplosionEffectPool.ReturnLineEffectToPool(BuffEffectEntity as entity<Effect>)
             BuffEffectEntity = nil
         }
-        // 创建并播放循环特效，挂在玩家身上
-        CreateEffectClient(out var ItemEfect, VFXType.Line, LoopType.Loop, true)
+        ExplosionEffectPool.GetLineEffectFromPool(out var ItemEfect)
         var PlayerItemEfect = ItemEfect
         var PlayerPos = player<Player>.Position
         PlayerItemEfect<Transform>.Position = PlayerPos
         PlayerItemEfect<Effect>.Color = BuffColor
         SetParentClient(player, PlayerItemEfect, true)
+        SetActive(PlayerItemEfect, true)
+        Play(PlayerItemEfect, true)
         BuffEffectEntity = PlayerItemEfect as entity<LevelObject>
     }
 

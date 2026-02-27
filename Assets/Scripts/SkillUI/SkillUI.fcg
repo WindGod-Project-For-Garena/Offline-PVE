@@ -14,6 +14,7 @@ import "Convert.fcc" as Convert
 import "Items.fcc" as Items
 import "../CustomEvent.fcc" as CustomEvent
 import "../PVE/FC_PVEMonsterManager.fcg" as PVEMonsterManager
+import "../Static/ExplosionEffectPool.fcg" as ExplosionEffectPool
 
 [platform_client]
 graph SkillUI {
@@ -85,11 +86,13 @@ graph SkillUI {
         }
     }
 
-    // 技能1
+    // 技能1（范围预览从对象池取，摇杆释放时归还）
     func Skill_1(CurrentSkill int, hitPosition Vector3){
         if previewEffectEntity == nil {
-            CreateEffectClient(out var NewcreatedEntity, VFXType.LightBeamPreDiscarded, LoopType.Once, true)
-            previewEffectEntity = NewcreatedEntity
+            ExplosionEffectPool.GetLightBeamPreviewFromPool(out var previewEffect)
+            previewEffectEntity = previewEffect
+            SetActive(previewEffectEntity, true)
+            Play(previewEffectEntity, true)
         }
         
         // 获取技能1的范围等级
@@ -109,7 +112,10 @@ graph SkillUI {
 
     //————————————————————————————————————————————————//
     event OnJoyStickReleased(player entity<Player>){
-        Destroy(previewEffectEntity)
+        if previewEffectEntity != nil {
+            ExplosionEffectPool.ReturnLightBeamPreviewToPool(previewEffectEntity)
+            previewEffectEntity = nil
+        }
         Destroy(tween)
         
         var CurrentSkill = GetLocalPlayer()<PlayerJionGame>.CurrentSkill
@@ -175,12 +181,14 @@ graph SkillUI {
         // 音效
         SoundFunc.PlayCreatedSound("Skill_Boming")
 
-        // 释放特效 
-        CreateEffectClient(out var NewcreatedEntity, VFXType.CurseExplosion, LoopType.Once, true)
-        effectEntity = NewcreatedEntity
+        // 从对象池取爆炸特效
+        ExplosionEffectPool.GetFromPool(out var explosionEffect)
+        effectEntity = explosionEffect
         effectEntity<Transform>.Position = ReleasedEffectPosition
         effectEntity<Transform>.Scale = Vector3{Size, Size, Size}
         BoomColor(effectEntity, 5)
+        SetActive(explosionEffect, true)
+        Play(explosionEffect, true)
         
         // 造成伤害
         var monsters = getMonsterWithinDistance(Size)
@@ -192,7 +200,7 @@ graph SkillUI {
             CreateDamageNum(damage, 10, #FF5B5BFF, 800, monster as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
         }
         WaitForMillisecond(2000)
-        Destroy(NewcreatedEntity)
+        ExplosionEffectPool.ReturnToPool(explosionEffect)
     }
 
     func Skill_1_FireReleased(SkillFireDamage int){
@@ -347,10 +355,12 @@ graph SkillUI {
         JoyStickEffect_1<UIWidget>.IsVisible = false
     }
 
-    // 播放雷击特效
+    // 播放雷击特效（每道雷尽量打不同怪，避免多道雷叠在同一只上导致只显示一道）
     async func PlayThunderEffects(LightningAmountCount int, damage int, LightningRange int,LightningExplosion float) {
+        var targetMonsters = GetShuffledMonsterTargets(LightningAmountCount)
+        if List.Length(targetMonsters) == 0 { return }
         for i = 0, LightningAmountCount, 1 {
-            var randomMonster = GetRandomMonster()
+            var randomMonster = targetMonsters[i] as entity<LevelObject>
             if randomMonster != nil {
                 if  LightningExplosion == 0 {
                     start CreateThunder(i, randomMonster, damage)
@@ -359,11 +369,9 @@ graph SkillUI {
                 if  LightningExplosion > 0 {
                     start CreateThunder(i, randomMonster, damage)
                     GetLocalPlayer()<PlayerJionGame>.Skill2Damage += damage
-                    // 传递怪物位置给爆炸函数
                     var monsterPosition = randomMonster<Transform>.Position
                     start ThunderBoom(i, monsterPosition, damage, LightningRange, LightningExplosion)
                 }
-                // 随机A音效或B音效
                 if RandomInt(0, 1) == 0 {
                     SoundFunc.PlayCreatedSound("Skill_ElectricArc_A")
                 } else {
@@ -374,7 +382,24 @@ graph SkillUI {
         }
     }
 
-    // 获取随机怪物
+    // 获取本轮雷击目标列表（洗牌后不重复选取，怪物数不足时循环使用，保证每道雷有目标）
+    func GetShuffledMonsterTargets(needCount int) List<entity<LevelObject>> {
+        var activeMonsters = PVEMonsterManager.ActiveMonsters
+        var total = List.Length(activeMonsters)
+        if total == 0 { return List<entity<LevelObject>>{} }
+        var shuffled List<entity<LevelObject>> = List<entity<LevelObject>>{}
+        for i = 0, total, 1 {
+            List.Append(shuffled, activeMonsters[i])
+        }
+        List.Shuffle(shuffled)
+        var result List<entity<LevelObject>> = List<entity<LevelObject>>{}
+        for i = 0, needCount, 1 {
+            List.Append(result, shuffled[i % total])
+        }
+        return result
+    }
+
+    // 获取随机怪物（保留用于其他逻辑）
     func GetRandomMonster() entity<LevelObject> {
         var activeMonsters = PVEMonsterManager.ActiveMonsters
         if List.Length(activeMonsters) == 0 { return nil }
@@ -382,33 +407,37 @@ graph SkillUI {
         return activeMonsters[randomIndex] as entity<LevelObject>
     }
 
-    // 创建单道雷
+    // 创建单道雷（从对象池取/还，不 Destroy）
     async func CreateThunder(index int, targetMonster entity<LevelObject>, damage int) {
+        if targetMonster == nil {
+            return
+        }
+        ExplosionEffectPool.GetThunderFromPool(out var thunderEffect)
         var thunderPosition = targetMonster<Transform>.Position
-        CreateEffectClient(out var thunderEffect, VFXType.Thunder, LoopType.Once, true)
         thunderEffect<Transform>.Position = thunderPosition
         thunderEffect<Transform>.Scale = Vector3{0.8,2,0.8}
-        SetParentClient(targetMonster, thunderEffect, true)
+        // 不挂到怪物身上，避免怪物死亡时特效被一起销毁导致归还池时收到 nil
         BoomColor(thunderEffect, 3)
+        SetActive(thunderEffect, true)
+        Play(thunderEffect, true)
 
         var realDamage int = Math.Ceil(damage * skillMultiplier)
-        //造成伤害
         DispatchEventToEntity(OnDamageMob, targetMonster, PlatformType.Client, List<object>{targetMonster, nil, realDamage, GetLocalPlayer()})
         CreateDamageNum(realDamage, 10, #D400FFFF, 800, targetMonster as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
 
         WaitForMillisecond(2000)
-        Destroy(thunderEffect)
+        ExplosionEffectPool.ReturnThunderToPool(thunderEffect)
     }
 
-    // 创建闪电爆炸
+    // 创建闪电爆炸（从对象池取特效，用毕归还）
     async func ThunderBoom(index int, explosionPosition Vector3, damage int, LightningRange int, LightningExplosion float) {
-        // 释放特效 
-        CreateEffectClient(out var NewcreatedEntity, VFXType.CurseExplosion, LoopType.Once, true)
-        effectEntity = NewcreatedEntity
-        // 使用传入的怪物位置
+        ExplosionEffectPool.GetFromPool(out var explosionEffect)
+        effectEntity = explosionEffect
         effectEntity<Transform>.Position = explosionPosition
         effectEntity<Transform>.Scale = Vector3{LightningRange, LightningRange, LightningRange}
         BoomColor(effectEntity, 3)
+        SetActive(explosionEffect, true)
+        Play(explosionEffect, true)
         
         // 造成伤害
         var Boomdamage int = Math.Ceil(LightningExplosion * damage)
@@ -423,7 +452,7 @@ graph SkillUI {
         }
 
         WaitForMillisecond(2000)
-        Destroy(NewcreatedEntity)
+        ExplosionEffectPool.ReturnToPool(explosionEffect)
     }
 
     // 从指定位置获取范围内的怪物（新函数）
