@@ -733,14 +733,9 @@ static graph FC_PVEMonsterManager {
         // 场上怪物数量达到3个及以上时，若当前没有僵尸音效在播则随机播放一条（避免重复播放造成性能问题）
         if list.Length(ActiveMonsters) >= 3 && !ZombieVoicePlaying {
             ZombieVoicePlaying = true
-            var voiceIndex = math.RandomInt(1, 4)
-            if voiceIndex == 1 {
-                SoundFunc.PlayCreatedSound("ZombieVoice_1")
-            } else if voiceIndex == 2 {
-                SoundFunc.PlayCreatedSound("ZombieVoice_2")
-            } else {
-                SoundFunc.PlayCreatedSound("ZombieVoice_3")
-            }
+            SoundFunc.PlayCreatedSound("ZombieVoice_1")
+            SoundFunc.PlayCreatedSound("ZombieVoice_2")
+            SoundFunc.PlayCreatedSound("ZombieVoice_3")
         }
         SetParentClient(ActiveMonsterParentNode<Transform>, monster<Transform>, true) 
 
