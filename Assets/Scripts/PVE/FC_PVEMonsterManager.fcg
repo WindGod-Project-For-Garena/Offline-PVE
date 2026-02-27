@@ -71,6 +71,8 @@ static graph FC_PVEMonsterManager {
     NormalSpawnBatchSize int = 3  // 每次生成的普通怪物数量
     NormalLastSpawnTime int = 0  // 普通怪物最后生成时间（全局CD）
 
+    // 僵尸环境音是否正在播放（避免怪物>=3时每次生成都重复播放）
+    ZombieVoicePlaying bool = false
 
     // 怪物父节点
     ActiveMonsterParentNode entity<Entity> = nil
@@ -728,8 +730,9 @@ static graph FC_PVEMonsterManager {
         } else {
             list.Append(ActiveNormalMonsters, monster)
         }
-        // 场上怪物数量达到3个及以上时，随机播放僵尸音效
-        if list.Length(ActiveMonsters) >= 3 {
+        // 场上怪物数量达到3个及以上时，若当前没有僵尸音效在播则随机播放一条（避免重复播放造成性能问题）
+        if list.Length(ActiveMonsters) >= 3 && !ZombieVoicePlaying {
+            ZombieVoicePlaying = true
             var voiceIndex = math.RandomInt(1, 4)
             if voiceIndex == 1 {
                 SoundFunc.PlayCreatedSound("ZombieVoice_1")
@@ -934,6 +937,7 @@ static graph FC_PVEMonsterManager {
         SoundFunc.PauseTheSound("ZombieVoice_1")
         SoundFunc.PauseTheSound("ZombieVoice_2")
         SoundFunc.PauseTheSound("ZombieVoice_3")
+        ZombieVoicePlaying = false
         
         // 重置状态
         GetLocalPlayer()<PlayerJionGame>.KillCount = 0
@@ -991,6 +995,7 @@ static graph FC_PVEMonsterManager {
                 SoundFunc.PauseTheSound("ZombieVoice_1")
                 SoundFunc.PauseTheSound("ZombieVoice_2")
                 SoundFunc.PauseTheSound("ZombieVoice_3")
+                ZombieVoicePlaying = false
             }
         }
     }
