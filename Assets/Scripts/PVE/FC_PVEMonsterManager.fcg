@@ -24,10 +24,12 @@ import "Items.fcc" as Items
 
 [platform_client]
 static graph FC_PVEMonsterManager {
-    // 配置参数
-    MaxMonstersOnField int = 20
+    // 配置参数（已按 14只/20 即 70% 折算：场上最多 14 只，每批普通怪 2 只）
+    MaxMonstersOnField int = 14   // 原 20，70%（14只）
     SpawnInterval int = 5000  // 毫秒
     EliteSpawnCD int = 10000  // Elite怪物生成CD(毫秒)
+    // 怪物生成数量全局系数（1.0=原数量，0.7=14只，约下降30%）
+    SpawnCountScale float = 0.7
     
     // 当前状态
     CurrentLevel int = 1
@@ -68,7 +70,7 @@ static graph FC_PVEMonsterManager {
     
     // 普通怪物生成CD
     NormalSpawnCD int = 5000  // 毫秒
-    NormalSpawnBatchSize int = 3  // 每次生成的普通怪物数量
+    NormalSpawnBatchSize int = 2  // 每次生成的普通怪物数量（原 3，下降 20%）
     NormalLastSpawnTime int = 0  // 普通怪物最后生成时间（全局CD）
 
     // 僵尸环境音是否正在播放（避免怪物>=3时每次生成都重复播放）
@@ -92,6 +94,16 @@ static graph FC_PVEMonsterManager {
         ActiveMonsterParentNode = EResSceneIsleLand.ActiveMobs as entity<Entity>
         PendingRemoveMonsterParentNode = EResSceneIsleLand.PendingRemoveMobs as entity<Entity>
         MonsterPoolParentNode = PendingRemoveMonsterParentNode
+    }
+
+    // 将原始生成数量按 SpawnCountScale 缩放（minCount 用于 Boss 等至少保留的数量）
+    func ScaleSpawnCount(rawCount int, minCount int) int {
+        var f float = Convert.IntToFloat(rawCount) * SpawnCountScale
+        var scaled int = math.Floor(f)
+        if scaled < minCount {
+            return minCount
+        }
+        return scaled
     }
 
     // 三选一卡牌环节调用：清空旧池并预创建下一波所需怪物（Active 关掉），用的时候从池取并设 Active=true
@@ -147,7 +159,7 @@ static graph FC_PVEMonsterManager {
             var amountList List<int> = Utilities.SplitStringToInt(amountStr)
             for i = 0, list.Length(monsterIdList), 1 {
                 var monsterID int = monsterIdList[i]
-                var amount int = amountList[i]
+                var amount int = ScaleSpawnCount(amountList[i], 0)
                 var monsterRow List<object> = CSVData.ReadCSVRow(EResCSV.MonsterInfo, GetMonsterInfoRowID(monsterID)+2)
                 var name_key string = monsterRow[1] as string
                 var existing int = 0
@@ -401,7 +413,7 @@ static graph FC_PVEMonsterManager {
         for i = 0, list.Length(monsterIdList), 1 {
             var monsterInfo Map<string, object> = Map<string, object>{}
             monsterInfo["MonsterID"] = monsterIdList[i]
-            monsterInfo["MaxNum"] = amountList[i]
+            monsterInfo["MaxNum"] = ScaleSpawnCount(amountList[i], 0)
             monsterInfo["SpawnIntervalSec"] = timeintervalList[i]
 
             var monsterRow List<object> = CSVData.ReadCSVRow(EResCSV.MonsterInfo, GetMonsterInfoRowID(monsterInfo["MonsterID"] as int)+2)
