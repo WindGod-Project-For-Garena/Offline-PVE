@@ -808,7 +808,10 @@ static graph FC_PVEMonsterManager {
         list.Append(spawnEffectPool, spawnEffect)
         list.Append(spawnTweenPool, spawnTween)
 
-        start UpdateBossHPBar()
+        // 仅 Boss 需要血条更新协程，避免每生成一只普通/精英怪都启动一次造成性能浪费
+        if monsterInfo["IsBoss"] as bool {
+            start UpdateBossHPBar()
+        }
     }
 
     // 给精英怪头上带标记
