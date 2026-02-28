@@ -4,16 +4,17 @@ import "List.fcc" as list
 import "Playable.fcc" as Playable
 import "LevelObject.fcc" as LevelObject
 
-// 僵尸移动 Tween 对象池：移动时从池中取 Tween，停止移动时归还池；池空则新建。
+// 僵尸移动 Tween 对象池：移动时从池中取 Tween，停止移动时归还池；池空则新建。池满时归还的 Tween 会 Destroy，避免实体无限累积。
 [platform_client]
 static graph MoveTweenPool {
     moveTweenPool List<entity<Tween>> = List<entity<Tween>>{}
+    MaxPoolSize int = 25
 
     // 从池中获取一个移动 Tween，池空则新建。绑定到 owner，设置起点、终点、时长并播放。
     func GetMoveTween(owner entity<LevelObject>, startPos Vector3, endPos Vector3, duration float, out var tweenEntity entity<Tween>) {
         if list.Length(moveTweenPool) > 0 {
             tweenEntity = moveTweenPool[0]
-            list.Remove(moveTweenPool, tweenEntity)
+            list.RemoveAt(moveTweenPool, 0)
             tweenEntity<Tween>.Target = owner
             tweenEntity<Tween>.StartValue = startPos
             tweenEntity<Tween>.EndValue = endPos
@@ -25,10 +26,14 @@ static graph MoveTweenPool {
         }
     }
 
-    // 停止并归还 Tween 到池中，供其他僵尸复用。
+    // 停止并归还 Tween 到池中；池已满则 Destroy，避免 Tween 实体无限累积。
     func ReturnMoveTween(tween entity<Tween>) {
         if tween == nil { return }
         Pause(tween)
-        list.Append(moveTweenPool, tween)
+        if list.Length(moveTweenPool) < MaxPoolSize {
+            list.Append(moveTweenPool, tween)
+        } else {
+            Destroy(tween)
+        }
     }
 }
