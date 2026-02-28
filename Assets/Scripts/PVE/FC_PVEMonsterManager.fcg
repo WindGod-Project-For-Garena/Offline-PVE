@@ -248,6 +248,7 @@ static graph FC_PVEMonsterManager {
         for i = 0, list.Length(keys), 1 {
             var name_key = keys[i]
             var poolList = MonsterPool[name_key]
+            if poolList == nil { continue }
             for j = 0, list.Length(poolList), 1 {
                 var monster = poolList[j]
                 if monster != nil {
@@ -260,11 +261,18 @@ static graph FC_PVEMonsterManager {
 
     // 更新Boss血条的函数 - 实时获取怪物血量并更新UI
     async func UpdateBossHPBar() {
-        // 查找当前场景中的Boss
+        var localPlayer = GetLocalPlayer()
+        if localPlayer == nil { return }
+        var BossHPBar = localPlayer<PlayerJionGame>.BossHPBar
+        if BossHPBar == nil { return }
+        // 无 Boss 时直接隐藏血条并返回，避免 ActiveBossMonsters[0] 越界
+        if list.Length(ActiveBossMonsters) <= 0 {
+            BossHPBar<CustomUI>.IsVisible = false
+            return
+        }
         var boss = ActiveBossMonsters[0]
-        var BossHPBar = GetLocalPlayer()<PlayerJionGame>.BossHPBar
 
-        while boss != nil{
+        while boss != nil {
             // 获取Boss当前血量和最大血量
             var currentHP = boss<Mob>.HP
             var maxHP = boss<Mob>.MaxHP
@@ -811,6 +819,12 @@ static graph FC_PVEMonsterManager {
 
         WaitForMillisecond(1100)
 
+        // 游戏已结束或怪物已被清理时不再激活，避免对已销毁实体操作导致 nil 报错
+        if monster == nil || !IsWaveActive {
+            if spawnEffect != nil { list.Append(spawnEffectPool, spawnEffect) }
+            if spawnTween != nil { list.Append(spawnTweenPool, spawnTween) }
+            return
+        }
         //激活怪物
         //isLogInfo("------激活怪物: " + monster<Mob>.MobName)
         monster<Mob>.IsActive = true
@@ -982,13 +996,16 @@ static graph FC_PVEMonsterManager {
             // 处理Elite死亡与CD记录
             if list.Contain(ActiveEliteMonsters, monster) {
                 list.Remove(ActiveEliteMonsters,monster)
-                // 减少对应MonsterID的Elite计数
+                // 减少对应MonsterID的Elite计数（EliteCurrentCount 可能无该 key，先判空再减）
                 var mobName = monster<Mob>.MobName
                 for i = 0, list.Length(WaveMonsterInfos), 1 {
                     var monsterInfo = WaveMonsterInfos[i]
                     if monsterInfo["Name_key"] as string == mobName {
                         var monsterID = monsterInfo["MonsterID"] as int
-                        var currentCount = EliteCurrentCount[monsterID]
+                        var currentCount int = 0
+                        if Map.ContainKey(EliteCurrentCount, monsterID) {
+                            currentCount = EliteCurrentCount[monsterID]
+                        }
                         if currentCount > 0 {
                             EliteCurrentCount[monsterID] = currentCount - 1
                         }
@@ -1084,9 +1101,11 @@ static graph FC_PVEMonsterManager {
         MiaomiaoToolEntity = largeItem as entity<LevelObject>
         // 设置地面圈圈颜色
         MiaomiaoToolEntity<Icon>.Color = BuffColor
-        // 设置光效颜色
+        // 设置光效颜色（GetChildren 可能为空，先判长度再访问 [0]）
         var light = GetChildren(MiaomiaoToolEntity)
-        light[0]<Icon>.Color = BuffColor
+        if light != nil && list.Length(light) > 0 {
+            light[0]<Icon>.Color = BuffColor
+        }
         // LogInfo("掉落道具-" + itemTypeName)
         
         if MiaomiaoToolEntity != nil {
@@ -1103,11 +1122,15 @@ static graph FC_PVEMonsterManager {
 
     // 设置道具图标
     func SetItemIcon(item entity<LevelObject>, iconType EResSprite) {
-        // 根据你的Prefab结构获取图标组件并设置
+        if item == nil { return }
         var buff = GetChildren(item)
+        if buff == nil || list.Length(buff) <= 0 { return }
         var light = GetChildren(buff[0])
+        if light == nil || list.Length(light) <= 0 { return }
         var icon = light[0] as entity<LevelObject>
-        icon<Icon>.Resource = iconType
+        if icon != nil {
+            icon<Icon>.Resource = iconType
+        }
     }
 
     // 添加道具弹出动画
@@ -1157,6 +1180,7 @@ static graph FC_PVEMonsterManager {
 
     // 死亡掉落货币
     async func DropMoney(monster entity<LevelObject>) {
+        if monster == nil { return }
         // 先计算掉钱数量：Boss = 通关奖励/2；小怪 = 通关奖励/2/4/当前波次怪物数，且当前关卡小怪总掉钱不超过通关奖励50%，掉满不再掉
         var passMoney int = GetPassMoneyForCurrentLevel()
         var amount int = 0
@@ -1193,6 +1217,7 @@ static graph FC_PVEMonsterManager {
         }
 
         var RighTabIFMUI = GetLocalPlayer()<PlayerJionGame>.RighTabIFMUI
+        if RighTabIFMUI == nil { return }
         var monsterPos = monster<Transform>.Position
         var MoneyEntity = GetWidgetByPath(GetLocalPlayer(), RighTabIFMUI, "/Money")
 
