@@ -2982,6 +2982,7 @@ graph PlayerJionGame {
         for key,Value in DropItemList {
             Destroy(Value)
         }
+        List.Clear(DropItemList)
     }
 
     // 拾取掉落物的特效效果（从对象池取/还，生效期间持续显示，buff结束后归还池）
