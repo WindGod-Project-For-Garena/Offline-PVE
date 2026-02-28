@@ -4,7 +4,7 @@ import "List.fcc" as list
 import "Playable.fcc" as Playable
 import "LevelObject.fcc" as LevelObject
 
-// 僵尸移动 Tween 对象池：移动时从池中取 Tween，停止移动时归还池；池空则新建。池满时归还的 Tween 会 Destroy，避免实体无限累积。
+// 僵尸移动 Tween 对象池：怪物创建移动时从池中取 Tween，StopMoveTween 只暂停不归还；怪物死亡时 Destroy Tween，不归还池。
 [platform_client]
 static graph MoveTweenPool {
     moveTweenPool List<entity<Tween>> = List<entity<Tween>>{}
@@ -26,14 +26,15 @@ static graph MoveTweenPool {
         }
     }
 
-    // 停止并归还 Tween 到池中；池已满则 Destroy，避免 Tween 实体无限累积。
-    func ReturnMoveTween(tween entity<Tween>) {
+    // 从池中移除并销毁 Tween（怪物死亡时调用，不归还池）。
+    func RemoveAndDestroyTween(tween entity<Tween>) {
         if tween == nil { return }
-        Pause(tween)
-        if list.Length(moveTweenPool) < MaxPoolSize {
-            list.Append(moveTweenPool, tween)
-        } else {
-            Destroy(tween)
+        for i = 0, list.Length(moveTweenPool), 1 {
+            if moveTweenPool[i] == tween {
+                list.RemoveAt(moveTweenPool, i)
+                break
+            }
         }
+        Destroy(tween)
     }
 }

@@ -4,7 +4,7 @@ import "Playable.fcc" as Playable
 import "Physics.fcc" as Physics
 import "Camera.fcc" as Camera
 import "LevelObject.fcc" as LevelObject
-import "../MobScripts/MoveTweenPool.fcg" as MoveTweenPool
+import "./MoveTweenPool.fcg" as MoveTweenPool
 
 [platform_client]
 graph FC_ZombieComponent {
@@ -16,6 +16,14 @@ graph FC_ZombieComponent {
     event OnAwake() {
 
     }
+
+	event OnDestroy() {
+		if moveTween != nil {
+			MoveTweenPool.RemoveAndDestroyTween(moveTween)
+			moveTween = nil
+		}
+	}
+
     	//funcID: CreateMoveTween
 	func CreateMoveTween(velocity Vector3) {	
 		var verticalOffset Vector3 = Vector3{0, 0.5, 0}
@@ -24,15 +32,17 @@ graph FC_ZombieComponent {
 		var endPos Vector3 = thisEntity<Transform>.Position + vectorToTarget
 		//如果射綫打到更近，则换endPos和duration -- 后续制作，需要配合场景的层级更好实现
 
+
 		if moveTween != nil {
+			//LogInfo("create move tween: " + endPos + "currPostion" + thisEntity<Transform>.Position)
 			moveTween<Tween>.Duration = tweenDuration
 			moveTween<Tween>.EndValue = endPos
 			moveTween<Tween>.StartValue = thisEntity<Transform>.Position
+
 			Play(moveTween, true)
 		} else {
-			var owner entity<LevelObject> = thisEntity as entity<LevelObject>
-			MoveTweenPool.GetMoveTween(owner, thisEntity<Transform>.Position, endPos, tweenDuration, out var tweenEntity)
-			moveTween = tweenEntity
+			MoveTweenPool.GetMoveTween(thisEntity as entity<LevelObject>, thisEntity<Transform>.Position, endPos, tweenDuration, out var moveTweenEntity)
+			moveTween = moveTweenEntity
 		}
 	}
 
@@ -42,10 +52,8 @@ graph FC_ZombieComponent {
 	}
 
 	func StopMoveTween() {
-		if moveTween != nil {
+		if moveTween != nil{
 			Pause(moveTween)
-			MoveTweenPool.ReturnMoveTween(moveTween)
-			moveTween = nil
 		}
 	}
 }
