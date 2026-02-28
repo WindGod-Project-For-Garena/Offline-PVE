@@ -2674,13 +2674,19 @@ graph PlayerJionGame {
         // 根据胜负控制「下一关」与「再来一局」的显示与位置
         var NextGameEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/FuncPanel/NextGame")
         var ContinueGameEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/FuncPanel/ContinueGame")
+        var BackNewHomeEntity = GetWidgetByPath(GetLocalPlayer(), GameOverFinalUI, "/Panel/FuncPanel/BackNewHome")
         if NextGameEntity != nil && ContinueGameEntity != nil {
             if IsGameSuccess {
                 NextGameEntity<UIWidget>.IsVisible = true
-                ContinueGameEntity<UIWidget>.ActualPosition = Vector3{130, -310, 0}
+                NextGameEntity<UIWidgetButton>.Color = #FFBA00
+                ContinueGameEntity<UIWidgetButton>.Color = #FFFFFFFF
+                ContinueGameEntity<UIWidget>.ActualPosition = Vector3{330, -310, 0}
+                BackNewHomeEntity<UIWidget>.ActualPosition = Vector3{130, -310, 0}
             } else {
                 NextGameEntity<UIWidget>.IsVisible = false
-                ContinueGameEntity<UIWidget>.ActualPosition = Vector3{330, -310, 0}
+                ContinueGameEntity<UIWidgetButton>.Color = #FFBA00
+                ContinueGameEntity<UIWidget>.ActualPosition = Vector3{530, -310, 0}
+                BackNewHomeEntity<UIWidget>.ActualPosition = Vector3{330, -310, 0}
             }
         }
 
