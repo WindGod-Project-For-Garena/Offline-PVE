@@ -106,6 +106,9 @@ static graph PVEController {
         
         // LogInfo("开始PVE游戏 - 关卡: " + level)
         IsGameActive = true
+        // 开局时清除无敌状态，避免通关后「再来一局」仍保留上一局的 Invincible = true
+        var localPlayer entity<Player> = GetAllPlayers()[0]
+        localPlayer<Player>.Invincible = false
         GameStartTime = globalEntity<Global>.GameTimeCount
         CurrentLevel = level
         CurrentWave = 0

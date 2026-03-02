@@ -22,7 +22,7 @@ graph FC_NormalZombie {
 	LastHitPlayer entity<Player> = nil
 	dashingMoveTween entity<Tween> = nil
 	LastPos Vector3 = Vector3{0,0,0}
-    tickInterval int = 1
+    tickInterval int = 2
 	
 	hitPos Vector3 = Vector3{0,0,0}
 

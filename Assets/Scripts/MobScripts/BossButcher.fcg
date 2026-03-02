@@ -21,7 +21,7 @@ import "Avatar.fcc" as Avatar
 graph FC_NormalZombie {
     //Executed when entity is created
 	LastHitPlayer entity<Player> = nil
-    tickInterval int = 1
+    tickInterval int = 2
 	hitPos Vector3 = Vector3{0,0,0}
 
     Dist float = 0
