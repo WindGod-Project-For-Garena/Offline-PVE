@@ -318,8 +318,13 @@ graph ChoiceOneOfThreeCard {
    func UpdateSingleCardIcon(position int, cardId int, currentSkill int) {
       var cardInfo = GetCardInfoById(cardId, currentSkill)
       var rarity = cardInfo["Rarity"] as int
-      var iconKey = cardInfo["Nature"]
-      var iconSprite = FC_Config.CardIconSprites[iconKey]
+      var iconKey = Convert.ToString(cardInfo["Nature"])
+      var iconSprite = EResSprite.Skill_General
+      if currentSkill == 1 {
+         iconSprite = FC_Config.CardIconSprites1[iconKey]
+      } else if currentSkill == 2 {
+         iconSprite = FC_Config.CardIconSprites2[iconKey]
+      }
       var rarityColor = FC_Config.CardRarityColor[rarity]
       // 按钮路径
       var buttonPath = "/NowChoicePanel/List/Card (" + Convert.ToString(position) + ")"
@@ -516,7 +521,7 @@ graph ChoiceOneOfThreeCard {
          if card3 != nil { List.Append(CurrentRandomCards, card3["CardID"] as int) }
          
          // 卡牌数据显示到UI（无卡位会隐藏）
-         UpdateCardUI(card1, card2, card3)
+         UpdateCardUI(card1, card2, card3, currentSkill)
          // 确保卡牌面板显示（无尽模式从「已选完」返回时需重新显示）
          var choicePanel = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/ChoiceThreeCardPanel")
          if choicePanel != nil {
@@ -603,26 +608,26 @@ graph ChoiceOneOfThreeCard {
       return cardDataMap[randomCardId]
    }
    
-   // 更新卡牌UI（大图标）；支持 1/2/3 张牌，未传入的卡位会隐藏
-   func UpdateCardUI(card1 Map<string, object>, card2 Map<string, object>, card3 Map<string, object>) {
+   // 更新卡牌UI（大图标）；支持 1/2/3 张牌，未传入的卡位会隐藏；currentSkill 为角色技能 1 或 2
+   func UpdateCardUI(card1 Map<string, object>, card2 Map<string, object>, card3 Map<string, object>, currentSkill int) {
       var card1Widget entity<UIWidget> = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/ChoiceThreeCardPanel/Card_1")
       var card2Widget entity<UIWidget> = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/ChoiceThreeCardPanel/Card_2")
       var card3Widget entity<UIWidget> = GetWidgetByPath(GetLocalPlayer(), thisEntity as entity<CustomUI>, "/ChoiceThreeCardPanel/Card_3")
       if card1 != nil {
          card1Widget<UIWidget>.IsVisible = true
-         UpdateSingleCardAppearance(card1Widget, card1)
+         UpdateSingleCardAppearance(card1Widget, card1, currentSkill)
       } else if card1Widget != nil {
          card1Widget<UIWidget>.IsVisible = false
       }
       if card2 != nil {
          card2Widget<UIWidget>.IsVisible = true
-         UpdateSingleCardAppearance(card2Widget, card2)
+         UpdateSingleCardAppearance(card2Widget, card2, currentSkill)
       } else if card2Widget != nil {
          card2Widget<UIWidget>.IsVisible = false
       }
       if card3 != nil {
          card3Widget<UIWidget>.IsVisible = true
-         UpdateSingleCardAppearance(card3Widget, card3)
+         UpdateSingleCardAppearance(card3Widget, card3, currentSkill)
       } else if card3Widget != nil {
          card3Widget<UIWidget>.IsVisible = false
       }
@@ -634,8 +639,8 @@ graph ChoiceOneOfThreeCard {
       nextText<UIWidgetLabel>.Color = #FFFFFF
    }
 
-   // 更新单个卡牌外观（大图标）
-   func UpdateSingleCardAppearance(cardWidget entity<UIWidget>, cardInfo Map<string, object>) {
+   // 更新单个卡牌外观（大图标）；currentSkill 为角色技能 1 或 2，用于取对应角色的卡牌图标
+   func UpdateSingleCardAppearance(cardWidget entity<UIWidget>, cardInfo Map<string, object>, currentSkill int) {
       // 设置卡牌1的技能说明
       var cardText = GetChildByName(cardWidget,"IFMText")
       var description = GenerateCardDescription(cardInfo)
@@ -645,10 +650,16 @@ graph ChoiceOneOfThreeCard {
       var typeText = GenerateCardTypeText(cardInfo)
       cardTypeText<UIWidgetLabel>.Content = "[" + typeText + "]"
 
-      // 设置卡牌稀有度显示
+      // 设置卡牌稀有度显示（按角色用 CardIconSprites1 或 CardIconSprites2）
       var rarity = cardInfo["Rarity"] as int
       var rarityColor = FC_Config.CardRarityColor[rarity]
-      var cardIconSprite = FC_Config.CardIconSprites[cardInfo["Nature"]]
+      var iconKey = Convert.ToString(cardInfo["Nature"])
+      var cardIconSprite = EResSprite.Skill_General
+      if currentSkill == 1 {
+         cardIconSprite = FC_Config.CardIconSprites1[iconKey]
+      } else if currentSkill == 2 {
+         cardIconSprite = FC_Config.CardIconSprites2[iconKey]
+      }
       var iconEntity = GetChildByName(cardWidget,"icon")
       var rightBG = GetChildByName(cardWidget,"right_smallBG")
       var leftBG = GetChildByName(cardWidget,"left_smallBG")

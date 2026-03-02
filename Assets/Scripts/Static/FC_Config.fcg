@@ -6,7 +6,10 @@ static graph FC_Config {
     //Executed when entity is created
     MobPrefabIDs Map<string, EResPrefab> = Map<string, EResPrefab>{}
     CardRaritySprite Map<int, EResSprite> = Map<int, EResSprite>{}
-    CardIconSprites Map<string, EResSprite> = Map<string, EResSprite>{}
+    // 角色1（爆裂）卡牌图标 - 对应 Skill_1_CardData.csv
+    CardIconSprites1 Map<string, EResSprite> = Map<string, EResSprite>{}
+    // 角色2（电弧）卡牌图标 - 对应 Skill_2_CardData.csv
+    CardIconSprites2 Map<string, EResSprite> = Map<string, EResSprite>{}
     GiftedCardIDs Map<string, EResSprite> = Map<string, EResSprite>{}
     CardRarityColor Map<int, Color> = Map<int, Color>{}
     event OnAwake() {
@@ -40,18 +43,35 @@ static graph FC_Config {
         }
 
     
-        // 技能卡牌图标
-        CardIconSprites = Map<string, EResSprite>{
-            // 角色对应：主动/被动技能图鉴统一图标（与角色对应）
+        // 角色1（爆裂）技能卡牌图标 - 对应 Skill_1_CardData.csv 的 Nature
+        CardIconSprites1 = Map<string, EResSprite>{
             "ActiveSkill_1": EResSprite.Skill1,
             "PassiveSkill_1": EResSprite.Skill11,
+            "movespeed": EResSprite.MoveSpeed,
+            "WeaponDamage": EResSprite.WeaponDamage,
+            "SkillRange": EResSprite.Skill1,
+            "SkillDamage": EResSprite.Skill1,
+            "SkillAmount": EResSprite.Skill1,
+            "SkillFireDamage": EResSprite.Skill1,
+            "WeaponBoomRange": EResSprite.Skill11,
+            "WeaponBoomProbability": EResSprite.Skill11,
+            "WeaponDoubleBoom": EResSprite.Skill11,
+            "WeaponBoomDamage": EResSprite.Skill11,
+            "ReloadSpeed": EResSprite.Weapon_ReloadSpeed,
+            "SkillCD": EResSprite.Skill1,
+            "ReloadNow": EResSprite.Weapon_ReloadSpeed,
+            "WeaponMaxMagazine": EResSprite.Weapon_Maganize,
+        }
+
+        // 角色2（电弧）技能卡牌图标 - 对应 Skill_2_CardData.csv 的 Nature
+        CardIconSprites2 = Map<string, EResSprite>{
             "ActiveSkill_2": EResSprite.Skill2,
             "PassiveSkill_2": EResSprite.Skill22,
             "movespeed": EResSprite.MoveSpeed,
             "WeaponDamage": EResSprite.WeaponDamage,
             "LightningAmount": EResSprite.Skill2,
-            "SkillDamage": EResSprite.Skill1,
-            "SkillAmount": EResSprite.Skill1,
+            "SkillDamage": EResSprite.Skill2,
+            "SkillAmount": EResSprite.Skill2,
             "LightningRange": EResSprite.Skill2,
             "LightningExplosion": EResSprite.Skill2,
             "WeaponLightningProb": EResSprite.Skill2,
@@ -61,37 +81,7 @@ static graph FC_Config {
             "ReloadNow": EResSprite.Weapon_ReloadSpeed,
             "WeaponMaxMagazine": EResSprite.Weapon_Maganize,
             "AttackSpeed": EResSprite.Weapon_AttackSpeed,
-            "SkillRange": EResSprite.Skill1,
-            "SkillFireDamage": EResSprite.Skill1,
-            "WeaponBoomRange": EResSprite.Skill11,
-            "WeaponBoomProbability": EResSprite.Skill11,
-            "WeaponDoubleBoom": EResSprite.Skill11,
-            "WeaponBoomDamage": EResSprite.Skill11,
         }
-
-        // // 技能卡牌图标
-        // CardIconSprites = Map<string, EResSprite>{
-        //     "movespeed": EResSprite.MoveSpeed,
-        //     "WeaponDamage": EResSprite.WeaponDamage,
-        //     "LightningAmount": EResSprite.Skill_General,
-        //     "SkillDamage": EResSprite.SkillDamage,
-        //     "SkillAmount": EResSprite.SkillAmount,
-        //     "LightningRange": EResSprite.SkillRange,
-        //     "LightningExplosion": EResSprite.Skill_General,
-        //     "WeaponLightningProb": EResSprite.SkillProb,
-        //     "ReloadBuff": EResSprite.Weapon_ReloadSpeed,
-        //     "ReloadSpeed": EResSprite.Weapon_ReloadSpeed,
-        //     "SkillCD": EResSprite.SkillCD,
-        //     "ReloadNow": EResSprite.Weapon_ReloadSpeed,
-        //     "WeaponMaxMagazine": EResSprite.Weapon_Maganize,
-        //     "AttackSpeed": EResSprite.Weapon_AttackSpeed,
-        //     "SkillRange": EResSprite.SkillRange,
-        //     "SkillFireDamage": EResSprite.SkillDamage,
-        //     "WeaponBoomRange": EResSprite.SkillRange,
-        //     "WeaponBoomProbability": EResSprite.SkillProb,
-        //     "WeaponDoubleBoom": EResSprite.Skill_General,
-        //     "WeaponBoomDamage": EResSprite.SkillDamage,
-        // }
 
         // 天赋卡牌图标
         GiftedCardIDs = Map<string, EResSprite>{
