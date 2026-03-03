@@ -261,23 +261,26 @@ graph OnFire {
         start PlayThunderEffects(SkillAmount,CurrentDamage,hitEntity)
     }
 
-    // 播放雷击特效（从对象池取/还，不 Destroy）
+    // 播放雷击特效（从对象池取/还；挂到命中实体上，闪电随目标移动）
     async func PlayThunderEffects(SkillAmount int,damage int,hitEntity entity<Entity>) {
         for i = 0, SkillAmount, 1 {
             ExplosionEffectPool.GetThunderFromPool(out var thunderEffect)
             var thunderPosition = hitEntity<Transform>.Position
             thunderEffect<Transform>.Position = thunderPosition
             thunderEffect<Transform>.Scale = Vector3{0.8,2,0.8}
-            // 不挂到实体上，避免实体被销毁时雷特效一起销毁导致归还池时 nil
             BoomColor(thunderEffect, 3)
             SetActive(thunderEffect, true)
             Play(thunderEffect, true)
-            //造成伤害
+            // 挂到实体上，闪电跟随目标
+            SetParentClient(hitEntity<Transform>, thunderEffect<Transform>, true)
+            // 造成伤害
             var realDamage int = Math.Ceil(damage * skillMultiplier)
             DispatchEventToEntity(OnDamageMob, hitEntity, PlatformType.Client, List<object>{hitEntity, nil, realDamage, GetLocalPlayer()})
             GetLocalPlayer()<PlayerJionGame>.LightningDamage += realDamage
             CreateDamageNum(realDamage, 10, #D400FFFF, 800, hitEntity as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
             WaitForMillisecond(2000)
+            // 归还池前解除挂载，避免池中特效仍指向已销毁实体
+            SetParentClient(nil, thunderEffect<Transform>, true)
             ExplosionEffectPool.ReturnThunderToPool(thunderEffect)
         }
     }

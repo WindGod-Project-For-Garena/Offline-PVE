@@ -407,7 +407,7 @@ graph SkillUI {
         return activeMonsters[randomIndex] as entity<LevelObject>
     }
 
-    // 创建单道雷（从对象池取/还，不 Destroy）
+    // 创建单道雷（从对象池取/还；挂到怪物身上，闪电随目标移动）
     async func CreateThunder(index int, targetMonster entity<LevelObject>, damage int) {
         if targetMonster == nil {
             return
@@ -416,16 +416,19 @@ graph SkillUI {
         var thunderPosition = targetMonster<Transform>.Position
         thunderEffect<Transform>.Position = thunderPosition
         thunderEffect<Transform>.Scale = Vector3{0.8,2,0.8}
-        // 不挂到怪物身上，避免怪物死亡时特效被一起销毁导致归还池时收到 nil
         BoomColor(thunderEffect, 3)
         SetActive(thunderEffect, true)
         Play(thunderEffect, true)
+        // 挂到怪物身上，闪电跟随目标
+        SetParentClient(targetMonster<Transform>, thunderEffect<Transform>, true)
 
         var realDamage int = Math.Ceil(damage * skillMultiplier)
         DispatchEventToEntity(OnDamageMob, targetMonster, PlatformType.Client, List<object>{targetMonster, nil, realDamage, GetLocalPlayer()})
         CreateDamageNum(realDamage, 10, #D400FFFF, 800, targetMonster as entity<Entity>, Vector3{0,1,0}, Vector2{60, 60}, true)
 
         WaitForMillisecond(2000)
+        // 归还池前解除挂载
+        SetParentClient(nil, thunderEffect<Transform>, true)
         ExplosionEffectPool.ReturnThunderToPool(thunderEffect)
     }
 
