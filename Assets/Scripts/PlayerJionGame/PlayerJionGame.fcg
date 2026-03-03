@@ -1847,9 +1847,9 @@ graph PlayerJionGame {
         UpdateDrawButtonState(currentPrice)
     }
 
-    // 更新抽卡按钮状态
+    // 更新抽卡按钮状态（单抽 + 十连抽）
     func UpdateDrawButtonState(currentPrice int) {
-        // 获取抽卡按钮
+        // 单抽按钮
         var drawButton = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/DrawBadgePanel/DrawCard")
         if drawButton != nil {
             if Money < currentPrice {
@@ -1858,6 +1858,16 @@ graph PlayerJionGame {
             } else {
                 // 金钱足够，按钮恢复原色
                 drawButton<UIWidgetButton>.SpriteResource = EResSprite.yellowButton
+            }
+        }
+        // 十连抽按钮：金币不足时同样变灰
+        var tenDrawTotal = GetTenDrawTotalPrice()
+        var tenDrawButton = GetWidgetByPath(GetLocalPlayer(), GiftedUI, "/TenDrawCard/TenDrawCard")
+        if tenDrawButton != nil {
+            if Money < tenDrawTotal {
+                tenDrawButton<UIWidgetButton>.SpriteResource = EResSprite.guryButton
+            } else {
+                tenDrawButton<UIWidgetButton>.SpriteResource = EResSprite.yellowButton
             }
         }
     }
