@@ -497,16 +497,15 @@ static graph FC_PVEMonsterManager {
         var wave4Row Map<string, object> = LevelRowInfos[4]
         if wave4Row != nil {
             CurrentDamageModifier = wave4Row["DamageModifier"] as float
-            CurrentHPModifier = wave4Row["HPModifier"] as float
         } else {
             CurrentDamageModifier = 1.0
-            CurrentHPModifier = 1.0
         }
-        // 关卡血量倍率与波次倍率相乘（Boss 波使用第 4 波倍率）
+        // BOSS 波血量只按关卡倍率 LevelStatus.HPMultiplying，不乘波次倍率
+        CurrentHPModifier = 1.0
         if ContainKey(GetLocalPlayer()<PlayerJionGame>.LevelData, CurrentLevel) {
             var levelRow = GetLocalPlayer()<PlayerJionGame>.LevelData[CurrentLevel]
             if ContainKey(levelRow, "HPMultiplying") {
-                CurrentHPModifier = CurrentHPModifier * 3
+                CurrentHPModifier = levelRow["HPMultiplying"] as float
             }
         }
         // 无尽模式：Boss 波同样应用每波次 1.3 倍率
