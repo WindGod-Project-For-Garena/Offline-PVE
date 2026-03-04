@@ -464,8 +464,8 @@ graph ChoiceOneOfThreeCard {
                // 按钮文字变白色
                buttonText<UIWidgetLabel>.Color = #FFFFFF
          } else {
-               // 金币足够，按钮正常显示
-               refreshButton<UIWidgetButton>.SpriteResource = EResSprite.guryButton
+               // 金币足够，按钮显示为黄色
+               refreshButton<UIWidgetButton>.SpriteResource = EResSprite.yellowButton
                // 价格文字白色
                priceText<UIWidgetLabel>.Color = #FFFFFF
                // 按钮文字黑色
