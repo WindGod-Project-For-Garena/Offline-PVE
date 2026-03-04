@@ -2583,29 +2583,44 @@ graph PlayerJionGame {
             hasCardPanelEntity<UIWidget>.IsVisible = true
         }
         //——————————————————————————————————————————————————————————————————————————————————————————————//
-        // 显示图标：按角色用 CardIconSprites1(角色1) / CardIconSprites2(角色2) 决定 SpriteName
+        // 显示图标：优先用 Nature（与 FC_Config 的 key 一致，如 movespeed、WeaponDamage），否则用主动/被动技能通用图标
         var iconImageEntity = GetChildByName(hasCardPanelEntity, "icon")
         if iconImageEntity != nil {
             iconImageEntity<UIWidget>.IsVisible = true
+            var nature = Convert.ToString(cardInfo["Nature"])
             var typetext = Convert.ToString(cardInfo["Typetext"])
             var iconKey = "Skill_Just_Do_It"  // 通用默认（未匹配时）
 
-            if typetext == "ACTIVE_SKILL" {
+            // 优先用 Nature 作为 iconKey（对应 FC_Config 里的 movespeed、WeaponDamage、SkillRange 等）
+            if nature != "" {
+                iconKey = nature
+            } else if typetext == "ACTIVE_SKILL" {
                 iconKey = "ActiveSkill_" + Convert.ToString(hero)
             } else if typetext == "PASSIVE_SKILL" {
                 iconKey = "PassiveSkill_" + Convert.ToString(hero)
-            } else {
-                iconKey = Convert.ToString(cardInfo["Nature"])
             }
-
-            // 按角色直接用 CardIconSprites1 或 CardIconSprites2 取图
+            // 取图：若当前 iconKey 在对应角色的 Map 中不存在，则回退到主动/被动技能图标
             var rarity = cardInfo["Rarity"] as int
             var iconColor = FC_Config.CardRarityColor[rarity]
             var iconSprite = EResSprite.Skill_General
             if hero == 1 {
-                iconSprite = FC_Config.CardIconSprites1[iconKey]
+                if ContainKey(FC_Config.CardIconSprites1, iconKey) {
+                    iconSprite = FC_Config.CardIconSprites1[iconKey]
+                } else {
+                    iconSprite = FC_Config.CardIconSprites1["ActiveSkill_1"]
+                    if typetext == "PASSIVE_SKILL" {
+                        iconSprite = FC_Config.CardIconSprites1["PassiveSkill_1"]
+                    }
+                }
             } else if hero == 2 {
-                iconSprite = FC_Config.CardIconSprites2[iconKey]
+                if ContainKey(FC_Config.CardIconSprites2, iconKey) {
+                    iconSprite = FC_Config.CardIconSprites2[iconKey]
+                } else {
+                    iconSprite = FC_Config.CardIconSprites2["ActiveSkill_2"]
+                    if typetext == "PASSIVE_SKILL" {
+                        iconSprite = FC_Config.CardIconSprites2["PassiveSkill_2"]
+                    }
+                }
             }
             iconImageEntity<UIWidgetImage>.Color = iconColor
             iconImageEntity<UIWidgetImage>.SpriteName = iconSprite
@@ -2739,23 +2754,37 @@ graph PlayerJionGame {
                             hasCardPanelEntity<UIWidget>.IsVisible = true
                             var iconImageEntity = GetChildByName(hasCardPanelEntity, "icon")
                             if iconImageEntity != nil {
+                                var nature = Convert.ToString(cardInfo["Nature"])
                                 var typetext = Convert.ToString(cardInfo["Typetext"])
                                 var iconKey = "Skill_Just_Do_It"
-                                if typetext == "ACTIVE_SKILL" {
+                                if nature != "" {
+                                    iconKey = nature
+                                } else if typetext == "ACTIVE_SKILL" {
                                     iconKey = "ActiveSkill_" + Convert.ToString(CurrentSkill)
                                 } else if typetext == "PASSIVE_SKILL" {
                                     iconKey = "PassiveSkill_" + Convert.ToString(CurrentSkill)
-                                } else {
-                                    iconKey = Convert.ToString(cardInfo["Nature"])
                                 }
-                                // 按当前角色直接用 CardIconSprites1 或 CardIconSprites2 取图
                                 var rarity = cardInfo["Rarity"] as int
                                 var iconColor = FC_Config.CardRarityColor[rarity]
                                 var iconSprite = EResSprite.Skill_General
                                 if CurrentSkill == 1 {
-                                    iconSprite = FC_Config.CardIconSprites1[iconKey]
+                                    if ContainKey(FC_Config.CardIconSprites1, iconKey) {
+                                        iconSprite = FC_Config.CardIconSprites1[iconKey]
+                                    } else {
+                                        iconSprite = FC_Config.CardIconSprites1["ActiveSkill_1"]
+                                        if typetext == "PASSIVE_SKILL" {
+                                            iconSprite = FC_Config.CardIconSprites1["PassiveSkill_1"]
+                                        }
+                                    }
                                 } else if CurrentSkill == 2 {
-                                    iconSprite = FC_Config.CardIconSprites2[iconKey]
+                                    if ContainKey(FC_Config.CardIconSprites2, iconKey) {
+                                        iconSprite = FC_Config.CardIconSprites2[iconKey]
+                                    } else {
+                                        iconSprite = FC_Config.CardIconSprites2["ActiveSkill_2"]
+                                        if typetext == "PASSIVE_SKILL" {
+                                            iconSprite = FC_Config.CardIconSprites2["PassiveSkill_2"]
+                                        }
+                                    }
                                 }
                                 iconImageEntity<UIWidget>.IsVisible = true
                                 iconImageEntity<UIWidgetImage>.Color = iconColor
