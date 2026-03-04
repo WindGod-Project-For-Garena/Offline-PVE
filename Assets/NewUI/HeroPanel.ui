@@ -33042,101 +33042,10 @@
                 "resourceId": ""
               },
               "_entityId": "R5YSi93l",
-              "children": [
-                {
-                  "_entityName": "GiftTitleLogotext",
-                  "_tag": {
-                    "type": "UITextEntity",
-                    "resourceId": ""
-                  },
-                  "_entityId": "r6sJ5oVJ",
-                  "children": [],
-                  "prefabVariant": null,
-                  "activeValue": {
-                    "selfValue": true,
-                    "valueTag": "activeValue"
-                  },
-                  "unlockedValue": {
-                    "selfValue": true,
-                    "valueTag": "unlockedValue"
-                  },
-                  "propsData": {
-                    "activeSelf": true,
-                    "transform": {
-                      "rotate": 0,
-                      "anchorMin": {
-                        "x": 1,
-                        "y": 0.5
-                      },
-                      "anchorMax": {
-                        "x": 1,
-                        "y": 0.5
-                      },
-                      "pivot": {
-                        "x": 0.5,
-                        "y": 0.5
-                      },
-                      "anchoredPosition": {
-                        "x": 90,
-                        "y": 0
-                      },
-                      "sizeDelta": {
-                        "x": 160,
-                        "y": 50
-                      }
-                    },
-                    "alpha": 100,
-                    "priority": 0,
-                    "text": {
-                      "value": "角色信息",
-                      "key": "BUTTON_HERO_INFO",
-                      "font": "Default",
-                      "fontSize": 28,
-                      "fontStyle": {
-                        "bold": false,
-                        "italic": false,
-                        "underline": false
-                      },
-                      "color": "#ffffff",
-                      "alignment": {
-                        "h": "left",
-                        "v": "middle"
-                      },
-                      "lineSpacing": 0,
-                      "background": false,
-                      "backgroundColor": "#e7b200",
-                      "overflow": 0,
-                      "backgroundRGBA": {
-                        "r": 0,
-                        "g": 0,
-                        "b": 0,
-                        "a": 0
-                      },
-                      "shadow": false,
-                      "shadowColor": "#000000",
-                      "shadowOffset": {
-                        "x": 1,
-                        "y": 1
-                      }
-                    }
-                  },
-                  "ecaScripts": [],
-                  "ecaProps": {
-                    "HudLabelWidget": {},
-                    "HudWidget": {},
-                    "Entity": {}
-                  },
-                  "componentList": [],
-                  "entityTagData": {
-                    "tagPointers": []
-                  },
-                  "editorLockValue": false,
-                  "editorVisibleValue": true
-                }
-              ],
+              "children": [],
               "prefabVariant": null,
               "activeValue": {
-                "selfValue": true,
+                "selfValue": false,
                 "valueTag": "activeValue"
               },
               "unlockedValue": {
@@ -33144,7 +33053,7 @@
                 "valueTag": "unlockedValue"
               },
               "propsData": {
-                "activeSelf": true,
+                "activeSelf": false,
                 "transform": {
                   "rotate": 0,
                   "anchorMin": {
@@ -33220,6 +33129,96 @@
               "ecaScripts": [],
               "ecaProps": {
                 "HudImageWidget": {},
+                "HudWidget": {},
+                "Entity": {}
+              },
+              "componentList": [],
+              "entityTagData": {
+                "tagPointers": []
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": true
+            },
+            {
+              "_entityName": "GiftTitleLogotext",
+              "_tag": {
+                "type": "UITextEntity",
+                "resourceId": ""
+              },
+              "_entityId": "r6sJ5oVJ",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "propsData": {
+                "activeSelf": true,
+                "transform": {
+                  "rotate": 0,
+                  "anchorMin": {
+                    "x": 1,
+                    "y": 0.5
+                  },
+                  "anchorMax": {
+                    "x": 1,
+                    "y": 0.5
+                  },
+                  "pivot": {
+                    "x": 0.5,
+                    "y": 0.5
+                  },
+                  "anchoredPosition": {
+                    "x": -170,
+                    "y": 0
+                  },
+                  "sizeDelta": {
+                    "x": 160,
+                    "y": 50
+                  }
+                },
+                "alpha": 100,
+                "priority": 0,
+                "text": {
+                  "value": "角色信息",
+                  "key": "BUTTON_HERO_INFO",
+                  "font": "Default",
+                  "fontSize": 28,
+                  "fontStyle": {
+                    "bold": false,
+                    "italic": false,
+                    "underline": false
+                  },
+                  "color": "#ffffff",
+                  "alignment": {
+                    "h": "left",
+                    "v": "middle"
+                  },
+                  "lineSpacing": 0,
+                  "background": false,
+                  "backgroundColor": "#e7b200",
+                  "overflow": 0,
+                  "backgroundRGBA": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 0
+                  },
+                  "shadow": false,
+                  "shadowColor": "#000000",
+                  "shadowOffset": {
+                    "x": 1,
+                    "y": 1
+                  }
+                }
+              },
+              "ecaScripts": [],
+              "ecaProps": {
+                "HudLabelWidget": {},
                 "HudWidget": {},
                 "Entity": {}
               },
@@ -33570,4 +33569,4 @@
   "discriminator": "ISceneLike",
   "version": 3
 }
-//"{FE:{"v":"1.16.4170774","c":{"FF":5001},"s":100}
+//"{FE:{"v":"1.16.4197289","c":{"FF":5001},"s":100}
