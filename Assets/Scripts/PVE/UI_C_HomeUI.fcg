@@ -49,6 +49,7 @@ graph UI_HomeUI {
 
     // 更新右按钮状态
     func UpdateRightButtonState() {
+        if buttonRight == nil { return }
         if IsMaxUnlockedLevel() {
             // 到达最高解锁关卡，置灰右按钮
             buttonRight<UIWidgetButton>.Color = #808080  // 灰色
@@ -60,6 +61,7 @@ graph UI_HomeUI {
 
     // 更新左按钮状态
     func UpdateLeftButtonState() {
+        if buttonLeft == nil { return }
         if level <= 1 {
             // 到达第一关，置灰左按钮
             buttonLeft<UIWidgetButton>.Color = #808080  // 灰色
@@ -77,6 +79,11 @@ graph UI_HomeUI {
         levelNum<UIWidgetLabel>.Content = levelNumTTT
         // 保存到PlayerJionGame
         GetLocalPlayer()<PlayerJionGame>.level = level
+        // 每次都用路径取一次左右按钮，避免只点过左键时 buttonRight 仍为 nil 导致右按钮不更新
+        var buttonLeftEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI, "/ChoiceLevel/Button_left")
+        var buttonRightEntity = GetWidgetByPath(GetLocalPlayer(), GetLocalPlayer()<PlayerJionGame>.ChoiceHeroUI, "/ChoiceLevel/Button_right")
+        buttonLeft = buttonLeftEntity as entity<UIWidgetButton>
+        buttonRight = buttonRightEntity as entity<UIWidgetButton>
         // 更新按钮状态
         UpdateLeftButtonState()
         UpdateRightButtonState()
