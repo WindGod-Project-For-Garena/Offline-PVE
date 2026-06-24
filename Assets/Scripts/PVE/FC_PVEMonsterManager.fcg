@@ -24,8 +24,8 @@ import "Items.fcc" as Items
 
 [platform_client]
 static graph FC_PVEMonsterManager {
-    // 配置参数（已按 14只/20 即 70% 折算：场上最多 14 只，每批普通怪 2 只）
-    MaxMonstersOnField int = 14   // 原 20，70%（14只）
+    // 配置参数：场上最多 25 只，每批普通怪 2 只
+    MaxMonstersOnField int = 25   // 当前场上怪物上限
     SpawnInterval int = 5000  // 毫秒
     EliteSpawnCD int = 10000  // Elite怪物生成CD(毫秒)
     // 怪物生成数量全局系数（1.0=原数量，0.7=14只，约下降30%）

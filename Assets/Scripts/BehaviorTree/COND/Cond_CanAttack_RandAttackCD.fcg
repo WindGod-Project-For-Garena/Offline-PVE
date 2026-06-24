@@ -1,0 +1,49 @@
+import "StdLibrary.fcc" as StdLib
+import "EditorGenLib.fcc" as EditorLib
+import "BehaviourTree.fcc" as BehaviourTree
+import "Math.fcc" as Math
+
+[platform_client]
+graph Script_1_ {
+    // Compatibility entry for behavior trees that still reference the older file name.
+    nextTime int = 0
+
+    event OnAwake() {
+    }
+
+    func IsInRange(mob entity<Transform>,player1 entity<Player>,range1 float) bool{
+        var zombiePos = mob<Transform>.Position
+        var playerPos = player1<Player>.Position
+        if (Distance(zombiePos,playerPos) <= range1) {
+            return true
+        }else{
+            return false
+        }
+    }
+
+    func playCondition(owner entity<BevTreeAttachableForClient>) bool{
+        if (owner<Mob>.StatusDic["InAttack"] as bool){
+            return false
+        }
+        GetNodeVariable(thisEntity<BevTreeCustomNode>,"AttackName",out var attackName)
+        var cd int = owner<Mob>.StatusDic["CD_" + attackName] as int
+        var range float = owner<Mob>.StatusDic["Range_" + attackName] as float
+        var lastAttackTime = owner<Mob>.StatusDic["LastAttackTime_" + attackName] as int
+        if (lastAttackTime == nil){
+            nextTime = Math.Ceil(globalEntity<Global>.GameTimeCount + RandomFloat(1,2) * cd)
+            owner<Mob>.StatusDic["LastAttackTime_" + attackName] = nextTime
+            return true
+        }
+        if (globalEntity<Global>.GameTimeCount < nextTime){
+            return false
+        }
+        nextTime = Math.Ceil(globalEntity<Global>.GameTimeCount + RandomFloat(1,2) * cd)
+        var curTarget entity<Player> = owner<Mob>.CurrTarget
+        if (curTarget == nil){
+            return false
+        }
+        var TempPlayer = curTarget as entity<Player>
+        var result = IsInRange(owner<Transform>,TempPlayer<Player>,range as float)
+        return result
+    }
+}

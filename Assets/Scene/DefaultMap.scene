@@ -97,6 +97,126 @@
       }
     },
     {
+      "_entityName": "FE_54_XYL_PHOTOFILTER_ENTITY_NAME",
+      "_tag": {
+        "type": "PhotoFilterEntity",
+        "resourceId": "Primitive/Empty"
+      },
+      "_entityId": "vTTCMoSL",
+      "children": [],
+      "prefabVariant": null,
+      "activeValue": null,
+      "unlockedValue": null,
+      "editorLockValue": false,
+      "editorVisibleValue": true,
+      "position": {
+        "x": 0,
+        "y": 100,
+        "z": 0
+      },
+      "scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1
+      },
+      "rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "BTPath": [
+        null
+      ],
+      "visible": true,
+      "VisibilityLayer": 0,
+      "modelOptimization": 0,
+      "streamingLayer": "",
+      "attributes": [
+        2
+      ],
+      "isTrigger": false,
+      "collidable": true,
+      "physicalLayer": 0,
+      "aoiSetting": 0,
+      "initialTypes": {},
+      "componentList": [],
+      "FilterType": -1,
+      "Common": {
+        "Brightness": 1,
+        "Contrast": 1,
+        "Saturation": 1
+      },
+      "Comic": {
+        "Threshold": 0.332,
+        "Range": 0.015,
+        "FlashSpeed": 10,
+        "LineIntensity": 2,
+        "LineSize": 1,
+        "PencilSize": 0.0006,
+        "PencilCorrection": 0.3,
+        "PencilColor": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        }
+      },
+      "Drawing": {
+        "PencilSize": 0.0006,
+        "PencilCorrection": 0.5,
+        "PencilColor": {
+          "r": 53,
+          "g": 37,
+          "b": 30,
+          "a": 1
+        },
+        "PaperColor": {
+          "r": 177,
+          "g": 127,
+          "b": 80,
+          "a": 0
+        },
+        "CornerLose": 0.5,
+        "PaperTex": null
+      },
+      "Pixel": {
+        "Pixelisation": 200,
+        "ColorOffset": {
+          "r": 255,
+          "g": 205,
+          "b": 136,
+          "a": 0.2
+        }
+      },
+      "RGBSplit": {
+        "SplitOffset": 0.005
+      },
+      "GoldenAge": {
+        "Intensity": 1,
+        "Warmth": 0
+      },
+      "Cyberpunk": {
+        "EdgeIntensity": 1,
+        "EdgeSize": 0.0013,
+        "EdgeSensitivity": 0.15,
+        "GlitchInterval": 3,
+        "GlitchDuration": 0.1,
+        "EdgeColor1": {
+          "r": 255,
+          "g": 0,
+          "b": 255,
+          "a": 1
+        },
+        "EdgeColor2": {
+          "r": 51,
+          "g": 255,
+          "b": 255,
+          "a": 1
+        },
+        "EdgeNoiseTex": null
+      }
+    },
+    {
       "_entityName": "ground",
       "_tag": {
         "type": "UGCSceneEntity",
@@ -308,7 +428,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": true
+          "editorVisibleValue": true,
+          "_performanceConfigData": {
+            "ItemID": 345,
+            "MeshCount": 672,
+            "ColliderMeshCount": 406,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 109752,
+            "ModelMemory": 67628,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "石头F (1)",
@@ -377,7 +510,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": true
+          "editorVisibleValue": true,
+          "_performanceConfigData": {
+            "ItemID": 349,
+            "MeshCount": 650,
+            "ColliderMeshCount": 356,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 109752,
+            "ModelMemory": 77476,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "枯木 (1)",
@@ -454,7 +600,20 @@
                 "Collider": {}
               },
               "editorLockValue": false,
-              "editorVisibleValue": true
+              "editorVisibleValue": true,
+              "_performanceConfigData": {
+                "ItemID": 148,
+                "MeshCount": 382,
+                "ColliderMeshCount": 0,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 44736,
+                "ModelMemory": 55912,
+                "AudioMemory": 0
+              }
             },
             {
               "_entityName": "灌木丛 (6)",
@@ -523,7 +682,20 @@
                 "Collider": {}
               },
               "editorLockValue": false,
-              "editorVisibleValue": true
+              "editorVisibleValue": true,
+              "_performanceConfigData": {
+                "ItemID": 148,
+                "MeshCount": 382,
+                "ColliderMeshCount": 0,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 44736,
+                "ModelMemory": 55912,
+                "AudioMemory": 0
+              }
             },
             {
               "_entityName": "灌木丛 (1)",
@@ -592,7 +764,20 @@
                 "Collider": {}
               },
               "editorLockValue": false,
-              "editorVisibleValue": true
+              "editorVisibleValue": true,
+              "_performanceConfigData": {
+                "ItemID": 148,
+                "MeshCount": 382,
+                "ColliderMeshCount": 0,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 44736,
+                "ModelMemory": 55912,
+                "AudioMemory": 0
+              }
             },
             {
               "_entityName": "灌木丛 (3)",
@@ -661,7 +846,20 @@
                 "Collider": {}
               },
               "editorLockValue": false,
-              "editorVisibleValue": true
+              "editorVisibleValue": true,
+              "_performanceConfigData": {
+                "ItemID": 148,
+                "MeshCount": 382,
+                "ColliderMeshCount": 0,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 44736,
+                "ModelMemory": 55912,
+                "AudioMemory": 0
+              }
             },
             {
               "_entityName": "灌木丛 (4)",
@@ -730,7 +928,20 @@
                 "Collider": {}
               },
               "editorLockValue": false,
-              "editorVisibleValue": true
+              "editorVisibleValue": true,
+              "_performanceConfigData": {
+                "ItemID": 148,
+                "MeshCount": 382,
+                "ColliderMeshCount": 0,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 44736,
+                "ModelMemory": 55912,
+                "AudioMemory": 0
+              }
             },
             {
               "_entityName": "灌木丛 (5)",
@@ -799,7 +1010,20 @@
                 "Collider": {}
               },
               "editorLockValue": false,
-              "editorVisibleValue": true
+              "editorVisibleValue": true,
+              "_performanceConfigData": {
+                "ItemID": 148,
+                "MeshCount": 382,
+                "ColliderMeshCount": 0,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 44736,
+                "ModelMemory": 55912,
+                "AudioMemory": 0
+              }
             },
             {
               "_entityName": "灌木丛 (2)",
@@ -868,7 +1092,20 @@
                 "Collider": {}
               },
               "editorLockValue": false,
-              "editorVisibleValue": true
+              "editorVisibleValue": true,
+              "_performanceConfigData": {
+                "ItemID": 148,
+                "MeshCount": 382,
+                "ColliderMeshCount": 0,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 44736,
+                "ModelMemory": 55912,
+                "AudioMemory": 0
+              }
             },
             {
               "_entityName": "灌木丛 (7)",
@@ -937,7 +1174,20 @@
                 "Collider": {}
               },
               "editorLockValue": false,
-              "editorVisibleValue": true
+              "editorVisibleValue": true,
+              "_performanceConfigData": {
+                "ItemID": 148,
+                "MeshCount": 382,
+                "ColliderMeshCount": 0,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 44736,
+                "ModelMemory": 55912,
+                "AudioMemory": 0
+              }
             }
           ],
           "prefabVariant": null,
@@ -999,7 +1249,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": true
+          "editorVisibleValue": true,
+          "_performanceConfigData": {
+            "ItemID": 86,
+            "MeshCount": 2443,
+            "ColliderMeshCount": 2443,
+            "MaterialCount": 2,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 23736,
+            "ModelMemory": 349812,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "枯木 (2)",
@@ -1076,7 +1339,20 @@
                 "Collider": {}
               },
               "editorLockValue": false,
-              "editorVisibleValue": true
+              "editorVisibleValue": true,
+              "_performanceConfigData": {
+                "ItemID": 148,
+                "MeshCount": 382,
+                "ColliderMeshCount": 0,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 44736,
+                "ModelMemory": 55912,
+                "AudioMemory": 0
+              }
             },
             {
               "_entityName": "灌木丛 (6)",
@@ -1145,7 +1421,20 @@
                 "Collider": {}
               },
               "editorLockValue": false,
-              "editorVisibleValue": true
+              "editorVisibleValue": true,
+              "_performanceConfigData": {
+                "ItemID": 148,
+                "MeshCount": 382,
+                "ColliderMeshCount": 0,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 44736,
+                "ModelMemory": 55912,
+                "AudioMemory": 0
+              }
             },
             {
               "_entityName": "灌木丛 (1)",
@@ -1214,7 +1503,20 @@
                 "Collider": {}
               },
               "editorLockValue": false,
-              "editorVisibleValue": true
+              "editorVisibleValue": true,
+              "_performanceConfigData": {
+                "ItemID": 148,
+                "MeshCount": 382,
+                "ColliderMeshCount": 0,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 44736,
+                "ModelMemory": 55912,
+                "AudioMemory": 0
+              }
             },
             {
               "_entityName": "灌木丛 (3)",
@@ -1283,7 +1585,20 @@
                 "Collider": {}
               },
               "editorLockValue": false,
-              "editorVisibleValue": true
+              "editorVisibleValue": true,
+              "_performanceConfigData": {
+                "ItemID": 148,
+                "MeshCount": 382,
+                "ColliderMeshCount": 0,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 44736,
+                "ModelMemory": 55912,
+                "AudioMemory": 0
+              }
             },
             {
               "_entityName": "灌木丛 (4)",
@@ -1352,7 +1667,20 @@
                 "Collider": {}
               },
               "editorLockValue": false,
-              "editorVisibleValue": true
+              "editorVisibleValue": true,
+              "_performanceConfigData": {
+                "ItemID": 148,
+                "MeshCount": 382,
+                "ColliderMeshCount": 0,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 44736,
+                "ModelMemory": 55912,
+                "AudioMemory": 0
+              }
             },
             {
               "_entityName": "灌木丛 (5)",
@@ -1421,7 +1749,20 @@
                 "Collider": {}
               },
               "editorLockValue": false,
-              "editorVisibleValue": true
+              "editorVisibleValue": true,
+              "_performanceConfigData": {
+                "ItemID": 148,
+                "MeshCount": 382,
+                "ColliderMeshCount": 0,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 44736,
+                "ModelMemory": 55912,
+                "AudioMemory": 0
+              }
             },
             {
               "_entityName": "灌木丛 (2)",
@@ -1490,7 +1831,20 @@
                 "Collider": {}
               },
               "editorLockValue": false,
-              "editorVisibleValue": true
+              "editorVisibleValue": true,
+              "_performanceConfigData": {
+                "ItemID": 148,
+                "MeshCount": 382,
+                "ColliderMeshCount": 0,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 44736,
+                "ModelMemory": 55912,
+                "AudioMemory": 0
+              }
             },
             {
               "_entityName": "灌木丛 (7)",
@@ -1559,7 +1913,20 @@
                 "Collider": {}
               },
               "editorLockValue": false,
-              "editorVisibleValue": true
+              "editorVisibleValue": true,
+              "_performanceConfigData": {
+                "ItemID": 148,
+                "MeshCount": 382,
+                "ColliderMeshCount": 0,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 44736,
+                "ModelMemory": 55912,
+                "AudioMemory": 0
+              }
             }
           ],
           "prefabVariant": null,
@@ -1621,7 +1988,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": true
+          "editorVisibleValue": true,
+          "_performanceConfigData": {
+            "ItemID": 86,
+            "MeshCount": 2443,
+            "ColliderMeshCount": 2443,
+            "MaterialCount": 2,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 23736,
+            "ModelMemory": 349812,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "石头F (3)",
@@ -1690,7 +2070,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": true
+          "editorVisibleValue": true,
+          "_performanceConfigData": {
+            "ItemID": 349,
+            "MeshCount": 650,
+            "ColliderMeshCount": 356,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 109752,
+            "ModelMemory": 77476,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "Terrain",
@@ -1869,7 +2262,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": true
+          "editorVisibleValue": true,
+          "_performanceConfigData": {
+            "ItemID": 19,
+            "MeshCount": 2580,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 5,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 1748940,
+            "ModelMemory": 266564,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "基础块 (1)",
@@ -1971,7 +2377,20 @@
             }
           },
           "editorLockValue": false,
-          "editorVisibleValue": true
+          "editorVisibleValue": true,
+          "_performanceConfigData": {
+            "ItemID": 91,
+            "MeshCount": 12,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 22108,
+            "ModelMemory": 4152,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "长木箱 (1)",
@@ -2040,7 +2459,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": true
+          "editorVisibleValue": true,
+          "_performanceConfigData": {
+            "ItemID": 2,
+            "MeshCount": 12,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 699320,
+            "ModelMemory": 1788,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "木桶 (1)",
@@ -2109,7 +2541,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": true
+          "editorVisibleValue": true,
+          "_performanceConfigData": {
+            "ItemID": 149,
+            "MeshCount": 120,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 306656,
+            "ModelMemory": 6372,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "木桶 (2)",
@@ -2178,7 +2623,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": true
+          "editorVisibleValue": true,
+          "_performanceConfigData": {
+            "ItemID": 149,
+            "MeshCount": 120,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 306656,
+            "ModelMemory": 6372,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "木桶 (8)",
@@ -2247,7 +2705,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": true
+          "editorVisibleValue": true,
+          "_performanceConfigData": {
+            "ItemID": 149,
+            "MeshCount": 120,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 306656,
+            "ModelMemory": 6372,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "方形木箱 (1)",
@@ -2316,7 +2787,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": true
+          "editorVisibleValue": true,
+          "_performanceConfigData": {
+            "ItemID": 1,
+            "MeshCount": 12,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 349788,
+            "ModelMemory": 1788,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "方形木箱 (2)",
@@ -2385,7 +2869,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": true
+          "editorVisibleValue": true,
+          "_performanceConfigData": {
+            "ItemID": 1,
+            "MeshCount": 12,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 349788,
+            "ModelMemory": 1788,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "方形木箱 (3)",
@@ -2454,7 +2951,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": true
+          "editorVisibleValue": true,
+          "_performanceConfigData": {
+            "ItemID": 1,
+            "MeshCount": 12,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 349788,
+            "ModelMemory": 1788,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "长木箱 (2)",
@@ -2523,7 +3033,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": true
+          "editorVisibleValue": true,
+          "_performanceConfigData": {
+            "ItemID": 2,
+            "MeshCount": 12,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 699320,
+            "ModelMemory": 1788,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "灌木丛 (1)",
@@ -2592,7 +3115,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": true
+          "editorVisibleValue": true,
+          "_performanceConfigData": {
+            "ItemID": 148,
+            "MeshCount": 382,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 44736,
+            "ModelMemory": 55912,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "灌木丛 (2)",
@@ -2661,7 +3197,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": true
+          "editorVisibleValue": true,
+          "_performanceConfigData": {
+            "ItemID": 148,
+            "MeshCount": 382,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 44736,
+            "ModelMemory": 55912,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "木桶 (3)",
@@ -2730,7 +3279,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": true
+          "editorVisibleValue": true,
+          "_performanceConfigData": {
+            "ItemID": 149,
+            "MeshCount": 120,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 306656,
+            "ModelMemory": 6372,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "木桶 (4)",
@@ -2799,7 +3361,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": true
+          "editorVisibleValue": true,
+          "_performanceConfigData": {
+            "ItemID": 149,
+            "MeshCount": 120,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 306656,
+            "ModelMemory": 6372,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "木桶 (5)",
@@ -2868,7 +3443,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": true
+          "editorVisibleValue": true,
+          "_performanceConfigData": {
+            "ItemID": 149,
+            "MeshCount": 120,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 306656,
+            "ModelMemory": 6372,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "木堆 (1)",
@@ -2937,7 +3525,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": true
+          "editorVisibleValue": true,
+          "_performanceConfigData": {
+            "ItemID": 165,
+            "MeshCount": 292,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 175032,
+            "ModelMemory": 19644,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "木桶 (6)",
@@ -3006,7 +3607,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": true
+          "editorVisibleValue": true,
+          "_performanceConfigData": {
+            "ItemID": 149,
+            "MeshCount": 120,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 306656,
+            "ModelMemory": 6372,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "木桶 (7)",
@@ -3075,7 +3689,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": true
+          "editorVisibleValue": true,
+          "_performanceConfigData": {
+            "ItemID": 149,
+            "MeshCount": 120,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 306656,
+            "ModelMemory": 6372,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "草垛 (1)",
@@ -3144,7 +3771,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": true
+          "editorVisibleValue": true,
+          "_performanceConfigData": {
+            "ItemID": 4,
+            "MeshCount": 232,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 87644,
+            "ModelMemory": 11936,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "九重葛 (2)",
@@ -3213,7 +3853,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": true
+          "editorVisibleValue": true,
+          "_performanceConfigData": {
+            "ItemID": 147,
+            "MeshCount": 498,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 44736,
+            "ModelMemory": 156504,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "围栏 (1)",
@@ -3282,7 +3935,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": true
+          "editorVisibleValue": true,
+          "_performanceConfigData": {
+            "ItemID": 23,
+            "MeshCount": 156,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 87644,
+            "ModelMemory": 11420,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "围栏 (2)",
@@ -3351,7 +4017,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": true
+          "editorVisibleValue": true,
+          "_performanceConfigData": {
+            "ItemID": 23,
+            "MeshCount": 156,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 87644,
+            "ModelMemory": 11420,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "长木箱 (3)",
@@ -3420,7 +4099,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": true
+          "editorVisibleValue": true,
+          "_performanceConfigData": {
+            "ItemID": 2,
+            "MeshCount": 12,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 699320,
+            "ModelMemory": 1788,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "长木箱 (4)",
@@ -3489,7 +4181,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": true
+          "editorVisibleValue": true,
+          "_performanceConfigData": {
+            "ItemID": 2,
+            "MeshCount": 12,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 699320,
+            "ModelMemory": 1788,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "空气墙",
@@ -3599,7 +4304,20 @@
                 }
               },
               "editorLockValue": false,
-              "editorVisibleValue": true
+              "editorVisibleValue": true,
+              "_performanceConfigData": {
+                "ItemID": 91,
+                "MeshCount": 12,
+                "ColliderMeshCount": 0,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 22108,
+                "ModelMemory": 4152,
+                "AudioMemory": 0
+              }
             },
             {
               "_entityName": "空气墙 (4)",
@@ -3701,7 +4419,20 @@
                 }
               },
               "editorLockValue": false,
-              "editorVisibleValue": true
+              "editorVisibleValue": true,
+              "_performanceConfigData": {
+                "ItemID": 91,
+                "MeshCount": 12,
+                "ColliderMeshCount": 0,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 22108,
+                "ModelMemory": 4152,
+                "AudioMemory": 0
+              }
             },
             {
               "_entityName": "空气墙 (3)",
@@ -3803,7 +4534,20 @@
                 }
               },
               "editorLockValue": false,
-              "editorVisibleValue": true
+              "editorVisibleValue": true,
+              "_performanceConfigData": {
+                "ItemID": 91,
+                "MeshCount": 12,
+                "ColliderMeshCount": 0,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 22108,
+                "ModelMemory": 4152,
+                "AudioMemory": 0
+              }
             },
             {
               "_entityName": "空气墙 (1)",
@@ -3905,7 +4649,20 @@
                 }
               },
               "editorLockValue": false,
-              "editorVisibleValue": true
+              "editorVisibleValue": true,
+              "_performanceConfigData": {
+                "ItemID": 91,
+                "MeshCount": 12,
+                "ColliderMeshCount": 0,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 22108,
+                "ModelMemory": 4152,
+                "AudioMemory": 0
+              }
             },
             {
               "_entityName": "空气墙 (6)",
@@ -3937,108 +4694,6 @@
               "rotation": {
                 "x": 0,
                 "y": 157.4274139404297,
-                "z": 0
-              },
-              "BTPath": [
-                null
-              ],
-              "visible": false,
-              "VisibilityLayer": 0,
-              "modelOptimization": 0,
-              "streamingLayer": "",
-              "attributes": [
-                2
-              ],
-              "isTrigger": false,
-              "collidable": true,
-              "physicalLayer": 0,
-              "physicalMaterial": null,
-              "aoiSetting": 0,
-              "initialTypes": {},
-              "componentList": [],
-              "entityTagData": {
-                "tagPointers": []
-              },
-              "tempIndex": 140,
-              "itemID": 91,
-              "seParent": null,
-              "ecaScripts": [
-                null
-              ],
-              "ecaProps": {
-                "BasicScalableItem": {},
-                "LevelObject": {},
-                "Transform": {},
-                "Entity": {},
-                "Visibility": {},
-                "Appearance": {},
-                "Collider": {}
-              },
-              "objColor": {
-                "surfaceColor": {
-                  "r": 255,
-                  "g": 255,
-                  "b": 255,
-                  "a": 1
-                },
-                "borderColor": {
-                  "r": 255,
-                  "g": 255,
-                  "b": 255,
-                  "a": 0
-                }
-              },
-              "objTex": {
-                "surfaceTexRef": {
-                  "fileId": "d1dd7ce0d51780846795c1e56406ea66",
-                  "filePath": "lib://fftextures/WorkshopItemTexture/SCENEEDIT_CUBE_TEXTURE_COLORFULCUBE001_D.png",
-                  "_tag": {
-                    "type": "GFileRefer"
-                  },
-                  "fileType": "texture"
-                },
-                "borderTexRef": null
-              },
-              "propsData": {
-                "scale": {
-                  "x": 1,
-                  "y": 1,
-                  "z": 1
-                }
-              },
-              "editorLockValue": false,
-              "editorVisibleValue": true
-            },
-            {
-              "_entityName": "空气墙 (2)",
-              "_tag": {
-                "type": "SceneEditEntity",
-                "resourceId": "Primitive/Empty"
-              },
-              "_entityId": "igql8BHy",
-              "children": [],
-              "prefabVariant": null,
-              "activeValue": {
-                "selfValue": true,
-                "valueTag": "activeValue"
-              },
-              "unlockedValue": {
-                "selfValue": true,
-                "valueTag": "unlockedValue"
-              },
-              "position": {
-                "x": -12.802000045776367,
-                "y": 0,
-                "z": 2.9260001182556152
-              },
-              "scale": {
-                "x": 6.3470001220703125,
-                "y": 6.956999778747559,
-                "z": 13.576000213623047
-              },
-              "rotation": {
-                "x": 0,
-                "y": 179.90699768066406,
                 "z": 0
               },
               "BTPath": [
@@ -4109,7 +4764,135 @@
                 }
               },
               "editorLockValue": false,
-              "editorVisibleValue": true
+              "editorVisibleValue": true,
+              "_performanceConfigData": {
+                "ItemID": 91,
+                "MeshCount": 12,
+                "ColliderMeshCount": 0,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 22108,
+                "ModelMemory": 4152,
+                "AudioMemory": 0
+              }
+            },
+            {
+              "_entityName": "空气墙 (2)",
+              "_tag": {
+                "type": "SceneEditEntity",
+                "resourceId": "Primitive/Empty"
+              },
+              "_entityId": "igql8BHy",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "position": {
+                "x": -12.802000045776367,
+                "y": 0,
+                "z": 2.9260001182556152
+              },
+              "scale": {
+                "x": 6.3470001220703125,
+                "y": 6.956999778747559,
+                "z": 13.576000213623047
+              },
+              "rotation": {
+                "x": 0,
+                "y": 179.90699768066406,
+                "z": 0
+              },
+              "BTPath": [
+                null
+              ],
+              "visible": false,
+              "VisibilityLayer": 0,
+              "modelOptimization": 0,
+              "streamingLayer": "",
+              "attributes": [
+                2
+              ],
+              "isTrigger": false,
+              "collidable": true,
+              "physicalLayer": 0,
+              "physicalMaterial": null,
+              "aoiSetting": 0,
+              "initialTypes": {},
+              "componentList": [],
+              "entityTagData": {
+                "tagPointers": []
+              },
+              "tempIndex": 51,
+              "itemID": 91,
+              "seParent": null,
+              "ecaScripts": [
+                null
+              ],
+              "ecaProps": {
+                "BasicScalableItem": {},
+                "LevelObject": {},
+                "Transform": {},
+                "Entity": {},
+                "Visibility": {},
+                "Appearance": {},
+                "Collider": {}
+              },
+              "objColor": {
+                "surfaceColor": {
+                  "r": 255,
+                  "g": 255,
+                  "b": 255,
+                  "a": 1
+                },
+                "borderColor": {
+                  "r": 255,
+                  "g": 255,
+                  "b": 255,
+                  "a": 0
+                }
+              },
+              "objTex": {
+                "surfaceTexRef": {
+                  "fileId": "d1dd7ce0d51780846795c1e56406ea66",
+                  "filePath": "lib://fftextures/WorkshopItemTexture/SCENEEDIT_CUBE_TEXTURE_COLORFULCUBE001_D.png",
+                  "_tag": {
+                    "type": "GFileRefer"
+                  },
+                  "fileType": "texture"
+                },
+                "borderTexRef": null
+              },
+              "propsData": {
+                "scale": {
+                  "x": 1,
+                  "y": 1,
+                  "z": 1
+                }
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": true,
+              "_performanceConfigData": {
+                "ItemID": 91,
+                "MeshCount": 12,
+                "ColliderMeshCount": 0,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 22108,
+                "ModelMemory": 4152,
+                "AudioMemory": 0
+              }
             },
             {
               "_entityName": "空气墙 (5)",
@@ -4163,7 +4946,7 @@
               "entityTagData": {
                 "tagPointers": []
               },
-              "tempIndex": 139,
+              "tempIndex": 52,
               "itemID": 91,
               "seParent": null,
               "ecaScripts": [
@@ -4211,7 +4994,20 @@
                 }
               },
               "editorLockValue": false,
-              "editorVisibleValue": true
+              "editorVisibleValue": true,
+              "_performanceConfigData": {
+                "ItemID": 91,
+                "MeshCount": 12,
+                "ColliderMeshCount": 0,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 22108,
+                "ModelMemory": 4152,
+                "AudioMemory": 0
+              }
             }
           ],
           "prefabVariant": null,
@@ -4439,7 +5235,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 51,
+          "tempIndex": 53,
           "itemID": 91,
           "seParent": null,
           "ecaScripts": [
@@ -4487,7 +5283,20 @@
             }
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 91,
+            "MeshCount": 12,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 22108,
+            "ModelMemory": 4152,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "军事-屋顶直角组件B (1)",
@@ -4541,7 +5350,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 52,
+          "tempIndex": 54,
           "itemID": 376,
           "seParent": null,
           "ecaScripts": [
@@ -4556,7 +5365,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 376,
+            "MeshCount": 12,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 699320,
+            "ModelMemory": 3960,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "军事-屋顶直角组件B (2)",
@@ -4610,7 +5432,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 53,
+          "tempIndex": 55,
           "itemID": 376,
           "seParent": null,
           "ecaScripts": [
@@ -4625,7 +5447,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 376,
+            "MeshCount": 12,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 699320,
+            "ModelMemory": 3960,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "军事-屋顶直角组件B (4)",
@@ -4679,7 +5514,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 54,
+          "tempIndex": 56,
           "itemID": 376,
           "seParent": null,
           "ecaScripts": [
@@ -4694,7 +5529,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 376,
+            "MeshCount": 12,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 699320,
+            "ModelMemory": 3960,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "军事-屋顶直角组件B (3)",
@@ -4748,7 +5596,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 55,
+          "tempIndex": 57,
           "itemID": 376,
           "seParent": null,
           "ecaScripts": [
@@ -4763,7 +5611,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 376,
+            "MeshCount": 12,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 699320,
+            "ModelMemory": 3960,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "渔村小屋 (1)",
@@ -4817,7 +5678,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 56,
+          "tempIndex": 58,
           "itemID": 10,
           "seParent": null,
           "ecaScripts": [
@@ -4832,7 +5693,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 10,
+            "MeshCount": 3274,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 2,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 175288,
+            "ModelMemory": 217220,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "渔村小屋 (2)",
@@ -4886,7 +5760,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 57,
+          "tempIndex": 59,
           "itemID": 10,
           "seParent": null,
           "ecaScripts": [
@@ -4901,7 +5775,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 10,
+            "MeshCount": 3274,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 2,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 175288,
+            "ModelMemory": 217220,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "军火工厂 (1)",
@@ -4955,7 +5842,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 58,
+          "tempIndex": 60,
           "itemID": 281,
           "seParent": null,
           "ecaScripts": [
@@ -4970,7 +5857,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 281,
+            "MeshCount": 7770,
+            "ColliderMeshCount": 660,
+            "MaterialCount": 4,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 1399152,
+            "ModelMemory": 836404,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "军火工厂 (3)",
@@ -5024,7 +5924,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 59,
+          "tempIndex": 61,
           "itemID": 281,
           "seParent": null,
           "ecaScripts": [
@@ -5039,7 +5939,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 281,
+            "MeshCount": 7770,
+            "ColliderMeshCount": 660,
+            "MaterialCount": 4,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 1399152,
+            "ModelMemory": 836404,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "石墙C (1)",
@@ -5093,7 +6006,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 60,
+          "tempIndex": 62,
           "itemID": 284,
           "seParent": null,
           "ecaScripts": [
@@ -5108,7 +6021,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 284,
+            "MeshCount": 338,
+            "ColliderMeshCount": 116,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 175032,
+            "ModelMemory": 37120,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "石墙C (3)",
@@ -5162,7 +6088,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 61,
+          "tempIndex": 63,
           "itemID": 284,
           "seParent": null,
           "ecaScripts": [
@@ -5177,7 +6103,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 284,
+            "MeshCount": 338,
+            "ColliderMeshCount": 116,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 175032,
+            "ModelMemory": 37120,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "石墙C (4)",
@@ -5231,7 +6170,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 62,
+          "tempIndex": 64,
           "itemID": 284,
           "seParent": null,
           "ecaScripts": [
@@ -5246,7 +6185,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 284,
+            "MeshCount": 338,
+            "ColliderMeshCount": 116,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 175032,
+            "ModelMemory": 37120,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "石墙C (5)",
@@ -5300,7 +6252,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 63,
+          "tempIndex": 65,
           "itemID": 284,
           "seParent": null,
           "ecaScripts": [
@@ -5315,7 +6267,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 284,
+            "MeshCount": 338,
+            "ColliderMeshCount": 116,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 175032,
+            "ModelMemory": 37120,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "石墙C (2)",
@@ -5369,7 +6334,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 64,
+          "tempIndex": 66,
           "itemID": 284,
           "seParent": null,
           "ecaScripts": [
@@ -5384,7 +6349,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 284,
+            "MeshCount": 338,
+            "ColliderMeshCount": 116,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 175032,
+            "ModelMemory": 37120,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "废墟挡板B (1)",
@@ -5438,7 +6416,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 65,
+          "tempIndex": 67,
           "itemID": 308,
           "seParent": null,
           "ecaScripts": [
@@ -5453,7 +6431,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 308,
+            "MeshCount": 188,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 1398364,
+            "ModelMemory": 14604,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "废墟挡板B (2)",
@@ -5507,7 +6498,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 66,
+          "tempIndex": 68,
           "itemID": 308,
           "seParent": null,
           "ecaScripts": [
@@ -5522,7 +6513,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 308,
+            "MeshCount": 188,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 1398364,
+            "ModelMemory": 14604,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "废墟挡板B (3)",
@@ -5576,7 +6580,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 67,
+          "tempIndex": 69,
           "itemID": 308,
           "seParent": null,
           "ecaScripts": [
@@ -5591,7 +6595,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 308,
+            "MeshCount": 188,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 1398364,
+            "ModelMemory": 14604,
+            "AudioMemory": 0
+          }
         },
         {
           "_tag": {
@@ -5632,7 +6649,7 @@
             "AimableEntity",
             "BehaviourTreeAttachable"
           ],
-          "tempIndex": 68,
+          "tempIndex": 70,
           "itemID": 212,
           "seParent": null,
           "ecaScripts": [
@@ -5690,7 +6707,20 @@
           "_filters": [],
           "prefabVariant": null,
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 212,
+            "MeshCount": 124,
+            "ColliderMeshCount": 124,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 43960,
+            "ModelMemory": 20136,
+            "AudioMemory": 0
+          }
         },
         {
           "_tag": {
@@ -5731,7 +6761,7 @@
             "AimableEntity",
             "BehaviourTreeAttachable"
           ],
-          "tempIndex": 69,
+          "tempIndex": 71,
           "itemID": 193,
           "seParent": null,
           "ecaScripts": [
@@ -5775,7 +6805,20 @@
           "_filters": [],
           "prefabVariant": null,
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 193,
+            "MeshCount": 1410,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 87644,
+            "ModelMemory": 73268,
+            "AudioMemory": 0
+          }
         },
         {
           "_tag": {
@@ -5816,7 +6859,7 @@
             "AimableEntity",
             "BehaviourTreeAttachable"
           ],
-          "tempIndex": 70,
+          "tempIndex": 72,
           "itemID": 9,
           "seParent": null,
           "ecaScripts": [
@@ -5860,7 +6903,20 @@
           "_filters": [],
           "prefabVariant": null,
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 9,
+            "MeshCount": 132,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 175032,
+            "ModelMemory": 9548,
+            "AudioMemory": 0
+          }
         },
         {
           "_tag": {
@@ -5901,7 +6957,7 @@
             "AimableEntity",
             "BehaviourTreeAttachable"
           ],
-          "tempIndex": 71,
+          "tempIndex": 73,
           "itemID": 9,
           "seParent": null,
           "ecaScripts": [
@@ -5945,7 +7001,20 @@
           "_filters": [],
           "prefabVariant": null,
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 9,
+            "MeshCount": 132,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 175032,
+            "ModelMemory": 9548,
+            "AudioMemory": 0
+          }
         },
         {
           "_tag": {
@@ -5986,7 +7055,7 @@
             "AimableEntity",
             "BehaviourTreeAttachable"
           ],
-          "tempIndex": 72,
+          "tempIndex": 74,
           "itemID": 9,
           "seParent": null,
           "ecaScripts": [
@@ -6030,7 +7099,20 @@
           "_filters": [],
           "prefabVariant": null,
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 9,
+            "MeshCount": 132,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 175032,
+            "ModelMemory": 9548,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "大水罐 (2)",
@@ -6084,7 +7166,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 73,
+          "tempIndex": 75,
           "itemID": 104,
           "seParent": null,
           "ecaScripts": [
@@ -6099,7 +7181,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 104,
+            "MeshCount": 364,
+            "ColliderMeshCount": 172,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 699320,
+            "ModelMemory": 45668,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "大水罐 (3)",
@@ -6153,7 +7248,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 74,
+          "tempIndex": 76,
           "itemID": 104,
           "seParent": null,
           "ecaScripts": [
@@ -6168,7 +7263,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 104,
+            "MeshCount": 364,
+            "ColliderMeshCount": 172,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 699320,
+            "ModelMemory": 45668,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "军火工厂 (2)",
@@ -6222,7 +7330,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 75,
+          "tempIndex": 77,
           "itemID": 281,
           "seParent": null,
           "ecaScripts": [
@@ -6237,7 +7345,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 281,
+            "MeshCount": 7770,
+            "ColliderMeshCount": 660,
+            "MaterialCount": 4,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 1399152,
+            "ModelMemory": 836404,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "混凝土柱 (1)",
@@ -6291,7 +7412,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 76,
+          "tempIndex": 78,
           "itemID": 84,
           "seParent": null,
           "ecaScripts": [
@@ -6306,7 +7427,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 84,
+            "MeshCount": 224,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 175032,
+            "ModelMemory": 12116,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "垃圾桶 (1)",
@@ -6360,7 +7494,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 77,
+          "tempIndex": 79,
           "itemID": 35,
           "seParent": null,
           "ecaScripts": [
@@ -6375,7 +7509,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 35,
+            "MeshCount": 1056,
+            "ColliderMeshCount": 16,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 87644,
+            "ModelMemory": 62036,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "巴士 (1)",
@@ -6429,7 +7576,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 78,
+          "tempIndex": 80,
           "itemID": 6,
           "seParent": null,
           "ecaScripts": [
@@ -6444,7 +7591,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 6,
+            "MeshCount": 3034,
+            "ColliderMeshCount": 538,
+            "MaterialCount": 2,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 437432,
+            "ModelMemory": 279952,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "损坏汽车 (1)",
@@ -6498,7 +7658,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 79,
+          "tempIndex": 81,
           "itemID": 5,
           "seParent": null,
           "ecaScripts": [
@@ -6513,7 +7673,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 5,
+            "MeshCount": 2680,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 2,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 1487072,
+            "ModelMemory": 194300,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "集装箱3 (2)",
@@ -6567,7 +7740,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 80,
+          "tempIndex": 82,
           "itemID": 9,
           "seParent": null,
           "ecaScripts": [
@@ -6582,7 +7755,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 9,
+            "MeshCount": 132,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 175032,
+            "ModelMemory": 9548,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "集装箱3 (3)",
@@ -6636,7 +7822,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 81,
+          "tempIndex": 83,
           "itemID": 9,
           "seParent": null,
           "ecaScripts": [
@@ -6651,7 +7837,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 9,
+            "MeshCount": 132,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 175032,
+            "ModelMemory": 9548,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "基础块 (2)",
@@ -6705,7 +7904,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 82,
+          "tempIndex": 84,
           "itemID": 91,
           "seParent": null,
           "ecaScripts": [
@@ -6753,7 +7952,20 @@
             }
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 91,
+            "MeshCount": 12,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 22108,
+            "ModelMemory": 4152,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "沙袋B (2)",
@@ -6807,7 +8019,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 83,
+          "tempIndex": 85,
           "itemID": 277,
           "seParent": null,
           "ecaScripts": [
@@ -6822,7 +8034,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 277,
+            "MeshCount": 316,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 175032,
+            "ModelMemory": 12348,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "沙袋C (1)",
@@ -6876,7 +8101,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 84,
+          "tempIndex": 86,
           "itemID": 278,
           "seParent": null,
           "ecaScripts": [
@@ -6891,7 +8116,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 278,
+            "MeshCount": 288,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 175032,
+            "ModelMemory": 11124,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "沙袋A (1)",
@@ -6945,7 +8183,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 85,
+          "tempIndex": 87,
           "itemID": 276,
           "seParent": null,
           "ecaScripts": [
@@ -6960,7 +8198,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 276,
+            "MeshCount": 152,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 87644,
+            "ModelMemory": 6804,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "木板桥 (1)",
@@ -7014,7 +8265,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 86,
+          "tempIndex": 88,
           "itemID": 82,
           "seParent": null,
           "ecaScripts": [
@@ -7029,7 +8280,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 82,
+            "MeshCount": 12,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 175032,
+            "ModelMemory": 1980,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "路障 (1)",
@@ -7083,7 +8347,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 87,
+          "tempIndex": 89,
           "itemID": 119,
           "seParent": null,
           "ecaScripts": [
@@ -7098,7 +8362,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 119,
+            "MeshCount": 284,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 153712,
+            "ModelMemory": 31296,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "空气墙组",
@@ -7138,210 +8415,6 @@
               "rotation": {
                 "x": 0,
                 "y": 0,
-                "z": 0
-              },
-              "BTPath": [
-                null
-              ],
-              "visible": false,
-              "VisibilityLayer": 0,
-              "modelOptimization": 0,
-              "streamingLayer": "",
-              "attributes": [
-                2
-              ],
-              "isTrigger": false,
-              "collidable": true,
-              "physicalLayer": 0,
-              "physicalMaterial": null,
-              "aoiSetting": 0,
-              "initialTypes": {},
-              "componentList": [],
-              "entityTagData": {
-                "tagPointers": []
-              },
-              "tempIndex": 88,
-              "itemID": 91,
-              "seParent": null,
-              "ecaScripts": [
-                null
-              ],
-              "ecaProps": {
-                "BasicScalableItem": {},
-                "LevelObject": {},
-                "Transform": {},
-                "Entity": {},
-                "Visibility": {},
-                "Appearance": {},
-                "Collider": {}
-              },
-              "objColor": {
-                "surfaceColor": {
-                  "r": 255,
-                  "g": 255,
-                  "b": 255,
-                  "a": 1
-                },
-                "borderColor": {
-                  "r": 255,
-                  "g": 255,
-                  "b": 255,
-                  "a": 0
-                }
-              },
-              "objTex": {
-                "surfaceTexRef": {
-                  "fileId": "d1dd7ce0d51780846795c1e56406ea66",
-                  "filePath": "lib://fftextures/WorkshopItemTexture/SCENEEDIT_CUBE_TEXTURE_COLORFULCUBE001_D.png",
-                  "_tag": {
-                    "type": "GFileRefer"
-                  },
-                  "fileType": "texture"
-                },
-                "borderTexRef": null
-              },
-              "propsData": {
-                "scale": {
-                  "x": 1,
-                  "y": 1,
-                  "z": 1
-                }
-              },
-              "editorLockValue": false,
-              "editorVisibleValue": false
-            },
-            {
-              "_entityName": "空气墙 (4)",
-              "_tag": {
-                "type": "SceneEditEntity",
-                "resourceId": "Primitive/Empty"
-              },
-              "_entityId": "uLpVVtTg",
-              "children": [],
-              "prefabVariant": null,
-              "activeValue": {
-                "selfValue": true,
-                "valueTag": "activeValue"
-              },
-              "unlockedValue": {
-                "selfValue": true,
-                "valueTag": "unlockedValue"
-              },
-              "position": {
-                "x": 3.436000108718872,
-                "y": 0.9580000042915344,
-                "z": 12.085000038146973
-              },
-              "scale": {
-                "x": 17.854000091552734,
-                "y": 5.570000171661377,
-                "z": 4.081999778747559
-              },
-              "rotation": {
-                "x": 0,
-                "y": 0,
-                "z": 0
-              },
-              "BTPath": [
-                null
-              ],
-              "visible": false,
-              "VisibilityLayer": 0,
-              "modelOptimization": 0,
-              "streamingLayer": "",
-              "attributes": [
-                2
-              ],
-              "isTrigger": false,
-              "collidable": true,
-              "physicalLayer": 0,
-              "physicalMaterial": null,
-              "aoiSetting": 0,
-              "initialTypes": {},
-              "componentList": [],
-              "entityTagData": {
-                "tagPointers": []
-              },
-              "tempIndex": 89,
-              "itemID": 91,
-              "seParent": null,
-              "ecaScripts": [
-                null
-              ],
-              "ecaProps": {
-                "BasicScalableItem": {},
-                "LevelObject": {},
-                "Transform": {},
-                "Entity": {},
-                "Visibility": {},
-                "Appearance": {},
-                "Collider": {}
-              },
-              "objColor": {
-                "surfaceColor": {
-                  "r": 255,
-                  "g": 255,
-                  "b": 255,
-                  "a": 1
-                },
-                "borderColor": {
-                  "r": 255,
-                  "g": 255,
-                  "b": 255,
-                  "a": 0
-                }
-              },
-              "objTex": {
-                "surfaceTexRef": {
-                  "fileId": "d1dd7ce0d51780846795c1e56406ea66",
-                  "filePath": "lib://fftextures/WorkshopItemTexture/SCENEEDIT_CUBE_TEXTURE_COLORFULCUBE001_D.png",
-                  "_tag": {
-                    "type": "GFileRefer"
-                  },
-                  "fileType": "texture"
-                },
-                "borderTexRef": null
-              },
-              "propsData": {
-                "scale": {
-                  "x": 1,
-                  "y": 1,
-                  "z": 1
-                }
-              },
-              "editorLockValue": false,
-              "editorVisibleValue": false
-            },
-            {
-              "_entityName": "空气墙 (3)",
-              "_tag": {
-                "type": "SceneEditEntity",
-                "resourceId": "Primitive/Empty"
-              },
-              "_entityId": "oe6coUsv",
-              "children": [],
-              "prefabVariant": null,
-              "activeValue": {
-                "selfValue": true,
-                "valueTag": "activeValue"
-              },
-              "unlockedValue": {
-                "selfValue": true,
-                "valueTag": "unlockedValue"
-              },
-              "position": {
-                "x": 11.190999984741211,
-                "y": 1.093000054359436,
-                "z": 7.303999900817871
-              },
-              "scale": {
-                "x": 5.951000213623047,
-                "y": 3.364000082015991,
-                "z": 0.22699999809265137
-              },
-              "rotation": {
-                "x": 0,
-                "y": 90,
                 "z": 0
               },
               "BTPath": [
@@ -7412,15 +8485,28 @@
                 }
               },
               "editorLockValue": false,
-              "editorVisibleValue": false
+              "editorVisibleValue": false,
+              "_performanceConfigData": {
+                "ItemID": 91,
+                "MeshCount": 12,
+                "ColliderMeshCount": 0,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 22108,
+                "ModelMemory": 4152,
+                "AudioMemory": 0
+              }
             },
             {
-              "_entityName": "空气墙 (1)",
+              "_entityName": "空气墙 (4)",
               "_tag": {
                 "type": "SceneEditEntity",
                 "resourceId": "Primitive/Empty"
               },
-              "_entityId": "CZlZrNbe",
+              "_entityId": "uLpVVtTg",
               "children": [],
               "prefabVariant": null,
               "activeValue": {
@@ -7432,18 +8518,18 @@
                 "valueTag": "unlockedValue"
               },
               "position": {
-                "x": -13.8149995803833,
-                "y": 1.0019999742507935,
-                "z": -1.7300000190734863
+                "x": 3.436000108718872,
+                "y": 0.9580000042915344,
+                "z": 12.085000038146973
               },
               "scale": {
-                "x": 20.027999877929688,
-                "y": 5.835000038146973,
-                "z": 0.5170000195503235
+                "x": 17.854000091552734,
+                "y": 5.570000171661377,
+                "z": 4.081999778747559
               },
               "rotation": {
                 "x": 0,
-                "y": 90,
+                "y": 0,
                 "z": 0
               },
               "BTPath": [
@@ -7514,15 +8600,28 @@
                 }
               },
               "editorLockValue": false,
-              "editorVisibleValue": false
+              "editorVisibleValue": false,
+              "_performanceConfigData": {
+                "ItemID": 91,
+                "MeshCount": 12,
+                "ColliderMeshCount": 0,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 22108,
+                "ModelMemory": 4152,
+                "AudioMemory": 0
+              }
             },
             {
-              "_entityName": "空气墙 (2)",
+              "_entityName": "空气墙 (3)",
               "_tag": {
                 "type": "SceneEditEntity",
                 "resourceId": "Primitive/Empty"
               },
-              "_entityId": "igTt75GC",
+              "_entityId": "oe6coUsv",
               "children": [],
               "prefabVariant": null,
               "activeValue": {
@@ -7534,18 +8633,18 @@
                 "valueTag": "unlockedValue"
               },
               "position": {
-                "x": -9.4399995803833,
-                "y": 1.0019999742507935,
-                "z": 7.671999931335449
+                "x": 11.190999984741211,
+                "y": 1.093000054359436,
+                "z": 7.303999900817871
               },
               "scale": {
-                "x": 0.43799999356269836,
-                "y": 3.0880000591278076,
-                "z": 13.847999572753906
+                "x": 5.951000213623047,
+                "y": 3.364000082015991,
+                "z": 0.22699999809265137
               },
               "rotation": {
                 "x": 0,
-                "y": 40.97999954223633,
+                "y": 90,
                 "z": 0
               },
               "BTPath": [
@@ -7616,7 +8715,250 @@
                 }
               },
               "editorLockValue": false,
-              "editorVisibleValue": false
+              "editorVisibleValue": false,
+              "_performanceConfigData": {
+                "ItemID": 91,
+                "MeshCount": 12,
+                "ColliderMeshCount": 0,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 22108,
+                "ModelMemory": 4152,
+                "AudioMemory": 0
+              }
+            },
+            {
+              "_entityName": "空气墙 (1)",
+              "_tag": {
+                "type": "SceneEditEntity",
+                "resourceId": "Primitive/Empty"
+              },
+              "_entityId": "CZlZrNbe",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "position": {
+                "x": -13.8149995803833,
+                "y": 1.0019999742507935,
+                "z": -1.7300000190734863
+              },
+              "scale": {
+                "x": 20.027999877929688,
+                "y": 5.835000038146973,
+                "z": 0.5170000195503235
+              },
+              "rotation": {
+                "x": 0,
+                "y": 90,
+                "z": 0
+              },
+              "BTPath": [
+                null
+              ],
+              "visible": false,
+              "VisibilityLayer": 0,
+              "modelOptimization": 0,
+              "streamingLayer": "",
+              "attributes": [
+                2
+              ],
+              "isTrigger": false,
+              "collidable": true,
+              "physicalLayer": 0,
+              "physicalMaterial": null,
+              "aoiSetting": 0,
+              "initialTypes": {},
+              "componentList": [],
+              "entityTagData": {
+                "tagPointers": []
+              },
+              "tempIndex": 93,
+              "itemID": 91,
+              "seParent": null,
+              "ecaScripts": [
+                null
+              ],
+              "ecaProps": {
+                "BasicScalableItem": {},
+                "LevelObject": {},
+                "Transform": {},
+                "Entity": {},
+                "Visibility": {},
+                "Appearance": {},
+                "Collider": {}
+              },
+              "objColor": {
+                "surfaceColor": {
+                  "r": 255,
+                  "g": 255,
+                  "b": 255,
+                  "a": 1
+                },
+                "borderColor": {
+                  "r": 255,
+                  "g": 255,
+                  "b": 255,
+                  "a": 0
+                }
+              },
+              "objTex": {
+                "surfaceTexRef": {
+                  "fileId": "d1dd7ce0d51780846795c1e56406ea66",
+                  "filePath": "lib://fftextures/WorkshopItemTexture/SCENEEDIT_CUBE_TEXTURE_COLORFULCUBE001_D.png",
+                  "_tag": {
+                    "type": "GFileRefer"
+                  },
+                  "fileType": "texture"
+                },
+                "borderTexRef": null
+              },
+              "propsData": {
+                "scale": {
+                  "x": 1,
+                  "y": 1,
+                  "z": 1
+                }
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": false,
+              "_performanceConfigData": {
+                "ItemID": 91,
+                "MeshCount": 12,
+                "ColliderMeshCount": 0,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 22108,
+                "ModelMemory": 4152,
+                "AudioMemory": 0
+              }
+            },
+            {
+              "_entityName": "空气墙 (2)",
+              "_tag": {
+                "type": "SceneEditEntity",
+                "resourceId": "Primitive/Empty"
+              },
+              "_entityId": "igTt75GC",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "position": {
+                "x": -9.4399995803833,
+                "y": 1.0019999742507935,
+                "z": 7.671999931335449
+              },
+              "scale": {
+                "x": 0.43799999356269836,
+                "y": 3.0880000591278076,
+                "z": 13.847999572753906
+              },
+              "rotation": {
+                "x": 0,
+                "y": 40.97999954223633,
+                "z": 0
+              },
+              "BTPath": [
+                null
+              ],
+              "visible": false,
+              "VisibilityLayer": 0,
+              "modelOptimization": 0,
+              "streamingLayer": "",
+              "attributes": [
+                2
+              ],
+              "isTrigger": false,
+              "collidable": true,
+              "physicalLayer": 0,
+              "physicalMaterial": null,
+              "aoiSetting": 0,
+              "initialTypes": {},
+              "componentList": [],
+              "entityTagData": {
+                "tagPointers": []
+              },
+              "tempIndex": 94,
+              "itemID": 91,
+              "seParent": null,
+              "ecaScripts": [
+                null
+              ],
+              "ecaProps": {
+                "BasicScalableItem": {},
+                "LevelObject": {},
+                "Transform": {},
+                "Entity": {},
+                "Visibility": {},
+                "Appearance": {},
+                "Collider": {}
+              },
+              "objColor": {
+                "surfaceColor": {
+                  "r": 255,
+                  "g": 255,
+                  "b": 255,
+                  "a": 1
+                },
+                "borderColor": {
+                  "r": 255,
+                  "g": 255,
+                  "b": 255,
+                  "a": 0
+                }
+              },
+              "objTex": {
+                "surfaceTexRef": {
+                  "fileId": "d1dd7ce0d51780846795c1e56406ea66",
+                  "filePath": "lib://fftextures/WorkshopItemTexture/SCENEEDIT_CUBE_TEXTURE_COLORFULCUBE001_D.png",
+                  "_tag": {
+                    "type": "GFileRefer"
+                  },
+                  "fileType": "texture"
+                },
+                "borderTexRef": null
+              },
+              "propsData": {
+                "scale": {
+                  "x": 1,
+                  "y": 1,
+                  "z": 1
+                }
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": false,
+              "_performanceConfigData": {
+                "ItemID": 91,
+                "MeshCount": 12,
+                "ColliderMeshCount": 0,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 22108,
+                "ModelMemory": 4152,
+                "AudioMemory": 0
+              }
             }
           ],
           "prefabVariant": null,
@@ -7968,7 +9310,7 @@
                 "AimableEntity",
                 "BehaviourTreeAttachable"
               ],
-              "tempIndex": 93,
+              "tempIndex": 95,
               "itemID": 91,
               "seParent": null,
               "ecaScripts": [
@@ -8040,7 +9382,20 @@
               "_filters": [],
               "prefabVariant": null,
               "editorLockValue": false,
-              "editorVisibleValue": false
+              "editorVisibleValue": false,
+              "_performanceConfigData": {
+                "ItemID": 91,
+                "MeshCount": 12,
+                "ColliderMeshCount": 0,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 22108,
+                "ModelMemory": 4152,
+                "AudioMemory": 0
+              }
             },
             {
               "_tag": {
@@ -8081,7 +9436,7 @@
                 "AimableEntity",
                 "BehaviourTreeAttachable"
               ],
-              "tempIndex": 94,
+              "tempIndex": 96,
               "itemID": 107,
               "seParent": null,
               "ecaScripts": [
@@ -8125,7 +9480,20 @@
               "_filters": [],
               "prefabVariant": null,
               "editorLockValue": false,
-              "editorVisibleValue": false
+              "editorVisibleValue": false,
+              "_performanceConfigData": {
+                "ItemID": 107,
+                "MeshCount": 564,
+                "ColliderMeshCount": 564,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 87644,
+                "ModelMemory": 105480,
+                "AudioMemory": 0
+              }
             },
             {
               "_tag": {
@@ -8166,7 +9534,7 @@
                 "AimableEntity",
                 "BehaviourTreeAttachable"
               ],
-              "tempIndex": 95,
+              "tempIndex": 97,
               "itemID": 212,
               "seParent": null,
               "ecaScripts": [
@@ -8224,7 +9592,20 @@
               "_filters": [],
               "prefabVariant": null,
               "editorLockValue": false,
-              "editorVisibleValue": false
+              "editorVisibleValue": false,
+              "_performanceConfigData": {
+                "ItemID": 212,
+                "MeshCount": 124,
+                "ColliderMeshCount": 124,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 43960,
+                "ModelMemory": 20136,
+                "AudioMemory": 0
+              }
             },
             {
               "_tag": {
@@ -8268,7 +9649,7 @@
                 "AimableEntity",
                 "BehaviourTreeAttachable"
               ],
-              "tempIndex": 96,
+              "tempIndex": 98,
               "itemID": 105,
               "seParent": null,
               "ecaScripts": [
@@ -8298,7 +9679,20 @@
               "_filters": [],
               "prefabVariant": null,
               "editorLockValue": false,
-              "editorVisibleValue": false
+              "editorVisibleValue": false,
+              "_performanceConfigData": {
+                "ItemID": 105,
+                "MeshCount": 278,
+                "ColliderMeshCount": 0,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 699320,
+                "ModelMemory": 57456,
+                "AudioMemory": 0
+              }
             },
             {
               "_tag": {
@@ -8342,7 +9736,7 @@
                 "AimableEntity",
                 "BehaviourTreeAttachable"
               ],
-              "tempIndex": 97,
+              "tempIndex": 99,
               "itemID": 105,
               "seParent": null,
               "ecaScripts": [
@@ -8372,7 +9766,20 @@
               "_filters": [],
               "prefabVariant": null,
               "editorLockValue": false,
-              "editorVisibleValue": false
+              "editorVisibleValue": false,
+              "_performanceConfigData": {
+                "ItemID": 105,
+                "MeshCount": 278,
+                "ColliderMeshCount": 0,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 699320,
+                "ModelMemory": 57456,
+                "AudioMemory": 0
+              }
             },
             {
               "_tag": {
@@ -8391,154 +9798,6 @@
               },
               "position": {
                 "x": -10.604000091552734,
-                "y": 5.188000679016113,
-                "z": -20.07200050354004
-              },
-              "scale": {
-                "x": 1,
-                "y": 1,
-                "z": 1
-              },
-              "rotation": {
-                "x": 0,
-                "y": 0,
-                "z": 0
-              },
-              "visible": true,
-              "VisibilityLayer": 0,
-              "attributes": [
-                2
-              ],
-              "isTrigger": false,
-              "collidable": true,
-              "physicalLayer": 0,
-              "componentList": [
-                "AimableEntity",
-                "BehaviourTreeAttachable"
-              ],
-              "tempIndex": 98,
-              "itemID": 105,
-              "seParent": null,
-              "ecaScripts": [
-                null
-              ],
-              "ecaProps": {
-                "DummyLevelObject": {},
-                "LevelObject": {},
-                "AimableEntity": {},
-                "Entity": {},
-                "Component": {},
-                "Transform": {},
-                "Visibility": {},
-                "Collider": {},
-                "BehaviourTreeAttachable": {}
-              },
-              "entityTagData": {
-                "tagPointers": []
-              },
-              "_entityName": "涂鸦墙 (5)",
-              "BTPath": [
-                null
-              ],
-              "modelOptimization": 0,
-              "streamingLayer": "",
-              "aoiSetting": 0,
-              "_filters": [],
-              "prefabVariant": null,
-              "editorLockValue": false,
-              "editorVisibleValue": false
-            },
-            {
-              "_tag": {
-                "type": "SceneEditEntity",
-                "resourceId": "Primitive/Empty"
-              },
-              "_entityId": "kNuL5tAP",
-              "children": [],
-              "activeValue": {
-                "selfValue": true,
-                "valueTag": "activeValue"
-              },
-              "unlockedValue": {
-                "selfValue": true,
-                "valueTag": "unlockedValue"
-              },
-              "position": {
-                "x": -7.059000015258789,
-                "y": 5.188000679016113,
-                "z": -20.07200050354004
-              },
-              "scale": {
-                "x": 1,
-                "y": 1,
-                "z": 1
-              },
-              "rotation": {
-                "x": 0,
-                "y": 0,
-                "z": 0
-              },
-              "visible": true,
-              "VisibilityLayer": 0,
-              "attributes": [
-                2
-              ],
-              "isTrigger": false,
-              "collidable": true,
-              "physicalLayer": 0,
-              "componentList": [
-                "AimableEntity",
-                "BehaviourTreeAttachable"
-              ],
-              "tempIndex": 99,
-              "itemID": 105,
-              "seParent": null,
-              "ecaScripts": [
-                null
-              ],
-              "ecaProps": {
-                "DummyLevelObject": {},
-                "LevelObject": {},
-                "AimableEntity": {},
-                "Entity": {},
-                "Component": {},
-                "Transform": {},
-                "Visibility": {},
-                "Collider": {},
-                "BehaviourTreeAttachable": {}
-              },
-              "entityTagData": {
-                "tagPointers": []
-              },
-              "_entityName": "涂鸦墙 (4)",
-              "BTPath": [
-                null
-              ],
-              "modelOptimization": 0,
-              "streamingLayer": "",
-              "aoiSetting": 0,
-              "_filters": [],
-              "prefabVariant": null,
-              "editorLockValue": false,
-              "editorVisibleValue": false
-            },
-            {
-              "_tag": {
-                "type": "SceneEditEntity",
-                "resourceId": "Primitive/Empty"
-              },
-              "_entityId": "w5LR2gDp",
-              "children": [],
-              "activeValue": {
-                "selfValue": true,
-                "valueTag": "activeValue"
-              },
-              "unlockedValue": {
-                "selfValue": true,
-                "valueTag": "unlockedValue"
-              },
-              "position": {
-                "x": -3.5160000324249268,
                 "y": 5.188000679016113,
                 "z": -20.07200050354004
               },
@@ -8584,7 +9843,7 @@
               "entityTagData": {
                 "tagPointers": []
               },
-              "_entityName": "涂鸦墙 (3)",
+              "_entityName": "涂鸦墙 (5)",
               "BTPath": [
                 null
               ],
@@ -8594,14 +9853,27 @@
               "_filters": [],
               "prefabVariant": null,
               "editorLockValue": false,
-              "editorVisibleValue": false
+              "editorVisibleValue": false,
+              "_performanceConfigData": {
+                "ItemID": 105,
+                "MeshCount": 278,
+                "ColliderMeshCount": 0,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 699320,
+                "ModelMemory": 57456,
+                "AudioMemory": 0
+              }
             },
             {
               "_tag": {
                 "type": "SceneEditEntity",
                 "resourceId": "Primitive/Empty"
               },
-              "_entityId": "zMRdFDy1",
+              "_entityId": "kNuL5tAP",
               "children": [],
               "activeValue": {
                 "selfValue": true,
@@ -8612,7 +9884,7 @@
                 "valueTag": "unlockedValue"
               },
               "position": {
-                "x": 0.029999999329447746,
+                "x": -7.059000015258789,
                 "y": 5.188000679016113,
                 "z": -20.07200050354004
               },
@@ -8658,7 +9930,7 @@
               "entityTagData": {
                 "tagPointers": []
               },
-              "_entityName": "涂鸦墙 (2)",
+              "_entityName": "涂鸦墙 (4)",
               "BTPath": [
                 null
               ],
@@ -8668,14 +9940,27 @@
               "_filters": [],
               "prefabVariant": null,
               "editorLockValue": false,
-              "editorVisibleValue": false
+              "editorVisibleValue": false,
+              "_performanceConfigData": {
+                "ItemID": 105,
+                "MeshCount": 278,
+                "ColliderMeshCount": 0,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 699320,
+                "ModelMemory": 57456,
+                "AudioMemory": 0
+              }
             },
             {
               "_tag": {
                 "type": "SceneEditEntity",
                 "resourceId": "Primitive/Empty"
               },
-              "_entityId": "vNHUezP4",
+              "_entityId": "w5LR2gDp",
               "children": [],
               "activeValue": {
                 "selfValue": true,
@@ -8686,7 +9971,7 @@
                 "valueTag": "unlockedValue"
               },
               "position": {
-                "x": 7.136000156402588,
+                "x": -3.5160000324249268,
                 "y": 5.188000679016113,
                 "z": -20.07200050354004
               },
@@ -8732,7 +10017,7 @@
               "entityTagData": {
                 "tagPointers": []
               },
-              "_entityName": "涂鸦墙",
+              "_entityName": "涂鸦墙 (3)",
               "BTPath": [
                 null
               ],
@@ -8742,14 +10027,27 @@
               "_filters": [],
               "prefabVariant": null,
               "editorLockValue": false,
-              "editorVisibleValue": false
+              "editorVisibleValue": false,
+              "_performanceConfigData": {
+                "ItemID": 105,
+                "MeshCount": 278,
+                "ColliderMeshCount": 0,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 699320,
+                "ModelMemory": 57456,
+                "AudioMemory": 0
+              }
             },
             {
               "_tag": {
                 "type": "SceneEditEntity",
                 "resourceId": "Primitive/Empty"
               },
-              "_entityId": "MWJ99mp6",
+              "_entityId": "zMRdFDy1",
               "children": [],
               "activeValue": {
                 "selfValue": true,
@@ -8760,7 +10058,7 @@
                 "valueTag": "unlockedValue"
               },
               "position": {
-                "x": 3.5899999141693115,
+                "x": 0.029999999329447746,
                 "y": 5.188000679016113,
                 "z": -20.07200050354004
               },
@@ -8806,6 +10104,180 @@
               "entityTagData": {
                 "tagPointers": []
               },
+              "_entityName": "涂鸦墙 (2)",
+              "BTPath": [
+                null
+              ],
+              "modelOptimization": 0,
+              "streamingLayer": "",
+              "aoiSetting": 0,
+              "_filters": [],
+              "prefabVariant": null,
+              "editorLockValue": false,
+              "editorVisibleValue": false,
+              "_performanceConfigData": {
+                "ItemID": 105,
+                "MeshCount": 278,
+                "ColliderMeshCount": 0,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 699320,
+                "ModelMemory": 57456,
+                "AudioMemory": 0
+              }
+            },
+            {
+              "_tag": {
+                "type": "SceneEditEntity",
+                "resourceId": "Primitive/Empty"
+              },
+              "_entityId": "vNHUezP4",
+              "children": [],
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "position": {
+                "x": 7.136000156402588,
+                "y": 5.188000679016113,
+                "z": -20.07200050354004
+              },
+              "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              },
+              "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "visible": true,
+              "VisibilityLayer": 0,
+              "attributes": [
+                2
+              ],
+              "isTrigger": false,
+              "collidable": true,
+              "physicalLayer": 0,
+              "componentList": [
+                "AimableEntity",
+                "BehaviourTreeAttachable"
+              ],
+              "tempIndex": 104,
+              "itemID": 105,
+              "seParent": null,
+              "ecaScripts": [
+                null
+              ],
+              "ecaProps": {
+                "DummyLevelObject": {},
+                "LevelObject": {},
+                "AimableEntity": {},
+                "Entity": {},
+                "Component": {},
+                "Transform": {},
+                "Visibility": {},
+                "Collider": {},
+                "BehaviourTreeAttachable": {}
+              },
+              "entityTagData": {
+                "tagPointers": []
+              },
+              "_entityName": "涂鸦墙",
+              "BTPath": [
+                null
+              ],
+              "modelOptimization": 0,
+              "streamingLayer": "",
+              "aoiSetting": 0,
+              "_filters": [],
+              "prefabVariant": null,
+              "editorLockValue": false,
+              "editorVisibleValue": false,
+              "_performanceConfigData": {
+                "ItemID": 105,
+                "MeshCount": 278,
+                "ColliderMeshCount": 0,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 699320,
+                "ModelMemory": 57456,
+                "AudioMemory": 0
+              }
+            },
+            {
+              "_tag": {
+                "type": "SceneEditEntity",
+                "resourceId": "Primitive/Empty"
+              },
+              "_entityId": "MWJ99mp6",
+              "children": [],
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "position": {
+                "x": 3.5899999141693115,
+                "y": 5.188000679016113,
+                "z": -20.07200050354004
+              },
+              "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+              },
+              "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              },
+              "visible": true,
+              "VisibilityLayer": 0,
+              "attributes": [
+                2
+              ],
+              "isTrigger": false,
+              "collidable": true,
+              "physicalLayer": 0,
+              "componentList": [
+                "AimableEntity",
+                "BehaviourTreeAttachable"
+              ],
+              "tempIndex": 105,
+              "itemID": 105,
+              "seParent": null,
+              "ecaScripts": [
+                null
+              ],
+              "ecaProps": {
+                "DummyLevelObject": {},
+                "LevelObject": {},
+                "AimableEntity": {},
+                "Entity": {},
+                "Component": {},
+                "Transform": {},
+                "Visibility": {},
+                "Collider": {},
+                "BehaviourTreeAttachable": {}
+              },
+              "entityTagData": {
+                "tagPointers": []
+              },
               "_entityName": "涂鸦墙 (1)",
               "BTPath": [
                 null
@@ -8816,7 +10288,20 @@
               "_filters": [],
               "prefabVariant": null,
               "editorLockValue": false,
-              "editorVisibleValue": false
+              "editorVisibleValue": false,
+              "_performanceConfigData": {
+                "ItemID": 105,
+                "MeshCount": 278,
+                "ColliderMeshCount": 0,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 699320,
+                "ModelMemory": 57456,
+                "AudioMemory": 0
+              }
             }
           ],
           "activeValue": {
@@ -13512,7 +14997,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 104,
+          "tempIndex": 106,
           "itemID": 267,
           "seParent": null,
           "ecaScripts": [
@@ -13527,7 +15012,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 267,
+            "MeshCount": 1564,
+            "ColliderMeshCount": 1467,
+            "MaterialCount": 2,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 329616,
+            "ModelMemory": 225430,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "冰冻的石块D (1)",
@@ -13581,7 +15079,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 105,
+          "tempIndex": 107,
           "itemID": 270,
           "seParent": null,
           "ecaScripts": [
@@ -13596,7 +15094,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 270,
+            "MeshCount": 124,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 328848,
+            "ModelMemory": 8028,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "冰冻的石块D (2)",
@@ -13650,7 +15161,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 106,
+          "tempIndex": 108,
           "itemID": 270,
           "seParent": null,
           "ecaScripts": [
@@ -13665,7 +15176,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 270,
+            "MeshCount": 124,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 328848,
+            "ModelMemory": 8028,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "冰冻的石块D (3)",
@@ -13719,7 +15243,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 107,
+          "tempIndex": 109,
           "itemID": 270,
           "seParent": null,
           "ecaScripts": [
@@ -13734,7 +15258,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 270,
+            "MeshCount": 124,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 328848,
+            "ModelMemory": 8028,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "冰冻的石块D (4)",
@@ -13788,7 +15325,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 108,
+          "tempIndex": 110,
           "itemID": 270,
           "seParent": null,
           "ecaScripts": [
@@ -13803,7 +15340,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 270,
+            "MeshCount": 124,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 328848,
+            "ModelMemory": 8028,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "冰冻的石块D (5)",
@@ -13857,7 +15407,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 109,
+          "tempIndex": 111,
           "itemID": 270,
           "seParent": null,
           "ecaScripts": [
@@ -13872,7 +15422,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 270,
+            "MeshCount": 124,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 328848,
+            "ModelMemory": 8028,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "冰冻的石块C (1)",
@@ -13926,7 +15489,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 110,
+          "tempIndex": 112,
           "itemID": 269,
           "seParent": null,
           "ecaScripts": [
@@ -13941,7 +15504,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 269,
+            "MeshCount": 557,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 2,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 591800,
+            "ModelMemory": 27886,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "冰雪石块E (1)",
@@ -13995,7 +15571,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 111,
+          "tempIndex": 113,
           "itemID": 303,
           "seParent": null,
           "ecaScripts": [
@@ -14010,7 +15586,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 303,
+            "MeshCount": 112,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 175032,
+            "ModelMemory": 6276,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "冰雪石块E (2)",
@@ -14064,7 +15653,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 112,
+          "tempIndex": 114,
           "itemID": 303,
           "seParent": null,
           "ecaScripts": [
@@ -14079,7 +15668,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 303,
+            "MeshCount": 112,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 175032,
+            "ModelMemory": 6276,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "冰冻的集装箱 (1)",
@@ -14133,7 +15735,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 113,
+          "tempIndex": 115,
           "itemID": 263,
           "seParent": null,
           "ecaScripts": [
@@ -14148,7 +15750,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 263,
+            "MeshCount": 36,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 935056,
+            "ModelMemory": 4236,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "拖车 (1)",
@@ -14202,7 +15817,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 114,
+          "tempIndex": 116,
           "itemID": 43,
           "seParent": null,
           "ecaScripts": [
@@ -14217,7 +15832,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 43,
+            "MeshCount": 3506,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 6,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 3671632,
+            "ModelMemory": 256040,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "雪堆 (1)",
@@ -14271,7 +15899,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 115,
+          "tempIndex": 117,
           "itemID": 299,
           "seParent": null,
           "ecaScripts": [
@@ -14286,7 +15914,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 299,
+            "MeshCount": 112,
+            "ColliderMeshCount": 95,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 87644,
+            "ModelMemory": 13990,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "雪堆 (5)",
@@ -14340,7 +15981,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 116,
+          "tempIndex": 118,
           "itemID": 299,
           "seParent": null,
           "ecaScripts": [
@@ -14355,7 +15996,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 299,
+            "MeshCount": 112,
+            "ColliderMeshCount": 95,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 87644,
+            "ModelMemory": 13990,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "雪堆 (2)",
@@ -14409,7 +16063,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 117,
+          "tempIndex": 119,
           "itemID": 299,
           "seParent": null,
           "ecaScripts": [
@@ -14424,7 +16078,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 299,
+            "MeshCount": 112,
+            "ColliderMeshCount": 95,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 87644,
+            "ModelMemory": 13990,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "雪堆 (3)",
@@ -14478,7 +16145,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 118,
+          "tempIndex": 120,
           "itemID": 299,
           "seParent": null,
           "ecaScripts": [
@@ -14493,7 +16160,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 299,
+            "MeshCount": 112,
+            "ColliderMeshCount": 95,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 87644,
+            "ModelMemory": 13990,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "基础块 (2)",
@@ -14547,7 +16227,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 119,
+          "tempIndex": 121,
           "itemID": 91,
           "seParent": null,
           "ecaScripts": [
@@ -14595,7 +16275,20 @@
             }
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 91,
+            "MeshCount": 12,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 22108,
+            "ModelMemory": 4152,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "木板桥 (1)",
@@ -14649,7 +16342,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 120,
+          "tempIndex": 122,
           "itemID": 82,
           "seParent": null,
           "ecaScripts": [
@@ -14664,7 +16357,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 82,
+            "MeshCount": 12,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 175032,
+            "ModelMemory": 1980,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "冰冻的石块A (2)",
@@ -14718,7 +16424,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 121,
+          "tempIndex": 123,
           "itemID": 267,
           "seParent": null,
           "ecaScripts": [
@@ -14733,7 +16439,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 267,
+            "MeshCount": 1564,
+            "ColliderMeshCount": 1467,
+            "MaterialCount": 2,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 329616,
+            "ModelMemory": 225430,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "冰冻的石块B (1)",
@@ -14787,7 +16506,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 122,
+          "tempIndex": 124,
           "itemID": 268,
           "seParent": null,
           "ecaScripts": [
@@ -14802,7 +16521,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 268,
+            "MeshCount": 801,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 2,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 591800,
+            "ModelMemory": 44326,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "冰冻的石块A (3)",
@@ -14856,7 +16588,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 123,
+          "tempIndex": 125,
           "itemID": 267,
           "seParent": null,
           "ecaScripts": [
@@ -14871,7 +16603,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 267,
+            "MeshCount": 1564,
+            "ColliderMeshCount": 1467,
+            "MaterialCount": 2,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 329616,
+            "ModelMemory": 225430,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "冰冻的石块A (4)",
@@ -14925,7 +16670,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 124,
+          "tempIndex": 126,
           "itemID": 267,
           "seParent": null,
           "ecaScripts": [
@@ -14940,7 +16685,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 267,
+            "MeshCount": 1564,
+            "ColliderMeshCount": 1467,
+            "MaterialCount": 2,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 329616,
+            "ModelMemory": 225430,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "雪堆 (4)",
@@ -14994,7 +16752,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 125,
+          "tempIndex": 127,
           "itemID": 299,
           "seParent": null,
           "ecaScripts": [
@@ -15009,7 +16767,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 299,
+            "MeshCount": 112,
+            "ColliderMeshCount": 95,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 87644,
+            "ModelMemory": 13990,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "医疗帐篷 (1)",
@@ -15063,7 +16834,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 126,
+          "tempIndex": 128,
           "itemID": 37,
           "seParent": null,
           "ecaScripts": [
@@ -15078,7 +16849,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 37,
+            "MeshCount": 894,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 22108,
+            "ModelMemory": 93696,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "冰冻的石块B (2)",
@@ -15132,7 +16916,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 127,
+          "tempIndex": 129,
           "itemID": 268,
           "seParent": null,
           "ecaScripts": [
@@ -15147,7 +16931,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 268,
+            "MeshCount": 801,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 2,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 591800,
+            "ModelMemory": 44326,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "冰冻的石块B (3)",
@@ -15201,7 +16998,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 128,
+          "tempIndex": 130,
           "itemID": 268,
           "seParent": null,
           "ecaScripts": [
@@ -15216,7 +17013,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 268,
+            "MeshCount": 801,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 2,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 591800,
+            "ModelMemory": 44326,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "枯木 (1)",
@@ -15270,7 +17080,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 129,
+          "tempIndex": 131,
           "itemID": 86,
           "seParent": null,
           "ecaScripts": [
@@ -15285,7 +17095,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 86,
+            "MeshCount": 2443,
+            "ColliderMeshCount": 2443,
+            "MaterialCount": 2,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 23736,
+            "ModelMemory": 349812,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "枯木 (2)",
@@ -15339,7 +17162,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 130,
+          "tempIndex": 132,
           "itemID": 86,
           "seParent": null,
           "ecaScripts": [
@@ -15354,7 +17177,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 86,
+            "MeshCount": 2443,
+            "ColliderMeshCount": 2443,
+            "MaterialCount": 2,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 23736,
+            "ModelMemory": 349812,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "枯木 (3)",
@@ -15408,7 +17244,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 131,
+          "tempIndex": 133,
           "itemID": 86,
           "seParent": null,
           "ecaScripts": [
@@ -15423,7 +17259,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 86,
+            "MeshCount": 2443,
+            "ColliderMeshCount": 2443,
+            "MaterialCount": 2,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 23736,
+            "ModelMemory": 349812,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "冰冻的金属板A (1)",
@@ -15477,7 +17326,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 132,
+          "tempIndex": 134,
           "itemID": 262,
           "seParent": null,
           "ecaScripts": [
@@ -15492,7 +17341,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 262,
+            "MeshCount": 20,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 468052,
+            "ModelMemory": 2796,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "木堆 (1)",
@@ -15546,7 +17408,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 133,
+          "tempIndex": 135,
           "itemID": 165,
           "seParent": null,
           "ecaScripts": [
@@ -15561,7 +17423,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 165,
+            "MeshCount": 292,
+            "ColliderMeshCount": 0,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 175032,
+            "ModelMemory": 19644,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "警告标识 (1)",
@@ -15615,7 +17490,7 @@
           "entityTagData": {
             "tagPointers": []
           },
-          "tempIndex": 134,
+          "tempIndex": 136,
           "itemID": 295,
           "seParent": null,
           "ecaScripts": [
@@ -15630,7 +17505,20 @@
             "Collider": {}
           },
           "editorLockValue": false,
-          "editorVisibleValue": false
+          "editorVisibleValue": false,
+          "_performanceConfigData": {
+            "ItemID": 295,
+            "MeshCount": 94,
+            "ColliderMeshCount": 94,
+            "MaterialCount": 1,
+            "AnimationCount": 0,
+            "BoneCount": 0,
+            "ParticleEmitterCount": 0,
+            "ParticleCount": 0,
+            "TextureMemory": 87644,
+            "ModelMemory": 17960,
+            "AudioMemory": 0
+          }
         },
         {
           "_entityName": "空气墙组",
@@ -15670,210 +17558,6 @@
               "rotation": {
                 "x": 0,
                 "y": 37.474998474121094,
-                "z": 0
-              },
-              "BTPath": [
-                null
-              ],
-              "visible": false,
-              "VisibilityLayer": 0,
-              "modelOptimization": 0,
-              "streamingLayer": "",
-              "attributes": [
-                2
-              ],
-              "isTrigger": false,
-              "collidable": true,
-              "physicalLayer": 0,
-              "physicalMaterial": null,
-              "aoiSetting": 0,
-              "initialTypes": {},
-              "componentList": [],
-              "entityTagData": {
-                "tagPointers": []
-              },
-              "tempIndex": 135,
-              "itemID": 91,
-              "seParent": null,
-              "ecaScripts": [
-                null
-              ],
-              "ecaProps": {
-                "BasicScalableItem": {},
-                "LevelObject": {},
-                "Transform": {},
-                "Entity": {},
-                "Visibility": {},
-                "Appearance": {},
-                "Collider": {}
-              },
-              "objColor": {
-                "surfaceColor": {
-                  "r": 255,
-                  "g": 255,
-                  "b": 255,
-                  "a": 1
-                },
-                "borderColor": {
-                  "r": 255,
-                  "g": 255,
-                  "b": 255,
-                  "a": 0
-                }
-              },
-              "objTex": {
-                "surfaceTexRef": {
-                  "fileId": "d1dd7ce0d51780846795c1e56406ea66",
-                  "filePath": "lib://fftextures/WorkshopItemTexture/SCENEEDIT_CUBE_TEXTURE_COLORFULCUBE001_D.png",
-                  "_tag": {
-                    "type": "GFileRefer"
-                  },
-                  "fileType": "texture"
-                },
-                "borderTexRef": null
-              },
-              "propsData": {
-                "scale": {
-                  "x": 1,
-                  "y": 1,
-                  "z": 1
-                }
-              },
-              "editorLockValue": false,
-              "editorVisibleValue": false
-            },
-            {
-              "_entityName": "基础块 (2)",
-              "_tag": {
-                "type": "SceneEditEntity",
-                "resourceId": "Primitive/Empty"
-              },
-              "_entityId": "HUZHDtSM",
-              "children": [],
-              "prefabVariant": null,
-              "activeValue": {
-                "selfValue": true,
-                "valueTag": "activeValue"
-              },
-              "unlockedValue": {
-                "selfValue": true,
-                "valueTag": "unlockedValue"
-              },
-              "position": {
-                "x": 1.1030000448226929,
-                "y": -0.25700002908706665,
-                "z": -11.41100025177002
-              },
-              "scale": {
-                "x": 19.92099952697754,
-                "y": 4.488999843597412,
-                "z": 1.2280000448226929
-              },
-              "rotation": {
-                "x": 0,
-                "y": 0,
-                "z": 0
-              },
-              "BTPath": [
-                null
-              ],
-              "visible": false,
-              "VisibilityLayer": 0,
-              "modelOptimization": 0,
-              "streamingLayer": "",
-              "attributes": [
-                2
-              ],
-              "isTrigger": false,
-              "collidable": true,
-              "physicalLayer": 0,
-              "physicalMaterial": null,
-              "aoiSetting": 0,
-              "initialTypes": {},
-              "componentList": [],
-              "entityTagData": {
-                "tagPointers": []
-              },
-              "tempIndex": 136,
-              "itemID": 91,
-              "seParent": null,
-              "ecaScripts": [
-                null
-              ],
-              "ecaProps": {
-                "BasicScalableItem": {},
-                "LevelObject": {},
-                "Transform": {},
-                "Entity": {},
-                "Visibility": {},
-                "Appearance": {},
-                "Collider": {}
-              },
-              "objColor": {
-                "surfaceColor": {
-                  "r": 255,
-                  "g": 255,
-                  "b": 255,
-                  "a": 1
-                },
-                "borderColor": {
-                  "r": 255,
-                  "g": 255,
-                  "b": 255,
-                  "a": 0
-                }
-              },
-              "objTex": {
-                "surfaceTexRef": {
-                  "fileId": "d1dd7ce0d51780846795c1e56406ea66",
-                  "filePath": "lib://fftextures/WorkshopItemTexture/SCENEEDIT_CUBE_TEXTURE_COLORFULCUBE001_D.png",
-                  "_tag": {
-                    "type": "GFileRefer"
-                  },
-                  "fileType": "texture"
-                },
-                "borderTexRef": null
-              },
-              "propsData": {
-                "scale": {
-                  "x": 1,
-                  "y": 1,
-                  "z": 1
-                }
-              },
-              "editorLockValue": false,
-              "editorVisibleValue": false
-            },
-            {
-              "_entityName": "基础块 (2)",
-              "_tag": {
-                "type": "SceneEditEntity",
-                "resourceId": "Primitive/Empty"
-              },
-              "_entityId": "f0sOz6b1",
-              "children": [],
-              "prefabVariant": null,
-              "activeValue": {
-                "selfValue": true,
-                "valueTag": "activeValue"
-              },
-              "unlockedValue": {
-                "selfValue": true,
-                "valueTag": "unlockedValue"
-              },
-              "position": {
-                "x": -12.267000198364258,
-                "y": -1.180999994277954,
-                "z": 5.440000057220459
-              },
-              "scale": {
-                "x": 4.051000118255615,
-                "y": 4.142000198364258,
-                "z": 12.394000053405762
-              },
-              "rotation": {
-                "x": 6.228000164031982,
-                "y": 0,
                 "z": 0
               },
               "BTPath": [
@@ -15944,15 +17628,28 @@
                 }
               },
               "editorLockValue": false,
-              "editorVisibleValue": false
+              "editorVisibleValue": false,
+              "_performanceConfigData": {
+                "ItemID": 91,
+                "MeshCount": 12,
+                "ColliderMeshCount": 0,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 22108,
+                "ModelMemory": 4152,
+                "AudioMemory": 0
+              }
             },
             {
-              "_entityName": "基础块 (3)",
+              "_entityName": "基础块 (2)",
               "_tag": {
                 "type": "SceneEditEntity",
                 "resourceId": "Primitive/Empty"
               },
-              "_entityId": "Hd3mjS7u",
+              "_entityId": "HUZHDtSM",
               "children": [],
               "prefabVariant": null,
               "activeValue": {
@@ -15964,18 +17661,18 @@
                 "valueTag": "unlockedValue"
               },
               "position": {
-                "x": -12.343999862670898,
-                "y": -1.0309998989105225,
-                "z": -1.1009999513626099
+                "x": 1.1030000448226929,
+                "y": -0.25700002908706665,
+                "z": -11.41100025177002
               },
               "scale": {
-                "x": 4.051000118255615,
-                "y": 4.142000198364258,
-                "z": 2.010999917984009
+                "x": 19.92099952697754,
+                "y": 4.488999843597412,
+                "z": 1.2280000448226929
               },
               "rotation": {
                 "x": 0,
-                "y": 6.056999683380127,
+                "y": 0,
                 "z": 0
               },
               "BTPath": [
@@ -16046,7 +17743,250 @@
                 }
               },
               "editorLockValue": false,
-              "editorVisibleValue": false
+              "editorVisibleValue": false,
+              "_performanceConfigData": {
+                "ItemID": 91,
+                "MeshCount": 12,
+                "ColliderMeshCount": 0,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 22108,
+                "ModelMemory": 4152,
+                "AudioMemory": 0
+              }
+            },
+            {
+              "_entityName": "基础块 (2)",
+              "_tag": {
+                "type": "SceneEditEntity",
+                "resourceId": "Primitive/Empty"
+              },
+              "_entityId": "f0sOz6b1",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "position": {
+                "x": -12.267000198364258,
+                "y": -1.180999994277954,
+                "z": 5.440000057220459
+              },
+              "scale": {
+                "x": 4.051000118255615,
+                "y": 4.142000198364258,
+                "z": 12.394000053405762
+              },
+              "rotation": {
+                "x": 6.228000164031982,
+                "y": 0,
+                "z": 0
+              },
+              "BTPath": [
+                null
+              ],
+              "visible": false,
+              "VisibilityLayer": 0,
+              "modelOptimization": 0,
+              "streamingLayer": "",
+              "attributes": [
+                2
+              ],
+              "isTrigger": false,
+              "collidable": true,
+              "physicalLayer": 0,
+              "physicalMaterial": null,
+              "aoiSetting": 0,
+              "initialTypes": {},
+              "componentList": [],
+              "entityTagData": {
+                "tagPointers": []
+              },
+              "tempIndex": 139,
+              "itemID": 91,
+              "seParent": null,
+              "ecaScripts": [
+                null
+              ],
+              "ecaProps": {
+                "BasicScalableItem": {},
+                "LevelObject": {},
+                "Transform": {},
+                "Entity": {},
+                "Visibility": {},
+                "Appearance": {},
+                "Collider": {}
+              },
+              "objColor": {
+                "surfaceColor": {
+                  "r": 255,
+                  "g": 255,
+                  "b": 255,
+                  "a": 1
+                },
+                "borderColor": {
+                  "r": 255,
+                  "g": 255,
+                  "b": 255,
+                  "a": 0
+                }
+              },
+              "objTex": {
+                "surfaceTexRef": {
+                  "fileId": "d1dd7ce0d51780846795c1e56406ea66",
+                  "filePath": "lib://fftextures/WorkshopItemTexture/SCENEEDIT_CUBE_TEXTURE_COLORFULCUBE001_D.png",
+                  "_tag": {
+                    "type": "GFileRefer"
+                  },
+                  "fileType": "texture"
+                },
+                "borderTexRef": null
+              },
+              "propsData": {
+                "scale": {
+                  "x": 1,
+                  "y": 1,
+                  "z": 1
+                }
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": false,
+              "_performanceConfigData": {
+                "ItemID": 91,
+                "MeshCount": 12,
+                "ColliderMeshCount": 0,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 22108,
+                "ModelMemory": 4152,
+                "AudioMemory": 0
+              }
+            },
+            {
+              "_entityName": "基础块 (3)",
+              "_tag": {
+                "type": "SceneEditEntity",
+                "resourceId": "Primitive/Empty"
+              },
+              "_entityId": "Hd3mjS7u",
+              "children": [],
+              "prefabVariant": null,
+              "activeValue": {
+                "selfValue": true,
+                "valueTag": "activeValue"
+              },
+              "unlockedValue": {
+                "selfValue": true,
+                "valueTag": "unlockedValue"
+              },
+              "position": {
+                "x": -12.343999862670898,
+                "y": -1.0309998989105225,
+                "z": -1.1009999513626099
+              },
+              "scale": {
+                "x": 4.051000118255615,
+                "y": 4.142000198364258,
+                "z": 2.010999917984009
+              },
+              "rotation": {
+                "x": 0,
+                "y": 6.056999683380127,
+                "z": 0
+              },
+              "BTPath": [
+                null
+              ],
+              "visible": false,
+              "VisibilityLayer": 0,
+              "modelOptimization": 0,
+              "streamingLayer": "",
+              "attributes": [
+                2
+              ],
+              "isTrigger": false,
+              "collidable": true,
+              "physicalLayer": 0,
+              "physicalMaterial": null,
+              "aoiSetting": 0,
+              "initialTypes": {},
+              "componentList": [],
+              "entityTagData": {
+                "tagPointers": []
+              },
+              "tempIndex": 140,
+              "itemID": 91,
+              "seParent": null,
+              "ecaScripts": [
+                null
+              ],
+              "ecaProps": {
+                "BasicScalableItem": {},
+                "LevelObject": {},
+                "Transform": {},
+                "Entity": {},
+                "Visibility": {},
+                "Appearance": {},
+                "Collider": {}
+              },
+              "objColor": {
+                "surfaceColor": {
+                  "r": 255,
+                  "g": 255,
+                  "b": 255,
+                  "a": 1
+                },
+                "borderColor": {
+                  "r": 255,
+                  "g": 255,
+                  "b": 255,
+                  "a": 0
+                }
+              },
+              "objTex": {
+                "surfaceTexRef": {
+                  "fileId": "d1dd7ce0d51780846795c1e56406ea66",
+                  "filePath": "lib://fftextures/WorkshopItemTexture/SCENEEDIT_CUBE_TEXTURE_COLORFULCUBE001_D.png",
+                  "_tag": {
+                    "type": "GFileRefer"
+                  },
+                  "fileType": "texture"
+                },
+                "borderTexRef": null
+              },
+              "propsData": {
+                "scale": {
+                  "x": 1,
+                  "y": 1,
+                  "z": 1
+                }
+              },
+              "editorLockValue": false,
+              "editorVisibleValue": false,
+              "_performanceConfigData": {
+                "ItemID": 91,
+                "MeshCount": 12,
+                "ColliderMeshCount": 0,
+                "MaterialCount": 1,
+                "AnimationCount": 0,
+                "BoneCount": 0,
+                "ParticleEmitterCount": 0,
+                "ParticleCount": 0,
+                "TextureMemory": 22108,
+                "ModelMemory": 4152,
+                "AudioMemory": 0
+              }
             }
           ],
           "prefabVariant": null,
@@ -16371,4 +18311,4 @@
     ]
   }
 }
-//"{FE:{"v":"1.16.4197289","c":{"FF":5001},"s":100}
+//"{FE:{"v":"0.2.4485321","c":{"FF":5001},"s":100}

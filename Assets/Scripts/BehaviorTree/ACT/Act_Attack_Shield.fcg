@@ -1,0 +1,42 @@
+import "Animation.fcc" as Animation
+import "StdLibrary.fcc" as StdLib
+import "EditorGenLib.fcc" as EditorLib
+import "BehaviourTree.fcc" as BehaviourTree
+import "Math.fcc" as Math
+import "../../MobScripts/ShieldZombie.fcg" as ShieldZombie
+import "../../Static/FC_Utilities.fcg" as Utilities
+
+[platform_client]
+graph Script_1_ {
+    // Compatibility entry for behavior trees that still reference the older dash attack file name.
+    _Duration int
+    _AttackBeginTime int
+
+    event OnNodeEnterForClient(nodeName string, owner entity<BevTreeAttachableForClient>) {
+        owner<Mob>.StatusDic["InAttack"] = true
+        GetNodeVariable(thisEntity<BevTreeCustomNode>,"AttackName",out var attackName)
+        var duration = owner<Mob>.StatusDic["Duration_" + attackName] as int
+        var attackScale float= 1
+
+        _Duration = Ceil(duration as int * attackScale)
+        var curTarget entity<Player> = owner<Mob>.CurrTarget
+
+        globalEntity<Utilities>.myLookAt(owner<Transform>,curTarget as entity<Player>,Vector3{0,0,0})
+        _AttackBeginTime = globalEntity<Global>.GameTimeCount
+        owner<Mob>.StatusDic["LastAttackTime_" + attackName] = _AttackBeginTime
+        var TargetEntity = owner<AnimationControllerAttachable>
+        owner<ShieldZombie>.startShieldZombieDashAttack(TargetEntity)
+    }
+
+    func PlayAction(owner entity<BevTreeAttachableForClient>) BevTreeNodeStatus{
+        if(globalEntity<Global>.GameTimeCount >= _AttackBeginTime+_Duration){
+            return BevTreeNodeStatus.Finish
+        }else{
+            return BevTreeNodeStatus.Running
+        }
+    }
+
+    event OnNodeExitForClient(nodeName string, owner entity<BevTreeAttachableForClient>) {
+        owner<Mob>.StatusDic["InAttack"] = false
+    }
+}
