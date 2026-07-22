@@ -65,6 +65,8 @@ static graph FC_PVEMonsterManager {
     // 当前波次信息 - 使用基础类型
     CurrentHPModifier float = 1.0
     CurrentDamageModifier float = 1.0
+    PreparedWave int = 0
+    PreparedWaveCupId int = 0
     // 无尽模式每波次倍率（由 PVEController 在 StartNextWave 时设置为 1.3^EndlessWaveCount）
     EndlessWaveScale float = 1.0
     
@@ -115,7 +117,18 @@ static graph FC_PVEMonsterManager {
             nextWave = 1
         }
         PoolPreWarmJobId = PoolPreWarmJobId + 1
-        start PreWarmMonsterPool(nextWave, PoolPreWarmJobId)
+        PreWarmMonsterPoolImmediately(nextWave)
+    }
+
+    func SelectPreparedOrRandomCupId(wave int, monsterCupIds List<int>) int {
+        if PreparedWave == wave && PreparedWaveCupId > 0 {
+            return PreparedWaveCupId
+        }
+        var cupIndex int = math.RandomInt(0, list.Length(monsterCupIds))
+        var cupId int = monsterCupIds[cupIndex]
+        PreparedWave = wave
+        PreparedWaveCupId = cupId
+        return cupId
     }
 
     func PreWarmMonsterPoolImmediately(nextWave int) {
@@ -125,19 +138,7 @@ static graph FC_PVEMonsterManager {
             var bossNameKey string = monsterRow[1] as string
             if GetPoolMonsterCount(bossNameKey) <= 0 {
                 var bossPrefabID = Config.MobPrefabIDs[bossNameKey]
-                LogInfo("[怪物对象池] 开局同步预热Boss 波次=" + nextWave + " 名称=" + bossNameKey)
-                CreateFromPrefab(out var bossEntity, bossPrefabID)
-                var bossMonster = bossEntity as entity<LevelObject>
-                if bossMonster != nil && HasComponent(bossMonster, typeof(Mob)) {
-                    bossMonster<Mob>.MobName = bossNameKey
-                    bossMonster<Mob>.IsActive = false
-                    bossMonster<Transform>.Position = Vector3{0, -1000, 0}
-                    SetParentClient(MonsterPoolParentNode<Transform>, bossMonster<Transform>, true)
-                    if !Map.ContainKey(MonsterPool, bossNameKey) {
-                        MonsterPool[bossNameKey] = list.New(0, 0)
-                    }
-                    list.Append(MonsterPool[bossNameKey], bossMonster)
-                }
+                CreateMonsterToPool(bossNameKey, 1)
             }
             return
         }
@@ -153,150 +154,46 @@ static graph FC_PVEMonsterManager {
         if monsterCupIds == nil || list.Length(monsterCupIds) == 0 {
             return
         }
-        var nameKeyToCount Map<string, int> = Map<string, int>{}
-        for cupIdx = 0, list.Length(monsterCupIds), 1 {
-            var cupId int = monsterCupIds[cupIdx]
-            var cupRow List<object> = CSVData.ReadCSVRow(EResCSV.MonsterCup, cupId + 2)
-            var monsterIdsStr string = cupRow[1] as string
-            var amountStr string = cupRow[2] as string
-            var monsterIdList List<int> = Utilities.SplitStringToInt(monsterIdsStr)
-            var amountList List<int> = Utilities.SplitStringToInt(amountStr)
-            for i = 0, list.Length(monsterIdList), 1 {
-                var monsterID int = monsterIdList[i]
-                var amount int = ScaleSpawnCount(amountList[i], 0)
-                var monsterRow List<object> = CSVData.ReadCSVRow(EResCSV.MonsterInfo, GetMonsterInfoRowID(monsterID)+2)
-                var name_key string = monsterRow[1] as string
-                var existing int = 0
-                if Map.ContainKey(nameKeyToCount, name_key) {
-                    existing = nameKeyToCount[name_key]
-                }
-                if amount > existing {
-                    nameKeyToCount[name_key] = amount
-                }
+        var cupId int = SelectPreparedOrRandomCupId(nextWave, monsterCupIds)
+        var cupRow List<object> = CSVData.ReadCSVRow(EResCSV.MonsterCup, cupId + 2)
+        var monsterIdsStr string = cupRow[1] as string
+        var amountStr string = cupRow[2] as string
+        var timeintervalStr string = cupRow[3] as string
+        var monsterIdList List<int> = Utilities.SplitStringToInt(monsterIdsStr)
+        var amountList List<int> = Utilities.SplitStringToInt(amountStr)
+        var timeintervalList List<float> = Utilities.SplitStringToFloat(timeintervalStr)
+        var eliteQueue List<Map<string, object>> = List<Map<string, object>>{}
+        var normalQueue List<Map<string, object>> = List<Map<string, object>>{}
+        for i = 0, list.Length(monsterIdList), 1 {
+            var monsterInfo Map<string, object> = Map<string, object>{}
+            monsterInfo["MonsterID"] = monsterIdList[i]
+            monsterInfo["MaxNum"] = ScaleSpawnCount(amountList[i], 0)
+            monsterInfo["SpawnIntervalSec"] = timeintervalList[i]
+
+            var monsterRow List<object> = CSVData.ReadCSVRow(EResCSV.MonsterInfo, GetMonsterInfoRowID(monsterInfo["MonsterID"] as int)+2)
+            monsterInfo["Name_key"] = monsterRow[1]
+            monsterInfo["BaseHP"] = monsterRow[2]
+            monsterInfo["BaseDamage"] = monsterRow[3]
+            monsterInfo["MoveSpeed"] = monsterRow[4]
+            monsterInfo["IsElite"] = monsterRow[5]
+            monsterInfo["IsBoss"] = monsterRow[6]
+            monsterInfo["Possibility"] = 1.0
+
+            if monsterInfo["IsElite"] as bool {
+                list.Append(eliteQueue, monsterInfo)
+            } else {
+                list.Append(normalQueue, monsterInfo)
             }
         }
-        var keys = Map.GetAllKeys(nameKeyToCount)
-        for ki = 0, list.Length(keys), 1 {
-            var name_key string = keys[ki]
-            var targetCount int = GetWavePreWarmTargetCount(nextWave, nameKeyToCount[name_key])
-            var needCount int = targetCount - GetPoolMonsterCount(name_key)
-            if needCount <= 0 {
-                continue
-            }
-            var prefabID = Config.MobPrefabIDs[name_key]
-            if !Map.ContainKey(MonsterPool, name_key) {
-                MonsterPool[name_key] = list.New(0, 0)
-            }
-            for c = 0, needCount, 1 {
-                LogInfo("[怪物对象池] 开局同步预热 波次=" + nextWave + " 名称=" + name_key + " 序号=" + c + "/" + needCount)
-                CreateFromPrefab(out var newEntity, prefabID)
-                var monster = newEntity as entity<LevelObject>
-                if monster != nil && HasComponent(monster, typeof(Mob)) {
-                    monster<Mob>.MobName = name_key
-                    monster<Mob>.IsActive = false
-                    monster<Transform>.Position = Vector3{0, -1000, 0}
-                    SetParentClient(MonsterPoolParentNode<Transform>, monster<Transform>, true)
-                    list.Append(MonsterPool[name_key], monster)
-                }
-            }
-        }
+        EnsureImmediateSpawnPool(eliteQueue, normalQueue)
     }
 
     // 预创建下一波怪物并放入池（CreateFromPrefab 后 IsActive=false，挂到池节点下）
     async func PreWarmMonsterPool(nextWave int, jobId int) {
-        if nextWave == 5 {
-            var sceneBossID int = GetSceneBossMonsterID()
-            var monsterRow List<object> = CSVData.ReadCSVRow(EResCSV.MonsterInfo, GetMonsterInfoRowID(sceneBossID)+2)
-            var bossNameKey string = monsterRow[1] as string
-            if GetPoolMonsterCount(bossNameKey) <= 0 {
-                var bossPrefabID = Config.MobPrefabIDs[bossNameKey]
-                LogInfo("[怪物对象池] 预热创建Boss 波次=" + nextWave + " 名称=" + bossNameKey)
-                CreateFromPrefab(out var bossEntity, bossPrefabID)
-                var bossMonster = bossEntity as entity<LevelObject>
-                if bossMonster != nil && HasComponent(bossMonster, typeof(Mob)) {
-                    bossMonster<Mob>.MobName = bossNameKey
-                    bossMonster<Mob>.IsActive = false
-                    bossMonster<Transform>.Position = Vector3{0, -1000, 0}
-                    SetParentClient(MonsterPoolParentNode<Transform>, bossMonster<Transform>, true)
-                    if !Map.ContainKey(MonsterPool, bossNameKey) {
-                        MonsterPool[bossNameKey] = list.New(0, 0)
-                    }
-                    list.Append(MonsterPool[bossNameKey], bossMonster)
-                }
-            }
+        if jobId != PoolPreWarmJobId {
             return
         }
-        var waveRowInfo Map<string, object> = LevelRowInfos[nextWave]
-        if waveRowInfo == nil {
-            LoadCurrentLevelRows(CurrentLevel)
-            waveRowInfo = LevelRowInfos[nextWave]
-        }
-        if waveRowInfo == nil {
-            return
-        }
-        var monsterCupIds List<int> = waveRowInfo["MonsterCupIds"] as List<int>
-        if monsterCupIds == nil || list.Length(monsterCupIds) == 0 {
-            return
-        }
-        var nameKeyToCount Map<string, int> = Map<string, int>{}
-        for cupIdx = 0, list.Length(monsterCupIds), 1 {
-            var cupId int = monsterCupIds[cupIdx]
-            var cupRow List<object> = CSVData.ReadCSVRow(EResCSV.MonsterCup, cupId + 2)
-            var monsterIdsStr string = cupRow[1] as string
-            var amountStr string = cupRow[2] as string
-            var monsterIdList List<int> = Utilities.SplitStringToInt(monsterIdsStr)
-            var amountList List<int> = Utilities.SplitStringToInt(amountStr)
-            for i = 0, list.Length(monsterIdList), 1 {
-                var monsterID int = monsterIdList[i]
-                var amount int = ScaleSpawnCount(amountList[i], 0)
-                var monsterRow List<object> = CSVData.ReadCSVRow(EResCSV.MonsterInfo, GetMonsterInfoRowID(monsterID)+2)
-                var name_key string = monsterRow[1] as string
-                var existing int = 0
-                if Map.ContainKey(nameKeyToCount, name_key) {
-                    existing = nameKeyToCount[name_key]
-                }
-                if amount > existing {
-                    nameKeyToCount[name_key] = amount
-                }
-            }
-        }
-        var createdInBatch int = 0
-        var keys = Map.GetAllKeys(nameKeyToCount)
-        for ki = 0, list.Length(keys), 1 {
-            if jobId != PoolPreWarmJobId {
-                return
-            }
-            var name_key string = keys[ki]
-            var targetCount int = GetWavePreWarmTargetCount(nextWave, nameKeyToCount[name_key])
-            var needCount int = targetCount - GetPoolMonsterCount(name_key)
-            if needCount <= 0 {
-                continue
-            }
-            var prefabID = Config.MobPrefabIDs[name_key]
-            if !Map.ContainKey(MonsterPool, name_key) {
-                MonsterPool[name_key] = list.New(0, 0)
-            }
-            for c = 0, needCount, 1 {
-                if jobId != PoolPreWarmJobId {
-                    return
-                }
-                LogInfo("[怪物对象池] 预热创建 波次=" + nextWave + " 名称=" + name_key + " 序号=" + c + "/" + needCount)
-                CreateFromPrefab(out var newEntity, prefabID)
-                var monster = newEntity as entity<LevelObject>
-                if monster != nil && HasComponent(monster, typeof(Mob)) {
-                    monster<Mob>.MobName = name_key
-                    monster<Mob>.IsActive = false
-                    monster<Transform>.Position = Vector3{0, -1000, 0}
-                    SetParentClient(MonsterPoolParentNode<Transform>, monster<Transform>, true)
-                    list.Append(MonsterPool[name_key], monster)
-                    createdInBatch = createdInBatch + 1
-                    if createdInBatch >= PoolPreWarmBatchSize {
-                        createdInBatch = 0
-                        WaitForNextFrame()
-                    }
-                }
-            }
-        }
+        PreWarmMonsterPoolImmediately(nextWave)
     }
 
     func GetPoolMonsterCount(name_key string) int {
@@ -307,10 +204,112 @@ static graph FC_PVEMonsterManager {
     }
 
     func GetWavePreWarmTargetCount(nextWave int, rawTargetCount int) int {
-        if nextWave < 5 && rawTargetCount < MaxMonstersOnField {
-            return MaxMonstersOnField
-        }
         return rawTargetCount
+    }
+
+    func CreateMonsterToPool(name_key string, targetCount int) {
+        var prefabID = Config.MobPrefabIDs[name_key]
+        CreateFromPrefab(out var newEntity, prefabID)
+        var monster = newEntity as entity<LevelObject>
+        if monster != nil && HasComponent(monster, typeof(Mob)) {
+            monster<Mob>.MobName = name_key
+            monster<Mob>.IsActive = false
+            monster<Transform>.Position = Vector3{0, -1000, 0}
+            SetParentClient(MonsterPoolParentNode<Transform>, monster<Transform>, true)
+            if !Map.ContainKey(MonsterPool, name_key) {
+                MonsterPool[name_key] = list.New(0, 0)
+            }
+            list.Append(MonsterPool[name_key], monster)
+            LogInfo("[怪物对象池] 补池 名称=" + name_key + " 当前=" + GetPoolMonsterCount(name_key) + "/" + targetCount)
+        }
+    }
+
+    func EnsureMonsterPoolCount(name_key string, targetCount int) {
+        var needCount int = targetCount - GetPoolMonsterCount(name_key)
+        if needCount <= 0 {
+            return
+        }
+        for i = 0, needCount, 1 {
+            CreateMonsterToPool(name_key, targetCount)
+        }
+    }
+
+    func ShrinkMonsterPoolCount(name_key string, targetCount int) {
+        if !Map.ContainKey(MonsterPool, name_key) {
+            return
+        }
+        var poolList = MonsterPool[name_key]
+        while list.Length(poolList) > targetCount {
+            var lastIndex int = list.Length(poolList) - 1
+            var monster = poolList[lastIndex]
+            list.Remove(poolList, monster)
+            if monster != nil {
+                Destroy(monster)
+            }
+        }
+    }
+
+    func ReconcileMonsterPool(requiredCountByName Map<string, int>) {
+        var existingKeys = Map.GetAllKeys(MonsterPool)
+        for i = 0, list.Length(existingKeys), 1 {
+            var existingName string = existingKeys[i]
+            var targetCount int = 0
+            if Map.ContainKey(requiredCountByName, existingName) {
+                targetCount = requiredCountByName[existingName]
+            }
+            ShrinkMonsterPoolCount(existingName, targetCount)
+        }
+
+        var requiredKeys = Map.GetAllKeys(requiredCountByName)
+        for i = 0, list.Length(requiredKeys), 1 {
+            var name_key string = requiredKeys[i]
+            EnsureMonsterPoolCount(name_key, requiredCountByName[name_key])
+        }
+    }
+
+    func EnsureImmediateSpawnPool(eliteQueue List<Map<string, object>>, normalQueue List<Map<string, object>>) {
+        var targetCount int = MaxMonstersOnField
+        if targetCount <= 0 {
+            return
+        }
+        var totalCandidates int = list.Length(eliteQueue) + list.Length(normalQueue)
+        if totalCandidates <= 0 {
+            return
+        }
+        var requiredCountByName Map<string, int> = Map<string, int>{}
+        for i = 0, targetCount, 1 {
+            if list.Length(eliteQueue) > 0 {
+                var eliteInfo = eliteQueue[i % list.Length(eliteQueue)]
+                var eliteName string = eliteInfo["Name_key"] as string
+                var eliteCount int = 0
+                if Map.ContainKey(requiredCountByName, eliteName) {
+                    eliteCount = requiredCountByName[eliteName]
+                }
+                requiredCountByName[eliteName] = eliteCount + 1
+            } else if list.Length(normalQueue) > 0 {
+                var onlyNormalInfo = normalQueue[i % list.Length(normalQueue)]
+                var onlyNormalName string = onlyNormalInfo["Name_key"] as string
+                var onlyNormalCount int = 0
+                if Map.ContainKey(requiredCountByName, onlyNormalName) {
+                    onlyNormalCount = requiredCountByName[onlyNormalName]
+                }
+                requiredCountByName[onlyNormalName] = onlyNormalCount + 1
+            }
+            if list.Length(normalQueue) > 0 {
+                var normalInfo = normalQueue[i % list.Length(normalQueue)]
+                var normalName string = normalInfo["Name_key"] as string
+                var normalCount int = 0
+                if Map.ContainKey(requiredCountByName, normalName) {
+                    normalCount = requiredCountByName[normalName]
+                }
+                requiredCountByName[normalName] = normalCount + 1
+                i = i + 1
+                if i >= targetCount {
+                    break
+                }
+            }
+        }
+        ReconcileMonsterPool(requiredCountByName)
     }
 
     // 从对象池取出一只怪物（key = 实体ID，即 MonsterInfo.Name_key），池中无则返回 nil
@@ -324,6 +323,7 @@ static graph FC_PVEMonsterManager {
         }
         var monster = poolList[0]
         list.Remove(poolList, monster)
+        LogInfo("[怪物对象池] 取池 名称=" + name_key + " 当前=" + list.Length(poolList) + "/" + (list.Length(poolList) + 1))
         return monster
     }
 
@@ -360,6 +360,7 @@ static graph FC_PVEMonsterManager {
             MonsterPool[name_key] = list.New(0, 0)
         }
         list.Append(MonsterPool[name_key], monster)
+        LogInfo("[怪物对象池] 还池 名称=" + name_key + " 当前=" + GetPoolMonsterCount(name_key) + "/" + GetPoolMonsterCount(name_key))
     }
 
     // 清空对象池：先同步销毁池中所有怪物实体，再清空池数据（波次结束或 ClearAllMonsters 时调用）
@@ -527,9 +528,11 @@ static graph FC_PVEMonsterManager {
             LogWarning("波次 " + wave + " 无 MonsterCup 配置")
             return
         }
-        // 随机选一个 MonsterCup ID
-        var cupIndex int = math.RandomInt(0, list.Length(monsterCupIds))
-        var cupId int = monsterCupIds[cupIndex]
+        var cupId int = SelectPreparedOrRandomCupId(wave, monsterCupIds)
+        if PreparedWave == wave && PreparedWaveCupId == cupId {
+            PreparedWave = 0
+            PreparedWaveCupId = 0
+        }
         // 从 MonsterCup 表读取该 ID 行：MonsterIDs, Amount, Timeinterval
         var cupRow List<object> = CSVData.ReadCSVRow(EResCSV.MonsterCup, cupId + 2)
         var monsterIdsStr string = cupRow[1] as string
@@ -639,6 +642,7 @@ static graph FC_PVEMonsterManager {
         var eliteQueue List<Map<string, object>> = List<Map<string, object>>{}
         var normalQueue List<Map<string, object>> = List<Map<string, object>>{}
         list.Append(bossQueue, monsterInfo)
+        EnsureMonsterPoolCount(monsterInfo["Name_key"] as string, 1)
         IsWaveActive = true
         start SpawnWaveMonsters(bossQueue, eliteQueue, normalQueue)
     }
@@ -649,6 +653,7 @@ static graph FC_PVEMonsterManager {
         NormalLastSpawnTime = 0
         currSpawnerIndex = currSpawnerIndex + 1
         if list.Length(bossQueue) <= 0 {
+            EnsureImmediateSpawnPool(eliteQueue, normalQueue)
             SpawnWaveMonstersImmediately(eliteQueue, normalQueue)
             NormalLastSpawnTime = globalEntity<Global>.GameTimeCount
             WaitForMillisecond(1000)
@@ -880,7 +885,6 @@ static graph FC_PVEMonsterManager {
         var prefabID = Config.MobPrefabIDs[name_key]
         var monster entity<LevelObject> = GetMonsterFromPool(name_key)
         if monster == nil {
-            LogInfo("[怪物对象池] 运行时兜底创建 波次=" + CurrentWave + " 名称=" + name_key)
             CreateFromPrefab(out var newEntity, prefabID)
             monster = newEntity as entity<LevelObject>
         }
