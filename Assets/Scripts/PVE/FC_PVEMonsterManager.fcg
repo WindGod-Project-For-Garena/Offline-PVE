@@ -40,6 +40,8 @@ static graph FC_PVEMonsterManager {
     currSpawnerIndex int = 0 //当前生成器索引
     
     // 怪物追踪
+    InitialSpawnInProgress bool = false
+    PendingSpawnCount int = 0
     ActiveMonsters List<entity<LevelObject>> = List<entity<LevelObject>>{}
     ActiveNormalMonsters List<entity<LevelObject>> = List<entity<LevelObject>>{}
     ActiveEliteMonsters List<entity<LevelObject>> = List<entity<LevelObject>>{}
@@ -916,7 +918,9 @@ static graph FC_PVEMonsterManager {
             if !IsImmediateSpawnPoolReady(eliteQueue, normalQueue) {
                 EnsureImmediateSpawnPool(eliteQueue, normalQueue)
             }
+            InitialSpawnInProgress = true
             SpawnWaveMonstersImmediately(eliteQueue, normalQueue)
+            InitialSpawnInProgress = false
             NormalLastSpawnTime = globalEntity<Global>.GameTimeCount
             WaitForMillisecond(1000)
         }
@@ -936,19 +940,22 @@ static graph FC_PVEMonsterManager {
         }
         var createdCount int = 0
         var i int = 0
-        while createdCount < targetCount && GetActiveMonsterCount() < MaxMonstersOnField {
+        while createdCount < targetCount && GetActiveAndPendingMonsterCount() < MaxMonstersOnField {
             if list.Length(eliteQueue) > 0 {
                 var eliteInfo = eliteQueue[i % list.Length(eliteQueue)]
-                CreateSingleMonster(eliteInfo)
+                PendingSpawnCount = PendingSpawnCount + 1
+                start CreateSingleMonster(eliteInfo)
                 createdCount = createdCount + 1
             } else if list.Length(normalQueue) > 0 {
                 var normalInfo = normalQueue[i % list.Length(normalQueue)]
-                CreateSingleMonster(normalInfo)
+                PendingSpawnCount = PendingSpawnCount + 1
+                start CreateSingleMonster(normalInfo)
                 createdCount = createdCount + 1
             }
-            if list.Length(normalQueue) > 0 && createdCount < targetCount && GetActiveMonsterCount() < MaxMonstersOnField {
+            if list.Length(normalQueue) > 0 && createdCount < targetCount && GetActiveAndPendingMonsterCount() < MaxMonstersOnField {
                 var normalInfo = normalQueue[i % list.Length(normalQueue)]
-                CreateSingleMonster(normalInfo)
+                PendingSpawnCount = PendingSpawnCount + 1
+                start CreateSingleMonster(normalInfo)
                 createdCount = createdCount + 1
             }
             i = i + 1
@@ -1042,7 +1049,7 @@ static graph FC_PVEMonsterManager {
                 canSpawn = true
             }
             if canSpawn {
-                if GetActiveMonsterCount() >= MaxMonstersOnField {
+                if GetActiveAndPendingMonsterCount() >= MaxMonstersOnField {
                     WaitForMillisecond(500)
                     continue
                 }
@@ -1051,7 +1058,7 @@ static graph FC_PVEMonsterManager {
                     WaitForMillisecond(500)
                     continue
                 }
-                var availableSlots = MaxMonstersOnField - GetActiveMonsterCount()
+                var availableSlots = MaxMonstersOnField - GetActiveAndPendingMonsterCount()
                 if availableSlots <= 0 {
                     WaitForMillisecond(500)
                     continue
@@ -1059,8 +1066,9 @@ static graph FC_PVEMonsterManager {
                 var spawnCount = availableSlots
                 for j = 0, spawnCount, 1 {
                     if !IsWaveActive || (spawnerIndex != currSpawnerIndex) { break }
-                    if GetActiveMonsterCount() >= MaxMonstersOnField { break }
-                    CreateSingleMonster(selectedMonster)
+                    if GetActiveAndPendingMonsterCount() >= MaxMonstersOnField { break }
+                    PendingSpawnCount = PendingSpawnCount + 1
+                    start CreateSingleMonster(selectedMonster)
                 }
                 NormalLastSpawnTime = now
             }
@@ -1162,6 +1170,9 @@ static graph FC_PVEMonsterManager {
         // 注册怪物
         if monster != nil {
             list.Append(ActiveMonsters, monster)
+        }
+        if PendingSpawnCount > 0 {
+            PendingSpawnCount = PendingSpawnCount - 1
         }
         
         if monsterInfo["IsElite"] as bool {
@@ -1379,6 +1390,8 @@ static graph FC_PVEMonsterManager {
         list.Clear(ActiveBossMonsters)
         Map.Clear(BossSpawnedCount)
         Map.Clear(EliteCurrentCount)
+        PendingSpawnCount = 0
+        InitialSpawnInProgress = false
 
         NormalLastSpawnTime = 0
         //map.Clear(EliteLastSpawnTime)
@@ -1412,6 +1425,8 @@ static graph FC_PVEMonsterManager {
         list.Clear(ActiveBossMonsters)
         Map.Clear(BossSpawnedCount)
         Map.Clear(EliteCurrentCount)
+        PendingSpawnCount = 0
+        InitialSpawnInProgress = false
 
         NormalLastSpawnTime = 0
         SoundFunc.PauseTheSound("ZombieVoice_1")
@@ -1430,6 +1445,10 @@ static graph FC_PVEMonsterManager {
             }
         }
         return count
+    }
+
+    func GetActiveAndPendingMonsterCount() int {
+        return GetActiveMonsterCount() + PendingSpawnCount
     }
     
     // 强制结束当前波次（必需的基础方程）
