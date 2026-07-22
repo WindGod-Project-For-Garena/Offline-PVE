@@ -1,0 +1,112 @@
+{
+  "version": 1,
+  "tools": {
+    "apply_patch": {
+      "enabled": false,
+      "kind": "structured",
+      "policy": {
+        "fileAccessLevel": 1,
+        "allowedProjectDirs": [
+          "Assets",
+          "ProjectSettings"
+        ],
+        "allowedDirs": [
+          "${projectRoot}"
+        ],
+        "allowedExtensions": [
+          "fcg",
+          "fcc",
+          "csv",
+          "ts",
+          "vue",
+          "json",
+          "md",
+          "txt"
+        ]
+      }
+    },
+    "fccompile": {
+      "enabled": false,
+      "kind": "structured",
+      "policy": {
+        "fileAccessLevel": 0
+      }
+    },
+    "ls": {
+      "enabled": false,
+      "kind": "shellCommand",
+      "policy": {
+        "fileAccessLevel": 2,
+        "allowedDirs": [
+          "${projectRoot}"
+        ]
+      }
+    },
+    "dir": {
+      "enabled": false,
+      "kind": "shellCommand",
+      "policy": {
+        "fileAccessLevel": 2,
+        "allowedDirs": [
+          "${projectRoot}"
+        ]
+      }
+    },
+    "cat": {
+      "enabled": false,
+      "kind": "shellCommand",
+      "policy": {
+        "fileAccessLevel": 2,
+        "allowedDirs": [
+          "${projectRoot}"
+        ]
+      }
+    },
+    "type": {
+      "enabled": false,
+      "kind": "shellCommand",
+      "policy": {
+        "fileAccessLevel": 2,
+        "allowedDirs": [
+          "${projectRoot}"
+        ]
+      }
+    },
+    "git": {
+      "enabled": false,
+      "kind": "shellCommand",
+      "policy": {
+        "fileAccessLevel": 2,
+        "allowedDirs": [
+          "${projectRoot}"
+        ],
+        "allowedSubcommands": [
+          "status",
+          "diff",
+          "log",
+          "show"
+        ]
+      }
+    },
+    "rm": {
+      "enabled": false,
+      "kind": "shellCommand",
+      "policy": {
+        "fileAccessLevel": 2,
+        "allowedDirs": [
+          "${projectRoot}"
+        ]
+      }
+    },
+    "cp": {
+      "enabled": false,
+      "kind": "shellCommand",
+      "policy": {
+        "fileAccessLevel": 2,
+        "allowedDirs": [
+          "${projectRoot}"
+        ]
+      }
+    }
+  }
+}

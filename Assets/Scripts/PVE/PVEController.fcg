@@ -139,16 +139,16 @@ static graph PVEController {
         // 检查当前波次是否有Boss
         var isBossWave = monsterManager.HasBossInWave(wave)
         
-        if isBossWave {
-            IsCountdownActive = false  // Boss波次不进行倒计时
-        }
-        
         // 更新UI显示
+        if isBossWave {
+            IsCountdownActive = false
+        }
         UpdateTimeInGameUI(WaveTimeLimit/1000, isBossWave)
 
-        // 如果是普通波次，开始倒计时
+        // 普通波次改为清怪结算，不再使用倒计时
         if !isBossWave {
             start WaveCountdownTimer()
+            start NormalWaveClearCheck()
             SoundFunc.PlayCreatedSound("Battle_Normal")
         } else {
             // Boss波次：启动专门的存活检测
@@ -159,6 +159,53 @@ static graph PVEController {
 
 
     // 波次倒计时器：用本地秒数逐秒递减，不依赖 GameTimeCount
+    async func NormalWaveClearCheck() {
+        var currentNormalWave = CurrentWave
+        WaitForMillisecond(1000)
+
+        while IsGameActive && CurrentWave == currentNormalWave {
+            var DeadOrAlive bool = CheckPlayersAlive()
+            if DeadOrAlive == false {
+                start OnGameOver()
+                return
+            }
+
+            if monsterManager.GetActiveMonsterCount() <= 0 {
+                start OnNormalWaveCleared()
+                return
+            }
+
+            WaitForMillisecond(WaveCountdownInterval)
+        }
+    }
+
+    async func OnNormalWaveCleared() {
+        IsCountdownActive = false
+        monsterManager.ForceEndWave()
+
+        start GetLocalPlayer()<PlayerJionGame>.StopAllBuffsAndReset()
+        GetLocalPlayer()<PlayerJionGame>.RemoveAllDrops()
+
+        var WaveCompleteUI = GetLocalPlayer()<PlayerJionGame>.WaveCompleteUI
+        WaveCompleteUI<CustomUI>.IsVisible = true
+        var WaveText = GetWidgetByPath(GetLocalPlayer(), WaveCompleteUI, "/WaveShow/Text")
+        if WaveText != nil {
+            var waveNum = CurrentWave
+            if GetLocalPlayer()<PlayerJionGame>.EndlessToggle {
+                waveNum = EndlessWaveCount
+            }
+            var CurrentWaveTTT = LocString{"WAVE_CLEAR", List<string>{waveNum}}
+            WaveText<UIWidgetLabel>.Content = CurrentWaveTTT
+        }
+
+        SoundFunc.PauseTheSound("Battle_Normal")
+        SoundFunc.PlayCreatedSound("Victory")
+
+        WaitForMillisecond(2000)
+        WaveCompleteUI<CustomUI>.IsVisible = false
+        monsterManager.InitializeMonsterPool()
+        GetLocalPlayer()<PlayerJionGame>.ToClient_DisplaySkillThreeChoiceOne()
+    }
     async func WaveCountdownTimer() {
         var displaySeconds int = WaveTimeLimit/1000   // 初始 40，StartWave 已显示过 40
         var hasShown5sWarning bool = false
@@ -362,7 +409,11 @@ static graph PVEController {
                 }
             }
             if TimeText != nil {
-                TimeText<UIWidgetLabel>.Content = FormatTimeMMSS(remainTime)
+if remainTime < 0 {
+                    TimeText<UIWidgetLabel>.Content = "--:--"
+                } else {
+                    TimeText<UIWidgetLabel>.Content = FormatTimeMMSS(remainTime)
+                }
             }
         }
     }
