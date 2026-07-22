@@ -344,6 +344,28 @@ static graph FC_PVEMonsterManager {
         }
     }
 
+    func IsMonsterInPool(monster entity<LevelObject>) bool {
+        if monster == nil || !HasComponent(monster, typeof(Mob)) {
+            return false
+        }
+        var name_key string = monster<Mob>.MobName
+        if name_key == "" || !Map.ContainKey(MonsterPool, name_key) {
+            return false
+        }
+        return list.Contain(MonsterPool[name_key], monster)
+    }
+
+    async func DelayedReturnMonsterToPool(monster entity<LevelObject>, delayMs int) {
+        WaitForMillisecond(delayMs)
+        if monster == nil || !HasComponent(monster, typeof(Mob)) {
+            return
+        }
+        if IsMonsterInPool(monster) {
+            return
+        }
+        ReturnMonsterToPool(monster)
+    }
+
     // 将怪物回收到对象池（不 Destroy，移入池节点并设为未激活；按 MobName 即实体ID 归入对应 value 列表）
     func ReturnMonsterToPool(monster entity<LevelObject>) {
         if monster == nil || !HasComponent(monster, typeof(Mob)) {
@@ -358,6 +380,9 @@ static graph FC_PVEMonsterManager {
         SetParentClient(MonsterPoolParentNode<Transform>, monster<Transform>, true)
         if !Map.ContainKey(MonsterPool, name_key) {
             MonsterPool[name_key] = list.New(0, 0)
+        }
+        if list.Contain(MonsterPool[name_key], monster) {
+            return
         }
         list.Append(MonsterPool[name_key], monster)
         LogInfo("[怪物对象池] 还池 名称=" + name_key + " 当前=" + GetPoolMonsterCount(name_key) + "/" + GetPoolMonsterCount(name_key))
@@ -1101,7 +1126,7 @@ static graph FC_PVEMonsterManager {
         for i = 0, list.Length(ActiveMonsters), 1 {
             var monster = ActiveMonsters[i]
             if monster != nil {
-                start myDestroyMonster(monster)
+                ReturnMonsterToPool(monster)
             }
         }
         
@@ -1208,6 +1233,7 @@ static graph FC_PVEMonsterManager {
                 SoundFunc.PauseTheSound("ZombieVoice_3")
                 ZombieVoicePlaying = false
             }
+            start DelayedReturnMonsterToPool(monster, 4000)
         }
     }
 
